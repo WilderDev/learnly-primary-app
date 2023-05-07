@@ -4,12 +4,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content: [
-    './src/app/**/*.{ts,tsx}',
-    './src/components/**/*.{ts,tsx}',
-    './src/features/**/*.{ts,tsx}',
-    './src/lib/utils/enumColors.ts',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
@@ -38,6 +33,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
+    require('prettier-plugin-tailwindcss'),
     plugin(({ addVariant }) => addVariant('hocus', ['&:hover', '&:focus'])),
     plugin(({ addVariant }) => addVariant('around', ['&:before', '&:after'])),
     plugin(({ addVariant }) => addVariant('peer', ['&:hover', '&:focus'])),
