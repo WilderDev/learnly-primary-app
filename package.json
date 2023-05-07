@@ -1,24 +1,45 @@
 {
   "name": "learnly-parent-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "env": "vercel env pull .env.local",
+    "db:push": "supabase db push",
+    "db:studio": "open http://localhost:54323/project/default",
+    "db:types": "supabase gen types typescript --local > typescript/db.d.ts",
+    "stripe:webhook": "stripe listen --forward-to localhost:3000/api/v1/stripe/webhooks"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.17",
+    "@sendgrid/mail": "^7.7.0",
+    "@stripe/stripe-js": "^1.52.1",
+    "@supabase/supabase-js": "^2.21.0",
+    "@vercel/analytics": "^1.0.1",
+    "framer-motion": "^10.12.8",
+    "next": "13.4.1",
+    "openai": "^3.2.1",
+    "react": "18.2.0",
+    "react-canvas-confetti": "^1.4.0",
+    "react-dom": "18.2.0",
+    "react-flatpickr": "^3.10.13",
+    "react-markdown": "^8.0.7",
+    "sharp": "^0.32.1",
+    "sonner": "^0.3.5",
+    "stripe": "^12.4.0",
+    "swr": "^2.1.5"
+  },
+  "devDependencies": {
     "@types/node": "20.1.0",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
-    "next": "13.4.1",
     "postcss": "8.4.23",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
   }

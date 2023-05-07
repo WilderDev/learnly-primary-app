@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Learnly App Frontend
 
 ## Getting Started
 
-First, run the development server:
+### Tools
+
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- [Git](https://git-scm.com/downloads)
+- [VSCode](https://code.visualstudio.com/download)
+- [Docker](https://www.docker.com/products/docker-desktop)
+
+### Configuration
+
+1. Clone the repository
+2. Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Link your local repository to vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+vercel link
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Pull down the environment variables from vercel
 
-## Learn More
+```bash
+yarn env
+```
 
-To learn more about Next.js, take a look at the following resources:
+5. Start Supabase Locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+yarn db:start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+6. Start the app
 
-## Deploy on Vercel
+```bash
+yarn dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Feature Flow
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Checkout Staging Branch
+2. Pull down any changes
+3. Create or Find a Feature/Issue to work on in [Linear](https://linear.app/learnly/my-issues/assigned)
+4. Copy the Linear branch name (`CMD + K` and type "branch" to copy)
+5. Checkout a new branch with the Linear branch name `git checkout -b <linear-branch-name>`
+6. Make your changes (commit often and if you change the DB Schema, run `yarn db:push` and `yarn db:reset` to apply them)
+7. Push your changes to the remote branch `git push origin <linear-branch-name>`
+8. Create a pull request on Github
+9. Ensure someone checks your work and approves it
+
+- _NOTE_: Ensure the stripe webhooks is running when creating accounts locally
+- _NOTE_: After every features, make sure to run `yarn db:push` and `yarn db:reset` to update the database and add a seed script to the database for future use
