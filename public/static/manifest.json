@@ -1,0 +1,16 @@
+{
+  "short_name": "Learnly",
+  "name": "Learnly: Homeschool Made Easy",
+  "icons": [
+    {
+      "src": "/favicon/learnly-logo_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#f8fafc",
+  "display": "standalone",
+  "scope": ".",
+  "theme_color": "#16a34a",
+  "description": "Learnly is the #1 personalized lesson & curriculum software for homeschooling families."
+}

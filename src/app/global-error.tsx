@@ -15,5 +15,3 @@ export default function GlobalError({ error, reset }: IProps) {
     </html>
   );
 }
-
-// TSK: Add a global error handler to the app.

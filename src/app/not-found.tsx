@@ -6,5 +6,3 @@ export default function RootNotFound() {
     </>
   );
 }
-
-// TSK: style and make funny
