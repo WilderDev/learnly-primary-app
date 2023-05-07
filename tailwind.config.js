@@ -33,7 +33,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('prettier-plugin-tailwindcss'),
     plugin(({ addVariant }) => addVariant('hocus', ['&:hover', '&:focus'])),
     plugin(({ addVariant }) => addVariant('around', ['&:before', '&:after'])),
     plugin(({ addVariant }) => addVariant('peer', ['&:hover', '&:focus'])),

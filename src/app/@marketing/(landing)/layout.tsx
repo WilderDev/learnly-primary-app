@@ -1,7 +1,7 @@
 import MarketingScripts from '@/lib/scripts/MarketingScripts';
 import { PropsWithChildren } from 'react';
-import MarketingNavigation from './(navigation)/MarketingNavigation';
-import MarketingFooter from './(navigation)/MarketingFooter';
+import MarketingNavigation from '../(navigation)/MarketingNavigation';
+import MarketingFooter from '../(navigation)/MarketingFooter';
 
 export default function MarketingLayout({ children }: PropsWithChildren) {
   return (

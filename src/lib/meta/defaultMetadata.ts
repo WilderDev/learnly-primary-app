@@ -5,19 +5,19 @@ const description =
   'Learnly is the #1 personalized lesson & curriculum software for homeschooling families.';
 const images = [
   {
-    url: baseUrl + '/static/images/landing-og.png',
+    url: '/static/images/landing-og.png',
     width: 1200,
     height: 630,
     alt: 'Learnly Homeschooling Software',
   },
   {
-    url: baseUrl + '/static/images/app-og-default.png',
+    url: '/static/images/app-og-default.png',
     width: 1200,
     height: 630,
     alt: 'Learnly Homeschooling Software',
   },
   {
-    url: baseUrl + '/static/images/app-og-alt.png',
+    url: '/static/images/app-og-alt.png',
     width: 1200,
     height: 630,
     alt: 'Learnly Homeschooling Software (Dark Mode)',
@@ -40,6 +40,7 @@ const defaultMetadata: Metadata = {
   referrer: 'origin-when-cross-origin',
   manifest: baseUrl + '/static/manifest.json',
   authors: [{ name: 'Learnly', url: 'https://www.learnly.ai' }],
+  metadataBase: new URL(baseUrl),
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#192132' },

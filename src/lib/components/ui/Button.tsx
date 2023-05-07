@@ -1,16 +1,11 @@
 'use client';
 
+import { TEffect, TFill, TSize, TVariant } from '@/assets/typescript/ui';
 // * Imports
 import cn from '@/lib/common/cn';
 import Link from 'next/link';
 
-// * Types
-export type TSize = 'sm' | 'md' | 'lg' | 'xl';
-export type TVariant = 'primary' | 'secondary';
-export type TFill = 'solid' | 'outline' | 'gradient';
-export type TEffect = 'scale';
-
-// * Interfaces
+// * Props
 interface IProps
   extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   children: React.ReactNode;
@@ -115,6 +110,7 @@ export default function Button({
         className,
       )}
       href={url}
+      prefetch={true}
       {...props}
     >
       {children}
