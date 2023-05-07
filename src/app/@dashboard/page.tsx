@@ -6,3 +6,7 @@ export default function ParentDashboardHomePage() {
     </>
   );
 }
+
+export const metadata = {
+  title: 'Home',
+};
