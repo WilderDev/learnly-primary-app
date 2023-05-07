@@ -8,7 +8,7 @@ import Link from 'next/link';
 export type TSize = 'sm' | 'md' | 'lg' | 'xl';
 export type TVariant = 'primary' | 'secondary';
 export type TFill = 'solid' | 'outline' | 'gradient';
-export type TEffect = 'none' | 'scale';
+export type TEffect = 'scale';
 
 // * Interfaces
 interface IProps
@@ -17,8 +17,9 @@ interface IProps
   size?: TSize;
   variant?: TVariant;
   fill?: TFill;
-  effect?: TEffect;
+  effect?: TEffect | 'none';
   shadow?: TSize;
+  rounded?: TSize | 'full';
   url?: string;
   className?: string;
 }
@@ -31,20 +32,21 @@ export default function Button({
   fill = 'solid',
   effect = 'none',
   shadow = 'md',
+  rounded = 'md',
   url,
   className,
   ...props
 }: IProps) {
   // Button Default Styles
   const defaultStyles =
-    'inline-flex items-center justify-center rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out active:shadow-none';
+    'inline-flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out active:shadow-none';
 
   // Button Size Styles
   const sizes: { [key in TSize]: string } = {
-    sm: 'px-3 py-2 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg',
-    xl: 'px-14 py-3.5 text-xl',
+    sm: 'px-2 md:px-3 py-2 text-xs md:text-sm',
+    md: 'px-3 md:px-4 py-2 text-sm md:text-base',
+    lg: 'px-4 md:px-6 py-3 text-base md:text-lg',
+    xl: 'px-8 md:px-14 py-3.5 text-lg md:text-xl',
   };
 
   // Button Variant Styles
@@ -70,14 +72,14 @@ export default function Button({
     // Gradient
     gradient: {
       primary:
-        'bg-gradient-to-bl from-green-500 to-green-600 via-emerald-600 hover:from-green-500 hover:to-blue-600 focus:ring-offset-green-600',
+        'bg-gradient-to-bl from-green-500 to-green-600 via-emerald-600 focus:ring-offset-green-600 hover:brightness-110 active:brightness-90',
       secondary:
-        'bg-gradient-to-bl from-blue-500 to-blue-600 via-sky-600 hover:from-blue-500 hover:to-green-600 focus:ring-offset-blue-600',
+        'bg-gradient-to-bl from-blue-500 to-blue-600 via-sky-60 focus:ring-offset-blue-600 hover:brightness-110 active:brightness-90',
     },
   };
 
   // Button Effect Styles
-  const effects: { [key in TEffect]: string } = {
+  const effects: { [key in TEffect | 'none']: string } = {
     none: '',
     scale: 'transform active:scale-95 hover:scale-105',
   };
@@ -90,6 +92,15 @@ export default function Button({
     xl: 'shadow-xl hover:shadow-2xl',
   };
 
+  // Button Rounded Styles
+  const roundeds: { [key in TSize | 'full']: string } = {
+    sm: 'rounded-sm',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
+    full: 'rounded-full',
+  };
+
   // * Render
   return url ? (
     <Link
@@ -97,9 +108,10 @@ export default function Button({
         defaultStyles,
         sizes[size],
         variants[variant],
-        fills[fill],
+        fills[fill][variant],
         effects[effect],
         shadows[shadow],
+        roundeds[rounded],
         className,
       )}
       href={url}
@@ -113,8 +125,10 @@ export default function Button({
         defaultStyles,
         sizes[size],
         variants[variant],
-        fills[fill],
-        effects['scale'],
+        fills[fill][variant],
+        effects[effect],
+        shadows[shadow],
+        roundeds[rounded],
         className,
       )}
       {...props}

@@ -11,10 +11,17 @@
   body {
     @apply relative bg-slate-50 text-slate-900 antialiased transition-colors duration-500 ease-linear dark:bg-navy-900 dark:text-navy-50;
   }
+
+  *::selection {
+    @apply bg-green-100 text-slate-900 dark:bg-green-200 dark:text-navy-900;
+  }
 }
 
 @layer components {
 }
 
 @layer utilities {
+  .snug {
+    @apply !leading-snug sm:!leading-snug md:!leading-snug lg:!leading-snug xl:!leading-snug 2xl:!leading-snug;
+  }
 }

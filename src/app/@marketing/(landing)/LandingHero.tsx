@@ -1,7 +1,6 @@
 import Container from '@/lib/components/layout/Container';
 import Section from '@/lib/components/layout/Section';
 import Button from '@/lib/components/ui/Button';
-import Link from 'next/link';
 
 export default function LandingHero() {
   return (
@@ -9,23 +8,23 @@ export default function LandingHero() {
       {/* Main Content */}
       <Container>
         {/* Headline */}
-        <h1 className="mx-auto max-w-4xl text-center">
+        <h1 className="mx-auto max-w-xl text-center md:max-w-4xl">
           {/* Callout */}
-          <span className="block text-xl font-semibold uppercase tracking-wide text-green-700">
+          <span className="block text-sm font-semibold uppercase tracking-wide text-green-700 md:text-lg lg:text-xl">
             CALLING ALL HOMESCHOOL PARENTS, EDUCATORS & TEACHERS. . .
           </span>
           {/* Desire */}
-          <span className="block text-5xl font-bold leading-snug text-navy-900">
-            Join 1,000&apos;s of Families Providing High-Quality, Flexible
-            Education Using The #1 Personalized Lesson & Curriculum Software 🤯
+          <span className="snug block text-2xl font-bold text-navy-900 sm:text-3xl md:text-4xl lg:text-5xl">
+            Join 1,000s of Families Providing High-Quality, Flexible Education
+            Using The #1 Personalized Lesson & Curriculum Software 🤯
           </span>
         </h1>
 
         {/* Details */}
-        <div className="mx-auto mt-4 flex max-w-2xl flex-col items-center justify-center">
+        <div className="mx-auto mt-4 flex max-w-md flex-col items-center justify-center md:max-w-2xl">
           {/* Special Offer / Description */}
           <p className="text-center text-slate-700">
-            <span className="block text-lg font-bold">
+            <span className="block text-sm font-bold md:text-lg">
               Special{' '}
               <span className="underline">
                 {new Date().toLocaleDateString('en-US', {
@@ -36,7 +35,7 @@ export default function LandingHero() {
             </span>
 
             {/* Description */}
-            <span className="block">
+            <span className="block text-xs md:text-base">
               Claim your 14-day FREE trial of the #1 personalized lesson &
               curriculum software for homeschooling families. PLUS, receive an
               exclusive &lsquo;VIP Pass&rsquo; to the Homeschool Made Easy
@@ -52,15 +51,16 @@ export default function LandingHero() {
               size="xl"
               fill="gradient"
               effect="scale"
+              shadow="xl"
+              rounded="full"
               url="/onboarding"
-              className="rounded-full uppercase shadow-lg hocus:shadow-xl"
+              className="w-full px-3 text-sm uppercase sm:px-6 sm:text-base"
             >
               Start My Free 14-Day Trial
             </Button>
-            {/* className="text-center font-medium active:brightness-90 hocus:shadow-xl hocus:brightness-110" */}
 
             {/* Disclaimer */}
-            <p className="mt-4 text-center text-sm text-slate-700">
+            <p className="mt-3 text-center text-xs italic text-slate-700 md:text-sm">
               No credit card required. Cancel anytime.
             </p>
           </div>

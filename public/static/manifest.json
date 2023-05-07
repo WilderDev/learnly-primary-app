@@ -10,7 +10,6 @@
   ],
   "background_color": "#f8fafc",
   "display": "standalone",
-  "scope": ".",
   "theme_color": "#16a34a",
   "description": "Learnly is the #1 personalized lesson & curriculum software for homeschooling families."
 }
