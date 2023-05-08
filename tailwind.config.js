@@ -28,6 +28,31 @@ module.exports = {
       boxShadow: {
         xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
       },
+      animation: {
+        fadeIn: 'fadeIn 0.5s ease-in-out forwards',
+        shimmer: 'shimmer 5.0s linear infinite',
+        marquee: 'marquee var(--marquee-duration) linear infinite',
+        // https://github.com/WilderDev/learnly-app/blob/main/tailwind.config.js
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+        shimmer: {
+          '0%': {
+            backgroundPosition: '-468px 0',
+          },
+          '100%': {
+            backgroundPosition: '468px 0',
+          },
+        },
+        marquee: {
+          '100%': {
+            transform: 'translateY(-50%)',
+          },
+        },
+      },
     },
   },
   future: {

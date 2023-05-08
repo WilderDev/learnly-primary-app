@@ -1,5 +1,7 @@
 'use client';
 
+import Box from '@/lib/components/containers/Box';
+
 // * Interfaces
 interface IProps {
   currStep: number;
@@ -17,13 +19,18 @@ const steps = [
 export default function OnboardingProgressBar({ currStep, setStep }: IProps) {
   // * Render
   return (
-    <nav
-      className="bg-white py-3 px-6 my-6 rounded-2xl w-full shadow-xl"
+    <Box
+      className="hidden sm:block"
+      size="lg"
+      shadow="xl"
+      rounded="xl"
       aria-label="Progress"
+      as="nav"
+      aria-labelledby="progress"
     >
-      <ol role="list" className="space-y-4 md:flex md:space-x-8 md:space-y-0">
+      <ol role="list" className="space-y-4 sm:flex sm:space-x-8 sm:space-y-0">
         {steps.map((step) => (
-          <li key={step.name} className="md:flex-1">
+          <li key={step.name} className="sm:flex-1">
             {step.id < currStep ? (
               <button
                 className="group w-full flex flex-col border-l-4 border-green-600 py-2 pl-4 hover:border-green-800 md:border-l-0 md:border-t-4 md:pb-0 md:pl-0 md:pt-4"
@@ -55,7 +62,7 @@ export default function OnboardingProgressBar({ currStep, setStep }: IProps) {
           </li>
         ))}
       </ol>
-    </nav>
+    </Box>
   );
 }
 
