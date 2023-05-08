@@ -47,7 +47,6 @@ export default function MarketingNavCTA() {
       {/* Sign In Modal */}
       <Modal
         size="xs"
-        title="Sign In"
         isVisible={isOpen}
         close={() => setOpen(false)}
         rounded="lg"
@@ -64,6 +63,7 @@ export default function MarketingNavCTA() {
             cols={3}
             label="Email"
             type="email"
+            placeholder="homeschoolmom@gmail.com"
             value={email}
             setValue={setEmail}
             icon={UserIcon}
@@ -72,7 +72,21 @@ export default function MarketingNavCTA() {
           />
         </Form>
 
-        {/* <Modal.Footer></Modal.Footer> */}
+        <Modal.Footer>
+          <Button
+            size="md"
+            fill="gradient"
+            shadow="md"
+            rounded="lg"
+            onClick={() => {
+              console.log('submitted');
+              setOpen(false);
+            }}
+            className="w-full"
+          >
+            Time to Homeschool <span className="ml-2">😊</span>
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );

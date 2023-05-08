@@ -5,14 +5,13 @@ import Portal from './Portal';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import cn from '@/lib/common/cn';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 // * Props
 interface IProps {
   children: React.ReactNode;
   isVisible: boolean;
   close: () => void;
-  title?: string;
   size?: TSize;
   rounded?: TSize;
   shadow?: TSize;
@@ -25,7 +24,6 @@ interface IProps {
 export default function Modal({
   children,
   isVisible,
-  title,
   close,
   size = 'md',
   rounded = 'md',
@@ -39,9 +37,12 @@ export default function Modal({
   const defaultStyles =
     'fixed inset-0 z-50 p-4 flex items-center justify-center w-full h-full bg-slate-900/50 backdrop-blur';
 
+  // Animation Modal Styles
+  const animationStyles = 'transition-all duration-300 ease-in-out';
+
   // Modal Size Styles
   const sizeStyles: { [key in TSize]: string } = {
-    xs: 'max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg px-2 py-3',
+    xs: 'max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg p-4',
     sm: 'max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl px-4 py-5',
     md: 'max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-6 py-7',
     lg: 'max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl px-8 py-9',
@@ -152,7 +153,12 @@ export default function Modal({
   return (
     <Portal portalName={portalName}>
       <article
-        className={cn(defaultStyles, isVisible ? 'visible' : 'invisible')}
+        className={cn(
+          defaultStyles,
+          isVisible
+            ? 'visible opacity-100'
+            : 'invisible opacity-0 pointer-events-none',
+        )}
         role="dialog"
         aria-modal="true"
       >
@@ -163,6 +169,8 @@ export default function Modal({
             sizeStyles[size],
             roundedStyles[rounded],
             shadowStyles[shadow],
+            animationStyles,
+            isVisible ? 'scale-100' : 'scale-90',
             className,
           )}
           ref={modalRef}

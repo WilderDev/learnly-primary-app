@@ -54,9 +54,9 @@ export default function Input({
   // Input Variant Styles
   const variants: { [key in TVariant]: string } = {
     primary:
-      'text-slate-900 dark:text-navy-50 ring-green-500 focus:ring-offset-green-500',
+      'text-slate-900 dark:text-navy-50 focus:ring-green-500 focus:ring-offset-green-500',
     secondary:
-      'text-green-700 dark:text-green-400 ring-blue-500 focus:ring-offset-blue-500',
+      'text-green-700 dark:text-green-400 focusring-blue-500 focus:ring-offset-blue-500',
   };
 
   // Input Fill Styles
