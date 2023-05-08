@@ -8,9 +8,8 @@ import OnboardingProfileForm from './OnboardingProfileForm';
 import OnboardingPreferencesForm from './OnboardingPreferencesForm';
 import OnboardingChildrenForm from './OnboardingChildrenForm';
 import Box from '@/lib/components/containers/Box';
+import VerticleScrollingGrid from '../../../lib/components/containers/VerticleScrollingGrid';
 import OnboardingTestimonialBox from './OnboardingTestimonialBox';
-import VerticleScrollingBar from '@/lib/components/containers/VerticleScrollingBar';
-import TestimonialGrid from './TestimonialGrid';
 
 const testimonials = [
   {
@@ -77,13 +76,14 @@ export default function OnboardingPage() {
   // * Render
   return (
     <Main
-      className="backdrop-blur relative flex justify-between h-screen items-center flex-col lg:flex-row max-h-screen overflow-hidden"
+      className="backdrop-blur relative flex justify-center xl:justify-between h-screen items-center flex-col lg:flex-row max-h-screen overflow-hidden"
       marginY={false}
     >
       {/* Testimonials Left */}
-      <TestimonialGrid
-        className="h-full max-h-screen left-0 xl:w-4/12 2xl:w-3/12 absolute 2xl:relative opacity-20"
-        testimonials={testimonials}
+      <VerticleScrollingGrid
+        className="h-full max-h-screen w-full left-0 xl:w-4/12 2xl:w-3/12 absolute 2xl:relative opacity-20"
+        colsAndColItems={[{ list: testimonials, msPerPixel: 15 }]}
+        component={OnboardingTestimonialBox}
       />
 
       {/* Body */}
@@ -117,9 +117,10 @@ export default function OnboardingPage() {
       </Container>
 
       {/* Testimonials Right */}
-      <TestimonialGrid
+      <VerticleScrollingGrid
         className="h-full max-h-screen absolute right-0 hidden xl:block xl:w-4/12 2xl:w-3/12 2xl:relative opacity-20"
-        testimonials={testimonials}
+        colsAndColItems={[{ list: testimonials, msPerPixel: 15 }]}
+        component={OnboardingTestimonialBox}
       />
     </Main>
   );

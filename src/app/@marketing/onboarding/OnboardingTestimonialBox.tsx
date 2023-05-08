@@ -23,14 +23,14 @@ export default function OnboardingTestimonialBox({
   return (
     <Box
       className={cn(
-        'isolate overflow-hidden bg-transparent max-w-lg',
+        'isolate overflow-hidden bg-transparent max-w-2xl xl:max-w-lg mx-auto xl:mx-0',
         className,
       )}
       size="lg"
       shadow="none"
       rounded="xl"
     >
-      <figure className="grid grid-cols-1 items-center">
+      <div className="grid grid-cols-1 items-center">
         <div className="relative col-span-2 lg:col-start-1 lg:row-start-2">
           <svg
             viewBox="0 0 162 128"
@@ -72,7 +72,7 @@ export default function OnboardingTestimonialBox({
           <div className="font-semibold text-green-100">{testimonial.name}</div>
           <div className="mt-1 text-slate-200">{testimonial.role}</div>
         </figcaption>
-      </figure>
+      </div>
     </Box>
   );
 }
