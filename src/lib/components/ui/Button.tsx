@@ -38,6 +38,7 @@ export default function Button({
 
   // Button Size Styles
   const sizes: { [key in TSize]: string } = {
+    xs: 'px-1.5 md:px-2 py-1 text-xs md:text-sm',
     sm: 'px-2 md:px-3 py-2 text-xs md:text-sm',
     md: 'px-3 md:px-4 py-2 text-sm md:text-base',
     lg: 'px-4 md:px-6 py-3 text-base md:text-lg',
@@ -81,6 +82,7 @@ export default function Button({
 
   // Button Shadow Styles
   const shadows: { [key in TSize]: string } = {
+    xs: 'shadow-xs hover:shadow-sm',
     sm: 'shadow-sm hover:shadow-md',
     md: 'shadow-md hover:shadow-lg',
     lg: 'shadow-lg hover:shadow-xl',
@@ -89,6 +91,7 @@ export default function Button({
 
   // Button Rounded Styles
   const roundeds: { [key in TSize | 'full']: string } = {
+    xs: 'rounded-[1]',
     sm: 'rounded-sm',
     md: 'rounded-md',
     lg: 'rounded-lg',

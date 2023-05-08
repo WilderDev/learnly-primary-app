@@ -25,6 +25,9 @@ module.exports = {
         sans: ['var(--font-inter)', ...fontFamily.sans],
         serif: ['var(--font-baskervville)', ...fontFamily.serif],
       },
+      boxShadow: {
+        xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
+      },
     },
   },
   future: {

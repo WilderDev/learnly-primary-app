@@ -47,7 +47,7 @@ export default function Logo({
 
       {/* Logo Text */}
       {withText && (
-        <span className="pl-2 font-bold text-slate-700 dark:text-navy-200">
+        <span className="pl-2 hidden sm:inline-flex font-bold text-slate-700 dark:text-navy-200">
           Learnly
         </span>
       )}

@@ -1,5 +1,6 @@
 import Logo from '@/lib/components/brand/Logo';
 import Container from '@/lib/components/layout/Container';
+import MarketingNavCTA from './MarketingNavCTA';
 
 export default function MarketingNavigation() {
   return (
@@ -10,27 +11,25 @@ export default function MarketingNavigation() {
         aria-label="Main Navigation"
       >
         <Container className="z-30 flex justify-between py-8">
-          <div className="relative z-10 flex items-center gap-16">
+          <div className="hidden relative z-10 lg:flex items-center gap-16">
             {/* Logo */}
             <Logo withText={true} />
 
             {/* Main Nav Links (Desktop) */}
-            <div className="hidden lg:flex lg:gap-10">
-              {/* <LandingHeaderNavLinks /> */}
-            </div>
+            <div className="flex lg:gap-10">{/* <MarketingNavLinks /> */}</div>
           </div>
 
           <div className="flex items-center gap-6">
             {/* Mobile Menu */}
-            {/* <LandingHeaderMobileMenu /> */}
+            {/* <MarketingMobileMenu /> */}
 
             {/* Right Buttons (Desktop) */}
-            {/* <LandingHeaderActionButtons /> */}
+            <MarketingNavCTA />
           </div>
         </Container>
 
-        {/* AuthTogglers */}
-        {/* <LandingHeaderAuthThemeTogglers /> */}
+        {/* Theme Toggler */}
+        {/* <ThemeToggler /> */}
       </nav>
     </header>
   );
