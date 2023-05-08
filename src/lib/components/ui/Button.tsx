@@ -14,7 +14,7 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: TVariant;
   fill?: TFill;
   effect?: TEffect | 'none';
-  shadow?: TSize;
+  shadow?: TSize | 'none';
   rounded?: TSize | 'full';
   url?: string;
   className?: string;
@@ -78,6 +78,11 @@ export default function Button({
       secondary:
         'bg-gradient-to-bl from-blue-500 to-blue-600 via-sky-60 focus:ring-offset-blue-600 hover:brightness-110 active:brightness-90',
     },
+    // None
+    none: {
+      primary: '',
+      secondary: '',
+    },
   };
 
   // Button Effect Styles
@@ -87,7 +92,8 @@ export default function Button({
   };
 
   // Button Shadow Styles
-  const shadows: { [key in TSize]: string } = {
+  const shadows: { [key in TSize | 'none']: string } = {
+    none: '',
     xs: 'shadow-xs hover:shadow-sm',
     sm: 'shadow-sm hover:shadow-md',
     md: 'shadow-md hover:shadow-lg',

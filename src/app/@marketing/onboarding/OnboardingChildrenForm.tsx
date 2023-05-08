@@ -18,7 +18,7 @@ export default function OnboardingChildrenForm({ next }: IProps) {
   return (
     <Form onSubmit={handleSaveChildren}>
       {/* Child */}
-      <Input label="Child" />
+      {/* <Input label="Child" /> */}
     </Form>
   );
 }

@@ -65,7 +65,7 @@ export default function OnboardingProfileForm({ next }: IProps) {
           value={name}
           setValue={setName}
           placeholder="Suzy Smartz"
-          Icon={UserIcon}
+          icon={UserIcon}
           autoFocus
           required
         />
@@ -73,10 +73,11 @@ export default function OnboardingProfileForm({ next }: IProps) {
         {/* Email */}
         <Input
           label="Email"
+          type="email"
           value={email}
           setValue={setEmail}
           placeholder="homeschool.suzy@gmail.com"
-          Icon={EnvelopeIcon}
+          icon={EnvelopeIcon}
           required
         />
 

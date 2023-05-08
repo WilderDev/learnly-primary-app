@@ -18,10 +18,10 @@ export default function OnboardingPreferencesForm({ next }: IProps) {
   return (
     <Form onSubmit={handleSavePreferences}>
       {/* Avatar */}
-      <Input label="Avatar" />
+      {/* <Input label="Avatar" /> */}
 
       {/* Color Scheme */}
-      <Input label="Color Scheme" />
+      {/* <Input label="Color Scheme" /> */}
     </Form>
   );
 }

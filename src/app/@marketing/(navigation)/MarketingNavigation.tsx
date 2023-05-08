@@ -4,13 +4,13 @@ import MarketingNavCTA from './MarketingNavCTA';
 
 export default function MarketingNavigation() {
   return (
-    <header className="w-full bg-white dark:bg-navy-800 print:hidden">
+    <header className="w-full bg-white shadow dark:bg-navy-800 print:hidden">
       <nav
         id="marketing-navigation"
         role="navigation"
         aria-label="Main Navigation"
       >
-        <Container className="z-30 flex justify-between py-8">
+        <Container className="z-30 flex justify-between py-6">
           <div className="hidden relative z-10 lg:flex items-center gap-16">
             {/* Logo */}
             <Logo withText={true} />

@@ -7,6 +7,7 @@ interface IProps extends React.HTMLAttributes<HTMLInputElement> {
   label: string;
   value: string | number;
   setValue: (value: any) => void;
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel';
   cols?: number;
   size?: TSize;
   variant?: TVariant;
@@ -14,7 +15,7 @@ interface IProps extends React.HTMLAttributes<HTMLInputElement> {
   shadow?: TSize;
   rounded?: TSize | 'full';
   className?: string;
-  Icon?: TIcon;
+  icon?: TIcon;
   labelHidden?: boolean;
   initialFocus?: boolean;
   required?: boolean;
@@ -24,6 +25,7 @@ export default function Input({
   label,
   value,
   setValue,
+  type = 'text',
   cols = 1,
   size = 'md',
   variant = 'primary',
@@ -31,7 +33,7 @@ export default function Input({
   shadow = 'xs',
   rounded = 'sm',
   className,
-  Icon,
+  icon: Icon,
   labelHidden = false,
   initialFocus = false,
   ...props
@@ -62,6 +64,7 @@ export default function Input({
     solid: 'bg-white border border-slate-100',
     outline: 'border border-slate-100',
     gradient: 'bg-gradient-to-r from-green-400 to-emerald-500',
+    none: 'bg-transparent border-none',
   };
 
   // Input Shadow Styles
@@ -126,6 +129,7 @@ export default function Input({
           )}
           id={label}
           name={label}
+          type={type}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           autoFocus={initialFocus}
@@ -134,19 +138,4 @@ export default function Input({
       </div>
     </div>
   );
-}
-
-{
-  /*
-
-      <div className="relative rounded-md shadow-sm">
-
-
-        <input
-
-
-          {...props}
-        />
-      </div>
-    </div> */
 }
