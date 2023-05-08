@@ -38,7 +38,7 @@ export default function Input({
 }: IProps) {
   // Input Default Styles
   const defaultStyles =
-    'block w-full rounded-lg transition-shadow duration-200 ring-1 ring-black ring-opacity-5 focus:outline-none focus:ring-2 focus:ring-offset-2 placeholder-slate-400 dark:placeholder-navy-300 placeholder-opacity-80 placeholder:text-sm';
+    'block w-full rounded-lg transition-shadow duration-200 ring-1 ring-black ring-opacity-5 focus:outline-none focus:ring-2 focus:ring-offset-2 placeholder-slate-400 dark:placeholder-navy-300';
 
   // Input Size Styles
   const sizes: { [key in TSize]: string } = {

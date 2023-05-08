@@ -14,7 +14,7 @@ export default function OnboardingPage() {
 
   // * Render
   return (
-    <Main marginY={false}>
+    <Main className="backdrop-blur" marginY={false}>
       <Container className="h-screen flex items-center flex-col justify-center max-w-5xl">
         {/* Progress */}
         <OnboardingProgressBar currStep={currStep} setStep={setCurrStep} />
@@ -47,5 +47,8 @@ export default function OnboardingPage() {
   );
 }
 
+// TSK: Have not just the form but some text as well
+// TSK: Have testimonials on the side
 // TSK: Confetti on initial load
 // TSK: Add a skip button
+// TSK: Animations between steps

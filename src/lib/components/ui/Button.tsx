@@ -4,11 +4,12 @@ import { TEffect, TFill, TSize, TVariant } from '@/assets/typescript/ui';
 // * Imports
 import cn from '@/lib/common/cn';
 import Link from 'next/link';
+import LoadingDots from '../loading/LoadingDots';
 
 // * Props
-interface IProps
-  extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
+  loading?: boolean;
   size?: TSize;
   variant?: TVariant;
   fill?: TFill;
@@ -22,6 +23,7 @@ interface IProps
 // * Component
 export default function Button({
   children,
+  loading = false,
   size = 'md',
   variant = 'primary',
   fill = 'solid',
@@ -35,6 +37,9 @@ export default function Button({
   // Button Default Styles
   const defaultStyles =
     'inline-flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out active:shadow-none';
+
+  // Button Disabled Styles
+  const disabledStyles = 'opacity-60 cursor-not-allowed';
 
   // Button Size Styles
   const sizes: { [key in TSize]: string } = {
@@ -114,7 +119,6 @@ export default function Button({
       )}
       href={url}
       prefetch={true}
-      {...props}
     >
       {children}
     </Link>
@@ -129,10 +133,11 @@ export default function Button({
         shadows[shadow],
         roundeds[rounded],
         className,
+        props.disabled && disabledStyles,
       )}
       {...props}
     >
-      {children}
+      {loading ? <LoadingDots size={size} /> : children}
     </button>
   );
 }

@@ -36,6 +36,18 @@
     @apply transition-transform duration-500 ease-in-out group-hover:animate-wiggle group-focus:animate-wiggle;
   }
 
+  /* Loading Dots for Buttons */
+  .dot {
+    @apply mx-1 inline-block h-2 w-2 animate-pulse rounded-full bg-slate-200 dark:bg-navy-50;
+    animation-duration: 1.4s;
+  }
+  .dot:nth-of-type(2) {
+    animation-delay: 0.2s;
+  }
+  .dot:nth-of-type(3) {
+    animation-delay: 0.4s;
+  }
+
   /* Loading Shapes Animation */
   .loading-shape {
     --path: #384766;
