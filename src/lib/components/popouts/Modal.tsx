@@ -280,4 +280,4 @@ Modal.Footer = function ModalFooter({ children }: IModalBodyProps) {
   );
 };
 
-// Modal Animations
+// Modal exit Animations
