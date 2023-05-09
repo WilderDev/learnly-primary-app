@@ -6,7 +6,7 @@ import { baskervville, inter } from '@/lib/typography/fonts';
 
 import useUser from '@/lib/user/useUser';
 import DashboardLayout from './@dashboard/DashboardLayout';
-import { Toaster } from 'sonner';
+import Toast from '@/lib/components/ux/Toast';
 
 // * Props
 interface IProps {
@@ -38,7 +38,7 @@ export default function RootLayout({ dashboard, marketing }: IProps) {
         <div id="chat-portal" />
 
         {/* Toast Container */}
-        <Toaster />
+        <Toast />
       </body>
     </html>
   );

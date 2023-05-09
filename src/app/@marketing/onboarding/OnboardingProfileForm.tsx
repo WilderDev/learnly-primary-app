@@ -1,3 +1,5 @@
+'use client';
+
 import Form from '@/lib/components/form/Form';
 import Input from '@/lib/components/form/Input';
 import { useState } from 'react';
@@ -5,6 +7,9 @@ import { EnvelopeIcon, UserIcon } from '@heroicons/react/24/outline';
 import Button from '@/lib/components/ui/Button';
 import useUser from '@/lib/user/useUser';
 import CelebrationConfetti from '@/lib/components/ux/CelebrationConfetti';
+import { useRequest } from '@/lib/hooks/useRequest';
+import { createUser } from './createUser';
+import { toast } from 'sonner';
 
 // * Props
 interface IProps {
@@ -15,21 +20,17 @@ interface IProps {
 export default function OnboardingProfileForm({ next }: IProps) {
   // * Hooks
   const { profile } = useUser();
+  const { mutate, data, error, isLoading } = useRequest(createUser, {
+    onSuccess: (data) => {
+      console.log('data:', data);
+    },
+    onError: (error) => toast.error(error),
+  });
 
   // * State
   const [name, setName] = useState(profile?.name ?? '');
   const [email, setEmail] = useState(profile?.email ?? '');
   const [loading, setLoading] = useState(false);
-
-  // * Handlers
-  const handleSaveProfile = () => {
-    setLoading(true); // Set loading state
-
-    console.log('works:');
-
-    setLoading(false); // Reset loading state
-    next(); // Go to next step
-  };
 
   // * Render
   return (
@@ -58,7 +59,7 @@ export default function OnboardingProfileForm({ next }: IProps) {
       </div>
 
       {/* Form */}
-      <Form className="lg:grid-cols-2" onSubmit={handleSaveProfile}>
+      <Form className="lg:grid-cols-2" onSubmit={() => mutate({ email, name })}>
         {/* Name */}
         <Input
           label="Name"

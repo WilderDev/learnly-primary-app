@@ -40,7 +40,7 @@ export default function Input({
 }: IProps) {
   // Input Default Styles
   const defaultStyles =
-    'block w-full rounded-lg col-span-1 transition-shadow duration-200 ring-1 ring-black ring-opacity-5 focus:outline-none focus:ring-2 focus:ring-offset-2 placeholder-slate-400 dark:placeholder-navy-300';
+    'block w-full bg-white dark:bg-navy-700 rounded-lg col-span-1 transition-shadow duration-200 ring-1 ring-black ring-opacity-5 focus:outline-none focus:ring-2 focus:ring-offset-2 placeholder-slate-400 dark:placeholder-navy-300';
 
   // Input Size Styles
   const sizes: { [key in TSize]: string } = {
@@ -124,8 +124,8 @@ export default function Input({
             fills[fill],
             shadows[shadow],
             roundeds[rounded],
-            Icon ? 'pl-10' : 'pl-3',
             defaultStyles,
+            Icon ? 'pl-10' : 'pl-3',
           )}
           id={label}
           name={label}
