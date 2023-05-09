@@ -12,13 +12,14 @@
     "db:reset": "supabase db reset",
     "db:push": "supabase db push",
     "db:studio": "open http://localhost:54323/project/default",
-    "db:types": "supabase gen types typescript --local > typescript/db.d.ts",
+    "db:types": "supabase gen types typescript --local > src/assets/typescript/db.d.ts",
     "stripe:webhook": "stripe listen --forward-to localhost:3000/api/v1/stripe/webhooks"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
     "@sendgrid/mail": "^7.7.0",
     "@stripe/stripe-js": "^1.52.1",
+    "@supabase/auth-helpers-nextjs": "^0.6.1",
     "@supabase/supabase-js": "^2.21.0",
     "@vercel/analytics": "^1.0.1",
     "framer-motion": "^10.12.8",
@@ -45,6 +46,7 @@
     "@types/react-dom": "18.2.4",
     "@types/react-flatpickr": "^3.8.8",
     "autoprefixer": "10.4.14",
+    "encoding": "^0.1.13",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
     "postcss": "8.4.23",

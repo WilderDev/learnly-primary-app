@@ -7,6 +7,10 @@ import { baskervville, inter } from '@/lib/typography/fonts';
 import useUser from '@/lib/user/useUser';
 import DashboardLayout from './@dashboard/DashboardLayout';
 import Toast from '@/lib/components/ux/Toast';
+import AppProviders from '@/lib/components/providers/AppProviders';
+import { AuthProvider } from '@/lib/components/providers/AuthProvider';
+import AuthListener from '@/lib/auth/AuthListener';
+import { supabaseServer } from '@/lib/auth/supabaseServer';
 
 // * Props
 interface IProps {
@@ -16,29 +20,37 @@ interface IProps {
 }
 
 // * Component
-export default function RootLayout({ dashboard, marketing }: IProps) {
+export default async function RootLayout({ dashboard, marketing }: IProps) {
   // * Hooks
-  const { isLoggedIn } = useUser();
+  const {
+    data: { session },
+  } = await supabaseServer().auth.getSession();
 
   // * Render
   return (
     <html lang="en" className={cn(inter.variable, baskervville.variable)}>
       <body>
-        {/* Main Content Wrapper */}
-        {isLoggedIn ? (
-          <DashboardLayout>{dashboard}</DashboardLayout>
-        ) : (
-          marketing
-        )}
+        <AuthProvider session={session}>
+          <AuthListener serverAccessToken={session?.access_token} />
 
-        {/* Custom Portal */}
-        <div id="portal" />
+          <AppProviders>
+            {/* Main Content Wrapper */}
+            {session?.user ? (
+              <DashboardLayout>{dashboard}</DashboardLayout>
+            ) : (
+              marketing
+            )}
 
-        {/* Chat Portal */}
-        <div id="chat-portal" />
+            {/* Custom Portal */}
+            <div id="portal" />
 
-        {/* Toast Container */}
-        <Toast />
+            {/* Chat Portal */}
+            <div id="chat-portal" />
+
+            {/* Toast Container */}
+            <Toast />
+          </AppProviders>
+        </AuthProvider>
       </body>
     </html>
   );

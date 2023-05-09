@@ -20,9 +20,11 @@ interface IProps {
 export default function OnboardingProfileForm({ next }: IProps) {
   // * Hooks
   const { profile } = useUser();
-  const { mutate, data, error, isLoading } = useRequest(createUser, {
+  const { mutate, isLoading } = useRequest(createUser, {
     onSuccess: (data) => {
-      console.log('data:', data);
+      if (data.ok) {
+        next();
+      }
     },
     onError: (error) => toast.error(error),
   });
@@ -30,7 +32,6 @@ export default function OnboardingProfileForm({ next }: IProps) {
   // * State
   const [name, setName] = useState(profile?.name ?? '');
   const [email, setEmail] = useState(profile?.email ?? '');
-  const [loading, setLoading] = useState(false);
 
   // * Render
   return (
@@ -87,7 +88,7 @@ export default function OnboardingProfileForm({ next }: IProps) {
           className="col-span-2"
           type="submit"
           disabled={!name || !email}
-          loading={loading}
+          loading={isLoading}
         >
           Next Step <span className="ml-2">⭐️</span>
         </Button>
