@@ -119,7 +119,7 @@ export default function OnboardingPage() {
       {/* Testimonials Right */}
       <VerticleScrollingGrid
         className="h-full max-h-screen absolute right-0 hidden xl:block xl:w-4/12 2xl:w-3/12 2xl:relative opacity-20"
-        colsAndColItems={[{ list: testimonials, msPerPixel: 15 }]}
+        colsAndColItems={[{ list: testimonials.reverse(), msPerPixel: 15 }]}
         component={OnboardingTestimonialBox}
       />
     </Main>
