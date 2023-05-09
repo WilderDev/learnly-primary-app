@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../components/providers/AuthProvider';
 import { useEffect } from 'react';
+import { supabaseClient } from './supabaseClient';
 
 // * Props
 interface IProps {
@@ -20,6 +21,8 @@ export default function AuthListener({ serverAccessToken }: IProps) {
   // * Effects
   useEffect(() => {
     // Listen for changes
+    const supabase = supabaseClient();
+
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_, session) => {

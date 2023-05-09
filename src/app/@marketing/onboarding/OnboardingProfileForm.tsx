@@ -8,8 +8,9 @@ import Button from '@/lib/components/ui/Button';
 import useUser from '@/lib/user/useUser';
 import CelebrationConfetti from '@/lib/components/ux/CelebrationConfetti';
 import { useRequest } from '@/lib/hooks/useRequest';
-import { createUser } from './createUser';
+import { createUser } from './_actions';
 import { toast } from 'sonner';
+import { revalidatePath } from 'next/cache';
 
 // * Props
 interface IProps {
@@ -24,6 +25,7 @@ export default function OnboardingProfileForm({ next }: IProps) {
     onSuccess: (data) => {
       if (data.ok) {
         next();
+        // revalidatePath('/onboarding')
       }
     },
     onError: (error) => toast.error(error),

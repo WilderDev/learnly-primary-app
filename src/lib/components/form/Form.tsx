@@ -6,7 +6,7 @@ import cn from '@/lib/common/cn';
 // * Props
 interface IProps {
   children: React.ReactNode;
-  onSubmit: () => void;
+  onSubmit?: () => void;
   className?: string;
 }
 
@@ -21,7 +21,7 @@ export default function Form({ children, onSubmit, className }: IProps) {
       onSubmit={(e) => {
         e.preventDefault();
 
-        onSubmit();
+        onSubmit && onSubmit();
       }}
     >
       {children}

@@ -22,9 +22,12 @@ interface IProps {
 // * Component
 export default async function RootLayout({ dashboard, marketing }: IProps) {
   // * Hooks
+  const supabase = supabaseServer();
   const {
     data: { session },
-  } = await supabaseServer().auth.getSession();
+  } = await supabase.auth.getSession();
+
+  console.log('session:', session);
 
   // * Render
   return (

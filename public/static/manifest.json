@@ -3,7 +3,7 @@
   "name": "Learnly: Homeschool Made Easy",
   "icons": [
     {
-      "src": "/favicon/learnly-logo_512.png",
+      "src": "/static/icons/brand/favicon_512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

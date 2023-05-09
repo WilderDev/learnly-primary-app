@@ -1,18 +1,16 @@
 'use client';
 
-import Form from '@/lib/components/form/Form';
-import Input from '@/lib/components/form/Input';
 // * Imports
-import Modal from '@/lib/components/popouts/Modal';
 import Button from '@/lib/components/ui/Button';
 import { useState } from 'react';
-import { UserIcon } from '@heroicons/react/24/outline';
+import MarketingNavAuthSuccessModal from './MarketingNavAuthSuccessModal';
+import MarketingNavAuthModal from './MarketingNavAuthModal';
 
 // * Component
 export default function MarketingNavCTA() {
   // * State
-  const [isOpen, setOpen] = useState(false);
-  const [email, setEmail] = useState('');
+  const [isAuthModalOpen, setAuthModalOpen] = useState(false);
+  const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
 
   // * Render
   return (
@@ -26,7 +24,7 @@ export default function MarketingNavCTA() {
           effect="scale"
           shadow="none"
           className="text-slate-500 hover:text-slate-600 dark:text-navy-300 dark:hover:text-navy-200"
-          onClick={() => setOpen(true)}
+          onClick={() => setAuthModalOpen(true)}
         >
           Sign In
         </Button>
@@ -45,49 +43,17 @@ export default function MarketingNavCTA() {
       </div>
 
       {/* Sign In Modal */}
-      <Modal
-        size="xs"
-        isVisible={isOpen}
-        close={() => setOpen(false)}
-        rounded="lg"
-        shadow="lg"
-      >
-        <Modal.Header
-          title="Sign In"
-          image="/static/icons/brand/favicon_512x512.png"
-        />
+      <MarketingNavAuthModal
+        isOpen={isAuthModalOpen}
+        close={() => setAuthModalOpen(false)}
+        openSuccess={() => setSuccessModalOpen(true)}
+      />
 
-        <Form onSubmit={() => console.log('submitted')}>
-          {/* Email */}
-          <Input
-            cols={3}
-            label="Email"
-            type="email"
-            placeholder="homeschoolmom@gmail.com"
-            value={email}
-            setValue={setEmail}
-            icon={UserIcon}
-            initialFocus={true}
-            tabIndex={0}
-          />
-        </Form>
-
-        <Modal.Footer>
-          <Button
-            size="md"
-            fill="gradient"
-            shadow="md"
-            rounded="lg"
-            onClick={() => {
-              console.log('submitted');
-              setOpen(false);
-            }}
-            className="w-full"
-          >
-            Time to Homeschool <span className="ml-2">😊</span>
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {/* Success Modal */}
+      <MarketingNavAuthSuccessModal
+        isOpen={isSuccessModalOpen}
+        close={() => setSuccessModalOpen(false)}
+      />
     </>
   );
 }

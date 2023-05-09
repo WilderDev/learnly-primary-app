@@ -1,20 +1,21 @@
 'use client';
 
+import { Database } from '@/assets/typescript/db';
 import { supabaseClient } from '@/lib/auth/supabaseClient';
-import { Session } from '@supabase/supabase-js';
+import { Session, SupabaseClient } from '@supabase/supabase-js';
 import { useContext, useState } from 'react';
 import { createContext } from 'react';
 
 // * Context
 // Interface
 interface IAuthCtx {
-  supabase: typeof supabaseClient;
+  supabase: SupabaseClient<Database>;
   session: Session | null;
 }
 
 // Context
 const AuthCtx = createContext<IAuthCtx>({
-  supabase: supabaseClient,
+  supabase: {} as SupabaseClient<Database>,
   session: null,
 });
 
@@ -26,7 +27,7 @@ interface IProps {
 
 export function AuthProvider({ children, session }: IProps) {
   // * State
-  const [supabase] = useState(() => supabaseClient);
+  const [supabase] = useState(() => supabaseClient());
 
   // * Value
   const value = {
