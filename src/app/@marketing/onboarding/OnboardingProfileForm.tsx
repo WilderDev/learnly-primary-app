@@ -68,10 +68,15 @@ export default function OnboardingProfileForm() {
           label="Test"
           value={email}
           setValue={setEmail}
-          options={[{ label: 'test 1', value: 'test 1' }]}
-          placeholder="homeschool.suzy@gmail.com"
+          options={[
+            { label: 'test 1', value: 'test 1' },
+            {
+              label: 'test 2',
+              value: 'test 2',
+              image: 'https://source.unsplash.com/200x200/?face',
+            },
+          ]}
           icon={EnvelopeIcon}
-          required={true}
         />
 
         {/* Submit */}
