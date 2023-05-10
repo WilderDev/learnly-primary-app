@@ -16,5 +16,6 @@ export default function OnboardingPage() {
   );
 }
 
-// TSK: Add a skip button
+export const dynamic = 'force-dynamic';
+
 // TSK: Animations between steps

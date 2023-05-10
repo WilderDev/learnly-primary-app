@@ -16,9 +16,6 @@ export async function GET(request: Request, { params }: IUserGetByEmailReq) {
       .eq('email', params.email)
       .single();
 
-    console.log('data:', data);
-    console.log('error:', error);
-
     if (error) return new Response(error.message, { status: 500 });
 
     if (!data) return new Response('Not found', { status: 404 });

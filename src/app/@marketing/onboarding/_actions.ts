@@ -44,7 +44,7 @@
 //       email_confirm: true,
 //       user_metadata: {
 //         first_name: input.name.split(' ')[0],
-//         last_name: input.name.split(' ')[1] || '',
+//         last_name: input.name.split(' ')[1] || '', // this should really be .split(' ').slice(1).join(' ')
 //       },
 //     });
 

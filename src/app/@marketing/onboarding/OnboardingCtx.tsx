@@ -77,12 +77,14 @@ export function OnboardingProvider({ children }: PropsWithChildren) {
       // Confirm Email isn't already in use
       const res = await fetch(baseUrl + `/api/users/${email}`);
 
+      // If Email is in use, show error and return
       if (res.status === 200) {
         setLoading(false);
         return toast.error('Email already in use');
       }
     } else if (step === steps.length) {
       // Save User to Database
+      // Save User to Stripe (We can add this as a function on handle_new_user)
       // Send Welcome Email
       // Redirect to Dashboard (Automatic)
     }
