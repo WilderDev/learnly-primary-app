@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import { createContext } from 'react';
@@ -73,10 +74,13 @@ export function UserProvider({ children }: PropsWithChildren) {
   }, [revalidateUser]);
 
   // * Value
-  const value = {
-    user,
-    revalidateUser,
-  };
+  const value = useMemo(
+    () => ({
+      user,
+      revalidateUser,
+    }),
+    [user, revalidateUser],
+  );
 
   // * Render
   return <UserCtx.Provider value={value}>{children}</UserCtx.Provider>;

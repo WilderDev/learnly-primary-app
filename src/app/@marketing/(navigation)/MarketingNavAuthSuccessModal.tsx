@@ -85,7 +85,7 @@ export default function MarketingNavAuthSuccessModal({
               rel="noreferrer noopener"
             >
               <Image
-                className="bg-transparent w-8"
+                className="bg-transparent w-8 h-auto"
                 src={p.image}
                 alt={p.name}
                 width={p.width}

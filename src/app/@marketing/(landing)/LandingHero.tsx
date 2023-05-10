@@ -10,11 +10,11 @@ export default function LandingHero() {
         {/* Headline */}
         <h1 className="mx-auto max-w-xl text-center md:max-w-4xl">
           {/* Callout */}
-          <span className="block text-sm font-semibold uppercase tracking-wide text-green-700 md:text-lg lg:text-xl">
+          <span className="block text-sm mb-1 font-semibold uppercase tracking-wide dark:text-green-500 text-green-700 md:text-lg lg:text-xl">
             CALLING ALL HOMESCHOOL PARENTS, EDUCATORS & TEACHERS. . .
           </span>
           {/* Desire */}
-          <span className="snug block text-2xl font-bold text-navy-900 sm:text-3xl md:text-4xl lg:text-5xl">
+          <span className="snug block text-2xl font-bold text-navy-900 dark:text-navy-50 sm:text-3xl md:text-4xl lg:text-5xl">
             Join 1,000s of Families Providing High-Quality, Flexible Education
             Using The #1 Personalized Lesson & Curriculum Software 🤯
           </span>
@@ -23,7 +23,7 @@ export default function LandingHero() {
         {/* Details */}
         <div className="mx-auto mt-4 flex max-w-md flex-col items-center justify-center md:max-w-2xl">
           {/* Special Offer / Description */}
-          <p className="text-center text-slate-700">
+          <p className="text-center text-slate-700 dark:text-navy-200">
             <span className="block text-sm font-bold md:text-lg">
               Special{' '}
               <span className="underline">
@@ -35,7 +35,7 @@ export default function LandingHero() {
             </span>
 
             {/* Description */}
-            <span className="block text-xs md:text-base">
+            <span className="block text-xs md:text-base dark:text-navy-300">
               Claim your 14-day FREE trial of the #1 personalized lesson &
               curriculum software for homeschooling families. PLUS, receive an
               exclusive &lsquo;VIP Pass&rsquo; to the Homeschool Made Easy
@@ -60,7 +60,7 @@ export default function LandingHero() {
             </Button>
 
             {/* Disclaimer */}
-            <p className="mt-3 text-center text-xs italic text-slate-700 md:text-sm">
+            <p className="mt-3 text-center text-xs italic text-slate-700 dark:text-navy-200 md:text-sm">
               No credit card required.{' '}
               <span className="hidden sm:inline-block">Cancel anytime.</span>
             </p>

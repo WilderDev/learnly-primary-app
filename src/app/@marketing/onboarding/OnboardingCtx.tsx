@@ -25,6 +25,8 @@ interface IOnboardingCtx {
   setName: Dispatch<SetStateAction<string>>;
   email: string;
   setEmail: Dispatch<SetStateAction<string>>;
+  avatarUrl: string;
+  setAvatarUrl: Dispatch<SetStateAction<string>>;
   loading: boolean;
 }
 
@@ -38,6 +40,8 @@ const OnboardingCtx = createContext<IOnboardingCtx>({
   setName: () => {},
   email: '',
   setEmail: () => {},
+  avatarUrl: '',
+  setAvatarUrl: () => {},
   loading: false,
 });
 
@@ -67,6 +71,7 @@ export function OnboardingProvider({ children }: PropsWithChildren) {
   const [step, setStep] = useState(1);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
   // * Functions
@@ -105,6 +110,8 @@ export function OnboardingProvider({ children }: PropsWithChildren) {
     setName,
     email,
     setEmail,
+    avatarUrl,
+    setAvatarUrl,
     loading,
   };
 

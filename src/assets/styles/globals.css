@@ -3,13 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  html,
-  body {
-    @apply scroll-smooth font-sans;
+  html {
+    @apply scroll-smooth;
   }
 
   body {
-    @apply relative overflow-x-hidden bg-slate-50 text-slate-900 antialiased transition-colors duration-500 ease-linear dark:bg-navy-900 dark:text-navy-50;
+    @apply font-sans relative overflow-x-hidden bg-slate-50 text-slate-900 antialiased transition-colors duration-500 ease-linear dark:bg-navy-900 dark:text-navy-50;
   }
 
   *::selection {

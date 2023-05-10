@@ -18,7 +18,7 @@ export default function OnboardingProfileForm() {
       {/* Header */}
       <div className="flex flex-col text-center items-center justify-center space-y-3 mt-2 mb-8 max-w-md mx-auto">
         {/* Title */}
-        <h2 className="text-xl font-semibold text-green-800 dark:text-green-700 md:text-2xl xl:text-3xl">
+        <h2 className="text-xl font-semibold text-green-800 dark:text-green-600 md:text-2xl xl:text-3xl">
           🎉 Welcome to Learnly 🎉
         </h2>
 
