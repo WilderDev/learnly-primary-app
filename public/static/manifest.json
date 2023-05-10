@@ -3,13 +3,25 @@
   "name": "Learnly: Homeschool Made Easy",
   "icons": [
     {
+      "src": "/static/icons/brand/favicon_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
       "src": "/static/icons/brand/favicon_512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/static/icons/brand/favicon_maskable_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "background_color": "#f8fafc",
   "display": "standalone",
   "theme_color": "#16a34a",
+  "start_url": "/",
   "description": "Learnly is the #1 personalized lesson & curriculum software for homeschooling families."
 }

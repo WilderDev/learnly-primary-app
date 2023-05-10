@@ -16,6 +16,11 @@ export default function OnboardingPage() {
   );
 }
 
+// TSK: Animations between steps
+
 export const dynamic = 'force-dynamic';
 
-// TSK: Animations between steps
+export const metadata = {
+  title: 'Welcome to Learnly | Onboarding',
+  description: 'Enter your name and email to get started with Learnly.',
+};

@@ -4,6 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     serverActions: true,
+    optimizeCss: true,
   },
   images: {
     domains: ['source.unsplash.com'],

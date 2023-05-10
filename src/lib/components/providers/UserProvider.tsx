@@ -26,7 +26,7 @@ const UserCtx = createContext<IUserCtx>({
 
 export function UserProvider({ children }: PropsWithChildren) {
   // * Hooks
-  const { supabase } = useAuth();
+  const { supabase, session } = useAuth();
 
   // * State
   const [user, setUser] = useState<Me | null>(null);
@@ -34,6 +34,8 @@ export function UserProvider({ children }: PropsWithChildren) {
   // * Functions
   // Fetch User
   const fetchUser = useCallback(async () => {
+    if (!session) return null;
+
     const { data: user, error } = await supabase
       .from('teacher_me_view')
       .select('*')
@@ -50,7 +52,7 @@ export function UserProvider({ children }: PropsWithChildren) {
     };
 
     return transformedUser;
-  }, [supabase]);
+  }, [supabase, session]);
 
   // Revalidate User
   const revalidateUser = useCallback(async () => {

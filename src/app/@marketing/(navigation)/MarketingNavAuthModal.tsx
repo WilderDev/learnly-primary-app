@@ -28,6 +28,8 @@ export default function MarketingNavAuthModal({
         close();
         toast.success('Check your email for a sign in link!');
         openSuccess();
+      } else {
+        toast.error("We couldn't sign you in. Please try again.");
       }
     },
     onError: (error) => toast.error(error),
