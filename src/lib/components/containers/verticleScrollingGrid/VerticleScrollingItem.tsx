@@ -1,15 +1,17 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function VerticleScrollingItem({
   item,
   component: Component,
   ...props
 }: any) {
-  // * Helpers
-  // Randomize animation delay
-  let animationDelay = useMemo(() => {
+  // * State
+  const [animationDelay, setAnimationDelay] = useState('0s');
+
+  // * Effects
+  useEffect(() => {
     let possibleAnimationDelays = [
       '0s',
       '0.1s',
@@ -19,10 +21,12 @@ export default function VerticleScrollingItem({
       '0.5s',
     ]; // Possible animation delays
 
-    // Return a random animation delay
-    return possibleAnimationDelays[
-      Math.floor(Math.random() * possibleAnimationDelays.length)
-    ];
+    // Set a random animation delay on client-side
+    setAnimationDelay(
+      possibleAnimationDelays[
+        Math.floor(Math.random() * possibleAnimationDelays.length)
+      ],
+    );
   }, []);
 
   // * Render

@@ -86,50 +86,54 @@ VALUES ('avatars', 'avatars', true);
 
 
 -- * POLICIES (ROW LEVEL SECURITY)
-ALTER TABLE teacher_profiles ENABLE ROW LEVEL SECURITY;
-ALTER TABLE student_profiles ENABLE ROW LEVEL SECURITY;
-ALTER TABLE teaching_preferences ENABLE ROW LEVEL SECURITY;
-ALTER TABLE student_preferences ENABLE ROW LEVEL SECURITY;
+-- ALTER TABLE teacher_profiles ENABLE ROW LEVEL SECURITY;
+-- ALTER TABLE student_profiles ENABLE ROW LEVEL SECURITY;
+-- ALTER TABLE teaching_preferences ENABLE ROW LEVEL SECURITY;
+-- ALTER TABLE student_preferences ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Avatar storage bucket is viewable by everyone" ON storage.objects FOR SELECT USING (bucket_id = 'avatars');
-CREATE POLICY "Avatar is uploadable by anyone" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'avatars');
-CREATE POLICY "Teacher profiles are viewable by everyone" ON teacher_profiles FOR SELECT USING (true);
-CREATE POLICY "Teacher profiles are editable by the owner" ON teacher_profiles FOR UPDATE USING (auth.uid() = id);
-CREATE POLICY "Student profiles are viewable by everyone" ON student_profiles FOR SELECT USING (true);
-CREATE POLICY "Student profiles are editable by the teacher" ON student_profiles FOR UPDATE USING (teacher_id = auth.uid());
-CREATE POLICY "Teaching preferences are viewable by everyone" ON teaching_preferences FOR SELECT USING (true);
-CREATE POLICY "Teaching preferences are editable by the owner" ON teaching_preferences FOR UPDATE USING (auth.uid() = id);
-CREATE POLICY "Student preferences are viewable by the teacher" ON student_preferences
-  FOR SELECT USING (
-    EXISTS (
-      SELECT 1 FROM teacher_profiles, student_profiles
-      WHERE teacher_profiles.id = student_profiles.teacher_id
-      AND student_profiles.id = student_preferences.id
-      AND teacher_profiles.id = auth.uid()
-    )
-  );
-
-CREATE POLICY "Student preferences are editable by the teacher" ON student_preferences
-  FOR UPDATE USING (
-    EXISTS (
-      SELECT 1 FROM teacher_profiles, student_profiles
-      WHERE teacher_profiles.id = student_profiles.teacher_id
-      AND student_profiles.id = student_preferences.id
-      AND teacher_profiles.id = auth.uid()
-    )
-  );
+-- CREATE POLICY "Avatar storage bucket is viewable by everyone" ON storage.objects FOR SELECT USING (bucket_id = 'avatars');
+-- CREATE POLICY "Avatar is uploadable by anyone" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'avatars');
+-- CREATE POLICY "Teacher profiles are viewable by everyone" ON teacher_profiles FOR SELECT USING (true);
+-- CREATE POLICY "Teacher profiles are editable by the owner" ON teacher_profiles FOR UPDATE USING (auth.uid() = id);
+-- CREATE POLICY "Student profiles are viewable by everyone" ON student_profiles FOR SELECT USING (true);
+-- CREATE POLICY "Student profiles are editable by the teacher" ON student_profiles FOR UPDATE USING (teacher_id = auth.uid());
+-- CREATE POLICY "Teaching preferences are viewable by everyone" ON teaching_preferences FOR SELECT USING (true);
+-- CREATE POLICY "Teaching preferences are editable by the owner" ON teaching_preferences FOR UPDATE USING (auth.uid() = id);
+-- CREATE POLICY "Student preferences are viewable by the teacher" ON student_preferences
+--   FOR SELECT USING (
+--     EXISTS (
+--       SELECT 1 FROM teacher_profiles, student_profiles
+--       WHERE teacher_profiles.id = student_profiles.teacher_id
+--       AND student_profiles.id = student_preferences.id
+--       AND teacher_profiles.id = auth.uid()
+--     )
+--   );
+-- CREATE POLICY "Student preferences are editable by the teacher" ON student_preferences
+--   FOR UPDATE USING (
+--     EXISTS (
+--       SELECT 1 FROM teacher_profiles, student_profiles
+--       WHERE teacher_profiles.id = student_profiles.teacher_id
+--       AND student_profiles.id = student_preferences.id
+--       AND teacher_profiles.id = auth.uid()
+--     )
+--   );
 
 
 -- * VIEWS
+-- Admin View all Teachers/Users
+CREATE VIEW public.users AS
+SELECT * FROM auth.users;
+REVOKE all ON public.users FROM anon, authenticated;
+
 -- Teacher's Me View (for a given teacher)
 CREATE VIEW teacher_me_view AS
 SELECT
-  teacher_profiles.id,
-  teacher_profiles.first_name,
-  teacher_profiles.last_name,
-  teacher_profiles.avatar_url,
-  teacher_profiles.status,
-  teacher_profiles.type
+  teacher_profiles.id AS id,
+  teacher_profiles.first_name AS first_name,
+  teacher_profiles.last_name AS last_name,
+  teacher_profiles.avatar_url AS avatar_url,
+  teacher_profiles.status AS status,
+  teacher_profiles.type AS type
 FROM teacher_profiles
 WHERE teacher_profiles.id = auth.uid();
 
@@ -150,44 +154,45 @@ WHERE teacher_profiles.id = auth.uid();
 
 -- * FUNCTIONS
 -- Create a new teacher profile when a new user is created (sign up)
-CREATE FUNCTION handle_new_teacher()
+CREATE FUNCTION public.handle_new_user()
 RETURNS trigger AS $$
 BEGIN
   -- Insert the new teacher profile
-  INSERT INTO teacher_profiles (id, first_name, last_name, avatar_url)
-  VALUES (NEW.id, NEW.raw_user_meta_data->>'first_name', NEW.raw_user_meta_data->>'last_name', NEW.raw_user_meta_data->>'avatar_url');
+  INSERT INTO public.teacher_profiles (id, first_name, last_name)
+  VALUES (new.id, new.raw_user_meta_data->>'first_name', new.raw_user_meta_data->>'last_name');
 
   -- Insert the new teaching preferences
-  INSERT INTO teaching_preferences (id) VALUES (NEW.id);
+  -- INSERT INTO teaching_preferences (id) VALUES (NEW.id);
 
   -- Insert Welcome Notification TSK
 
   -- Return the new teacher profile
-  RETURN NEW;
+  RETURN new;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
+CREATE TRIGGER on_auth_user_created
+AFTER INSERT ON auth.users
+FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
+-- -- Create a new student preferences row when a teacher creates a new student
+-- CREATE FUNCTION handle_new_student()
+-- RETURNS trigger AS $$
+-- BEGIN
+--   -- Insert the new student preferences
+--   INSERT INTO student_preferences (id) VALUES (NEW.id);
 
--- Create a new student preferences row when a teacher creates a new student
-CREATE FUNCTION handle_new_student() RETURNS trigger AS $$
-BEGIN
-  -- Insert the new student preferences
-  INSERT INTO student_preferences (id) VALUES (NEW.id);
-
-  -- Return the new student profile
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+--   -- Return the new student profile
+--   RETURN NEW;
+-- END;
+-- $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 
 -- * TRIGGERS
 -- Call the handle_new_teacher function when a new user is created (sign up)
-CREATE TRIGGER on_new_teacher
-AFTER INSERT ON auth.users
-FOR EACH ROW EXECUTE PROCEDURE handle_new_teacher();
+
 
 
 -- Call the handle_new_student function when a new student is created
-CREATE TRIGGER handle_new_student
-AFTER INSERT ON student_profiles
-FOR EACH ROW EXECUTE PROCEDURE handle_new_student();
+-- CREATE TRIGGER handle_new_student
+-- AFTER INSERT ON student_profiles
+-- FOR EACH ROW EXECUTE PROCEDURE handle_new_student();
 

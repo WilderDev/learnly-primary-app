@@ -1,17 +1,10 @@
 import Form from '@/lib/components/form/Form';
-import Input from '@/lib/components/form/Input';
-
-// * Props
-interface IProps {
-  next: () => void;
-}
 
 // * Component
-export default function OnboardingChildrenForm({ next }: IProps) {
+export default function OnboardingChildrenForm() {
   // * Handlers
   const handleSaveChildren = () => {
     console.log('works:');
-    next();
   };
 
   // * Render

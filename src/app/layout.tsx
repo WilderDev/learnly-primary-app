@@ -4,7 +4,6 @@ import cn from '@/lib/common/cn';
 import defaultMetadata from '@/lib/meta/defaultMetadata';
 import { baskervville, inter } from '@/lib/typography/fonts';
 
-import useUser from '@/lib/user/useUser';
 import DashboardLayout from './@dashboard/DashboardLayout';
 import Toast from '@/lib/components/ux/Toast';
 import AppProviders from '@/lib/components/providers/AppProviders';
@@ -26,8 +25,6 @@ export default async function RootLayout({ dashboard, marketing }: IProps) {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-
-  console.log('session:', session);
 
   // * Render
   return (

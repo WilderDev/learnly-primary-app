@@ -2,38 +2,15 @@
 
 import Form from '@/lib/components/form/Form';
 import Input from '@/lib/components/form/Input';
-import { useState } from 'react';
 import { EnvelopeIcon, UserIcon } from '@heroicons/react/24/outline';
 import Button from '@/lib/components/ui/Button';
-import useUser from '@/lib/user/useUser';
+import { useOnboarding } from './OnboardingCtx';
 import CelebrationConfetti from '@/lib/components/ux/CelebrationConfetti';
-import { useRequest } from '@/lib/hooks/useRequest';
-import { createUser } from './_actions';
-import { toast } from 'sonner';
-import { revalidatePath } from 'next/cache';
-
-// * Props
-interface IProps {
-  next: () => void;
-}
 
 // * Component
-export default function OnboardingProfileForm({ next }: IProps) {
-  // * Hooks
-  const { profile } = useUser();
-  const { mutate, isLoading } = useRequest(createUser, {
-    onSuccess: (data) => {
-      if (data.ok) {
-        next();
-        // revalidatePath('/onboarding')
-      }
-    },
-    onError: (error) => toast.error(error),
-  });
-
-  // * State
-  const [name, setName] = useState(profile?.name ?? '');
-  const [email, setEmail] = useState(profile?.email ?? '');
+export default function OnboardingProfileForm() {
+  // * Contexts
+  const { name, setName, email, setEmail, next, loading } = useOnboarding();
 
   // * Render
   return (
@@ -62,7 +39,7 @@ export default function OnboardingProfileForm({ next }: IProps) {
       </div>
 
       {/* Form */}
-      <Form className="lg:grid-cols-2" onSubmit={() => mutate({ email, name })}>
+      <Form className="lg:grid-cols-2">
         {/* Name */}
         <Input
           label="Name"
@@ -88,16 +65,17 @@ export default function OnboardingProfileForm({ next }: IProps) {
         {/* Submit */}
         <Button
           className="col-span-2"
-          type="submit"
+          type="button"
           disabled={!name || !email}
-          loading={isLoading}
+          onClick={next}
+          loading={loading}
         >
           Next Step <span className="ml-2">⭐️</span>
         </Button>
       </Form>
 
       {/* Confetti */}
-      {!profile && <CelebrationConfetti />}
+      {!email && <CelebrationConfetti />}
     </>
   );
 }

@@ -24,7 +24,6 @@ export default function MarketingNavAuthModal({
   // * Hooks
   const { mutate, isLoading } = useRequest(signInUserWithEmail, {
     onSuccess: (data) => {
-      console.log('data:', data);
       if (data.ok) {
         close();
         toast.success('Check your email for a sign in link!');

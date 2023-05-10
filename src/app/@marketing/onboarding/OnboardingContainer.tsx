@@ -1,14 +1,17 @@
 'use client';
 
 import OnboardingProgressBar from './OnboardingProgressBar';
-import { useState } from 'react';
-import OnboardingProfileForm from './OnboardingProfileForm';
-import OnboardingPreferencesForm from './OnboardingPreferencesForm';
-import OnboardingChildrenForm from './OnboardingChildrenForm';
-import Box from '@/lib/components/containers/Box';
 import Container from '@/lib/components/layout/Container';
 import VerticleScrollingGrid from '@/lib/components/containers/verticleScrollingGrid';
-import OnboardingTestimonialBox from './OnboardingTestimonialBox';
+
+import dynamic from 'next/dynamic';
+import { OnboardingProvider } from './OnboardingCtx';
+import OnboardingContent from './OnboardingContent';
+
+const OnboardingTestimonialBox = dynamic(
+  () => import('./OnboardingTestimonialBox'),
+  { ssr: false },
+);
 
 // * Data
 const testimonials = [
@@ -70,12 +73,9 @@ const testimonials = [
 ];
 
 export default function OnboardingContainer() {
-  // * State
-  const [currStep, setCurrStep] = useState(1);
-
   // * Render
   return (
-    <>
+    <OnboardingProvider>
       {/* Testimonials Left */}
       <VerticleScrollingGrid
         className="h-full max-h-screen w-full left-0 xl:w-4/12 2xl:w-3/12 absolute 2xl:relative opacity-20"
@@ -86,31 +86,10 @@ export default function OnboardingContainer() {
       {/* Content */}
       <Container className="space-y-6 z-30 flex w-full h-full max-w-3xl items-center flex-col justify-center">
         {/* Progress */}
-        <OnboardingProgressBar currStep={currStep} setStep={setCurrStep} />
+        <OnboardingProgressBar />
 
         {/* Content */}
-        <Box size="lg" shadow="xl" rounded="xl">
-          {/* Step 1 - Profile */}
-          {currStep === 1 && (
-            <OnboardingProfileForm
-              next={() => setCurrStep((prev) => prev + 1)}
-            />
-          )}
-
-          {/* Step 2 - Preferences */}
-          {currStep === 2 && (
-            <OnboardingPreferencesForm
-              next={() => setCurrStep((prev) => prev + 1)}
-            />
-          )}
-
-          {/* Step 3 - Children */}
-          {currStep === 3 && (
-            <OnboardingChildrenForm
-              next={() => setCurrStep((prev) => prev + 1)}
-            />
-          )}
-        </Box>
+        <OnboardingContent />
       </Container>
 
       {/* Testimonials Right */}
@@ -119,6 +98,6 @@ export default function OnboardingContainer() {
         colsAndColItems={[{ list: testimonials.reverse(), msPerPixel: 15 }]}
         component={OnboardingTestimonialBox}
       />
-    </>
+    </OnboardingProvider>
   );
 }

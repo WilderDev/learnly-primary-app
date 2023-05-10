@@ -13,7 +13,7 @@ interface IAuthCtx {
   session: Session | null;
 }
 
-// Context
+// Initial Value
 const AuthCtx = createContext<IAuthCtx>({
   supabase: {} as SupabaseClient<Database>,
   session: null,
@@ -44,7 +44,7 @@ export function useAuth() {
   const ctx = useContext(AuthCtx);
 
   if (!ctx) {
-    throw new Error('useAuth must be used within a SupabaseProvider');
+    throw new Error('useAuth must be used within a AuthProvider');
   }
 
   return ctx;

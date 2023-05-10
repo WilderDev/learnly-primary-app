@@ -16,7 +16,7 @@ export default function AuthListener({ serverAccessToken }: IProps) {
   const router = useRouter();
 
   // * Hooks
-  const { supabase } = useAuth();
+  const { supabase: sb } = useAuth();
 
   // * Effects
   useEffect(() => {
@@ -26,6 +26,7 @@ export default function AuthListener({ serverAccessToken }: IProps) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_, session) => {
+      console.log('session:', session);
       // Refresh if the access token is different from the server
       if (session?.access_token !== serverAccessToken) {
         router.refresh();
@@ -36,7 +37,7 @@ export default function AuthListener({ serverAccessToken }: IProps) {
     return () => {
       subscription.unsubscribe();
     };
-  }, [serverAccessToken, router, supabase]);
+  }, [serverAccessToken, router, sb]);
 
   return null; // No need to render anything
 }

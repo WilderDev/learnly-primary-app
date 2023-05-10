@@ -1,5 +1,3 @@
-'use client';
-
 import cn from '@/lib/common/cn';
 import Box from '@/lib/components/containers/Box';
 import { StarIcon } from '@heroicons/react/24/solid';

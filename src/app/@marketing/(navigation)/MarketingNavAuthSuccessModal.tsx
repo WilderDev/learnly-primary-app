@@ -12,21 +12,29 @@ const emailProviders = [
     name: 'Gmail',
     image: gmail,
     href: 'https://mail.google.com/mail/u/0/#inbox',
+    width: 256,
+    heigth: 192,
   },
   {
     name: 'Yahoo',
     image: yahoo,
     href: 'https://mail.yahoo.com/',
+    width: 512,
+    heigth: 512,
   },
   {
     name: 'Outlook',
     image: outlook,
     href: 'https://outlook.live.com/mail/inbox',
+    width: 256,
+    height: 238,
   },
   {
     name: 'iCloud',
     image: icloud,
     href: 'https://www.icloud.com/mail/',
+    width: 512,
+    height: 512,
   },
 ];
 
@@ -67,7 +75,7 @@ export default function MarketingNavAuthSuccessModal({
 
       {/* Email Providers */}
       <div className="mt-6 flex flex-col items-center justify-center">
-        <div className="flex w-full items-center justify-center space-x-8">
+        <div className="flex flex-wrap w-full items-center justify-center space-x-8">
           {emailProviders.map((p) => (
             <a
               className="transition-transform hocus:scale-125"
@@ -77,18 +85,18 @@ export default function MarketingNavAuthSuccessModal({
               rel="noreferrer noopener"
             >
               <Image
-                className="bg-transparent"
+                className="bg-transparent w-8"
                 src={p.image}
                 alt={p.name}
-                width={32}
-                height={32}
+                width={p.width}
+                height={p.height}
               />
             </a>
           ))}
 
           {process.env.NODE_ENV === 'development' && (
             <a
-              className="transition-transform hocus:scale-125"
+              className="transition-transform hocus:scale-125 mt-4 md:mt-0"
               href="http://localhost:54324/"
             >
               Dev Email Client
