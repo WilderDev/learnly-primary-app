@@ -4,7 +4,7 @@ import cn from '@/lib/common/cn';
 import defaultMetadata from '@/lib/meta/defaultMetadata';
 import { baskervville, inter } from '@/lib/theme/fonts';
 
-import DashboardLayout from './@dashboard/DashboardLayout';
+import DashboardLayout from './@dashboard/(layout)/DashboardLayout';
 import Toast from '@/lib/components/ux/Toast';
 import AppProviders from '@/lib/components/providers/AppProviders';
 import { AuthProvider } from '@/lib/components/providers/AuthProvider';

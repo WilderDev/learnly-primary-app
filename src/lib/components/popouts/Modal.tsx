@@ -35,15 +35,15 @@ export default function Modal({
   // * Styles
   // Default Modal Styles
   const defaultStyles =
-    'fixed inset-0 z-50 p-4 flex items-center justify-center w-full h-full bg-slate-900/50 backdrop-blur';
+    'fixed inset-0 z-50 p-4 flex items-center justify-center w-full h-full bg-slate-900/50 backdrop-blur dark:backdrop-blur-md';
 
   // Animation Modal Styles
   const animationStyles = 'transition-all duration-300 ease-in-out';
 
   // Modal Size Styles
   const sizeStyles: { [key in TSize]: string } = {
-    xs: 'max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg p-4',
-    sm: 'max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl px-4 py-5',
+    xs: 'max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg p-5',
+    sm: 'max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl p-6',
     md: 'max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-6 py-7',
     lg: 'max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl px-8 py-9',
     xl: 'max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl px-10 py-11',
@@ -165,7 +165,7 @@ export default function Modal({
         {/* Content */}
         <div
           className={cn(
-            'z-50 w-full mx-auto my-12 space-y-4 bg-white dark:bg-navy-900 overflow-y-auto relative',
+            'z-50 w-full mx-auto my-12 space-y-4 bg-white dark:bg-navy-700 overflow-y-auto relative border border-slate-600/50 dark:border-navy-300/50',
             sizeStyles[size],
             roundedStyles[rounded],
             shadowStyles[shadow],

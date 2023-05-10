@@ -17,6 +17,7 @@ export default function ThemeTogglerButton() {
       initial={{ scale: 0.6 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.2 }}
+      aria-label="Toggle Theme"
     >
       {theme === 'dark' ? (
         <MoonIcon className="h-5 w-5 dark:text-yellow-300" />
