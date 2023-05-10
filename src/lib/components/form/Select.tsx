@@ -12,11 +12,13 @@ import {
   areas,
   variants,
 } from './formItemPropStyles';
+import { ISelectOption } from '@/assets/typescript/form';
 
 // * Props
-interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   value: string | number;
   setValue: (value: any) => void;
+  options: ISelectOption[];
   label: string;
   labelHidden?: boolean;
   cols?: number;
@@ -30,9 +32,10 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 // * Component
-export default function Input({
+export default function Select({
   value,
   setValue,
+  options,
   label,
   labelHidden = false,
   cols = 1,
@@ -54,7 +57,7 @@ export default function Input({
       labelHidden={labelHidden}
       className={className}
     >
-      <input
+      <select
         className={cn(
           defaultStyles,
           areas[area],
@@ -69,7 +72,13 @@ export default function Input({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         {...props}
-      />
+      >
+        {options.map((o) => (
+          <option value={o.value} key={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </select>
     </FormItem>
   );
 }

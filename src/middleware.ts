@@ -23,5 +23,12 @@ export async function middleware(req: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/profile'],
+  matcher: [
+    '/profile',
+    '/account',
+    '/lesson-creator',
+    '/help-center',
+    '/curriculum-roadmap',
+    '/schedule-builder',
+  ],
 };

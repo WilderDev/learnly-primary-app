@@ -40,6 +40,22 @@
     transition: background-color 5000s ease-in-out 0s;
     color: #0f172a;
   }
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark textarea:-webkit-autofill,
+  .dark textarea:-webkit-autofill:hover,
+  .dark textarea:-webkit-autofill:focus,
+  .dark select:-webkit-autofill,
+  .dark select:-webkit-autofill:hover,
+  .dark select:-webkit-autofill:focus {
+    border: 0px solid #e2e8f0;
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0px 1000px #313e59 inset;
+    box-shadow: 0 0 0px 1000px #313e59 inset;
+    transition: background-color 5000s ease-in-out 0s;
+    color: #fff;
+  }
 }
 
 @layer utilities {

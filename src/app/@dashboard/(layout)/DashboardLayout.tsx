@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import DashboardContainer from './DashboardContainer';
 import LeftSidebar from '../(navigation)/(left-sidebar)/LeftSidebar';
+import TopHeader from '../(navigation)/(top-header)/TopHeader';
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
@@ -9,7 +10,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
       <LeftSidebar />
 
       {/* Top Header */}
-      {/* TSK */}
+      <TopHeader />
 
       {/* Mobile Search Bar */}
       {/* TSK */}

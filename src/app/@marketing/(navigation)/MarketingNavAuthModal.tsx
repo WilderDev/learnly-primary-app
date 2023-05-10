@@ -25,8 +25,8 @@ export default function MarketingNavAuthModal({
   const { mutate, isLoading } = useRequest(signInUserWithEmail, {
     onSuccess: (data) => {
       if (data.ok) {
-        close();
         toast.success('Check your email for a sign in link!');
+        close();
         openSuccess();
       } else {
         toast.error("We couldn't sign you in. Please try again.");
@@ -56,7 +56,7 @@ export default function MarketingNavAuthModal({
           value={email}
           setValue={setEmail}
           icon={UserIcon}
-          initialFocus={true}
+          autoFocus={true}
           tabIndex={0}
         />
       </Form>

@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import Logo from '@/lib/components/brand/Logo';
+import MarketingThemeToggler from '../(landing)/MarketingThemeToggler';
 
 export default function OnboardingLayout({ children }: PropsWithChildren) {
   return (
@@ -20,6 +21,9 @@ export default function OnboardingLayout({ children }: PropsWithChildren) {
 
       {/* Content */}
       {children}
+
+      {/* Marketing Theme Toggler */}
+      <MarketingThemeToggler />
     </>
   );
 }

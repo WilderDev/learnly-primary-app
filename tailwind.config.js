@@ -63,6 +63,16 @@ module.exports = {
     require('@tailwindcss/forms'),
     plugin(({ addVariant }) => addVariant('hocus', ['&:hover', '&:focus'])),
     plugin(({ addVariant }) => addVariant('around', ['&:before', '&:after'])),
-    plugin(({ addVariant }) => addVariant('peer', ['&:hover', '&:focus'])),
+    plugin(({ addVariant, e }) => {
+      addVariant('peer', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`peer${separator}${className}`)}:hover, .${e(
+            `peer${separator}${className}`,
+          )}:focus, .${e(`peer${separator}${className}`)}:active, .${e(
+            `peer${separator}${className}`,
+          )}:visited`;
+        });
+      });
+    }),
   ],
 };

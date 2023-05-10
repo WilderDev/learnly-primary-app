@@ -6,6 +6,8 @@ import { EnvelopeIcon, UserIcon } from '@heroicons/react/24/outline';
 import Button from '@/lib/components/ui/Button';
 import { useOnboarding } from './OnboardingCtx';
 import CelebrationConfetti from '@/lib/components/ux/CelebrationConfetti';
+import { toast } from 'sonner';
+import Select from '@/lib/components/form/Select';
 
 // * Component
 export default function OnboardingProfileForm() {
@@ -47,8 +49,8 @@ export default function OnboardingProfileForm() {
           setValue={setName}
           placeholder="Suzy Smartz"
           icon={UserIcon}
-          autoFocus
-          required
+          autoFocus={true}
+          required={true}
         />
 
         {/* Email */}
@@ -59,7 +61,17 @@ export default function OnboardingProfileForm() {
           setValue={setEmail}
           placeholder="homeschool.suzy@gmail.com"
           icon={EnvelopeIcon}
-          required
+          required={true}
+        />
+
+        <Select
+          label="Test"
+          value={email}
+          setValue={setEmail}
+          options={[{ label: 'test 1', value: 'test 1' }]}
+          placeholder="homeschool.suzy@gmail.com"
+          icon={EnvelopeIcon}
+          required={true}
         />
 
         {/* Submit */}
@@ -67,7 +79,15 @@ export default function OnboardingProfileForm() {
           className="col-span-2"
           type="button"
           disabled={!name || !email}
-          onClick={next}
+          onClick={() => {
+            if (!name || !email)
+              return toast.error('Please fill out all fields');
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email))
+              return toast.error('Please enter a valid email address');
+            next();
+          }}
           loading={loading}
         >
           Next Step <span className="ml-2">⭐️</span>
