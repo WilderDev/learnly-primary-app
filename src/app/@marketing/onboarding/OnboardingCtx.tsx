@@ -115,29 +115,8 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
         return toast.error('Error creating user'); // Show Error
       }
 
-      // Add Children to Database
-      await fetch('/api/children', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          children,
-          email,
-        }),
-      });
-
-      // Send Welcome Email
-      // TSK
-      await fetch('/api/email/welcome', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          email,
-        }),
-      });
-
       // If Success, show success toast and open email confirmation modal
-      toast.success('Welcome to Learnly! 🎉🎉🎉'); // Show Success Toast
+      toast.success('Welcome to Learnly! 🎉❤️🎓'); // Show Success Toast
       setLoading(false); // Stop Loading
 
       // Open Email Confirmation Modal

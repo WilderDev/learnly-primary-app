@@ -1,6 +1,9 @@
 import { IOnboardingChild } from '@/assets/typescript/onboarding';
 import { supabaseAdmin } from '../../../lib/auth/supabaseAdmin';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
+import * as sgClient from '@sendgrid/client';
+
+sgClient.setApiKey(process.env.SENDGRID_CLIENT_API_KEY!);
 
 // * Props
 interface ICreateAccountReq {
@@ -20,6 +23,16 @@ export async function POST(request: Request) {
     return new Response('Missing required fields', { status: 400 });
   }
 
+  // 2a. Check if email is valid
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    return new Response(JSON.stringify({ error: 'Invalid email' }), {
+      status: 400,
+    });
+
+  // 2b. Destructure first and last name
+  const first_name = name.split(' ')[0];
+  const last_name = name.split(' ').slice(1).join(' ') || '';
+
   try {
     // 3. Create supabase instannces
     const sb = supabaseServer();
@@ -29,8 +42,8 @@ export async function POST(request: Request) {
     const { data, error } = await sbAdmin.auth.admin.createUser({
       email,
       user_metadata: {
-        first_name: name.split(' ')[0],
-        last_name: name.split(' ').slice(1).join(' ') || '',
+        first_name,
+        last_name,
         avatar_url: avatarUrl,
       },
     });
@@ -58,6 +71,32 @@ export async function POST(request: Request) {
 
     // 6. Sign In
     await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: '/' } });
+
+    // 7. Add to SendGrid Users List
+    const sgRes = await sgClient.request({
+      method: 'PUT',
+      baseUrl: 'https://api.sendgrid.com',
+      url: '/v3/marketing/contacts',
+      body: {
+        list_ids: [process.env.SENDGRID_APP_USERS_ID!],
+        contacts: [
+          {
+            email,
+            first_name,
+            last_name,
+            // custom_fields: { level: level },
+          },
+        ],
+      },
+    });
+
+    // Check if email is already subscribed
+    if (sgRes[0].statusCode !== 202) {
+      return new Response(
+        JSON.stringify({ error: 'Failed to add user to app users list' }),
+        { status: 500 },
+      );
+    }
 
     // 7. Return the user data
     return new Response(JSON.stringify({ user: data.user! }), {

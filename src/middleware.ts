@@ -10,8 +10,17 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession(); // Get Session
 
+  console.log('session:', session);
+
+  if (!session && req.nextUrl.pathname !== '/onboarding') {
+    const redirectUrl = req.nextUrl.clone(); // Clone URL
+    redirectUrl.pathname = '/'; // Set Pathname
+    redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname); // Set Query Param
+    return NextResponse.redirect(redirectUrl); // Return Redirect Response
+  }
+
   // If no session and the route is protected, redirect to home
-  if (!session) {
+  if (session && req.nextUrl.pathname === '/onboarding') {
     const redirectUrl = req.nextUrl.clone(); // Clone URL
     redirectUrl.pathname = '/'; // Set Pathname
     redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname); // Set Query Param
@@ -30,5 +39,6 @@ export const config = {
     '/help-center',
     '/curriculum-roadmap',
     '/schedule-builder',
+    '/onboarding',
   ],
 };

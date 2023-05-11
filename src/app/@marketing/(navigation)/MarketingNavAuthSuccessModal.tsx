@@ -67,7 +67,7 @@ export default function MarketingNavAuthSuccessModal({
           <div className="w-full border-t border-slate-300 dark:border-navy-400" />
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="bg-white px-2 text-slate-500 dark:bg-navy-900 dark:text-navy-200">
+          <span className="bg-white px-2 text-slate-500 dark:bg-navy-700 dark:text-navy-200">
             Open Your Email
           </span>
         </div>
