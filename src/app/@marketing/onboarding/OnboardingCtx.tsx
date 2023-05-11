@@ -89,7 +89,7 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
 
     if (step === 1) {
       // Confirm Email isn't already in use
-      const res = await fetch(baseUrl + `/api/users/${email}`);
+      const res = await fetch(`/api/users/${email}`);
 
       // If Email is in use, show error and return
       if (res.status === 200) {
@@ -98,7 +98,7 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
       }
     } else if (step === steps.length) {
       // Save User to Database
-      const res = await fetch(baseUrl + '/api/users', {
+      const res = await fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -116,7 +116,7 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
       }
 
       // Add Children to Database
-      await fetch(baseUrl + '/api/children', {
+      await fetch('/api/children', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -127,7 +127,7 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
 
       // Send Welcome Email
       // TSK
-      await fetch(baseUrl + '/api/email/welcome', {
+      await fetch('/api/email/welcome', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
