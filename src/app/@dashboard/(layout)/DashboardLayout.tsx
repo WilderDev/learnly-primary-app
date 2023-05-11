@@ -26,3 +26,5 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
     </>
   );
 }
+
+export const dynamic = 'force-dynamic';
