@@ -34,7 +34,7 @@ CREATE TABLE teacher_profiles (
 -- Student Profiles
 CREATE TABLE student_profiles (
   -- The student's unique identifier.
-  id uuid NOT NULL PRIMARY KEY,
+  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
 
   -- The student's first name
   first_name text NOT NULL DEFAULT '',
@@ -58,7 +58,7 @@ CREATE TABLE student_profiles (
 
 -- Teaching Preferences
 CREATE TABLE teaching_preferences (
-  -- The teacher's unique identifier.
+  -- The teaching preferences unique identifier. (DEFERRABLE)
   id uuid REFERENCES teacher_profiles(id) ON DELETE CASCADE NOT NULL PRIMARY KEY,
 
   -- Timestamps
@@ -93,8 +93,10 @@ ALTER TABLE student_preferences ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Avatar storage bucket is viewable by everyone" ON storage.objects FOR SELECT USING (bucket_id = 'avatars');
 CREATE POLICY "Avatar is uploadable by anyone" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'avatars');
+CREATE POLICY "Teacher profiles are created by anyone" ON teacher_profiles FOR INSERT WITH CHECK (true);
 CREATE POLICY "Teacher profiles are viewable by everyone" ON teacher_profiles FOR SELECT USING (true);
 CREATE POLICY "Teacher profiles are editable by the owner" ON teacher_profiles FOR UPDATE USING (auth.uid() = id);
+CREATE POLICY "Student profiles are created by the teacher" ON student_profiles FOR INSERT WITH CHECK (teacher_id = auth.uid());
 CREATE POLICY "Student profiles are viewable by everyone" ON student_profiles FOR SELECT USING (true);
 CREATE POLICY "Student profiles are editable by the teacher" ON student_profiles FOR UPDATE USING (teacher_id = auth.uid());
 CREATE POLICY "Teaching preferences are viewable by everyone" ON teaching_preferences FOR SELECT USING (true);
@@ -155,44 +157,24 @@ WHERE teacher_profiles.id = auth.uid();
 -- * FUNCTIONS
 -- Create a new teacher profile when a new user is created (sign up)
 CREATE FUNCTION public.handle_new_user()
-RETURNS trigger AS $$
+RETURNS trigger as $$
 BEGIN
-  -- Insert the new teacher profile
-  INSERT INTO public.teacher_profiles (id, first_name, last_name, avatar_url)
+  -- First Operation (Insert into Profiles)
+  INSERT into public.teacher_profiles (id, first_name, last_name, avatar_url)
   VALUES (new.id, new.raw_user_meta_data->>'first_name', new.raw_user_meta_data->>'last_name', new.raw_user_meta_data->>'avatar_url');
 
-  -- Insert the new teaching preferences
-  INSERT INTO teaching_preferences (id) VALUES (NEW.id);
+  -- Second Operation (Insert Welcome Notification) TSK
 
-  -- Insert Welcome Notification TSK
-
-  -- Return the new teacher profile
-  RETURN new;
+  -- Return the new user
+  return new;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- -- Create a new student preferences row when a teacher creates a new student
-CREATE FUNCTION handle_new_student()
-RETURNS trigger AS $$
-BEGIN
-  -- Insert the new student preferences
-  INSERT INTO student_preferences (id) VALUES (NEW.id);
-
-  -- Return the new student profile
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ language plpgsql security definer;
 
 
 -- * TRIGGERS
 -- Call the handle_new_teacher function when a new user is created (sign up)
-CREATE TRIGGER on_auth_user_created
-AFTER INSERT ON auth.users
-FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();
 
-
--- Call the handle_new_student function when a new student is created
-CREATE TRIGGER handle_new_student
-AFTER INSERT ON student_profiles
-FOR EACH ROW EXECUTE PROCEDURE handle_new_student();
 

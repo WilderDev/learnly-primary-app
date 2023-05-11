@@ -37,15 +37,15 @@
 
 //     // 3. Create the user
 //     const { error } = await sbAdmin.auth.admin.createUser({
-//       email: input.email,
-//       app_metadata: {
-//         provider: 'email',
-//       },
-//       email_confirm: true,
-//       user_metadata: {
-//         first_name: input.name.split(' ')[0],
-//         last_name: input.name.split(' ')[1] || '', // this should really be .split(' ').slice(1).join(' ')
-//       },
+//   email: input.email,
+//   app_metadata: {
+//     provider: 'email',
+//   },
+//   email_confirm: true,
+//   user_metadata: {
+//     first_name: input.name.split(' ')[0],
+//     last_name: input.name.split(' ')[1] || '', // this should really be .split(' ').slice(1).join(' ')
+//   },
 //     });
 
 //     // 4. If there is an error, return the error

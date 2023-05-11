@@ -42,7 +42,7 @@ export interface Database {
           birthday?: string
           created_at?: string
           first_name?: string
-          id: string
+          id?: string
           last_name?: string
           teacher_id: string
           updated_at?: string

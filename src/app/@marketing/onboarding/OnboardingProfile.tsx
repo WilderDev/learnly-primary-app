@@ -7,37 +7,36 @@ import Button from '@/lib/components/ui/Button';
 import { useOnboarding } from './OnboardingCtx';
 import CelebrationConfetti from '@/lib/components/ux/CelebrationConfetti';
 import { toast } from 'sonner';
+import OnboardingStepHeader from './OnboardingStepHeader';
 
 // * Component
-export default function OnboardingProfileForm() {
+export default function OnboardingProfile() {
   // * Contexts
   const { name, setName, email, setEmail, next, loading } = useOnboarding();
+
+  // * Handlers
+  const onNextStep = () => {
+    if (!name || !email) return toast.error('Please fill out all fields'); // Ensure all fields are filled out
+
+    // Ensure email is valid
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      return toast.error('Please enter a valid email address');
+
+    next(); // Go to next step
+  };
 
   // * Render
   return (
     <>
       {/* Header */}
-      <div className="flex flex-col text-center items-center justify-center space-y-3 mt-2 mb-8 max-w-md mx-auto">
-        {/* Title */}
-        <h2 className="text-xl font-semibold text-green-800 dark:text-green-600 md:text-2xl xl:text-3xl">
-          🎉 Welcome to Learnly 🎉
-        </h2>
-
-        {/* Description */}
-        <p className="text-lg text-slate-800 dark:text-navy-50 md:text-xl xl:text-2xl">
-          We are so excited to have you here!
-        </p>
-        <p className="text-sm text-slate-700 dark:text-navy-100 md:text-base">
-          <span className="block">
-            There are only a few things to set up so you can have the easiest
-            homeschool experience possible!
-          </span>
-          <span className="mt-2 block">
-            We&apos;ll walk you through the process step by step. (This
-            shouldn&apos;t take longer than 3 minutes) 👇
-          </span>
-        </p>
-      </div>
+      <OnboardingStepHeader
+        title="🎉 Welcome to Learnly 🎉"
+        subTitle="We are so excited to have you here!"
+        p1="There are only a few things to set up so you can have the easiest
+          homeschool experience possible!"
+        p2="We'll walk you through the process step by step. (This
+          shouldn't take longer than 3 minutes) 👇"
+      />
 
       {/* Form */}
       <Form className="lg:grid-cols-2">
@@ -68,15 +67,7 @@ export default function OnboardingProfileForm() {
           className="col-span-2"
           type="button"
           disabled={!name || !email}
-          onClick={() => {
-            if (!name || !email)
-              return toast.error('Please fill out all fields');
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email))
-              return toast.error('Please enter a valid email address');
-            next();
-          }}
+          onClick={onNextStep}
           loading={loading}
         >
           Next Step <span className="ml-2">⭐️</span>

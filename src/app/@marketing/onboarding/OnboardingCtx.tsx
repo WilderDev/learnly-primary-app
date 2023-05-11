@@ -10,11 +10,14 @@ import {
   useState,
 } from 'react';
 import { createContext } from 'react';
-import OnboardingProfileForm from './OnboardingProfileForm';
-import OnboardingPreferencesForm from './OnboardingPreferencesForm';
-import OnboardingChildrenForm from './OnboardingChildrenForm';
 import baseUrl from '@/lib/common/baseUrl';
 import { toast } from 'sonner';
+import OnboardingProfile from './OnboardingProfile';
+import OnboardingPreferences from './OnboardingPreferences';
+import OnboardingChildren from './OnboardingChildren';
+import { IOnboardingChild } from '@/assets/typescript/onboarding';
+import { avatarImages } from './avatarImages';
+import MarketingNavAuthSuccessModal from '../(navigation)/MarketingNavAuthSuccessModal';
 
 // * Context
 // Interface
@@ -29,6 +32,8 @@ interface IOnboardingCtx {
   setEmail: Dispatch<SetStateAction<string>>;
   avatarUrl: string;
   setAvatarUrl: Dispatch<SetStateAction<string>>;
+  children: IOnboardingChild[];
+  setChildren: Dispatch<SetStateAction<IOnboardingChild[]>>;
   loading: boolean;
 }
 
@@ -44,6 +49,8 @@ const OnboardingCtx = createContext<IOnboardingCtx>({
   setEmail: () => {},
   avatarUrl: '',
   setAvatarUrl: () => {},
+  children: [],
+  setChildren: () => {},
   loading: false,
 });
 
@@ -52,29 +59,29 @@ const steps = [
   {
     step: 1,
     name: 'Profile',
-    component: <OnboardingProfileForm />,
+    component: <OnboardingProfile />,
   },
   {
     step: 2,
     name: 'Preferences',
-    component: <OnboardingPreferencesForm />,
+    component: <OnboardingPreferences />,
   },
   {
     step: 3,
-    name: 'Children',
-    component: <OnboardingChildrenForm />,
+    name: 'Peeps',
+    component: <OnboardingChildren />,
   },
 ];
 
-export function OnboardingProvider({ children }: PropsWithChildren) {
-  // * Hooks
-
+export function OnboardingProvider({ children: c }: PropsWithChildren) {
   // * State
   const [step, setStep] = useState(1);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState(avatarImages[0]);
+  const [children, setChildren] = useState<IOnboardingChild[]>([]);
   const [loading, setLoading] = useState(false);
+  const [showEmailConfirmation, setShowEmailConfirmation] = useState(false);
 
   // * Functions
   const handleNextStep = useCallback(async () => {
@@ -86,19 +93,60 @@ export function OnboardingProvider({ children }: PropsWithChildren) {
 
       // If Email is in use, show error and return
       if (res.status === 200) {
-        setLoading(false);
-        return toast.error('Email already in use');
+        setLoading(false); // Stop Loading
+        return toast.error('Email already in use'); // Show Error
       }
     } else if (step === steps.length) {
       // Save User to Database
-      // Save User to Stripe (We can add this as a function on handle_new_user)
+      const res = await fetch(baseUrl + '/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          avatarUrl,
+          children,
+        }),
+      });
+
+      // If Error, show error and return
+      if (!res.ok) {
+        setLoading(false); // Stop Loading
+        return toast.error('Error creating user'); // Show Error
+      }
+
+      // Add Children to Database
+      await fetch(baseUrl + '/api/children', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          children,
+          email,
+        }),
+      });
+
       // Send Welcome Email
-      // Redirect to Dashboard (Automatic)
+      // TSK
+      await fetch(baseUrl + '/api/email/welcome', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+        }),
+      });
+
+      // If Success, show success toast and open email confirmation modal
+      toast.success('Welcome to Learnly! 🎉🎉🎉'); // Show Success Toast
+      setLoading(false); // Stop Loading
+
+      // Open Email Confirmation Modal
+      setShowEmailConfirmation(true);
     }
 
     setLoading(false);
     setStep((prev) => prev + 1);
-  }, [step, email]);
+  }, [step, email, name, avatarUrl, children]);
 
   // * Effects
 
@@ -115,14 +163,25 @@ export function OnboardingProvider({ children }: PropsWithChildren) {
       setEmail,
       avatarUrl,
       setAvatarUrl,
+      children,
+      setChildren,
       loading,
     }),
-    [step, name, email, avatarUrl, loading, handleNextStep],
+    [step, name, email, avatarUrl, children, loading, handleNextStep],
   );
 
   // * Render
   return (
-    <OnboardingCtx.Provider value={value}>{children}</OnboardingCtx.Provider>
+    <OnboardingCtx.Provider value={value}>
+      {/* Children */}
+      {c}
+
+      {/* Email Confirmation Modal */}
+      <MarketingNavAuthSuccessModal
+        isOpen={showEmailConfirmation}
+        close={() => setShowEmailConfirmation(false)}
+      />
+    </OnboardingCtx.Provider>
   );
 }
 
