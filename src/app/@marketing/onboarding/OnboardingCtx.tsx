@@ -4,7 +4,9 @@ import {
   Dispatch,
   PropsWithChildren,
   SetStateAction,
+  useCallback,
   useContext,
+  useMemo,
   useState,
 } from 'react';
 import { createContext } from 'react';
@@ -75,7 +77,7 @@ export function OnboardingProvider({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState(false);
 
   // * Functions
-  const handleNextStep = async () => {
+  const handleNextStep = useCallback(async () => {
     setLoading(true);
 
     if (step === 1) {
@@ -96,24 +98,27 @@ export function OnboardingProvider({ children }: PropsWithChildren) {
 
     setLoading(false);
     setStep((prev) => prev + 1);
-  };
+  }, [step, email]);
 
   // * Effects
 
   // * Value
-  const value = {
-    steps,
-    step,
-    setStep,
-    next: handleNextStep,
-    name,
-    setName,
-    email,
-    setEmail,
-    avatarUrl,
-    setAvatarUrl,
-    loading,
-  };
+  const value = useMemo(
+    () => ({
+      steps,
+      step,
+      setStep,
+      next: handleNextStep,
+      name,
+      setName,
+      email,
+      setEmail,
+      avatarUrl,
+      setAvatarUrl,
+      loading,
+    }),
+    [step, name, email, avatarUrl, loading, handleNextStep],
+  );
 
   // * Render
   return (
