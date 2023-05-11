@@ -31,6 +31,7 @@ module.exports = {
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in-out forwards',
         shimmer: 'shimmer 5.0s linear infinite',
+        shimmerSlow: 'shimmer 10.0s linear infinite',
         marquee: 'marquee var(--marquee-duration) linear infinite',
         // https://github.com/WilderDev/learnly-app/blob/main/tailwind.config.js
       },

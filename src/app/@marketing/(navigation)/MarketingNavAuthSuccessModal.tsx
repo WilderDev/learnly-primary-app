@@ -1,9 +1,9 @@
 'use client';
 
-import gmail from '@/assets/icons/gmail.png';
-import icloud from '@/assets/icons/icloud.png';
-import outlook from '@/assets/icons/outlook.png';
-import yahoo from '@/assets/icons/yahoo.png';
+import gmail from '@/assets/icons/companies/gmail.png';
+import icloud from '@/assets/icons/companies/icloud.png';
+import outlook from '@/assets/icons/companies/outlook.png';
+import yahoo from '@/assets/icons/companies/yahoo.png';
 import Modal from '@/lib/components/popouts/Modal';
 import Image from 'next/image';
 

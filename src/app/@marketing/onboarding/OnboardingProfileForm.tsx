@@ -7,7 +7,6 @@ import Button from '@/lib/components/ui/Button';
 import { useOnboarding } from './OnboardingCtx';
 import CelebrationConfetti from '@/lib/components/ux/CelebrationConfetti';
 import { toast } from 'sonner';
-import Select from '@/lib/components/form/Select';
 
 // * Component
 export default function OnboardingProfileForm() {
@@ -62,21 +61,6 @@ export default function OnboardingProfileForm() {
           placeholder="homeschool.suzy@gmail.com"
           icon={EnvelopeIcon}
           required={true}
-        />
-
-        <Select
-          label="Test"
-          value={email}
-          setValue={setEmail}
-          options={[
-            { label: 'test 1', value: 'test 1' },
-            {
-              label: 'test 2',
-              value: 'test 2',
-              image: 'https://source.unsplash.com/200x200/?face',
-            },
-          ]}
-          icon={EnvelopeIcon}
         />
 
         {/* Submit */}
