@@ -56,7 +56,7 @@ export default function OnboardingChildren() {
     <>
       {/* Children Header */}
       <OnboardingStepHeader
-        title="Add Your Little Ones 🧒👧"
+        title="Add Your Little Ones 👶"
         subTitle={
           children.length < 1
             ? 'This will help us create a personalize education.'
