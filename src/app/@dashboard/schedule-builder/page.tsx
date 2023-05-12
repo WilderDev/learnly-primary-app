@@ -26,3 +26,5 @@ export const metadata = {
   title: 'Schedule Builder',
   description: 'TSK',
 };
+
+export const dynamic = 'force-dynamic';

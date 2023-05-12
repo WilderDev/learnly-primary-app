@@ -26,3 +26,5 @@ export const metadata = {
   title: 'Lesson Creator',
   description: 'Create a lesson plan for your child.',
 };
+
+export const dynamic = 'force-dynamic';

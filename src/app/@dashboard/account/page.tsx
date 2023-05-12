@@ -26,3 +26,5 @@ export const metadata = {
   title: 'Your Account',
   description: 'TSK',
 };
+
+export const dynamic = 'force-dynamic';

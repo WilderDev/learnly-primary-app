@@ -26,3 +26,5 @@ export const metadata = {
   title: 'Help Center',
   description: 'TSK',
 };
+
+export const dynamic = 'force-dynamic';

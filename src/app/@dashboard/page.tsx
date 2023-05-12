@@ -32,3 +32,5 @@ export const metadata = {
   title: 'Home',
   description: 'TSK',
 };
+
+export const dynamic = 'force-dynamic';
