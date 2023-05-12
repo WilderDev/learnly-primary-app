@@ -1,5 +1,6 @@
 import { createMiddlewareSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { NextRequest, NextResponse } from 'next/server';
+import middlewareRedirect from './lib/auth/middlewareRedirect';
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next(); // Abstract Successful Response
@@ -10,35 +11,33 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession(); // Get Session
 
-  console.log('session:', session);
+  const authorizedRoles = ['ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT']; // Authorized Roles
+  const publicPaths = ['/onboarding', '/api/auth']; // Public Paths
+  const authorized =
+    session &&
+    authorizedRoles.includes(session.user.app_metadata.role) &&
+    !publicPaths.includes(req.nextUrl.pathname); // Authorized (Session Exists, Role is Authorized, Path is not Public)
 
-  if (!session && req.nextUrl.pathname !== '/onboarding') {
-    const redirectUrl = req.nextUrl.clone(); // Clone URL
-    redirectUrl.pathname = '/'; // Set Pathname
-    redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname); // Set Query Param
-    return NextResponse.redirect(redirectUrl); // Return Redirect Response
+  // If Authorized, udpate the user's streak
+  if (authorized && process.env.NODE_ENV === 'production') {
+    await supabase
+      .from('profiles')
+      .update({ last_activity: new Date(), status: 'ONLINE' })
+      .eq('id', session.user.id);
   }
 
-  // If no session and the route is protected, redirect to home
-  if (session && req.nextUrl.pathname === '/onboarding') {
-    const redirectUrl = req.nextUrl.clone(); // Clone URL
-    redirectUrl.pathname = '/'; // Set Pathname
-    redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname); // Set Query Param
-    return NextResponse.redirect(redirectUrl); // Return Redirect Response
-  }
-
-  return res; // Return Response
+  return authorized ? res : middlewareRedirect(req, '/'); // Return Response or Redirect
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
   matcher: [
-    '/profile',
-    '/account',
-    '/lesson-creator',
-    '/help-center',
-    '/curriculum-roadmap',
-    '/schedule-builder',
-    '/onboarding',
+    '/profile/:path*',
+    '/account/:path*',
+    '/lesson-creator/:path*',
+    '/help-center/:path*',
+    '/curriculum-roadmap/:path*',
+    '/schedule-builder/:path*',
+    '/onboarding/:path*',
   ],
 };

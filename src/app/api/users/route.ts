@@ -46,6 +46,9 @@ export async function POST(request: Request) {
         last_name,
         avatar_url: avatarUrl,
       },
+      app_metadata: {
+        role: 'TEACHER',
+      },
     });
 
     // 4a. Check if there was an error creating the user

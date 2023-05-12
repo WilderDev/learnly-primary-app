@@ -6,7 +6,7 @@ CREATE TYPE pricing_type AS ENUM ('one_time', 'recurring');
 -- Pricing Plan Intervals
 CREATE TYPE pricing_plan_interval AS ENUM ('day', 'week', 'month', 'year');
 -- Payment Method Types
-CREATE TYPE payment_type AS ENUM ('acss_debit', 'affirm', 'afterpay_clearpay', 'alipay', 'au_becs_debit', 'bacs_debit', 'bancontact', 'blik', 'boleto', 'card', 'card_present', 'cashapp', 'customer_balance', 'eps', 'fpx', 'giropay', 'grabpay', 'ideal', 'interac_present', 'klarna', 'konbini', 'link', 'oxxo', 'p24', 'paynow', 'pix', 'promptpay', 'sepa_debit', 'sofort', 'us_bank_account', 'wechat_pay')
+CREATE TYPE payment_type AS ENUM ('acss_debit', 'affirm', 'afterpay_clearpay', 'alipay', 'au_becs_debit', 'bacs_debit', 'bancontact', 'blik', 'boleto', 'card', 'card_present', 'cashapp', 'customer_balance', 'eps', 'fpx', 'giropay', 'grabpay', 'ideal', 'interac_present', 'klarna', 'konbini', 'link', 'oxxo', 'p24', 'paynow', 'pix', 'promptpay', 'sepa_debit', 'sofort', 'us_bank_account', 'wechat_pay');
 
 -- * TABLES
 -- Customers (Private) - https://stripe.com/docs/api/customers
@@ -108,6 +108,9 @@ CREATE TABLE subscriptions (
 	-- Stripe Price ID
 	stripe_price_id text NOT NULL DEFAULT '',
 
+	-- Stripe Product ID
+	stripe_product_id text NOT NULL DEFAULT '',
+
 	-- Subscription Quantity
 	quantity integer NOT NULL DEFAULT 1,
 
@@ -128,9 +131,6 @@ CREATE TABLE subscriptions (
 
 	-- Stripe Cancel at Period End
 	cancel_at_period_end boolean NOT NULL DEFAULT false,
-
-	-- Stripe Current Period End
-	current_period_end timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
 
 	-- Stripe Subscription Metadata
 	metadata jsonb NOT NULL DEFAULT '{}',
@@ -249,23 +249,7 @@ CREATE TABLE prices (
 	-- Timestamps
 	created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
 	updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
-)
-
-
--- * INDEXES
-
-
--- * POLICIES (ROW LEVEL SECURITY)
-ALTER TABLE customers ENABLE ROW LEVEL SECURITY;
-ALTER TABLE payment_and_billing_details ENABLE ROW LEVEL SECURITY;
-ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE products ENABLE ROW LEVEL SECURITY;
-ALTER TABLE prices ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "User can only view their own subscription data" ON subscriptions for SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Products are read-only" ON products for SELECT USING (true);
-CREATE POLICY "Prices are read-only" ON prices for SELECT USING (true);
-
+);
 
 -- * VIEWS
 -- User Subscriptions View
@@ -279,7 +263,7 @@ JOIN prices pr ON s.stripe_price_id = pr.id;
 
 -- * FUNCTIONS
 -- Calculate Subscription End Date
-CREATE FUNCTION calculate_subscription_end_date(start_date timestamp, interval pricing_plan_interval, interval_count integer) RETURNS timestamp AS $$
+CREATE FUNCTION calculate_subscription_end_date(start_date timestamp, interval, pricing_plan_interval, interval_count integer) RETURNS timestamp AS $$
 DECLARE
     end_date timestamp;
 BEGIN
@@ -301,4 +285,26 @@ $$ LANGUAGE plpgsql;
 
 -- * TRIGGERS
 -- Enable Realtime listening on public tables
+DROP PUBLICATION IF EXISTS supabase_realtime;
 CREATE publication supabase_realtime for TABLE products, prices;
+
+
+-- * INDEXES
+-- N/A
+
+
+-- * POLICIES (ROW LEVEL SECURITY)
+-- RLS
+ALTER TABLE customers ENABLE ROW LEVEL SECURITY;
+ALTER TABLE payment_and_billing_details ENABLE ROW LEVEL SECURITY;
+ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE prices ENABLE ROW LEVEL SECURITY;
+
+-- Policies
+CREATE POLICY "User can only view their own subscription data" ON subscriptions for SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Products are read-only" ON products for SELECT USING (true);
+CREATE POLICY "Prices are read-only" ON prices for SELECT USING (true);
+
+
+

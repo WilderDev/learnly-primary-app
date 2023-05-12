@@ -12,7 +12,7 @@ export async function GET(request: Request, { params }: IUserGetByEmailReq) {
 
     const { data, error } = await supabase
       .from('users')
-      .select('id')
+      .select('*')
       .eq('email', params.email)
       .single();
 

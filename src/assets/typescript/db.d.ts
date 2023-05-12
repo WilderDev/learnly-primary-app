@@ -9,6 +9,191 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      customers: {
+        Row: {
+          created_at: string
+          id: string
+          stripe_customer_id: string
+          subscriptions: Json
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          stripe_customer_id?: string
+          subscriptions?: Json
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          stripe_customer_id?: string
+          subscriptions?: Json
+          updated_at?: string
+        }
+      }
+      payment_and_billing_details: {
+        Row: {
+          billing_address_line1: string
+          billing_address_line2: string
+          billing_city: string
+          billing_country: string
+          billing_email: string
+          billing_name: string
+          billing_phone: string
+          billing_postal_code: string
+          billing_state_state: string
+          card_brand: string
+          created_at: string
+          default_method: boolean
+          exp_month: string
+          exp_year: string
+          id: string
+          last4: string
+          metadata: Json
+          payment_details: Json
+          payment_method_type: Database["public"]["Enums"]["payment_type"]
+          stripe_customer_id: string
+          stripe_payment_method_id: string
+          updated_at: string
+        }
+        Insert: {
+          billing_address_line1?: string
+          billing_address_line2?: string
+          billing_city?: string
+          billing_country?: string
+          billing_email?: string
+          billing_name?: string
+          billing_phone?: string
+          billing_postal_code?: string
+          billing_state_state?: string
+          card_brand?: string
+          created_at?: string
+          default_method?: boolean
+          exp_month?: string
+          exp_year?: string
+          id: string
+          last4?: string
+          metadata?: Json
+          payment_details?: Json
+          payment_method_type?: Database["public"]["Enums"]["payment_type"]
+          stripe_customer_id?: string
+          stripe_payment_method_id?: string
+          updated_at?: string
+        }
+        Update: {
+          billing_address_line1?: string
+          billing_address_line2?: string
+          billing_city?: string
+          billing_country?: string
+          billing_email?: string
+          billing_name?: string
+          billing_phone?: string
+          billing_postal_code?: string
+          billing_state_state?: string
+          card_brand?: string
+          created_at?: string
+          default_method?: boolean
+          exp_month?: string
+          exp_year?: string
+          id?: string
+          last4?: string
+          metadata?: Json
+          payment_details?: Json
+          payment_method_type?: Database["public"]["Enums"]["payment_type"]
+          stripe_customer_id?: string
+          stripe_payment_method_id?: string
+          updated_at?: string
+        }
+      }
+      prices: {
+        Row: {
+          active: boolean
+          created_at: string
+          currency: string
+          description: string
+          id: string
+          metadata: Json
+          nickname: string
+          recurring_interval: Database["public"]["Enums"]["pricing_plan_interval"]
+          recurring_interval_count: number
+          recurring_trial_period_days: number
+          recurring_usage_type: string
+          stripe_product_id: string
+          type: Database["public"]["Enums"]["pricing_type"]
+          unit_amount: number
+          unit_amount_decimal: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          currency?: string
+          description?: string
+          id: string
+          metadata?: Json
+          nickname?: string
+          recurring_interval?: Database["public"]["Enums"]["pricing_plan_interval"]
+          recurring_interval_count?: number
+          recurring_trial_period_days?: number
+          recurring_usage_type?: string
+          stripe_product_id?: string
+          type?: Database["public"]["Enums"]["pricing_type"]
+          unit_amount?: number
+          unit_amount_decimal?: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          currency?: string
+          description?: string
+          id?: string
+          metadata?: Json
+          nickname?: string
+          recurring_interval?: Database["public"]["Enums"]["pricing_plan_interval"]
+          recurring_interval_count?: number
+          recurring_trial_period_days?: number
+          recurring_usage_type?: string
+          stripe_product_id?: string
+          type?: Database["public"]["Enums"]["pricing_type"]
+          unit_amount?: number
+          unit_amount_decimal?: string
+          updated_at?: string
+        }
+      }
+      products: {
+        Row: {
+          active: boolean
+          created_at: string
+          description: string
+          id: string
+          image: string
+          metadata: Json
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          description?: string
+          id: string
+          image?: string
+          metadata?: Json
+          name?: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          description?: string
+          id?: string
+          image?: string
+          metadata?: Json
+          name?: string
+          updated_at?: string
+        }
+      }
       student_preferences: {
         Row: {
           created_at: string
@@ -58,6 +243,95 @@ export interface Database {
           updated_at?: string
         }
       }
+      subscriptions: {
+        Row: {
+          cancel_at: string | null
+          cancel_at_period_end: boolean
+          canceled_at: string | null
+          cancellation_reason: Json
+          collection_method: string
+          created: string
+          created_at: string
+          currency: string
+          current_period_end: string
+          current_period_start: string
+          days_until_due: number
+          default_payment_method_id: string
+          description: string
+          discount: Json
+          ended_at: string | null
+          id: string
+          items: Json
+          metadata: Json
+          quantity: number
+          status: Database["public"]["Enums"]["subscription_status"]
+          stripe_customer_id: string
+          stripe_price_id: string
+          stripe_product_id: string
+          trial_end: string | null
+          trial_start: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cancel_at?: string | null
+          cancel_at_period_end?: boolean
+          canceled_at?: string | null
+          cancellation_reason?: Json
+          collection_method?: string
+          created?: string
+          created_at?: string
+          currency?: string
+          current_period_end?: string
+          current_period_start?: string
+          days_until_due?: number
+          default_payment_method_id?: string
+          description?: string
+          discount?: Json
+          ended_at?: string | null
+          id: string
+          items?: Json
+          metadata?: Json
+          quantity?: number
+          status?: Database["public"]["Enums"]["subscription_status"]
+          stripe_customer_id?: string
+          stripe_price_id?: string
+          stripe_product_id?: string
+          trial_end?: string | null
+          trial_start?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cancel_at?: string | null
+          cancel_at_period_end?: boolean
+          canceled_at?: string | null
+          cancellation_reason?: Json
+          collection_method?: string
+          created?: string
+          created_at?: string
+          currency?: string
+          current_period_end?: string
+          current_period_start?: string
+          days_until_due?: number
+          default_payment_method_id?: string
+          description?: string
+          discount?: Json
+          ended_at?: string | null
+          id?: string
+          items?: Json
+          metadata?: Json
+          quantity?: number
+          status?: Database["public"]["Enums"]["subscription_status"]
+          stripe_customer_id?: string
+          stripe_price_id?: string
+          stripe_product_id?: string
+          trial_end?: string | null
+          trial_start?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+      }
       teacher_profiles: {
         Row: {
           avatar_url: string
@@ -65,6 +339,7 @@ export interface Database {
           first_name: string
           id: string
           last_name: string
+          role: Database["public"]["Enums"]["user_role"]
           status: Database["public"]["Enums"]["profile_status"]
           type: Database["public"]["Enums"]["profile_type"]
           updated_at: string
@@ -75,6 +350,7 @@ export interface Database {
           first_name?: string
           id: string
           last_name?: string
+          role?: Database["public"]["Enums"]["user_role"]
           status?: Database["public"]["Enums"]["profile_status"]
           type?: Database["public"]["Enums"]["profile_type"]
           updated_at?: string
@@ -85,6 +361,7 @@ export interface Database {
           first_name?: string
           id?: string
           last_name?: string
+          role?: Database["public"]["Enums"]["user_role"]
           status?: Database["public"]["Enums"]["profile_status"]
           type?: Database["public"]["Enums"]["profile_type"]
           updated_at?: string
@@ -104,6 +381,35 @@ export interface Database {
         Update: {
           created_at?: string
           id?: string
+          updated_at?: string
+        }
+      }
+      trials: {
+        Row: {
+          created_at: string
+          end_date: string
+          id: string
+          start_date: string
+          status: Database["public"]["Enums"]["trial_status"]
+          teacher_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          end_date?: string
+          id?: string
+          start_date?: string
+          status?: Database["public"]["Enums"]["trial_status"]
+          teacher_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          end_date?: string
+          id?: string
+          start_date?: string
+          status?: Database["public"]["Enums"]["trial_status"]
+          teacher_id?: string
           updated_at?: string
         }
       }
@@ -144,120 +450,85 @@ export interface Database {
           last_name: string | null
         }
       }
+      user_subscriptions_view: {
+        Row: {
+          price: number | null
+          product_name: string | null
+          subscription_id: string | null
+          user_id: string | null
+        }
+      }
       users: {
         Row: {
-          aud: string | null
-          banned_until: string | null
-          confirmation_sent_at: string | null
-          confirmation_token: string | null
-          confirmed_at: string | null
-          created_at: string | null
           email: string | null
-          email_change: string | null
-          email_change_confirm_status: number | null
-          email_change_sent_at: string | null
-          email_change_token_current: string | null
-          email_change_token_new: string | null
-          email_confirmed_at: string | null
-          encrypted_password: string | null
           id: string | null
-          instance_id: string | null
-          invited_at: string | null
-          is_sso_user: boolean | null
-          is_super_admin: boolean | null
-          last_sign_in_at: string | null
-          phone: string | null
-          phone_change: string | null
-          phone_change_sent_at: string | null
-          phone_change_token: string | null
-          phone_confirmed_at: string | null
-          raw_app_meta_data: Json | null
-          raw_user_meta_data: Json | null
-          reauthentication_sent_at: string | null
-          reauthentication_token: string | null
-          recovery_sent_at: string | null
-          recovery_token: string | null
-          role: string | null
-          updated_at: string | null
         }
         Insert: {
-          aud?: string | null
-          banned_until?: string | null
-          confirmation_sent_at?: string | null
-          confirmation_token?: string | null
-          confirmed_at?: string | null
-          created_at?: string | null
           email?: string | null
-          email_change?: string | null
-          email_change_confirm_status?: number | null
-          email_change_sent_at?: string | null
-          email_change_token_current?: string | null
-          email_change_token_new?: string | null
-          email_confirmed_at?: string | null
-          encrypted_password?: string | null
           id?: string | null
-          instance_id?: string | null
-          invited_at?: string | null
-          is_sso_user?: boolean | null
-          is_super_admin?: boolean | null
-          last_sign_in_at?: string | null
-          phone?: string | null
-          phone_change?: string | null
-          phone_change_sent_at?: string | null
-          phone_change_token?: string | null
-          phone_confirmed_at?: string | null
-          raw_app_meta_data?: Json | null
-          raw_user_meta_data?: Json | null
-          reauthentication_sent_at?: string | null
-          reauthentication_token?: string | null
-          recovery_sent_at?: string | null
-          recovery_token?: string | null
-          role?: string | null
-          updated_at?: string | null
         }
         Update: {
-          aud?: string | null
-          banned_until?: string | null
-          confirmation_sent_at?: string | null
-          confirmation_token?: string | null
-          confirmed_at?: string | null
-          created_at?: string | null
           email?: string | null
-          email_change?: string | null
-          email_change_confirm_status?: number | null
-          email_change_sent_at?: string | null
-          email_change_token_current?: string | null
-          email_change_token_new?: string | null
-          email_confirmed_at?: string | null
-          encrypted_password?: string | null
           id?: string | null
-          instance_id?: string | null
-          invited_at?: string | null
-          is_sso_user?: boolean | null
-          is_super_admin?: boolean | null
-          last_sign_in_at?: string | null
-          phone?: string | null
-          phone_change?: string | null
-          phone_change_sent_at?: string | null
-          phone_change_token?: string | null
-          phone_confirmed_at?: string | null
-          raw_app_meta_data?: Json | null
-          raw_user_meta_data?: Json | null
-          reauthentication_sent_at?: string | null
-          reauthentication_token?: string | null
-          recovery_sent_at?: string | null
-          recovery_token?: string | null
-          role?: string | null
-          updated_at?: string | null
         }
       }
     }
     Functions: {
-      [_ in never]: never
+      is_role: {
+        Args: {
+          role: Database["public"]["Enums"]["user_role"]
+        }
+        Returns: boolean
+      }
     }
     Enums: {
+      payment_type:
+        | "acss_debit"
+        | "affirm"
+        | "afterpay_clearpay"
+        | "alipay"
+        | "au_becs_debit"
+        | "bacs_debit"
+        | "bancontact"
+        | "blik"
+        | "boleto"
+        | "card"
+        | "card_present"
+        | "cashapp"
+        | "customer_balance"
+        | "eps"
+        | "fpx"
+        | "giropay"
+        | "grabpay"
+        | "ideal"
+        | "interac_present"
+        | "klarna"
+        | "konbini"
+        | "link"
+        | "oxxo"
+        | "p24"
+        | "paynow"
+        | "pix"
+        | "promptpay"
+        | "sepa_debit"
+        | "sofort"
+        | "us_bank_account"
+        | "wechat_pay"
+      pricing_plan_interval: "day" | "week" | "month" | "year"
+      pricing_type: "one_time" | "recurring"
       profile_status: "ONLINE" | "OFFLINE" | "BUSY" | "AWAY" | "INVISIBLE"
-      profile_type: "PARENT" | "GROUP" | "TUTOR"
+      profile_type: "PARENT" | "COOP" | "TUTOR" | "SCHOOL" | "STUDENT"
+      subscription_status:
+        | "trialing"
+        | "active"
+        | "canceled"
+        | "incomplete"
+        | "incomplete_expired"
+        | "past_due"
+        | "unpaid"
+        | "paused"
+      trial_status: "ACTIVE" | "CONVERTED" | "EXPIRED"
+      user_role: "ADMIN" | "TEACHER" | "GROUP_MANAGER" | "STUDENT"
     }
     CompositeTypes: {
       [_ in never]: never
