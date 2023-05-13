@@ -1,6 +1,5 @@
 import DashMainCol from '../../(layout)/DashMainCol';
 import DashSideCol from '../../(layout)/DashSideCol';
-import TEMP from './TEMP';
 
 export default function LessonCreatorPage() {
   return (
@@ -9,7 +8,6 @@ export default function LessonCreatorPage() {
       <DashMainCol>
         {/* Lesson Creator Form */}
         {/* TSK */}
-        <TEMP />
 
         {/* Lesson Creator Templates */}
         {/* TSK */}

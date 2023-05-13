@@ -1,6 +1,5 @@
 import DashMainCol from '../(layout)/DashMainCol';
 import DashSideCol from '../(layout)/DashSideCol';
-import Temp from './Temp';
 
 export default function ParentDashboardHomePage() {
   return (
@@ -9,8 +8,6 @@ export default function ParentDashboardHomePage() {
       <DashMainCol>
         {/* Home Welcome / Streak */}
         {/* TSK */}
-
-        <Temp />
 
         {/* Home Upcoming Lessons */}
         {/* TSK */}

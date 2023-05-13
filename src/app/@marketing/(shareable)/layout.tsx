@@ -4,7 +4,7 @@ import MarketingNavigation from '../(navigation)/MarketingNavigation';
 import MarketingFooter from '../(navigation)/MarketingFooter';
 import MarketingThemeToggler from '../(navigation)/MarketingThemeToggler';
 
-export default function MarketingLayout({ children }: PropsWithChildren) {
+export default function SharableLayout({ children }: PropsWithChildren) {
   return (
     <>
       {/* Marketing Navigation */}
