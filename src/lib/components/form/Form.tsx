@@ -18,6 +18,12 @@ export default function Form({ children, className, ...props }: IProps) {
         className,
       )}
       {...props}
+      onSubmit={(e) => {
+        if (props.onSubmit) {
+          e.preventDefault();
+          props.onSubmit(e);
+        }
+      }}
     >
       {children}
     </form>

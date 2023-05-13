@@ -105,7 +105,7 @@ CREATE TABLE teaching_preferences (
 -- User Trials
 CREATE TABLE trials (
   -- The trial's unique identifier.
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- The teacher's unique identifier.
   teacher_id uuid REFERENCES teacher_profiles(id) ON DELETE CASCADE NOT NULL,
@@ -127,7 +127,7 @@ CREATE TABLE trials (
 -- Student Profiles
 CREATE TABLE student_profiles (
   -- The student's unique identifier.
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- The student's first name
   first_name text NOT NULL DEFAULT '',

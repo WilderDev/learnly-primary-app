@@ -53,16 +53,16 @@ export default function Button({
 
   // Button Variant Styles
   const variants: { [key in TVariant]: string } = {
-    primary: 'text-white focus:ring-green-500',
-    secondary: 'text-blue-700 focus:ring-blue-500',
+    primary: 'text-white',
+    secondary: 'text-blue-700',
   };
 
   // Button Fill Styles
   const fills: { [key in TFill]: { [key in TVariant]: string } } = {
     // Solid
     solid: {
-      primary: 'bg-green-600 hover:bg-green-700 focus:ring-offset-green-600',
-      secondary: 'bg-blue-600 hover:bg-blue-700 focus:ring-offset-blue-600',
+      primary: 'bg-green-600 hover:bg-green-700 focus:ring-offset-green-50',
+      secondary: 'bg-blue-600 hover:bg-blue-700 focus:ring-offset-blue-50',
     },
     // Outline
     outline: {
@@ -125,7 +125,6 @@ export default function Button({
         className,
       )}
       href={url}
-      prefetch={true}
     >
       {children}
     </Link>
@@ -143,6 +142,12 @@ export default function Button({
         props.disabled && disabledStyles,
       )}
       {...props}
+      onClick={(e) => {
+        if (props.onClick) {
+          props.onClick(e);
+        }
+        e.currentTarget.blur();
+      }}
     >
       {loading ? <LoadingDots size={size} /> : children}
     </button>

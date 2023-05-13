@@ -4,10 +4,18 @@ import Form from '@/lib/components/form/Form';
 import Input from '@/lib/components/form/Input';
 import Button from '@/lib/components/ui/Button';
 import LessonCreatorFormSection from './LessonCreatorFormSection';
+import { useLessonCreator } from './LessonCreatorCtx';
+import LessonCreatorTopicSelect from './LessonCreatorTopicSelect';
 
 export default function LessonCreatorForm() {
+  // * Hooks
+
+  // * Context
+  const { isLoading, handleSubmit } = useLessonCreator();
+
+  // * Render
   return (
-    <Form className="w-full">
+    <Form className="w-full" onSubmit={handleSubmit}>
       {/* Lesson Goals Section */}
       <LessonCreatorFormSection
         title="Lesson Goals"
@@ -17,7 +25,8 @@ export default function LessonCreatorForm() {
         toggleAdvancedOptions={() => {}}
       >
         {/* Form Item 1 */}
-        <Input label="Form Item 1" value="test" setValue={() => {}} />
+        <LessonCreatorTopicSelect />
+        {/* <Input label="Form Item 1" value="test" setValue={() => {}} /> */}
       </LessonCreatorFormSection>
 
       {/* Section 2 */}
@@ -55,7 +64,9 @@ export default function LessonCreatorForm() {
           <Button type="button">Reset</Button>
 
           {/* Generate */}
-          <Button type="submit">Generate</Button>
+          <Button type="submit" loading={isLoading}>
+            Generate
+          </Button>
         </div>
       </div>
     </Form>

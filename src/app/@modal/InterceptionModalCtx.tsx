@@ -2,7 +2,15 @@
 
 import { useRouter } from 'next/navigation';
 // * Imports
-import { PropsWithChildren, useContext, createContext, useState } from 'react';
+import {
+  PropsWithChildren,
+  useContext,
+  createContext,
+  useState,
+  useMemo,
+  useCallback,
+} from 'react';
+import { useLessonCreator } from '../@dashboard/(pages)/lesson-creator/LessonCreatorCtx';
 
 // * Context
 // Interface
@@ -29,6 +37,7 @@ const InterceptionModalCtx =
 export function InterceptionModalProvider({ children }: PropsWithChildren) {
   // * Hooks
   const router = useRouter();
+  const { setComplete } = useLessonCreator();
 
   // * State
   const [isOpen, setIsOpen] = useState(false);
@@ -36,27 +45,31 @@ export function InterceptionModalProvider({ children }: PropsWithChildren) {
 
   // * Handlers
   // Open Modal
-  const open = () => {
+  const open = useCallback(() => {
     setIsOpen(true);
-  };
+  }, []);
 
   // Close Modal
-  const close = () => {
+  const close = useCallback(() => {
     setIsOpen(false);
+    setComplete(false);
 
     if (returnPath) {
       router.back();
     } else {
       router.refresh();
     }
-  };
+  }, [returnPath, router, setComplete]);
 
   // * Value
-  const value: IInterceptionModalCtx = {
-    isOpen,
-    open,
-    close,
-  };
+  const value: IInterceptionModalCtx = useMemo(
+    () => ({
+      isOpen,
+      open,
+      close,
+    }),
+    [isOpen, open, close],
+  );
 
   // * Render
   return (

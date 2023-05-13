@@ -11,7 +11,7 @@ CREATE TYPE commentable_type AS ENUM ('LESSON_PLAN', 'LEARNING_PATH', 'LESSON_TE
 --- Notifications
 CREATE TABLE notifications (
 	-- Unique ID (Primary Key)
-	id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+	id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
 	-- Sender ID
 	sender_id uuid NOT NULL REFERENCES auth.users(id) DEFAULT '185f2f83-d63a-4c9b-b4a0-7e4a885799e2',
@@ -54,7 +54,7 @@ CREATE TABLE notifications (
 --- Comments
 CREATE TABLE comments (
 	-- Unique ID (Primary Key)
-    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
 
 	-- Commentable Id (this would be the lesson_plan or leaning_path or lesson_template id, etc...)
 	commentable_id uuid NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE comments (
 -- Comment Reactions
 CREATE TABLE reactions(
 	-- Unique ID (Primary Key)
-    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
 
 	-- Reaction Type
     type varchar NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE reactions(
 -- Comment Reactions
 CREATE TABLE comment_reactions(
 	-- Unique ID (Primary Key)
-    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
 
 	-- Comment ID
     comment_id uuid NOT NULL REFERENCES comments(id),

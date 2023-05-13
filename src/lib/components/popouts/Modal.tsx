@@ -179,16 +179,17 @@ export default function Modal({
           {children}
 
           {/* Close */}
-
-          <button
-            className={cn(
-              'absolute -top-2 right-2 p-1 rounded-full group hocus:bg-slate-100 dark:hocus:bg-navy-800 transition-colors',
-              !closeBtn && 'opacity-0 focus:opacity-100',
-            )}
-            onClick={close}
-          >
-            <XMarkIcon className="w-6 h-6 text-slate-400 group-focus:text-slate-700 dark:text-navy-300 dark:group-focus:text-navy-100" />
-          </button>
+          {closeBtn && (
+            <button
+              className={cn(
+                'absolute -top-2 right-2 p-1 rounded-full group hocus:bg-slate-100 dark:hocus:bg-navy-800 transition-colors',
+                !closeBtn && 'opacity-0 focus:opacity-100',
+              )}
+              onClick={close}
+            >
+              <XMarkIcon className="w-6 h-6 text-slate-400 group-focus:text-slate-700 dark:text-navy-300 dark:group-focus:text-navy-100" />
+            </button>
+          )}
         </div>
       </article>
     </Portal>

@@ -36,7 +36,7 @@ CREATE TYPE reflection_method AS ENUM ('Written', 'Verbal', 'Other');
 -- Subjects
 CREATE TABLE subjects (
   -- Unique ID (Primary Key)
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Name
   name text NOT NULL UNIQUE CHECK (char_length(name) > 0),
@@ -58,7 +58,7 @@ CREATE TABLE subjects (
 -- Levels
 CREATE TABLE levels (
   -- Unique ID (Primary Key)
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Name
   name level NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE levels (
 -- Topics
 CREATE TABLE topics (
   -- Unique ID (Primary Key)
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Name
   name text NOT NULL CHECK (char_length(name) > 0),
@@ -108,7 +108,7 @@ CREATE TABLE topics (
 -- Lessons Plans
 CREATE TABLE lesson_plans (
   -- Unique ID (Primary Key)
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Creator ID
   creator_id uuid NOT NULL REFERENCES teacher_profiles(id),
@@ -126,10 +126,7 @@ CREATE TABLE lesson_plans (
   topic uuid NOT NULL REFERENCES topics(id),
 
   -- Content
-  content text NOT NULL CHECK (char_length(content) > 0),
-
-  -- Url
-  url text,
+  content text NOT NULL,
 
   -- Tags
   tags text[] NOT NULL DEFAULT '{}',
@@ -151,7 +148,7 @@ CREATE TABLE lesson_plans (
 -- User Lesson Plans
 CREATE TABLE user_lesson_plans (
   -- Unique ID (Primary Key)
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Teacher ID
   teacher_id uuid NOT NULL REFERENCES teacher_profiles(id) ON DELETE CASCADE,
@@ -182,7 +179,7 @@ CREATE TABLE user_lesson_plans (
 -- Lesson Plan Templates
 CREATE TABLE lesson_plan_templates (
   -- Unique ID (Primary Key)
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Creator ID
   creator_id uuid NOT NULL REFERENCES teacher_profiles(id),
@@ -255,7 +252,7 @@ CREATE TABLE lesson_plan_templates (
 -- User Lesson Plan Templates
 CREATE TABLE user_lesson_plan_templates (
   -- Unique ID (Primary Key)
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Teacher ID
   teacher_id uuid NOT NULL REFERENCES teacher_profiles(id) ON DELETE CASCADE,
@@ -276,6 +273,22 @@ CREATE TABLE user_lesson_plan_templates (
 
 
 -- * VIEWS
+-- Get all subjects, levels, and topics for lesson creator dropdown (If we say that users can add their own... we need to refresh thsi: REFRESH MATERIALIZED VIEW subjects_levels_topics;)
+CREATE MATERIALIZED VIEW subjects_levels_topics AS
+SELECT
+  subjects.id AS subject_id,
+  subjects.name AS subject_name,
+  levels.id AS level_id,
+  levels.name AS level_name,
+  topics.id AS topic_id,
+  topics.name AS topic_name
+FROM
+  topics
+INNER JOIN
+  levels ON topics.level_id = levels.id
+INNER JOIN
+  subjects ON topics.subject_id = subjects.id;
+
 
 
 -- * FUNCTIONS

@@ -39,7 +39,6 @@ export default function Logo({
         )}
         src={logo}
         alt="logo"
-        placeholder="blur"
         width={44}
         height={44}
         priority={true}
