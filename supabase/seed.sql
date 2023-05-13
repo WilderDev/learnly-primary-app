@@ -3411,41 +3411,1161 @@ SELECT create_topic(
   'HTH'
 );
 ---- Level 2 Health (5)
+SELECT create_topic(
+  'Healthy Lifestyles',
+  'Exploring the components of a healthy lifestyle, including balanced diet, regular exercise, and sufficient sleep.',
+  'https://source.unsplash.com/random/?kids,healthy-lifestyle',
+  '2',
+  'HTH'
+);
+SELECT create_topic(
+  'Disease Prevention',
+  'Understanding common illnesses, their causes and prevention.',
+  'https://source.unsplash.com/random/?kids,disease-prevention',
+  '2',
+  'HTH'
+);
+SELECT create_topic(
+  'Safety Rules and Emergencies',
+  'Learning about safety rules in different settings and how to respond to emergencies.',
+  'https://source.unsplash.com/random/?kids,safety-rules',
+  '2',
+  'HTH'
+);
+SELECT create_topic(
+  'Emotional Well-being',
+  'Learning about emotions, stress management, and developing resilience.',
+  'https://source.unsplash.com/random/?kids,emotional-wellbeing',
+  '2',
+  'HTH'
+);
+SELECT create_topic(
+  'Puberty and Personal Hygiene',
+  'Understanding the changes during puberty and the importance of personal hygiene.',
+  'https://source.unsplash.com/random/?kids,puberty',
+  '2',
+  'HTH'
+);
 ---- Level 3 Health (5)
+SELECT create_topic(
+  'Nutrition and Exercise',
+  'Deepening understanding of nutrition, balanced diet, and the role of exercise in maintaining health.',
+  'https://source.unsplash.com/random/?kids,nutrition-exercise',
+  '3',
+  'HTH'
+);
+SELECT create_topic(
+  'Disease Prevention and Health Promotion',
+  'Learning about diseases, their prevention, and how to promote health at the individual and community level.',
+  'https://source.unsplash.com/random/?kids,disease-prevention',
+  '3',
+  'HTH'
+);
+SELECT create_topic(
+  'Mental and Emotional Health',
+  'Exploring deeper into mental and emotional health, understanding mental health issues and how to seek help.',
+  'https://source.unsplash.com/random/?kids,mental-health',
+  '3',
+  'HTH'
+);
+SELECT create_topic(
+  'Safety and First Aid',
+  'Learning about safety measures and basic first aid skills.',
+  'https://source.unsplash.com/random/?kids,safety-first-aid',
+  '3',
+  'HTH'
+);
+SELECT create_topic(
+  'Puberty and Adolescent Health',
+  'Exploring the changes during puberty and the importance of health care during adolescence.',
+  'https://source.unsplash.com/random/?kids,adolescent-health',
+  '3',
+  'HTH'
+);
 ---- Level 4 Health (5)
+SELECT create_topic(
+  'Advanced Nutrition and Exercise',
+  'Understanding the vital role of nutrition and physical activity in maintaining good health.',
+  'https://source.unsplash.com/random/?kids,advanced-nutrition-exercise',
+  '4',
+  'HTH'
+);
+SELECT create_topic(
+  'Preventive Healthcare',
+  'Learning about the importance of preventive healthcare including vaccinations, regular check-ups, and screenings.',
+  'https://source.unsplash.com/random/?kids,preventive-healthcare',
+  '4',
+  'HTH'
+);
+SELECT create_topic(
+  'Mental Health and Stress Management',
+  'Deepening understanding of mental health, stress management techniques, and the importance of seeking help when needed.',
+  'https://source.unsplash.com/random/?kids,mental-health-stress',
+  '4',
+  'HTH'
+);
+SELECT create_topic(
+  'First Aid and Emergency Responses',
+  'Understanding how to respond to emergencies and provide basic first aid.',
+  'https://source.unsplash.com/random/?kids,first-aid',
+  '4',
+  'HTH'
+);
+SELECT create_topic(
+  'Adolescent Health and Sex Education',
+  'Learning about the changes during adolescence, personal hygiene, and basics of sex education.',
+  'https://source.unsplash.com/random/?kids,adolescent-health',
+  '4',
+  'HTH'
+);
 ---- Level 5 Health (5)
+SELECT create_topic(
+  'Healthy Lifestyle Choices',
+  'Understanding the long-term impact of lifestyle choices on health, and learning to make informed decisions.',
+  'https://source.unsplash.com/random/?kids,healthy-lifestyle',
+  '5',
+  'HTH'
+);
+SELECT create_topic(
+  'Healthcare Systems and Services',
+  'Learning about healthcare systems, medical professions, and services available for maintaining health.',
+  'https://source.unsplash.com/random/?kids,healthcare-systems',
+  '5',
+  'HTH'
+);
+SELECT create_topic(
+  'Advanced Mental Health',
+  'Exploring mental health issues at a deeper level, understanding symptoms, and knowing how and when to seek help.',
+  'https://source.unsplash.com/random/?kids,advanced-mental-health',
+  '5',
+  'HTH'
+);
+SELECT create_topic(
+  'Emergency Preparedness',
+  'Understanding the importance of being prepared for emergencies, learning about emergency response plans and procedures.',
+  'https://source.unsplash.com/random/?kids,emergency-preparedness',
+  '5',
+  'HTH'
+);
+SELECT create_topic(
+  'Comprehensive Sex Education',
+  'Learning about sexual and reproductive health, understanding consent, and making informed decisions.',
+  'https://source.unsplash.com/random/?kids,sex-education',
+  '5',
+  'HTH'
+);
 --- COMPSCI (40) - "computer science"
 ---- Pre-K Computer Science (5)
+SELECT create_topic(
+  'Exploring Devices',
+  'Understanding what a computer is and exploring different types of technological devices.',
+  'https://source.unsplash.com/random/?kids,devices',
+  'Pre-K',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Introduction to Mouse and Keyboard',
+  'Learning how to use a mouse and keyboard.',
+  'https://source.unsplash.com/random/?kids,mouse-keyboard',
+  'Pre-K',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Basics of Using a Computer',
+  'Understanding how to turn on a computer and open applications.',
+  'https://source.unsplash.com/random/?kids,computer-basics',
+  'Pre-K',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Introduction to Internet Safety',
+  'Learning about basic rules of internet safety.',
+  'https://source.unsplash.com/random/?kids,internet-safety',
+  'Pre-K',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Using Learning Games',
+  'Exploring age-appropriate educational games on a computer.',
+  'https://source.unsplash.com/random/?kids,learning-games',
+  'Pre-K',
+  'COMPSCI'
+);
 ---- Kindergarten Computer Science (5)
+SELECT create_topic(
+  'Computers and Communication',
+  'Understanding how computers help us communicate and learning to use simple communication tools.',
+  'https://source.unsplash.com/random/?kids,computer-communication',
+  'K',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Using a Word Processor',
+  'Learning to type and create simple documents using a word processor.',
+  'https://source.unsplash.com/random/?kids,word-processor',
+  'K',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Internet Safety and Digital Citizenship',
+  'Deepening understanding of internet safety and learning about being a good digital citizen.',
+  'https://source.unsplash.com/random/?kids,digital-citizenship',
+  'K',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Introduction to Coding',
+  'Exploring the basics of coding through age-appropriate activities and games.',
+  'https://source.unsplash.com/random/?kids,coding',
+  'K',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Understanding Algorithms',
+  'Learning about algorithms and how they are used in technology.',
+  'https://source.unsplash.com/random/?kids,algorithms',
+  'K',
+  'COMPSCI'
+);
 ---- Level 1 Computer Science (5)
+SELECT create_topic(
+  'Introduction to Programming',
+  'Introduction to basic programming concepts using kid-friendly coding tools.',
+  'https://source.unsplash.com/random/?kids,programming',
+  '1',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Using the Internet for Learning',
+  'Understanding how to use the internet as a resource for learning, including using educational websites and apps.',
+  'https://source.unsplash.com/random/?kids,internet-learning',
+  '1',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Improving Typing Skills',
+  'Practicing and improving typing skills through games and exercises.',
+  'https://source.unsplash.com/random/?kids,typing',
+  '1',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Digital Art Creation',
+  'Learning to use digital tools to create art, including using drawing and painting apps.',
+  'https://source.unsplash.com/random/?kids,digital-art',
+  '1',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Continuing Internet Safety and Digital Citizenship',
+  'Deepening understanding of internet safety and digital citizenship, including understanding cyberbullying.',
+  'https://source.unsplash.com/random/?kids,internet-safety',
+  '1',
+  'COMPSCI'
+);
 ---- Level 2 Computer Science (5)
+SELECT create_topic(
+  'Advanced Programming Concepts',
+  'Exploring more advanced programming concepts using age-appropriate coding tools.',
+  'https://source.unsplash.com/random/?kids,advanced-programming',
+  '2',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Using Spreadsheets',
+  'Introduction to using spreadsheets for simple tasks, like tracking personal expenses or grades.',
+  'https://source.unsplash.com/random/?kids,spreadsheets',
+  '2',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Creating Presentations',
+  'Learning to use digital tools to create presentations, including using templates and adding images and text.',
+  'https://source.unsplash.com/random/?kids,presentations',
+  '2',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Internet Research Skills',
+  'Learning how to use the internet for research, including how to evaluate the credibility of sources.',
+  'https://source.unsplash.com/random/?kids,internet-research',
+  '2',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Coding with Scratch',
+  'Learning to code with Scratch, an introductory programming language.',
+  'https://source.unsplash.com/random/?kids,scratch-coding',
+  '2',
+  'COMPSCI'
+);
 ---- Level 3 Computer Science (5)
+SELECT create_topic(
+  'Intermediate Programming Concepts',
+  'Continuing to explore more advanced programming concepts with an emphasis on problem-solving.',
+  'https://source.unsplash.com/random/?kids,programming',
+  '3',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Building Simple Websites',
+  'Introduction to building simple websites using HTML and CSS.',
+  'https://source.unsplash.com/random/?kids,web-development',
+  '3',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Digital Media Creation',
+  'Learning how to create digital media, including audio and video projects.',
+  'https://source.unsplash.com/random/?kids,digital-media',
+  '3',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Advanced Internet Research Skills',
+  'Deepening internet research skills, including understanding more about digital literacy and credibility of sources.',
+  'https://source.unsplash.com/random/?kids,internet-research',
+  '3',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Introduction to Python',
+  'Introduction to Python, a versatile and widely-used programming language.',
+  'https://source.unsplash.com/random/?kids,python',
+  '3',
+  'COMPSCI'
+);
 ---- Level 4 Computer Science (5)
+SELECT create_topic(
+  'Complex Programming Concepts',
+  'Learning more complex programming concepts with an emphasis on logical thinking and problem-solving.',
+  'https://source.unsplash.com/random/?kids,programming',
+  '4',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Building Interactive Websites',
+  'Learning to build interactive websites using HTML, CSS, and introductory JavaScript.',
+  'https://source.unsplash.com/random/?kids,web-development',
+  '4',
+  'COMPSCI'
+);
+SELECT create_topic(
+  '3D Modeling and Printing',
+  'Introduction to creating 3D models and understanding the basics of 3D printing.',
+  'https://source.unsplash.com/random/?kids,3d-printing',
+  '4',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Cybersecurity Basics',
+  'Understanding the basics of cybersecurity, including protecting personal information online.',
+  'https://source.unsplash.com/random/?kids,cybersecurity',
+  '4',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Intermediate Python',
+  'Deepening knowledge of Python programming with a focus on building simple projects.',
+  'https://source.unsplash.com/random/?kids,python',
+  '4',
+  'COMPSCI'
+);
 ---- Level 5 Computer Science (5)
+SELECT create_topic(
+  'Advanced Programming Concepts',
+  'Exploring advanced programming concepts with a focus on problem-solving and critical thinking.',
+  'https://source.unsplash.com/random/?kids,programming',
+  '5',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Web Development with JavaScript',
+  'Learning to build dynamic websites using JavaScript in conjunction with HTML and CSS.',
+  'https://source.unsplash.com/random/?kids,web-development',
+  '5',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Robotics and Automation',
+  'Introduction to the basics of robotics and automation, including programming simple robots.',
+  'https://source.unsplash.com/random/?kids,robotics',
+  '5',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Cybersecurity and Digital Citizenship',
+  'Deepening understanding of cybersecurity and the importance of good digital citizenship.',
+  'https://source.unsplash.com/random/?kids,cybersecurity',
+  '5',
+  'COMPSCI'
+);
+SELECT create_topic(
+  'Advanced Python',
+  'Furthering knowledge of Python programming with a focus on creating more complex projects.',
+  'https://source.unsplash.com/random/?kids,python',
+  '5',
+  'COMPSCI'
+);
 --- SEL (40) - "social emotional learning"
 ---- Pre-K Social Emotional Learning (5)
+SELECT create_topic(
+  'Recognizing Emotions',
+  'Learning to recognize and name different emotions.',
+  'https://source.unsplash.com/random/?kids,emotions',
+  'Pre-K',
+  'SEL'
+);
+SELECT create_topic(
+  'Making Friends',
+  'Understanding the basics of making and being a good friend.',
+  'https://source.unsplash.com/random/?kids,friends',
+  'Pre-K',
+  'SEL'
+);
+SELECT create_topic(
+  'Sharing and Taking Turns',
+  'Learning the importance of sharing and taking turns with others.',
+  'https://source.unsplash.com/random/?kids,sharing',
+  'Pre-K',
+  'SEL'
+);
+SELECT create_topic(
+  'Respecting Differences',
+  'Introduction to the concept of diversity and the importance of respecting differences.',
+  'https://source.unsplash.com/random/?kids,respecting-differences',
+  'Pre-K',
+  'SEL'
+);
+SELECT create_topic(
+  'Self-Control and Patience',
+  'Learning about self-control and the importance of patience.',
+  'https://source.unsplash.com/random/?kids,self-control',
+  'Pre-K',
+  'SEL'
+);
 ---- Kindergarten Social Emotional Learning (5)
+SELECT create_topic(
+  'Understanding Feelings',
+  'Learning more about feelings and how to manage them.',
+  'https://source.unsplash.com/random/?kids,feelings',
+  'K',
+  'SEL'
+);
+SELECT create_topic(
+  'Conflict Resolution',
+  'Introduction to basic conflict resolution strategies and problem-solving.',
+  'https://source.unsplash.com/random/?kids,conflict-resolution',
+  'K',
+  'SEL'
+);
+SELECT create_topic(
+  'Empathy and Kindness',
+  'Understanding the importance of empathy and kindness towards others.',
+  'https://source.unsplash.com/random/?kids,empathy',
+  'K',
+  'SEL'
+);
+SELECT create_topic(
+  'Respecting Others',
+  'Learning about the importance of respect and good manners.',
+  'https://source.unsplash.com/random/?kids,respect',
+  'K',
+  'SEL'
+);
+SELECT create_topic(
+  'Building Confidence',
+  'Activities and lessons designed to build self-esteem and confidence.',
+  'https://source.unsplash.com/random/?kids,confidence',
+  'K',
+  'SEL'
+);
 ---- Level 1 Social Emotional Learning (5)
+SELECT create_topic(
+  'Identifying Strengths and Weaknesses',
+  'Learning to identify personal strengths and areas for improvement.',
+  'https://source.unsplash.com/random/?kids,self-awareness',
+  '1',
+  'SEL'
+);
+SELECT create_topic(
+  'Working in a Team',
+  'Understanding the value of teamwork and cooperation.',
+  'https://source.unsplash.com/random/?kids,teamwork',
+  '1',
+  'SEL'
+);
+SELECT create_topic(
+  'Understanding Bullying',
+  'Introduction to the concept of bullying and strategies to deal with it.',
+  'https://source.unsplash.com/random/?kids,bullying',
+  '1',
+  'SEL'
+);
+SELECT create_topic(
+  'Respecting Authority',
+  'Learning about the importance of respecting authority and following rules.',
+  'https://source.unsplash.com/random/?kids,respecting-authority',
+  '1',
+  'SEL'
+);
+SELECT create_topic(
+  'Setting Goals',
+  'Introduction to setting personal goals and working towards them.',
+  'https://source.unsplash.com/random/?kids,goal-setting',
+  '1',
+  'SEL'
+);
 ---- Level 2 Social Emotional Learning (5)
+SELECT create_topic(
+  'Growth Mindset',
+  'Introduction to the concept of growth mindset and its importance.',
+  'https://source.unsplash.com/random/?kids,growth-mindset',
+  '2',
+  'SEL'
+);
+SELECT create_topic(
+  'Peer Pressure',
+  'Understanding peer pressure and learning strategies to handle it.',
+  'https://source.unsplash.com/random/?kids,peer-pressure',
+  '2',
+  'SEL'
+);
+SELECT create_topic(
+  'Conflict Resolution Advanced',
+  'Further development of conflict resolution strategies and problem-solving.',
+  'https://source.unsplash.com/random/?kids,conflict-resolution',
+  '2',
+  'SEL'
+);
+SELECT create_topic(
+  'Understanding Diversity',
+  'Learning about diversity and the importance of inclusivity.',
+  'https://source.unsplash.com/random/?kids,diversity',
+  '2',
+  'SEL'
+);
+SELECT create_topic(
+  'Managing Stress',
+  'Introduction to stress management techniques suitable for children.',
+  'https://source.unsplash.com/random/?kids,stress-management',
+  '2',
+  'SEL'
+);
 ---- Level 3 Social Emotional Learning (5)
+SELECT create_topic(
+  'Digital Citizenship',
+  'Understanding the responsibilities and rules of online interactions.',
+  'https://source.unsplash.com/random/?kids,digital-citizenship',
+  '3',
+  'SEL'
+);
+SELECT create_topic(
+  'Resilience',
+  'Developing resilience and understanding the ability to recover from setbacks.',
+  'https://source.unsplash.com/random/?kids,resilience',
+  '3',
+  'SEL'
+);
+SELECT create_topic(
+  'Emotional Intelligence',
+  'Introduction to emotional intelligence and its importance in daily life.',
+  'https://source.unsplash.com/random/?kids,emotional-intelligence',
+  '3',
+  'SEL'
+);
+SELECT create_topic(
+  'Healthy Relationships',
+  'Understanding the characteristics of healthy relationships and friendships.',
+  'https://source.unsplash.com/random/?kids,healthy-relationships',
+  '3',
+  'SEL'
+);
+SELECT create_topic(
+  'Personal Responsibility',
+  'Learning about personal responsibility and accountability.',
+  'https://source.unsplash.com/random/?kids,personal-responsibility',
+  '3',
+  'SEL'
+);
 ---- Level 4 Social Emotional Learning (5)
+SELECT create_topic(
+  'Advanced Emotional Intelligence',
+  'Further development of emotional intelligence skills.',
+  'https://source.unsplash.com/random/?kids,emotional-intelligence',
+  '4',
+  'SEL'
+);
+SELECT create_topic(
+  'Goal Setting',
+  'Learning about setting and working towards personal goals.',
+  'https://source.unsplash.com/random/?kids,goal-setting',
+  '4',
+  'SEL'
+);
+SELECT create_topic(
+  'Advanced Healthy Relationships',
+  'Further understanding of healthy relationships, including communication and boundaries.',
+  'https://source.unsplash.com/random/?kids,healthy-relationships',
+  '4',
+  'SEL'
+);
+SELECT create_topic(
+  'Self Advocacy',
+  'Introduction to self advocacy and standing up for oneself.',
+  'https://source.unsplash.com/random/?kids,self-advocacy',
+  '4',
+  'SEL'
+);
+SELECT create_topic(
+  'Advanced Personal Responsibility',
+  'Further understanding of personal responsibility and accountability.',
+  'https://source.unsplash.com/random/?kids,personal-responsibility',
+  '4',
+  'SEL'
+);
 ---- Level 5 Social Emotional Learning (5)
+SELECT create_topic(
+  'Critical Thinking',
+  'Introduction to critical thinking and decision making skills.',
+  'https://source.unsplash.com/random/?kids,critical-thinking',
+  '5',
+  'SEL'
+);
+SELECT create_topic(
+  'Advanced Goal Setting',
+  'Further understanding of goal setting, including long-term goals and action plans.',
+  'https://source.unsplash.com/random/?kids,goal-setting',
+  '5',
+  'SEL'
+);
+SELECT create_topic(
+  'Leadership Skills',
+  'Introduction to leadership skills and qualities.',
+  'https://source.unsplash.com/random/?kids,leadership',
+  '5',
+  'SEL'
+);
+SELECT create_topic(
+  'Advanced Self Advocacy',
+  'Further development of self advocacy skills.',
+  'https://source.unsplash.com/random/?kids,self-advocacy',
+  '5',
+  'SEL'
+);
+SELECT create_topic(
+  'Managing Change',
+  'Learning about handling and adapting to changes.',
+  'https://source.unsplash.com/random/?kids,managing-change',
+  '5',
+  'SEL'
+);
 --- MND (40) - "mindfulness"
 ---- Pre-K Mindfulness (5)
+SELECT create_topic(
+  'Introduction to Mindfulness',
+  'An introduction to the concept of mindfulness and being present.',
+  'https://source.unsplash.com/random/?kids,mindfulness',
+  'Pre-K',
+  'MND'
+);
+SELECT create_topic(
+  'Sensory Awareness',
+  'Exploring awareness of the five senses as a part of mindfulness.',
+  'https://source.unsplash.com/random/?kids,senses',
+  'Pre-K',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Breathing',
+  'Introduction to the practice of mindful breathing to calm and focus the mind.',
+  'https://source.unsplash.com/random/?kids,breathing',
+  'Pre-K',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Movement',
+  'Introduction to mindful movement as a way to understand our bodies.',
+  'https://source.unsplash.com/random/?kids,movement',
+  'Pre-K',
+  'MND'
+);
+SELECT create_topic(
+  'Gratitude Practice',
+  'Introduction to the practice of gratitude as a part of mindfulness.',
+  'https://source.unsplash.com/random/?kids,gratitude',
+  'Pre-K',
+  'MND'
+);
 ---- Kindergarten Mindfulness (5)
+SELECT create_topic(
+  'Continued Mindfulness Practice',
+  'Continuing the practice of mindfulness and being present.',
+  'https://source.unsplash.com/random/?kids,mindfulness',
+  'K',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Listening',
+  'Developing the skill of mindful listening.',
+  'https://source.unsplash.com/random/?kids,listening',
+  'K',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Eating',
+  'Introduction to the practice of mindful eating.',
+  'https://source.unsplash.com/random/?kids,eating',
+  'K',
+  'MND'
+);
+SELECT create_topic(
+  'Body Scan Meditation',
+  'Introduction to the body scan meditation as a mindfulness practice.',
+  'https://source.unsplash.com/random/?kids,meditation',
+  'K',
+  'MND'
+);
+SELECT create_topic(
+  'Kindness Practice',
+  'Cultivating kindness towards oneself and others as a part of mindfulness.',
+  'https://source.unsplash.com/random/?kids,kindness',
+  'K',
+  'MND'
+);
 ---- Level 1 Mindfulness (5)
+SELECT create_topic(
+  'Deepening Mindfulness Practice',
+  'Further exploration and practice of mindfulness techniques.',
+  'https://source.unsplash.com/random/?kids,mindfulness',
+  '1',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Communication',
+  'Introduction to mindful communication and listening.',
+  'https://source.unsplash.com/random/?kids,communication',
+  '1',
+  'MND'
+);
+SELECT create_topic(
+  'Understanding Emotions',
+  'A journey into understanding and managing emotions through mindfulness.',
+  'https://source.unsplash.com/random/?kids,emotions',
+  '1',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness in Nature',
+  'Exploring mindfulness through observation and appreciation of nature.',
+  'https://source.unsplash.com/random/?kids,nature',
+  '1',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Art',
+  'Using art as a tool for practicing mindfulness.',
+  'https://source.unsplash.com/random/?kids,art',
+  '1',
+  'MND'
+);
 ---- Level 2 Mindfulness (5)
+SELECT create_topic(
+  'Advancing Mindfulness Practice',
+  'Continuing to deepen mindfulness practice and techniques.',
+  'https://source.unsplash.com/random/?kids,mindfulness',
+  '2',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Problem-Solving',
+  'Introduction to applying mindfulness in problem-solving.',
+  'https://source.unsplash.com/random/?kids,problem-solving',
+  '2',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Empathy',
+  'Understanding empathy and how mindfulness can help to foster it.',
+  'https://source.unsplash.com/random/?kids,empathy',
+  '2',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Conflict Resolution',
+  'Applying mindfulness in situations of conflict and dispute.',
+  'https://source.unsplash.com/random/?kids,conflict-resolution',
+  '2',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Sleep',
+  'How mindfulness can improve sleep and relaxation.',
+  'https://source.unsplash.com/random/?kids,sleep',
+  '2',
+  'MND'
+);
 ---- Level 3 Mindfulness (5)
+SELECT create_topic(
+  'Mindful Leadership',
+  'Exploring how mindfulness can contribute to effective leadership.',
+  'https://source.unsplash.com/random/?kids,leadership',
+  '3',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Gratitude',
+  'Introduction to gratitude practice in mindfulness.',
+  'https://source.unsplash.com/random/?kids,gratitude',
+  '3',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Eating',
+  'Learning to appreciate food and eat mindfully.',
+  'https://source.unsplash.com/random/?kids,eating',
+  '3',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness in Action',
+  'Applying mindfulness in everyday activities.',
+  'https://source.unsplash.com/random/?kids,activities',
+  '3',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Music',
+  'Exploring how music can be a tool for mindfulness.',
+  'https://source.unsplash.com/random/?kids,music',
+  '3',
+  'MND'
+);
 ---- Level 4 Mindfulness (5)
+SELECT create_topic(
+  'Mindfulness and Resilience',
+  'Understanding resilience and how mindfulness can help to build it.',
+  'https://source.unsplash.com/random/?kids,resilience',
+  '4',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Writing',
+  'Exploring writing as a tool for mindfulness.',
+  'https://source.unsplash.com/random/?kids,writing',
+  '4',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Stress Management',
+  'Learning how mindfulness can help manage stress.',
+  'https://source.unsplash.com/random/?kids,stress-management',
+  '4',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Nature Conservation',
+  'Understanding the role of mindfulness in appreciating and conserving nature.',
+  'https://source.unsplash.com/random/?kids,nature-conservation',
+  '4',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Social Responsibility',
+  'Exploring how mindfulness can contribute to social responsibility.',
+  'https://source.unsplash.com/random/?kids,social-responsibility',
+  '4',
+  'MND'
+);
 ---- Level 5 Mindfulness (5)
+SELECT create_topic(
+  'Mindfulness and Emotional Intelligence',
+  'Understanding Emotional Intelligence and how mindfulness can enhance it.',
+  'https://source.unsplash.com/random/?kids,emotional-intelligence',
+  '5',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Conflict Resolution',
+  'Exploring how mindfulness can contribute to conflict resolution.',
+  'https://source.unsplash.com/random/?kids,conflict-resolution',
+  '5',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Communication',
+  'Understanding the role of mindfulness in effective communication.',
+  'https://source.unsplash.com/random/?kids,communication',
+  '5',
+  'MND'
+);
+SELECT create_topic(
+  'Mindfulness and Environmental Awareness',
+  'Learning about environmental awareness through the lens of mindfulness.',
+  'https://source.unsplash.com/random/?kids,environmental-awareness',
+  '5',
+  'MND'
+);
+SELECT create_topic(
+  'Mindful Future',
+  'Discussion on the importance of mindfulness in shaping the future.',
+  'https://source.unsplash.com/random/?kids,future',
+  '5',
+  'MND'
+);
 --- ENTP (40) - "entrepreneurship"
 ---- Pre-K Entrepreneurship (5)
----- Kindergarten Entrepreneurship (5)
+SELECT create_topic(
+  'Introduction to Entrepreneurship',
+  'Basic introduction to the concept of entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,entrepreneurship',
+  'Pre-K',
+  'ENTP'
+);
+SELECT create_topic(
+  'Being a Leader',
+  'Understanding the qualities of a good leader.',
+  'https://source.unsplash.com/random/?kids,leader',
+  'Pre-K',
+  'ENTP'
+);
+SELECT create_topic(
+  'Creativity and Ideas',
+  'Learning about the importance of creativity and ideas in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,creativity',
+  'Pre-K',
+  'ENTP'
+);
+SELECT create_topic(
+  'Problem Solving',
+  'Introduction to problem solving - an important skill for entrepreneurs.',
+  'https://source.unsplash.com/random/?kids,problem-solving',
+  'Pre-K',
+  'ENTP'
+);
+SELECT create_topic(
+  'Working as a Team',
+  'Understanding the importance of teamwork in achieving goals.',
+  'https://source.unsplash.com/random/?kids,teamwork',
+  'Pre-K',
+  'ENTP'
+);
+----- Kindergarten Entrepreneurship (5)
+SELECT create_topic(
+  'Understanding Business',
+  'An introductory lesson on what businesses are and how they function.',
+  'https://source.unsplash.com/random/?kids,business',
+  'K',
+  'ENTP'
+);
+SELECT create_topic(
+  'Making a Plan',
+  'Learning about the importance of planning in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,planning',
+  'K',
+  'ENTP'
+);
+SELECT create_topic(
+  'Basics of Money',
+  'Introduction to the concept of money and its role in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,money',
+  'K',
+  'ENTP'
+);
+SELECT create_topic(
+  'Innovation and Ideas',
+  'Exploring how new ideas can lead to new products or services.',
+  'https://source.unsplash.com/random/?kids,innovation',
+  'K',
+  'ENTP'
+);
+SELECT create_topic(
+  'Responsibility and Hard Work',
+  'Understanding the importance of responsibility and hard work in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,hardwork',
+  'K',
+  'ENTP'
+);
 ---- Level 1 Entrepreneurship (5)
+SELECT create_topic(
+  'What is an Entrepreneur?',
+  'Deepening understanding of who an entrepreneur is and what they do.',
+  'https://source.unsplash.com/random/?kids,entrepreneur',
+  '1',
+  'ENTP'
+);
+SELECT create_topic(
+  'Business and Community',
+  'Exploring how businesses interact with and impact their communities.',
+  'https://source.unsplash.com/random/?kids,community',
+  '1',
+  'ENTP'
+);
+SELECT create_topic(
+  'Creating a Simple Business Plan',
+  'Learning the basics of creating a business plan.',
+  'https://source.unsplash.com/random/?kids,business-plan',
+  '1',
+  'ENTP'
+);
+SELECT create_topic(
+  'Introduction to Marketing',
+  'Introduction to the concept of marketing and why it’s important for businesses.',
+  'https://source.unsplash.com/random/?kids,marketing',
+  '1',
+  'ENTP'
+);
+SELECT create_topic(
+  'Entrepreneurship and Ethics',
+  'Understanding the role of ethics in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,ethics',
+  '1',
+  'ENTP'
+);
 ---- Level 2 Entrepreneurship (5)
+SELECT create_topic(
+  'Understanding Profit and Loss',
+  'Deeper understanding of profit, loss, and the financial aspects of a business.',
+  'https://source.unsplash.com/random/?kids,profit',
+  '2',
+  'ENTP'
+);
+SELECT create_topic(
+  'Supply and Demand',
+  'Exploring the concept of supply and demand, and how it impacts a business.',
+  'https://source.unsplash.com/random/?kids,supply-demand',
+  '2',
+  'ENTP'
+);
+SELECT create_topic(
+  'Customer Service Basics',
+  'Learning about the importance of customer service in a business.',
+  'https://source.unsplash.com/random/?kids,customer-service',
+  '2',
+  'ENTP'
+);
+SELECT create_topic(
+  'Exploring Different Businesses',
+  'Learning about various types of businesses and how they function.',
+  'https://source.unsplash.com/random/?kids,business-types',
+  '2',
+  'ENTP'
+);
+SELECT create_topic(
+  'Leadership in Business',
+  'Understanding the role and importance of leadership in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,leadership',
+  '2',
+  'ENTP'
+);
 ---- Level 3 Entrepreneurship (5)
+SELECT create_topic(
+  'Importance of Networking',
+  'Learning about networking and its importance in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,networking',
+  '3',
+  'ENTP'
+);
+SELECT create_topic(
+  'Market Research Basics',
+  'Introduction to market research and how it helps in a business.',
+  'https://source.unsplash.com/random/?kids,market-research',
+  '3',
+  'ENTP'
+);
+SELECT create_topic(
+  'Starting a Small Business',
+  'Exploring the steps and considerations in starting a small business.',
+  'https://source.unsplash.com/random/?kids,small-business',
+  '3',
+  'ENTP'
+);
+SELECT create_topic(
+  'Branding and Promotion',
+  'Learning about branding and promotion strategies in business.',
+  'https://source.unsplash.com/random/?kids,branding',
+  '3',
+  'ENTP'
+);
+SELECT create_topic(
+  'Business Ethics and Social Responsibility',
+  'Deeper understanding of business ethics and the concept of social responsibility in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,ethics',
+  '3',
+  'ENTP'
+);
 ---- Level 4 Entrepreneurship (5)
+SELECT create_topic(
+  'Entrepreneurial Finance',
+  'A deeper dive into managing finances, raising capital, and funding for businesses.',
+  'https://source.unsplash.com/random/?kids,finance',
+  '4',
+  'ENTP'
+);
+SELECT create_topic(
+  'Business Growth and Strategy',
+  'Exploring strategies for growth and expansion in a business.',
+  'https://source.unsplash.com/random/?kids,business-growth',
+  '4',
+  'ENTP'
+);
+SELECT create_topic(
+  'Innovation and Creativity in Business',
+  'Understanding the role of innovation and creativity in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,innovation',
+  '4',
+  'ENTP'
+);
+SELECT create_topic(
+  'Digital Marketing Basics',
+  'Introduction to digital marketing and its relevance in modern businesses.',
+  'https://source.unsplash.com/random/?kids,digital-marketing',
+  '4',
+  'ENTP'
+);
+SELECT create_topic(
+  'Understanding Business Laws',
+  'An overview of important laws that affect businesses.',
+  'https://source.unsplash.com/random/?kids,business-law',
+  '4',
+  'ENTP'
+);
 ---- Level 5 Entrepreneurship (5)
+SELECT create_topic(
+  'Advanced Business Planning',
+  'Crafting detailed business plans, including financial projections and market analysis.',
+  'https://source.unsplash.com/random/?kids,business-plan',
+  '5',
+  'ENTP'
+);
+SELECT create_topic(
+  'Risk Management in Business',
+  'Understanding risks in entrepreneurship and strategies for managing them.',
+  'https://source.unsplash.com/random/?kids,risk-management',
+  '5',
+  'ENTP'
+);
+SELECT create_topic(
+  'Global Entrepreneurship',
+  'Exploring the global landscape of entrepreneurship and international business opportunities.',
+  'https://source.unsplash.com/random/?kids,global-business',
+  '5',
+  'ENTP'
+);
+SELECT create_topic(
+  'Entrepreneurship and Sustainability',
+  'Learning about sustainable practices in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,sustainability',
+  '5',
+  'ENTP'
+);
+SELECT create_topic(
+  'Entrepreneurial Leadership',
+  'Advanced concepts in leadership and team building in entrepreneurship.',
+  'https://source.unsplash.com/random/?kids,leadership',
+  '5',
+  'ENTP'
+);
 
 -- Little Learners | Comprehensive K-5 | Little Experimentors | STEM K-5 | etc...
 -- Learning Paths (4)
