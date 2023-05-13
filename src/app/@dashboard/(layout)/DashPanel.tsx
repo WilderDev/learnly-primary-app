@@ -12,16 +12,12 @@ interface IProps {
 }
 
 // Component
-export default function DashboardPanel({
-  children,
-  className,
-  colNum = 1,
-}: IProps) {
+export function DashPanel({ children, className, colNum = 1 }: IProps) {
   // * Render
   return (
     <motion.article
       className={cn(
-        'relative flex flex-col rounded-md bg-white shadow-md dark:shadow-navy-700 dark:bg-navy-800 print:hidden print:shadow-none',
+        'relative flex flex-col p-4 sm:px-5 rounded-md bg-white shadow-md dark:shadow-navy-700 dark:bg-navy-800 print:hidden print:shadow-none',
         className,
       )}
       initial={{ opacity: 0, y: 20 * colNum }}
@@ -40,9 +36,8 @@ interface IDashPanelProps {
 }
 
 // Component
-DashboardPanel.Header = function DashboardPanelHeader({
-  title,
-}: IDashPanelProps) {
+// (currently can't do the DashPanel.Header = DashPanelHeader thing inside of server components)... this works though
+export function DashPanelHeader({ title }: IDashPanelProps) {
   return (
     <>
       <div className="mb-3 flex h-8 w-full items-center justify-between">
@@ -53,4 +48,4 @@ DashboardPanel.Header = function DashboardPanelHeader({
       </div>
     </>
   );
-};
+}

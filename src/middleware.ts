@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import middlewareRedirect from './lib/auth/middlewareRedirect';
 
 const authorizedRoles = ['ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT']; // Authorized Roles
-const publicPaths = ['/onboarding', '/api/auth']; // Public Paths
+const publicPaths = ['/onboarding']; // Public Paths [only ones we want to do something with if user isn't authed]
 
 const isPublicPath = (path: string) => publicPaths.includes(path); // Check if path is public
 

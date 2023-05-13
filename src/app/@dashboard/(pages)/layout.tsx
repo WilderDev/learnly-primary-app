@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import LeftSidebar from '../(navigation)/(left-sidebar)/LeftSidebar';
 import TopHeader from '../(navigation)/(top-header)/TopHeader';
-import DashboardContainer from '../(layout)/DashboardContainer';
+import DashContainer from '../(layout)/DashContainer';
 
 export default function DashboardLayout({ children }: any) {
   return (
@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }: any) {
       {/* TSK */}
 
       {/* Main Content */}
-      <DashboardContainer>{children}</DashboardContainer>
+      <DashContainer>{children}</DashContainer>
 
       {/* Chat Bubble (Bottom Right) */}
       {/* TSK */}

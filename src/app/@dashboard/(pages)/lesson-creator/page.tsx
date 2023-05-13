@@ -1,5 +1,7 @@
 import DashMainCol from '../../(layout)/DashMainCol';
+import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
+import LessonCreatorForm from './LessonCreatorForm';
 
 export default function LessonCreatorPage() {
   return (
@@ -7,16 +9,24 @@ export default function LessonCreatorPage() {
       {/* Main Column */}
       <DashMainCol>
         {/* Lesson Creator Form */}
-        {/* TSK */}
+        <DashPanel>
+          <DashPanelHeader title="Create Your Personalized Lesson Plan" />
+
+          <LessonCreatorForm />
+        </DashPanel>
 
         {/* Lesson Creator Templates */}
-        {/* TSK */}
+        <DashPanel>
+          <DashPanelHeader title="Lesson Plan Templates" />
+        </DashPanel>
       </DashMainCol>
 
       {/* Side Column */}
       <DashSideCol>
         {/* Community Lessons */}
-        {/* TSK */}
+        <DashPanel>
+          <DashPanelHeader title="Community Lessons" />
+        </DashPanel>
       </DashSideCol>
     </>
   );

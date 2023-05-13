@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import DashMainCol from '../(layout)/DashMainCol';
 import DashSideCol from '../(layout)/DashSideCol';
 
@@ -20,6 +21,8 @@ export default function ParentDashboardHomePage() {
       <DashSideCol>
         {/* Home Completed Lessons */}
         {/* TSK */}
+
+        <Link href="/lesson-plans/test-lesson-plan">TEst</Link>
 
         {/* Home Calendar */}
         {/* TSK */}

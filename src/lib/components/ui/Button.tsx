@@ -37,7 +37,7 @@ export default function Button({
   // * Styles
   // Button Default Styles
   const defaultStyles =
-    'inline-flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out active:shadow-none';
+    'inline-flex items-center justify-center whitespace-nowrap font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out active:shadow-none';
 
   // Button Disabled Styles
   const disabledStyles = 'opacity-60 cursor-not-allowed';
