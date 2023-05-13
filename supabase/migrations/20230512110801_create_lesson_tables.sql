@@ -80,7 +80,7 @@ CREATE TABLE topics (
   id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
 
   -- Name
-  name text NOT NULL UNIQUE CHECK (char_length(name) > 0),
+  name text NOT NULL CHECK (char_length(name) > 0),
 
   -- Description
   description text NOT NULL,
@@ -294,13 +294,13 @@ BEGIN
   SELECT id INTO level_id FROM levels WHERE name = level_name;
   SELECT id INTO subject_id FROM subjects WHERE code = subject_code;
 
-  -- IF level_id IS NULL THEN
-  --   RAISE 'Level not found: %s', level_name;
-  -- END IF;
+  IF level_id IS NULL THEN
+    RAISE 'Level not found: %s', level_name;
+  END IF;
 
-  -- IF subject_id IS NULL THEN
-  --   RAISE 'Subject not found: %s', subject_code;
-  -- END IF;
+  IF subject_id IS NULL THEN
+    RAISE 'Subject not found: %s', subject_code;
+  END IF;
 
   INSERT INTO topics (
     name,

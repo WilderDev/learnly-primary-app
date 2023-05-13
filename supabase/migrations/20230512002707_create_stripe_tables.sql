@@ -20,7 +20,7 @@ CREATE TABLE customers (
 	-- Email, Phone, Name, Shipping, Metadata, Address, Description (optional)
 
 	-- Stripe Subscriptions
-	subscriptions jsonb NOT NULL DEFAULT '[]',
+	subscriptions jsonb NOT NULL DEFAULT '{}',
 
 	-- Timestamps
 	created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
@@ -63,7 +63,7 @@ CREATE TABLE payment_and_billing_details (
 	billing_city text NOT NULL DEFAULT '',
 
 	-- The Stripe Billing State or State
-	billing_state_state text NOT NULL DEFAULT '',
+	billing_state text NOT NULL DEFAULT '',
 
 	-- The Stripe Billing Postal Code
 	billing_postal_code text NOT NULL DEFAULT '',
@@ -226,25 +226,13 @@ CREATE TABLE prices (
 	nickname text NOT NULL DEFAULT '',
 
 	-- Stripe Price Type
-	type pricing_type NOT NULL DEFAULT 'one_time',
-
-	-- Stripe Price Unit Amount
-	unit_amount bigint NOT NULL DEFAULT 0,
-
-	-- Stripe Price Unit Amount Decimal
-	unit_amount_decimal text NOT NULL DEFAULT '0.00',
+	type pricing_type NOT NULL DEFAULT 'recurring',
 
 	-- Stripe Price Recurring Interval
 	recurring_interval pricing_plan_interval NOT NULL DEFAULT 'year',
 
 	-- Stripe Price Recurring Interval Count
 	recurring_interval_count integer NOT NULL DEFAULT 1,
-
-	-- Stripe Price Recurring Trial Period Days
-	recurring_trial_period_days integer NOT NULL DEFAULT 0,
-
-	-- Stripe Price Recurring Usage Type
-	recurring_usage_type text NOT NULL DEFAULT '',
 
 	-- Timestamps
 	created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
@@ -254,11 +242,10 @@ CREATE TABLE prices (
 -- * VIEWS
 -- User Subscriptions View
 CREATE VIEW user_subscriptions_view AS
-SELECT c.id as user_id, s.id as subscription_id, p.name as product_name, pr.unit_amount as price
+SELECT c.id as user_id, s.id as subscription_id, p.name as product_name
 FROM customers c
 JOIN subscriptions s ON c.id = s.user_id
-JOIN products p ON s.stripe_product_id = p.id
-JOIN prices pr ON s.stripe_price_id = pr.id;
+JOIN products p ON s.stripe_product_id = p.id;
 
 
 -- * FUNCTIONS
