@@ -7,6 +7,7 @@ import { signInUserWithEmail } from './_actions';
 import { toast } from 'sonner';
 import { useState } from 'react';
 import { UserIcon } from '@heroicons/react/24/outline';
+import { usePathname } from 'next/navigation';
 
 // * Props
 interface IProps {
@@ -22,6 +23,7 @@ export default function MarketingNavAuthModal({
   openSuccess,
 }: IProps) {
   // * Hooks
+  const pathname = usePathname(); // Pathname for redirecting after sign in
   const { mutate, isLoading } = useRequest(signInUserWithEmail, {
     onSuccess: (data) => {
       if (data.ok) {
@@ -68,7 +70,29 @@ export default function MarketingNavAuthModal({
         rounded="lg"
         loading={isLoading}
         className="w-full"
-        onClick={() => mutate({ email })}
+        onClick={async () => {
+          console.log('HERE', pathname);
+
+          const res = await fetch('/api/users/sign-in', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, redirectUrl: pathname }),
+          });
+
+          console.log('RES', res);
+
+          if (res.ok) {
+            toast.success('Check your email for a sign in link!');
+            close();
+            openSuccess();
+          } else {
+            toast.error("We couldn't sign you in. Please try again.");
+          }
+
+          // mutate({ email, redirectUrl: pathname });
+        }}
       >
         Time to Homeschool <span className="ml-2">😊</span>
       </Button>

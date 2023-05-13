@@ -1,5 +1,5 @@
-import DashMainCol from '../(layout)/DashMainCol';
-import DashSideCol from '../(layout)/DashSideCol';
+import DashMainCol from '../../(layout)/DashMainCol';
+import DashSideCol from '../../(layout)/DashSideCol';
 
 export default function CurriculumRoadmapPage() {
   return (
@@ -27,4 +27,4 @@ export const metadata = {
   description: 'TSK',
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355

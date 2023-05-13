@@ -2,7 +2,7 @@ import MarketingScripts from '@/lib/scripts/MarketingScripts';
 import { PropsWithChildren } from 'react';
 import MarketingNavigation from '../(navigation)/MarketingNavigation';
 import MarketingFooter from '../(navigation)/MarketingFooter';
-import MarketingThemeToggler from './MarketingThemeToggler';
+import MarketingThemeToggler from '../(navigation)/MarketingThemeToggler';
 
 export default function MarketingLayout({ children }: PropsWithChildren) {
   return (

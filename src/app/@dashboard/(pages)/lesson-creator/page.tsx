@@ -1,5 +1,6 @@
-import DashMainCol from '../(layout)/DashMainCol';
-import DashSideCol from '../(layout)/DashSideCol';
+import DashMainCol from '../../(layout)/DashMainCol';
+import DashSideCol from '../../(layout)/DashSideCol';
+import TEMP from './TEMP';
 
 export default function LessonCreatorPage() {
   return (
@@ -8,6 +9,7 @@ export default function LessonCreatorPage() {
       <DashMainCol>
         {/* Lesson Creator Form */}
         {/* TSK */}
+        <TEMP />
 
         {/* Lesson Creator Templates */}
         {/* TSK */}
@@ -27,4 +29,4 @@ export const metadata = {
   description: 'Create a lesson plan for your child.',
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355

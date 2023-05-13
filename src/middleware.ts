@@ -2,31 +2,36 @@ import { createMiddlewareSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { NextRequest, NextResponse } from 'next/server';
 import middlewareRedirect from './lib/auth/middlewareRedirect';
 
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next(); // Abstract Successful Response
+const authorizedRoles = ['ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT']; // Authorized Roles
+const publicPaths = ['/onboarding', '/api/auth']; // Public Paths
 
-  const supabase = createMiddlewareSupabaseClient({ req, res }); // Create Supabase Client for Middleware
+const isPublicPath = (path: string) => publicPaths.includes(path); // Check if path is public
+
+// * Middleware Handler
+export async function middleware(req: NextRequest) {
+  const supabase = createMiddlewareSupabaseClient({
+    req,
+    res: NextResponse.next(),
+  }); // Create Supabase Client for Middleware
 
   const {
     data: { session },
   } = await supabase.auth.getSession(); // Get Session
 
-  const authorizedRoles = ['ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT']; // Authorized Roles
-  const publicPaths = ['/onboarding', '/api/auth']; // Public Paths
-  const authorized =
-    session &&
-    authorizedRoles.includes(session.user.app_metadata.role) &&
-    !publicPaths.includes(req.nextUrl.pathname); // Authorized (Session Exists, Role is Authorized, Path is not Public)
+  const isAuthorized =
+    session && authorizedRoles.includes(session.user.app_metadata.role); // Check if user is authorized
+  const allowedAccess =
+    isAuthorized || (!isAuthorized && isPublicPath(req.nextUrl.pathname)); // Check if user is allowed access
 
   // If Authorized, udpate the user's streak
-  if (authorized && process.env.NODE_ENV === 'production') {
+  if (isAuthorized && process.env.NODE_ENV === 'production') {
     await supabase
       .from('profiles')
       .update({ last_activity: new Date(), status: 'ONLINE' })
       .eq('id', session.user.id);
   }
 
-  return authorized ? res : middlewareRedirect(req, '/'); // Return Response or Redirect
+  return allowedAccess ? NextResponse.next() : middlewareRedirect(req, '/'); // Return Response or Redirect
 }
 
 // See "Matching Paths" below to learn more

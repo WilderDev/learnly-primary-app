@@ -1,9 +1,9 @@
 import { PropsWithChildren } from 'react';
-import DashboardContainer from './DashboardContainer';
 import LeftSidebar from '../(navigation)/(left-sidebar)/LeftSidebar';
 import TopHeader from '../(navigation)/(top-header)/TopHeader';
+import DashboardContainer from '../(layout)/DashboardContainer';
 
-export default function DashboardLayout({ children }: PropsWithChildren) {
+export default function DashboardLayout({ children }: any) {
   return (
     <>
       {/* Left Sidebar */}

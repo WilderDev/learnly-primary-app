@@ -2,27 +2,30 @@
 
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
-import { supabaseClient } from '@/lib/auth/supabaseClient';
+import { supabaseServer } from '@/lib/auth/supabaseServer';
 import baseUrl from '@/lib/common/baseUrl';
 import { z } from 'zod';
 
 const signInUserWithEmailSchema = z.object({
   email: z.string().email(),
+  redirectUrl: z.string().url().optional(),
 });
 
 const signInUserWithEmailAction = async (
   input: z.infer<typeof signInUserWithEmailSchema>,
 ) => {
   try {
-    const supabase = supabaseClient();
+    const supabase = supabaseServer();
 
     const { error } = await supabase.auth.signInWithOtp({
       email: input.email,
       options: {
-        emailRedirectTo: baseUrl,
+        emailRedirectTo: input.redirectUrl || baseUrl,
         shouldCreateUser: false,
       },
     });
+
+    console.log('error:', error);
 
     if (error) {
       return responseContract(error.message, false);

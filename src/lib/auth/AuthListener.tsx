@@ -26,6 +26,7 @@ export default function AuthListener({ serverAccessToken }: IProps) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_, session) => {
+      console.log('session:', session);
       // Refresh if the access token is different from the server
       if (session?.access_token !== serverAccessToken) {
         router.refresh();

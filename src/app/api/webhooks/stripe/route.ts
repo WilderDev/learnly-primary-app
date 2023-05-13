@@ -17,11 +17,12 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!; // Retrieve the endpo
 
 // * HELPERS
 // Disable body parsing since we are retrieving the raw body
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//   },
+// };
+export const runtime = 'edge'; // Set the runtime to Edge
 
 // * EVENTS
 // Webhook Events to listen for: https://stripe.com/docs/api/events/types

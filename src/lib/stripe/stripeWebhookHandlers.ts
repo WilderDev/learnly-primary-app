@@ -130,8 +130,6 @@ interface ICreatePrice {
 
 // Handler
 export async function handleCreatePrice({ price }: ICreatePrice) {
-  console.log('typeof price.product:', typeof price.product);
-
   // 1. Insert the price into the database
   const { error: priceError } = await supabaseAdmin()
     .from('prices')
@@ -161,8 +159,6 @@ interface IUpdatePrice {
 
 // Handler
 export async function handleUpdatePrice({ price }: IUpdatePrice) {
-  console.log('typeof price.product:', typeof price.product);
-
   // 1. Update the price in the database
   const { error: priceError } = await supabaseAdmin()
     .from('prices')

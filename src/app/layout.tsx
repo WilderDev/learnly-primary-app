@@ -4,7 +4,6 @@ import cn from '@/lib/common/cn';
 import defaultMetadata from '@/lib/meta/defaultMetadata';
 import { baskervville, inter } from '@/lib/theme/fonts';
 
-import DashboardLayout from './@dashboard/(layout)/DashboardLayout';
 import Toast from '@/lib/components/ux/Toast';
 import AppProviders from '@/lib/components/providers/AppProviders';
 import { AuthProvider } from '@/lib/components/providers/AuthProvider';
@@ -16,11 +15,15 @@ import { ThemeProvider } from '@/lib/theme/ThemeCtx';
 interface IProps {
   dashboard: React.ReactNode;
   marketing: React.ReactNode;
-  onboarding: React.ReactNode;
+  modal: React.ReactNode;
 }
 
 // * Component
-export default async function RootLayout({ dashboard, marketing }: IProps) {
+export default async function RootLayout({
+  dashboard,
+  marketing,
+  modal,
+}: IProps) {
   // * Hooks
   const supabase = supabaseServer();
   const {
@@ -37,17 +40,18 @@ export default async function RootLayout({ dashboard, marketing }: IProps) {
 
             <AppProviders>
               {/* Main Content Wrapper */}
-              {session?.user ? (
-                <DashboardLayout>{dashboard}</DashboardLayout>
-              ) : (
-                marketing
-              )}
+              {session?.user ? dashboard : marketing}
+
+              {modal}
 
               {/* Custom Portal */}
               <div id="portal" />
 
               {/* Chat Portal */}
               <div id="chat-portal" />
+
+              {/* Interception Portal */}
+              <div id="interception-portal" />
 
               {/* Toast Container */}
               <Toast />
