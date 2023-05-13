@@ -59,14 +59,14 @@ double_confirm_changes = false
 enable_confirmations = false
 
 # Use an external OAuth provider.
-[auth.external.facebook]
-enabled = true
-client_id = "env(FACEBOOK_APP_CLIENT_ID)"
-secret = "env(FACEBOOK_APP_SECRET)"
-[auth.external.google]
-enabled = true
-client_id="env(GOOGLE_APP_CLIENT_ID)"
-secret="env(GOOGLE_APP_SECRET)"
+# [auth.external.facebook]
+# enabled = true
+# client_id = "env(FACEBOOK_APP_CLIENT_ID)"
+# secret = "env(FACEBOOK_APP_SECRET)"
+# [auth.external.google]
+# enabled = true
+# client_id="env(GOOGLE_APP_CLIENT_ID)"
+# secret="env(GOOGLE_APP_SECRET)"
 # Overrides the default auth redirectUrl.
 redirect_uri = ""
 # Overrides the default auth provider URL. Used to support self-hosted gitlab, single-tenant Azure,

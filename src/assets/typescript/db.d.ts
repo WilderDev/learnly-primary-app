@@ -9,6 +9,67 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      comment_reactions: {
+        Row: {
+          comment_id: string
+          created_at: string | null
+          id: string
+          reaction_id: string
+          reactor_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          comment_id: string
+          created_at?: string | null
+          id?: string
+          reaction_id: string
+          reactor_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          comment_id?: string
+          created_at?: string | null
+          id?: string
+          reaction_id?: string
+          reactor_id?: string
+          updated_at?: string | null
+        }
+      }
+      comments: {
+        Row: {
+          author_id: string | null
+          comment: string
+          commentable_id: string
+          commentable_type: Database["public"]["Enums"]["commentable_type"]
+          created_at: string | null
+          id: string
+          mentioned_user_ids: string[]
+          parent_comment_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          author_id?: string | null
+          comment: string
+          commentable_id: string
+          commentable_type?: Database["public"]["Enums"]["commentable_type"]
+          created_at?: string | null
+          id?: string
+          mentioned_user_ids?: string[]
+          parent_comment_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          author_id?: string | null
+          comment?: string
+          commentable_id?: string
+          commentable_type?: Database["public"]["Enums"]["commentable_type"]
+          created_at?: string | null
+          id?: string
+          mentioned_user_ids?: string[]
+          parent_comment_id?: string | null
+          updated_at?: string | null
+        }
+      }
       customers: {
         Row: {
           created_at: string
@@ -32,6 +93,209 @@ export interface Database {
           updated_at?: string
         }
       }
+      lesson_plan_templates: {
+        Row: {
+          assessments: Json[]
+          created_at: string
+          creator_id: string
+          difficulty: number
+          format: Database["public"]["Enums"]["format"]
+          id: string
+          image_path: string
+          learning_styles: Database["public"]["Enums"]["learning_style"][]
+          length_in_min: number
+          level: string
+          materials: Database["public"]["Enums"]["material"][]
+          objectives: Database["public"]["Enums"]["objective"][]
+          pace: Database["public"]["Enums"]["pace"]
+          philosophy: Database["public"]["Enums"]["philosophy"]
+          reflections: Json[]
+          special_considerations: string | null
+          standards: Database["public"]["Enums"]["standard"][]
+          subject: string
+          tags: string[]
+          teaching_strategy: Database["public"]["Enums"]["teaching_strategy"]
+          title: string
+          topic: string | null
+          updated_at: string
+        }
+        Insert: {
+          assessments?: Json[]
+          created_at?: string
+          creator_id: string
+          difficulty?: number
+          format?: Database["public"]["Enums"]["format"]
+          id?: string
+          image_path?: string
+          learning_styles?: Database["public"]["Enums"]["learning_style"][]
+          length_in_min?: number
+          level: string
+          materials?: Database["public"]["Enums"]["material"][]
+          objectives?: Database["public"]["Enums"]["objective"][]
+          pace?: Database["public"]["Enums"]["pace"]
+          philosophy?: Database["public"]["Enums"]["philosophy"]
+          reflections?: Json[]
+          special_considerations?: string | null
+          standards?: Database["public"]["Enums"]["standard"][]
+          subject: string
+          tags?: string[]
+          teaching_strategy?: Database["public"]["Enums"]["teaching_strategy"]
+          title: string
+          topic?: string | null
+          updated_at?: string
+        }
+        Update: {
+          assessments?: Json[]
+          created_at?: string
+          creator_id?: string
+          difficulty?: number
+          format?: Database["public"]["Enums"]["format"]
+          id?: string
+          image_path?: string
+          learning_styles?: Database["public"]["Enums"]["learning_style"][]
+          length_in_min?: number
+          level?: string
+          materials?: Database["public"]["Enums"]["material"][]
+          objectives?: Database["public"]["Enums"]["objective"][]
+          pace?: Database["public"]["Enums"]["pace"]
+          philosophy?: Database["public"]["Enums"]["philosophy"]
+          reflections?: Json[]
+          special_considerations?: string | null
+          standards?: Database["public"]["Enums"]["standard"][]
+          subject?: string
+          tags?: string[]
+          teaching_strategy?: Database["public"]["Enums"]["teaching_strategy"]
+          title?: string
+          topic?: string | null
+          updated_at?: string
+        }
+      }
+      lesson_plans: {
+        Row: {
+          content: string
+          created_at: string
+          creator_id: string
+          id: string
+          image_path: string
+          is_public: boolean
+          length_in_min: number
+          level: string
+          subject: string
+          tags: string[]
+          title: string
+          topic: string
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          creator_id: string
+          id?: string
+          image_path?: string
+          is_public?: boolean
+          length_in_min?: number
+          level: string
+          subject: string
+          tags?: string[]
+          title: string
+          topic: string
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          creator_id?: string
+          id?: string
+          image_path?: string
+          is_public?: boolean
+          length_in_min?: number
+          level?: string
+          subject?: string
+          tags?: string[]
+          title?: string
+          topic?: string
+          updated_at?: string
+          url?: string | null
+        }
+      }
+      levels: {
+        Row: {
+          animal: Database["public"]["Enums"]["animal"]
+          created_at: string
+          id: string
+          image_url: string
+          name: Database["public"]["Enums"]["level"]
+          updated_at: string
+        }
+        Insert: {
+          animal: Database["public"]["Enums"]["animal"]
+          created_at?: string
+          id?: string
+          image_url: string
+          name: Database["public"]["Enums"]["level"]
+          updated_at?: string
+        }
+        Update: {
+          animal?: Database["public"]["Enums"]["animal"]
+          created_at?: string
+          id?: string
+          image_url?: string
+          name?: Database["public"]["Enums"]["level"]
+          updated_at?: string
+        }
+      }
+      notifications: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          lesson_plan_id: string | null
+          metadata: Json
+          read_at: string | null
+          received_at: string | null
+          recipient_id: string
+          sender_id: string
+          sent_at: string
+          status: Database["public"]["Enums"]["notification_status"]
+          title: string
+          type: Database["public"]["Enums"]["notification_type"]
+          updated_at: string
+        }
+        Insert: {
+          body?: string
+          created_at?: string
+          id?: string
+          lesson_plan_id?: string | null
+          metadata?: Json
+          read_at?: string | null
+          received_at?: string | null
+          recipient_id: string
+          sender_id?: string
+          sent_at?: string
+          status?: Database["public"]["Enums"]["notification_status"]
+          title?: string
+          type?: Database["public"]["Enums"]["notification_type"]
+          updated_at?: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          lesson_plan_id?: string | null
+          metadata?: Json
+          read_at?: string | null
+          received_at?: string | null
+          recipient_id?: string
+          sender_id?: string
+          sent_at?: string
+          status?: Database["public"]["Enums"]["notification_status"]
+          title?: string
+          type?: Database["public"]["Enums"]["notification_type"]
+          updated_at?: string
+        }
+      }
       payment_and_billing_details: {
         Row: {
           billing_address_line1: string
@@ -42,7 +306,7 @@ export interface Database {
           billing_name: string
           billing_phone: string
           billing_postal_code: string
-          billing_state_state: string
+          billing_state: string
           card_brand: string
           created_at: string
           default_method: boolean
@@ -66,7 +330,7 @@ export interface Database {
           billing_name?: string
           billing_phone?: string
           billing_postal_code?: string
-          billing_state_state?: string
+          billing_state?: string
           card_brand?: string
           created_at?: string
           default_method?: boolean
@@ -90,7 +354,7 @@ export interface Database {
           billing_name?: string
           billing_phone?: string
           billing_postal_code?: string
-          billing_state_state?: string
+          billing_state?: string
           card_brand?: string
           created_at?: string
           default_method?: boolean
@@ -117,12 +381,8 @@ export interface Database {
           nickname: string
           recurring_interval: Database["public"]["Enums"]["pricing_plan_interval"]
           recurring_interval_count: number
-          recurring_trial_period_days: number
-          recurring_usage_type: string
           stripe_product_id: string
           type: Database["public"]["Enums"]["pricing_type"]
-          unit_amount: number
-          unit_amount_decimal: string
           updated_at: string
         }
         Insert: {
@@ -135,12 +395,8 @@ export interface Database {
           nickname?: string
           recurring_interval?: Database["public"]["Enums"]["pricing_plan_interval"]
           recurring_interval_count?: number
-          recurring_trial_period_days?: number
-          recurring_usage_type?: string
           stripe_product_id?: string
           type?: Database["public"]["Enums"]["pricing_type"]
-          unit_amount?: number
-          unit_amount_decimal?: string
           updated_at?: string
         }
         Update: {
@@ -153,12 +409,8 @@ export interface Database {
           nickname?: string
           recurring_interval?: Database["public"]["Enums"]["pricing_plan_interval"]
           recurring_interval_count?: number
-          recurring_trial_period_days?: number
-          recurring_usage_type?: string
           stripe_product_id?: string
           type?: Database["public"]["Enums"]["pricing_type"]
-          unit_amount?: number
-          unit_amount_decimal?: string
           updated_at?: string
         }
       }
@@ -194,21 +446,86 @@ export interface Database {
           updated_at?: string
         }
       }
-      student_preferences: {
+      reactions: {
         Row: {
-          created_at: string
+          created_at: string | null
           id: string
-          updated_at: string
+          label: string
+          metadata: Json
+          type: string
+          updated_at: string | null
+          url: string
         }
         Insert: {
-          created_at?: string
-          id: string
-          updated_at?: string
+          created_at?: string | null
+          id?: string
+          label: string
+          metadata?: Json
+          type: string
+          updated_at?: string | null
+          url: string
         }
         Update: {
-          created_at?: string
+          created_at?: string | null
           id?: string
+          label?: string
+          metadata?: Json
+          type?: string
+          updated_at?: string | null
+          url?: string
+        }
+      }
+      student_preferences: {
+        Row: {
+          accomplishments: Json
+          assessment_results: Json
+          created_at: string
+          goals: Database["public"]["Enums"]["student_goals"][]
+          id: string
+          interests: string[]
+          knowledge: Json
+          learning_environment_preferences: Database["public"]["Enums"]["environment_preferences"][]
+          learning_resources_preferences: Database["public"]["Enums"]["resource_preferences"][]
+          learning_styles: Database["public"]["Enums"]["learning_styles"][]
+          special_needs: Database["public"]["Enums"]["learning_disabilities"][]
+          strengths: string[]
+          subject_preferences: string[]
+          updated_at: string
+          weaknesses: string[]
+        }
+        Insert: {
+          accomplishments?: Json
+          assessment_results?: Json
+          created_at?: string
+          goals?: Database["public"]["Enums"]["student_goals"][]
+          id: string
+          interests?: string[]
+          knowledge?: Json
+          learning_environment_preferences?: Database["public"]["Enums"]["environment_preferences"][]
+          learning_resources_preferences?: Database["public"]["Enums"]["resource_preferences"][]
+          learning_styles?: Database["public"]["Enums"]["learning_styles"][]
+          special_needs?: Database["public"]["Enums"]["learning_disabilities"][]
+          strengths?: string[]
+          subject_preferences?: string[]
           updated_at?: string
+          weaknesses?: string[]
+        }
+        Update: {
+          accomplishments?: Json
+          assessment_results?: Json
+          created_at?: string
+          goals?: Database["public"]["Enums"]["student_goals"][]
+          id?: string
+          interests?: string[]
+          knowledge?: Json
+          learning_environment_preferences?: Database["public"]["Enums"]["environment_preferences"][]
+          learning_resources_preferences?: Database["public"]["Enums"]["resource_preferences"][]
+          learning_styles?: Database["public"]["Enums"]["learning_styles"][]
+          special_needs?: Database["public"]["Enums"]["learning_disabilities"][]
+          strengths?: string[]
+          subject_preferences?: string[]
+          updated_at?: string
+          weaknesses?: string[]
         }
       }
       student_profiles: {
@@ -240,6 +557,35 @@ export interface Database {
           id?: string
           last_name?: string
           teacher_id?: string
+          updated_at?: string
+        }
+      }
+      subjects: {
+        Row: {
+          code: string
+          created_at: string
+          description: string
+          id: string
+          image_url: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          description: string
+          id?: string
+          image_url: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          description?: string
+          id?: string
+          image_url?: string
+          name?: string
           updated_at?: string
         }
       }
@@ -335,9 +681,11 @@ export interface Database {
       teacher_profiles: {
         Row: {
           avatar_url: string
+          consecutive_activity_days: number
           created_at: string
           first_name: string
           id: string
+          last_activity: string
           last_name: string
           role: Database["public"]["Enums"]["user_role"]
           status: Database["public"]["Enums"]["profile_status"]
@@ -346,9 +694,11 @@ export interface Database {
         }
         Insert: {
           avatar_url?: string
+          consecutive_activity_days?: number
           created_at?: string
           first_name?: string
           id: string
+          last_activity?: string
           last_name?: string
           role?: Database["public"]["Enums"]["user_role"]
           status?: Database["public"]["Enums"]["profile_status"]
@@ -357,9 +707,11 @@ export interface Database {
         }
         Update: {
           avatar_url?: string
+          consecutive_activity_days?: number
           created_at?: string
           first_name?: string
           id?: string
+          last_activity?: string
           last_name?: string
           role?: Database["public"]["Enums"]["user_role"]
           status?: Database["public"]["Enums"]["profile_status"]
@@ -381,6 +733,41 @@ export interface Database {
         Update: {
           created_at?: string
           id?: string
+          updated_at?: string
+        }
+      }
+      topics: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          image_url: string
+          level_id: string | null
+          name: string
+          subject_id: string | null
+          topic_number: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: string
+          image_url: string
+          level_id?: string | null
+          name: string
+          subject_id?: string | null
+          topic_number?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          image_url?: string
+          level_id?: string | null
+          name?: string
+          subject_id?: string | null
+          topic_number?: number
           updated_at?: string
         }
       }
@@ -409,6 +796,67 @@ export interface Database {
           id?: string
           start_date?: string
           status?: Database["public"]["Enums"]["trial_status"]
+          teacher_id?: string
+          updated_at?: string
+        }
+      }
+      user_lesson_plan_templates: {
+        Row: {
+          created_at: string
+          id: string
+          lesson_plan_template_id: string
+          students: string[]
+          teacher_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          lesson_plan_template_id: string
+          students?: string[]
+          teacher_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          lesson_plan_template_id?: string
+          students?: string[]
+          teacher_id?: string
+          updated_at?: string
+        }
+      }
+      user_lesson_plans: {
+        Row: {
+          completion_date: string | null
+          created_at: string
+          id: string
+          lesson_plan_id: string
+          scheduled_date: string | null
+          status: Database["public"]["Enums"]["status"]
+          students: string[]
+          teacher_id: string
+          updated_at: string
+        }
+        Insert: {
+          completion_date?: string | null
+          created_at?: string
+          id?: string
+          lesson_plan_id: string
+          scheduled_date?: string | null
+          status?: Database["public"]["Enums"]["status"]
+          students?: string[]
+          teacher_id: string
+          updated_at?: string
+        }
+        Update: {
+          completion_date?: string | null
+          created_at?: string
+          id?: string
+          lesson_plan_id?: string
+          scheduled_date?: string | null
+          status?: Database["public"]["Enums"]["status"]
+          students?: string[]
           teacher_id?: string
           updated_at?: string
         }
@@ -450,9 +898,101 @@ export interface Database {
           last_name: string | null
         }
       }
+      unread_notifications_count_view: {
+        Row: {
+          unread_notifications_count: number | null
+        }
+      }
+      unread_notifications_view: {
+        Row: {
+          body: string | null
+          id: string | null
+          lesson_plan_id: string | null
+          metadata: Json | null
+          read_at: string | null
+          received_at: string | null
+          recipient_id: string | null
+          sender_id: string | null
+          sent_at: string | null
+          status: Database["public"]["Enums"]["notification_status"] | null
+          title: string | null
+          type: Database["public"]["Enums"]["notification_type"] | null
+        }
+        Insert: {
+          body?: string | null
+          id?: string | null
+          lesson_plan_id?: string | null
+          metadata?: Json | null
+          read_at?: string | null
+          received_at?: string | null
+          recipient_id?: string | null
+          sender_id?: string | null
+          sent_at?: string | null
+          status?: Database["public"]["Enums"]["notification_status"] | null
+          title?: string | null
+          type?: Database["public"]["Enums"]["notification_type"] | null
+        }
+        Update: {
+          body?: string | null
+          id?: string | null
+          lesson_plan_id?: string | null
+          metadata?: Json | null
+          read_at?: string | null
+          received_at?: string | null
+          recipient_id?: string | null
+          sender_id?: string | null
+          sent_at?: string | null
+          status?: Database["public"]["Enums"]["notification_status"] | null
+          title?: string | null
+          type?: Database["public"]["Enums"]["notification_type"] | null
+        }
+      }
+      user_notifications_view: {
+        Row: {
+          body: string | null
+          id: string | null
+          lesson_plan_id: string | null
+          metadata: Json | null
+          read_at: string | null
+          received_at: string | null
+          recipient_id: string | null
+          sender_id: string | null
+          sent_at: string | null
+          status: Database["public"]["Enums"]["notification_status"] | null
+          title: string | null
+          type: Database["public"]["Enums"]["notification_type"] | null
+        }
+        Insert: {
+          body?: string | null
+          id?: string | null
+          lesson_plan_id?: string | null
+          metadata?: Json | null
+          read_at?: string | null
+          received_at?: string | null
+          recipient_id?: string | null
+          sender_id?: string | null
+          sent_at?: string | null
+          status?: Database["public"]["Enums"]["notification_status"] | null
+          title?: string | null
+          type?: Database["public"]["Enums"]["notification_type"] | null
+        }
+        Update: {
+          body?: string | null
+          id?: string | null
+          lesson_plan_id?: string | null
+          metadata?: Json | null
+          read_at?: string | null
+          received_at?: string | null
+          recipient_id?: string | null
+          sender_id?: string | null
+          sent_at?: string | null
+          status?: Database["public"]["Enums"]["notification_status"] | null
+          title?: string | null
+          type?: Database["public"]["Enums"]["notification_type"] | null
+        }
+      }
       user_subscriptions_view: {
         Row: {
-          price: number | null
           product_name: string | null
           subscription_id: string | null
           user_id: string | null
@@ -474,14 +1014,168 @@ export interface Database {
       }
     }
     Functions: {
+      create_topic: {
+        Args: {
+          topic_name: string
+          topic_description: string
+          topic_image_url: string
+          level_name: Database["public"]["Enums"]["level"]
+          subject_code: string
+        }
+        Returns: undefined
+      }
+      get_comments_and_reactions: {
+        Args: {
+          p_commentable_id: string
+        }
+        Returns: {
+          comment_id: string
+          author_id: string
+          parent_comment_id: string
+          commentable_id: string
+          commentable_type: Database["public"]["Enums"]["commentable_type"]
+          mentioned_user_ids: string[]
+          comment: string
+          created_at: string
+          updated_at: string
+          reaction_id: string
+          reaction_type: string
+          reaction_label: string
+          reaction_icon_url: string
+          reaction_metadata: Json
+          reactor_id: string
+        }[]
+      }
       is_role: {
         Args: {
           role: Database["public"]["Enums"]["user_role"]
         }
         Returns: boolean
       }
+      mark_as_read: {
+        Args: {
+          notification_id: string
+          user_id: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
+      animal:
+        | "Bears"
+        | "Bees"
+        | "Birds"
+        | "Butterflies"
+        | "Cats"
+        | "Caterpillars"
+        | "Deer"
+        | "Dogs"
+        | "Dolphins"
+        | "Elephants"
+        | "Foxes"
+        | "Frogs"
+        | "Giraffes"
+        | "Horses"
+        | "Lions"
+        | "Monkies"
+        | "Pandas"
+        | "Rabbits"
+        | "Tigers"
+        | "Turtles"
+        | "Wolves"
+      assessment_method: "Observation" | "Performance" | "Product" | "Other"
+      assessment_tool: "Quiz" | "Test" | "Exam" | "Rubric" | "Other"
+      assessment_type: "Formative" | "Summative" | "Other"
+      commentable_type:
+        | "LESSON_PLAN"
+        | "LEARNING_PATH"
+        | "LESSON_TEMPLATE"
+        | "OTHER"
+      environment_preferences:
+        | "Quiet_and_individual"
+        | "Group_and_collaborative"
+        | "Structured_and_guided"
+        | "Flexible_and_self_directed"
+        | "Indoor"
+        | "Outdoor"
+        | "Digital"
+        | "Physical"
+      format: "Whole Group" | "Small Group" | "Individual"
+      learning_disabilities:
+        | "Dyslexia"
+        | "Dyscalculia"
+        | "Dysgraphia"
+        | "Attention_Deficit_Hyperactivity_Disorder"
+        | "Auditory_Processing_Disorder"
+        | "Nonverbal_Learning_Disability"
+        | "Autism"
+      learning_style:
+        | "Visual"
+        | "Auditory"
+        | "Kinesthetic"
+        | "Verbal"
+        | "Logical"
+        | "Social"
+      learning_styles:
+        | "Visual"
+        | "Auditory"
+        | "Kinesthetic"
+        | "Verbal"
+        | "Logical"
+        | "Social"
+      level:
+        | "Buds"
+        | "Sprouts"
+        | "Oaks"
+        | "Pre-K"
+        | "K"
+        | "1"
+        | "2"
+        | "3"
+        | "4"
+        | "5"
+        | "6"
+        | "7"
+        | "8"
+        | "9"
+        | "10"
+        | "11"
+        | "12"
+      material:
+        | "Textbook"
+        | "Workbook"
+        | "Worksheet"
+        | "Manipulatives"
+        | "Technology"
+        | "Other"
+      notification_status:
+        | "PENDING"
+        | "SENT"
+        | "FAILED"
+        | "RECEIVED"
+        | "READ"
+        | "ARCHIVED"
+        | "DELETED"
+      notification_type:
+        | "INFO"
+        | "WARNING"
+        | "ERROR"
+        | "SUCCESS"
+        | "BILLING"
+        | "ACCOUNT"
+        | "COMMUNITY"
+        | "CHAT"
+        | "LESSON"
+        | "EVENT"
+        | "OTHER"
+      objective:
+        | "Knowledge"
+        | "Comprehension"
+        | "Application"
+        | "Analysis"
+        | "Synthesis"
+        | "Evaluation"
+      pace: "slow" | "medium" | "fast"
       payment_type:
         | "acss_debit"
         | "affirm"
@@ -514,10 +1208,53 @@ export interface Database {
         | "sofort"
         | "us_bank_account"
         | "wechat_pay"
+      philosophy:
+        | "Eclectic/Relaxed"
+        | "Traditional"
+        | "Montessori"
+        | "Unschooling"
+        | "Unit Studies"
+        | "Project-Based"
+        | "Waldorf"
+        | "Reggio Emilia"
+        | "Classical"
+        | "Charlotte Mason"
+        | "Other"
       pricing_plan_interval: "day" | "week" | "month" | "year"
       pricing_type: "one_time" | "recurring"
       profile_status: "ONLINE" | "OFFLINE" | "BUSY" | "AWAY" | "INVISIBLE"
       profile_type: "PARENT" | "COOP" | "TUTOR" | "SCHOOL" | "STUDENT"
+      reflection_method: "Written" | "Verbal" | "Other"
+      reflection_type: "Self" | "Peer" | "Teacher" | "Other"
+      resource_preferences:
+        | "Textbooks"
+        | "Workbooks"
+        | "Online_courses"
+        | "Educational_videos"
+        | "Interactive_games"
+        | "Podcasts"
+        | "Hands_on_activities"
+        | "Tutoring_sessions"
+        | "Group_discussions"
+        | "Flashcards"
+        | "Study_guides"
+        | "Project_based_learning"
+      standard: "Common Core" | "Next Generation Science Standards" | "Other"
+      status: "created" | "scheduled" | "completed" | "archived"
+      student_goals:
+        | "Improve_grades"
+        | "Increase_focus_and_concentration"
+        | "Enhance_time_management_skills"
+        | "Develop_strong_study_habits"
+        | "Boost_problem_solving_skills"
+        | "Strengthen_critical_thinking_skills"
+        | "Improve_memory_and_recall"
+        | "Enhance_writing_skills"
+        | "Build_reading_comprehension"
+        | "Improve_test-taking_strategies"
+        | "Expand_vocabulary"
+        | "Develop_public_speaking_skills"
+        | "Increase_confidence_in_learning"
       subscription_status:
         | "trialing"
         | "active"
@@ -527,8 +1264,20 @@ export interface Database {
         | "past_due"
         | "unpaid"
         | "paused"
+      teaching_strategy:
+        | "Direct Instruction"
+        | "Cooperative Learning"
+        | "Inquiry-Based Learning"
+        | "Differentiated Instruction"
+        | "Expeditionary Learning"
+        | "Personalized Learning"
+        | "Blended Learning"
+        | "Project-Based Learning"
+        | "Problem-Based Learning"
+        | "Socratic Learning"
+        | "Other"
       trial_status: "ACTIVE" | "CONVERTED" | "EXPIRED"
-      user_role: "ADMIN" | "TEACHER" | "GROUP_MANAGER" | "STUDENT"
+      user_role: "ADMIN" | "TEACHER" | "GROUP_MANAGER" | "STUDENT" | "BANNISHED"
     }
     CompositeTypes: {
       [_ in never]: never
