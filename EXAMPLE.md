@@ -1,3 +1,8 @@
+## Example Action
+
+_action.ts_:
+
+```ts
 'use server';
 
 import { createRequest } from '@/lib/api/createRequest';
@@ -41,3 +46,23 @@ export const signInUserWithEmail = createRequest(
   signInUserWithEmailAction,
   signInUserWithEmailSchema,
 );
+```
+
+```tsx
+const { mutate, isLoading } = useRequest(signInUserWithEmail, {
+  onSuccess: (data) => {
+    if (data.ok) {
+      toast.success('Check your email for a sign in link!');
+      close();
+      openSuccess();
+    } else {
+      toast.error("We couldn't sign you in. Please try again.");
+    }
+  },
+  onError: (error) => toast.error(error),
+});
+
+// . . .
+
+mutate({ email, redirectUrl: pathname });
+```
