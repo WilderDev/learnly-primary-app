@@ -1,3 +1,4 @@
+// * Get the base URL for the current environment
 function getBaseUrl(): string {
   if (process.env.NODE_ENV === 'development') {
     return 'http://localhost:3000';
@@ -6,4 +7,5 @@ function getBaseUrl(): string {
   }
 }
 
+// Export the base URL
 export default getBaseUrl();
