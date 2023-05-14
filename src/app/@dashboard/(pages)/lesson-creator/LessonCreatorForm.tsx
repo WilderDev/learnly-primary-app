@@ -26,7 +26,6 @@ export default function LessonCreatorForm() {
       >
         {/* Form Item 1 */}
         <LessonCreatorTopicSelect />
-        {/* <Input label="Form Item 1" value="test" setValue={() => {}} /> */}
       </LessonCreatorFormSection>
 
       {/* Section 2 */}

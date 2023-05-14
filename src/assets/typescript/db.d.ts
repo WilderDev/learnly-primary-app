@@ -185,7 +185,6 @@ export interface Database {
           title: string
           topic: string
           updated_at: string
-          url: string | null
         }
         Insert: {
           content: string
@@ -201,7 +200,6 @@ export interface Database {
           title: string
           topic: string
           updated_at?: string
-          url?: string | null
         }
         Update: {
           content?: string
@@ -217,7 +215,6 @@ export interface Database {
           title?: string
           topic?: string
           updated_at?: string
-          url?: string | null
         }
       }
       levels: {

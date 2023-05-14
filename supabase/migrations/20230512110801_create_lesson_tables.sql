@@ -356,6 +356,10 @@ CREATE INDEX idx_lesson_plan_templates_level_subject ON lesson_plan_templates(le
 CREATE INDEX idx_user_lesson_plan_templates_teacher_id ON user_lesson_plan_templates(teacher_id);
 CREATE INDEX idx_user_lesson_plan_templates_lesson_plan_template_id ON user_lesson_plan_templates(lesson_plan_template_id);
 
+--- Views
+CREATE INDEX idx_subjects_levels_topics ON subjects_levels_topics (subject_id, level_id);
+
+
 
 -- * POLICIES (ROW LEVEL SECURITY)
 --- RLS

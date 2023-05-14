@@ -1,8 +1,10 @@
 'use client';
 
-import { ChangeEvent, use, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLessonCreator } from './LessonCreatorCtx';
 import { supabaseClient } from '@/lib/auth/supabaseClient';
+import DrilldownSelect from '@/lib/components/form/DrilldownSelect';
+import { IOption } from '@/assets/typescript/form';
 
 type TopicItem = {
   subject_id: string;
@@ -16,160 +18,73 @@ type TopicItem = {
 type SubjectsLevelsTopics = Record<string, Record<string, TopicItem[]>>;
 
 export default function LessonCreatorTopicSelect() {
-  // * Data
-  //   const subjects = useMemo<SubjectsLevelsTopics>(() => ({}), []);
-
   // * Hooks / Context
   const { subject, setSubject, level, setLevel, topic, setTopic } =
     useLessonCreator();
 
   // * State
-  const [subjects, setSubjects] = useState<SubjectsLevelsTopics>({});
-  const [subjectDropdownOpen, setSubjectDropdownOpen] = useState(false);
-  const [levelDropdownOpen, setLevelDropdownOpen] = useState(false);
-  const [topicDropdownOpen, setTopicDropdownOpen] = useState(false);
-
-  // * Refs
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [subjects, setSubjects] = useState<IOption[]>([]);
 
   // * Effects
   // Get Subjects
   useEffect(() => {
     getSubjectsLevelsTopics().then((data) => {
-      const subjects: SubjectsLevelsTopics = {};
+      const result: IOption[] = [];
+      const subjectMap = {} as Record<string, IOption>;
 
       for (let item of data) {
-        if (!subjects[item.subject_name]) {
-          subjects[item.subject_name] = {};
+        // Check if subject is already in the map
+        if (!subjectMap[item.subject_id]) {
+          // If not, add a new subject to the result array and the map
+          const newSubject = {
+            id: item.subject_id,
+            name: item.subject_name,
+            children: [],
+          };
+          result.push(newSubject);
+          subjectMap[item.subject_id] = newSubject;
         }
-        if (!subjects[item.subject_name][item.level_name]) {
-          subjects[item.subject_name][item.level_name] = [];
+
+        const subject = subjectMap[item.subject_id];
+
+        // Check if level is already in the subject's children
+        let level = subject.children?.find(
+          (level) => level.id === item.level_id,
+        );
+
+        if (!level) {
+          // If not, add a new level to the subject's children
+          level = {
+            id: item.level_id,
+            name: `Level: ${item.level_name}`,
+            children: [],
+          };
+
+          subject.children?.push(level);
         }
-        subjects[item.subject_name][item.level_name].push(item as TopicItem);
+
+        // Finally, add the topic to the level's children
+        const topic = {
+          id: item.topic_id,
+          name: item.topic_name,
+        };
+        level.children?.push(topic);
       }
 
-      setSubjects(subjects);
+      setSubjects(result);
     });
-  }, []);
-
-  // * Handlers
-  const handleSubjectSelect = (subjectName: string) => {
-    const selectedSubject = subjects[subjectName];
-    const firstLevelKey = Object.keys(selectedSubject)[0];
-    const firstTopic = selectedSubject[firstLevelKey][0];
-    setSubject({ id: firstTopic.subject_id, name: firstTopic.subject_name });
-    setSubjectDropdownOpen(false);
-    setLevelDropdownOpen(true);
-    setTopicDropdownOpen(false);
-  };
-
-  const handleLevelSelect = (levelName: string) => {
-    const selectedLevel = subjects[subject!.name][levelName][0];
-    setLevel({ id: selectedLevel.level_id, name: selectedLevel.level_name });
-    setLevelDropdownOpen(false);
-    setTopicDropdownOpen(true);
-  };
-
-  const handleTopicSelect = (topicName: string) => {
-    const selectedTopic = subjects[subject!.name][level!.name].find(
-      (topicItem) => topicItem.topic_name === topicName,
-    );
-    if (selectedTopic) {
-      setTopic({ id: selectedTopic.topic_id, name: selectedTopic.topic_name });
-      setTopicDropdownOpen(false);
-    }
-  };
-
-  // Close dropdowns when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setSubjectDropdownOpen(false);
-        setLevelDropdownOpen(false);
-        setTopicDropdownOpen(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
   }, []);
 
   // * Render
   return (
-    <div ref={dropdownRef}>
-      <button
-        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
-        type="button"
-        onClick={() => setSubjectDropdownOpen(!subjectDropdownOpen)}
-      >
-        {subject?.name || 'Select a subject'}
-      </button>
-      {subjectDropdownOpen && (
-        <div className="absolute z-30 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-          {Object.keys(subjects).map((subjectName) => (
-            <div
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white cursor-pointer"
-              key={subjectName}
-              onClick={() => handleSubjectSelect(subjectName)}
-            >
-              {subjectName}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {subject && (
-        <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
-          type="button"
-          onClick={() => setLevelDropdownOpen(!levelDropdownOpen)}
-        >
-          {level?.name || 'Select a level'}
-        </button>
-      )}
-      {levelDropdownOpen && (
-        <div className="absolute z-30 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-          {Object.keys(subjects[subject!.name]).map((levelName) => (
-            <div
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white cursor-pointer"
-              key={levelName}
-              onClick={() => handleLevelSelect(levelName)}
-            >
-              Grade Level: {levelName}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {subject && level && (
-        <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
-          type="button"
-          onClick={() => setTopicDropdownOpen(!topicDropdownOpen)}
-        >
-          {topic?.name || 'Select a topic'}
-        </button>
-      )}
-
-      {topicDropdownOpen && (
-        <div>
-          {subjects[subject!.name][level!.name].map((topicItem) => (
-            <div
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white cursor-pointer"
-              key={topicItem.topic_name}
-              onClick={() => handleTopicSelect(topicItem.topic_name)}
-            >
-              {topicItem.topic_name}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <DrilldownSelect
+      label="Choose a Topic"
+      cols={2}
+      options={subjects}
+      values={[subject, level, topic]}
+      setValues={[setSubject, setLevel, setTopic]}
+      // icon
+    />
   );
 }
 
@@ -182,5 +97,5 @@ async function getSubjectsLevelsTopics() {
 
   if (error) throw error;
 
-  return data;
+  return data as TopicItem[];
 }

@@ -175,7 +175,7 @@ export default function Select({
         {isMenuOpen && (
           <div
             className={cn(
-              'absolute right-0 top-10 z-10 mt-1 w-full border-2 border-slate-300/90',
+              'absolute right-0 top-10 z-10 mt-1 w-full border-2 border-slate-300/90 dark:border-navy-600/90',
               roundeds[rounded],
               shadows[shadow],
               variants[variant],

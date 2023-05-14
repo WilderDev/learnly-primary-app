@@ -16,11 +16,7 @@ import {
 import { useCallback } from 'react';
 import { useInterceptionModal } from '@/app/@modal/InterceptionModalCtx';
 import { v4 } from 'uuid';
-
-type TSelection = {
-  id: string;
-  name: string;
-} | null;
+import { TSelection } from '@/assets/typescript/form';
 
 // * Context
 // Interface
