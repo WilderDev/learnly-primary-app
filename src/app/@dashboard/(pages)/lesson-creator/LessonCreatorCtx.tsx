@@ -95,7 +95,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   // * Handlers
   // Handle Submit Lesson Plan
   const handleSubmit = useCallback(async () => {
-    if (!topic || !level || !subject) return;
+    if (!topic?.id || !level?.id || !subject?.id) return;
 
     setIsLoading(true);
 
