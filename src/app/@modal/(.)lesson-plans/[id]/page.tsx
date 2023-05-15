@@ -27,41 +27,25 @@ export default function LessonPlanPageModal({ params: { id } }: IProps) {
     <Modal
       isVisible={isOpen && lessonContent !== ''}
       close={() =>
-        isOpen &&
-        !complete &&
-        toast.error('Please wait for the lesson to finish generating :)')
+        isOpen && complete
+          ? close()
+          : toast.error('Please complete the lesson plan before closing.')
       }
       portalName="interception-portal"
       closeBtn={false}
     >
       {/* Header */}
       {complete && (
-        <div className="flex justify-between">
-          {/* Close */}
-          <Button
-            fill="none"
-            className="p-4"
-            rounded="full"
-            onClick={() => {
-              reset(false);
-              close();
-            }}
-          >
-            <XMarkIcon className="w-6 h-6 text-slate-600 dark:text-navy-200" />
-          </Button>
-
-          {/* Expand */}
-          <Button
-            className="p-4"
-            rounded="full"
-            onClick={() => {
-              reset(true);
-              refresh();
-            }}
-          >
-            <ArrowsPointingOutIcon className="w-6 h-6" />
-          </Button>
-        </div>
+        <Button
+          className="!p-3 absolute top-3 right-3"
+          rounded="full"
+          onClick={() => {
+            reset(true);
+            refresh();
+          }}
+        >
+          <ArrowsPointingOutIcon className="w-5 h-5" />
+        </Button>
       )}
 
       <div className="my-4">

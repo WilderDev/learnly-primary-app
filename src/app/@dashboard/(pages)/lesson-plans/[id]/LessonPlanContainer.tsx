@@ -11,6 +11,7 @@ interface IProps {
 
 // * Component
 export default function LessonPlanContainer({ lessonPlan }: IProps) {
+  // * Render
   return (
     <>
       <main className="mx-auto my-3 print:my-0 max-w-4xl">
@@ -35,9 +36,6 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
 
         {/* Content */}
         <LessonPlanMarkdown content={lessonPlan.content} />
-
-        {/* BrandMarks */}
-        {/* <LessonPlanTrademarks /> */}
       </main>
     </>
   );
