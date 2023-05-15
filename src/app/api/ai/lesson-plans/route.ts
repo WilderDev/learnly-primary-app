@@ -1,6 +1,6 @@
-import { IStudentPromptReq } from '@/assets/typescript/ai';
-import { ITeacherPromptReq } from '@/assets/typescript/ai';
-import { ILessonPlanPromptReq } from '@/assets/typescript/ai';
+import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
+import { ITeacherPromptReq } from '@/assets/typescript/lesson-plan';
+import { ILessonPlanPromptReq } from '@/assets/typescript/lesson-plan';
 import { OpenAIStream } from '@/lib/ai/openai';
 import { generateLessonPlanPrompt } from '@/lib/ai/prompts';
 
