@@ -17,6 +17,7 @@ interface IProps {
   shadow?: TSize;
   portalName?: string;
   closeBtn?: boolean;
+  noCloseOnOutsideClick?: boolean;
   className?: string;
 }
 
@@ -30,6 +31,7 @@ export default function Modal({
   shadow = 'md',
   portalName = 'portal',
   closeBtn = false,
+  noCloseOnOutsideClick = false,
   className,
 }: IProps) {
   // * Styles
@@ -92,7 +94,8 @@ export default function Modal({
     function handleClickOutside(event: MouseEvent) {
       if (
         modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
+        !modalRef.current.contains(event.target as Node) &&
+        !noCloseOnOutsideClick
       ) {
         close();
       }
@@ -105,7 +108,7 @@ export default function Modal({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [close]);
+  }, [close, noCloseOnOutsideClick]);
 
   // Close Modal on Escape Key and handle Tab key for focus
   useEffect(() => {
@@ -172,6 +175,7 @@ export default function Modal({
             animationStyles,
             isVisible ? 'scale-100' : 'scale-90',
             className,
+            'print:shadow-none print:backdrop-none dark:print:backdrop-none print:border-none print:w-full print:h-full print:block print:max-w-4xl print:mx-auto print:my-0 print:rounded-none print:overflow-visible print:scale-100',
           )}
           ref={modalRef}
         >
@@ -182,7 +186,7 @@ export default function Modal({
           {closeBtn && (
             <button
               className={cn(
-                'absolute -top-2 right-2 p-1 rounded-full group hocus:bg-slate-100 dark:hocus:bg-navy-800 transition-colors',
+                'absolute print:hidden -top-2 right-2 p-1 rounded-full group hocus:bg-slate-100 dark:hocus:bg-navy-800 transition-colors',
                 !closeBtn && 'opacity-0 focus:opacity-100',
               )}
               onClick={close}

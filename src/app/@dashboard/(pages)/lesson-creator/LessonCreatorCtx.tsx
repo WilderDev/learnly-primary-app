@@ -11,10 +11,7 @@ import {
   SetStateAction,
 } from 'react';
 import { useAuth } from '@/lib/components/providers/AuthProvider';
-import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
-import { useInterceptionModal } from '@/app/@modal/InterceptionModalCtx';
-import { v4 } from 'uuid';
 import { TSelection } from '@/assets/typescript/form';
 import {
   ILessonPlanPromptReq,
@@ -23,6 +20,7 @@ import {
 } from '@/assets/typescript/lesson-plan';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
+import { v4 } from 'uuid';
 
 // * Context
 // Interface
@@ -45,6 +43,9 @@ interface ILessonCreatorCtx {
   setTopic: Dispatch<SetStateAction<TSelection>>;
   setComplete: Dispatch<SetStateAction<boolean>>;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
+  // Extra
+  id?: string;
+  setId?: Dispatch<SetStateAction<string>>;
 }
 
 // Initial Value
@@ -73,6 +74,9 @@ const initialCtxValue: ILessonCreatorCtx = {
   setTopic: () => {},
   setComplete: () => {},
   setIsLoading: () => {},
+  // Extra
+  id: '',
+  setId: () => {},
 };
 
 // Context
@@ -81,10 +85,8 @@ const LessonCreatorCtx = createContext<ILessonCreatorCtx>(initialCtxValue);
 // * Provider
 export function LessonCreatorProvider({ children }: PropsWithChildren) {
   // * Hooks
-  const router = useRouter();
   const { supabase, session } = useAuth();
   const { user } = useUser();
-  const { open } = useInterceptionModal();
 
   // * State
   // Prompt Information
@@ -96,6 +98,8 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   const [complete, setComplete] = useState(false);
   // UI
   const [isLoading, setIsLoading] = useState(false);
+  // Extra
+  const [id, setId] = useState('');
 
   // * Handlers
   // Handle Submit Lesson Plan
@@ -104,16 +108,8 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     if (!topic?.id || !level?.id || !subject?.id) return;
 
     setIsLoading(true); // Set Loading
-
-    // Generate Lesson Plan Id and Title (for modal to know what route to push to)
-    const lessonId = v4();
-    const title = `${topic.name} for ${level.name} (${subject.name})`;
-
-    console.log('lessonId:', lessonId);
-
-    // Open Modal and Push to Lesson Plan Page
-    open();
-    router.push(`/lesson-plans/${lessonId}`);
+    const id = v4(); // Generate ID
+    setId(id); // Set ID (for redirect)
 
     // Create Lesson Plan Request Body Objects (lesson, teacher, students)
     const lesson: ILessonPlanPromptReq = {
@@ -166,13 +162,13 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     streamReader(res.body!, setLessonContent, async (content) => {
       // Save to Supabase
       const { error } = await supabase.from('lesson_plans').insert({
-        id: lessonId,
+        id,
         subject: subject.id,
         level: level.id,
         topic: topic.id,
         content,
         creator_id: session?.user.id!,
-        title,
+        title: `${topic.name} for ${level.name} (${subject.name})`,
         image_path: 'https://source.unsplash.com/random/800x600',
         // length_in_min
         // is_public
@@ -185,14 +181,12 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setIsLoading(false);
     });
   }, [
-    router,
     supabase,
     session,
     subject,
     level,
     topic,
     setComplete,
-    open,
     user?.firstName,
     user?.lastName,
   ]);
@@ -231,6 +225,9 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setTopic,
       setComplete,
       setIsLoading,
+      // Extra
+      id,
+      setId,
     }),
     [
       subject,
@@ -241,6 +238,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       complete,
       handleSubmit,
       reset,
+      id,
     ],
   );
 

@@ -15,15 +15,10 @@ import { ThemeProvider } from '@/lib/theme/ThemeCtx';
 interface IProps {
   dashboard: React.ReactNode;
   marketing: React.ReactNode;
-  modal: React.ReactNode;
 }
 
 // * Component
-export default async function RootLayout({
-  dashboard,
-  marketing,
-  modal,
-}: IProps) {
+export default async function RootLayout({ dashboard, marketing }: IProps) {
   // * Hooks
   const supabase = supabaseServer();
   const {
@@ -42,16 +37,11 @@ export default async function RootLayout({
               {/* Main Content Wrapper */}
               {session?.user ? dashboard : marketing}
 
-              {modal}
-
               {/* Custom Portal */}
               <div id="portal" />
 
               {/* Chat Portal */}
               <div id="chat-portal" />
-
-              {/* Interception Portal */}
-              <div id="interception-portal" />
 
               {/* Toast Container */}
               <Toast />

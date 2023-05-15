@@ -7,24 +7,12 @@ import {
 } from '@heroicons/react/24/outline';
 
 import cn from '@/lib/common/cn';
-import baseUrl from '@/lib/common/baseUrl';
 import { usePathname } from 'next/navigation';
+import { handlePrint, handleShare } from '../../lesson-creator/actions';
 
 export default function LessonPlanActionIcons() {
   // * Hooks
   const pathname = usePathname();
-
-  // * Handlers
-  // Share
-  const handleShare = () => {
-    const url = baseUrl + pathname; // Get current url
-    const fbShareUrl = `https://www.facebook.com/share.php?u=${url}`; // Create facebook share url
-
-    window.open(fbShareUrl, '_blank'); // Open facebook share url in new tab
-  };
-
-  // Print
-  const handlePrint = () => window.print();
 
   // * Render
   return (
@@ -63,7 +51,7 @@ export default function LessonPlanActionIcons() {
         <button
           className="group flex h-12 flex-col items-center"
           type="button"
-          onClick={handleShare}
+          onClick={() => handleShare(pathname)}
         >
           <ShareIcon className="h-6 w-6 text-green-900 transition-colors duration-300 group-hover:text-green-700 group-focus:text-green-700 dark:text-navy-200 dark:group-hover:text-emerald-300 dark:group-focus:text-emerald-300" />
 

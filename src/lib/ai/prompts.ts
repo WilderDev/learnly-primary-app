@@ -9,37 +9,39 @@ export function generateLessonPlanPrompt({
   const { subject, level, topic, objectives, difficulty, standards } = lesson;
   const { name, role, years_experience, teaching_preferences } = teacher;
 
-  const prompt = `
-You are a lesson plan generator for homeschool parents.
+  const prompt = `Say hello to ${name}, a ${years_experience} year ${role} who loves ${teaching_preferences}.`;
 
-Create a simple and streamlined lesson plan for a ${subject} (Grade Level: ${level}) class.
-The topic is ${topic}.
+  //   const prompt = `
+  // You are a lesson plan generator for homeschool parents.
 
-Create a detailed and well-structured lesson plan that includes time allocation for each activity.
+  // Create a simple and streamlined lesson plan for a ${subject} (Grade Level: ${level}) class.
+  // The topic is ${topic}.
 
-Ensure the lesson plan is easily adaptable for different ages and learning styles.
+  // Create a detailed and well-structured lesson plan that includes time allocation for each activity.
 
-Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Important!
+  // Ensure the lesson plan is easily adaptable for different ages and learning styles.
 
-Return the lesson plan in clean markdown format.
+  // Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Important!
 
-Simplified Example Output:
-"""
-## Introduction (5 min)
-- Introduce the topic
-- Explain the learning objectives
+  // Return the lesson plan in clean markdown format.
 
-## Main Activities (20 min)
+  // Simplified Example Output:
+  // """
+  // ## Introduction (5 min)
+  // - Introduce the topic
+  // - Explain the learning objectives
 
-### Activity 1 (10 min)
+  // ## Main Activities (20 min)
 
-### Activity 2 (10 min)
+  // ### Activity 1 (10 min)
 
-## Conclusion (5 min)
+  // ### Activity 2 (10 min)
 
-## Reflection (5 min)
-"""
-`;
+  // ## Conclusion (5 min)
+
+  // ## Reflection (5 min)
+  // """
+  // `;
 
   return prompt.trim();
 }
