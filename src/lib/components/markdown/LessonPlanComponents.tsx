@@ -7,35 +7,35 @@ const H1 = ({ ...props }) => (
 
 const H2 = ({ ...props }) => (
   <h2
-    className="print-text pb-2 text-xl font-bold text-slate-800 dark:text-navy-100 md:text-2xl xl:text-3xl"
+    className="print-text pb-2 text-lg font-bold text-slate-800 dark:text-navy-100 md:text-xl xl:text-2xl"
     {...props}
   />
 );
 
 const H3 = ({ ...props }) => (
   <h3
-    className="print-text pb-1 text-lg font-semibold text-slate-800/90 dark:text-navy-50/80 md:text-xl xl:text-2xl"
+    className="print-text pb-1 text-base font-semibold text-slate-800/90 dark:text-navy-50/80 md:text-lg xl:text-xl"
     {...props}
   />
 );
 
 const H4 = ({ ...props }) => (
   <h4
-    className="print-text font-medium text-green-600 dark:text-green-500 md:text-lg xl:text-xl"
+    className="print-text font-medium text-green-600 dark:text-green-500 text-sm md:text-base xl:text-lg"
     {...props}
   />
 );
 
 const H5 = ({ ...props }) => (
   <h5
-    className="print-text font-medium text-blue-600 dark:text-blue-500 xl:text-lg"
+    className="print-text font-medium text-blue-600 dark:text-blue-500 text-sm md:text-base xl:text-lg"
     {...props}
   />
 );
 
 const H6 = ({ ...props }) => (
   <h6
-    className="print-text font-medium text-green-600 md:text-lg xl:text-xl"
+    className="print-text font-medium text-green-600 text-sm md:text-base xl:text-xl"
     {...props}
   />
 );

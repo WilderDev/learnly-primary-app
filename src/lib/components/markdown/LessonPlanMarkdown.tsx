@@ -1,5 +1,6 @@
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { lessonPlanComponents } from './LessonPlanComponents';
+import LessonPlanBrandMarks from './LessonPlanBrandMarks';
 
 // * Props
 interface IProps {
@@ -9,8 +10,13 @@ interface IProps {
 // * Component
 export default function LessonPlanMarkdown({ content }: IProps) {
   return (
-    <ReactMarkdown components={lessonPlanComponents} linkTarget="_blank">
-      {content}
-    </ReactMarkdown>
+    <div className="printable">
+      <ReactMarkdown components={lessonPlanComponents} linkTarget="_blank">
+        {content}
+      </ReactMarkdown>
+
+      {/* Trademarks */}
+      <LessonPlanBrandMarks />
+    </div>
   );
 }

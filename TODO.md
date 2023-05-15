@@ -11,3 +11,4 @@
 11. Notification/Email 3 days before trial ends about all the features they will lose when their account is downgraded. Message them again on the day of. Give them incentive that if they upgrade before the trial ends (put in credit card), they will get 50% off for the first 3 months.
 12. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
 13. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
+14. User's can change the title and image of a lesson plan they have created

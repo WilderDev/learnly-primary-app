@@ -8,6 +8,7 @@ import {
   DashPanelHeader,
 } from '@/app/@dashboard/(layout)/DashPanel';
 import { redirect } from 'next/navigation';
+import LessonPlanContainerSkeleton from './LessonPlanContainerSkeleton';
 
 // * Props
 interface IProps {
@@ -27,7 +28,10 @@ export default async function LessonPlanPage({ params: { id } }: IProps) {
       {/* Main Column */}
       <DashMainCol className="2xl:col-span-8">
         {/* Lesson Plan Container (Output) */}
-        <DashPanel colNum={1}>
+        <DashPanel
+          colNum={1}
+          suspenseFallback={<LessonPlanContainerSkeleton />}
+        >
           <LessonPlanContainer lessonPlan={lessonPlan} />
         </DashPanel>
 
@@ -60,9 +64,6 @@ async function getLessonPlan(id: string) {
     .select('*, creator:creator_id(first_name, last_name, avatar_url)')
     .eq('id', id)
     .single();
-
-  console.log('data:', data);
-  console.log('error:', error);
 
   if (error) redirect('/lesson-creator');
 
