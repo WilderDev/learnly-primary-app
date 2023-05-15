@@ -151,31 +151,14 @@ IProps) {
         // If we have children, add a new level
         if (option.children) {
           newPath.push(undefined);
-        } else {
-          // Destructure the id and name for the path and setValues
-          const results = newPath.map((item) => ({
-            id: item?.id!,
-            name: item?.name!,
-          }));
-
-          // Loop over the setValues setters and set the values
-          setValues.forEach((setValue, i) => {
-            setValue(results[i]);
-          });
-
-          setInputValue(option.name);
-          setMenuOpen(false);
-        }
-
-        // If we have children, add a new level
-        if (option.children) {
-          newPath.push(undefined);
           setCurrentLevel(level + 1); // Update the currentLevel state
         } else {
           // Destructure the id and name for the path and setValues
           const results = newPath.map((item) => ({
             id: item?.id!,
-            name: item?.name!,
+            name: item?.name.includes('Level:')
+              ? item.name.split('Level: ')[1]
+              : item?.name!,
           }));
 
           // Loop over the setValues setters and set the values
@@ -183,7 +166,9 @@ IProps) {
             setValue(results[i]);
           });
 
-          setInputValue(option.name);
+          setInputValue(
+            `${option.name} (${newPath[1]?.name} ${results[0].name})`,
+          );
           setMenuOpen(false);
         }
 

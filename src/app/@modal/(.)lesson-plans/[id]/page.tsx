@@ -1,11 +1,11 @@
 'use client';
 
 import Modal from '@/lib/components/popouts/Modal';
-import { useRouter } from 'next/navigation';
 import { useInterceptionModal } from '../../InterceptionModalCtx';
 import { useLessonCreator } from '@/app/@dashboard/(pages)/lesson-creator/LessonCreatorCtx';
 import Button from '@/lib/components/ui/Button';
 import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import { toast } from 'sonner';
 
 // * Props
 interface IProps {
@@ -17,16 +17,17 @@ interface IProps {
 // * Component
 export default function LessonPlanPageModal({ params: { id } }: IProps) {
   // * Hooks
-  const router = useRouter();
   const { lessonContent, complete } = useLessonCreator();
 
   // * Context
-  const { isOpen, open, close } = useInterceptionModal();
+  const { isOpen, refresh, close } = useInterceptionModal();
 
   return (
     <Modal
       isVisible={isOpen && lessonContent !== ''}
-      close={close}
+      close={() =>
+        toast.error('Please wait for the lesson to finish generating :)')
+      }
       portalName="interception-portal"
       closeBtn={false}
     >
@@ -39,11 +40,7 @@ export default function LessonPlanPageModal({ params: { id } }: IProps) {
           </Button>
 
           {/* Expand */}
-          <Button
-            className="p-4"
-            rounded="full"
-            onClick={() => router.refresh()}
-          >
+          <Button className="p-4" rounded="full" onClick={refresh}>
             <ArrowsPointingOutIcon className="w-6 h-6" />
           </Button>
         </div>

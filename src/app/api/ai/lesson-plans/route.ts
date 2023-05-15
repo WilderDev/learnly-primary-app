@@ -1,248 +1,44 @@
-// https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
-function iteratorToStream(iterator: any) {
-  return new ReadableStream({
-    async pull(controller) {
-      const { value, done } = await iterator.next();
+import { IStudentPromptReq } from '@/assets/typescript/ai';
+import { ITeacherPromptReq } from '@/assets/typescript/ai';
+import { ILessonPlanPromptReq } from '@/assets/typescript/ai';
+import { OpenAIStream } from '@/lib/ai/openai';
+import { generateLessonPlanPrompt } from '@/lib/ai/prompts';
 
-      if (done) {
-        controller.close();
-      } else {
-        controller.enqueue(value);
-      }
-    },
-  });
+// * Props
+export interface IAILessonPlanPostReq {
+  lesson: ILessonPlanPromptReq;
+  teacher: ITeacherPromptReq;
+  students: IStudentPromptReq['children'];
 }
 
-function sleep(time: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, time);
-  });
-}
-
-const encoder = new TextEncoder();
-
-async function* makeIterator() {
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
-}
-
+// * API Route Handler (POST)
 export async function POST(request: Request) {
-  const { id, subject, level, topic } = (await request.json()) as {
-    id: string;
-    subject: string;
-    level: string;
-    topic: string;
+  // 1. Get request body
+  const { lesson, teacher, students } =
+    (await request.json()) as IAILessonPlanPostReq;
+
+  // 2. Validate request body
+  if (!lesson.topic || !teacher.name || !students.length)
+    return new Response('Invalid request', { status: 400 });
+
+  // 3. Generate lesson plan prompt and Payload
+  const prompt = generateLessonPlanPrompt({ lesson, teacher, students });
+  const payload = {
+    model: 'text-davinci-003',
+    prompt,
+    temperature: 0.5,
+    frequency_penalty: 0.5,
+    presence_penalty: 0.5,
+    max_tokens: 3400,
+    stream: true,
+    n: 1,
   };
 
-  console.log('id:', id);
-  console.log('subject:', subject);
-  console.log('level:', level);
-  console.log('topic:', topic);
+  // 4. Send request to OpenAI
+  const stream = await OpenAIStream(payload);
 
-  const iterator = makeIterator();
-  const stream = iteratorToStream(iterator);
-
-  console.log('stream:', stream);
-
+  // 5. Return response
   return new Response(stream);
 }
 
-// export const runtime = 'edge'
+export const runtime = 'edge'; // Closer to user's location (faster)

@@ -6,9 +6,9 @@ import baseUrl from '@/lib/common/baseUrl';
 import { z } from 'zod';
 
 const generateLessonPlanSchema = z.object({
-  subject: z.string().nonempty(), // TSK: Add enum
-  level: z.string().nonempty(), // TSK: Add enum
-  topic: z.string().nonempty(), // TSK: Add enum
+  subject: z.string().nonempty(),
+  level: z.string().nonempty(),
+  topic: z.string().nonempty(),
 });
 
 const generateLessonPlanAction = async (

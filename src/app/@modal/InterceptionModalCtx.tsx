@@ -18,7 +18,7 @@ interface IInterceptionModalCtx {
   isOpen: boolean;
   open: () => void;
   close: () => void;
-  returnPath?: string;
+  refresh: () => void;
 }
 
 // Initial Value
@@ -26,7 +26,7 @@ const initialCtxValue: IInterceptionModalCtx = {
   isOpen: true,
   open: () => {},
   close: () => {},
-  returnPath: undefined,
+  refresh: () => {},
 };
 
 // Context
@@ -37,11 +37,10 @@ const InterceptionModalCtx =
 export function InterceptionModalProvider({ children }: PropsWithChildren) {
   // * Hooks
   const router = useRouter();
-  const { setComplete } = useLessonCreator();
+  const { reset } = useLessonCreator();
 
   // * State
   const [isOpen, setIsOpen] = useState(false);
-  const [returnPath, setReturnPath] = useState<string>();
 
   // * Handlers
   // Open Modal
@@ -49,17 +48,19 @@ export function InterceptionModalProvider({ children }: PropsWithChildren) {
     setIsOpen(true);
   }, []);
 
-  // Close Modal
+  // Close Modal and go back
   const close = useCallback(() => {
-    setIsOpen(false);
-    setComplete(false);
+    reset(false);
 
-    if (returnPath) {
-      router.back();
-    } else {
-      router.refresh();
-    }
-  }, [returnPath, router, setComplete]);
+    router.back();
+  }, [router, reset]);
+
+  // Close Modal and refresh
+  const refresh = useCallback(() => {
+    reset(true);
+
+    router.refresh();
+  }, [reset, router]);
 
   // * Value
   const value: IInterceptionModalCtx = useMemo(
@@ -67,8 +68,9 @@ export function InterceptionModalProvider({ children }: PropsWithChildren) {
       isOpen,
       open,
       close,
+      refresh,
     }),
-    [isOpen, open, close],
+    [isOpen, open, close, refresh],
   );
 
   // * Render

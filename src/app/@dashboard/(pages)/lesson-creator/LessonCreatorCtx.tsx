@@ -1,8 +1,5 @@
 'use client';
 
-import { useAuth } from '@/lib/components/providers/AuthProvider';
-import { useRouter } from 'next/navigation';
-
 // * Imports
 import {
   PropsWithChildren,
@@ -13,10 +10,19 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
+import { useAuth } from '@/lib/components/providers/AuthProvider';
+import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useInterceptionModal } from '@/app/@modal/InterceptionModalCtx';
 import { v4 } from 'uuid';
 import { TSelection } from '@/assets/typescript/form';
+import {
+  ILessonPlanPromptReq,
+  IStudentPromptReq,
+  ITeacherPromptReq,
+} from '@/assets/typescript/ai';
+import { useUser } from '@/lib/components/providers/UserProvider';
+import { streamReader } from '@/lib/ai/stream';
 
 // * Context
 // Interface
@@ -32,6 +38,7 @@ interface ILessonCreatorCtx {
   isLoading: boolean;
   // Actions
   handleSubmit: () => void;
+  reset: (isHardReset?: boolean) => void;
   // Setters
   setSubject: Dispatch<SetStateAction<TSelection>>;
   setLevel: Dispatch<SetStateAction<TSelection>>;
@@ -59,6 +66,7 @@ const initialCtxValue: ILessonCreatorCtx = {
   isLoading: false,
   // Actions
   handleSubmit: () => {},
+  reset: () => {},
   // Setters
   setSubject: () => {},
   setLevel: () => {},
@@ -75,6 +83,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   // * Hooks
   const router = useRouter();
   const { supabase, session } = useAuth();
+  const { user } = useUser();
   const { open } = useInterceptionModal();
 
   // * State
@@ -91,76 +100,113 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   // * Handlers
   // Handle Submit Lesson Plan
   const handleSubmit = useCallback(async () => {
+    // Check if all fields are filled
     if (!topic?.id || !level?.id || !subject?.id) return;
 
-    setIsLoading(true);
+    setIsLoading(true); // Set Loading
 
+    // Generate Lesson Plan Id and Title (for modal to know what route to push to)
     const lessonId = v4();
     const title = `${topic.name} for ${level.name} (${subject.name})`;
 
+    // Open Modal and Push to Lesson Plan Page
     open();
     router.push(`/lesson-plans/${lessonId}`);
 
+    // Create Lesson Plan Request Body Objects (lesson, teacher, students)
+    const lesson: ILessonPlanPromptReq = {
+      subject: subject.name,
+      level: level.name,
+      topic: topic.name,
+      objectives: [], // TSK
+      difficulty: 'MODERATE', // TSK
+      standards: [], // TSK
+      format: '', // TSK
+      teaching_strategy: '', // TSK
+      philosophy: '', // TSK
+      length_in_min: 60, // TSK
+      pace: '', // TSK
+      materials: [], // TSK
+      special_considerations: '', // TSK
+      reflections: {}, // TSK
+      learning_styles: [], // TSK
+    };
+    const teacher: ITeacherPromptReq = {
+      name: user?.firstName + ' ' + user?.lastName,
+      role: 'PARENT', // TSK
+      years_experience: 0, // TSK
+      teaching_preferences: {}, // TSK
+    };
+    const students: IStudentPromptReq['children'] = [
+      {
+        name: 'Little Johnny', // TSK
+        age: 5, // TSK
+        learning_styles: [], // TSK
+      },
+    ];
+
+    // Generate Lesson Plan Request
     const res = await fetch('/api/ai/lesson-plans', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        id: lessonId,
-        subject: 'Mathematics',
-        level: 'Pre-K',
-        topic: 'Addition',
+        lesson,
+        teacher,
+        students,
       }),
     });
 
-    if (!res.ok) return;
+    if (!res.ok) return setIsLoading(false); // If not ok, return
 
-    const data = res.body!; // Get the response body
+    // Stream Response Body && Insert into Supabase
+    streamReader(res.body!, setLessonContent, async (content) => {
+      // Save to Supabase
+      await supabase.from('lesson_plans').insert({
+        id: lessonId,
+        subject: subject.id,
+        level: level.id,
+        topic: topic.id,
+        content,
+        creator_id: session?.user.id!,
+        title,
+        image_path: 'https://source.unsplash.com/random/800x600',
+        // length_in_min
+        // is_public
+        // tags
+      });
 
-    const reader = data.getReader(); // Get the reader from the response body
-    const decoder = new TextDecoder(); // Create a new text decoder
+      setComplete(true);
+      setIsLoading(false);
+    });
+  }, [
+    router,
+    supabase,
+    session,
+    subject,
+    level,
+    topic,
+    setComplete,
+    open,
+    user?.firstName,
+    user?.lastName,
+  ]);
 
-    let done = false; // Set done to false
-    let content = '';
-
-    // Stream the response until it's done
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
-
-      done = doneReading;
-
-      const chunkValue = decoder.decode(value);
-
-      content += chunkValue;
-      setLessonContent((prev) => prev + chunkValue);
-
-      // If done
-      if (done) {
-        // Save to Supabase
-        const { error: createError } = await supabase
-          .from('lesson_plans')
-          .insert({
-            id: lessonId,
-            subject: subject.id,
-            level: level.id,
-            topic: topic.id,
-            content,
-            creator_id: session?.user.id!,
-            title,
-            image_path: 'https://source.unsplash.com/random/800x600',
-            // length_in_min
-            // is_public
-            // tags
-          });
-
-        console.log('createError:', createError);
-
-        setComplete(true);
-        setIsLoading(false);
-      }
+  // Reset Lesson Creator
+  const reset = useCallback((isHardReset = true) => {
+    if (isHardReset) {
+      setSubject(null);
+      setLevel(null);
+      setTopic(null);
     }
-  }, [router, supabase, session, subject, level, topic, setComplete, open]);
+
+    console.log('isHardReset:', isHardReset);
+
+    setLessonContent('');
+    setComplete(false);
+    setIsLoading(false);
+  }, []);
 
   // * Value
   const value: ILessonCreatorCtx = useMemo(
@@ -176,6 +222,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       isLoading,
       // Actions
       handleSubmit,
+      reset,
       // Setters
       setSubject,
       setLevel,
@@ -183,7 +230,16 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setComplete,
       setIsLoading,
     }),
-    [subject, level, topic, isLoading, lessonContent, complete, handleSubmit],
+    [
+      subject,
+      level,
+      topic,
+      isLoading,
+      lessonContent,
+      complete,
+      handleSubmit,
+      reset,
+    ],
   );
 
   // * Render

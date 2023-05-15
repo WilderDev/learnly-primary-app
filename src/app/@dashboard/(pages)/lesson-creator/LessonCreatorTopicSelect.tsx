@@ -6,17 +6,6 @@ import { supabaseClient } from '@/lib/auth/supabaseClient';
 import DrilldownSelect from '@/lib/components/form/DrilldownSelect';
 import { IOption } from '@/assets/typescript/form';
 
-type TopicItem = {
-  subject_id: string;
-  subject_name: string;
-  level_id: string;
-  level_name: string;
-  topic_id: string;
-  topic_name: string;
-};
-
-type SubjectsLevelsTopics = Record<string, Record<string, TopicItem[]>>;
-
 export default function LessonCreatorTopicSelect() {
   // * Hooks / Context
   const { subject, setSubject, level, setLevel, topic, setTopic } =
@@ -97,5 +86,12 @@ async function getSubjectsLevelsTopics() {
 
   if (error) throw error;
 
-  return data as TopicItem[];
+  return data as {
+    subject_id: string;
+    subject_name: string;
+    level_id: string;
+    level_name: string;
+    topic_id: string;
+    topic_name: string;
+  }[];
 }
