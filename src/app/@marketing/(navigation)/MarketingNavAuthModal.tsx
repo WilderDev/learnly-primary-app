@@ -72,19 +72,19 @@ export default function MarketingNavAuthModal({
           autoFocus={true}
           tabIndex={0}
         />
-      </Form>
 
-      <Button
-        size="md"
-        fill="gradient"
-        shadow="md"
-        rounded="lg"
-        loading={isLoading}
-        className="w-full"
-        type="submit"
-      >
-        Time to Homeschool <span className="ml-2">😊</span>
-      </Button>
+        <Button
+          size="md"
+          fill="gradient"
+          shadow="md"
+          rounded="lg"
+          loading={isLoading}
+          className="w-full col-span-3"
+          type="submit"
+        >
+          Time to Homeschool <span className="ml-2">😊</span>
+        </Button>
+      </Form>
     </Modal>
   );
 }

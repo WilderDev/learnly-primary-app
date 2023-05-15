@@ -1,22 +1,18 @@
 'use client';
 
-import { useLessonCreator } from '../../lesson-creator/LessonCreatorCtx';
+import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 
 // * Props
 interface IProps {
-  lessonPlan: any; // TSK
+  lessonPlan: ILessonPlan;
 }
 
 // * Component
 export default function LessonPlanContainer({ lessonPlan }: IProps) {
-  // * Hooks
-  const { lessonContent } = useLessonCreator();
-
-  console.log('lessonContent:', lessonContent);
-
   return (
     <>
-      <p>{lessonPlan.content || lessonContent}</p>
+      <LessonPlanMarkdown content={lessonPlan.content} />
     </>
   );
 }

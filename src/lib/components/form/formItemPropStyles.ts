@@ -18,6 +18,9 @@ export const variants: { [key in TVariant]: string } = {
     'text-slate-900 dark:text-navy-50 focus:ring-green-500 focus:ring-offset-green-500',
   secondary:
     'text-green-700 dark:text-green-400 focus:ring-blue-500 focus:ring-offset-blue-500',
+  light:
+    'text-slate-900 dark:text-navy-50 focus:ring-slate-500 focus:ring-offset-slate-500',
+  dark: 'text-navy-50 dark:text-slate-900 focus:ring-navy-500 focus:ring-offset-navy-500',
 };
 
 // Input Fill Styles

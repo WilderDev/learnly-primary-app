@@ -6,6 +6,7 @@ import { useLessonCreator } from '@/app/@dashboard/(pages)/lesson-creator/Lesson
 import Button from '@/lib/components/ui/Button';
 import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { toast } from 'sonner';
+import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 
 // * Props
 interface IProps {
@@ -26,6 +27,8 @@ export default function LessonPlanPageModal({ params: { id } }: IProps) {
     <Modal
       isVisible={isOpen && lessonContent !== ''}
       close={() =>
+        isOpen &&
+        !complete &&
         toast.error('Please wait for the lesson to finish generating :)')
       }
       portalName="interception-portal"
@@ -61,7 +64,9 @@ export default function LessonPlanPageModal({ params: { id } }: IProps) {
         </div>
       )}
 
-      <p className="my-4">{lessonContent}</p>
+      <div className="my-4">
+        <LessonPlanMarkdown content={lessonContent} />
+      </div>
     </Modal>
   );
 }

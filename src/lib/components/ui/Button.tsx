@@ -55,6 +55,8 @@ export default function Button({
   const variants: { [key in TVariant]: string } = {
     primary: 'text-white',
     secondary: 'text-blue-700',
+    light: 'text-slate-700 dark:text-navy-700',
+    dark: 'text-slate-100 dark:text-navy-100',
   };
 
   // Button Fill Styles
@@ -63,42 +65,52 @@ export default function Button({
     solid: {
       primary: 'bg-green-600 hover:bg-green-700 focus:ring-offset-green-50',
       secondary: 'bg-blue-600 hover:bg-blue-700 focus:ring-offset-blue-50',
+      light: 'bg-slate-100 dark:bg-navy-100 focus:ring-offset-slate-50',
+      dark: 'bg-slate-700 dark:bg-navy-700 focus:ring-offset-slate-900',
     },
     // Outline
     outline: {
       primary:
-        'border border-green-600 hover:bg-green-50 focus:ring-offset-green-600',
+        'border border-green-600 hocus:bg-green-50 focus:ring-offset-green-600 text-green-600 hocus:text-green-700 dark:hocus:text-green-600 hocus:bg-opacity-10 dark:hocus:bg-opacity-10',
       secondary:
-        'border border-blue-600 hover:bg-blue-50 focus:ring-offset-blue-600',
+        'border border-blue-600 hocus:bg-blue-50 focus:ring-offset-blue-600 text-blue-600 hocus:text-blue-70',
+      light:
+        'border border-slate-100 dark:border-navy-100 hocus:bg-slate-50 focus:ring-offset-slate-100 text-slate-100 dark:text-navy-100 hocus:text-slate-200',
+      dark: 'border border-slate-700 dark:border-navy-700 hocus:bg-slate-900 focus:ring-offset-slate-700 text-slate-700 dark:text-navy-700 hocus:text-slate-800',
     },
     // Gradient
     gradient: {
       primary:
-        'bg-gradient-to-bl from-green-500 to-green-600 via-emerald-600 focus:ring-offset-green-600 hover:brightness-110 active:brightness-90',
+        'bg-gradient-to-bl from-green-500 to-green-600 via-emerald-600 focus:ring-offset-green-600 hocus:brightness-110 active:brightness-90',
       secondary:
-        'bg-gradient-to-bl from-blue-500 to-blue-600 via-sky-60 focus:ring-offset-blue-600 hover:brightness-110 active:brightness-90',
+        'bg-gradient-to-bl from-blue-500 to-blue-600 via-sky-60 focus:ring-offset-blue-600 hocus:brightness-110 active:brightness-90',
+      light:
+        'bg-gradient-to-bl from-slate-100 to-slate-200 via-slate-300 dark:from-navy-100 dark:to-navy-200 dark:via-navy-300 focus:ring-offset-slate-300 hocus:brightness-110 active:brightness-90',
+      dark: 'bg-gradient-to-bl from-slate-700 to-slate-800 via-slate-900 dark:from-navy-700 dark:to-navy-800 dark:via-navy-900 focus:ring-offset-slate-900 hocus:brightness-110 active:brightness-90',
     },
     // None
     none: {
-      primary: '',
-      secondary: '',
+      primary: 'text-green-600 hocus:text-green-700',
+      secondary: 'text-blue-600 hocus:text-blue-700',
+      light: 'text-slate-100 dark:text-navy-100 hocus:text-slate-200',
+      dark: 'text-slate-500 dark:text-navy-300 hocus:text-slate-700 dark:hocus:text-navy-200',
     },
   };
 
   // Button Effect Styles
   const effects: { [key in TEffect | 'none']: string } = {
     none: '',
-    scale: 'transform active:scale-95 hover:scale-105',
+    scale: 'transform active:scale-95 hocus:scale-105',
   };
 
   // Button Shadow Styles
   const shadows: { [key in TSize | 'none']: string } = {
     none: '',
-    xs: 'shadow-xs hover:shadow-sm',
-    sm: 'shadow-sm hover:shadow-md',
-    md: 'shadow-md hover:shadow-lg',
-    lg: 'shadow-lg hover:shadow-xl',
-    xl: 'shadow-xl hover:shadow-2xl',
+    xs: 'shadow-xs hocus:shadow-sm',
+    sm: 'shadow-sm hocus:shadow-md',
+    md: 'shadow-md hocus:shadow-lg',
+    lg: 'shadow-lg hocus:shadow-xl',
+    xl: 'shadow-xl hocus:shadow-2xl',
   };
 
   // Button Rounded Styles

@@ -14,6 +14,11 @@ You are a lesson plan generator for homeschool parents.
 
 Create a simple and streamlined lesson plan for a ${subject} (Grade Level: ${level}) class.
 The topic is ${topic}.
+
+Create a detailed and well-structured lesson plan that includes time allocation for each activity.
+Ensure the lesson plan is easily adaptable for different ages and learning styles.
+Do NOT include an H1 tag, start with an H2 for each section.
+Return the lesson plan in clean markdown format.
 `;
 
   return prompt.trim();

@@ -2,6 +2,7 @@
 
 import cn from '@/lib/common/cn';
 import VerticleScrollingColumn from './VerticleScrollingColumn';
+import ClientWrapper from '../../layout/ClientWrapper';
 
 export default function VerticleScrollingGrid({
   colsAndColItems,
@@ -16,24 +17,26 @@ export default function VerticleScrollingGrid({
 }) {
   // * Render
   return (
-    <div className={cn('relative overflow-hidden ', className)}>
-      {/* Columns */}
-      {colsAndColItems.map((col, cIdx) => (
-        <VerticleScrollingColumn
-          items={col.list.concat(col.list)}
-          msPerPixel={col.msPerPixel}
-          component={component}
-          key={cIdx}
-        />
-      ))}
+    <ClientWrapper>
+      <div className={cn('relative overflow-hidden ', className)}>
+        {/* Columns */}
+        {colsAndColItems.map((col, cIdx) => (
+          <VerticleScrollingColumn
+            items={col.list.concat(col.list)}
+            msPerPixel={col.msPerPixel}
+            component={component}
+            key={cIdx}
+          />
+        ))}
 
-      {/*  Gradient overlays */}
-      {gradientOverlays && (
-        <>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-green-700 dark:from-navy-900" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-green-700 dark:from-navy-900" />
-        </>
-      )}
-    </div>
+        {/*  Gradient overlays */}
+        {gradientOverlays && (
+          <>
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-green-700 dark:from-navy-900" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-green-700 dark:from-navy-900" />
+          </>
+        )}
+      </div>
+    </ClientWrapper>
   );
 }

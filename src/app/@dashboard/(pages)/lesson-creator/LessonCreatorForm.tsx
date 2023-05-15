@@ -8,10 +8,8 @@ import { useLessonCreator } from './LessonCreatorCtx';
 import LessonCreatorTopicSelect from './LessonCreatorTopicSelect';
 
 export default function LessonCreatorForm() {
-  // * Hooks
-
-  // * Context
-  const { isLoading, handleSubmit } = useLessonCreator();
+  // * Hooks / Context
+  const { isLoading, handleSubmit, topic, reset } = useLessonCreator();
 
   // * Render
   return (
@@ -55,15 +53,30 @@ export default function LessonCreatorForm() {
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row justify-between col-span-3">
         {/* Save as Template */}
-        <Button type="button">Save as Template</Button>
+        <Button fill="outline" type="button">
+          Save as Template
+        </Button>
 
         {/* Form Buttons */}
         <div className="flex flex-col sm:flex-row space-x-4">
           {/* Reset */}
-          <Button type="button">Reset</Button>
+          <Button
+            size="sm"
+            fill="none"
+            variant="dark"
+            shadow="none"
+            type="button"
+            onClick={() => reset(true)}
+          >
+            Reset
+          </Button>
 
           {/* Generate */}
-          <Button type="submit" loading={isLoading}>
+          <Button
+            type="submit"
+            loading={isLoading}
+            disabled={isLoading || !topic}
+          >
             Generate
           </Button>
         </div>

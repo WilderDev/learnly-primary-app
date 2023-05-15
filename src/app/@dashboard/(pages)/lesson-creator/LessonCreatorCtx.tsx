@@ -20,7 +20,7 @@ import {
   ILessonPlanPromptReq,
   IStudentPromptReq,
   ITeacherPromptReq,
-} from '@/assets/typescript/ai';
+} from '@/assets/typescript/lesson-plan';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
 

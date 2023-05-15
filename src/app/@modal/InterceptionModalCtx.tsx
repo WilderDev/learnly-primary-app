@@ -1,7 +1,7 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 // * Imports
+import { useRouter } from 'next/navigation';
 import {
   PropsWithChildren,
   useContext,
@@ -36,7 +36,6 @@ const InterceptionModalCtx =
 export function InterceptionModalProvider({ children }: PropsWithChildren) {
   // * Hooks
   const router = useRouter();
-
   // * State
   const [isOpen, setIsOpen] = useState(false);
 
