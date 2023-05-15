@@ -59,7 +59,7 @@ export default function MarketingNavAuthModal({
         image="/static/icons/brand/favicon_512x512.png"
       />
 
-      <Form>
+      <Form onSubmit={handleSignIn}>
         {/* Email */}
         <Input
           cols={3}
@@ -81,7 +81,7 @@ export default function MarketingNavAuthModal({
         rounded="lg"
         loading={isLoading}
         className="w-full"
-        onClick={handleSignIn}
+        type="submit"
       >
         Time to Homeschool <span className="ml-2">😊</span>
       </Button>

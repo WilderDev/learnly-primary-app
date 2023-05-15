@@ -114,7 +114,7 @@ CREATE TABLE lesson_plans (
   creator_id uuid NOT NULL REFERENCES teacher_profiles(id),
 
   -- Title
-  title text NOT NULL UNIQUE CHECK (char_length(title) > 0),
+  title text NOT NULL CHECK (char_length(title) > 0),
 
   -- Level
   level uuid NOT NULL REFERENCES levels(id),

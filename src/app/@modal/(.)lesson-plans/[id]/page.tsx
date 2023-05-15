@@ -17,7 +17,7 @@ interface IProps {
 // * Component
 export default function LessonPlanPageModal({ params: { id } }: IProps) {
   // * Hooks
-  const { lessonContent, complete } = useLessonCreator();
+  const { lessonContent, complete, reset } = useLessonCreator();
 
   // * Context
   const { isOpen, refresh, close } = useInterceptionModal();
@@ -35,12 +35,27 @@ export default function LessonPlanPageModal({ params: { id } }: IProps) {
       {complete && (
         <div className="flex justify-between">
           {/* Close */}
-          <Button fill="none" className="p-4" rounded="full" onClick={close}>
+          <Button
+            fill="none"
+            className="p-4"
+            rounded="full"
+            onClick={() => {
+              reset(false);
+              close();
+            }}
+          >
             <XMarkIcon className="w-6 h-6 text-slate-600 dark:text-navy-200" />
           </Button>
 
           {/* Expand */}
-          <Button className="p-4" rounded="full" onClick={refresh}>
+          <Button
+            className="p-4"
+            rounded="full"
+            onClick={() => {
+              reset(true);
+              refresh();
+            }}
+          >
             <ArrowsPointingOutIcon className="w-6 h-6" />
           </Button>
         </div>

@@ -10,7 +10,6 @@ import {
   useMemo,
   useCallback,
 } from 'react';
-import { useLessonCreator } from '../@dashboard/(pages)/lesson-creator/LessonCreatorCtx';
 
 // * Context
 // Interface
@@ -37,7 +36,6 @@ const InterceptionModalCtx =
 export function InterceptionModalProvider({ children }: PropsWithChildren) {
   // * Hooks
   const router = useRouter();
-  const { reset } = useLessonCreator();
 
   // * State
   const [isOpen, setIsOpen] = useState(false);
@@ -50,17 +48,16 @@ export function InterceptionModalProvider({ children }: PropsWithChildren) {
 
   // Close Modal and go back
   const close = useCallback(() => {
-    reset(false);
-
+    setIsOpen(false);
     router.back();
-  }, [router, reset]);
+  }, [router]);
 
   // Close Modal and refresh
   const refresh = useCallback(() => {
-    reset(true);
-
-    router.refresh();
-  }, [reset, router]);
+    // router.refresh();
+    setIsOpen(false);
+    window.location.reload();
+  }, []);
 
   // * Value
   const value: IInterceptionModalCtx = useMemo(

@@ -109,6 +109,8 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     const lessonId = v4();
     const title = `${topic.name} for ${level.name} (${subject.name})`;
 
+    console.log('lessonId:', lessonId);
+
     // Open Modal and Push to Lesson Plan Page
     open();
     router.push(`/lesson-plans/${lessonId}`);
@@ -163,7 +165,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     // Stream Response Body && Insert into Supabase
     streamReader(res.body!, setLessonContent, async (content) => {
       // Save to Supabase
-      await supabase.from('lesson_plans').insert({
+      const { error } = await supabase.from('lesson_plans').insert({
         id: lessonId,
         subject: subject.id,
         level: level.id,
@@ -176,6 +178,8 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
         // is_public
         // tags
       });
+
+      console.log('error:', error);
 
       setComplete(true);
       setIsLoading(false);
@@ -200,8 +204,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setLevel(null);
       setTopic(null);
     }
-
-    console.log('isHardReset:', isHardReset);
 
     setLessonContent('');
     setComplete(false);
