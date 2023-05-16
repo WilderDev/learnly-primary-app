@@ -24,7 +24,8 @@ export default function HelpCenterPage() {
 
 export const metadata = {
   title: 'Help Center',
-  description: 'TSK',
+  description:
+    'Homeschool parents Learnly dashboard help center page. Get help with anything related to homeschooling with a simple chat interface.',
 };
 
 export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355

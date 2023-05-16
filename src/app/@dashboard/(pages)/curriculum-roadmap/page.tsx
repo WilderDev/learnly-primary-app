@@ -24,7 +24,8 @@ export default function CurriculumRoadmapPage() {
 
 export const metadata = {
   title: 'Curriculum Roadmap',
-  description: 'TSK',
+  description:
+    'Homeschool parents Learnly dashboard curriculum roadmap page. Curriculum roadmap for homeschool parents.',
 };
 
 export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355

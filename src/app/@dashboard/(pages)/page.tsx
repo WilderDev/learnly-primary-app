@@ -33,7 +33,7 @@ export default function ParentDashboardHomePage() {
 
 export const metadata = {
   title: 'Home',
-  description: 'TSK',
+  description: 'Homeschool parents Learnly dashboard home page.',
 };
 
 export const dynamic = 'force-dynamic';

@@ -24,7 +24,7 @@ export default function ScheduleBuilderPage() {
 
 export const metadata = {
   title: 'Schedule Builder',
-  description: 'TSK',
+  description: 'Homeschool parents Learnly dashboard schedule builder page.',
 };
 
 export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355

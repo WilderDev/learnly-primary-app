@@ -77,3 +77,40 @@ async function getLessonPlan(id: string) {
 
   return data as ILessonPlan;
 }
+
+export async function generateMetadata({ params: { id } }: IProps) {
+  const { title, image_path, subject, level, topic, tags } =
+    await getLessonPlan(id);
+
+  return {
+    slug: `/lesson-plans/${id}`,
+    title,
+    image: image_path,
+    keywords: ['Homeschool Lesson Plan', title, tags],
+    description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
+    openGraph: {
+      title: title,
+      description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
+      images: [
+        {
+          url: image_path,
+          width: 800,
+          height: 600,
+          alt: title,
+        },
+      ],
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const supabase = supabaseServer();
+
+  const { data: lessonPlans } = await supabase
+    .from('lesson_plans')
+    .select('id');
+
+  const dynamicRoutes = lessonPlans?.map((lp) => ({ id: lp.id }));
+
+  return dynamicRoutes;
+}

@@ -24,7 +24,8 @@ export default function AccountPage() {
 
 export const metadata = {
   title: 'Your Account',
-  description: 'TSK',
+  description:
+    'Homeschool parents Learnly dashboard account page. Account settings for homeschool parents.',
 };
 
 export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355
