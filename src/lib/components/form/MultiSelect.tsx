@@ -189,7 +189,7 @@ export default function MultiSelect({
         {isMenuOpen && (
           <div
             className={cn(
-              'absolute right-0 top-10 z-10 mt-1 w-full border-2 border-slate-300/90 dark:border-navy-600/90',
+              'absolute right-0 top-10 z-20 mt-1 w-full',
               roundeds[rounded],
               shadows[shadow],
               variants[variant],
@@ -197,7 +197,7 @@ export default function MultiSelect({
           >
             <ul
               className={cn(
-                'max-h-60 overflow-auto text-base divide-y-2 divide-slate-300 dark:divide-navy-500 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
+                'max-h-60 overflow-auto text-base divide-y-2 border-2 border-slate-300/90 dark:border-navy-500/90 divide-slate-300 dark:divide-navy-500 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
                 roundeds[rounded],
               )}
               role="listbox"
@@ -208,7 +208,7 @@ export default function MultiSelect({
                 <li
                   key={option.value}
                   className={cn(
-                    'relative cursor-default select-none bg-white dark:bg-navy-700 hocus:bg-green-50 dark:hocus:bg-green-800',
+                    'relative cursor-default select-none shadow-inner bg-white dark:bg-navy-700 hocus:bg-green-50 dark:hocus:bg-green-800',
                     values.includes(option.value) &&
                       'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100',
                     highlightedIndex === index &&
@@ -242,7 +242,7 @@ export default function MultiSelect({
                         className="rounded-full"
                       />
                     )}
-                    <span className="block truncate font-normal text-base">
+                    <span className="block truncate font-medium text-base">
                       {capitalize(option.label)}
                     </span>
 

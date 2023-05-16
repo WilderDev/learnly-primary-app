@@ -62,7 +62,7 @@ export default function DatePicker({
           fills[fill],
           shadows[shadow],
           roundeds[rounded],
-          'pl-10',
+          'pl-10 z-30',
         )}
         placeholder="Choose date..."
         type="text"

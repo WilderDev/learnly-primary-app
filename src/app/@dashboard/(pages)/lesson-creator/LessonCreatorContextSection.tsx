@@ -3,14 +3,33 @@
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { useLessonCreator } from './LessonCreatorCtx';
 import LessonCreatorFormSection from './LessonCreatorFormSection';
-import Select from '@/lib/components/form/Select';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import MultiSelect from '@/lib/components/form/MultiSelect';
 import { Dispatch, SetStateAction } from 'react';
 import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
 import { getAgeFromBirthday } from '@/lib/common/user.helpers';
+import { Database } from '@/assets/typescript/db';
+import TextArea from '@/lib/components/form/TextArea';
 
 // * Data
+// Materials
+const materialOptions: Database['public']['Enums']['material'][] = [
+  'Textbook',
+  'Workbook',
+  'Worksheet',
+  'Manipulatives',
+  'Technology',
+  'Other',
+];
+// Learning Styles
+const learningStyleOptions: Database['public']['Enums']['learning_style'][] = [
+  'Visual',
+  'Auditory',
+  'Kinesthetic',
+  'Verbal',
+  'Logical',
+  'Social',
+];
 
 export default function LessonCreatorContextSection() {
   // * Hooks / Context
@@ -68,10 +87,21 @@ export default function LessonCreatorContextSection() {
       />
 
       {/* Materials (Multi-Select) */}
-      {/* TSK */}
+      <MultiSelect
+        label="Materials"
+        options={createSelectOptions(materialOptions)}
+        values={materials}
+        setValues={setMaterials as Dispatch<SetStateAction<string[]>>}
+        cols={2}
+      />
 
       {/* Special Considerations (Textarea) */}
-      {/* TSK */}
+      <TextArea
+        label="Special Considerations"
+        value={specialConsiderations}
+        setValue={setSpecialConsiderations}
+        cols={3}
+      />
 
       {/* Advanced Options */}
       {showAdvancedContext && (
@@ -80,7 +110,13 @@ export default function LessonCreatorContextSection() {
           {/* TSK */}
 
           {/* Learning Styles (Multi-Select) */}
-          {/* TSK */}
+          <MultiSelect
+            label="Learning Styles"
+            options={createSelectOptions(learningStyleOptions)}
+            values={learningStyles}
+            setValues={setLearningStyles as Dispatch<SetStateAction<string[]>>}
+            cols={2}
+          />
         </>
       )}
     </LessonCreatorFormSection>

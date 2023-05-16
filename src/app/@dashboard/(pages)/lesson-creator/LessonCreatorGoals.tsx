@@ -85,7 +85,7 @@ export default function LessonCreatorGoalsSection() {
             options={createSelectOptions(standardOptions)}
             values={standards}
             setValues={setStandards as Dispatch<SetStateAction<string[]>>}
-            cols={1}
+            cols={2}
           />
         </>
       )}

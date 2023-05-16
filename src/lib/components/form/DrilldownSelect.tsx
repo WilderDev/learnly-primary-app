@@ -327,86 +327,94 @@ IProps) {
         </div>
 
         {menuOpen && (
-          <div
-            className={cn(
-              'absolute right-0 top-10 z-10 mt-1 w-full border-2 border-slate-300/90 dark:border-navy-600/90',
-              roundeds[rounded],
-              shadows[shadow],
-              variants[variant],
-            )}
-          >
-            {path.map(
-              (selectedOption, level) =>
-                level <= currentLevel && (
-                  <ul
-                    className={cn(
-                      'absolute bg-white dark:bg-navy-700 dark:border-navy-600 dark:divide-navy-600 border border-slate-200 divide-y divide-slate-200 shadow-lg w-full lg:w-64 z-10',
-                      roundeds[rounded],
-                    )}
-                    style={{
-                      left: windowWidth <= 1024 ? '0px' : `${level * 256}px`,
-                      top:
-                        windowWidth > 1024
-                          ? `${itemTopPositions[level]}px`
-                          : '0px',
-                    }}
-                    role="listbox"
-                    aria-labelledby={label}
-                    aria-activedescendant={selectedOption?.id}
-                    key={level}
-                  >
-                    {windowWidth <= 1024 && level > 0 && (
-                      <li
-                        className={cn(
-                          'cursor-pointer px-3 py-2 shadow hocus:bg-slate-100 bg-slate-50 dark:bg-navy-900/70 dark:hocus:bg-navy-600 text-slate-500 dark:text-navy-300 text-xs sm:text-sm rounded-t-md',
-                        )}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          // Navigate back up one level
-                          setPath((oldPath) => {
-                            let newPath = [...oldPath];
-                            newPath = newPath.slice(0, newPath.length - 1);
-                            setCurrentLevel(newPath.length - 1);
-                            return newPath;
-                          });
-                          setItemTopPositions((oldTopPositions) => {
-                            let newTopPositions = [...oldTopPositions];
-                            newTopPositions = newTopPositions.slice(
-                              0,
-                              newTopPositions.length - 1,
-                            );
-                            return newTopPositions;
-                          });
-                        }}
-                      >
-                        Back
-                      </li>
-                    )}
-                    {(level === 0 ? options : path[level - 1]?.children)?.map(
-                      (option, index) => (
+          <>
+            <div
+              className={cn(
+                'absolute right-0 top-10 z-20 mt-1 w-full',
+                roundeds[rounded],
+                shadows[shadow],
+                variants[variant],
+              )}
+            >
+              {path.map(
+                (selectedOption, level) =>
+                  level <= currentLevel && (
+                    <ul
+                      className={cn(
+                        'absolute bg-white dark:bg-navy-700 dark:border-navy-600 dark:divide-navy-600 border border-slate-200 divide-y divide-slate-200 shadow-lg w-full lg:w-64 z-10',
+                        roundeds[rounded],
+                      )}
+                      style={{
+                        left: windowWidth <= 1024 ? '0px' : `${level * 256}px`,
+                        top:
+                          windowWidth > 1024
+                            ? `${itemTopPositions[level]}px`
+                            : '0px',
+                      }}
+                      role="listbox"
+                      aria-labelledby={label}
+                      aria-activedescendant={selectedOption?.id}
+                      key={level}
+                    >
+                      {windowWidth <= 1024 && level > 0 && (
                         <li
-                          key={option.id}
                           className={cn(
-                            'cursor-pointer px-3 py-2 shadow text-sm sm:text-base',
-                            selectedOption?.id === option.id
-                              ? 'bg-green-100 dark:bg-green-700'
-                              : 'hocus:bg-slate-100 dark:hocus:bg-navy-600',
-                            // If it's the last item for this level, add rounded bottom corners
-                            level === path.length - 1 && 'rounded-b-md',
+                            'cursor-pointer shadow px-3 py-2 hocus:bg-slate-100 bg-slate-50 dark:bg-navy-900/70 dark:hocus:bg-navy-600 text-slate-500 dark:text-navy-300 text-xs sm:text-sm rounded-t-md border-2 border-slate-300/90',
                           )}
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleItemClick(option, level, index, e as any);
+                            // Navigate back up one level
+                            setPath((oldPath) => {
+                              let newPath = [...oldPath];
+                              newPath = newPath.slice(0, newPath.length - 1);
+                              setCurrentLevel(newPath.length - 1);
+                              return newPath;
+                            });
+                            setItemTopPositions((oldTopPositions) => {
+                              let newTopPositions = [...oldTopPositions];
+                              newTopPositions = newTopPositions.slice(
+                                0,
+                                newTopPositions.length - 1,
+                              );
+                              return newTopPositions;
+                            });
                           }}
                         >
-                          {option.name}
+                          Back
                         </li>
-                      ),
-                    )}
-                  </ul>
-                ),
-            )}
-          </div>
+                      )}
+                      {(level === 0 ? options : path[level - 1]?.children)?.map(
+                        (option, index) => (
+                          <li
+                            key={option.id}
+                            className={cn(
+                              'cursor-pointer px-3 py-2 shadow text-sm sm:text-base font-medium text-slate-800 dark:text-navy-100',
+                              selectedOption?.id === option.id
+                                ? 'bg-green-100 dark:bg-green-700'
+                                : 'hocus:bg-slate-100 dark:hocus:bg-navy-600',
+                              // If it's the last item for this level, add rounded bottom corners
+                              level === path.length - 1 && 'rounded-b-md',
+                            )}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleItemClick(option, level, index, e as any);
+                            }}
+                          >
+                            {option.name}
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  ),
+              )}
+            </div>
+
+            {/* Backdrop blur */}
+            {/* <div
+              className="fixed inset-0 z-10 backdrop-blur-sm"
+              onClick={() => setMenuOpen(false)}
+            /> */}
+          </>
         )}
       </div>
     </FormItem>
