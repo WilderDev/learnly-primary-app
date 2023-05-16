@@ -9,19 +9,21 @@ import {
   useState,
 } from 'react';
 import { createContext } from 'react';
-import { Me } from '@/assets/typescript/user';
+import { Me, UserStudent } from '@/assets/typescript/user';
 import { useAuth } from './AuthProvider';
 
 // * Context
 // Interface
 interface IUserCtx {
   user: Me | null;
+  students: UserStudent[];
   revalidateUser: () => void;
 }
 
 // Initial Value
 const UserCtx = createContext<IUserCtx>({
   user: null,
+  students: [],
   revalidateUser: () => {},
 });
 
@@ -31,6 +33,7 @@ export function UserProvider({ children }: PropsWithChildren) {
 
   // * State
   const [user, setUser] = useState<Me | null>(null);
+  const [students, setStudents] = useState<UserStudent[]>([]);
 
   // * Functions
   // Fetch User
@@ -50,9 +53,35 @@ export function UserProvider({ children }: PropsWithChildren) {
       firstName: user.first_name!,
       lastName: user.last_name!,
       avatarUrl: user.avatar_url!,
+      status: user.status!,
+      type: user.type!,
+      role: user.role!,
     };
 
     return transformedUser;
+  }, [supabase, session]);
+
+  // Fetch Students
+  const fetchStudents = useCallback(async () => {
+    if (!session) return null;
+
+    const { data: students, error } = await supabase
+      .from('teacher_students_profiles_view')
+      .select('*');
+
+    if (error || !students) return null;
+
+    const transformedStudents: UserStudent[] = students?.map((student) => ({
+      id: student.id!,
+      firstName: student.first_name!,
+      lastName: student.last_name!,
+      birthday: student.birthday!,
+      avatarUrl: student.avatar_url!,
+      learningStyles: student.learning_styles!,
+      // . . .
+    }));
+
+    return transformedStudents;
   }, [supabase, session]);
 
   // Revalidate User
@@ -66,6 +95,17 @@ export function UserProvider({ children }: PropsWithChildren) {
     // @ts-ignore
   }, [fetchUser]);
 
+  // Revalidate Students
+  const revalidateStudents = useCallback(async () => {
+    // Get Students
+    const studentsData = await fetchStudents();
+
+    // Set Students
+    setStudents(studentsData || []);
+
+    // @ts-ignore
+  }, [fetchStudents]);
+
   // * Effects
   // Fetch User
   useEffect(() => {
@@ -73,13 +113,21 @@ export function UserProvider({ children }: PropsWithChildren) {
     revalidateUser();
   }, [revalidateUser]);
 
+  // Fetch Students
+  useEffect(() => {
+    // Fetch Students
+    revalidateStudents();
+  }, [revalidateStudents]);
+
   // * Value
   const value = useMemo(
     () => ({
       user,
+      students,
       revalidateUser,
+      revalidateStudents,
     }),
-    [user, revalidateUser],
+    [user, students, revalidateUser, revalidateStudents],
   );
 
   // * Render

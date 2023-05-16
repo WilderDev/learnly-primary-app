@@ -24,8 +24,8 @@ import {
 
 // * Props
 interface IProps {
-  value: string | null;
-  setValue: (value: string) => void;
+  values: string[];
+  setValues: (value: string[]) => void;
   options: ISelectOption[];
   label: string;
   labelHidden?: boolean;
@@ -40,9 +40,9 @@ interface IProps {
 }
 
 // * Component
-export default function Select({
-  value,
-  setValue,
+export default function MultiSelect({
+  values,
+  setValues,
   options,
   label,
   labelHidden = false,
@@ -94,8 +94,13 @@ export default function Select({
         event.preventDefault();
       } else if (event.key === 'Enter' || event.key === ' ') {
         if (isMenuOpen && highlightedIndex !== -1) {
-          setValue(options[highlightedIndex].value);
-          setMenuOpen(false);
+          const optionValue = options[highlightedIndex].value;
+          if (values.includes(optionValue)) {
+            setValues(values.filter((value) => value !== optionValue));
+          } else {
+            setValues([...values, optionValue]);
+          }
+          // setMenuOpen(false);
         } else if (!isMenuOpen) {
           setMenuOpen(true);
         }
@@ -104,7 +109,7 @@ export default function Select({
         setMenuOpen(false);
       }
     },
-    [highlightedIndex, isMenuOpen, options, setValue],
+    [highlightedIndex, isMenuOpen, options, values, setValues],
   );
 
   // * Effects
@@ -150,15 +155,24 @@ export default function Select({
         ref={containerRef}
       >
         {/* Input Container */}
-        <div className="block w-full cursor-pointer flex-nowrap overflow-hidden text-ellipsis">
+        <div className="block w-full cursor-pointer flex-nowrap overflow-hidden text-ellipsis whitespace-nowrap">
           <span
             className={cn(
-              value
+              values.length > 0
                 ? 'text-slate-900 dark:text-navy-50'
                 : 'text-slate-500/70 dark:text-navy-200/70 font-light',
             )}
           >
-            {value ? capitalize(value) : 'Select an option'}
+            {values.length > 0
+              ? values
+                  .map((value) => {
+                    const option = options.find(
+                      (option) => option.value === value,
+                    );
+                    return option ? capitalize(option.label) : '';
+                  })
+                  .join(', ')
+              : 'Select options'}
           </span>
         </div>
 
@@ -183,7 +197,7 @@ export default function Select({
           >
             <ul
               className={cn(
-                'max-h-60 overflow-auto text-base divide-y-2 dark:divide-navy-500 divide-slate-300 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
+                'max-h-60 overflow-auto text-base divide-y-2 divide-slate-300 dark:divide-navy-500 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
                 roundeds[rounded],
               )}
               role="listbox"
@@ -195,12 +209,12 @@ export default function Select({
                   key={option.value}
                   className={cn(
                     'relative cursor-default select-none bg-white dark:bg-navy-700 hocus:bg-green-50 dark:hocus:bg-green-800',
-                    value?.includes(option.value) &&
+                    values.includes(option.value) &&
                       'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100',
                     highlightedIndex === index &&
                       'bg-slate-200 dark:bg-navy-600 ring-2 focus:ring-offset-2 ring-green-500 dark:ring-green-500 ring-opacity-50',
                   )}
-                  aria-selected={value?.includes(option.value)}
+                  aria-selected={values.includes(option.value)}
                   role="option"
                 >
                   <button
@@ -208,12 +222,14 @@ export default function Select({
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setMenuOpen(false);
+                      // setMenuOpen(false);
 
-                      if (value?.includes(option.value)) {
-                        setValue('');
+                      if (values.includes(option.value)) {
+                        setValues(
+                          values.filter((value) => value !== option.value),
+                        );
                       } else {
-                        setValue(option.value);
+                        setValues([...values, option.value]);
                       }
                     }}
                   >
@@ -230,7 +246,7 @@ export default function Select({
                       {capitalize(option.label)}
                     </span>
 
-                    {value?.includes(option.value) && (
+                    {values.includes(option.value) && (
                       <span className="absolute inset-y-0 right-0 flex items-center pr-4">
                         <CheckCircleIcon className="h-5 w-5 text-green-500 dark:text-green-600" />
                       </span>

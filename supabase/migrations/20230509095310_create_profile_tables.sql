@@ -8,7 +8,7 @@ CREATE TYPE trial_status AS ENUM ('ACTIVE', 'CONVERTED', 'EXPIRED');
 -- Role Types (for authorization)
 CREATE TYPE user_role AS ENUM ('ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT', 'BANNISHED');
 -- Learning Styles
-CREATE TYPE learning_styles AS enum
+CREATE TYPE learning_style AS enum
 ('Visual', 'Auditory', 'Kinesthetic', 'Verbal', 'Logical', 'Social');
 -- Student Goals
 CREATE TYPE student_goals AS ENUM (
@@ -155,7 +155,7 @@ CREATE TABLE student_preferences (
   id uuid REFERENCES student_profiles(id) ON DELETE CASCADE NOT NULL PRIMARY KEY,
 
   -- Learning styles (array of text)
-  learning_styles learning_styles[] NOT NULL DEFAULT '{}'::learning_styles[],
+  learning_styles learning_style[] NOT NULL DEFAULT '{}'::learning_style[],
 
   -- Subject preferences (array of text)
   subject_preferences text[] NOT NULL DEFAULT '{}'::text[],
@@ -217,7 +217,8 @@ SELECT
   teacher_profiles.last_name AS last_name,
   teacher_profiles.avatar_url AS avatar_url,
   teacher_profiles.status AS status,
-  teacher_profiles.type AS type
+  teacher_profiles.type AS type,
+  teacher_profiles.role AS role
 FROM teacher_profiles
 WHERE teacher_profiles.id = auth.uid();
 
@@ -229,11 +230,22 @@ SELECT
   student_profiles.first_name,
   student_profiles.last_name,
   student_profiles.avatar_url,
-  student_profiles.birthday
+  student_profiles.birthday,
+  student_preferences.learning_styles,
+  student_preferences.subject_preferences,
+  student_preferences.interests,
+  student_preferences.knowledge,
+  student_preferences.strengths,
+  student_preferences.weaknesses,
+  student_preferences.goals,
+  student_preferences.learning_environment_preferences,
+  student_preferences.learning_resources_preferences,
+  student_preferences.special_needs,
+  student_preferences.assessment_results,
+  student_preferences.accomplishments
 FROM student_profiles
 JOIN student_preferences ON student_profiles.id = student_preferences.id
-JOIN teacher_profiles ON student_profiles.teacher_id = teacher_profiles.id
-WHERE teacher_profiles.id = auth.uid();
+WHERE student_profiles.teacher_id = auth.uid();
 
 
 -- * FUNCTIONS
@@ -277,6 +289,19 @@ BEGIN
 END;
 $$ language plpgsql security definer;
 
+-- Create a new student preferences when a new student profile is created
+CREATE FUNCTION public.handle_new_student_profile()
+RETURNS trigger as $$
+BEGIN
+  -- First Operation (Insert into Student Preferences)
+  INSERT into public.student_preferences (id)
+  VALUES (new.id);
+
+  -- Return the new student profile
+  return new;
+END;
+$$ language plpgsql security definer;
+
 -- Update the last_activity and consecutive_activity_days fields when a user logs in
 CREATE FUNCTION update_last_activity_and_streak() RETURNS TRIGGER AS $$
 BEGIN
@@ -307,6 +332,11 @@ $$ LANGUAGE plpgsql;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
+
+-- Call the handle_new_student_profile function when a new student profile is created
+create trigger on_student_profile_created
+  after insert on student_profiles
+  for each row execute procedure public.handle_new_student_profile();
 
 -- Update the last_login and consecutive_login_days fields when a user logs in
 CREATE TRIGGER update_user_activity_and_streak

@@ -112,6 +112,7 @@ export interface Database {
           reflections: Json[]
           special_considerations: string | null
           standards: Database["public"]["Enums"]["standard"][]
+          students: string[]
           subject: string
           tags: string[]
           teaching_strategy: Database["public"]["Enums"]["teaching_strategy"]
@@ -137,6 +138,7 @@ export interface Database {
           reflections?: Json[]
           special_considerations?: string | null
           standards?: Database["public"]["Enums"]["standard"][]
+          students?: string[]
           subject: string
           tags?: string[]
           teaching_strategy?: Database["public"]["Enums"]["teaching_strategy"]
@@ -162,6 +164,7 @@ export interface Database {
           reflections?: Json[]
           special_considerations?: string | null
           standards?: Database["public"]["Enums"]["standard"][]
+          students?: string[]
           subject?: string
           tags?: string[]
           teaching_strategy?: Database["public"]["Enums"]["teaching_strategy"]
@@ -483,7 +486,7 @@ export interface Database {
           knowledge: Json
           learning_environment_preferences: Database["public"]["Enums"]["environment_preferences"][]
           learning_resources_preferences: Database["public"]["Enums"]["resource_preferences"][]
-          learning_styles: Database["public"]["Enums"]["learning_styles"][]
+          learning_styles: Database["public"]["Enums"]["learning_style"][]
           special_needs: Database["public"]["Enums"]["learning_disabilities"][]
           strengths: string[]
           subject_preferences: string[]
@@ -500,7 +503,7 @@ export interface Database {
           knowledge?: Json
           learning_environment_preferences?: Database["public"]["Enums"]["environment_preferences"][]
           learning_resources_preferences?: Database["public"]["Enums"]["resource_preferences"][]
-          learning_styles?: Database["public"]["Enums"]["learning_styles"][]
+          learning_styles?: Database["public"]["Enums"]["learning_style"][]
           special_needs?: Database["public"]["Enums"]["learning_disabilities"][]
           strengths?: string[]
           subject_preferences?: string[]
@@ -517,7 +520,7 @@ export interface Database {
           knowledge?: Json
           learning_environment_preferences?: Database["public"]["Enums"]["environment_preferences"][]
           learning_resources_preferences?: Database["public"]["Enums"]["resource_preferences"][]
-          learning_styles?: Database["public"]["Enums"]["learning_styles"][]
+          learning_styles?: Database["public"]["Enums"]["learning_style"][]
           special_needs?: Database["public"]["Enums"]["learning_disabilities"][]
           strengths?: string[]
           subject_preferences?: string[]
@@ -866,6 +869,7 @@ export interface Database {
           first_name: string | null
           id: string | null
           last_name: string | null
+          role: Database["public"]["Enums"]["user_role"] | null
           status: Database["public"]["Enums"]["profile_status"] | null
           type: Database["public"]["Enums"]["profile_type"] | null
         }
@@ -874,6 +878,7 @@ export interface Database {
           first_name?: string | null
           id?: string | null
           last_name?: string | null
+          role?: Database["public"]["Enums"]["user_role"] | null
           status?: Database["public"]["Enums"]["profile_status"] | null
           type?: Database["public"]["Enums"]["profile_type"] | null
         }
@@ -882,17 +887,38 @@ export interface Database {
           first_name?: string | null
           id?: string | null
           last_name?: string | null
+          role?: Database["public"]["Enums"]["user_role"] | null
           status?: Database["public"]["Enums"]["profile_status"] | null
           type?: Database["public"]["Enums"]["profile_type"] | null
         }
       }
       teacher_students_profiles_view: {
         Row: {
+          accomplishments: Json | null
+          assessment_results: Json | null
           avatar_url: string | null
           birthday: string | null
           first_name: string | null
+          goals: Database["public"]["Enums"]["student_goals"][] | null
           id: string | null
+          interests: string[] | null
+          knowledge: Json | null
           last_name: string | null
+          learning_environment_preferences:
+            | Database["public"]["Enums"]["environment_preferences"][]
+            | null
+          learning_resources_preferences:
+            | Database["public"]["Enums"]["resource_preferences"][]
+            | null
+          learning_styles:
+            | Database["public"]["Enums"]["learning_style"][]
+            | null
+          special_needs:
+            | Database["public"]["Enums"]["learning_disabilities"][]
+            | null
+          strengths: string[] | null
+          subject_preferences: string[] | null
+          weaknesses: string[] | null
         }
       }
       unread_notifications_count_view: {
@@ -1108,13 +1134,6 @@ export interface Database {
         | "Nonverbal_Learning_Disability"
         | "Autism"
       learning_style:
-        | "Visual"
-        | "Auditory"
-        | "Kinesthetic"
-        | "Verbal"
-        | "Logical"
-        | "Social"
-      learning_styles:
         | "Visual"
         | "Auditory"
         | "Kinesthetic"

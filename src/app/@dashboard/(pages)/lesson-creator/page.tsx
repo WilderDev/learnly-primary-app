@@ -38,30 +38,3 @@ export const metadata = {
 };
 
 export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355
-
-/// ! ==========GOALS========== ! \\\
-// subject: string
-// level: string
-// topic: string | null
-// objectives: Database["public"]["Enums"]["objective"][]
-/// * =========extra=========== * \\\
-// difficulty: number
-// standards: Database["public"]["Enums"]["standard"][]
-/// ======================================= \\\
-
-/// ! ==========STRATEGY========== ! \\\
-// format: Database["public"]["Enums"]["format"]
-// teaching_strategy: Database["public"]["Enums"]["teaching_strategy"]
-// philosophy: Database["public"]["Enums"]["philosophy"]
-/// * =========extra=========== * \\\
-// length_in_min: number
-// pace: Database["public"]["Enums"]["pace"]
-/// ======================================= \\\
-
-/// ! ==========CONTEXT========== ! \\\
-// students: IStudentPromptReq["children"]
-// materials: Database["public"]["Enums"]["material"][]
-// special_considerations: string | null
-/// * =========extra=========== * \\\
-// reflections: Json[]
-// learning_styles: Database["public"]["Enums"]["learning_style"][]

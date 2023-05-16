@@ -13,8 +13,6 @@ CREATE TYPE pace AS ENUM ('SLOW', 'MEDIUM', 'FAST');
 CREATE TYPE philosophy AS ENUM ('Eclectic/Relaxed', 'Traditional', 'Montessori', 'Unschooling', 'Unit Studies', 'Project-Based', 'Waldorf', 'Reggio Emilia', 'Classical', 'Charlotte Mason', 'Other');
 -- Formats
 CREATE TYPE format AS ENUM ('Whole Group', 'Small Group', 'Individual');
--- Learning Styles
-CREATE TYPE learning_style AS ENUM ('Visual', 'Auditory', 'Kinesthetic', 'Verbal', 'Logical', 'Social');
 -- Teaching Strategies
 CREATE TYPE teaching_strategy AS ENUM ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other');
 -- Materials

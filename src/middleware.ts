@@ -18,6 +18,8 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession(); // Get Session
 
+  console.log('session.user.app_metadata:', session?.user);
+
   const isAuthorized =
     session && authorizedRoles.includes(session.user.app_metadata.role); // Check if user is authorized
   const allowedAccess =
@@ -26,7 +28,7 @@ export async function middleware(req: NextRequest) {
   // If Authorized, udpate the user's streak
   if (isAuthorized && process.env.NODE_ENV === 'production') {
     await supabase
-      .from('profiles')
+      .from('teacher_profiles')
       .update({ last_activity: new Date(), status: 'ONLINE' })
       .eq('id', session.user.id);
   }
