@@ -10,8 +10,7 @@ import LessonCreatorModal from './LessonCreatorModal';
 
 export default function LessonCreatorForm() {
   // * Hooks / Context
-  const { isLoading, handleSubmit, topic, reset, lessonContent } =
-    useLessonCreator();
+  const { isLoading, handleSubmit, topic, reset } = useLessonCreator();
 
   // * Render
   return (
@@ -32,7 +31,7 @@ export default function LessonCreatorForm() {
 
         {/* Section 2 */}
         <LessonCreatorFormSection
-          title="Lesson Strategy"
+          title="Lesson Structure"
           description="How will you achieve your desired outcome?"
           colNum={2}
           isShowingAdvancedOptions={false}
@@ -44,8 +43,8 @@ export default function LessonCreatorForm() {
 
         {/* Section 3 */}
         <LessonCreatorFormSection
-          title="Lesson Tactics"
-          description="What will you do to achieve your desired outcome?"
+          title="Lesson Context"
+          description="Who is this lesson for and what tools will you need?"
           colNum={3}
           isShowingAdvancedOptions={false}
           toggleAdvancedOptions={() => {}}
@@ -88,7 +87,7 @@ export default function LessonCreatorForm() {
       </Form>
 
       {/* Modal */}
-      {lessonContent !== '' && <LessonCreatorModal />}
+      <LessonCreatorModal />
     </>
   );
 }

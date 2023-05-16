@@ -5,8 +5,10 @@ CREATE TYPE animal AS ENUM ('Bears', 'Bees', 'Birds', 'Butterflies', 'Cats', 'Ca
 CREATE TYPE level AS ENUM ('Buds', 'Sprouts', 'Oaks', 'Pre-K', 'K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12');
 -- Statuses
 CREATE TYPE status AS ENUM ('created', 'scheduled', 'completed', 'archived');
+-- Difficulties
+CREATE TYPE difficulty AS ENUM ('EASY', 'MODERATE', 'CHALLENGING');
 -- Paces
-CREATE TYPE pace AS ENUM ('slow', 'medium', 'fast');
+CREATE TYPE pace AS ENUM ('SLOW', 'MEDIUM', 'FAST');
 -- Philosophies
 CREATE TYPE philosophy AS ENUM ('Eclectic/Relaxed', 'Traditional', 'Montessori', 'Unschooling', 'Unit Studies', 'Project-Based', 'Waldorf', 'Reggio Emilia', 'Classical', 'Charlotte Mason', 'Other');
 -- Formats
@@ -206,22 +208,25 @@ CREATE TABLE lesson_plan_templates (
   length_in_min int NOT NULL DEFAULT 60 CHECK (length_in_min > 0),
 
   -- Difficulty
-  difficulty int NOT NULL DEFAULT 50 CHECK (difficulty > 0 AND difficulty < 100),
+  difficulty difficulty NOT NULL DEFAULT 'MODERATE' CHECK (difficulty IN ('EASY', 'MODERATE', 'CHALLENGING')),
 
   -- Pace
-  pace pace NOT NULL DEFAULT 'medium' CHECK (pace IN ('slow', 'medium', 'fast')),
+  pace pace NOT NULL DEFAULT 'MEDIUM' CHECK (pace IN ('SLOW', 'MEDIUM', 'FAST')),
 
   -- Philosophy
   philosophy philosophy NOT NULL DEFAULT 'Traditional' CHECK (philosophy IN ('Eclectic/Relaxed', 'Traditional', 'Montessori', 'Unschooling', 'Unit Studies', 'Project-Based', 'Waldorf', 'Reggio Emilia', 'Classical', 'Charlotte Mason', 'Other')),
 
   -- Format
-  format format NOT NULL DEFAULT 'Individual' CHECK (format IN ('Whole Group', 'Small Group', 'Individual')),
+  format format,
 
   -- Learning Styles
   learning_styles learning_style[] NOT NULL DEFAULT '{}'::learning_style[],
 
   -- Teaching Strategy
   teaching_strategy teaching_strategy NOT NULL DEFAULT 'Direct Instruction' CHECK (teaching_strategy IN ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other')),
+
+  -- Students Ids
+  students uuid[] NOT NULL DEFAULT '{}'::uuid[],
 
   -- Materials
   materials material[] NOT NULL DEFAULT '{}'::material[],

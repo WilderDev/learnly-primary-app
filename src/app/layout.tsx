@@ -40,6 +40,9 @@ export default async function RootLayout({ dashboard, marketing }: IProps) {
               {/* Custom Portal */}
               <div id="portal" />
 
+              {/* alt Portal */}
+              <div id="alt-portal" />
+
               {/* Chat Portal */}
               <div id="chat-portal" />
 

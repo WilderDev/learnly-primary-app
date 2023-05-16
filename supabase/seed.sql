@@ -4567,6 +4567,8 @@ SELECT create_topic(
   'ENTP'
 );
 
+REFRESH MATERIALIZED VIEW subjects_levels_topics;
+
 -- Little Learners | Comprehensive K-5 | Little Experimentors | STEM K-5 | etc...
 -- Learning Paths (4)
 -- INSERT INTO learning_paths

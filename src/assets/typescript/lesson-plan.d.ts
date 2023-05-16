@@ -19,40 +19,36 @@ export interface ILessonPlan {
   };
 }
 
-export type TDifficulty = 'EASY' | 'MODERATE' | 'CHALLENGING'; // Enum for Lesson Difficulty
-
 // Lesson Plan Prompt Input (Lesson Object)
 export interface ILessonPlanPromptReq {
   subject: string;
   level: string;
   topic: string;
-  objectives: string[];
-  difficulty: TDifficulty;
-  standards: string[]; // TSK: enum
-  format: string; // TSK: enum
-  teaching_strategy: string; // TSK: enum
-  philosophy: string; // TSK: enum
+  objectives: Database['public']['Enums']['objective'][];
+  difficulty: Database['public']['Enums']['difficulty'];
+  standards: Database['public']['Enums']['standard'][];
+  format: Database['public']['Enums']['format'] | null;
+  teaching_strategy: Database['public']['Enums']['teaching_strategy'];
+  philosophy: Database['public']['Enums']['philosophy'];
   length_in_min: number;
-  pace: string; // TSK: enum
-  materials?: string[];
-  special_considerations?: string;
-  reflections?: {
-    // TSK
-  };
-  learning_styles?: string[]; // TSK: enum
+  pace: Database['public']['Enums']['pace'];
+  materials: Database['public']['Enums']['material'][];
+  special_considerations: string;
+  reflections: any; // TSK
+  learning_styles?: Database['public']['Enums']['learning_style'][];
 }
 
 // Lesson Plan Prompt Input (Teacher Object)
 export interface ITeacherPromptReq {
   name: string;
   role: Database['public']['Enums']['profile_type'];
-  years_experience?: number;
   teaching_preferences?: {}; // TSK
 }
 
 // Lesson Plan Prompt Input (Students Object)
 export interface IStudentPromptReq {
   children: {
+    id: string;
     name: string;
     age: number;
     learning_styles: Database['public']['Enums']['learning_style'][];

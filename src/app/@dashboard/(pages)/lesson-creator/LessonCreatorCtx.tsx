@@ -21,14 +21,37 @@ import {
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
 import { v4 } from 'uuid';
+import { Database } from '@/assets/typescript/db';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import capitalize from '@/lib/common/capitalize';
 
 // * Context
 // Interface
 interface ILessonCreatorCtx {
   // Prompt Information
+  /// Goals - Core
   subject: TSelection;
   level: TSelection;
   topic: TSelection;
+  objectives: Database['public']['Enums']['objective'][];
+  /// Goals - Extra
+  difficulty: Database['public']['Enums']['difficulty'];
+  standards: Database['public']['Enums']['standard'][];
+  /// Structure - Core
+  philosophy: Database['public']['Enums']['philosophy'];
+  teaching_strategy: Database['public']['Enums']['teaching_strategy'];
+  length_in_min: number;
+  /// Structure - Extra
+  pace: Database['public']['Enums']['pace'];
+  format: Database['public']['Enums']['format'] | null;
+  /// Context -Core
+  students: IStudentPromptReq['children'];
+  materials: Database['public']['Enums']['material'][];
+  special_considerations: string;
+  /// Context - Extra
+  reflections: {}; // TSK
+  learning_styles: Database['public']['Enums']['learning_style'][];
   // Output
   lessonContent: string;
   // UI
@@ -41,6 +64,35 @@ interface ILessonCreatorCtx {
   setSubject: Dispatch<SetStateAction<TSelection>>;
   setLevel: Dispatch<SetStateAction<TSelection>>;
   setTopic: Dispatch<SetStateAction<TSelection>>;
+  setObjective: Dispatch<
+    SetStateAction<Database['public']['Enums']['objective'][]>
+  >;
+  setDifficulty: Dispatch<
+    SetStateAction<Database['public']['Enums']['difficulty']>
+  >;
+  setStandard: Dispatch<
+    SetStateAction<Database['public']['Enums']['standard'][]>
+  >;
+  setTeachingStrategy: Dispatch<
+    SetStateAction<Database['public']['Enums']['teaching_strategy']>
+  >;
+  setPhilosophy: Dispatch<
+    SetStateAction<Database['public']['Enums']['philosophy']>
+  >;
+  setLengthInMin: Dispatch<SetStateAction<number>>;
+  setPace: Dispatch<SetStateAction<Database['public']['Enums']['pace']>>;
+  setFormat: Dispatch<
+    SetStateAction<Database['public']['Enums']['format'] | null>
+  >;
+  setStudents: Dispatch<SetStateAction<IStudentPromptReq['children']>>;
+  setMaterials: Dispatch<
+    SetStateAction<Database['public']['Enums']['material'][]>
+  >;
+  setSpecialConsiderations: Dispatch<SetStateAction<string>>;
+  setReflections: Dispatch<SetStateAction<{}>>; // TSK
+  setLearningStyles: Dispatch<
+    SetStateAction<Database['public']['Enums']['learning_style'][]>
+  >;
   setComplete: Dispatch<SetStateAction<boolean>>;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
   // Extra
@@ -51,6 +103,7 @@ interface ILessonCreatorCtx {
 // Initial Value
 const initialCtxValue: ILessonCreatorCtx = {
   // Prompt Information
+  /// Goals - Core
   subject: {
     id: '',
     name: '',
@@ -60,6 +113,24 @@ const initialCtxValue: ILessonCreatorCtx = {
     name: '',
   },
   topic: { id: '', name: '' },
+  objectives: [],
+  /// Goals - Extra
+  difficulty: 'MODERATE',
+  standards: [],
+  /// Structure - Core
+  philosophy: 'Traditional',
+  teaching_strategy: 'Direct Instruction',
+  length_in_min: 60,
+  /// Structure - Extra
+  pace: 'MEDIUM',
+  format: null,
+  /// Context - Core
+  students: [],
+  materials: [],
+  special_considerations: '',
+  /// Context - Extra
+  reflections: {}, // TSK
+  learning_styles: [],
   // Output
   lessonContent: '',
   complete: false,
@@ -72,6 +143,19 @@ const initialCtxValue: ILessonCreatorCtx = {
   setSubject: () => {},
   setLevel: () => {},
   setTopic: () => {},
+  setObjective: () => {},
+  setDifficulty: () => {},
+  setStandard: () => {},
+  setTeachingStrategy: () => {},
+  setPhilosophy: () => {},
+  setLengthInMin: () => {},
+  setPace: () => {},
+  setFormat: () => {},
+  setStudents: () => {},
+  setMaterials: () => {},
+  setSpecialConsiderations: () => {},
+  setReflections: () => {},
+  setLearningStyles: () => {},
   setComplete: () => {},
   setIsLoading: () => {},
   // Extra
@@ -87,12 +171,49 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   // * Hooks
   const { supabase, session } = useAuth();
   const { user } = useUser();
+  const router = useRouter();
 
   // * State
   // Prompt Information
+  /// Goals - Core
   const [subject, setSubject] = useState<TSelection>(null);
   const [level, setLevel] = useState<TSelection>(null);
   const [topic, setTopic] = useState<TSelection>(null);
+  const [objectives, setObjective] = useState<
+    Database['public']['Enums']['objective'][]
+  >([]);
+  /// Goals - Extra
+  const [difficulty, setDifficulty] =
+    useState<Database['public']['Enums']['difficulty']>('MODERATE');
+  const [standards, setStandard] = useState<
+    Database['public']['Enums']['standard'][]
+  >([]);
+  /// Structure - Core
+  const [philosophy, setPhilosophy] =
+    useState<Database['public']['Enums']['philosophy']>('Traditional');
+  const [teaching_strategy, setTeachingStrategy] =
+    useState<Database['public']['Enums']['teaching_strategy']>(
+      'Direct Instruction',
+    );
+  const [length_in_min, setLengthInMin] = useState<number>(60);
+  /// Structure - Extra
+  const [pace, setPace] =
+    useState<Database['public']['Enums']['pace']>('MEDIUM');
+  const [format, setFormat] = useState<
+    Database['public']['Enums']['format'] | null
+  >(null);
+  /// Context - Core
+  const [students, setStudents] = useState<IStudentPromptReq['children']>([]);
+  const [materials, setMaterials] = useState<
+    Database['public']['Enums']['material'][]
+  >([]);
+  const [special_considerations, setSpecialConsiderations] =
+    useState<string>('');
+  /// Context - Extra
+  const [reflections, setReflections] = useState<{}>({}); // TSK
+  const [learning_styles, setLearningStyles] = useState<
+    Database['public']['Enums']['learning_style'][]
+  >([]);
   // Output
   const [lessonContent, setLessonContent] = useState('');
   const [complete, setComplete] = useState(false);
@@ -116,27 +237,27 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       subject: subject.name,
       level: level.name,
       topic: topic.name,
-      objectives: [], // TSK
-      difficulty: 'MODERATE', // TSK
-      standards: [], // TSK
-      format: '', // TSK
-      teaching_strategy: '', // TSK
-      philosophy: '', // TSK
-      length_in_min: 60, // TSK
-      pace: '', // TSK
-      materials: [], // TSK
-      special_considerations: '', // TSK
-      reflections: {}, // TSK
-      learning_styles: [], // TSK
+      objectives,
+      difficulty,
+      standards,
+      format,
+      teaching_strategy,
+      philosophy,
+      length_in_min,
+      pace,
+      materials,
+      special_considerations,
+      reflections,
+      learning_styles,
     };
     const teacher: ITeacherPromptReq = {
       name: user?.firstName + ' ' + user?.lastName,
       role: 'PARENT', // TSK
-      years_experience: 0, // TSK
       teaching_preferences: {}, // TSK
     };
     const students: IStudentPromptReq['children'] = [
       {
+        id: '1',
         name: 'Little Johnny', // TSK
         age: 5, // TSK
         learning_styles: [], // TSK
@@ -170,12 +291,35 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
         creator_id: session?.user.id!,
         title: `${topic.name} for ${level.name} (${subject.name})`,
         image_path: 'https://source.unsplash.com/random/800x600',
-        // length_in_min
-        // is_public
-        // tags
+        length_in_min,
+        is_public: true,
+        tags: [
+          subject.name,
+          level.name,
+          topic.name,
+          ...objectives,
+          capitalize(difficulty),
+          ...standards,
+          teaching_strategy,
+          philosophy,
+          capitalize(pace),
+          ...materials,
+          ...learning_styles,
+        ],
       });
 
       console.log('error:', error);
+
+      if (!error) {
+        // Display success toast
+        toast.success('Lesson Plan Generated!', {
+          action: {
+            label: 'View Lesson Plan',
+            onClick: () => router.push(`/lesson-plans/${id}`),
+          },
+          duration: 10000,
+        });
+      }
 
       setComplete(true);
       setIsLoading(false);
@@ -186,9 +330,21 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     subject,
     level,
     topic,
-    setComplete,
+    objectives,
+    difficulty,
+    standards,
+    format,
+    teaching_strategy,
+    philosophy,
+    length_in_min,
+    pace,
+    materials,
+    special_considerations,
+    reflections,
+    learning_styles,
     user?.firstName,
     user?.lastName,
+    router,
   ]);
 
   // Reset Lesson Creator
@@ -197,6 +353,19 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setSubject(null);
       setLevel(null);
       setTopic(null);
+      setObjective([]);
+      setDifficulty('MODERATE');
+      setStandard([]);
+      setTeachingStrategy('Direct Instruction');
+      setPhilosophy('Traditional');
+      setLengthInMin(60);
+      setPace('MEDIUM');
+      setFormat(null);
+      setStudents([]);
+      setMaterials([]);
+      setSpecialConsiderations('');
+      setReflections({});
+      setLearningStyles([]);
     }
 
     setLessonContent('');
@@ -204,13 +373,40 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     setIsLoading(false);
   }, []);
 
+  // Save as Template
+  const saveAsTemplate = (
+    title: string,
+    students: IStudentPromptReq['children'],
+  ) => {
+    // TSK
+  };
+
   // * Value
   const value: ILessonCreatorCtx = useMemo(
     () => ({
       // Prompt Information
+      /// Goals - Core
       subject,
       level,
       topic,
+      objectives,
+      /// Goals - Extra
+      difficulty,
+      standards,
+      /// Structure - Core
+      philosophy,
+      teaching_strategy,
+      length_in_min,
+      /// Structure - Extra
+      pace,
+      format,
+      /// Context - Core
+      students,
+      materials,
+      special_considerations,
+      /// Context - Extra
+      reflections,
+      learning_styles,
       // Output
       lessonContent,
       // UI
@@ -223,6 +419,19 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setSubject,
       setLevel,
       setTopic,
+      setObjective,
+      setDifficulty,
+      setStandard,
+      setTeachingStrategy,
+      setPhilosophy,
+      setLengthInMin,
+      setPace,
+      setFormat,
+      setStudents,
+      setMaterials,
+      setSpecialConsiderations,
+      setReflections,
+      setLearningStyles,
       setComplete,
       setIsLoading,
       // Extra
@@ -233,6 +442,19 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       subject,
       level,
       topic,
+      objectives,
+      difficulty,
+      standards,
+      philosophy,
+      teaching_strategy,
+      length_in_min,
+      pace,
+      format,
+      students,
+      materials,
+      special_considerations,
+      reflections,
+      learning_styles,
       isLoading,
       lessonContent,
       complete,

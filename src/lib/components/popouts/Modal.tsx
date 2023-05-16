@@ -18,6 +18,7 @@ interface IProps {
   portalName?: string;
   closeBtn?: boolean;
   noCloseOnOutsideClick?: boolean;
+  closeBtnLeft?: boolean;
   className?: string;
 }
 
@@ -31,6 +32,7 @@ export default function Modal({
   shadow = 'md',
   portalName = 'portal',
   closeBtn = false,
+  closeBtnLeft = false,
   noCloseOnOutsideClick = false,
   className,
 }: IProps) {
@@ -186,8 +188,9 @@ export default function Modal({
           {closeBtn && (
             <button
               className={cn(
-                'absolute print:hidden -top-2 right-2 p-1 rounded-full group hocus:bg-slate-100 dark:hocus:bg-navy-800 transition-colors',
+                'absolute print:hidden -top-2 p-1 rounded-full group hocus:bg-slate-100 dark:hocus:bg-navy-800 transition-colors',
                 !closeBtn && 'opacity-0 focus:opacity-100',
+                closeBtnLeft ? 'left-2' : 'right-2',
               )}
               onClick={close}
             >

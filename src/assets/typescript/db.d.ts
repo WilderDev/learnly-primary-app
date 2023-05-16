@@ -98,8 +98,8 @@ export interface Database {
           assessments: Json[]
           created_at: string
           creator_id: string
-          difficulty: number
-          format: Database["public"]["Enums"]["format"]
+          difficulty: Database["public"]["Enums"]["difficulty"]
+          format: Database["public"]["Enums"]["format"] | null
           id: string
           image_path: string
           learning_styles: Database["public"]["Enums"]["learning_style"][]
@@ -123,8 +123,8 @@ export interface Database {
           assessments?: Json[]
           created_at?: string
           creator_id: string
-          difficulty?: number
-          format?: Database["public"]["Enums"]["format"]
+          difficulty?: Database["public"]["Enums"]["difficulty"]
+          format?: Database["public"]["Enums"]["format"] | null
           id?: string
           image_path?: string
           learning_styles?: Database["public"]["Enums"]["learning_style"][]
@@ -148,8 +148,8 @@ export interface Database {
           assessments?: Json[]
           created_at?: string
           creator_id?: string
-          difficulty?: number
-          format?: Database["public"]["Enums"]["format"]
+          difficulty?: Database["public"]["Enums"]["difficulty"]
+          format?: Database["public"]["Enums"]["format"] | null
           id?: string
           image_path?: string
           learning_styles?: Database["public"]["Enums"]["learning_style"][]
@@ -1088,6 +1088,7 @@ export interface Database {
         | "LEARNING_PATH"
         | "LESSON_TEMPLATE"
         | "OTHER"
+      difficulty: "EASY" | "MODERATE" | "CHALLENGING"
       environment_preferences:
         | "Quiet_and_individual"
         | "Group_and_collaborative"
@@ -1172,7 +1173,7 @@ export interface Database {
         | "Analysis"
         | "Synthesis"
         | "Evaluation"
-      pace: "slow" | "medium" | "fast"
+      pace: "SLOW" | "MEDIUM" | "FAST"
       payment_type:
         | "acss_debit"
         | "affirm"

@@ -3,7 +3,7 @@ import LeftSidebar from '../(navigation)/(left-sidebar)/LeftSidebar';
 import TopHeader from '../(navigation)/(top-header)/TopHeader';
 import DashContainer from '../(layout)/DashContainer';
 
-export default function DashboardLayout({ children }: any) {
+export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
     <>
       {/* Left Sidebar */}

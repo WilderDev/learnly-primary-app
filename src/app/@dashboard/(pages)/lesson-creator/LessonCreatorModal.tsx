@@ -10,22 +10,23 @@ import LessonCreatorDock from './LessonCreatorDock';
 // * Component
 export default function LessonCreatorModal() {
   // * Hooks / Context
-  const { id, lessonContent, complete } = useLessonCreator();
+  const { id, lessonContent, complete, reset } = useLessonCreator();
 
   // * Return
   return (
     <>
       {/* Modal (Content) */}
       <Modal
-        isVisible={true}
-        close={() => {}}
-        closeBtn={false}
+        closeBtnLeft={true}
+        closeBtn={complete}
+        isVisible={lessonContent !== ''}
+        close={() => reset(false)}
         noCloseOnOutsideClick={true}
       >
         {/* Header */}
         {complete && (
           <Button
-            className="!p-3 absolute top-3 right-3 print:hidden"
+            className="!p-3 absolute top-2 right-2 print:hidden"
             rounded="full"
             url={`/lesson-plans/${id}`}
           >
@@ -33,13 +34,13 @@ export default function LessonCreatorModal() {
           </Button>
         )}
 
-        <div className="my-4">
+        <div className="mt-6 mb-4 pr-4">
           <LessonPlanMarkdown content={lessonContent} />
         </div>
       </Modal>
 
       {/* Actions Dock */}
-      <LessonCreatorDock />
+      {complete && <LessonCreatorDock />}
     </>
   );
 }
