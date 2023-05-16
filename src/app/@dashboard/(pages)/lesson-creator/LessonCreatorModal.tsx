@@ -3,9 +3,10 @@
 import Modal from '@/lib/components/popouts/Modal';
 import { useLessonCreator } from './LessonCreatorCtx';
 import Button from '@/lib/components/ui/Button';
-import { ArrowsPointingOutIcon } from '@heroicons/react/24/solid';
+import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import LessonCreatorDock from './LessonCreatorDock';
+import cn from '@/lib/common/cn';
 
 // * Component
 export default function LessonCreatorModal() {
@@ -17,10 +18,9 @@ export default function LessonCreatorModal() {
     <>
       {/* Modal (Content) */}
       <Modal
-        closeBtnLeft={true}
-        closeBtn={complete}
+        closeBtn={false}
         isVisible={lessonContent !== ''}
-        close={() => reset(false)}
+        close={() => {}}
         noCloseOnOutsideClick={true}
       >
         {/* Header */}
@@ -38,6 +38,17 @@ export default function LessonCreatorModal() {
           <LessonPlanMarkdown content={lessonContent} />
         </div>
       </Modal>
+      {/* Close Button */}
+      {complete && (
+        <button
+          className={cn(
+            'fixed print:hidden top-4 left-4 p-1 z-[10000] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors',
+          )}
+          onClick={() => reset(false)}
+        >
+          <XMarkIcon className="w-6 h-6 text-slate-300 group:text-slate-100 dark:text-navy-200 dark:focus:text-navy-100" />
+        </button>
+      )}
 
       {/* Actions Dock */}
       {complete && <LessonCreatorDock />}

@@ -86,12 +86,12 @@ export default function LessonCreatorContextSection() {
         cols={1}
       />
 
-      {/* Materials (Multi-Select) */}
+      {/* Learning Styles (Multi-Select) */}
       <MultiSelect
-        label="Materials"
-        options={createSelectOptions(materialOptions)}
-        values={materials}
-        setValues={setMaterials as Dispatch<SetStateAction<string[]>>}
+        label="Learning Styles"
+        options={createSelectOptions(learningStyleOptions)}
+        values={learningStyles}
+        setValues={setLearningStyles as Dispatch<SetStateAction<string[]>>}
         cols={2}
       />
 
@@ -109,14 +109,14 @@ export default function LessonCreatorContextSection() {
           {/* Reflections (TSK) */}
           {/* TSK */}
 
-          {/* Learning Styles (Multi-Select) */}
-          <MultiSelect
-            label="Learning Styles"
-            options={createSelectOptions(learningStyleOptions)}
-            values={learningStyles}
-            setValues={setLearningStyles as Dispatch<SetStateAction<string[]>>}
-            cols={2}
-          />
+          {/* Materials (Multi-Select) */}
+          {/* <MultiSelect
+        label="Materials"
+        options={createSelectOptions(materialOptions)}
+        values={materials}
+        setValues={setMaterials as Dispatch<SetStateAction<string[]>>}
+        cols={2}
+      /> */}
         </>
       )}
     </LessonCreatorFormSection>

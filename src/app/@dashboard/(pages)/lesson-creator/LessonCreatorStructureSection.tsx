@@ -118,13 +118,13 @@ export default function LessonCreatorStructureSection() {
           />
 
           {/* Format (Select) */}
-          <Select
+          {/* <Select
             label="Format"
             options={createSelectOptions(formatOptions)}
             value={format as string}
             setValue={setFormat as Dispatch<SetStateAction<string>>}
             cols={1}
-          />
+          /> */}
         </>
       )}
     </LessonCreatorFormSection>

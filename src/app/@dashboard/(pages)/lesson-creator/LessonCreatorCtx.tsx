@@ -299,7 +299,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
         creator_id: session?.user.id!,
         title: `${topic.name} for ${level.name} (${subject.name})`,
         image_path: 'https://source.unsplash.com/random/800x600',
-        lengthInMin,
+        length_in_min: lengthInMin,
         is_public: true,
         tags: [
           subject.name,
@@ -315,8 +315,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
           ...learningStyles,
         ],
       });
-
-      console.log('error:', error);
 
       if (!error) {
         // Display success toast

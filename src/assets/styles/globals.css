@@ -76,7 +76,7 @@
 
   /* Printable Components */
   .printable {
-    @apply print:visible print:absolute print:inset-0 print:overflow-visible print:z-50;
+    @apply print:visible print:absolute print:inset-0 print:overflow-visible print:z-50 print:max-h-full print:overflow-y-auto;
   }
 }
 

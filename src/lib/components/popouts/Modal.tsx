@@ -170,7 +170,7 @@ export default function Modal({
         {/* Content */}
         <div
           className={cn(
-            'z-50 w-full mx-auto my-12 space-y-4 bg-white dark:bg-navy-700 overflow-y-auto relative border border-slate-600/50 dark:border-navy-300/50',
+            'z-50 w-full mx-auto my-12 space-y-4 bg-white dark:bg-navy-700 max-h-[90vh] overflow-y-auto relative border border-slate-600/50 dark:border-navy-300/50',
             sizeStyles[size],
             roundedStyles[rounded],
             shadowStyles[shadow],

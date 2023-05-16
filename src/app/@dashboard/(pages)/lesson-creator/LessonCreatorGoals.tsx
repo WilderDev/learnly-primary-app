@@ -80,13 +80,13 @@ export default function LessonCreatorGoalsSection() {
           />
 
           {/* Standards (Multi-Select) */}
-          <MultiSelect
+          {/* <MultiSelect
             label="Standards"
             options={createSelectOptions(standardOptions)}
             values={standards}
             setValues={setStandards as Dispatch<SetStateAction<string[]>>}
             cols={2}
-          />
+          /> */}
         </>
       )}
     </LessonCreatorFormSection>

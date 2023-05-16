@@ -4,7 +4,7 @@ import MarketingNavCTA from './MarketingNavCTA';
 
 export default function MarketingNavigation() {
   return (
-    <header className="w-full bg-white shadow dark:bg-navy-800">
+    <header className="w-full bg-white shadow dark:bg-navy-800 print:hidden">
       <nav
         id="marketing-navigation"
         role="navigation"
