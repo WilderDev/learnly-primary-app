@@ -10,7 +10,7 @@ interface IProps {
 // * Component
 export default function LessonPlanMarkdown({ content }: IProps) {
   return (
-    <div className="printable">
+    <div className="printable !z-[1000000] print:overflow-visible print:-mt-6">
       <ReactMarkdown components={lessonPlanComponents} linkTarget="_blank">
         {content}
       </ReactMarkdown>

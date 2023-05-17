@@ -25,9 +25,6 @@ async function getTemplates() {
     .from('lesson_plan_with_students_view')
     .select('*');
 
-  console.log('error:', error);
-  console.log('data:', data);
-
   if (error) return [];
 
   return data;

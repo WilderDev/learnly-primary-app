@@ -899,6 +899,26 @@ export interface Database {
           topic: Json | null
         }
       }
+      lesson_plans_with_creator_and_students_view: {
+        Row: {
+          content: string | null
+          creator_avatar_url: string | null
+          creator_first_name: string | null
+          creator_last_name: string | null
+          creator_type: Database["public"]["Enums"]["profile_type"] | null
+          id: string | null
+          image_path: string | null
+          is_public: boolean | null
+          length_in_min: number | null
+          level: string | null
+          scheduled_date: string | null
+          students: string[] | null
+          subject: string | null
+          tags: string[] | null
+          title: string | null
+          topic: string | null
+        }
+      }
       teacher_me_view: {
         Row: {
           avatar_url: string | null

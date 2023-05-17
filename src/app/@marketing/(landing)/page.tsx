@@ -10,5 +10,5 @@ export default function MarketingLandingPage() {
 }
 
 export const metadata = {
-  title: '#1 Personalized Homeschool Solution',
+  title: 'Homeschool Your Way',
 };

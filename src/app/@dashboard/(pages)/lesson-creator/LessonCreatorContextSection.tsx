@@ -75,11 +75,11 @@ export default function LessonCreatorContextSection() {
         )}
         values={students.map((s) => s.id)}
         setValues={(ids) => {
-          const lessonStudents: IStudentPromptReq['children'] = usersStudents
+          const lessonStudents: IStudentPromptReq['students'] = usersStudents
             .filter((s) => ids.includes(s.id))
             .map((s) => ({
               id: s.id,
-              name: `${s.firstName} ${s.lastName}`,
+              name: s.firstName,
               age: getAgeFromBirthday(s.birthday),
               avatarUrl: s.avatarUrl,
               learning_styles: s.learningStyles,
@@ -108,7 +108,7 @@ export default function LessonCreatorContextSection() {
           {/* Special Considerations (Textarea) */}
           <TextArea
             label="Special Considerations"
-            value={specialConsiderations}
+            value={specialConsiderations || ''}
             setValue={setSpecialConsiderations}
             cols={3}
             icon={FlagIcon}

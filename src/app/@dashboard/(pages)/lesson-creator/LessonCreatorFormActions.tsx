@@ -3,20 +3,16 @@
 import Button from '@/lib/components/ui/Button';
 import { useLessonCreator } from './LessonCreatorCtx';
 import { useState } from 'react';
-import Modal from '@/lib/components/popouts/Modal';
-import Form from '@/lib/components/form/Form';
-import Input from '@/lib/components/form/Input';
-import { MapIcon } from '@heroicons/react/24/solid';
+
+import LessonCreatorSaveTemplateModal from './LessonCreatorSaveTemplateModal';
 
 // * Component
 export default function LessonCreatorFormActions() {
   // * Hooks / Context
-  const { isLoading, topic, reset, saveAsTemplate, students } =
-    useLessonCreator();
+  const { topic, reset, students, isLoading } = useLessonCreator();
 
   // * State
   const [isTemplateModalOpen, setTemplateModalOpen] = useState(false);
-  const [templateTitle, setTemplateTitle] = useState('');
 
   // * Render
   return (
@@ -50,7 +46,7 @@ export default function LessonCreatorFormActions() {
           <Button
             type="submit"
             loading={isLoading}
-            disabled={isLoading || !topic || !students.length}
+            disabled={isLoading || !topic || students.length === 0}
           >
             Generate
           </Button>
@@ -58,45 +54,10 @@ export default function LessonCreatorFormActions() {
       </div>
 
       {/* Template Modal */}
-      <Modal
-        size="xs"
-        portalName="alt-portal"
-        isVisible={isTemplateModalOpen}
+      <LessonCreatorSaveTemplateModal
+        isOpen={isTemplateModalOpen}
         close={() => setTemplateModalOpen(false)}
-      >
-        <Modal.Header title="Save as Template" />
-
-        <Modal.Body>
-          <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              saveAsTemplate(templateTitle);
-              setTemplateModalOpen(false);
-            }}
-          >
-            {/* Title Input */}
-            <Input
-              label="Template Title"
-              value={templateTitle}
-              setValue={setTemplateTitle}
-              required={true}
-              icon={MapIcon}
-              cols={4}
-            />
-
-            {/* Submit */}
-            <Button
-              className="col-span-4"
-              type="submit"
-              loading={isLoading}
-              disabled={isLoading || !templateTitle}
-            >
-              Save as Template
-            </Button>
-          </Form>
-        </Modal.Body>
-      </Modal>
+      />
     </>
   );
 }

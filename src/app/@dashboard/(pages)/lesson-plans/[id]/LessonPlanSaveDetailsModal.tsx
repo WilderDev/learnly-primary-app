@@ -9,6 +9,7 @@ import DatePicker from '@/lib/components/form/DatePicker';
 import MultiSelect from '@/lib/components/form/MultiSelect';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import Button from '@/lib/components/ui/Button';
+import { revalidatePath } from 'next/cache';
 
 interface IProps {
   lessonPlanId: string;
@@ -42,7 +43,7 @@ export default function LessonPlanSaveDetailsModalForm({
   });
 
   // * State
-  const [scheduledDate, setScheduledDate] = useState<Date | null>(new Date());
+  const [scheduledDate, setScheduledDate] = useState<Date | null>(null);
   const [savedStudents, setSavedStudents] =
     useState<string[]>(defaultStudentIds);
 

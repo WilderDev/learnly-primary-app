@@ -26,15 +26,15 @@ export default async function PublicLessonPlanPage({ params: { id } }: IProps) {
     <Main>
       <Container>
         {/* Body */}
-        <main className="relative mx-auto p-6 print:my-0 max-w-3xl rounded-lg shadow-lg">
+        <main className="relative mx-auto bg-white dark:bg-navy-800 p-6 print:my-0 max-w-3xl rounded-lg shadow-lg">
           {/* Info */}
           <div className="mb-6 flex flex-col print:hidden">
             {/* Top */}
             <div className="flex items-center justify-between">
               {/* Creator */}
               <LessonPlanCreatorInfo
-                name={`${lessonPlan.creator.first_name} ${lessonPlan.creator.last_name}`}
-                avatar_url={lessonPlan.creator.avatar_url}
+                name={`${lessonPlan.creator_first_name} ${lessonPlan.creator_last_name}`}
+                avatar_url={lessonPlan.creator_avatar_url}
                 // role={lessonPlan.creator.}
               />
             </div>
@@ -44,7 +44,7 @@ export default async function PublicLessonPlanPage({ params: { id } }: IProps) {
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl font-bold mb-6 print:mb-2 text-green-900 border-b border-green-700 pb-2">
+          <h1 className="text-3xl font-bold mb-6 print:mb-2 text-green-900 dark:text-green-600 border-b border-green-700 pb-2">
             {lessonPlan.title}
           </h1>
 
@@ -68,8 +68,8 @@ async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
-    .from('lesson_plans')
-    .select('*, creator:creator_id(first_name, last_name, avatar_url)')
+    .from('lesson_plans_with_creator_and_students_view')
+    .select('*')
     .eq('id', id)
     .single();
 

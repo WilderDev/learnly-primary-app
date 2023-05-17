@@ -14,20 +14,23 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
   // * Render
   return (
     <>
-      <main className="mx-auto my-3 print:my-0 max-w-4xl">
+      <main className="mx-auto my-3 max-w-4xl print:my-0">
         {/* Info */}
-        <div className="mb-6 flex flex-col print:hidden">
+        <div className="mb-6 flex flex-col print:hidden print:mb-0">
           {/* Top */}
           <div className="flex items-center justify-between">
             {/* Creator */}
             <LessonPlanCreatorInfo
-              name={`${lessonPlan.creator.first_name} ${lessonPlan.creator.last_name}`}
-              avatar_url={lessonPlan.creator.avatar_url}
+              name={`${lessonPlan.creator_first_name} ${lessonPlan.creator_last_name}`}
+              avatar_url={lessonPlan.creator_avatar_url}
               // role={lessonPlan.creator.}
             />
 
             {/* Actions */}
-            <LessonPlanActionIcons />
+            <LessonPlanActionIcons
+              id={lessonPlan.id}
+              scheduled_date={lessonPlan.scheduled_date}
+            />
           </div>
 
           {/* Tags */}

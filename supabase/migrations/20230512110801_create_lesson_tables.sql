@@ -206,13 +206,13 @@ CREATE TABLE lesson_plan_templates (
   length_in_min int DEFAULT 60 CHECK (length_in_min > 0),
 
   -- Difficulty
-  difficulty difficulty DEFAULT 'MODERATE' CHECK (difficulty IN ('EASY', 'MODERATE', 'CHALLENGING')),
+  difficulty difficulty,
 
   -- Pace
-  pace pace DEFAULT 'MEDIUM' CHECK (pace IN ('SLOW', 'MEDIUM', 'FAST')),
+  pace pace,
 
   -- Philosophy
-  philosophy philosophy DEFAULT 'Traditional' CHECK (philosophy IN ('Eclectic/Relaxed', 'Traditional', 'Montessori', 'Unschooling', 'Unit Studies', 'Project-Based', 'Waldorf', 'Reggio Emilia', 'Classical', 'Charlotte Mason', 'Other')),
+  philosophy philosophy,
 
   -- Format
   format format,
@@ -221,7 +221,7 @@ CREATE TABLE lesson_plan_templates (
   learning_styles learning_style[] DEFAULT '{}'::learning_style[],
 
   -- Teaching Strategy
-  teaching_strategy teaching_strategy DEFAULT 'Direct Instruction' CHECK (teaching_strategy IN ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other')),
+  teaching_strategy teaching_strategy,
 
   -- Materials
   materials material[] DEFAULT '{}'::material[],
@@ -324,16 +324,48 @@ LEFT JOIN
   student_profiles sp ON sp.id = ANY(ulpt.students)
 LEFT JOIN
   student_preferences spp ON spp.id = sp.id
-JOIN
+LEFT JOIN
   subjects s ON lpt.subject = s.id
-JOIN
+LEFT JOIN
   levels lv ON lpt.level = lv.id
-JOIN
+LEFT JOIN
   topics t ON lpt.topic = t.id
 WHERE
   ulpt.teacher_id = auth.uid()
 GROUP BY
   lpt.id, s.name, lv.name, t.name;
+
+-- Get the lesson plans with the creator and students
+CREATE VIEW lesson_plans_with_creator_and_students_view AS
+SELECT
+  lp.id,
+  lp.title,
+  lp.image_path,
+  lp.subject,
+  lp.level,
+  lp.topic,
+  lp.tags,
+  lp.content,
+  lp.length_in_min,
+  lp.is_public,
+  tp.first_name AS creator_first_name,
+  tp.last_name AS creator_last_name,
+  tp.avatar_url AS creator_avatar_url,
+  tp.type AS creator_type,
+  ulp.students,
+  ulp.scheduled_date
+FROM
+  lesson_plans lp
+JOIN
+  teacher_profiles tp ON lp.creator_id = tp.id
+LEFT JOIN
+  subjects s ON lp.subject = s.id
+LEFT JOIN
+  levels lv ON lp.level = lv.id
+LEFT JOIN
+  topics t ON lp.topic = t.id
+LEFT JOIN
+  user_lesson_plans ulp ON lp.id = ulp.lesson_plan_id;
 
 
 

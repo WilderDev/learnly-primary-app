@@ -65,8 +65,8 @@ async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
-    .from('lesson_plans')
-    .select('*, creator:creator_id(first_name, last_name, avatar_url)')
+    .from('lesson_plans_with_creator_and_students_view')
+    .select('*')
     .eq('id', id)
     .single();
 

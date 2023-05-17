@@ -37,19 +37,28 @@ export default function LessonCreatorTemplate({ template }: IProps) {
   // Use Template
   const handleUseTemplate = () => {
     reset(true);
+
     // Set Lesson Plan
-    setSubject(template.subject as TSelection);
-    setLevel(template.level as TSelection);
-    setTopic(template.topic as TSelection);
+    const subject = template.subject as TSelection;
+    const level = template.level as TSelection;
+    const topic = template.topic as TSelection;
+    subject?.id && setSubject(subject);
+    level?.id && setLevel(level);
+    topic?.id && setTopic(topic);
     setObjectives(template.objectives || []);
-    setDifficulty(template.difficulty || 'MODERATE');
+    setDifficulty(template.difficulty);
     setStandards(template.standards || []);
-    setTeachingStrategy(template.teaching_strategy || 'Direct Instruction');
-    setPhilosophy(template.philosophy || 'Eclectic/Relaxed');
+    setTeachingStrategy(template.teaching_strategy);
+    setPhilosophy(template.philosophy);
     setLengthInMin(template.length_in_min || 60);
-    setPace(template.pace || 'MEDIUM');
+    setPace(template.pace);
     setFormat(template.format);
-    setStudents((template.students as IStudentPromptReq['children']) || []);
+
+    const templateStudents = template.students as IStudentPromptReq['students'];
+    if (templateStudents.length > 0 && templateStudents[0].id !== null) {
+      setStudents(templateStudents);
+    }
+
     setMaterials(template.materials || []);
     setSpecialConsiderations(template.special_considerations || '');
     // setReflections(template.reflections || {});

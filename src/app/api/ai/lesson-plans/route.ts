@@ -8,7 +8,7 @@ import { generateLessonPlanPrompt } from '@/lib/ai/prompts';
 export interface IAILessonPlanPostReq {
   lesson: ILessonPlanPromptReq;
   teacher: ITeacherPromptReq;
-  students: IStudentPromptReq['children'];
+  students: IStudentPromptReq['students'];
 }
 
 // * API Route Handler (POST)

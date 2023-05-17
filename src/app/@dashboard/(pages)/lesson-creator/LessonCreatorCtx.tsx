@@ -36,19 +36,19 @@ interface ILessonCreatorCtx {
   topic: TSelection;
   objectives: Database['public']['Enums']['objective'][];
   /// Goals - Extra
-  difficulty: Database['public']['Enums']['difficulty'];
+  difficulty: Database['public']['Enums']['difficulty'] | null;
   standards: Database['public']['Enums']['standard'][];
   /// Structure - Core
-  philosophy: Database['public']['Enums']['philosophy'];
-  teachingStrategy: Database['public']['Enums']['teaching_strategy'];
+  philosophy: Database['public']['Enums']['philosophy'] | null;
+  teachingStrategy: Database['public']['Enums']['teaching_strategy'] | null;
   lengthInMin: number;
   /// Structure - Extra
-  pace: Database['public']['Enums']['pace'];
+  pace: Database['public']['Enums']['pace'] | null;
   format: Database['public']['Enums']['format'] | null;
   /// Context -Core
-  students: IStudentPromptReq['children'];
+  students: IStudentPromptReq['students'];
   materials: Database['public']['Enums']['material'][];
-  specialConsiderations: string;
+  specialConsiderations: string | null;
   /// Context - Extra
   reflections: {}; // TSK
   learningStyles: Database['public']['Enums']['learning_style'][];
@@ -60,7 +60,6 @@ interface ILessonCreatorCtx {
   // Actions
   handleSubmit: () => void;
   reset: (isHardReset?: boolean) => void;
-  saveAsTemplate: (title: string) => void;
   showAdvancedGoals: boolean;
   toggleAdvancedGoals: () => void;
   showAdvancedStructure: boolean;
@@ -75,23 +74,23 @@ interface ILessonCreatorCtx {
     SetStateAction<Database['public']['Enums']['objective'][]>
   >;
   setDifficulty: Dispatch<
-    SetStateAction<Database['public']['Enums']['difficulty']>
+    SetStateAction<Database['public']['Enums']['difficulty'] | null>
   >;
   setStandards: Dispatch<
     SetStateAction<Database['public']['Enums']['standard'][]>
   >;
   setTeachingStrategy: Dispatch<
-    SetStateAction<Database['public']['Enums']['teaching_strategy']>
+    SetStateAction<Database['public']['Enums']['teaching_strategy'] | null>
   >;
   setPhilosophy: Dispatch<
-    SetStateAction<Database['public']['Enums']['philosophy']>
+    SetStateAction<Database['public']['Enums']['philosophy'] | null>
   >;
   setLengthInMin: Dispatch<SetStateAction<number>>;
-  setPace: Dispatch<SetStateAction<Database['public']['Enums']['pace']>>;
+  setPace: Dispatch<SetStateAction<Database['public']['Enums']['pace'] | null>>;
   setFormat: Dispatch<
     SetStateAction<Database['public']['Enums']['format'] | null>
   >;
-  setStudents: Dispatch<SetStateAction<IStudentPromptReq['children']>>;
+  setStudents: Dispatch<SetStateAction<IStudentPromptReq['students']>>;
   setMaterials: Dispatch<
     SetStateAction<Database['public']['Enums']['material'][]>
   >;
@@ -146,7 +145,6 @@ const initialCtxValue: ILessonCreatorCtx = {
   // Actions
   handleSubmit: () => {},
   reset: () => {},
-  saveAsTemplate: () => {},
   showAdvancedGoals: false,
   toggleAdvancedGoals: () => {},
   showAdvancedStructure: false,
@@ -197,27 +195,29 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     Database['public']['Enums']['objective'][]
   >([]);
   /// Goals - Extra
-  const [difficulty, setDifficulty] =
-    useState<Database['public']['Enums']['difficulty']>('MODERATE');
+  const [difficulty, setDifficulty] = useState<
+    Database['public']['Enums']['difficulty'] | null
+  >('MODERATE');
   const [standards, setStandards] = useState<
     Database['public']['Enums']['standard'][]
   >([]);
   /// Structure - Core
-  const [philosophy, setPhilosophy] =
-    useState<Database['public']['Enums']['philosophy']>('Eclectic/Relaxed');
-  const [teachingStrategy, setTeachingStrategy] =
-    useState<Database['public']['Enums']['teaching_strategy']>(
-      'Direct Instruction',
-    );
+  const [philosophy, setPhilosophy] = useState<
+    Database['public']['Enums']['philosophy'] | null
+  >('Eclectic/Relaxed');
+  const [teachingStrategy, setTeachingStrategy] = useState<
+    Database['public']['Enums']['teaching_strategy'] | null
+  >('Direct Instruction');
   const [lengthInMin, setLengthInMin] = useState<number>(60);
   /// Structure - Extra
-  const [pace, setPace] =
-    useState<Database['public']['Enums']['pace']>('MEDIUM');
+  const [pace, setPace] = useState<Database['public']['Enums']['pace'] | null>(
+    'MEDIUM',
+  );
   const [format, setFormat] = useState<
     Database['public']['Enums']['format'] | null
   >(null);
   /// Context - Core
-  const [students, setStudents] = useState<IStudentPromptReq['children']>([]);
+  const [students, setStudents] = useState<IStudentPromptReq['students']>([]);
   const [materials, setMaterials] = useState<
     Database['public']['Enums']['material'][]
   >([]);
@@ -307,14 +307,14 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
           subject.name,
           level.name,
           topic.name,
-          ...objectives,
-          capitalize(difficulty),
-          ...standards,
-          teachingStrategy,
-          philosophy,
-          capitalize(pace),
-          ...materials,
-          ...learningStyles,
+          // ...objectives,
+          // capitalize(difficulty),
+          // ...standards,
+          // teachingStrategy,
+          // philosophy,
+          // capitalize(pace),
+          // ...materials,
+          // ...learningStyles,
         ],
       });
 
@@ -383,91 +383,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     setIsLoading(false);
   }, []);
 
-  // Save as Template
-  const saveAsTemplate = useCallback(
-    async (title: string) => {
-      // 1. Validate Inputs
-      if (!title) return toast.error('Please enter a title');
-
-      const tags = [
-        ...standards,
-        ...materials,
-        ...learningStyles,
-        ...objectives,
-      ] as string[];
-      topic && tags.unshift(topic.name);
-      level && tags.unshift(level.name);
-      subject && tags.unshift(subject.name);
-      difficulty && tags.push(capitalize(difficulty));
-      teachingStrategy && tags.push(teachingStrategy);
-      philosophy && tags.push(philosophy);
-      pace && tags.push(capitalize(pace));
-
-      const templateDetails = {
-        creator_id: session?.user.id!,
-        title,
-        subject: subject?.id,
-        level: level?.id,
-        topic: topic?.id,
-        tags,
-        image_path: 'https://source.unsplash.com/random/800x600',
-        length_in_min: lengthInMin,
-        difficulty: difficulty,
-        pace: pace,
-        philosophy: philosophy,
-        format: format,
-        learning_styles: learningStyles,
-        teaching_strategy: teachingStrategy,
-        materials: materials,
-        standards: standards,
-        objectives: objectives,
-        // assessments: {},
-        // reflections: {},
-        // is_public: true,
-        special_considerations: specialConsiderations || '',
-      };
-
-      // 2. Save to Supabase (Public)
-      const { data: template, error: templateError } = await supabase
-        .from('lesson_plan_templates')
-        .insert(templateDetails)
-        .select('id')
-        .single();
-
-      if (templateError) return toast.error('Error saving template');
-
-      // 3. Save to Supabase (Private)
-      const { error: userTemplateError } = await supabase
-        .from('user_lesson_plan_templates')
-        .insert({
-          teacher_id: session?.user.id!,
-          lesson_plan_template_id: template?.id!,
-          students: students?.map((s) => s.id) || [],
-        });
-
-      if (userTemplateError) return toast.error('Error saving template');
-    },
-    [
-      difficulty,
-      format,
-      learningStyles,
-      lengthInMin,
-      level,
-      materials,
-      objectives,
-      pace,
-      philosophy,
-      session?.user.id,
-      specialConsiderations,
-      standards,
-      students,
-      subject,
-      supabase,
-      teachingStrategy,
-      topic,
-    ],
-  );
-
   // Togglers
   const toggleAdvancedGoals = () => setShowAdvancedGoals((prev) => !prev);
   const toggleAdvancedStructure = () =>
@@ -508,7 +423,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       // Actions
       handleSubmit,
       reset,
-      saveAsTemplate,
       showAdvancedGoals,
       toggleAdvancedGoals,
       showAdvancedStructure,
@@ -560,7 +474,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       complete,
       handleSubmit,
       reset,
-      saveAsTemplate,
       showAdvancedGoals,
       showAdvancedStructure,
       showAdvancedContext,
