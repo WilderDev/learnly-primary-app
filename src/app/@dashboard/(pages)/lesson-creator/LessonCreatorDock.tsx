@@ -82,6 +82,7 @@ export default function LessonCreatorDock() {
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation(); // Stop Propagation
+                    e.preventDefault(); // Prevent Default (Blur)
                     handleDockItemClick(item.label); // Handle Click
                     e.currentTarget.blur(); // Blur
                   }}

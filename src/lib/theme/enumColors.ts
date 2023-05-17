@@ -1,5 +1,4 @@
 // * Subject Colors
-// TSK: Create a view to get all subjects
 // Subject Helper Function
 export function getSubjectColor(subject: string) {
   const subj = subject
@@ -7,7 +6,7 @@ export function getSubjectColor(subject: string) {
     .split(' ')
     .join('_') as keyof typeof subjectColors;
 
-  return subjectColors[subj];
+  return subjectColors[subj] || subjectColors.DEFAULT;
 }
 
 // Subject Enum Colors
@@ -18,7 +17,7 @@ const subjectColors = {
       DEFAULT: 'bg-blue-500',
       LIGHT: 'bg-blue-300',
       DARK: 'bg-blue-700',
-      GRADIENT: 'bg-gradient-to-r from-blue-500 via-sky-600 to-blue-700',
+      GRADIENT: 'from-blue-500 via-sky-600 to-blue-700',
     },
     TEXT: {
       DEFAULT: 'text-blue-500',
@@ -32,16 +31,34 @@ const subjectColors = {
       SUBDUED: 'bg-blue-600/70 text-blue-50',
     },
   },
-  ENGLISH: {},
-  SCIENCE: {},
-  SOCIAL_STUDIES: {},
-  COMPUTER_SCIENCE: {},
-  PHYSICAL_EDUCATION: {},
-  ART: {},
-  MUSIC: {},
-  SOCIAL_EMOTIONAL_LEARNING: {},
-  HEALTH: {},
-  DEFAULT: {},
+  // ENGLISH: {},
+  // SCIENCE: {},
+  // SOCIAL_STUDIES: {},
+  // COMPUTER_SCIENCE: {},
+  // PHYSICAL_EDUCATION: {},
+  // ART: {},
+  // MUSIC: {},
+  // SOCIAL_EMOTIONAL_LEARNING: {},
+  // HEALTH: {},
+  DEFAULT: {
+    BG: {
+      DEFAULT: 'bg-slate-500',
+      LIGHT: 'bg-slate-300',
+      DARK: 'bg-slate-700',
+      GRADIENT: 'from-slate-500 via-sky-600 to-slate-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-slate-500',
+      LIGHT: 'text-slate-300',
+      DARK: 'text-slate-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-slate-700 text-slate-100',
+      LIGHT: 'bg-slate-500 text-slate-100',
+      DARK: 'bg-slate-900 text-slate-100',
+      SUBDUED: 'bg-slate-600/70 text-slate-50',
+    },
+  },
   // . . .
 };
 

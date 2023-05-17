@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 // * Props
-interface IProps {
+export interface IProps {
   children: React.ReactNode;
   isVisible: boolean;
   close: () => void;
@@ -39,7 +39,7 @@ export default function Modal({
   // * Styles
   // Default Modal Styles
   const defaultStyles =
-    'fixed inset-0 z-50 p-4 flex items-center justify-center w-full h-full bg-slate-900/50 backdrop-blur dark:backdrop-blur-md';
+    'fixed inset-0 z-50 p-4 flex items-center justify-center w-full h-full bg-slate-900/70 backdrop-blur dark:backdrop-blur-md';
 
   // Animation Modal Styles
   const animationStyles = 'transition-all duration-300 ease-in-out';

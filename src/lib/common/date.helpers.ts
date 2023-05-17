@@ -25,3 +25,12 @@ export function dateToTimestampz(date: Date) {
 
   return new Date(dt - tzoffset).toISOString(); // return timestampz string
 }
+
+// * Turn Date into a readable string
+export function dateToReadableString(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}

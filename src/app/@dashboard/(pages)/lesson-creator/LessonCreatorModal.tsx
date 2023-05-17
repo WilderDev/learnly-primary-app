@@ -22,6 +22,7 @@ export default function LessonCreatorModal() {
         isVisible={lessonContent !== ''}
         close={() => {}}
         noCloseOnOutsideClick={true}
+        size="lg"
       >
         {/* Header */}
         {complete && (
