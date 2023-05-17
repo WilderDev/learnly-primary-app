@@ -21,7 +21,7 @@ export default function LessonCreatorFormActions() {
   return (
     <>
       {/* Actions */}
-      <div className="flex flex-col sm:flex-row justify-between col-span-3">
+      <div className="flex flex-col sm:flex-row justify-between col-span-4">
         {/* Save as Template */}
         <Button
           fill="outline"
@@ -81,12 +81,12 @@ export default function LessonCreatorFormActions() {
               setValue={setTemplateTitle}
               required={true}
               icon={MapIcon}
-              cols={3}
+              cols={4}
             />
 
             {/* Submit */}
             <Button
-              className="col-span-3"
+              className="col-span-4"
               type="submit"
               loading={isLoading}
               disabled={isLoading || !templateTitle}

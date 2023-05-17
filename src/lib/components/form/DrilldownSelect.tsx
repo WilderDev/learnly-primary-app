@@ -276,6 +276,7 @@ IProps) {
   }, []);
 
   useEffect(() => {
+    console.log('values:', values);
     if (values[0] === null) {
       setPath([undefined]);
       setInputValue('');

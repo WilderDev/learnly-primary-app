@@ -26,12 +26,15 @@ export function generateLessonPlanPrompt({
   const { name, role, teaching_preferences } = teacher; // TSK
 
   // Generate the students section
-  const studentsSection = students
-    .map(
-      (student, index) =>
-        `- Student ${index + 1}: ${student.name}, Age: ${student.age}`,
-    )
-    .join('\n');
+  const studentsSection =
+    students
+      ?.map(
+        (student, index) =>
+          `- Student ${index + 1}: ${student.name}, Age: ${student.age}`,
+      )
+      ?.join('\n') || '';
+
+  console.log('studentsSection:', studentsSection);
 
   // Add the special considerations section if it exists
   const specialConsiderationsSection = special_considerations
@@ -41,18 +44,18 @@ export function generateLessonPlanPrompt({
   // Use the students' learning styles if no learning styles were provided
   const lessonLearningStyles = learning_styles?.length
     ? learning_styles
-    : students.flatMap((student) => student.learning_styles) || ['Any'];
+    : students?.flatMap((student) => student.learning_styles) || ['Any'];
 
   // Conditionally include standards, format, teaching strategy, and materials
-  const standardsSection = standards.length
-    ? `The standards to be met are ${standards.join(', ')}.`
+  const standardsSection = standards?.length
+    ? `The standards to be met are ${standards?.join(', ')}.`
     : '';
   const formatSection = format ? `The format of the lesson is ${format}.` : '';
   const teachingStrategySection = teaching_strategy
     ? `The teaching strategy is ${teaching_strategy}.`
     : '';
-  const materialsSection = materials.length
-    ? `The materials needed for this lesson are ${materials.join(', ')}.`
+  const materialsSection = materials?.length
+    ? `The materials needed for this lesson are ${materials?.join(', ')}.`
     : '';
 
   const prompt = `
@@ -70,7 +73,7 @@ export function generateLessonPlanPrompt({
   The lesson's length is ${length_in_min} minutes.
   The pace of the lesson is ${pace}.
   ${materialsSection}
-  The preferred learning styles for this lesson are ${lessonLearningStyles.join(
+  The preferred learning styles for this lesson are ${lessonLearningStyles?.join(
     ', ',
   )}.
 

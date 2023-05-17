@@ -28,6 +28,7 @@ export default function FormItem({
         cols === 1 && 'md:col-span-1',
         cols === 2 && 'md:col-span-2',
         cols === 3 && 'md:col-span-3',
+        cols === 4 && 'md:col-span-4',
         className,
       )}
     >
@@ -43,7 +44,7 @@ export default function FormItem({
         {children}
 
         {Icon && (
-          <span className="pointer-events-none -mt-0.5 z-50 absolute mx-1 flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-green-500 dark:text-navy-300 dark:peer-focus:text-green-600">
+          <span className="pointer-events-none -mt-0.5 z-10 absolute mx-1 flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-green-500 dark:text-navy-300 dark:peer-focus:text-green-600">
             <Icon className="mt-0.5 w-5 h-5" />
           </span>
         )}

@@ -72,7 +72,7 @@ export default function LessonPlanSaveDetailsModalForm({
         >
           {/* Scheduled Date */}
           <DatePicker
-            cols={3}
+            cols={2}
             label="Scheduled Date"
             value={scheduledDate!}
             setValue={setScheduledDate}
@@ -98,12 +98,12 @@ export default function LessonPlanSaveDetailsModalForm({
             )}
             values={savedStudents}
             setValues={setSavedStudents}
-            cols={3}
+            cols={2}
           />
 
           {/* Submit */}
           <Button
-            className="col-span-3"
+            className="col-span-4"
             type="submit"
             loading={isLoading}
             disabled={isLoading || !scheduledDate || !savedStudents.length}

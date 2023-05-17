@@ -31,14 +31,14 @@ export default function OnboardingPreferences() {
       <Form>
         {/* Avatar */}
         <RadioImages
-          cols={3}
+          cols={4}
           label="Avatar"
           value={avatarUrl}
           setValue={setAvatarUrl}
           options={avatarImages}
         />
 
-        <div className="flex mt-2 flex-col sm:flex-row space-y-4 sm:space-y-0 justify-around col-span-3">
+        <div className="flex mt-2 flex-col sm:flex-row space-y-4 sm:space-y-0 justify-around col-span-4">
           {/* Color Scheme */}
           <CycleInput
             labelHidden={true}

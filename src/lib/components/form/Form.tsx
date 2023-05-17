@@ -14,7 +14,7 @@ export default function Form({ children, className, ...props }: IProps) {
   return (
     <form
       className={cn(
-        'flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-x-6',
+        'flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-y-6 md:gap-x-6',
         className,
       )}
       {...props}

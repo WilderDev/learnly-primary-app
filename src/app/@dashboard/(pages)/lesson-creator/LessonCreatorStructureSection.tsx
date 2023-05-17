@@ -7,6 +7,12 @@ import { Database } from '@/assets/typescript/db';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import { Dispatch, SetStateAction } from 'react';
 import Input from '@/lib/components/form/Input';
+import {
+  BookOpenIcon,
+  BuildingLibraryIcon,
+  ClockIcon,
+  BoltIcon,
+} from '@heroicons/react/24/outline';
 
 // * Data
 // Philosophy
@@ -84,7 +90,8 @@ export default function LessonCreatorStructureSection() {
         options={createSelectOptions(philosophyOptions)}
         value={philosophy}
         setValue={setPhilosophy as Dispatch<SetStateAction<string>>}
-        cols={1}
+        cols={2}
+        icon={BookOpenIcon}
       />
 
       {/* Teaching Strategy (Select) */}
@@ -94,6 +101,7 @@ export default function LessonCreatorStructureSection() {
         value={teachingStrategy}
         setValue={setTeachingStrategy as Dispatch<SetStateAction<string>>}
         cols={2}
+        icon={BuildingLibraryIcon}
       />
 
       {/* Advanced Options */}
@@ -106,6 +114,7 @@ export default function LessonCreatorStructureSection() {
             value={lengthInMin}
             setValue={setLengthInMin as Dispatch<SetStateAction<number>>}
             cols={1}
+            icon={ClockIcon}
           />
 
           {/* Pace (Select) */}
@@ -115,6 +124,7 @@ export default function LessonCreatorStructureSection() {
             value={pace}
             setValue={setPace as Dispatch<SetStateAction<string>>}
             cols={1}
+            icon={BoltIcon}
           />
 
           {/* Format (Select) */}

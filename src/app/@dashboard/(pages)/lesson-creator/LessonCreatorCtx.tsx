@@ -446,7 +446,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
         .insert({
           teacher_id: session?.user.id!,
           lesson_plan_template_id: template?.id!,
-          students: students.map((s) => s.id),
+          students: students?.map((s) => s.id) || [],
         });
 
       if (userTemplateError) return toast.error('Error saving template');

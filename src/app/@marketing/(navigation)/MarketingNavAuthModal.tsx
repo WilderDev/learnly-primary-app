@@ -62,7 +62,7 @@ export default function MarketingNavAuthModal({
       <Form onSubmit={handleSignIn}>
         {/* Email */}
         <Input
-          cols={3}
+          cols={4}
           label="Email"
           type="email"
           placeholder="homeschoolmom@gmail.com"
@@ -79,7 +79,7 @@ export default function MarketingNavAuthModal({
           shadow="md"
           rounded="lg"
           loading={isLoading}
-          className="w-full col-span-3"
+          className="w-full col-span-4"
           type="submit"
         >
           Time to Homeschool <span className="ml-2">😊</span>

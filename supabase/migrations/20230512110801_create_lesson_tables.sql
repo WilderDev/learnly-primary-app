@@ -320,9 +320,9 @@ FROM
   lesson_plan_templates lpt
 JOIN
   user_lesson_plan_templates ulpt ON lpt.id = ulpt.lesson_plan_template_id
-JOIN
+LEFT JOIN
   student_profiles sp ON sp.id = ANY(ulpt.students)
-JOIN
+LEFT JOIN
   student_preferences spp ON spp.id = sp.id
 JOIN
   subjects s ON lpt.subject = s.id
@@ -330,9 +330,10 @@ JOIN
   levels lv ON lpt.level = lv.id
 JOIN
   topics t ON lpt.topic = t.id
+WHERE
+  ulpt.teacher_id = auth.uid()
 GROUP BY
   lpt.id, s.name, lv.name, t.name;
-
 
 
 

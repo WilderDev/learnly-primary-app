@@ -59,11 +59,12 @@ export default function AddOrEditChildForm({
           maxDate: 'today',
         }}
         defaultValue="2010-01-01 00:00"
+        cols={2}
       />
 
       {/* Avatar */}
       <RadioImages
-        cols={3}
+        cols={4}
         label="Avatar"
         value={avatarUrl}
         setValue={setAvatarUrl}
@@ -71,7 +72,7 @@ export default function AddOrEditChildForm({
       />
 
       {/* Buttons */}
-      <div className="col-span-3 mt-6 flex justify-between md:mt-0">
+      <div className="col-span-4 mt-6 flex justify-between md:mt-0">
         {/* Cancel */}
         <Button
           className="w-32 border border-slate-200 bg-transparent text-slate-600 hocus:border-white hocus:bg-transparent dark:border-navy-500 dark:text-navy-200 dark:hocus:border-navy-200"

@@ -8,6 +8,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { Database } from '@/assets/typescript/db';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import Select from '@/lib/components/form/Select';
+import { BriefcaseIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
 
 // * Data
 // Objectives
@@ -51,7 +52,7 @@ export default function LessonCreatorGoalsSection() {
     <LessonCreatorFormSection
       title="Lesson Goals"
       description="What is your desired outcome?"
-      colNum={1}
+      colNum={2}
       isShowingAdvancedOptions={showAdvancedGoals}
       toggleAdvancedOptions={toggleAdvancedGoals}
     >
@@ -64,7 +65,8 @@ export default function LessonCreatorGoalsSection() {
         options={createSelectOptions(objectiveOptions)}
         values={objectives}
         setValues={setObjectives as Dispatch<SetStateAction<string[]>>}
-        cols={1}
+        cols={2}
+        icon={BriefcaseIcon}
       />
 
       {/* Advanced Options */}
@@ -77,6 +79,7 @@ export default function LessonCreatorGoalsSection() {
             value={difficulty}
             setValue={setDifficulty as Dispatch<SetStateAction<string>>}
             cols={1}
+            icon={RocketLaunchIcon}
           />
 
           {/* Standards (Multi-Select) */}

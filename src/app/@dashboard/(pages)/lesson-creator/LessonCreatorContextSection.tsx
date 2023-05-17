@@ -10,6 +10,11 @@ import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
 import { getAgeFromBirthday } from '@/lib/common/user.helpers';
 import { Database } from '@/assets/typescript/db';
 import TextArea from '@/lib/components/form/TextArea';
+import {
+  BeakerIcon,
+  FlagIcon,
+  UserGroupIcon,
+} from '@heroicons/react/24/outline';
 
 // * Data
 // Materials
@@ -83,7 +88,8 @@ export default function LessonCreatorContextSection() {
 
           setStudents(lessonStudents);
         }}
-        cols={1}
+        cols={2}
+        icon={UserGroupIcon}
       />
 
       {/* Learning Styles (Multi-Select) */}
@@ -93,19 +99,21 @@ export default function LessonCreatorContextSection() {
         values={learningStyles}
         setValues={setLearningStyles as Dispatch<SetStateAction<string[]>>}
         cols={2}
-      />
-
-      {/* Special Considerations (Textarea) */}
-      <TextArea
-        label="Special Considerations"
-        value={specialConsiderations}
-        setValue={setSpecialConsiderations}
-        cols={3}
+        icon={BeakerIcon}
       />
 
       {/* Advanced Options */}
       {showAdvancedContext && (
         <>
+          {/* Special Considerations (Textarea) */}
+          <TextArea
+            label="Special Considerations"
+            value={specialConsiderations}
+            setValue={setSpecialConsiderations}
+            cols={3}
+            icon={FlagIcon}
+          />
+
           {/* Reflections (TSK) */}
           {/* TSK */}
 

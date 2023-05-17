@@ -30,11 +30,13 @@ export default function LessonCreatorTemplate({ template }: IProps) {
     setSpecialConsiderations,
     setReflections,
     setLearningStyles,
+    reset,
   } = useLessonCreator();
 
   // * Handlers
   // Use Template
   const handleUseTemplate = () => {
+    reset(true);
     // Set Lesson Plan
     setSubject(template.subject as TSelection);
     setLevel(template.level as TSelection);

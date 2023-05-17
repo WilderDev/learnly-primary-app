@@ -26,7 +26,7 @@ export default function LessonCreatorFormSection({
   // * Render
   return (
     <motion.section
-      className="shadow col-span-3 md:grid md:grid-cols-3 md:gap-6 py-4 px-5 rounded-lg bg-white dark:bg-navy-700"
+      className="shadow col-span-4 md:grid md:grid-cols-4 md:gap-6 py-4 px-5 rounded-lg bg-white dark:bg-navy-700"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: colNum * 0.2 }}
@@ -58,9 +58,9 @@ export default function LessonCreatorFormSection({
       </div>
 
       {/* Section Body */}
-      <div className="mt-5 md:mt-0 md:col-span-2">
+      <div className="mt-5 md:mt-0 md:col-span-3">
         {/* Section Form Items */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {children}
         </div>
       </div>

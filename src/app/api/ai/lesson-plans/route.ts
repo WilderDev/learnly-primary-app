@@ -37,6 +37,8 @@ export async function POST(request: Request) {
   // 4. Send request to OpenAI
   const stream = await OpenAIStream(payload);
 
+  if (!stream) return new Response('Error', { status: 500 });
+
   // 5. Return response
   return new Response(stream);
 }
