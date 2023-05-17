@@ -9,7 +9,7 @@ import DatePicker from '@/lib/components/form/DatePicker';
 import Button from '@/lib/components/ui/Button';
 import Image from 'next/image';
 import cn from '@/lib/common/cn';
-import { getAgeFromBirthday } from '@/lib/common/user.helpers';
+import { getAgeFromBirthday } from '@/lib/common/date.helpers';
 import {
   BookmarkSquareIcon,
   CheckIcon,

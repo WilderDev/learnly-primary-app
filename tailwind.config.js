@@ -28,6 +28,9 @@ module.exports = {
       boxShadow: {
         xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
       },
+      screens: {
+        '3xl': '1920px',
+      },
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in-out forwards',
         shimmer: 'shimmer 5.0s linear infinite',

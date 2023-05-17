@@ -1,20 +1,14 @@
 'use client';
 
-import { useUser } from '@/lib/components/providers/UserProvider';
 import { useLessonCreator } from './LessonCreatorCtx';
 import LessonCreatorFormSection from './LessonCreatorFormSection';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import MultiSelect from '@/lib/components/form/MultiSelect';
 import { Dispatch, SetStateAction } from 'react';
-import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
-import { getAgeFromBirthday } from '@/lib/common/user.helpers';
+
 import { Database } from '@/assets/typescript/db';
 import TextArea from '@/lib/components/form/TextArea';
-import {
-  BeakerIcon,
-  FlagIcon,
-  UserGroupIcon,
-} from '@heroicons/react/24/outline';
+import { BeakerIcon, FlagIcon } from '@heroicons/react/24/outline';
 
 // * Data
 // Materials
@@ -41,8 +35,6 @@ export default function LessonCreatorContextSection() {
   const {
     showAdvancedContext,
     toggleAdvancedContext,
-    students,
-    setStudents,
     materials,
     setMaterials,
     specialConsiderations,
@@ -52,7 +44,6 @@ export default function LessonCreatorContextSection() {
     learningStyles,
     setLearningStyles,
   } = useLessonCreator();
-  const { students: usersStudents } = useUser();
 
   // * Render
   return (
@@ -63,55 +54,27 @@ export default function LessonCreatorContextSection() {
       isShowingAdvancedOptions={showAdvancedContext}
       toggleAdvancedOptions={toggleAdvancedContext}
     >
-      {/* Students (Select) */}
-      <MultiSelect
-        label="*Students"
-        options={createSelectOptions(
-          usersStudents.map((s) => ({
-            value: s.id,
-            label: `${s.firstName} ${s.lastName}`,
-            image: s.avatarUrl,
-          })),
-        )}
-        values={students.map((s) => s.id)}
-        setValues={(ids) => {
-          const lessonStudents: IStudentPromptReq['students'] = usersStudents
-            .filter((s) => ids.includes(s.id))
-            .map((s) => ({
-              id: s.id,
-              name: s.firstName,
-              age: getAgeFromBirthday(s.birthday),
-              avatarUrl: s.avatarUrl,
-              learning_styles: s.learningStyles,
-              // . . .
-            }));
-
-          setStudents(lessonStudents);
-        }}
-        cols={2}
-        icon={UserGroupIcon}
-      />
-
-      {/* Learning Styles (Multi-Select) */}
-      <MultiSelect
-        label="Learning Styles"
-        options={createSelectOptions(learningStyleOptions)}
-        values={learningStyles}
-        setValues={setLearningStyles as Dispatch<SetStateAction<string[]>>}
-        cols={2}
-        icon={BeakerIcon}
+      {/* Special Considerations (Textarea) */}
+      <TextArea
+        label="Special Considerations"
+        value={specialConsiderations || ''}
+        setValue={setSpecialConsiderations}
+        cols={3}
+        // icon={FlagIcon}
+        rows={2}
       />
 
       {/* Advanced Options */}
       {showAdvancedContext && (
         <>
-          {/* Special Considerations (Textarea) */}
-          <TextArea
-            label="Special Considerations"
-            value={specialConsiderations || ''}
-            setValue={setSpecialConsiderations}
-            cols={3}
-            icon={FlagIcon}
+          {/* Learning Styles (Multi-Select) */}
+          <MultiSelect
+            label="Learning Styles"
+            options={createSelectOptions(learningStyleOptions)}
+            values={learningStyles}
+            setValues={setLearningStyles as Dispatch<SetStateAction<string[]>>}
+            cols={2}
+            icon={BeakerIcon}
           />
 
           {/* Reflections (TSK) */}

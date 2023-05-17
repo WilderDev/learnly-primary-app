@@ -94,14 +94,12 @@ export function generateLessonPlanPrompt({
 
   ${specialConsiderationsSection}
 
-  Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson.
+  Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson.
 
   Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Important!
 
   Return the lesson plan in clean markdown format.
   `;
-
-  console.log('prompt:', prompt);
 
   return prompt.trim();
 }

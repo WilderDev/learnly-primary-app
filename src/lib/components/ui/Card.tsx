@@ -7,26 +7,16 @@ import Link from 'next/link';
 // Card Container Props
 interface ICardContainerProps {
   children: React.ReactNode;
-  cols?: number;
   className?: string;
 }
 
 // Card Container Component
-export function CardContainer({
-  children,
-  cols = 1,
-  className,
-}: ICardContainerProps) {
+export function CardContainer({ children, className }: ICardContainerProps) {
   // * Render
   return (
     <section
       className={cn(
-        'grid gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8',
-        cols === 1 && 'grid-cols-1',
-        cols === 2 && 'grid-cols-2',
-        cols === 3 && 'grid-cols-3',
-        cols === 4 && 'grid-cols-4',
-        cols === 5 && 'grid-cols-5',
+        'grid gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3',
         className,
       )}
     >
@@ -38,7 +28,6 @@ export function CardContainer({
 // Card Component Props
 interface ICardProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
-  colSpan?: number;
   size?: TSize;
   variant?: TVariant;
   shadow?: TSize | 'none';
@@ -51,7 +40,6 @@ interface ICardProps extends React.HTMLAttributes<HTMLElement> {
 // Card Component
 export function Card({
   children,
-  colSpan = 1,
   size = 'md',
   variant = 'light',
   shadow = 'md',
@@ -65,6 +53,7 @@ export function Card({
   // Card Default Styles
   const defaultStyles =
     'overflow-hidden break-words transition-all duration-300 ease-in-out flex flex-col relative group';
+  const gridStyles = 'col-span-1';
 
   // Card Size Styles
   const sizes: { [key in TSize]: string } = {
@@ -113,11 +102,7 @@ export function Card({
         variants[variant],
         shadows[shadow],
         roundeds[rounded],
-        colSpan === 1 && 'col-span-1',
-        colSpan === 2 && 'col-span-2',
-        colSpan === 3 && 'col-span-3',
-        colSpan === 4 && 'col-span-4',
-        colSpan === 5 && 'col-span-5',
+        gridStyles,
         className,
       )}
       href={url}
@@ -140,11 +125,7 @@ export function Card({
         variants[variant],
         shadows[shadow],
         roundeds[rounded],
-        colSpan === 1 && 'col-span-1',
-        colSpan === 2 && 'col-span-2',
-        colSpan === 3 && 'col-span-3',
-        colSpan === 4 && 'col-span-4',
-        colSpan === 5 && 'col-span-5',
+        gridStyles,
         className,
       )}
       {...props}

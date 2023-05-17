@@ -8,7 +8,14 @@ import { Dispatch, SetStateAction } from 'react';
 import { Database } from '@/assets/typescript/db';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import Select from '@/lib/components/form/Select';
-import { BriefcaseIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
+import {
+  BriefcaseIcon,
+  RocketLaunchIcon,
+  UserGroupIcon,
+} from '@heroicons/react/24/outline';
+import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
+import { getAgeFromBirthday } from '@/lib/common/date.helpers';
+import { useUser } from '@/lib/components/providers/UserProvider';
 
 // * Data
 // Objectives
@@ -45,7 +52,10 @@ export default function LessonCreatorGoalsSection() {
     setDifficulty,
     standards,
     setStandards,
+    students,
+    setStudents,
   } = useLessonCreator();
+  const { students: usersStudents } = useUser();
 
   // * Render
   return (
@@ -59,14 +69,33 @@ export default function LessonCreatorGoalsSection() {
       {/* Subject / Level / Topic (Drilldown Select) */}
       <LessonCreatorTopicSelect />
 
-      {/* Objectives (Multi-Select) */}
+      {/* Students (Select) */}
       <MultiSelect
-        label="Objectives"
-        options={createSelectOptions(objectiveOptions)}
-        values={objectives}
-        setValues={setObjectives as Dispatch<SetStateAction<string[]>>}
+        label="*Students"
+        options={createSelectOptions(
+          usersStudents.map((s) => ({
+            value: s.id,
+            label: `${s.firstName} ${s.lastName}`,
+            image: s.avatarUrl,
+          })),
+        )}
+        values={students.map((s) => s.id)}
+        setValues={(ids) => {
+          const lessonStudents: IStudentPromptReq['students'] = usersStudents
+            .filter((s) => ids.includes(s.id))
+            .map((s) => ({
+              id: s.id,
+              name: s.firstName,
+              age: getAgeFromBirthday(s.birthday),
+              avatarUrl: s.avatarUrl,
+              learning_styles: s.learningStyles,
+              // . . .
+            }));
+
+          setStudents(lessonStudents);
+        }}
         cols={2}
-        icon={BriefcaseIcon}
+        icon={UserGroupIcon}
       />
 
       {/* Advanced Options */}
@@ -80,6 +109,16 @@ export default function LessonCreatorGoalsSection() {
             setValue={setDifficulty as Dispatch<SetStateAction<string>>}
             cols={1}
             icon={RocketLaunchIcon}
+          />
+
+          {/* Objectives (Multi-Select) */}
+          <MultiSelect
+            label="Objectives"
+            options={createSelectOptions(objectiveOptions)}
+            values={objectives}
+            setValues={setObjectives as Dispatch<SetStateAction<string[]>>}
+            cols={2}
+            icon={BriefcaseIcon}
           />
 
           {/* Standards (Multi-Select) */}

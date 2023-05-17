@@ -3,6 +3,7 @@ import DashSideCol from '../../(layout)/DashSideCol';
 import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import HomeWelcomePanel from './HomeWelcomePanel';
 import UpcomingLessonsCards from './UpcomingLessonsCards';
+import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccordions';
 
 export default function ParentDashboardHomePage() {
   // * Render
@@ -30,6 +31,8 @@ export default function ParentDashboardHomePage() {
         {/* Home Assignments */}
         <DashPanel colNum={3}>
           <DashPanelHeader title="Assignments" />
+
+          {/* TSK */}
         </DashPanel>
       </DashMainCol>
 
@@ -38,13 +41,17 @@ export default function ParentDashboardHomePage() {
         {/* Home Completed Lessons */}
         <DashPanel colNum={1}>
           <DashPanelHeader title="Recently Completed" />
-          {/* TSK */}
-          {/* <RecentlyCompletedLessonsAccordions /> */}
+          {/* @ts-expect-error Server Component */}
+          <RecentlyCompletedLessonsAccordions />
         </DashPanel>
 
         {/* Home Calendar */}
         <DashPanel colNum={2}>
-          <DashPanelHeader title="Your Calendar" />
+          <DashPanelHeader
+            title="Your Calendar"
+            ctaText="View Schedule"
+            ctaLink="/schedule-builder"
+          />
           {/* TSK */}
           {/* <HomeCalendar /> */}
         </DashPanel>
@@ -59,3 +66,5 @@ export const metadata = {
 };
 
 export const dynamic = 'force-dynamic';
+
+export const revalidate = 0;

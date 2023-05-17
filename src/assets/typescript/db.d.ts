@@ -919,6 +919,18 @@ export interface Database {
           topic: string | null
         }
       }
+      recently_completed_lesson_plans_view: {
+        Row: {
+          completion_date: string | null
+          id: string | null
+          image_path: string | null
+          level: Database["public"]["Enums"]["level"] | null
+          students: Json | null
+          subject: string | null
+          title: string | null
+          topic: string | null
+        }
+      }
       teacher_me_view: {
         Row: {
           avatar_url: string | null
@@ -1024,6 +1036,20 @@ export interface Database {
           status?: Database["public"]["Enums"]["notification_status"] | null
           title?: string | null
           type?: Database["public"]["Enums"]["notification_type"] | null
+        }
+      }
+      upcoming_lesson_plans_view: {
+        Row: {
+          id: string | null
+          image_path: string | null
+          length_in_min: number | null
+          level: Database["public"]["Enums"]["level"] | null
+          scheduled_date: string | null
+          students: Json | null
+          subject: string | null
+          tags: string[] | null
+          title: string | null
+          topic: string | null
         }
       }
       user_notifications_view: {

@@ -128,7 +128,7 @@ VALUES
 INSERT INTO subjects
 (code, name, description, image_url)
 VALUES
-('MATH', 'Mathmatics', 'The universal language that deciphers the complex riddles of the cosmos, providing the foundation for logic and reason in a world of chaos.', '/images/subjects/math.jpg'),
+('MATH', 'Mathematics', 'The universal language that deciphers the complex riddles of the cosmos, providing the foundation for logic and reason in a world of chaos.', '/images/subjects/math.jpg'),
 ('SCI', 'Science', 'A ceaseless journey of discovery, asking questions of the universe and uncovering its intricate, beautiful truths one experiment at a time.', '/images/subjects/science.jpg'),
 ('ENG', 'English', 'The soulful dance of words that paints vivid pictures, tells profound stories, and bridges the gap between human hearts and minds.', '/images/subjects/english.jpg'),
 ('SS', 'Social Studies', 'A living tapestry of human experience, weaving together history, geography, culture, and society to understand our collective past and shape a better future.', '/images/subjects/social-studies.jpg'),

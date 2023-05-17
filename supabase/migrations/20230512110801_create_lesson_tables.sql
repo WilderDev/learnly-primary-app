@@ -368,6 +368,76 @@ LEFT JOIN
   user_lesson_plans ulp ON lp.id = ulp.lesson_plan_id;
 
 
+-- User's Upcoming Lesson Plans View
+CREATE VIEW upcoming_lesson_plans_view AS
+SELECT
+  lp.id,
+  lp.title,
+  s.name AS subject,
+  lv.name AS level,
+  t.name AS topic,
+  lp.image_path,
+  lp.tags,
+  lp.length_in_min,
+  ulp.scheduled_date,
+  json_agg(json_build_object('id', sp.id, 'first_name', sp.first_name, 'last_name', sp.last_name, 'avatar_url', sp.avatar_url)) AS students
+FROM
+  lesson_plans lp
+JOIN
+  teacher_profiles tp ON lp.creator_id = tp.id
+LEFT JOIN
+  subjects s ON lp.subject = s.id
+LEFT JOIN
+  levels lv ON lp.level = lv.id
+LEFT JOIN
+  topics t ON lp.topic = t.id
+LEFT JOIN
+  user_lesson_plans ulp ON lp.id = ulp.lesson_plan_id
+LEFT JOIN
+  student_profiles sp ON sp.id = ANY(ulp.students)
+WHERE
+  ulp.teacher_id = auth.uid() AND
+  ulp.scheduled_date BETWEEN date_trunc('day', now()) AND date_trunc('day', now()) + interval '30 days'
+GROUP BY
+  lp.id, lp.title, s.name, lv.name, t.name, lp.image_path, lp.tags, lp.length_in_min, ulp.scheduled_date
+ORDER BY
+  ulp.scheduled_date ASC;
+
+
+-- Recently Completed Lesson Plans View
+CREATE VIEW recently_completed_lesson_plans_view AS
+SELECT
+  lp.id,
+  lp.title,
+  lp.image_path,
+  s.name AS subject,
+  lv.name AS level,
+  t.name AS topic,
+  ulp.completion_date,
+  json_agg(json_build_object('id', sp.id, 'first_name', sp.first_name, 'last_name', sp.last_name, 'avatar_url', sp.avatar_url)) FILTER (WHERE sp.id IS NOT NULL) AS students
+FROM
+  lesson_plans lp
+JOIN
+  teacher_profiles tp ON lp.creator_id = tp.id
+LEFT JOIN
+  subjects s ON lp.subject = s.id
+LEFT JOIN
+  levels lv ON lp.level = lv.id
+LEFT JOIN
+  topics t ON lp.topic = t.id
+LEFT JOIN
+  user_lesson_plans ulp ON lp.id = ulp.lesson_plan_id
+LEFT JOIN
+  student_profiles sp ON sp.id = ANY(ulp.students)
+WHERE
+  ulp.teacher_id = auth.uid() AND
+  ulp.status = 'completed'
+GROUP BY
+  lp.id, lp.title, s.name, lv.name, t.name, ulp.completion_date
+ORDER BY
+  ulp.completion_date DESC;
+
+
 
 -- * FUNCTIONS
 -- Create topic from name, description, image_url, level_name, subject_code

@@ -11,7 +11,7 @@ import cn from '@/lib/common/cn';
 // * Component
 export default function LessonCreatorModal() {
   // * Hooks / Context
-  const { id, lessonContent, complete, reset } = useLessonCreator();
+  const { id, lessonContent, complete, reset, isLoading } = useLessonCreator();
 
   // * Return
   return (
@@ -19,14 +19,16 @@ export default function LessonCreatorModal() {
       {/* Modal (Content) */}
       <Modal
         closeBtn={false}
-        isVisible={lessonContent !== ''}
-        close={() => {}}
+        isVisible={isLoading || lessonContent !== ''}
+        close={() => reset(true)}
         noCloseOnOutsideClick={true}
         size="lg"
       >
         {/* Header */}
         {complete && (
           <Button
+            type="button"
+            onClick={() => reset(true)}
             className="!p-3 absolute top-2 right-2 print:hidden"
             rounded="full"
             url={`/lesson-plans/${id}`}
