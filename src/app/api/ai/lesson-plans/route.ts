@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     (await request.json()) as IAILessonPlanPostReq;
 
   // 2. Validate request body
-  if (!lesson.topic || !teacher.name)
+  if (!lesson.topic || !teacher.name || !students.length)
     return new Response('Invalid request', { status: 400 });
 
   // 3. Generate lesson plan prompt and Payload

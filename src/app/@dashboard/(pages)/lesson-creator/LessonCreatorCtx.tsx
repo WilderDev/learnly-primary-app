@@ -358,34 +358,30 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   ]);
 
   // Reset Lesson Creator
-  const reset = useCallback(
-    (isHardReset = true) => {
-      if (isHardReset) {
-        setSubject(null);
-        setLevel(null);
-        setTopic(null);
-        setObjectives([]);
-        setDifficulty('MODERATE');
-        setStandards([]);
-        setTeachingStrategy('Direct Instruction');
-        setPhilosophy('Eclectic/Relaxed');
-        setLengthInMin(60);
-        setPace('MEDIUM');
-        setFormat(null);
-        setStudents([]);
-        setMaterials([]);
-        setSpecialConsiderations('');
-        setReflections({});
-        setLearningStyles([]);
-      }
+  const reset = useCallback((isHardReset = true) => {
+    if (isHardReset) {
+      setSubject(null);
+      setLevel(null);
+      setTopic(null);
+      setObjectives([]);
+      setDifficulty('MODERATE');
+      setStandards([]);
+      setTeachingStrategy('Direct Instruction');
+      setPhilosophy('Eclectic/Relaxed');
+      setLengthInMin(60);
+      setPace('MEDIUM');
+      setFormat(null);
+      setStudents([]);
+      setMaterials([]);
+      setSpecialConsiderations('');
+      setReflections({});
+      setLearningStyles([]);
+    }
 
-      setLessonContent('');
-      setComplete(false);
-      setIsLoading(false);
-      router.refresh();
-    },
-    [router],
-  );
+    setLessonContent('');
+    setComplete(false);
+    setIsLoading(false);
+  }, []);
 
   // Save as Template
   const saveAsTemplate = useCallback(

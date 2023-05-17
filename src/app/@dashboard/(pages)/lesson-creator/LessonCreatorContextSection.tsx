@@ -65,7 +65,7 @@ export default function LessonCreatorContextSection() {
     >
       {/* Students (Select) */}
       <MultiSelect
-        label="Students"
+        label="*Students"
         options={createSelectOptions(
           usersStudents.map((s) => ({
             value: s.id,

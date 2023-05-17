@@ -102,6 +102,7 @@ export interface Database {
           format: Database["public"]["Enums"]["format"] | null
           id: string
           image_path: string | null
+          is_public: boolean
           learning_styles:
             | Database["public"]["Enums"]["learning_style"][]
             | null
@@ -131,6 +132,7 @@ export interface Database {
           format?: Database["public"]["Enums"]["format"] | null
           id?: string
           image_path?: string | null
+          is_public?: boolean
           learning_styles?:
             | Database["public"]["Enums"]["learning_style"][]
             | null
@@ -160,6 +162,7 @@ export interface Database {
           format?: Database["public"]["Enums"]["format"] | null
           id?: string
           image_path?: string | null
+          is_public?: boolean
           learning_styles?:
             | Database["public"]["Enums"]["learning_style"][]
             | null

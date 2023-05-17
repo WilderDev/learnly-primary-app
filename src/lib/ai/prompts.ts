@@ -36,20 +36,28 @@ export function generateLessonPlanPrompt({
 
   console.log('studentsSection:', studentsSection);
 
+  console.log('studentsSection:', studentsSection);
+
   // Add the special considerations section if it exists
   const specialConsiderationsSection = special_considerations
     ? `## Special Considerations\n${special_considerations}`
     : '';
 
   // Use the students' learning styles if no learning styles were provided
-  const lessonLearningStyles = learning_styles?.length
-    ? learning_styles
-    : students?.flatMap((student) => student.learning_styles) || ['Any'];
+  const lessonLearningStyles =
+    learning_styles?.length && learning_styles.length > 0
+      ? learning_styles
+      : students.length > 0
+      ? students?.flatMap((student) => student.learning_styles)
+      : ['Any'];
+
+  console.log('lessonLearningStyles:', lessonLearningStyles);
 
   // Conditionally include standards, format, teaching strategy, and materials
-  const standardsSection = standards?.length
-    ? `The standards to be met are ${standards?.join(', ')}.`
-    : '';
+  const standardsSection =
+    standards?.length > 0
+      ? `The standards to be met are ${standards?.join(', ')}.`
+      : '';
   const formatSection = format ? `The format of the lesson is ${format}.` : '';
   const teachingStrategySection = teaching_strategy
     ? `The teaching strategy is ${teaching_strategy}.`
@@ -110,6 +118,8 @@ export function generateLessonPlanPrompt({
   - Ask students if they have any questions
   """
   `;
+
+  console.log('prompt:', prompt);
 
   return prompt.trim();
 }

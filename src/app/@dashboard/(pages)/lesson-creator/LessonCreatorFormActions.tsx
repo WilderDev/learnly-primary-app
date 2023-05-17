@@ -11,7 +11,8 @@ import { MapIcon } from '@heroicons/react/24/solid';
 // * Component
 export default function LessonCreatorFormActions() {
   // * Hooks / Context
-  const { isLoading, topic, reset, saveAsTemplate } = useLessonCreator();
+  const { isLoading, topic, reset, saveAsTemplate, students } =
+    useLessonCreator();
 
   // * State
   const [isTemplateModalOpen, setTemplateModalOpen] = useState(false);
@@ -49,7 +50,7 @@ export default function LessonCreatorFormActions() {
           <Button
             type="submit"
             loading={isLoading}
-            disabled={isLoading || !topic}
+            disabled={isLoading || !topic || !students.length}
           >
             Generate
           </Button>

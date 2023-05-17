@@ -14,7 +14,8 @@
 14. User's can change the title and image of a lesson plan they have created
 15. Page transition from lesson plan modal to lesson plan page
 16. Create own DatePicker...
-17. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+17. I never figured out why students needed to be required for the lesson to not bug out... such an odd bug.
+18. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 
     ```tsx
     <a

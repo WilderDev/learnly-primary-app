@@ -68,7 +68,7 @@ export default function LessonCreatorTopicSelect() {
   // * Render
   return (
     <DrilldownSelect
-      label="Choose a Topic"
+      label="*Choose a Topic"
       cols={2}
       options={subjects}
       values={[subject, level, topic]}
