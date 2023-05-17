@@ -1,6 +1,6 @@
 'use client';
 
-import { handleShare } from '@/app/@dashboard/(pages)/lesson-creator/actions';
+import { handleShare } from '@/app/@dashboard/(pages)/lesson-creator/helpers';
 import Button from '@/lib/components/ui/Button';
 
 // * Props

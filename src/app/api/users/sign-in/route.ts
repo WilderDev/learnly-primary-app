@@ -6,17 +6,13 @@ export async function POST(request: Request) {
 
   const supabase = supabaseServer();
 
-  console.log('baseUrl + redirectUrl || "":', baseUrl + redirectUrl || '');
-
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: baseUrl + redirectUrl || '',
+      emailRedirectTo: redirectUrl ? `${baseUrl}/${redirectUrl}` : baseUrl,
       shouldCreateUser: false,
     },
   });
-
-  console.log('error:', error);
 
   if (error) {
     return new Response(JSON.stringify({ error: error.message }), {

@@ -116,11 +116,11 @@ CREATE TABLE lesson_plans (
   -- Title
   title text NOT NULL CHECK (char_length(title) > 0),
 
-  -- Level
-  level uuid NOT NULL REFERENCES levels(id),
-
   -- Subject
   subject uuid NOT NULL REFERENCES subjects(id),
+
+  -- Level
+  level uuid NOT NULL REFERENCES levels(id),
 
   -- Topic
   topic uuid NOT NULL REFERENCES topics(id),
@@ -187,62 +187,62 @@ CREATE TABLE lesson_plan_templates (
   -- Title
   title text NOT NULL UNIQUE CHECK (char_length(title) > 0),
 
-  -- Level
-  level uuid NOT NULL REFERENCES levels(id),
-
   -- Subject
-  subject uuid NOT NULL REFERENCES subjects(id),
+  subject uuid REFERENCES subjects(id),
+
+  -- Level
+  level uuid REFERENCES levels(id),
 
   -- Topic
   topic uuid REFERENCES topics(id),
 
   -- Tags
-  tags text[] NOT NULL DEFAULT '{}',
+  tags text[] DEFAULT '{}',
 
   -- Image
-  image_path text NOT NULL DEFAULT 'https://source.unsplash.com/800x800/?nature,water',
+  image_path text DEFAULT 'https://source.unsplash.com/800x800/?nature,water',
 
   -- Length
-  length_in_min int NOT NULL DEFAULT 60 CHECK (length_in_min > 0),
+  length_in_min int DEFAULT 60 CHECK (length_in_min > 0),
 
   -- Difficulty
-  difficulty difficulty NOT NULL DEFAULT 'MODERATE' CHECK (difficulty IN ('EASY', 'MODERATE', 'CHALLENGING')),
+  difficulty difficulty DEFAULT 'MODERATE' CHECK (difficulty IN ('EASY', 'MODERATE', 'CHALLENGING')),
 
   -- Pace
-  pace pace NOT NULL DEFAULT 'MEDIUM' CHECK (pace IN ('SLOW', 'MEDIUM', 'FAST')),
+  pace pace DEFAULT 'MEDIUM' CHECK (pace IN ('SLOW', 'MEDIUM', 'FAST')),
 
   -- Philosophy
-  philosophy philosophy NOT NULL DEFAULT 'Traditional' CHECK (philosophy IN ('Eclectic/Relaxed', 'Traditional', 'Montessori', 'Unschooling', 'Unit Studies', 'Project-Based', 'Waldorf', 'Reggio Emilia', 'Classical', 'Charlotte Mason', 'Other')),
+  philosophy philosophy DEFAULT 'Traditional' CHECK (philosophy IN ('Eclectic/Relaxed', 'Traditional', 'Montessori', 'Unschooling', 'Unit Studies', 'Project-Based', 'Waldorf', 'Reggio Emilia', 'Classical', 'Charlotte Mason', 'Other')),
 
   -- Format
   format format,
 
   -- Learning Styles
-  learning_styles learning_style[] NOT NULL DEFAULT '{}'::learning_style[],
+  learning_styles learning_style[] DEFAULT '{}'::learning_style[],
 
   -- Teaching Strategy
-  teaching_strategy teaching_strategy NOT NULL DEFAULT 'Direct Instruction' CHECK (teaching_strategy IN ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other')),
-
-  -- Students Ids
-  students uuid[] NOT NULL DEFAULT '{}'::uuid[],
+  teaching_strategy teaching_strategy DEFAULT 'Direct Instruction' CHECK (teaching_strategy IN ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other')),
 
   -- Materials
-  materials material[] NOT NULL DEFAULT '{}'::material[],
+  materials material[] DEFAULT '{}'::material[],
 
   -- Standards
-  standards standard[] NOT NULL DEFAULT '{}'::standard[],
+  standards standard[] DEFAULT '{}'::standard[],
 
   -- Objectives
-  objectives objective[] NOT NULL DEFAULT '{}'::objective[],
+  objectives objective[] DEFAULT '{}'::objective[],
 
   -- Assessments
-  assessments jsonb[] NOT NULL DEFAULT '{}'::jsonb[],
+  assessments jsonb[] DEFAULT '{}'::jsonb[],
 
   -- Reflections
-  reflections jsonb[] NOT NULL DEFAULT '{}'::jsonb[],
+  reflections jsonb[] DEFAULT '{}'::jsonb[],
 
   -- Special Considerations
   special_considerations text,
+
+  -- Is Public
+  is_public boolean NOT NULL DEFAULT true,
 
   -- Timestamps
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -291,6 +291,48 @@ INNER JOIN
   levels ON topics.level_id = levels.id
 INNER JOIN
   subjects ON topics.subject_id = subjects.id;
+
+-- Get all lesson plan templates with students
+CREATE VIEW lesson_plan_with_students_view AS
+SELECT
+  lpt.title,
+  json_build_object('id', lpt.subject, 'name', s.name) AS subject,
+  json_build_object('id', lpt.level, 'name', lv.name) AS level,
+  json_build_object('id', lpt.topic, 'name', t.name) AS topic,
+  lpt.length_in_min,
+  lpt.difficulty,
+  lpt.pace,
+  lpt.philosophy,
+  lpt.format,
+  lpt.learning_styles,
+  lpt.teaching_strategy,
+  lpt.materials,
+  lpt.standards,
+  lpt.objectives,
+  lpt.special_considerations,
+  json_agg(json_build_object(
+    'id', sp.id,
+    'name', sp.first_name || ' ' || sp.last_name,
+    'age', EXTRACT(YEAR FROM AGE(sp.birthday)),
+    'learning_styles', spp.learning_styles
+  )) AS students
+FROM
+  lesson_plan_templates lpt
+JOIN
+  user_lesson_plan_templates ulpt ON lpt.id = ulpt.lesson_plan_template_id
+JOIN
+  student_profiles sp ON sp.id = ANY(ulpt.students)
+JOIN
+  student_preferences spp ON spp.id = sp.id
+JOIN
+  subjects s ON lpt.subject = s.id
+JOIN
+  levels lv ON lpt.level = lv.id
+JOIN
+  topics t ON lpt.topic = t.id
+GROUP BY
+  lpt.id, s.name, lv.name, t.name;
+
 
 
 

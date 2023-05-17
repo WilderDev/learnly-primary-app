@@ -16,3 +16,12 @@ export function formatDateString(
 
   return formattedDate;
 }
+
+// * Turn a date object into a timestampz string
+export function dateToTimestampz(date: Date) {
+  const dt = Date.parse(date.toISOString()); // convert to UTC
+
+  const tzoffset = date.getTimezoneOffset() * 60000; // offset in milliseconds
+
+  return new Date(dt - tzoffset).toISOString(); // return timestampz string
+}

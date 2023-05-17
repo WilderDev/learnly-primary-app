@@ -18,8 +18,6 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession(); // Get Session
 
-  console.log('session.user.app_metadata:', session?.user);
-
   const isAuthorized =
     session && authorizedRoles.includes(session.user.app_metadata.role); // Check if user is authorized
   const allowedAccess =

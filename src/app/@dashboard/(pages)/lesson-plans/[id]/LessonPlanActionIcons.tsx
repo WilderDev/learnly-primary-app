@@ -8,7 +8,7 @@ import {
 
 import cn from '@/lib/common/cn';
 import { usePathname } from 'next/navigation';
-import { handlePrint, handleShare } from '../../lesson-creator/actions';
+import { handlePrint, handleShare } from '../../lesson-creator/helpers';
 
 export default function LessonPlanActionIcons() {
   // * Hooks

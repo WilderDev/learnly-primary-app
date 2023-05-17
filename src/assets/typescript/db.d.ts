@@ -95,79 +95,88 @@ export interface Database {
       }
       lesson_plan_templates: {
         Row: {
-          assessments: Json[]
+          assessments: Json[] | null
           created_at: string
           creator_id: string
-          difficulty: Database["public"]["Enums"]["difficulty"]
+          difficulty: Database["public"]["Enums"]["difficulty"] | null
           format: Database["public"]["Enums"]["format"] | null
           id: string
-          image_path: string
-          learning_styles: Database["public"]["Enums"]["learning_style"][]
-          length_in_min: number
-          level: string
-          materials: Database["public"]["Enums"]["material"][]
-          objectives: Database["public"]["Enums"]["objective"][]
-          pace: Database["public"]["Enums"]["pace"]
-          philosophy: Database["public"]["Enums"]["philosophy"]
-          reflections: Json[]
+          image_path: string | null
+          learning_styles:
+            | Database["public"]["Enums"]["learning_style"][]
+            | null
+          length_in_min: number | null
+          level: string | null
+          materials: Database["public"]["Enums"]["material"][] | null
+          objectives: Database["public"]["Enums"]["objective"][] | null
+          pace: Database["public"]["Enums"]["pace"] | null
+          philosophy: Database["public"]["Enums"]["philosophy"] | null
+          reflections: Json[] | null
           special_considerations: string | null
-          standards: Database["public"]["Enums"]["standard"][]
-          students: string[]
-          subject: string
-          tags: string[]
-          teaching_strategy: Database["public"]["Enums"]["teaching_strategy"]
+          standards: Database["public"]["Enums"]["standard"][] | null
+          subject: string | null
+          tags: string[] | null
+          teaching_strategy:
+            | Database["public"]["Enums"]["teaching_strategy"]
+            | null
           title: string
           topic: string | null
           updated_at: string
         }
         Insert: {
-          assessments?: Json[]
+          assessments?: Json[] | null
           created_at?: string
           creator_id: string
-          difficulty?: Database["public"]["Enums"]["difficulty"]
+          difficulty?: Database["public"]["Enums"]["difficulty"] | null
           format?: Database["public"]["Enums"]["format"] | null
           id?: string
-          image_path?: string
-          learning_styles?: Database["public"]["Enums"]["learning_style"][]
-          length_in_min?: number
-          level: string
-          materials?: Database["public"]["Enums"]["material"][]
-          objectives?: Database["public"]["Enums"]["objective"][]
-          pace?: Database["public"]["Enums"]["pace"]
-          philosophy?: Database["public"]["Enums"]["philosophy"]
-          reflections?: Json[]
+          image_path?: string | null
+          learning_styles?:
+            | Database["public"]["Enums"]["learning_style"][]
+            | null
+          length_in_min?: number | null
+          level?: string | null
+          materials?: Database["public"]["Enums"]["material"][] | null
+          objectives?: Database["public"]["Enums"]["objective"][] | null
+          pace?: Database["public"]["Enums"]["pace"] | null
+          philosophy?: Database["public"]["Enums"]["philosophy"] | null
+          reflections?: Json[] | null
           special_considerations?: string | null
-          standards?: Database["public"]["Enums"]["standard"][]
-          students?: string[]
-          subject: string
-          tags?: string[]
-          teaching_strategy?: Database["public"]["Enums"]["teaching_strategy"]
+          standards?: Database["public"]["Enums"]["standard"][] | null
+          subject?: string | null
+          tags?: string[] | null
+          teaching_strategy?:
+            | Database["public"]["Enums"]["teaching_strategy"]
+            | null
           title: string
           topic?: string | null
           updated_at?: string
         }
         Update: {
-          assessments?: Json[]
+          assessments?: Json[] | null
           created_at?: string
           creator_id?: string
-          difficulty?: Database["public"]["Enums"]["difficulty"]
+          difficulty?: Database["public"]["Enums"]["difficulty"] | null
           format?: Database["public"]["Enums"]["format"] | null
           id?: string
-          image_path?: string
-          learning_styles?: Database["public"]["Enums"]["learning_style"][]
-          length_in_min?: number
-          level?: string
-          materials?: Database["public"]["Enums"]["material"][]
-          objectives?: Database["public"]["Enums"]["objective"][]
-          pace?: Database["public"]["Enums"]["pace"]
-          philosophy?: Database["public"]["Enums"]["philosophy"]
-          reflections?: Json[]
+          image_path?: string | null
+          learning_styles?:
+            | Database["public"]["Enums"]["learning_style"][]
+            | null
+          length_in_min?: number | null
+          level?: string | null
+          materials?: Database["public"]["Enums"]["material"][] | null
+          objectives?: Database["public"]["Enums"]["objective"][] | null
+          pace?: Database["public"]["Enums"]["pace"] | null
+          philosophy?: Database["public"]["Enums"]["philosophy"] | null
+          reflections?: Json[] | null
           special_considerations?: string | null
-          standards?: Database["public"]["Enums"]["standard"][]
-          students?: string[]
-          subject?: string
-          tags?: string[]
-          teaching_strategy?: Database["public"]["Enums"]["teaching_strategy"]
+          standards?: Database["public"]["Enums"]["standard"][] | null
+          subject?: string | null
+          tags?: string[] | null
+          teaching_strategy?:
+            | Database["public"]["Enums"]["teaching_strategy"]
+            | null
           title?: string
           topic?: string | null
           updated_at?: string
@@ -863,6 +872,30 @@ export interface Database {
       }
     }
     Views: {
+      lesson_plan_with_students_view: {
+        Row: {
+          difficulty: Database["public"]["Enums"]["difficulty"] | null
+          format: Database["public"]["Enums"]["format"] | null
+          learning_styles:
+            | Database["public"]["Enums"]["learning_style"][]
+            | null
+          length_in_min: number | null
+          level: Json | null
+          materials: Database["public"]["Enums"]["material"][] | null
+          objectives: Database["public"]["Enums"]["objective"][] | null
+          pace: Database["public"]["Enums"]["pace"] | null
+          philosophy: Database["public"]["Enums"]["philosophy"] | null
+          special_considerations: string | null
+          standards: Database["public"]["Enums"]["standard"][] | null
+          students: Json | null
+          subject: Json | null
+          teaching_strategy:
+            | Database["public"]["Enums"]["teaching_strategy"]
+            | null
+          title: string | null
+          topic: Json | null
+        }
+      }
       teacher_me_view: {
         Row: {
           avatar_url: string | null

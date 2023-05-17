@@ -13,7 +13,8 @@
 13. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
 14. User's can change the title and image of a lesson plan they have created
 15. Page transition from lesson plan modal to lesson plan page
-16. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+16. Create own DatePicker...
+17. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 
     ```tsx
     <a

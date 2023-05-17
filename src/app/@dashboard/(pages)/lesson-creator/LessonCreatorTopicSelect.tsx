@@ -5,6 +5,7 @@ import { useLessonCreator } from './LessonCreatorCtx';
 import { supabaseClient } from '@/lib/auth/supabaseClient';
 import DrilldownSelect from '@/lib/components/form/DrilldownSelect';
 import { IOption } from '@/assets/typescript/form';
+import { AcademicCapIcon } from '@heroicons/react/24/solid';
 
 export default function LessonCreatorTopicSelect() {
   // * Hooks / Context
@@ -72,7 +73,7 @@ export default function LessonCreatorTopicSelect() {
       options={subjects}
       values={[subject, level, topic]}
       setValues={[setSubject, setLevel, setTopic]}
-      // icon
+      icon={AcademicCapIcon}
     />
   );
 }

@@ -11,9 +11,3 @@ export const handleShare = (pathname: string) => {
 
 // Handle Print Lesson Plan
 export const handlePrint = () => window.print(); // Print current page
-
-// Handle Refresh Lesson Plan
-export const handleRefresh = () => {};
-
-// Handle Save Lesson Plan
-export const handleSave = () => {};

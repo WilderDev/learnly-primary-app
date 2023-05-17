@@ -275,6 +275,23 @@ IProps) {
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
 
+  useEffect(() => {
+    if (values[0] === null) {
+      setPath([undefined]);
+      setInputValue('');
+      setItemTopPositions([0]);
+      setIndices([]);
+      setCurrentLevel(0);
+      setParentMenuVisible(true);
+    } else {
+      if (!inputValue) {
+        setInputValue(
+          `${values[2]?.name} (${values[1]?.name} ${values[0]?.name})`,
+        );
+      }
+    }
+  }, [values, inputValue]);
+
   // * Render
   return (
     <FormItem

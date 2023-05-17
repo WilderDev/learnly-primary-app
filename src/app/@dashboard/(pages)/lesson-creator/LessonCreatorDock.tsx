@@ -5,11 +5,10 @@ import {
   PrinterIcon,
   ShareIcon,
 } from '@heroicons/react/24/solid';
-import { handlePrint, handleShare } from './actions';
+import { handlePrint, handleShare } from './helpers';
 import { usePathname } from 'next/navigation';
 import { useLessonCreator } from './LessonCreatorCtx';
 import { useState } from 'react';
-import Modal from '@/lib/components/popouts/Modal';
 import LessonPlanSaveDetailsModalForm from '../lesson-plans/[id]/LessonPlanSaveDetailsModal';
 
 // * Data
@@ -53,7 +52,7 @@ export default function LessonCreatorDock() {
   const handleDockItemClick = (label: 'Save' | 'Print' | 'Share') => {
     switch (label) {
       case 'Save':
-        console.log('Save');
+        setSaveModalOpen(true);
         break;
       case 'Print':
         handlePrint();
@@ -101,7 +100,8 @@ export default function LessonCreatorDock() {
 
       {/* Save Modal */}
       <LessonPlanSaveDetailsModalForm
-        defaultChildren={students}
+        lessonPlanId={id!}
+        defaultStudentIds={students.map((s) => s.id)}
         isVisible={isSaveModalOpen}
         close={() => setSaveModalOpen(false)}
       />

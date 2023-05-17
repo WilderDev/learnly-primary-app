@@ -60,6 +60,7 @@ interface ILessonCreatorCtx {
   // Actions
   handleSubmit: () => void;
   reset: (isHardReset?: boolean) => void;
+  saveAsTemplate: (title: string) => void;
   showAdvancedGoals: boolean;
   toggleAdvancedGoals: () => void;
   showAdvancedStructure: boolean;
@@ -145,6 +146,7 @@ const initialCtxValue: ILessonCreatorCtx = {
   // Actions
   handleSubmit: () => {},
   reset: () => {},
+  saveAsTemplate: () => {},
   showAdvancedGoals: false,
   toggleAdvancedGoals: () => {},
   showAdvancedStructure: false,
@@ -356,38 +358,119 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   ]);
 
   // Reset Lesson Creator
-  const reset = useCallback((isHardReset = true) => {
-    if (isHardReset) {
-      setSubject(null);
-      setLevel(null);
-      setTopic(null);
-      setObjectives([]);
-      setDifficulty('MODERATE');
-      setStandards([]);
-      setTeachingStrategy('Direct Instruction');
-      setPhilosophy('Traditional');
-      setLengthInMin(60);
-      setPace('MEDIUM');
-      setFormat(null);
-      setStudents([]);
-      setMaterials([]);
-      setSpecialConsiderations('');
-      setReflections({});
-      setLearningStyles([]);
-    }
+  const reset = useCallback(
+    (isHardReset = true) => {
+      if (isHardReset) {
+        setSubject(null);
+        setLevel(null);
+        setTopic(null);
+        setObjectives([]);
+        setDifficulty('MODERATE');
+        setStandards([]);
+        setTeachingStrategy('Direct Instruction');
+        setPhilosophy('Eclectic/Relaxed');
+        setLengthInMin(60);
+        setPace('MEDIUM');
+        setFormat(null);
+        setStudents([]);
+        setMaterials([]);
+        setSpecialConsiderations('');
+        setReflections({});
+        setLearningStyles([]);
+      }
 
-    setLessonContent('');
-    setComplete(false);
-    setIsLoading(false);
-  }, []);
+      setLessonContent('');
+      setComplete(false);
+      setIsLoading(false);
+      router.refresh();
+    },
+    [router],
+  );
 
   // Save as Template
-  const saveAsTemplate = (
-    title: string,
-    students: IStudentPromptReq['children'],
-  ) => {
-    // TSK
-  };
+  const saveAsTemplate = useCallback(
+    async (title: string) => {
+      // 1. Validate Inputs
+      if (!title) return toast.error('Please enter a title');
+
+      const tags = [
+        ...standards,
+        ...materials,
+        ...learningStyles,
+        ...objectives,
+      ] as string[];
+      topic && tags.unshift(topic.name);
+      level && tags.unshift(level.name);
+      subject && tags.unshift(subject.name);
+      difficulty && tags.push(capitalize(difficulty));
+      teachingStrategy && tags.push(teachingStrategy);
+      philosophy && tags.push(philosophy);
+      pace && tags.push(capitalize(pace));
+
+      const templateDetails = {
+        creator_id: session?.user.id!,
+        title,
+        subject: subject?.id,
+        level: level?.id,
+        topic: topic?.id,
+        tags,
+        image_path: 'https://source.unsplash.com/random/800x600',
+        length_in_min: lengthInMin,
+        difficulty: difficulty,
+        pace: pace,
+        philosophy: philosophy,
+        format: format,
+        learning_styles: learningStyles,
+        teaching_strategy: teachingStrategy,
+        materials: materials,
+        standards: standards,
+        objectives: objectives,
+        // assessments: {},
+        // reflections: {},
+        // is_public: true,
+        special_considerations: specialConsiderations || '',
+      };
+
+      // 2. Save to Supabase (Public)
+      const { data: template, error: templateError } = await supabase
+        .from('lesson_plan_templates')
+        .insert(templateDetails)
+        .select('id')
+        .single();
+
+      if (templateError) return toast.error('Error saving template');
+
+      // 3. Save to Supabase (Private)
+      const { error: userTemplateError } = await supabase
+        .from('user_lesson_plan_templates')
+        .insert({
+          teacher_id: session?.user.id!,
+          lesson_plan_template_id: template?.id!,
+          students: students.map((s) => s.id),
+        });
+
+      if (userTemplateError) return toast.error('Error saving template');
+    },
+    [
+      difficulty,
+      format,
+      learningStyles,
+      lengthInMin,
+      level,
+      materials,
+      objectives,
+      pace,
+      philosophy,
+      session?.user.id,
+      specialConsiderations,
+      standards,
+      students,
+      subject,
+      supabase,
+      teachingStrategy,
+      topic,
+    ],
+  );
 
   // Togglers
   const toggleAdvancedGoals = () => setShowAdvancedGoals((prev) => !prev);
@@ -429,6 +512,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       // Actions
       handleSubmit,
       reset,
+      saveAsTemplate,
       showAdvancedGoals,
       toggleAdvancedGoals,
       showAdvancedStructure,
@@ -480,6 +564,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       complete,
       handleSubmit,
       reset,
+      saveAsTemplate,
       showAdvancedGoals,
       showAdvancedStructure,
       showAdvancedContext,

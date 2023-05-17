@@ -50,13 +50,18 @@ WHERE
 INSERT INTO student_profiles
 (id, first_name, last_name, avatar_url, birthday, teacher_id)
 VALUES
-('185f2f83-d63a-4c9b-b4a0-7e4a885799e4', 'Little', 'Timmy', '/static/icons/avatars/lion.png', '2020-01-01', '185f2f83-d63a-4c9b-b4a0-7e4a885799e3');
+('185f2f83-d63a-4c9b-b4a0-7e4a885799e8', 'Little', 'Timmy', '/static/icons/avatars/lion.png', '2020-01-01', '185f2f83-d63a-4c9b-b4a0-7e4a885799e3');
 
 -- Student Preferences 1
-INSERT INTO student_preferences
-(id, learning_styles, subject_preferences, interests, special_needs)
-VALUES
-('185f2f83-d63a-4c9b-b4a0-7e4a885799e4', '{"Auditory", "Logical"}', '{"Math", "Science"}', '{"Sports", "Music"}', '{"Attention_Deficit_Hyperactivity_Disorder"}');
+UPDATE student_preferences
+SET
+  learning_styles = '{"Auditory", "Logical"}',
+  subject_preferences = '{"Math", "Science"}',
+  interests = '{"Sports", "Music"}',
+  special_needs = '{"Attention_Deficit_Hyperactivity_Disorder"}'
+WHERE
+  id = '185f2f83-d63a-4c9b-b4a0-7e4a885799e8';
+
 
 -- Trial 1
 INSERT INTO trials

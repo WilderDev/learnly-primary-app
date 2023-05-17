@@ -163,6 +163,7 @@ export default function Modal({
           isVisible
             ? 'visible opacity-100'
             : 'invisible opacity-0 pointer-events-none',
+          portalName === 'alt-portal' && 'print:hidden z-[10000]',
         )}
         role="dialog"
         aria-modal="true"
