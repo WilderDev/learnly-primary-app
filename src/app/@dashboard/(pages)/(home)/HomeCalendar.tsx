@@ -69,7 +69,9 @@ export default function HomeCalendar() {
                 day.isSelected &&
                   day.isToday &&
                   'bg-green-600 text-white dark:text-white', // Selected and Today
-                day.isSelected && !day.isToday && 'bg-slate-900', // Selected and not Today
+                day.isSelected &&
+                  !day.isToday &&
+                  'bg-slate-200/80 text-slate-900 dark:bg-navy-900/80', // Selected and not Today
               )}
               type="button"
               onClick={(e) => {

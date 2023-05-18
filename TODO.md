@@ -3,6 +3,7 @@
 1. Mark Lesson plan as complete (change status and completion_date)
 1. Ensure Stripe Payment Flow works and all webhooks are connected successfully
 1. Mobile Navbar and Responsivness testing
+1. Fix Double Print on Lesson Creator Modal
 1. When you hover over the <Avatar /> component, it should have a tooltip pop up that says their name
 1. [Open Graph for Lesson Plans and Curriculum](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
 1. Take OG Image Screenshots and add to [default metatdata](src/lib/meta/defaultMetadata.ts) (1200x630)

@@ -1,8 +1,15 @@
+import MonochromeTogglerBtn from '@/lib/theme/MonochromeTogglerBtn';
 import dynamic from 'next/dynamic';
+import TopHeaderNotifications from './TopHeaderNotifications';
+import RightSidebarToggler from './TopHeaderRightSidebarToggler';
 
 const ThemeTogglerButton = dynamic(() => import('@/lib/theme/ThemeTogglerBtn'));
 
-export default function TopHeaderItems() {
+export default async function TopHeaderItems() {
+  // * Data
+  const notifications = await getNotifications();
+
+  // * Render
   return (
     <ul className="flex items-center space-x-4">
       {/* Theme Toggler */}
@@ -12,21 +19,23 @@ export default function TopHeaderItems() {
 
       {/* Monochrome toggler */}
       <li>
-        {/* <MonochromeToggler /> */}
-        {/* TSK */}
+        <MonochromeTogglerBtn />
       </li>
 
       {/* Notificiations */}
       <li className="relative">
-        {/* <NotificationsPopover /> */}
-        {/* TSK */}
+        <TopHeaderNotifications notifications={notifications} />
       </li>
 
       {/* Quick Report Menu Toggler */}
       <li>
-        {/* <RightSidebarToggler /> */}
-        {/* TSK */}
+        <RightSidebarToggler />
       </li>
     </ul>
   );
+}
+
+// * Fetcher
+async function getNotifications() {
+  return [];
 }

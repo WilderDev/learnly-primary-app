@@ -85,6 +85,7 @@ export default async function UpcomingLessonsCards() {
   );
 }
 
+// * Fetcher
 async function getUpcomingLessons() {
   const supabase = supabaseServer();
   const { data, error } = await supabase

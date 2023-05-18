@@ -13,6 +13,7 @@ import { ICalendarDay, TScheduleView } from '@/assets/typescript/schedule';
 import { getWeekRange } from '@/lib/common/date.helpers';
 
 // * Initialization
+// Props
 interface IScheduleCtxProps {
   views: TScheduleView[];
   view: TScheduleView;
@@ -30,6 +31,7 @@ interface IScheduleCtxProps {
   weekDays: Date[];
 } // Create an interface for the context props
 
+// Initial State
 const initialState: IScheduleCtxProps = {
   views: ['upcoming', 'daily', 'weekly', 'monthly', 'yearly'],
   view: 'upcoming',
@@ -47,6 +49,7 @@ const initialState: IScheduleCtxProps = {
   weekDays: [],
 }; // Create a context object with default value
 
+// Context
 const ScheduleCtx = createContext(initialState); // Create Context Object
 
 // * Provider
@@ -58,8 +61,6 @@ export function ScheduleProvider({ children }: PropsWithChildren) {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [calendarDays, setCalendarDays] = useState<ICalendarDay[]>([]);
   const [weekDays, setWeekdays] = useState<Date[]>([]);
-
-  // * Data
 
   // * Handlers
   // Set month to next month

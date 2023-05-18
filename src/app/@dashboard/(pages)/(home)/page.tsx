@@ -61,7 +61,7 @@ export default function ParentDashboardHomePage() {
 }
 
 export const metadata = {
-  title: 'Home',
+  title: 'Home | Learnly',
   description: 'Homeschool parents Learnly dashboard home page.',
 };
 

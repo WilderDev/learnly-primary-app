@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth overflow-y-scroll min-h-full h-full;
   }
 
   body {
@@ -13,7 +13,7 @@
 
   /* Grayscale */
   body[data-grayscale='true'] {
-    @apply relative bg-stone-100 grayscale filter dark:bg-stone-900 print:invisible;
+    @apply relative bg-stone-100 grayscale filter dark:bg-stone-900 h-full;
   }
 
   /* Highlight Text Color */

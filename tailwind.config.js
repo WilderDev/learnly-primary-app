@@ -36,6 +36,7 @@ module.exports = {
         shimmer: 'shimmer 5.0s linear infinite',
         shimmerSlow: 'shimmer 10.0s linear infinite',
         marquee: 'marquee var(--marquee-duration) linear infinite',
+        wiggle: 'wiggle 0.5s ease-in-out infinite',
         // https://github.com/WilderDev/learnly-app/blob/main/tailwind.config.js
       },
       keyframes: {
@@ -55,6 +56,10 @@ module.exports = {
           '100%': {
             transform: 'translateY(-50%)',
           },
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-5deg)' },
+          '50%': { transform: 'rotate(5deg)' },
         },
       },
     },
