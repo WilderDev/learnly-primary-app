@@ -19,16 +19,7 @@ export default async function RecentlyCompletedLessonsAccordions() {
         .slice(0, 3)
         .map(
           (
-            {
-              id,
-              title,
-              completion_date,
-              image_path,
-              subject,
-              level,
-              topic,
-              students,
-            },
+            { id, title, completion_date, image_path, subject, students },
             idx,
           ) => (
             <Accordion
@@ -51,7 +42,7 @@ export default async function RecentlyCompletedLessonsAccordions() {
                       <Avatar
                         src={s.avatar_url}
                         alt={s.first_name}
-                        url="/account?view=children"
+                        url="/account?view=students"
                         key={idx}
                       />
                     ))}
@@ -90,8 +81,6 @@ async function getRecentlyCompletedLessons() {
     id: lesson.id!,
     title: lesson.title!,
     subject: lesson.subject!,
-    level: lesson.level!,
-    topic: lesson.topic!,
     completion_date: lesson.completion_date!,
     image_path: lesson.image_path!,
     students: lesson.students! as {

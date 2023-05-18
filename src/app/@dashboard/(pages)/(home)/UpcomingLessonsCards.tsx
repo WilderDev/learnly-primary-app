@@ -52,7 +52,7 @@ export default async function UpcomingLessonsCards() {
                   <Avatar
                     src={s.avatar_url}
                     alt={s.first_name}
-                    url="/account?view=children"
+                    url="/account?view=students"
                     key={i}
                   />
                 ))}

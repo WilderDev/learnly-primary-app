@@ -2,15 +2,15 @@
 
 import cn from '@/lib/common/cn';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { useSchedule } from '../schedule-builder/ScheduleCtx';
+import { useSchedule } from './ScheduleCtx';
 
-export default function HomeCalendar() {
+export default function MiniCalendar() {
   // * Context / Hooks
   const { date, setDate, prevMonth, nextMonth, calendarDays } = useSchedule();
 
   // * Render
   return (
-    <article className="rounded-lg bg-white p-4 shadow-md dark:bg-navy-700">
+    <article className="rounded-lg bg-white shadow p-3 dark:bg-navy-700">
       {/* Content */}
       <div className="space-y-1 text-center text-xs">
         {/* Header */}
@@ -93,3 +93,6 @@ export default function HomeCalendar() {
     </article>
   );
 }
+
+// TSK: Ability to view lesson bubbles on days with lessons/events
+// TSK: Ability when you click on a day with lessons/events to view them in the side panel or below the calendar

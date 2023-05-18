@@ -126,7 +126,7 @@ VALUES
 
 -- Subjects (8)
 INSERT INTO subjects
-(code, name, description, image_url)
+(code, name, description, image_path)
 VALUES
 ('MATH', 'Mathematics', 'The universal language that deciphers the complex riddles of the cosmos, providing the foundation for logic and reason in a world of chaos.', '/images/subjects/math.jpg'),
 ('SCI', 'Science', 'A ceaseless journey of discovery, asking questions of the universe and uncovering its intricate, beautiful truths one experiment at a time.', '/images/subjects/science.jpg'),
@@ -143,7 +143,7 @@ VALUES
 
 -- Levels (10)
 INSERT INTO levels
-(name, animal, image_url)
+(name, animal, image_path)
 VALUES
 ('Buds', 'Caterpillars', '/images/animals/buds.jpg'),
 ('Sprouts', 'Dogs', '/images/animals/saplings.jpg'),

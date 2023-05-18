@@ -44,8 +44,8 @@ CREATE TABLE subjects (
   -- Description
   description text NOT NULL,
 
-  -- Image Url
-  image_url text NOT NULL,
+  -- Image Path
+  image_path text NOT NULL,
 
   -- Short code
   code text NOT NULL UNIQUE CHECK (char_length(code) > 0),
@@ -66,8 +66,8 @@ CREATE TABLE levels (
   -- Animal
   animal animal NOT NULL,
 
-  -- Image Url
-  image_url text NOT NULL,
+  -- Image Path
+  image_path text NOT NULL,
 
   -- Timestamps
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -85,8 +85,8 @@ CREATE TABLE topics (
   -- Description
   description text NOT NULL,
 
-  -- Image Url
-  image_url text NOT NULL,
+  -- Image Path
+  image_path text NOT NULL,
 
   -- Topic Number (1, 2, 3, etc.)
   topic_number SERIAL NOT NULL,
@@ -441,11 +441,11 @@ ORDER BY
 
 
 -- * FUNCTIONS
--- Create topic from name, description, image_url, level_name, subject_code
+-- Create topic from name, description, image_path, level_name, subject_code
 CREATE FUNCTION create_topic(
   topic_name text,
   topic_description text,
-  topic_image_url text,
+  topic_image_path text,
   level_name level,
   subject_code text
 ) RETURNS void AS $$
@@ -467,13 +467,13 @@ BEGIN
   INSERT INTO topics (
     name,
     description,
-    image_url,
+    image_path,
     level_id,
     subject_id
   ) VALUES (
     topic_name,
     topic_description,
-    topic_image_url,
+    topic_image_path,
     level_id,
     subject_id
   );

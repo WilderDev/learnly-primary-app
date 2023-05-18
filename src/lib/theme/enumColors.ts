@@ -231,8 +231,115 @@ const subjectColors = {
 
 // * Event Colors
 // Event Helper Function
+export function getEventColor(eventType: string) {
+  const evnt = eventType
+    .toUpperCase()
+    .split(' ')
+    .join('_') as keyof typeof eventColors;
+
+  return eventColors[evnt] || eventColors.DEFAULT;
+}
 
 // Event Enum Colors
+const eventColors = {
+  // TSK: Do dark mode and active states for each
+  LESSON: {
+    BG: {
+      DEFAULT: 'bg-blue-500',
+      LIGHT: 'bg-blue-300',
+      DARK: 'bg-blue-700',
+      GRADIENT: 'from-blue-500 via-sky-600 to-blue-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-blue-500',
+      LIGHT: 'text-blue-300',
+      DARK: 'text-blue-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-blue-700 text-blue-100',
+      LIGHT: 'bg-blue-500 text-blue-100',
+      DARK: 'bg-blue-900 text-blue-100',
+      SUBDUED: 'bg-blue-600/70 text-blue-50',
+    },
+  },
+  COMMUNITY: {
+    BG: {
+      DEFAULT: 'bg-purple-500',
+      LIGHT: 'bg-purple-300',
+      DARK: 'bg-purple-700',
+      GRADIENT: 'from-purple-500 via-violet-600 to-purple-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-purple-500',
+      LIGHT: 'text-purple-300',
+      DARK: 'text-purple-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-purple-700 text-purple-100',
+      LIGHT: 'bg-purple-500 text-purple-100',
+      DARK: 'bg-purple-900 text-purple-100',
+      SUBDUED: 'bg-purple-600/70 text-purple-50',
+    },
+  },
+  ASSIGNMENT: {
+    BG: {
+      DEFAULT: 'bg-green-500',
+      LIGHT: 'bg-green-300',
+      DARK: 'bg-green-700',
+      GRADIENT: 'from-green-500 via-sky-600 to-green-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-green-500',
+      LIGHT: 'text-green-300',
+      DARK: 'text-green-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-green-700 text-green-100',
+      LIGHT: 'bg-green-500 text-green-100',
+      DARK: 'bg-green-900 text-green-100',
+      SUBDUED: 'bg-green-600/70 text-green-50',
+    },
+  },
+  OTHER: {
+    BG: {
+      DEFAULT: 'bg-yellow-500',
+      LIGHT: 'bg-yellow-300',
+      DARK: 'bg-yellow-700',
+      GRADIENT: 'from-yellow-500 via-orange-600 to-yellow-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-yellow-500',
+      LIGHT: 'text-yellow-300',
+      DARK: 'text-yellow-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-yellow-700 text-yellow-100',
+      LIGHT: 'bg-yellow-500 text-yellow-100',
+      DARK: 'bg-yellow-900 text-yellow-100',
+      SUBDUED: 'bg-yellow-600/70 text-yellow-50',
+    },
+  },
+  DEFAULT: {
+    BG: {
+      DEFAULT: 'bg-slate-500',
+      LIGHT: 'bg-slate-300',
+      DARK: 'bg-slate-700',
+      GRADIENT: 'from-slate-500 via-sky-600 to-slate-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-slate-500',
+      LIGHT: 'text-slate-300',
+      DARK: 'text-slate-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-slate-700 text-slate-100',
+      LIGHT: 'bg-slate-500 text-slate-100',
+      DARK: 'bg-slate-900 text-slate-100',
+      SUBDUED: 'bg-slate-600/70 text-slate-50',
+    },
+  },
+  // . . .
+};
 
 // * Index Colors
 // Index Helper Function

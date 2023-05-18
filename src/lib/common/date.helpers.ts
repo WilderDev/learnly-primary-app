@@ -61,3 +61,58 @@ export function getWeekRange(date: Date): { start: Date; end: Date } {
 
   return { start: startDate, end: endDate };
 }
+
+// * Check if two dates are the same day
+export function isSameDay(date1: Date, date2: Date): boolean {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+}
+
+// * Get Datestring from Timestampz
+export function getDatestringFromTimestamp(
+  timestamp: string,
+  showMonth = true,
+  showDay = true,
+  showYear = false,
+): string {
+  const date = new Date(timestamp);
+  // Change it into format MONTH/DAY (March 20th)
+  const month = date.toLocaleString('default', { month: 'long' });
+  // Add the nd or th
+  const getDaySuffix = (day: number): string => {
+    if (day > 3 && day < 21) return 'th';
+    switch (day % 10) {
+      case 1:
+        return 'st';
+      case 2:
+        return 'nd';
+      case 3:
+        return 'rd';
+      default:
+        return 'th';
+    }
+  };
+
+  const day = date.getDate() + getDaySuffix(date.getDate());
+
+  const year = date.getFullYear();
+
+  let dateString = '';
+
+  if (showMonth) {
+    dateString += month;
+  }
+
+  if (showDay) {
+    dateString += ` ${day}`;
+  }
+
+  if (showYear) {
+    dateString += `, ${year}`;
+  }
+
+  return dateString;
+}

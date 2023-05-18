@@ -4,7 +4,7 @@ import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import HomeWelcomePanel from './HomeWelcomePanel';
 import UpcomingLessonsCards from './UpcomingLessonsCards';
 import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccordions';
-import HomeCalendar from './HomeCalendar';
+import MiniCalendar from '../schedule-builder/MiniCalendar';
 
 export default function ParentDashboardHomePage() {
   // * Render
@@ -53,7 +53,7 @@ export default function ParentDashboardHomePage() {
             ctaText="View Schedule"
             ctaLink="/schedule-builder"
           />
-          <HomeCalendar />
+          <MiniCalendar />
         </DashPanel>
       </DashSideCol>
     </>
