@@ -45,3 +45,19 @@ export function getAgeFromBirthday(birthday: string) {
 
   return age; // Return age
 }
+
+// * Get the week range from a date
+export function getWeekRange(date: Date): { start: Date; end: Date } {
+  const day = date.getDay();
+  const diff = date.getDate() - day + (day === 0 ? -6 : 1); // adjust for Sunday (day 0)
+
+  const startDate = new Date(date);
+  startDate.setDate(diff);
+  startDate.setHours(0, 0, 0, 0);
+
+  const endDate = new Date(startDate);
+  endDate.setDate(startDate.getDate() + 6);
+  endDate.setHours(23, 59, 59, 999);
+
+  return { start: startDate, end: endDate };
+}
