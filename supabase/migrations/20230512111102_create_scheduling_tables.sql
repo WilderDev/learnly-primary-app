@@ -15,7 +15,7 @@ CREATE TABLE events (
   id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
 
   -- Event Type
-  type event_type NOT NULL DEFAULT 'LESSON',
+  type event NOT NULL DEFAULT 'LESSON',
 
   -- Name
   name text NOT NULL,
@@ -39,10 +39,10 @@ CREATE TABLE events (
   url text,
 
   -- Host (User ID)
-  host_id uuid NOT NULL REFERENCES profiles(id),
+  host_id uuid NOT NULL REFERENCES teacher_profiles(id),
 
-  -- Attendies (User IDs)
-  attendies uuid[] NOT NULL DEFAULT '{}'::uuid[],
+  -- Attendees (User IDs)
+  attendees uuid[] NOT NULL DEFAULT '{}'::uuid[],
 
   -- Additional Metadata
   metadata jsonb,
@@ -66,10 +66,12 @@ SELECT
   location,
   url,
   host_id,
-  attendies,
-  metadata,
-FROM events
-WHERE host_id = auth.uid() OR attendies @> ARRAY[auth.uid()];
+  attendees,
+  metadata
+FROM
+  events
+WHERE
+  host_id = auth.uid() OR attendees @> ARRAY[auth.uid()];
 
 -- User's Hosted Events
 CREATE VIEW hosted_events_view AS
@@ -84,8 +86,8 @@ SELECT
   location,
   url,
   host_id,
-  attendies,
-  metadata,
+  attendees,
+  metadata
 FROM events
 WHERE host_id = auth.uid();
 
@@ -103,22 +105,90 @@ SELECT
   location,
   url,
   host_id,
-  attendies,
-  metadata,
+  attendees,
+  metadata
 FROM events
-WHERE attendies @> ARRAY[auth.uid()];
+WHERE attendees @> ARRAY[auth.uid()];
 
 
 -- * FUNCTIONS
+--- Get Upcoming Events for User (30)
+CREATE FUNCTION get_upcoming_events(input_date date)
+RETURNS TABLE(
+  id uuid,
+  name text,
+  description text,
+  image_path text,
+  url text,
+  type event,
+  datetime timestamptz,
+  location text,
+  length_in_min int,
+  attendees jsonb
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT
+    e.id,
+    e.name,
+    e.description,
+    e.image_path,
+    e.url,
+    e.type,
+    e.datetime,
+    e.location,
+    e.length_in_min,
+    json_agg(
+      CASE WHEN p.id IS NOT NULL THEN
+        json_build_object(
+          'id', p.id,
+          'firstName', p.first_name,
+          'lastName', p.last_name,
+          'avatarUrl', p.avatar_url
+        )
+      ELSE
+        json_build_object(
+          'id', s.id,
+          'firstName', s.first_name,
+          'lastName', s.last_name,
+          'avatarUrl', s.avatar_url
+        )
+      END
+    ) FILTER (WHERE p.id IS NOT NULL OR s.id IS NOT NULL)::jsonb AS attendees
+  FROM
+    events e
+  LEFT JOIN
+    teacher_profiles p ON p.id = ANY(e.attendees)
+  LEFT JOIN
+    student_profiles s ON s.id = ANY(e.attendees)
+  WHERE
+    e.datetime::date >= input_date
+    AND (e.host_id = auth.uid() OR auth.uid() = ANY(e.attendees))
+  GROUP BY
+    e.id
+  ORDER BY
+    e.datetime ASC
+  LIMIT 30;
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- * TRIGGERS
 
 
 -- * INDEXES
-
+--- Events
+CREATE INDEX idx_events_host_id ON events(host_id);
+CREATE INDEX idx_events_type ON events(type);
+CREATE INDEX idx_events_datetime ON events(datetime);
+CREATE INDEX idx_events_attendees ON events USING gin(attendees);
 
 -- * POLICIES (ROW LEVEL SECURITY)
 --- RLS
+ALTER TABLE events ENABLE ROW LEVEL SECURITY;
 
 --- Policies
+CREATE POLICY "Events are viewable by the host or attendees" ON events FOR SELECT USING (auth.uid() = host_id OR auth.uid() = ANY(attendees));
+CREATE POLICY "Events are creatable by anyone" ON events FOR INSERT WITH CHECK (true);
+CREATE POLICY "Events are editable by the host" ON events FOR UPDATE USING (auth.uid() = host_id) WITH CHECK (auth.uid() = host_id);
+CREATE POLICY "Events are deletable by the host" ON events FOR DELETE USING (auth.uid() = host_id);

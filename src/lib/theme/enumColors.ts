@@ -248,7 +248,7 @@ const eventColors = {
       DEFAULT: 'bg-blue-500',
       LIGHT: 'bg-blue-300',
       DARK: 'bg-blue-700',
-      GRADIENT: 'from-blue-500 via-sky-600 to-blue-700',
+      GRADIENT: 'from-blue-500 via-sky-600 to-blue-700 text-blue-100',
     },
     TEXT: {
       DEFAULT: 'text-blue-500',
@@ -267,7 +267,7 @@ const eventColors = {
       DEFAULT: 'bg-purple-500',
       LIGHT: 'bg-purple-300',
       DARK: 'bg-purple-700',
-      GRADIENT: 'from-purple-500 via-violet-600 to-purple-700',
+      GRADIENT: 'from-purple-500 via-violet-600 to-purple-700 text-purple-100',
     },
     TEXT: {
       DEFAULT: 'text-purple-500',
@@ -286,7 +286,7 @@ const eventColors = {
       DEFAULT: 'bg-green-500',
       LIGHT: 'bg-green-300',
       DARK: 'bg-green-700',
-      GRADIENT: 'from-green-500 via-sky-600 to-green-700',
+      GRADIENT: 'from-green-500 via-sky-600 to-green-700 text-green-100',
     },
     TEXT: {
       DEFAULT: 'text-green-500',
@@ -305,7 +305,7 @@ const eventColors = {
       DEFAULT: 'bg-yellow-500',
       LIGHT: 'bg-yellow-300',
       DARK: 'bg-yellow-700',
-      GRADIENT: 'from-yellow-500 via-orange-600 to-yellow-700',
+      GRADIENT: 'from-yellow-500 via-orange-600 to-yellow-700 text-yellow-100',
     },
     TEXT: {
       DEFAULT: 'text-yellow-500',
@@ -324,7 +324,7 @@ const eventColors = {
       DEFAULT: 'bg-slate-500',
       LIGHT: 'bg-slate-300',
       DARK: 'bg-slate-700',
-      GRADIENT: 'from-slate-500 via-sky-600 to-slate-700',
+      GRADIENT: 'from-slate-500 via-sky-600 to-slate-700 text-slate-100',
     },
     TEXT: {
       DEFAULT: 'text-slate-500',

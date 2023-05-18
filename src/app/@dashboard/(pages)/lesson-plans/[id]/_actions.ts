@@ -35,6 +35,7 @@ const saveLessonPlanAction = async (
     if (error) return responseContract(error.message, false);
 
     revalidatePath(`/lesson-plans/${lesson_plan_id}`);
+    revalidatePath('/schedule-builder');
     revalidatePath('/');
 
     return responseContract('Success!', true);

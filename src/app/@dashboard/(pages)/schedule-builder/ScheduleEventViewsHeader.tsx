@@ -37,9 +37,9 @@ export default function ScheduleEventViewsHeader() {
   // * Render
   return (
     <>
-      <header className="flex flex-none items-center justify-between rounded-t-lg border-b border-slate-200 bg-gradient-to-t from-slate-100 to-slate-50 px-6 py-4 dark:border-navy-600 dark:from-navy-900 dark:to-navy-800">
+      <header className="flex flex-none items-center justify-between rounded-t-lg border-b border-slate-200 bg-gradient-to-t from-slate-100 to-slate-50 px-2 sm:px-6 py-4 dark:border-navy-600 dark:from-navy-900 dark:to-navy-800">
         {/* Date Display */}
-        <h1 className="text-base font-semibold leading-6 text-slate-900 dark:text-navy-50">
+        <h1 className="text-xs sm:text-sm md:text-base font-semibold leading-6 text-slate-900 dark:text-navy-50">
           <time dateTime={dateString}>
             {getDatestringFromTimestamp(
               dateString,
@@ -51,11 +51,11 @@ export default function ScheduleEventViewsHeader() {
         </h1>
 
         {/* Header Content */}
-        <div className="flex items-center">
+        <div className="flex items-center pr-2 sm:pr-0">
           {/* Reset to Today */}
           <button
             type="button"
-            className="hidden items-center justify-center rounded-md py-2 pl-3 pr-4 text-slate-400 focus:relative hocus:text-slate-500 dark:bg-navy-700 dark:text-navy-200 dark:hocus:text-navy-100 md:mr-4 md:flex md:w-9 md:px-2 md:hocus:bg-slate-50 dark:md:hocus:bg-navy-900"
+            className="hidden items-center justify-center rounded-md py-1 sm:py-2 pl-3 pr-4 text-slate-400 focus:relative hocus:text-slate-500 dark:bg-navy-700 dark:text-navy-200 dark:hocus:text-navy-100 md:mr-4 md:flex md:w-9 md:px-2 md:hocus:bg-slate-50 dark:md:hocus:bg-navy-900"
             onClick={(e) => {
               e.currentTarget.blur(); // Blur
 
@@ -75,7 +75,7 @@ export default function ScheduleEventViewsHeader() {
             />
 
             <button
-              className="flex items-center justify-center rounded-l-md py-2 pl-3 pr-4 text-slate-400 focus:relative hocus:text-slate-500 dark:bg-navy-700 dark:text-navy-200 dark:hocus:text-navy-100 md:w-9 md:px-2 md:hocus:bg-slate-50 dark:md:hocus:bg-navy-900"
+              className="flex items-center justify-center rounded-l-md py-1 sm:py-2 pl-3 pr-4 text-slate-400 focus:relative hocus:text-slate-500 dark:bg-navy-700 dark:text-navy-200 dark:hocus:text-navy-100 md:w-9 md:px-2 md:hocus:bg-slate-50 dark:md:hocus:bg-navy-900"
               type="button"
               onClick={() => prevWeek()}
             >
@@ -93,7 +93,7 @@ export default function ScheduleEventViewsHeader() {
             <span className="relative -mx-px h-5 w-px bg-slate-300 md:hidden" />
 
             <button
-              className="flex items-center justify-center rounded-r-md py-2 pl-4 pr-3 text-slate-400 focus:relative hocus:text-slate-500 dark:bg-navy-700 dark:text-navy-200 dark:hocus:text-navy-100 md:w-9 md:px-2 md:hocus:bg-slate-50 dark:md:hocus:bg-navy-900"
+              className="flex items-center justify-center rounded-r-md py-1 sm:py-2 pl-4 pr-3 text-slate-400 focus:relative hocus:text-slate-500 dark:bg-navy-700 dark:text-navy-200 dark:hocus:text-navy-100 md:w-9 md:px-2 md:hocus:bg-slate-50 dark:md:hocus:bg-navy-900"
               type="button"
               onClick={() => nextWeek()}
             >
@@ -168,7 +168,7 @@ export default function ScheduleEventViewsHeader() {
 
           {/* Mobile */}
           <Menu as="div" className="relative ml-6 md:hidden">
-            <Menu.Button className="-mx-2 flex items-center rounded-full border border-transparent p-2 text-slate-400 hocus:text-slate-500 dark:bg-navy-700 dark:text-navy-200 dark:hocus:text-navy-100">
+            <Menu.Button className="-mx-2 flex items-center rounded-full border border-transparent p-1 sm:p-2 text-slate-400 hocus:text-slate-500 dark:bg-navy-700 dark:text-navy-200 dark:hocus:text-navy-100">
               <span className="sr-only">Open menu</span>
               <EllipsisHorizontalIcon className="h-5 w-5" aria-hidden="true" />
             </Menu.Button>

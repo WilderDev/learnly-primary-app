@@ -481,7 +481,52 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+-- Creates new event when a new user lesson plan is created
+CREATE FUNCTION create_event_on_new_user_lesson_plan()
+RETURNS TRIGGER as $$
+DECLARE
+  lesson lesson_plans%ROWTYPE;
+BEGIN
+  -- Fetch the lesson_plan
+  SELECT * into lesson FROM lesson_plans WHERE id = NEW.lesson_plan_id;
+
+  -- Now insert into events table
+  INSERT into events (
+    type,
+    name,
+    description,
+    datetime,
+    length_in_min,
+    image_path,
+    location,
+    url,
+    host_id,
+    attendees,
+    metadata
+  ) VALUES (
+    'LESSON',
+    lesson.title,
+    'Learnly Lesson ❤️',
+    new.scheduled_date,
+    lesson.length_in_min,
+    lesson.image_path,
+    'Learnly',
+    CONCAT('/lesson-plans/', new.lesson_plan_id),
+    new.teacher_id,
+    new.students,
+    jsonb_build_object('lesson_plan_id', NEW.lesson_plan_id)
+  );
+
+  return new;
+END;
+$$ language plpgsql security definer;
+
+
 -- * TRIGGERS
+--- Create Event on New User Lesson Plan Trigger
+create trigger create_event_on_new_user_lesson_plan_trigger
+  after insert on user_lesson_plans
+  for each row execute procedure create_event_on_new_user_lesson_plan();
 
 
 -- * INDEXES

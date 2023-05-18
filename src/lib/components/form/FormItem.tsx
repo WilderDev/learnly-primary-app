@@ -23,7 +23,7 @@ export default function FormItem({
     <label
       htmlFor={label}
       className={cn(
-        'block',
+        'block relative',
         'flex flex-col',
         cols === 1 && 'md:col-span-1',
         cols === 2 && 'md:col-span-2',

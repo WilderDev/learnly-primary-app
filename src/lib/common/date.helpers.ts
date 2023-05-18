@@ -116,3 +116,51 @@ export function getDatestringFromTimestamp(
 
   return dateString;
 }
+
+// * Get Time from Timestampz
+export function getTimeFromTimestamp(timestamp: string): string {
+  const hours = timestamp.split('T')[1].split(':')[0]; // Get hours
+  const minutes = timestamp.split('T')[1].split(':')[1]; // Get minutes
+
+  return `${hours}:${minutes} ${Number(hours) >= 12 ? 'PM' : 'AM'}`; // Return formatted time
+}
+
+// * Get Day of Week from Timestampz
+export function getDayOfWeekFromTimestamp(timestamp: string): string {
+  const date = new Date(timestamp);
+
+  const day = date.getDay();
+
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  return days[day];
+}
+
+// * Get ISO Timestampz from Seconds
+export function secondsToIso(seconds: number): string {
+  const unixEpochStartDate = new Date('1970-01-01T00:30:00Z');
+
+  unixEpochStartDate.setSeconds(seconds);
+
+  return unixEpochStartDate.toISOString();
+}
+
+// * Get 12-hour time from date
+export function get12HourTime(date: Date): string {
+  // Extract hours and minutes
+  let hours = date.getHours();
+  let minutes: string | number = date.getMinutes();
+
+  // Determine AM or PM
+  const amOrPm = hours >= 12 ? 'PM' : 'AM';
+
+  // Convert hours to 12-hour format
+  hours = hours % 12;
+  hours = hours === 0 ? 12 : hours; // If hours is 0, set it to 12
+
+  // Pad minutes with leading zeros if necessary
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+
+  // Return formatted time
+  return `${hours}:${minutes} ${amOrPm}`;
+}

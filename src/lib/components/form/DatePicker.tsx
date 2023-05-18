@@ -1,6 +1,6 @@
 'use client';
 
-import { CalendarIcon } from '@heroicons/react/24/solid';
+import { CalendarDaysIcon, CalendarIcon } from '@heroicons/react/24/solid';
 
 import 'flatpickr/dist/themes/dark.css';
 import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
@@ -62,7 +62,8 @@ export default function DatePicker({
           fills[fill],
           shadows[shadow],
           roundeds[rounded],
-          'pl-10 !z-[100000]',
+          'pl-10',
+          // !z-[10000]
         )}
         placeholder="Choose date..."
         type="text"

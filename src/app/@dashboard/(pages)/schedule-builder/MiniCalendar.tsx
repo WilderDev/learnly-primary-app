@@ -14,7 +14,7 @@ export default function MiniCalendar() {
       {/* Content */}
       <div className="space-y-1 text-center text-xs">
         {/* Header */}
-        <header className="flex items-center justify-between px-2 pb-4">
+        <header className="flex items-center justify-between px-2 pb-4 sm:pr-8 lg:pr-2">
           {/* Month and Year */}
           <p className="text-sm font-medium text-slate-700 dark:text-navy-100">
             {date.toLocaleString('default', { month: 'long', year: 'numeric' })}
@@ -44,7 +44,7 @@ export default function MiniCalendar() {
         <div className="grid grid-cols-7 pb-2">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((dow) => (
             <div
-              className="text-sm font-semibold text-green-500 dark:text-green-400"
+              className="text-sm font-semibold text-green-500 dark:text-green-400 text-left pl-2.5 lg:text-center lg:pl-0"
               key={dow}
             >
               {dow}
@@ -57,7 +57,7 @@ export default function MiniCalendar() {
             <button
               className={cn(
                 // Base Styles
-                'h-9 w-9 items-center justify-center rounded-xl',
+                'h-6 w-6 sm:h-9 sm:w-9 items-center justify-center rounded-xl',
                 !day.isSelected &&
                   'hocus:bg-green-500/10 hocus:text-slate-800 dark:hocus:bg-green-400/10 dark:hocus:text-green-400', // Unselected hover/focus states
                 day.isCurrentMonth
@@ -82,7 +82,7 @@ export default function MiniCalendar() {
             >
               <time
                 dateTime={day.dateString}
-                className="mx-auto flex h-7 w-7 items-center justify-center rounded-full"
+                className="mx-auto flex h-4 w-4 sm:h-7 sm:w-7 items-center justify-center rounded-full text-xs sm:text-sm md:text-base"
               >
                 {day.dateString.split('-')[2]}
               </time>

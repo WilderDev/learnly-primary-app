@@ -1,12 +1,17 @@
 'use client';
 
-import { getWeekRange, isSameDay } from '@/lib/common/date.helpers';
+import {
+  getDatestringFromTimestamp,
+  getWeekRange,
+  isSameDay,
+} from '@/lib/common/date.helpers';
 import { useSchedule } from './ScheduleCtx';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import cn from '@/lib/common/cn';
 import Link from 'next/link';
 import { IUpcomingEventsGetRes } from '@/app/api/users/events/upcoming/route';
 import { ICalendarEvent } from '@/assets/typescript/schedule';
+import { getTimeFromTimestamp } from '../../../../lib/common/date.helpers';
 
 // * Component
 export default function WeeklyScheduleView() {
@@ -78,17 +83,20 @@ export default function WeeklyScheduleView() {
 
       const data = (await res.json()) as IUpcomingEventsGetRes;
 
-      setEvents(data.events);
+      // Only set events if the data has changed
+      if (JSON.stringify(data.events) !== JSON.stringify(events)) {
+        setEvents(data.events);
+      }
     };
 
     fetchEvents();
-  }, [start]);
+  }, [start, events]);
 
   // * Render
   return (
     <div
       ref={container}
-      className="isolate flex flex-auto flex-col overflow-auto shadow-xl bg-white dark:bg-navy-800"
+      className="isolate flex flex-auto flex-col overflow-auto bg-white dark:bg-navy-800"
     >
       <div
         style={{ width: '165%' }}
@@ -96,7 +104,7 @@ export default function WeeklyScheduleView() {
       >
         <div
           ref={containerNav}
-          className="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black ring-opacity-5 dark:bg-navy-800 dark:ring-navy-400 sm:pr-8"
+          className="sticky top-0 z-30 flex-none bg-white ring-1 ring-black ring-opacity-5 dark:bg-navy-800 dark:ring-navy-400 sm:pr-8"
         >
           {/* Week Date Columns (Mobile) */}
           <div className="grid grid-cols-7 text-xs leading-6 text-slate-500 dark:text-navy-200 sm:hidden">
@@ -114,7 +122,7 @@ export default function WeeklyScheduleView() {
                     className={cn(
                       'flex items-center justify-center font-semibold',
                       isSameDay(day, date)
-                        ? 'flex h-6 w-6 rounded-full bg-blue-600 text-white'
+                        ? 'flex h-6 w-6 rounded-full bg-green-600 text-white'
                         : 'text-slate-900 dark:text-navy-50',
                     )}
                   >
@@ -144,7 +152,7 @@ export default function WeeklyScheduleView() {
                     className={cn(
                       'items-center justify-center font-semibold',
                       isSameDay(day, date)
-                        ? 'ml-1.5 flex h-8 w-8 rounded-full bg-blue-600 text-white'
+                        ? 'ml-1.5 flex h-8 w-8 rounded-full bg-green-600 text-white'
                         : 'text-slate-900 dark:text-navy-50',
                     )}
                   >
@@ -221,23 +229,29 @@ export default function WeeklyScheduleView() {
                   >
                     {url ? (
                       <Link
-                        className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100 dark:bg-blue-900 dark:hover:bg-blue-900/80"
+                        className="group absolute inset-1 flex flex-col overflow-y-auto transition-all duration-300 rounded-lg bg-green-50 p-2 text-xs leading-5 hover:bg-green-100 dark:bg-green-900 dark:hover:bg-green-900/80"
                         href={url}
                       >
-                        <p className="order-1 font-semibold text-blue-700 dark:text-blue-200">
+                        <p className="order-1 font-semibold text-green-700 dark:text-green-200">
                           {name}
                         </p>
-                        <p className="text-blue-500 group-hover:text-blue-200 dark:text-blue-300 dark:group-hover:text-blue-400">
-                          <time dateTime={datetime}>{datetime}</time>
+                        <p className="text-green-500 group-hover:text-green-700 dark:text-green-300 transition-colors duration-300 dark:group-hover:text-green-400">
+                          <time dateTime={datetime}>
+                            {getDatestringFromTimestamp(datetime)} at{' '}
+                            {getTimeFromTimestamp(datetime)}
+                          </time>
                         </p>
                       </Link>
                     ) : (
-                      <div className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100 dark:bg-blue-900 dark:hover:bg-blue-900/80">
-                        <p className="order-1 font-semibold text-blue-700 dark:text-blue-200">
+                      <div className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg transition-all duration-300 bg-green-50 p-2 text-xs leading-5 hover:bg-green-100 dark:bg-green-900 dark:hover:bg-green-900/80">
+                        <p className="order-1 font-semibold text-green-700 dark:text-green-200">
                           {name}
                         </p>
-                        <p className="text-blue-500 group-hover:text-blue-200 dark:text-blue-300 dark:group-hover:text-blue-400">
-                          <time dateTime={datetime}>{datetime}</time>
+                        <p className="text-green-500 group-hover:text-green-700 dark:text-green-300 transition-colors duration-300 dark:group-hover:text-green-400">
+                          <time dateTime={datetime}>
+                            {getDatestringFromTimestamp(datetime)} at{' '}
+                            {getTimeFromTimestamp(datetime)}
+                          </time>
                         </p>
                       </div>
                     )}

@@ -93,6 +93,56 @@ export interface Database {
           updated_at?: string
         }
       }
+      events: {
+        Row: {
+          attendees: string[]
+          created_at: string
+          datetime: string
+          description: string | null
+          host_id: string
+          id: string
+          image_path: string | null
+          length_in_min: number
+          location: string | null
+          metadata: Json | null
+          name: string
+          type: Database["public"]["Enums"]["event"]
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          attendees?: string[]
+          created_at?: string
+          datetime: string
+          description?: string | null
+          host_id: string
+          id?: string
+          image_path?: string | null
+          length_in_min?: number
+          location?: string | null
+          metadata?: Json | null
+          name: string
+          type?: Database["public"]["Enums"]["event"]
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          attendees?: string[]
+          created_at?: string
+          datetime?: string
+          description?: string | null
+          host_id?: string
+          id?: string
+          image_path?: string | null
+          length_in_min?: number
+          location?: string | null
+          metadata?: Json | null
+          name?: string
+          type?: Database["public"]["Enums"]["event"]
+          updated_at?: string
+          url?: string | null
+        }
+      }
       lesson_plan_templates: {
         Row: {
           assessments: Json[] | null
@@ -237,7 +287,7 @@ export interface Database {
           animal: Database["public"]["Enums"]["animal"]
           created_at: string
           id: string
-          image_url: string
+          image_path: string
           name: Database["public"]["Enums"]["level"]
           updated_at: string
         }
@@ -245,7 +295,7 @@ export interface Database {
           animal: Database["public"]["Enums"]["animal"]
           created_at?: string
           id?: string
-          image_url: string
+          image_path: string
           name: Database["public"]["Enums"]["level"]
           updated_at?: string
         }
@@ -253,7 +303,7 @@ export interface Database {
           animal?: Database["public"]["Enums"]["animal"]
           created_at?: string
           id?: string
-          image_url?: string
+          image_path?: string
           name?: Database["public"]["Enums"]["level"]
           updated_at?: string
         }
@@ -578,7 +628,7 @@ export interface Database {
           created_at: string
           description: string
           id: string
-          image_url: string
+          image_path: string
           name: string
           updated_at: string
         }
@@ -587,7 +637,7 @@ export interface Database {
           created_at?: string
           description: string
           id?: string
-          image_url: string
+          image_path: string
           name: string
           updated_at?: string
         }
@@ -596,7 +646,7 @@ export interface Database {
           created_at?: string
           description?: string
           id?: string
-          image_url?: string
+          image_path?: string
           name?: string
           updated_at?: string
         }
@@ -753,7 +803,7 @@ export interface Database {
           created_at: string
           description: string
           id: string
-          image_url: string
+          image_path: string
           level_id: string | null
           name: string
           subject_id: string | null
@@ -764,7 +814,7 @@ export interface Database {
           created_at?: string
           description: string
           id?: string
-          image_url: string
+          image_path: string
           level_id?: string | null
           name: string
           subject_id?: string | null
@@ -775,7 +825,7 @@ export interface Database {
           created_at?: string
           description?: string
           id?: string
-          image_url?: string
+          image_path?: string
           level_id?: string | null
           name?: string
           subject_id?: string | null
@@ -875,6 +925,138 @@ export interface Database {
       }
     }
     Views: {
+      all_events_view: {
+        Row: {
+          attendees: string[] | null
+          datetime: string | null
+          description: string | null
+          host_id: string | null
+          id: string | null
+          image_path: string | null
+          length_in_min: number | null
+          location: string | null
+          metadata: Json | null
+          name: string | null
+          type: Database["public"]["Enums"]["event"] | null
+          url: string | null
+        }
+        Insert: {
+          attendees?: string[] | null
+          datetime?: string | null
+          description?: string | null
+          host_id?: string | null
+          id?: string | null
+          image_path?: string | null
+          length_in_min?: number | null
+          location?: string | null
+          metadata?: Json | null
+          name?: string | null
+          type?: Database["public"]["Enums"]["event"] | null
+          url?: string | null
+        }
+        Update: {
+          attendees?: string[] | null
+          datetime?: string | null
+          description?: string | null
+          host_id?: string | null
+          id?: string | null
+          image_path?: string | null
+          length_in_min?: number | null
+          location?: string | null
+          metadata?: Json | null
+          name?: string | null
+          type?: Database["public"]["Enums"]["event"] | null
+          url?: string | null
+        }
+      }
+      attending_events_view: {
+        Row: {
+          attendees: string[] | null
+          datetime: string | null
+          description: string | null
+          host_id: string | null
+          id: string | null
+          image_path: string | null
+          length_in_min: number | null
+          location: string | null
+          metadata: Json | null
+          name: string | null
+          type: Database["public"]["Enums"]["event"] | null
+          url: string | null
+        }
+        Insert: {
+          attendees?: string[] | null
+          datetime?: string | null
+          description?: string | null
+          host_id?: string | null
+          id?: string | null
+          image_path?: string | null
+          length_in_min?: number | null
+          location?: string | null
+          metadata?: Json | null
+          name?: string | null
+          type?: Database["public"]["Enums"]["event"] | null
+          url?: string | null
+        }
+        Update: {
+          attendees?: string[] | null
+          datetime?: string | null
+          description?: string | null
+          host_id?: string | null
+          id?: string | null
+          image_path?: string | null
+          length_in_min?: number | null
+          location?: string | null
+          metadata?: Json | null
+          name?: string | null
+          type?: Database["public"]["Enums"]["event"] | null
+          url?: string | null
+        }
+      }
+      hosted_events_view: {
+        Row: {
+          attendees: string[] | null
+          datetime: string | null
+          description: string | null
+          host_id: string | null
+          id: string | null
+          image_path: string | null
+          length_in_min: number | null
+          location: string | null
+          metadata: Json | null
+          name: string | null
+          type: Database["public"]["Enums"]["event"] | null
+          url: string | null
+        }
+        Insert: {
+          attendees?: string[] | null
+          datetime?: string | null
+          description?: string | null
+          host_id?: string | null
+          id?: string | null
+          image_path?: string | null
+          length_in_min?: number | null
+          location?: string | null
+          metadata?: Json | null
+          name?: string | null
+          type?: Database["public"]["Enums"]["event"] | null
+          url?: string | null
+        }
+        Update: {
+          attendees?: string[] | null
+          datetime?: string | null
+          description?: string | null
+          host_id?: string | null
+          id?: string | null
+          image_path?: string | null
+          length_in_min?: number | null
+          location?: string | null
+          metadata?: Json | null
+          name?: string | null
+          type?: Database["public"]["Enums"]["event"] | null
+          url?: string | null
+        }
+      }
       lesson_plan_with_students_view: {
         Row: {
           difficulty: Database["public"]["Enums"]["difficulty"] | null
@@ -1124,7 +1306,7 @@ export interface Database {
         Args: {
           topic_name: string
           topic_description: string
-          topic_image_url: string
+          topic_image_path: string
           level_name: Database["public"]["Enums"]["level"]
           subject_code: string
         }
@@ -1152,6 +1334,23 @@ export interface Database {
           reactor_id: string
         }[]
       }
+      get_upcoming_events: {
+        Args: {
+          input_date: string
+        }
+        Returns: {
+          id: string
+          name: string
+          description: string
+          image_path: string
+          url: string
+          type: Database["public"]["Enums"]["event"]
+          datetime: string
+          location: string
+          length_in_min: number
+          attendees: Json
+        }[]
+      }
       is_role: {
         Args: {
           role: Database["public"]["Enums"]["user_role"]
@@ -1164,6 +1363,14 @@ export interface Database {
           user_id: string
         }
         Returns: undefined
+      }
+      unnest_uuid_array: {
+        Args: {
+          "": string[]
+        }
+        Returns: {
+          id: string
+        }[]
       }
     }
     Enums: {
@@ -1207,6 +1414,7 @@ export interface Database {
         | "Outdoor"
         | "Digital"
         | "Physical"
+      event: "LESSON" | "ASSIGNMENT" | "COMMUNITY" | "OTHER"
       format: "Whole Group" | "Small Group" | "Individual"
       learning_disabilities:
         | "Dyslexia"

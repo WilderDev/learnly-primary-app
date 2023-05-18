@@ -89,7 +89,7 @@ export function generateLessonPlanPrompt({
     ', ',
   )}.
 
-  The students are:
+  The students (children) are:
   ${studentsSection}
 
   ${specialConsiderationsSection}

@@ -15,7 +15,7 @@ export default function ScheduleEventViewsContent({ tabs }: IProps) {
 
   // * Render
   return (
-    <div className="flex-1 overflow-y-auto rounded-b-lg bg-white px-6 py-4 dark:bg-navy-800">
+    <div className="flex-1 overflow-y-auto rounded-b-lg bg-white sm:px-6 py-4 dark:bg-navy-800">
       {tabs?.map(({ label, component: Component }) => (
         <div
           className={cn(view === label.toLowerCase() ? 'block' : 'hidden')}
