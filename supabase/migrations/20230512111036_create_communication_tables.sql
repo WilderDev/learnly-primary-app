@@ -156,19 +156,23 @@ WHERE unread_notifications_view.recipient_id = auth.uid();
 --- User's Notifications (Not Archived or Deleted)
 CREATE VIEW user_notifications_view AS
 SELECT
-	notifications.id,
-	notifications.sender_id,
-	notifications.recipient_id,
-	notifications.lesson_plan_id,
-	notifications.type,
-	notifications.status,
-	notifications.title,
-	notifications.body,
-	notifications.sent_at,
-	notifications.received_at,
-	notifications.read_at,
-	notifications.metadata
+  notifications.id,
+  notifications.sender_id,
+  teacher_profiles.first_name AS sender_first_name,
+  teacher_profiles.last_name AS sender_last_name,
+  teacher_profiles.avatar_url AS sender_avatar_url,
+  notifications.recipient_id,
+  notifications.lesson_plan_id,
+  notifications.type,
+  notifications.status,
+  notifications.title,
+  notifications.body,
+  notifications.sent_at,
+  notifications.received_at,
+  notifications.read_at,
+  notifications.metadata
 FROM notifications
+LEFT JOIN teacher_profiles ON teacher_profiles.id = notifications.sender_id
 WHERE notifications.recipient_id = auth.uid() AND notifications.status != 'ARCHIVED' AND notifications.status != 'DELETED';
 
 

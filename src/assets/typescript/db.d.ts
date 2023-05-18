@@ -1244,39 +1244,14 @@ export interface Database {
           read_at: string | null
           received_at: string | null
           recipient_id: string | null
+          sender_avatar_url: string | null
+          sender_first_name: string | null
           sender_id: string | null
+          sender_last_name: string | null
           sent_at: string | null
           status: Database["public"]["Enums"]["notification_status"] | null
           title: string | null
           type: Database["public"]["Enums"]["notification_type"] | null
-        }
-        Insert: {
-          body?: string | null
-          id?: string | null
-          lesson_plan_id?: string | null
-          metadata?: Json | null
-          read_at?: string | null
-          received_at?: string | null
-          recipient_id?: string | null
-          sender_id?: string | null
-          sent_at?: string | null
-          status?: Database["public"]["Enums"]["notification_status"] | null
-          title?: string | null
-          type?: Database["public"]["Enums"]["notification_type"] | null
-        }
-        Update: {
-          body?: string | null
-          id?: string | null
-          lesson_plan_id?: string | null
-          metadata?: Json | null
-          read_at?: string | null
-          received_at?: string | null
-          recipient_id?: string | null
-          sender_id?: string | null
-          sent_at?: string | null
-          status?: Database["public"]["Enums"]["notification_status"] | null
-          title?: string | null
-          type?: Database["public"]["Enums"]["notification_type"] | null
         }
       }
       user_subscriptions_view: {

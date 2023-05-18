@@ -5,10 +5,12 @@ import { BellAlertIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import cn from '@/lib/common/cn';
+import { INotification } from '@/assets/typescript/notification';
+import NotificationItem from './NotificationItem';
 
 // * Props
 interface IProps {
-  notifications: any; // TSK
+  notifications: INotification[];
 }
 
 // * Component
@@ -18,7 +20,7 @@ export default function TopHeaderNotifications({ notifications }: IProps) {
 
   // * Data
   const unreadNotificationsLength =
-    notifications.filter((n: any) => !n.read).length || 0;
+    notifications.filter((n) => !n.read_at).length || 0;
 
   // * Render
   return (
@@ -46,7 +48,7 @@ export default function TopHeaderNotifications({ notifications }: IProps) {
       {isMenuOpen && (
         <motion.div
           className={cn(
-            'absolute -right-10 sm:right-0 z-20 mt-2 w-56 sm:w-80 origin-top-right rounded-md border border-slate-200 bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-navy-400/90 dark:bg-navy-400 dark:hocus:bg-navy-500',
+            'absolute -right-10 sm:right-0 z-20 mt-2 w-56 sm:w-80 origin-top-right rounded-md border border-slate-200 bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-navy-400/90 dark:bg-navy-400',
             isMenuOpen ? 'block' : 'hidden',
           )}
           initial={{ opacity: 0, y: -10 }}
@@ -68,12 +70,12 @@ export default function TopHeaderNotifications({ notifications }: IProps) {
 
           {/* All Notifications */}
           <ul>
-            {/* {data?.notifications?.map((notification) => (
+            {notifications?.map((notification) => (
               <NotificationItem
                 notification={notification}
                 key={notification.id}
               />
-            ))} */}
+            ))}
           </ul>
 
           {/* View All Notifications Btn */}
