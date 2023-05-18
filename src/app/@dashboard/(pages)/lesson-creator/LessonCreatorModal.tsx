@@ -41,6 +41,7 @@ export default function LessonCreatorModal() {
           <LessonPlanMarkdown content={lessonContent} />
         </div>
       </Modal>
+
       {/* Close Button */}
       {complete && (
         <button

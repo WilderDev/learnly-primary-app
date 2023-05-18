@@ -1,4 +1,5 @@
 import { supabaseServer } from '@/lib/auth/supabaseServer';
+import { formatDateString } from '@/lib/common/date.helpers';
 import Avatar from '@/lib/components/images/Avatar';
 import OverlappingImages from '@/lib/components/images/OverlappingImages';
 import Accordion from '@/lib/components/ui/Accordion';
@@ -32,7 +33,11 @@ export default async function RecentlyCompletedLessonsAccordions() {
           ) => (
             <Accordion
               title={title}
-              subInfo={completion_date}
+              subInfo={formatDateString(completion_date, {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              })}
               image={image_path}
               itemNum={idx + 1}
               url={`/lesson-plans/${id}`}
@@ -40,11 +45,7 @@ export default async function RecentlyCompletedLessonsAccordions() {
               key={id}
             >
               <Card className="bg-transparent hover:bg-transparent dark:bg-transparent dark:hover:bg-transparent">
-                <p>
-                  {topic} - {level} ({subject})
-                </p>
-
-                <Card.Footer className="mt-4 sm:mt-6">
+                <Card.Footer className="mt-0">
                   <OverlappingImages>
                     {students?.map((s, idx) => (
                       <Avatar
@@ -57,7 +58,12 @@ export default async function RecentlyCompletedLessonsAccordions() {
                   </OverlappingImages>
 
                   {/* Link */}
-                  <Card.Action url={`/lesson-plans/${id}`} />
+                  <div className="flex items-center">
+                    <span className="text-xs mr-2 text-slate-600 dark:text-navy-200">
+                      View Lesson
+                    </span>
+                    <Card.Action url={`/lesson-plans/${id}`} />
+                  </div>
                 </Card.Footer>
               </Card>
             </Accordion>
@@ -65,7 +71,7 @@ export default async function RecentlyCompletedLessonsAccordions() {
         )}
     </CardContainer>
   ) : (
-    <p className="text-sm font-semibold text-gray-500">
+    <p className="text-sm font-semibold text-slate-500">
       No recently completed lessons
     </p>
   );

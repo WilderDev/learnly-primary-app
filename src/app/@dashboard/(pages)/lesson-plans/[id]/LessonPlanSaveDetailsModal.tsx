@@ -88,6 +88,7 @@ export default function LessonPlanSaveDetailsModalForm({
               dateFormat: 'Y-m-d H:i',
               minDate: 'today',
               defaultHour: new Date().getHours() + 1,
+              defaultMinute: 0,
               position: 'above right',
             }}
           />

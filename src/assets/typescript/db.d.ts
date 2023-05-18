@@ -901,6 +901,7 @@ export interface Database {
       }
       lesson_plans_with_creator_and_students_view: {
         Row: {
+          completion_date: string | null
           content: string | null
           creator_avatar_url: string | null
           creator_first_name: string | null

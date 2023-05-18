@@ -42,7 +42,7 @@ export default function Accordion({
       transition={{ duration: 0.4, delay: 0.2 * itemNum }}
     >
       {/* Main Header */}
-      <section className="flex items-center justify-between bg-slate-100 p-3 dark:bg-navy-500">
+      <section className="flex items-center justify-between bg-slate-50 p-3 dark:bg-navy-700">
         {/* Content */}
         <div className="flex items-center space-x-3.5 tracking-wide outline-none transition-all">
           {/* Avatar */}
@@ -65,7 +65,7 @@ export default function Accordion({
 
             {/* Extra Info */}
             {subInfo && (
-              <p className="text-xs text-slate-500 dark:text-navy-300">
+              <p className="text-xs mt-0.5 text-slate-500 dark:text-navy-300">
                 {subInfo}
               </p>
             )}
@@ -142,10 +142,7 @@ Accordion.Content = function AccordionContent({
       animate={{ height: 'auto', opacity: 1 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className="p-3 px-4">
-        {/* Content */}
-        {children}
-      </div>
+      {children}
     </motion.div>
   );
 };

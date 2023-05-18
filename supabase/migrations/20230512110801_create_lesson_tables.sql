@@ -353,7 +353,8 @@ SELECT
   tp.avatar_url AS creator_avatar_url,
   tp.type AS creator_type,
   ulp.students,
-  ulp.scheduled_date
+  ulp.scheduled_date,
+  ulp.completion_date
 FROM
   lesson_plans lp
 JOIN

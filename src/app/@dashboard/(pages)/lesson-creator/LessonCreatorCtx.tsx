@@ -24,7 +24,6 @@ import { v4 } from 'uuid';
 import { Database } from '@/assets/typescript/db';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import capitalize from '@/lib/common/capitalize';
 
 // * Context
 // Interface
@@ -246,9 +245,13 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     // Check if all fields are filled
     if (!topic?.id || !level?.id || !subject?.id) return;
 
+    console.log('HHERE');
+
     setIsLoading(true); // Set Loading
     const id = v4(); // Generate ID
     setId(id); // Set ID (for redirect)
+
+    console.log('id:', id);
 
     // Create Lesson Plan Request Body Objects (lesson, teacher, students)
     const lesson: ILessonPlanPromptReq = {

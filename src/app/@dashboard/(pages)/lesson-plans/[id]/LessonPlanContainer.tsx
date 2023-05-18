@@ -3,6 +3,9 @@ import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import LessonPlanCreatorInfo from './LessonPlanCreatorInfo';
 import LessonPlanTags from './LessonPlanTags';
 import LessonPlanActionIcons from './LessonPlanActionIcons';
+import Button from '@/lib/components/ui/Button';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import LessonPlanMarkComplete from './LessonPlanMarkComplete';
 
 // * Props
 interface IProps {
@@ -39,6 +42,11 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
 
         {/* Content */}
         <LessonPlanMarkdown content={lessonPlan.content} />
+
+        {/* Mark Complete */}
+        <LessonPlanMarkComplete
+          isComplete={lessonPlan.completion_date !== null}
+        />
       </main>
     </>
   );
