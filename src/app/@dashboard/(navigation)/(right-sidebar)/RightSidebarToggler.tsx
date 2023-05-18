@@ -2,10 +2,11 @@
 
 import { Squares2X2Icon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
+import { useRightSidebar } from './RightSidebarCtx';
 
 export default function RightSidebarToggler() {
   // * Hooks / Context
-  // const { open } = useRightSidebar();
+  const { open } = useRightSidebar();
 
   // * Render
   return (
@@ -15,7 +16,7 @@ export default function RightSidebarToggler() {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.4 }}
-      //   onClick={open}
+      onClick={open}
     >
       <Squares2X2Icon className="icon-spin h-5 w-5 text-slate-600/90 dark:text-navy-200/90" />
     </motion.button>

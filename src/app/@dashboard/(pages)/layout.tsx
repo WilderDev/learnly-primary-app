@@ -3,6 +3,8 @@ import LeftSidebar from '../(navigation)/(left-sidebar)/LeftSidebar';
 import TopHeader from '../(navigation)/(top-header)/TopHeader';
 import DashContainer from '../(layout)/DashContainer';
 import DashProviders from '@/lib/components/providers/DashProviders';
+import RightSidebar from '../(navigation)/(right-sidebar)/RightSidebar';
+import { DashPanel, DashPanelHeader } from '../(layout)/DashPanel';
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
@@ -17,7 +19,14 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
       {/* TSK */}
 
       {/* Right Sidebar */}
-      {/* TSK */}
+      <RightSidebar>
+        <DashPanel>
+          <DashPanelHeader title="Quick Report" />
+          {/* Quick Report */}
+          {/* TSK */}
+          Under Construction
+        </DashPanel>
+      </RightSidebar>
 
       {/* Main Content */}
       <DashContainer>{children}</DashContainer>

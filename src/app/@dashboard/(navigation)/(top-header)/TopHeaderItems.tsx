@@ -1,7 +1,7 @@
 import MonochromeTogglerBtn from '@/lib/theme/MonochromeTogglerBtn';
 import dynamic from 'next/dynamic';
 import TopHeaderNotifications from './TopHeaderNotifications';
-import RightSidebarToggler from './TopHeaderRightSidebarToggler';
+import RightSidebarToggler from '../(right-sidebar)/RightSidebarToggler';
 
 const ThemeTogglerButton = dynamic(() => import('@/lib/theme/ThemeTogglerBtn'));
 
