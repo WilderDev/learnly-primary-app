@@ -204,8 +204,6 @@ export default function Modal({
   );
 }
 
-// TSK: Custom Scrollbar
-
 // * Sub-Components
 // Modal Header Props
 interface IModalHeaderProps {

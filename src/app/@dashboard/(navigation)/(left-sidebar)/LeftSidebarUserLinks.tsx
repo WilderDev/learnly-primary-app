@@ -33,7 +33,6 @@ export default function LeftSidebarUserLinks() {
         >
           {/* Profile Image */}
           <Image
-            // TSK: getAvatarUrl(user?.avatarUrl!) if starts with . . .
             src={user?.avatarUrl! || '/static/icons/avatars/default.png'}
             alt={user?.firstName!}
             className="h-10 w-10 rounded-full object-cover object-center transition-transform duration-200 ease-in-out group-hover:scale-110"

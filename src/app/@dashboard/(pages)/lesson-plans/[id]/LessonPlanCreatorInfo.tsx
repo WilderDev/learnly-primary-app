@@ -14,7 +14,6 @@ export default function LessonPlanCreatorInfo({ avatar_url, name }: IProps) {
       {/* Image */}
       <Image
         className="mask mask-squircle h-12 w-12 rounded-md object-cover object-center"
-        // TSK: src={getAvatarUrl(avatar)}
         src={avatar_url}
         alt={name}
         width={48}
