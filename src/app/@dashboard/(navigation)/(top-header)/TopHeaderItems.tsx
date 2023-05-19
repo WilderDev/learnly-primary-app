@@ -44,7 +44,6 @@ async function getNotifications() {
   const { data, error } = await supabase
     .from('user_notifications_view')
     .select('*')
-    .order('status', { ascending: true })
     .limit(7);
 
   if (error) return [];

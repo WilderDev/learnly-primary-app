@@ -61,7 +61,7 @@ export default function TopHeaderNotifications({ notifications }: IProps) {
               <span className="">Notifications</span>
               {/* bubble showing how many */}
               {unreadNotificationsLength > 0 && (
-                <span className="ml-2 rounded-full bg-blue-500/90 px-2 py-0.5 text-xs font-medium text-white dark:bg-blue-700/90">
+                <span className="ml-2 rounded-full bg-green-500/90 px-2 py-0.5 text-xs font-medium text-white dark:bg-green-700/90">
                   {unreadNotificationsLength}
                 </span>
               )}

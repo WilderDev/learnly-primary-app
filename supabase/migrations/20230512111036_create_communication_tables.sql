@@ -173,7 +173,11 @@ SELECT
   notifications.metadata
 FROM notifications
 LEFT JOIN teacher_profiles ON teacher_profiles.id = notifications.sender_id
-WHERE notifications.recipient_id = auth.uid() AND notifications.status != 'ARCHIVED' AND notifications.status != 'DELETED';
+WHERE notifications.recipient_id = auth.uid() AND notifications.status != 'ARCHIVED' AND notifications.status != 'DELETED'
+ORDER BY
+  CASE WHEN notifications.read_at IS NULL THEN 0 ELSE 1 END,
+  notifications.received_at DESC,
+  notifications.type;
 
 
 -- * FUNCTIONS
