@@ -6,6 +6,7 @@ import DashProviders from '@/lib/components/providers/DashProviders';
 import RightSidebar from '../(navigation)/(right-sidebar)/RightSidebar';
 import { DashPanel, DashPanelHeader } from '../(layout)/DashPanel';
 import LeftSidebarMobile from '../(navigation)/(left-sidebar)/(mobile)/LeftSidebarMobile';
+import DashChatBubble from '../(layout)/DashChatBubble';
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
@@ -36,7 +37,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
       <DashContainer>{children}</DashContainer>
 
       {/* Chat Bubble (Bottom Right) */}
-      {/* TSK */}
+      <DashChatBubble />
     </DashProviders>
   );
 }

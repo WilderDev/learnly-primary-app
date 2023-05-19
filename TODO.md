@@ -4,7 +4,7 @@
 4. Ensure Stripe Payment Flow works and all webhooks are connected successfully
 5. Mobile Navbar and Responsivness testing
 6. Fix Double Print on Lesson Creator Modal
-7. Bottom Right Chat Bubble (Almost everything is there already)
+7. Bottom Right Chat Bubble (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
 8. Purchase Supabase $25/mo plan and configure the email and auth settings for credibility
 9. When you hover over the <Avatar /> component, it should have a tooltip pop up that says their name
 10. [Open Graph for Lesson Plans and Curriculum](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)

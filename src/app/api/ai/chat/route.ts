@@ -14,10 +14,6 @@ export async function POST(request: NextRequest) {
   const { messages, context } = (await request.json()) as IChatRequest;
   const source = request.nextUrl.searchParams.get('source');
 
-  console.log('messages:', messages);
-  console.log('context:', context);
-  console.log('source:', source);
-
   // 2. Validate the request
   if (!messages.length || !context)
     return new Response('Invalid request', { status: 400 });
@@ -66,19 +62,13 @@ export async function POST(request: NextRequest) {
     frequency_penalty: 1.0,
   };
 
-  console.log('payload:', payload);
-
   // 5. Send Request to OpenAI
   try {
     const chatCompletion = await ai.createChatCompletion(payload); // Create Chat Completion
 
-    console.log('chatCompletion:', chatCompletion);
-
     const newMessageRes = JSON.stringify(
       chatCompletion.data.choices[0].message,
     ); // Convert to JSON String
-
-    console.log('newMessageRes:', newMessageRes);
 
     // Handle Error Response
     if (!newMessageRes)
@@ -88,7 +78,6 @@ export async function POST(request: NextRequest) {
       status: 200,
     }); // Return Response
   } catch (e) {
-    console.log('e:', e);
     return new Response('Internal Server Error', { status: 500 });
   }
 }

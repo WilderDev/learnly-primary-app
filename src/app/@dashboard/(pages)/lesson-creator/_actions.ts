@@ -58,8 +58,6 @@ const saveLessonPlanTemplateAction = async (
     students,
   } = input;
 
-  console.log('students:', students);
-
   try {
     const supabase = supabaseServer();
     const {

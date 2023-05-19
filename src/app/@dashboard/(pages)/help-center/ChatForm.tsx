@@ -21,7 +21,7 @@ interface IProps {
 }
 
 // * Component
-export default function HelpCenterChatForm({
+export default function ChatForm({
   messages,
   addMessages,
   resetChat,

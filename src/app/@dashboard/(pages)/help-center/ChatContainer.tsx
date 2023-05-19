@@ -3,32 +3,34 @@
 import { useRouter } from 'next/navigation';
 import { ChatCompletionRequestMessage } from 'openai';
 import { useState } from 'react';
-import HelpCenterChatMessages from './HelpCenterChatMessages';
-import HelpCenterChatForm from './HelpCenterChatForm';
+import ChatMessages from './ChatMessages';
+import ChatForm from './ChatForm';
 import Button from '@/lib/components/ui/Button';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 
-// * Data
-const initialHelpChatMessages: ChatCompletionRequestMessage[] = [
-  {
+// * Props
+interface IProps {
+  initialMessage?: ChatCompletionRequestMessage;
+}
+
+// * Component
+export default function ChatContainer({
+  initialMessage = {
     role: 'assistant',
     content: `What can I help you with today?`,
   },
-];
-
-// * Component
-export default function HelpCenterChat() {
+}: IProps) {
   // * Hooks / Context
   const router = useRouter(); // Next router for refreshing on reset
 
   // * State
-  const [messages, setMessages] = useState(initialHelpChatMessages); // Chat messages
+  const [messages, setMessages] = useState([initialMessage]); // Chat messages
   const [loading, setLoading] = useState(false); // Loading state
 
   // * Handlers
   // Reset Chat
   const resetChat = () => {
-    setMessages(initialHelpChatMessages);
+    setMessages([initialMessage]);
     router.refresh();
   };
 
@@ -36,10 +38,10 @@ export default function HelpCenterChat() {
   return (
     <article className="max-h-[75vh] overflow-y-auto px-1 pb-4">
       {/* Chat Messages */}
-      <HelpCenterChatMessages messages={messages} loading={loading} />
+      <ChatMessages messages={messages} loading={loading} />
 
       {/* Chat Form */}
-      <HelpCenterChatForm
+      <ChatForm
         messages={messages}
         addMessages={(newMessages: ChatCompletionRequestMessage[]) =>
           setMessages([...messages, ...newMessages])

@@ -245,13 +245,9 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     // Check if all fields are filled
     if (!topic?.id || !level?.id || !subject?.id) return;
 
-    console.log('HHERE');
-
     setIsLoading(true); // Set Loading
     const id = v4(); // Generate ID
     setId(id); // Set ID (for redirect)
-
-    console.log('id:', id);
 
     // Create Lesson Plan Request Body Objects (lesson, teacher, students)
     const lesson: ILessonPlanPromptReq = {

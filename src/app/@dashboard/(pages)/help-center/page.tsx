@@ -1,7 +1,7 @@
 import DashMainCol from '../../(layout)/DashMainCol';
 import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
-import HelpCenterChat from './HelpCenterChat';
+import ChatContainer from './ChatContainer';
 
 export default function HelpCenterPage() {
   return (
@@ -11,7 +11,7 @@ export default function HelpCenterPage() {
         {/* Help Center Chat */}
         <DashPanel colNum={1}>
           <DashPanelHeader title="Help Center Chat" />
-          <HelpCenterChat />
+          <ChatContainer />
         </DashPanel>
 
         {/* Help Center Prompts */}
