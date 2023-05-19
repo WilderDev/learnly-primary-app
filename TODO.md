@@ -25,7 +25,8 @@
 25. I never figured out why students needed to be required for the lesson to not bug out... such an odd bug.
 26. Fix Facebook Open Graph Image on Lesson Plans and test
 27. help-center/faq page
-28. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+28. Users can create their own lessons, topics, subjects, and curriculum
+29. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 
     ```tsx
     <a

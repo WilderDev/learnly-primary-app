@@ -11,6 +11,9 @@ CREATE TYPE module_type AS ENUM ('CORE', 'ELECTIVE');
 --- Progress Status
 CREATE TYPE progress_status AS ENUM ('IN_PROGRESS', 'COMPLETED', 'SKIPPED', 'LOCKED');
 
+
+
+
 -- * TABLES
 --- Curriculums
 CREATE TABLE curriculums (
@@ -70,9 +73,6 @@ CREATE TABLE curriculum_levels (
   -- Unique ID (Primary Key)
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
-  -- Curriculum ID
-  curriculum_id uuid NOT NULL REFERENCES curriculums(id),
-
   -- Subject ID
   curriculum_subject_id uuid NOT NULL REFERENCES curriculum_subjects(id),
 
@@ -88,9 +88,6 @@ CREATE TABLE curriculum_levels (
 CREATE TABLE curriculum_topics (
   -- Unique ID (Primary Key)
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
-
-  -- Curriculum ID
-  curriculum_id uuid NOT NULL REFERENCES curriculums(id),
 
   -- Level ID
   curriculum_level_id uuid NOT NULL REFERENCES curriculum_levels(id),
@@ -113,9 +110,6 @@ CREATE TABLE curriculum_topics (
 CREATE TABLE curriculum_lessons (
   -- Unique ID (Primary Key)
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
-
-  -- Curriculum ID
-  curriculum_id uuid NOT NULL REFERENCES curriculums(id),
 
   -- Topic ID
   curriculum_topic_id uuid NOT NULL REFERENCES curriculum_topics(id),
@@ -215,9 +209,277 @@ CREATE TABLE user_curriculum_progress (
 
 
 -- * VIEWS
+--- Get all Subjects with Progress for a Curriculum
+-- CREATE VIEW curriculum_subjects_with_progress_view AS
+-- SELECT
+--     cs.id,
+--     cs.curriculum_id,
+--     cs.subject_id,
+--     s.name AS subject_name,
+--     s.description AS subject_description,
+--     s.image_path AS subject_image_path,
+--     cs.type AS subject_type,
+--     CASE
+--         WHEN COALESCE(total_lessons, 0) = 0 THEN 0
+--         ELSE (COALESCE(completed_lessons, 0)::decimal / COALESCE(total_lessons, 0)::decimal) * 100
+--     END AS completion_percentage
+-- FROM
+--     curriculum_subjects cs
+-- JOIN
+--     subjects s ON cs.subject_id = s.id
+-- LEFT JOIN (
+--     SELECT
+--         curriculum_id,
+--         COUNT(*) AS total_lessons
+--     FROM
+--         curriculum_lessons cl
+--     GROUP BY
+--         curriculum_id
+-- ) t1 ON cs.curriculum_id = t1.curriculum_id
+-- LEFT JOIN (
+--     SELECT
+--         ucp.user_curriculum_id,
+--         COUNT(*) AS completed_lessons
+--     FROM
+--         user_curriculum_progress ucp
+--     JOIN
+--         user_curriculums uc ON ucp.user_curriculum_id = uc.id
+--     WHERE
+--         ucp.status = 'COMPLETED'
+--     GROUP BY
+--         ucp.user_curriculum_id
+-- ) t2 ON cs.curriculum_id = t2.user_curriculum_id
+-- ORDER BY
+--     cs.type ASC, completion_percentage ASC;
+
+--- Get all Subject Levels with Progress for a Curriculum
+
+--- Get all Subject Level Topics with Progress for a Curriculum
+
+--- Get all Subject Level Topic Lessons with Progress for a Curriculum
 
 
 -- * FUNCTIONS
+-- Create curriculum_subject from curriculum_name, subject_id, and type
+CREATE FUNCTION create_curriculum_subject(
+  curriculum_name text,
+  subject_id uuid,
+  type module_type
+) RETURNS uuid AS $$
+DECLARE
+  curriculum_id uuid;
+  new_subject_id uuid;
+BEGIN
+  SELECT id INTO curriculum_id FROM curriculums WHERE name = curriculum_name;
+
+  IF curriculum_id IS NULL THEN
+    RAISE 'Curriculum not found: %s', curriculum_name;
+  END IF;
+
+  IF subject_id IS NULL THEN
+    RAISE 'Subject not found: %', subject_id;
+  END IF;
+
+  INSERT INTO curriculum_subjects (
+    curriculum_id,
+    subject_id,
+    type
+  ) VALUES (
+    curriculum_id,
+    subject_id,
+    type
+  )
+  RETURNING id INTO new_subject_id;
+
+  RETURN new_subject_id;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create curriculum_level from curriculum_uuid, and level_id
+CREATE FUNCTION create_curriculum_level(
+  curriculum_subject_id uuid,
+  level_id uuid
+) RETURNS TABLE (
+  new_curriculum_level_id uuid,
+  ret_level_id uuid,
+  ret_subject_id uuid
+) AS $$
+BEGIN
+  IF curriculum_subject_id IS NULL THEN
+    RAISE 'Curriculum subject not found: %', curriculum_subject_id;
+  END IF;
+
+  IF level_id IS NULL THEN
+    RAISE 'Level not found: %', level_id;
+  END IF;
+
+  INSERT INTO curriculum_levels (
+    curriculum_subject_id,
+    level_id
+  ) VALUES (
+    curriculum_subject_id,
+    level_id
+  )
+  RETURNING id INTO new_curriculum_level_id;
+
+  SELECT subject_id INTO ret_subject_id FROM curriculum_subjects WHERE id = curriculum_subject_id;
+  ret_level_id := level_id;
+
+  RETURN NEXT;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- Create curriculum_topic by creating a new topic given curriculum_level_id, level_id, subject_id, name, description, image_path, and type
+CREATE FUNCTION create_curriculum_topic(
+  curriculum_level_id uuid,
+  level_id uuid,
+  subject_id uuid,
+  name text,
+  description text,
+  image_path text,
+  type module_type
+) RETURNS uuid AS $$
+DECLARE
+  new_topic_id uuid;
+  new_curriculum_topic_id uuid;
+BEGIN
+  -- Create new topic
+  INSERT INTO topics (
+    level_id,
+    subject_id,
+    name,
+    description,
+    image_path
+  ) VALUES (
+    level_id,
+    subject_id,
+    name,
+    description,
+    image_path
+  )
+  RETURNING id INTO new_topic_id;
+
+  -- Create new curriculum topic
+  INSERT INTO curriculum_topics (
+    curriculum_level_id,
+    topic_id,
+    type
+  ) VALUES (
+    curriculum_level_id,
+    new_topic_id,
+    type
+  )
+  RETURNING id INTO new_curriculum_topic_id;
+
+  RETURN new_curriculum_topic_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- Create curriculum_lesson by creating a new lesson given curriculum_topic_id, name, description, image_path, and type
+CREATE FUNCTION create_curriculum_lesson(
+  curriculum_topic_id uuid,
+  name text,
+  description text,
+  image_path text,
+  type module_type
+) RETURNS uuid AS $$
+DECLARE
+  new_lesson_id uuid;
+BEGIN
+  INSERT INTO curriculum_lessons (
+    curriculum_topic_id,
+    name,
+    description,
+    image_path,
+    type
+  ) VALUES (
+    curriculum_topic_id,
+    name,
+    description,
+    image_path,
+    type
+  )
+  RETURNING id INTO new_lesson_id;
+
+  RETURN new_lesson_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- Create complete curriculum given curriculum_name, subject_id, subject_type, and levels_topics_lessons_data
+CREATE OR REPLACE FUNCTION create_complete_curriculum(
+  curriculum_name text,
+  subject_id uuid,
+  subject_type module_type,
+  levels_topics_lessons_data json
+) RETURNS void AS $$
+DECLARE
+  csid uuid;
+  clevel RECORD;
+  ctopic uuid;
+  level_topic_lesson json;
+  topics_data json;
+  topic_data json;
+  lessons_data json;
+  lesson_data json;
+BEGIN
+  -- Create curriculum subject
+  csid := create_curriculum_subject(curriculum_name, subject_id, subject_type);
+
+  FOR i IN 0..json_array_length(levels_topics_lessons_data) - 1
+  LOOP
+    -- Get level_topic_lesson data for this iteration
+    level_topic_lesson := levels_topics_lessons_data->i;
+
+    -- Create curriculum level
+    clevel := create_curriculum_level(csid, (level_topic_lesson->>'level_id')::uuid);
+
+    -- Get topics data for this level
+    topics_data := level_topic_lesson->'topics_data';
+
+    -- Loop through each topic data for this level
+    FOR j IN 0..json_array_length(topics_data) - 1
+    LOOP
+      -- Get topic data for this iteration
+      topic_data := topics_data->j;
+
+      -- Create curriculum topic
+      ctopic := create_curriculum_topic(
+        clevel.new_curriculum_level_id,
+        clevel.ret_level_id,
+        clevel.ret_subject_id,
+        (topic_data->>'name')::text,
+        (topic_data->>'description')::text,
+        (topic_data->>'image_path')::text,
+        (topic_data->>'type')::module_type
+      );
+
+      -- Get lessons data for this topic
+      lessons_data := topic_data->'lessons_data';
+
+      -- Loop through each lesson data for this topic
+      FOR k IN 0..json_array_length(lessons_data) - 1
+      LOOP
+        -- Get lesson data for this iteration
+        lesson_data := lessons_data->k;
+
+        -- Create curriculum lesson
+        PERFORM create_curriculum_lesson(
+          ctopic,
+          (lesson_data->>'name')::text,
+          (lesson_data->>'description')::text,
+          (lesson_data->>'image_path')::text,
+          (lesson_data->>'type')::module_type
+        );
+      END LOOP;
+    END LOOP;
+  END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+
 
 
 -- * TRIGGERS
@@ -233,15 +495,12 @@ CREATE INDEX idx_curriculums_is_public ON curriculums(is_public);
 CREATE INDEX idx_curriculum_subjects_curriculum_id ON curriculum_subjects(curriculum_id);
 CREATE INDEX idx_curriculum_subjects_subject_id ON curriculum_subjects(subject_id);
 --- Curriculum Levels
-CREATE INDEX idx_curriculum_levels_curriculum_id ON curriculum_levels(curriculum_id);
 CREATE INDEX idx_curriculum_levels_curriculum_subject_id ON curriculum_levels(curriculum_subject_id);
 CREATE INDEX idx_curriculum_levels_level_id ON curriculum_levels(level_id);
 --- Curriculum Topics
-CREATE INDEX idx_curriculum_topics_curriculum_id ON curriculum_topics(curriculum_id);
 CREATE INDEX idx_curriculum_topics_curriculum_level_id ON curriculum_topics(curriculum_level_id);
 CREATE INDEX idx_curriculum_topics_topic_id ON curriculum_topics(topic_id);
 --- Curriculum Lessons
-CREATE INDEX idx_curriculum_lessons_curriculum_id ON curriculum_lessons(curriculum_id);
 CREATE INDEX idx_curriculum_lessons_curriculum_topic_id ON curriculum_lessons(curriculum_topic_id);
 --- Curriculum Prerequisites
 CREATE INDEX idx_curriculum_prerequisites_lesson_id ON curriculum_prerequisites(lesson_id);

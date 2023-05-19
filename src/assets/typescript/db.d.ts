@@ -1260,6 +1260,31 @@ export interface Database {
           url?: string | null
         }
       }
+      curriculum_subject_levels_with_progress_view: {
+        Row: {
+          completion_percentage: number | null
+          curriculum_id: string | null
+          curriculum_level_id: string | null
+          level_description: Database["public"]["Enums"]["animal"] | null
+          level_id: string | null
+          level_image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          level_type: Database["public"]["Enums"]["module_type"] | null
+          subject_id: string | null
+        }
+      }
+      curriculum_subjects_with_progress_view: {
+        Row: {
+          completion_percentage: number | null
+          curriculum_id: string | null
+          id: string | null
+          subject_description: string | null
+          subject_id: string | null
+          subject_image_path: string | null
+          subject_name: string | null
+          subject_type: Database["public"]["Enums"]["module_type"] | null
+        }
+      }
       hosted_events_view: {
         Row: {
           attendees: string[] | null
