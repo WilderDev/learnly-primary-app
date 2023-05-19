@@ -126,20 +126,20 @@ VALUES
 
 -- Subjects (8)
 INSERT INTO subjects
-(code, name, description, image_path)
+(id, code, name, description, image_path)
 VALUES
-('MATH', 'Mathematics', 'The universal language that deciphers the complex riddles of the cosmos, providing the foundation for logic and reason in a world of chaos.', '/images/subjects/math.jpg'),
-('SCI', 'Science', 'A ceaseless journey of discovery, asking questions of the universe and uncovering its intricate, beautiful truths one experiment at a time.', '/images/subjects/science.jpg'),
-('ENG', 'English', 'The soulful dance of words that paints vivid pictures, tells profound stories, and bridges the gap between human hearts and minds.', '/images/subjects/english.jpg'),
-('SS', 'Social Studies', 'A living tapestry of human experience, weaving together history, geography, culture, and society to understand our collective past and shape a better future.', '/images/subjects/social-studies.jpg'),
-('ART', 'Art', 'The unspoken language of human emotion, a canvas for individual expression, and a mirror reflecting society’s soul.', '/images/subjects/art.jpg'),
-('MUS', 'Music', 'An ethereal symphony of emotions that transcends boundaries, unites hearts, and resonates with the deepest chords of our shared humanity.', '/images/subjects/music.jpg'),
-('PE', 'Physical Education', 'The celebration of human potential, teaching us the harmony of mind and body, and the joy of movement and resilience.', '/images/subjects/physical-education.jpg'),
-('HTH', 'Health', 'The precious cornerstone of life, emphasizing the interconnectedness of physical, mental, and social well-being for a fulfilled existence.', '/images/subjects/health.jpg'),
-('COMPSCI', 'Computer Science', 'The pulsating heart of modern innovation, scripting the future in lines of code and unlocking boundless possibilities in a digital world.', '/images/subjects/computer-science.jpg'),
-('SEL', 'Social Emotional Learning', 'The compass guiding us through the landscape of human emotions, fostering empathy, resilience, and personal growth, one interaction at a time.', '/images/subjects/social-emotional-learning.jpg'),
-('MND', 'Mindfulness', 'The practice of inner harmony, promoting self-awareness, emotional regulation, and physical well-being.', '/images/subjects/mindfulness.jpg'),
-('ENTP', 'Entrepreneurship', 'The daring symphony of innovation, where courage meets creativity to turn dreams into reality, shaping the world one venture at a time.', '/images/subjects/entrepreneurship.jpg');
+('b408d3b0-ca53-4385-9c38-388508f6f777', 'MATH', 'Mathematics', 'The universal language that deciphers the complex riddles of the cosmos, providing the foundation for logic and reason in a world of chaos.', '/images/subjects/math.jpg'),
+('2c0970f3-18fe-491f-879e-82e43d50bb57', 'SCI', 'Science', 'A ceaseless journey of discovery, asking questions of the universe and uncovering its intricate, beautiful truths one experiment at a time.', '/images/subjects/science.jpg'),
+('ed78d635-3be9-41b0-a97e-7dc65e25240f', 'ENG', 'English', 'The soulful dance of words that paints vivid pictures, tells profound stories, and bridges the gap between human hearts and minds.', '/images/subjects/english.jpg'),
+('cdc09ea6-6e30-4550-9d1d-4b7a30d376d5', 'SS', 'Social Studies', 'A living tapestry of human experience, weaving together history, geography, culture, and society to understand our collective past and shape a better future.', '/images/subjects/social-studies.jpg'),
+('8ed47cca-73f2-43db-9cba-a8427227780c', 'ART', 'Art', 'The unspoken language of human emotion, a canvas for individual expression, and a mirror reflecting society’s soul.', '/images/subjects/art.jpg'),
+('548efc15-dd84-4828-ab04-941773151a70', 'MUS', 'Music', 'An ethereal symphony of emotions that transcends boundaries, unites hearts, and resonates with the deepest chords of our shared humanity.', '/images/subjects/music.jpg'),
+('8b63d28d-1669-4002-90ce-95560d165a2e', 'PE', 'Physical Education', 'The celebration of human potential, teaching us the harmony of mind and body, and the joy of movement and resilience.', '/images/subjects/physical-education.jpg'),
+('47b81525-f6d4-45b7-acb8-16f4591afc91', 'HTH', 'Health', 'The precious cornerstone of life, emphasizing the interconnectedness of physical, mental, and social well-being for a fulfilled existence.', '/images/subjects/health.jpg'),
+('194fa526-b272-40b7-a301-74d2eb689ce5', 'COMPSCI', 'Computer Science', 'The pulsating heart of modern innovation, scripting the future in lines of code and unlocking boundless possibilities in a digital world.', '/images/subjects/computer-science.jpg'),
+('38525bb6-a2fb-4e0a-b0af-47af9efedce2', 'SEL', 'Social Emotional Learning', 'The compass guiding us through the landscape of human emotions, fostering empathy, resilience, and personal growth, one interaction at a time.', '/images/subjects/social-emotional-learning.jpg'),
+('49ef0ad8-762c-43d6-b65e-1636a0a657de', 'MND', 'Mindfulness', 'The practice of inner harmony, promoting self-awareness, emotional regulation, and physical well-being.', '/images/subjects/mindfulness.jpg'),
+('df4bf7df-7431-48bf-9d4e-a9ab3a943531', 'ENTP', 'Entrepreneurship', 'The daring symphony of innovation, where courage meets creativity to turn dreams into reality, shaping the world one venture at a time.', '/images/subjects/entrepreneurship.jpg');
 
 -- Levels (10)
 INSERT INTO levels
@@ -4569,14 +4569,54 @@ SELECT create_topic(
 
 REFRESH MATERIALIZED VIEW subjects_levels_topics;
 
--- Little Learners | Comprehensive K-5 | Little Experimentors | STEM K-5 | etc...
--- Learning Paths (4)
--- INSERT INTO learning_paths
--- ()
--- VALUES
--- ()
--- ()
--- ()
--- ()
+-- Pre-K / STEM Subjects for Curriculum
+INSERT INTO subjects
+(id, code, name, description, image_path)
+VALUES
+('4eeb92e8-a55b-4398-a7e9-ed616fc4760e', 'L&L', 'Language & Literacy', 'The enchanting journey into the world of letters and words, where imagination takes flight, thoughts gain wings, and communication becomes the bridge between minds.', 'https://source.unsplash.com/random/?kids,language,learning'),
+('21b7556c-4d89-4ae7-b367-f0d3e47a04b3', 'CA', 'Creative Arts', 'An open canvas for the soul‘s expression, transforming thoughts, feelings, and dreams into tangible creations, and making the invisible visible through color, shape, movement, and sound.', 'https://source.unsplash.com/random/?kids,creative,play,art'),
+('ed34e97c-5758-4414-933b-f61370a4e7af', 'PD', 'Physical Development', 'The celebration of human movement and agility, cultivating the joy of an active lifestyle while fostering resilience, coordination, and an understanding of the extraordinary capabilities of our bodies.', 'https://source.unsplash.com/random/?kids,health,pe,outside'),
+('01e3f2db-955f-4e21-bd89-dbc37f3f9db0', 'ENGN', 'Engineering', 'The fascinating adventure of designing solutions, turning ideas into reality, and learning through trial and error how to build a better world one creation at a time.', 'https://source.unsplash.com/random/?kids,engineering,play'),
+('8f223951-90c3-4ff9-9507-bc9faa2495a7', 'CT', 'Critical Thinking & Problem Solving', 'The thrilling quest of untangling complex puzzles, honing the mind to question, analyze, and reason, empowering students to navigate life‘s challenges with confidence and ingenuity.', 'https://source.unsplash.com/random/?kids,puzzles'),
+('4db2bb34-1ddb-4416-9186-b72cc58e1e23', 'ES', 'Environmental Studies', 'The captivating exploration of our blue planet, nurturing a deep appreciation for nature‘s delicate balance, and instilling a sense of responsibility to protect and sustain our shared home.', 'https://source.unsplash.com/random/?kids,tsk'),
+('cddb4d31-301a-4f85-adaf-ea9ee6213db3', 'PRG', 'Programming & Robotics', 'The exciting realm where technology and creativity intersect, giving life to ideas through code, and inspiring the inventors, explorers, and innovators of the future.', 'https://source.unsplash.com/random/?kids,tsk'),
+('6bf8cf5f-8c76-4ca8-9e5f-2852fac878d9', 'AST', 'Astronomy', 'The awe-inspiring journey to the stars and beyond, opening young minds to the mysteries of the universe and sparking a sense of wonder that transcends the confines of our earthly existence.', 'https://source.unsplash.com/random/?kids,tsk');
 
+-- Curriculums
+INSERT INTO curriculums
+(id, creator_id, name, description, image_path, status, type, tags, is_public)
+VALUES
+('90da6f62-ad2f-4402-a965-23b033058ead', '185f2f83-d63a-4c9b-b4a0-7e4a885799e2', 'Little Learners', 'A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration.', 'https://source.unsplash.com/random/?little,learners,kids,curious', 'PUBLISHED', 'RECOMMENDED', '{"Early Childhood Learning", "Pre-K"}', true),
+('379e0f67-65ec-4274-9043-31d7618a69fe', '185f2f83-d63a-4c9b-b4a0-7e4a885799e2', 'Comprehensive K-5', 'An all-encompassing voyage of discovery, fostering academic skills, critical thinking, creativity, and social-emotional learning in a dynamic, student-centered environment.', 'https://source.unsplash.com/random/?k-5,students,kids', 'PUBLISHED', 'RECOMMENDED', '{"K-5", "Common Core"}', true),
+('c5004381-fe4d-452e-8925-2697159a0e7c', '185f2f83-d63a-4c9b-b4a0-7e4a885799e2', 'STEM K-5', 'A dynamic playground of ideas, immersing students in the realms of science, technology, engineering, and math, encouraging innovative thinking and equipping future world-changers.', 'https://source.unsplash.com/random/?k-5,kids,science', 'PUBLISHED', 'POPULAR', '{"STEM", "K-5"}', true);
 
+-- Curriculum Subjects
+INSERT INTO curriculum_subjects
+(curriculum_id, subject_id, type)
+VALUES
+--- Little Learners
+('90da6f62-ad2f-4402-a965-23b033058ead', 'b408d3b0-ca53-4385-9c38-388508f6f777', 'CORE'), --- Math
+('90da6f62-ad2f-4402-a965-23b033058ead', '2c0970f3-18fe-491f-879e-82e43d50bb57', 'CORE'), --- Science
+('90da6f62-ad2f-4402-a965-23b033058ead', '4eeb92e8-a55b-4398-a7e9-ed616fc4760e', 'CORE'), --- Language & Literacy
+('90da6f62-ad2f-4402-a965-23b033058ead', 'cdc09ea6-6e30-4550-9d1d-4b7a30d376d5', 'CORE'), --- Social Studies
+('90da6f62-ad2f-4402-a965-23b033058ead', '21b7556c-4d89-4ae7-b367-f0d3e47a04b3', 'ELECTIVE'), --- Creative Arts
+('90da6f62-ad2f-4402-a965-23b033058ead', 'ed34e97c-5758-4414-933b-f61370a4e7af', 'ELECTIVE'), --- Physical Development
+('90da6f62-ad2f-4402-a965-23b033058ead', '38525bb6-a2fb-4e0a-b0af-47af9efedce2', 'ELECTIVE'), --- Social Emotional Learning
+--- Comprehensive K-5
+('379e0f67-65ec-4274-9043-31d7618a69fe', 'b408d3b0-ca53-4385-9c38-388508f6f777', 'CORE'), --- Math
+('379e0f67-65ec-4274-9043-31d7618a69fe', '2c0970f3-18fe-491f-879e-82e43d50bb57', 'CORE'), --- Science
+('379e0f67-65ec-4274-9043-31d7618a69fe', 'ed78d635-3be9-41b0-a97e-7dc65e25240f', 'CORE'), --- English
+('379e0f67-65ec-4274-9043-31d7618a69fe', 'cdc09ea6-6e30-4550-9d1d-4b7a30d376d5', 'CORE'), --- Social Studies
+('379e0f67-65ec-4274-9043-31d7618a69fe', 'ed34e97c-5758-4414-933b-f61370a4e7af', 'ELECTIVE'), --- Physical Development (Health / PE)
+('379e0f67-65ec-4274-9043-31d7618a69fe', '21b7556c-4d89-4ae7-b367-f0d3e47a04b3', 'ELECTIVE'), --- Creative Arts
+('379e0f67-65ec-4274-9043-31d7618a69fe', '38525bb6-a2fb-4e0a-b0af-47af9efedce2', 'ELECTIVE'), --- Social Emotional Learning
+('379e0f67-65ec-4274-9043-31d7618a69fe', '194fa526-b272-40b7-a301-74d2eb689ce5', 'ELECTIVE'), --- Computer Science
+--- STEM K-5
+('c5004381-fe4d-452e-8925-2697159a0e7c', 'b408d3b0-ca53-4385-9c38-388508f6f777', 'CORE'), --- Math
+('c5004381-fe4d-452e-8925-2697159a0e7c', '2c0970f3-18fe-491f-879e-82e43d50bb57', 'CORE'), --- Science
+('c5004381-fe4d-452e-8925-2697159a0e7c', '194fa526-b272-40b7-a301-74d2eb689ce5', 'CORE'), --- Computer Science (Technology)
+('c5004381-fe4d-452e-8925-2697159a0e7c', '01e3f2db-955f-4e21-bd89-dbc37f3f9db0', 'CORE'), --- Engineering
+('c5004381-fe4d-452e-8925-2697159a0e7c', '8f223951-90c3-4ff9-9507-bc9faa2495a7', 'ELECTIVE'), --- Critical Thinking & Problem Solving
+('c5004381-fe4d-452e-8925-2697159a0e7c', '4db2bb34-1ddb-4416-9186-b72cc58e1e23', 'ELECTIVE'), --- Environmental Studies
+('c5004381-fe4d-452e-8925-2697159a0e7c', 'cddb4d31-301a-4f85-adaf-ea9ee6213db3', 'ELECTIVE'), --- Programming & Robotics
+('c5004381-fe4d-452e-8925-2697159a0e7c', '6bf8cf5f-8c76-4ca8-9e5f-2852fac878d9', 'ELECTIVE'); --- Astronomy
