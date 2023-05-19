@@ -41,7 +41,9 @@ export default function LeftSidebarUserLinks() {
           />
 
           {/* Online Bubble */}
+          {/* {user?.status === 'ONLINE' && ( */}
           <span className="absolute right-0 top-0 h-3 w-3 rounded-full border-2 border-white bg-green-500 dark:border-navy-700" />
+          {/* )} */}
         </Link>
       </li>
     </motion.ul>

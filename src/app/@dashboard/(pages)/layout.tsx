@@ -5,12 +5,16 @@ import DashContainer from '../(layout)/DashContainer';
 import DashProviders from '@/lib/components/providers/DashProviders';
 import RightSidebar from '../(navigation)/(right-sidebar)/RightSidebar';
 import { DashPanel, DashPanelHeader } from '../(layout)/DashPanel';
+import LeftSidebarMobile from '../(navigation)/(left-sidebar)/(mobile)/LeftSidebarMobile';
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
     <DashProviders>
       {/* Left Sidebar */}
       <LeftSidebar />
+
+      {/* Left Sidebar Mobile */}
+      <LeftSidebarMobile />
 
       {/* Top Header */}
       <TopHeader />
