@@ -1,22 +1,33 @@
 import DashMainCol from '../../(layout)/DashMainCol';
+import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
+import HelpCenterChat from './HelpCenterChat';
 
 export default function HelpCenterPage() {
   return (
     <>
       {/* Main Column */}
-      <DashMainCol>
-        {/* Help Center Form */}
-        {/* TSK */}
+      <DashMainCol className="xl:col-span-7 2xl:col-span-7">
+        {/* Help Center Chat */}
+        <DashPanel colNum={1}>
+          <DashPanelHeader title="Help Center Chat" />
+          <HelpCenterChat />
+        </DashPanel>
 
-        {/* Help Center Templates */}
-        {/* TSK */}
+        {/* Help Center Prompts */}
+        <DashPanel colNum={2}>
+          <DashPanelHeader title="Help Center Prompts" />
+          {/* TSK */}
+        </DashPanel>
       </DashMainCol>
 
       {/* Side Column */}
-      <DashSideCol>
-        {/* Help Center */}
-        {/* TSK */}
+      <DashSideCol className="xl:col-span-5 2xl:col-span-5">
+        {/* Help Center FAQ */}
+        <DashPanel colNum={1}>
+          <DashPanelHeader title="Help Center FAQ" />
+          {/* TSK */}
+        </DashPanel>
       </DashSideCol>
     </>
   );
