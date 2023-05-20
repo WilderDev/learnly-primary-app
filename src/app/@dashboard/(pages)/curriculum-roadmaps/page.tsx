@@ -58,3 +58,10 @@ async function getCurriculumRoadmaps() {
   // Return transformed data
   return recommenedRoadmaps;
 }
+
+// * Metadata
+export const metadata = {
+  title: 'Curriculum Roadmaps',
+  description:
+    'Homeschool parents Learnly dashboard curriculum roadmaps page. Curriculum roadmaps for homeschool parents.',
+};

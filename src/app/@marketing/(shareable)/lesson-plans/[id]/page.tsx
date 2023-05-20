@@ -9,15 +9,17 @@ import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import { redirect } from 'next/navigation';
 import ShareButton from './ShareButton';
 
-// * Props
-interface IProps {
+// * Params
+interface IParams {
   params: {
     id: string;
   };
 }
 
 // * Page
-export default async function PublicLessonPlanPage({ params: { id } }: IProps) {
+export default async function PublicLessonPlanPage({
+  params: { id },
+}: IParams) {
   // * Data
   const lessonPlan = await getLessonPlan(id);
 
@@ -64,6 +66,7 @@ export default async function PublicLessonPlanPage({ params: { id } }: IProps) {
   );
 }
 
+// * Fetcher
 async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
@@ -78,7 +81,8 @@ async function getLessonPlan(id: string) {
   return data as ILessonPlan;
 }
 
-export async function generateMetadata({ params: { id } }: IProps) {
+// * Metadata
+export async function generateMetadata({ params: { id } }: IParams) {
   const { title, image_path, subject, level, topic, tags } =
     await getLessonPlan(id);
 
@@ -103,6 +107,7 @@ export async function generateMetadata({ params: { id } }: IProps) {
   };
 }
 
+// * Static Params
 export async function generateStaticParams() {
   const supabase = supabaseServer();
 

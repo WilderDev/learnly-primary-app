@@ -5610,15 +5610,501 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "ffba7897-2e54-45c7-bfdc-73953451a867",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Alphabet Adventure",
+                "description": "Embark on a magical journey through the alphabet, fostering the first steps of literacy in an imaginative and engaging way.",
+                "image_path": "https://source.unsplash.com/500x500/?alphabet",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "A to Z Fun",
+                        "description": "Introducing all 26 letters, their sounds and shapes, with interactive games and songs.",
+                        "image_path": "https://source.unsplash.com/500x500/?alphabet",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Letter Recognition",
+                        "description": "Spotting letters in a variety of contexts to solidify their recognition and enhance visual memory.",
+                        "image_path": "https://source.unsplash.com/500x500/?letters",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Alphabet Crafts",
+                        "description": "Creating hands-on crafts themed around letters, fostering fine motor skills and letter familiarity.",
+                        "image_path": "https://source.unsplash.com/500x500/?crafts",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Alphabet Storytime",
+                        "description": "Engaging tales that highlight different letters, encouraging a love for stories and language.",
+                        "image_path": "https://source.unsplash.com/500x500/?storytime",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Word Wonderland",
+                "description": "Enter the fascinating world of words, building essential vocabulary and nurturing language comprehension.",
+                "image_path": "https://source.unsplash.com/500x500/?vocabulary",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Picture Dictionary",
+                        "description": "Explore words through colorful pictures, promoting visual learning and word association.",
+                        "image_path": "https://source.unsplash.com/500x500/?dictionary",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Word Family Fun",
+                        "description": "Discover word families through rhymes and stories, laying a foundation for phonics and reading.",
+                        "image_path": "https://source.unsplash.com/500x500/?word-families",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Everyday Vocabulary",
+                        "description": "Learn common words in different contexts, enhancing communication skills and comprehension.",
+                        "image_path": "https://source.unsplash.com/500x500/?vocabulary",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Storytelling Time",
+                        "description": "Listen to captivating stories that introduce new words, fostering a love of literature and imagination.",
+                        "image_path": "https://source.unsplash.com/500x500/?storytelling",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+              "name": "Sounds and Phonics Play",
+              "description": "Experience the melody of language, diving into sounds and phonics that strengthen the building blocks of literacy.",
+              "image_path": "https://source.unsplash.com/500x500/?phonics",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "Phonic Fun",
+                      "description": "Learning the sounds of letters and blending them together to create words.",
+                      "image_path": "https://source.unsplash.com/500x500/?phonics",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Sound Matching",
+                      "description": "Matching words that start with the same sound to develop phonemic awareness.",
+                      "image_path": "https://source.unsplash.com/500x500/?sound-matching",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Rhyme Time",
+                      "description": "Engaging in rhymes to recognize phonetic patterns and promote auditory skills.",
+                      "image_path": "https://source.unsplash.com/500x500/?rhymes",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Silly Phonics Games",
+                      "description": "Playing interactive games that encourage learning phonics in a fun, playful way.",
+                      "image_path": "https://source.unsplash.com/500x500/?phonics-games",
+                      "type": "ELECTIVE"
+                  }
+              ]
+          },
+          {
+              "name": "Speak and Listen",
+              "description": "Fostering effective communication by focusing on essential speaking and listening skills in a nurturing, interactive environment.",
+              "image_path": "https://source.unsplash.com/500x500/?communication",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "Show and Tell",
+                      "description": "Promoting self-expression and confidence by sharing thoughts and ideas with peers.",
+                      "image_path": "https://source.unsplash.com/500x500/?show-and-tell",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Story Listening",
+                      "description": "Enhancing comprehension and attention by listening to and discussing stories.",
+                      "image_path": "https://source.unsplash.com/500x500/?listening",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Puppet Conversation",
+                      "description": "Using puppets to simulate conversations and encourage verbal interaction.",
+                      "image_path": "https://source.unsplash.com/500x500/?puppets",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Musical Communication",
+                      "description": "Exploring sounds, rhythms, and patterns in music to enhance listening skills and language development.",
+                      "image_path": "https://source.unsplash.com/500x500/?music",
+                      "type": "ELECTIVE"
+                  }
+              ]
+          },
+          {
+              "name": "Creative Storytelling",
+              "description": "Unleashing the power of imagination through storytelling, encouraging creative thinking and enhancing language development.",
+              "image_path": "https://source.unsplash.com/500x500/?storytelling",
+              "type": "ELECTIVE",
+              "lessons_data": [
+                  {
+                      "name": "Story Creation",
+                      "description": "Creating unique stories using prompts and imagination, stimulating creative thinking and narrative skills.",
+                      "image_path": "https://source.unsplash.com/500x500/?story-creation",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Interactive Storytelling",
+                      "description": "Participating in interactive stories that involve role-play, enhancing comprehension and social skills.",
+                      "image_path": "https://source.unsplash.com/500x500/?interactive-story",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Draw and Tell",
+                      "description": "Drawing scenes from a story to visualize narratives and enhance comprehension.",
+                      "image_path": "https://source.unsplash.com/500x500/?draw-and-tell",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Storytelling with Puppets",
+                      "description": "Using puppets to tell stories, encouraging creative expression and imagination.",
+                      "image_path": "https://source.unsplash.com/500x500/?puppet-story",
+                      "type": "ELECTIVE"
+                  }
+              ]
+          }
+        ]
     },
     {
       "level_id": "eb6f4266-542d-4978-aa87-cd2444cedd46",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Word Wizards",
+                "description": "Mastering the magic of words, promoting reading readiness and comprehension through fun, interactive activities.",
+                "image_path": "https://source.unsplash.com/500x500/?words",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Sight Word Safari",
+                        "description": "Navigating the world of sight words to promote reading fluency and comprehension.",
+                        "image_path": "https://source.unsplash.com/500x500/?sight-words",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Vocabulary Voyage",
+                        "description": "Embarking on an exciting journey through vocabulary, enhancing language skills and understanding.",
+                        "image_path": "https://source.unsplash.com/500x500/?vocabulary",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Word Detectives",
+                        "description": "Solving word mysteries through context clues, promoting critical thinking and comprehension.",
+                        "image_path": "https://source.unsplash.com/500x500/?detective",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Creative Word Play",
+                        "description": "Playing games that encourage creativity and word exploration, fostering a love for language.",
+                        "image_path": "https://source.unsplash.com/500x500/?word-play",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Phonic Phantoms",
+                "description": "Embarking on a phonics quest, strengthening the link between sounds and letter symbols to lay a strong foundation for reading.",
+                "image_path": "https://source.unsplash.com/500x500/?phonics",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Sound Scavenger Hunt",
+                        "description": "Hunting for sounds in the environment, enhancing phonemic awareness and observation skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?sound-hunt",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Phonics Puzzle",
+                        "description": "Solving phonics puzzles to recognize patterns in words, promoting reading readiness.",
+                        "image_path": "https://source.unsplash.com/500x500/?puzzle",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Blending and Segmenting",
+                        "description": "Learning to blend sounds to form words and segment words into sounds, critical skills for reading and spelling.",
+                        "image_path": "https://source.unsplash.com/500x500/?phonics",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Rhyme Rhythm",
+                        "description": "Exploring the rhythm of language through rhymes, fostering phonemic awareness and musicality.",
+                        "image_path": "https://source.unsplash.com/500x500/?rhymes",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Reading Rangers",
+                "description": "Setting forth on a reading adventure, fostering a love for books and enhancing decoding skills.",
+                "image_path": "https://source.unsplash.com/500x500/?reading",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Story Explorers",
+                        "description": "Exploring stories, developing comprehension, prediction skills and a love for literature.",
+                        "image_path": "https://source.unsplash.com/500x500/?story-explorers",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Picture Clue",
+                        "description": "Using picture clues to predict and understand text, fostering comprehension and visual literacy.",
+                        "image_path": "https://source.unsplash.com/500x500/?picture-clue",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Emergent Reader",
+                        "description": "Navigating simple, beginner books, building confidence and fostering a love for independent reading.",
+                        "image_path": "https://source.unsplash.com/500x500/?books",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Reading Theater",
+                        "description": "Performing stories to develop reading fluency, comprehension and confidence.",
+                        "image_path": "https://source.unsplash.com/500x500/?theater",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Write and Wonder",
+                "description": "Exploring the art of writing, promoting creativity, fine motor skills, and self-expression.",
+                "image_path": "https://source.unsplash.com/500x500/?writing",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Letter Formation Fun",
+                        "description": "Practicing letter formations through fun and interactive activities, enhancing handwriting skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?letter-formation",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "My First Sentences",
+                        "description": "Writing simple sentences, fostering an understanding of sentence structure and promoting self-expression.",
+                        "image_path": "https://source.unsplash.com/500x500/?sentences",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Creative Writing Prompts",
+                        "description": "Expressing thoughts and ideas through guided writing prompts, nurturing creativity and written expression.",
+                        "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Story Scribe",
+                        "description": "Crafting unique stories to nurture creativity, writing skills, and a love for storytelling.",
+                        "image_path": "https://source.unsplash.com/500x500/?story-writing",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Listen and Learn",
+                "description": "Sharpening listening skills, fostering effective communication, comprehension, and social interaction.",
+                "image_path": "https://source.unsplash.com/500x500/?listening",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Listening Games",
+                        "description": "Playing games that focus on listening skills, fostering concentration and auditory processing.",
+                        "image_path": "https://source.unsplash.com/500x500/?listening-games",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Follow Instructions",
+                        "description": "Practicing following instructions to develop comprehension, attention, and social skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?instructions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Story Listening",
+                        "description": "Listening to stories and discussing them to enhance comprehension, vocabulary, and critical thinking.",
+                        "image_path": "https://source.unsplash.com/500x500/?story-listening",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sound Exploration",
+                        "description": "Exploring the world of sounds to foster phonemic awareness and appreciation for music and nature.",
+                        "image_path": "https://source.unsplash.com/500x500/?sound-exploration",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "ee90a562-4b34-4590-9757-cfcb866876d7",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Reading Resilience",
+                "description": "Venturing into the world of complex texts, fostering advanced reading comprehension, fluency, and resilience.",
+                "image_path": "https://source.unsplash.com/500x500/?reading",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Book Buddies",
+                        "description": "Exploring a variety of texts and discussing themes, plot, and characters with peers.",
+                        "image_path": "https://source.unsplash.com/500x500/?book-buddies",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Read and Reflect",
+                        "description": "Reading stories and reflecting on their meanings, developing critical thinking and comprehension skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?read-and-reflect",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Fluent Reader",
+                        "description": "Practicing reading fluency through repeated reading and feedback.",
+                        "image_path": "https://source.unsplash.com/500x500/?fluent-reader",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Dramatic Reading",
+                        "description": "Expressing emotions and interpreting character‘s actions through dramatic readings, fostering comprehension and expressiveness.",
+                        "image_path": "https://source.unsplash.com/500x500/?dramatic-reading",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Writing Wonders",
+                "description": "Exploring diverse writing forms and techniques to express thoughts and ideas creatively and effectively.",
+                "image_path": "https://source.unsplash.com/500x500/?writing",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Writing Workshop",
+                        "description": "Engaging in a variety of writing tasks to learn different genres and writing techniques.",
+                        "image_path": "https://source.unsplash.com/500x500/?writing-workshop",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Peer Editing",
+                        "description": "Sharing and reviewing each other‘s work to improve writing and learn constructive feedback.",
+                        "image_path": "https://source.unsplash.com/500x500/?peer-editing",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Writing Prompts",
+                        "description": "Responding to writing prompts to stimulate creativity and develop written expression.",
+                        "image_path": "https://source.unsplash.com/500x500/?writing-prompts",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Journal Journey",
+                        "description": "Maintaining a daily journal to develop writing fluency and self-expression.",
+                        "image_path": "https://source.unsplash.com/500x500/?journal",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Vocabulary Voyage",
+                "description": "Embarking on a voyage into the world of words, enhancing vocabulary and language understanding.",
+                "image_path": "https://source.unsplash.com/500x500/?vocabulary",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Word Wonder",
+                        "description": "Learning new words and their meanings through engaging activities and discussions.",
+                        "image_path": "https://source.unsplash.com/500x500/?word-wonder",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Context Clues",
+                        "description": "Using context clues to infer the meaning of unfamiliar words, promoting critical thinking and reading comprehension.",
+                        "image_path": "https://source.unsplash.com/500x500/?context-clues",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Word of the Day",
+                        "description": "Introducing a new word each day to expand vocabulary and enhance language understanding.",
+                        "image_path": "https://source.unsplash.com/500x500/?word-of-the-day",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Language Ladders",
+                        "description": "Creating word ladders to learn synonyms and antonyms, expanding vocabulary and understanding of language nuances.",
+                        "image_path": "https://source.unsplash.com/500x500/?language-ladders",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Speak with Confidence",
+                "description": "Developing effective speaking skills, fostering self-confidence and effective communication.",
+                "image_path": "https://source.unsplash.com/500x500/?speaking",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Show and Tell",
+                        "description": "Sharing personal items or stories, promoting public speaking skills and social interaction.",
+                        "image_path": "https://source.unsplash.com/500x500/?show-and-tell",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Discussion Circles",
+                        "description": "Participating in group discussions on various topics to enhance speaking skills and critical thinking.",
+                        "image_path": "https://source.unsplash.com/500x500/?discussion-circles",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Role Play",
+                        "description": "Engaging in role-play to enhance speaking skills, creativity, and empathy.",
+                        "image_path": "https://source.unsplash.com/500x500/?role-play",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Speech Craft",
+                        "description": "Creating and delivering short speeches to build confidence and effective communication skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?speech",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Listen and Understand",
+                "description": "Honing listening skills for advanced comprehension and effective communication.",
+                "image_path": "https://source.unsplash.com/500x500/?listening",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Listen and Draw",
+                        "description": "Listening to descriptions and drawing them to enhance comprehension and visualization skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?listen-and-draw",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sound Stories",
+                        "description": "Creating and interpreting stories based on sound cues to promote auditory processing and creativity.",
+                        "image_path": "https://source.unsplash.com/500x500/?sound-stories",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Audiobook Adventure",
+                        "description": "Listening to audiobooks to enhance comprehension, listening skills, and appreciation for literature.",
+                        "image_path": "https://source.unsplash.com/500x500/?audiobook",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Musical Exploration",
+                        "description": "Exploring music to understand rhythm, melody, and expressiveness in language.",
+                        "image_path": "https://source.unsplash.com/500x500/?music",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     }
   ]'::json
 );
@@ -5630,15 +6116,469 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "ffba7897-2e54-45c7-bfdc-73953451a867",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Our Community",
+                "description": "Introducing the diverse roles and relationships within our community, sparking curiosity and respect.",
+                "image_path": "https://source.unsplash.com/500x500/?community",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Community Helpers",
+                        "description": "Exploring the roles of various community helpers and how they contribute to our daily lives.",
+                        "image_path": "https://source.unsplash.com/500x500/?community-helpers",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Family Ties",
+                        "description": "Recognizing and appreciating the different members of the family and the roles they play.",
+                        "image_path": "https://source.unsplash.com/500x500/?family",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Neighborhood Exploration",
+                        "description": "Learning about the different places and spaces in our neighborhood and their purposes.",
+                        "image_path": "https://source.unsplash.com/500x500/?neighborhood",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Play Pretend",
+                        "description": "Role-playing as different community helpers to understand their importance and responsibilities.",
+                        "image_path": "https://source.unsplash.com/500x500/?role-play",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Wondrous World",
+                "description": "Fostering an appreciation for the diverse world around us, from nature to different cultures.",
+                "image_path": "https://source.unsplash.com/500x500/?world",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Nature Walk",
+                        "description": "Discovering the wonders of nature around us, from plants to animals to the weather.",
+                        "image_path": "https://source.unsplash.com/500x500/?nature-walk",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Festivals Around the World",
+                        "description": "Learning about different festivals celebrated around the world, fostering cultural understanding.",
+                        "image_path": "https://source.unsplash.com/500x500/?festivals",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Land and Water",
+                        "description": "Introducing the basic concepts of land and water, their importance, and conservation.",
+                        "image_path": "https://source.unsplash.com/500x500/?land-water",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Globe Trotters",
+                        "description": "Exploring different countries and their unique aspects through virtual trips.",
+                        "image_path": "https://source.unsplash.com/500x500/?globe-trotters",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Time Travellers",
+                "description": "Understanding the concept of time and exploring significant events and personal histories.",
+                "image_path": "https://source.unsplash.com/500x500/?time",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Daily Routines",
+                        "description": "Recognizing the sequence of daily activities and the concept of time.",
+                        "image_path": "https://source.unsplash.com/500x500/?daily-routines",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Seasons and Festivals",
+                        "description": "Learning about the cycle of seasons and the different festivals associated with each.",
+                        "image_path": "https://source.unsplash.com/500x500/?seasons-festivals",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "My Life Story",
+                        "description": "Creating a personal timeline to understand the concept of past, present, and future.",
+                        "image_path": "https://source.unsplash.com/500x500/?life-story",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Famous Figures",
+                        "description": "Learning about historical figures through stories and role-play.",
+                        "image_path": "https://source.unsplash.com/500x500/?famous-figures",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Money Matters",
+                "description": "Introducing the basic concept of money, its use, and the value of different coins and notes.",
+                "image_path": "https://source.unsplash.com/500x500/?money",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Coin Recognition",
+                        "description": "Recognizing different coins and understanding their values.",
+                        "image_path": "https://source.unsplash.com/500x500/?coins",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Money Exchange",
+                        "description": "Understanding the concept of buying and selling through play-based activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?money-exchange",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Needs and Wants",
+                        "description": "Differentiating between needs and wants to promote responsible spending habits.",
+                        "image_path": "https://source.unsplash.com/500x500/?needs-wants",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Let‘s Go Shopping",
+                        "description": "Engaging in pretend play to reinforce concepts of money and buying.",
+                        "image_path": "https://source.unsplash.com/500x500/?shopping",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Maps and Directions",
+                "description": "Understanding basic spatial concepts, directions, and introductory map skills.",
+                "image_path": "https://source.unsplash.com/500x500/?maps",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Shapes in Our World",
+                        "description": "Identifying and relating shapes to objects in our environment.",
+                        "image_path": "https://source.unsplash.com/500x500/?shapes",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Left and Right",
+                        "description": "Mastering the concepts of left and right through fun activities and songs.",
+                        "image_path": "https://source.unsplash.com/500x500/?left-right",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "My First Map",
+                        "description": "Creating a simple map of a familiar place like home or classroom.",
+                        "image_path": "https://source.unsplash.com/500x500/?map",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Treasure Hunt",
+                        "description": "Using directions and simple maps to find hidden treasures in a fun and engaging activity.",
+                        "image_path": "https://source.unsplash.com/500x500/?treasure-hunt",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "eb6f4266-542d-4978-aa87-cd2444cedd46",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Building Communities",
+                "description": "Cultivating an understanding of the diversity and interdependence within our local and global communities.",
+                "image_path": "https://source.unsplash.com/500x500/?communities",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Community Leaders",
+                        "description": "Exploring the roles of community leaders and their impact on our neighborhoods.",
+                        "image_path": "https://source.unsplash.com/500x500/?community-leaders",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Civic Responsibilities",
+                        "description": "Understanding basic civic responsibilities and how we contribute to our community.",
+                        "image_path": "https://source.unsplash.com/500x500/?civic-responsibilities",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Global Citizens",
+                        "description": "Discussing what it means to be a global citizen and how we can respect diverse cultures.",
+                        "image_path": "https://source.unsplash.com/500x500/?global-citizens",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Caring for Our Community",
+                        "description": "Engaging in projects that care for our community and environment.",
+                        "image_path": "https://source.unsplash.com/500x500/?community-care",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Exploring Our World",
+                "description": "Cultivating a sense of wonder and respect for the diverse world around us, from environments to cultures.",
+                "image_path": "https://source.unsplash.com/500x500/?exploring-world",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Geography Gems",
+                        "description": "Discovering key geographical features of the world and their significance.",
+                        "image_path": "https://source.unsplash.com/500x500/?geography-gems",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Cultural Celebrations",
+                        "description": "Understanding different cultural celebrations around the world, promoting inclusivity and respect.",
+                        "image_path": "https://source.unsplash.com/500x500/?cultural-celebrations",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Environmental Awareness",
+                        "description": "Learning about different environments and the importance of conservation.",
+                        "image_path": "https://source.unsplash.com/500x500/?environmental-awareness",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "World Art",
+                        "description": "Exploring art from different cultures, fostering cultural appreciation and creative expression.",
+                        "image_path": "https://source.unsplash.com/500x500/?world-art",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Journey Through Time",
+                "description": "Developing a sense of time, from understanding historical events to envisioning the future.",
+                "image_path": "https://source.unsplash.com/500x500/?journey-time",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Historical Events",
+                        "description": "Understanding significant historical events and their impact through engaging stories.",
+                        "image_path": "https://source.unsplash.com/500x500/?historical-events",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Inventions and Innovations",
+                        "description": "Learning about key inventions and innovations that have shaped our world.",
+                        "image_path": "https://source.unsplash.com/500x500/?inventions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Predicting the Future",
+                        "description": "Envisioning the future based on trends and developments in science and technology.",
+                        "image_path": "https://source.unsplash.com/500x500/?predicting-future",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Time Capsule",
+                        "description": "Creating a time capsule to understand the concept of preserving history for future generations.",
+                        "image_path": "https://source.unsplash.com/500x500/?time-capsule",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Financial Foundations",
+                "description": "Introducing fundamental concepts of economics, money management, and responsible consumption.",
+                "image_path": "https://source.unsplash.com/500x500/?financial-foundations",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Earning and Spending",
+                        "description": "Understanding the concept of earning money and responsible spending.",
+                        "image_path": "https://source.unsplash.com/500x500/?earning-spending",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Saving and Sharing",
+                        "description": "Learning about the importance of saving money and sharing with those in need.",
+                        "image_path": "https://source.unsplash.com/500x500/?saving-sharing",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Jobs and Professions",
+                        "description": "Exploring different professions and how they contribute to the economy.",
+                        "image_path": "https://source.unsplash.com/500x500/?jobs-professions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Market Day",
+                        "description": "Setting up a mini-market to apply learned economic concepts in a fun, engaging way.",
+                        "image_path": "https://source.unsplash.com/500x500/?market-day",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Navigating Spaces",
+                "description": "Enhancing spatial awareness, understanding of maps, and appreciation for different landscapes.",
+                "image_path": "https://source.unsplash.com/500x500/?navigating-spaces",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Map Making",
+                        "description": "Creating detailed maps of familiar spaces to enhance spatial awareness and mapping skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?map-making",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Landforms and Landscapes",
+                        "description": "Exploring different landforms and landscapes around the world.",
+                        "image_path": "https://source.unsplash.com/500x500/?landforms",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Exploring Directions",
+                        "description": "Understanding cardinal directions and their application in navigation.",
+                        "image_path": "https://source.unsplash.com/500x500/?exploring-directions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "GeoQuest",
+                        "description": "Participating in a geography-themed treasure hunt to apply learned skills in a fun context.",
+                        "image_path": "https://source.unsplash.com/500x500/?geoquest",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "ee90a562-4b34-4590-9757-cfcb866876d7",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Civic Sense",
+                "description": "Developing an understanding of civic duties, rights, and responsibilities, fostering responsible future citizens.",
+                "image_path": "https://source.unsplash.com/500x500/?civic",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Rights and Responsibilities",
+                        "description": "Understanding the basic rights and responsibilities we hold as citizens.",
+                        "image_path": "https://source.unsplash.com/500x500/?rights-responsibilities",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Community Services",
+                        "description": "Exploring various community services and their importance in our daily lives.",
+                        "image_path": "https://source.unsplash.com/500x500/?community-services",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Voting and Democracy",
+                        "description": "Learning the concept of voting and its significance in a democratic society.",
+                        "image_path": "https://source.unsplash.com/500x500/?voting-democracy",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "My Ideal Community",
+                        "description": "Envisioning and designing an ideal community that fosters inclusivity, sustainability, and harmony.",
+                        "image_path": "https://source.unsplash.com/500x500/?ideal-community",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Global Perspectives",
+                "description": "Broadening horizons by appreciating the diversity of cultures, environments, and global issues.",
+                "image_path": "https://source.unsplash.com/500x500/?global-perspectives",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "World Cultures",
+                        "description": "Exploring various world cultures, traditions, languages, and customs.",
+                        "image_path": "https://source.unsplash.com/500x500/?world-cultures",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sustainable Living",
+                        "description": "Understanding sustainability and how we can contribute to a greener planet.",
+                        "image_path": "https://source.unsplash.com/500x500/?sustainable-living",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Global Issues",
+                        "description": "Discussing age-appropriate global issues and how they impact our world.",
+                        "image_path": "https://source.unsplash.com/500x500/?global-issues",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Cultural Exchange",
+                        "description": "Experiencing a cultural exchange through a fun and engaging virtual meet with peers from a different country.",
+                        "image_path": "https://source.unsplash.com/500x500/?cultural-exchange",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Economic Insights",
+                "description": "Delving deeper into economic concepts, money management, and the roles different professions play in our economy.",
+                "image_path": "https://source.unsplash.com/500x500/?economic-insights",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Understanding Taxes",
+                        "description": "Introducing the basic concept of taxes and why they are essential for community development.",
+                        "image_path": "https://source.unsplash.com/500x500/?taxes",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Professions and Their Roles",
+                        "description": "Exploring a wider range of professions and their roles in the community and economy.",
+                        "image_path": "https://source.unsplash.com/500x500/?professions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Budgeting and Planning",
+                        "description": "Understanding the concept of budgeting and financial planning through fun activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?budgeting",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Mini Economy",
+                        "description": "Setting up a mini economy system in the classroom to apply learned economic concepts.",
+                        "image_path": "https://source.unsplash.com/500x500/?mini-economy",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Historical Adventures",
+                "description": "Unraveling the fabric of time to understand significant historical events, inventions, and milestones.",
+                "image_path": "https://source.unsplash.com/500x500/?historical-adventures",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Timeline Travel",
+                        "description": "Understanding the concept of timelines and their significance in documenting historical events.",
+                        "image_path": "https://source.unsplash.com/500x500/?timeline",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Innovations That Shaped the World",
+                        "description": "Exploring significant innovations and their impact on how we live today.",
+                        "image_path": "https://source.unsplash.com/500x500/?innovations",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Heroes and Heroines",
+                        "description": "Learning about historical figures who have made a difference in the world.",
+                        "image_path": "https://source.unsplash.com/500x500/?heroes",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "History Alive",
+                        "description": "Participating in a living history fair, where students represent different historical figures or events.",
+                        "image_path": "https://source.unsplash.com/500x500/?history-fair",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     }
   ]'::json
 );
@@ -5650,15 +6590,373 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "ffba7897-2e54-45c7-bfdc-73953451a867",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Sensory Art",
+                "description": "Exploring textures, colors, and shapes to stimulate sensory development and creativity.",
+                "image_path": "https://source.unsplash.com/500x500/?sensory-art",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Textured Creations",
+                        "description": "Exploring different textures through art and craft activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?textured-creations",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Colorful World",
+                        "description": "Experimenting with colors and their combinations.",
+                        "image_path": "https://source.unsplash.com/500x500/?colorful-world",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Shapes Around Us",
+                        "description": "Recognizing and creating art with different shapes.",
+                        "image_path": "https://source.unsplash.com/500x500/?shapes",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sensory Collage",
+                        "description": "Creating a collage using a variety of materials to stimulate the senses.",
+                        "image_path": "https://source.unsplash.com/500x500/?sensory-collage",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Rhythm and Movement",
+                "description": "Discovering the joy of movement and rhythm through dance and creative play.",
+                "image_path": "https://source.unsplash.com/500x500/?rhythm-movement",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Introduction to Rhythm",
+                        "description": "Understanding the concept of rhythm through simple percussive instruments and clapping games.",
+                        "image_path": "https://source.unsplash.com/500x500/?rhythm",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Dance and Movement",
+                        "description": "Expressing oneself through simple dance movements and steps.",
+                        "image_path": "https://source.unsplash.com/500x500/?dance-movement",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Musical Exploration",
+                        "description": "Experiencing the joy of creating music using everyday objects.",
+                        "image_path": "https://source.unsplash.com/500x500/?musical-exploration",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Storytelling Through Dance",
+                        "description": "Using movement and dance to tell a story.",
+                        "image_path": "https://source.unsplash.com/500x500/?storytelling-dance",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Creative Drama",
+                "description": "Sparking imagination and self-expression through role-play and simple dramatic activities.",
+                "image_path": "https://source.unsplash.com/500x500/?creative-drama",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Introduction to Role Play",
+                        "description": "Exploring different characters and scenarios through role-play.",
+                        "image_path": "https://source.unsplash.com/500x500/?role-play",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Mime Time",
+                        "description": "Learning to express emotions and actions without words through the art of mime.",
+                        "image_path": "https://source.unsplash.com/500x500/?mime",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Puppet Show",
+                        "description": "Creating simple puppets and using them to tell a story.",
+                        "image_path": "https://source.unsplash.com/500x500/?puppet-show",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Create Your Play",
+                        "description": "Creating a short play with friends, using props and costumes.",
+                        "image_path": "https://source.unsplash.com/500x500/?create-play",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "eb6f4266-542d-4978-aa87-cd2444cedd46",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Visual Arts",
+                "description": "Cultivating creativity through painting, drawing, and sculpting using various mediums.",
+                "image_path": "https://source.unsplash.com/500x500/?visual-arts",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Painting with a Twist",
+                        "description": "Experimenting with various painting techniques and tools beyond the paintbrush.",
+                        "image_path": "https://source.unsplash.com/500x500/?painting",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Doodling and Sketching",
+                        "description": "Exploring self-expression through freehand doodling and sketching activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?doodling",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Play-Doh Creations",
+                        "description": "Building three-dimensional objects using Play-Doh to understand form and structure.",
+                        "image_path": "https://source.unsplash.com/500x500/?play-doh",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Art from Waste",
+                        "description": "Creating art from waste materials, promoting creativity and environmental awareness.",
+                        "image_path": "https://source.unsplash.com/500x500/?recycled-art",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Music and Rhythm",
+                "description": "Enhancing musical appreciation and rhythmic coordination through song, dance, and basic instruments.",
+                "image_path": "https://source.unsplash.com/500x500/?music-rhythm",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Musical Patterns",
+                        "description": "Understanding patterns through rhythm and beat using simple percussion instruments.",
+                        "image_path": "https://source.unsplash.com/500x500/?musical-patterns",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Move to the Beat",
+                        "description": "Learning to express oneself through dance movements that match the rhythm of the music.",
+                        "image_path": "https://source.unsplash.com/500x500/?dance",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sing-Along Time",
+                        "description": "Encouraging participation and confidence through group singing activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?sing-along",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sound Exploration",
+                        "description": "Exploring how different sounds can be produced using everyday objects.",
+                        "image_path": "https://source.unsplash.com/500x500/?sound-exploration",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Drama and Storytelling",
+                "description": "Fostering imagination and narrative skills through character play and dramatic scenarios.",
+                "image_path": "https://source.unsplash.com/500x500/?drama-storytelling",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Character Creation",
+                        "description": "Creating and embodying original characters through improvisational games and activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?character-creation",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Storytelling Circle",
+                        "description": "Developing narrative skills by creating and sharing stories within a group.",
+                        "image_path": "https://source.unsplash.com/500x500/?storytelling",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Dramatic Play",
+                        "description": "Engaging in dramatic play scenarios to understand narrative structure and character development.",
+                        "image_path": "https://source.unsplash.com/500x500/?dramatic-play",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Puppet Theater",
+                        "description": "Designing and performing a puppet show to enhance creativity and storytelling skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?puppet-theater",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Crafts and Design",
+                "description": "Developing fine motor skills and spatial understanding through crafts and design projects.",
+                "image_path": "https://source.unsplash.com/500x500/?crafts-design",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Paper Mache Magic",
+                        "description": "Creating three-dimensional objects using paper mache techniques.",
+                        "image_path": "https://source.unsplash.com/500x500/?paper-mache",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Origami Fun",
+                        "description": "Understanding geometric shapes and spatial relationships through the art of origami.",
+                        "image_path": "https://source.unsplash.com/500x500/?origami",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Cardboard Creations",
+                        "description": "Using cardboard to create simple structures and objects.",
+                        "image_path": "https://source.unsplash.com/500x500/?cardboard-creations",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Design Your Room",
+                        "description": "Planning and designing a dream room using cutouts and drawings.",
+                        "image_path": "https://source.unsplash.com/500x500/?room-design",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "ee90a562-4b34-4590-9757-cfcb866876d7",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Exploring Mediums",
+                "description": "Discovering the wonders of various art mediums to foster creativity and imagination.",
+                "image_path": "https://source.unsplash.com/500x500/?art-mediums",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Collage Craft",
+                        "description": "Creating unique artworks through the versatile technique of collage.",
+                        "image_path": "https://source.unsplash.com/500x500/?collage",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Pastel Playground",
+                        "description": "Experimenting with soft and oil pastels to create vibrant artworks.",
+                        "image_path": "https://source.unsplash.com/500x500/?pastel",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Charcoal Sketch",
+                        "description": "Exploring light and shadow using charcoal as an expressive medium.",
+                        "image_path": "https://source.unsplash.com/500x500/?charcoal",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Printmaking Magic",
+                        "description": "Creating unique print artworks using everyday objects.",
+                        "image_path": "https://source.unsplash.com/500x500/?printmaking",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Dance and Choreography",
+                "description": "Exploring self-expression and body coordination through the creative world of dance and choreography.",
+                "image_path": "https://source.unsplash.com/500x500/?dance-choreography",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Rhythm and Movement",
+                        "description": "Understanding the concept of rhythm in music and expressing it through dance.",
+                        "image_path": "https://source.unsplash.com/500x500/?rhythm-movement",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Creative Choreography",
+                        "description": "Creating unique dance sequences to express feelings and stories.",
+                        "image_path": "https://source.unsplash.com/500x500/?choreography",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Dance Styles",
+                        "description": "Exploring different dance styles and their cultural significance.",
+                        "image_path": "https://source.unsplash.com/500x500/?dance-styles",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Shadow Dance",
+                        "description": "Creating a shadow dance performance to understand the interplay of light and movement.",
+                        "image_path": "https://source.unsplash.com/500x500/?shadow-dance",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Drama and Role Play",
+                "description": "Encouraging creative expression and empathy through dramatic storytelling and role-playing.",
+                "image_path": "https://source.unsplash.com/500x500/?drama-role-play",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Theatrical Expressions",
+                        "description": "Learning to express a range of emotions and scenarios through theatrical exercises.",
+                        "image_path": "https://source.unsplash.com/500x500/?theatrical-expressions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Story Drama",
+                        "description": "Creating and performing a short play based on a story.",
+                        "image_path": "https://source.unsplash.com/500x500/?story-drama",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Improvisation",
+                        "description": "Enhancing quick thinking and creativity through improvisation games and exercises.",
+                        "image_path": "https://source.unsplash.com/500x500/?improvisation",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Mask Making and Performance",
+                        "description": "Creating expressive masks and using them in a performance to enhance emotional expression.",
+                        "image_path": "https://source.unsplash.com/500x500/?mask-making",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Music and Composition",
+                "description": "Building an understanding and appreciation for music through exploration and composition.",
+                "image_path": "https://source.unsplash.com/500x500/?music-composition",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Soundscapes",
+                        "description": "Creating soundscapes using voices, bodies, and objects to represent different scenarios.",
+                        "image_path": "https://source.unsplash.com/500x500/?soundscapes",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Song Writing",
+                        "description": "Learning the basics of songwriting to express thoughts and feelings through music.",
+                        "image_path": "https://source.unsplash.com/500x500/?songwriting",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Percussion Exploration",
+                        "description": "Exploring different types of percussion instruments and their unique sounds.",
+                        "image_path": "https://source.unsplash.com/500x500/?percussion",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Homemade Instruments",
+                        "description": "Creating homemade musical instruments using everyday household items.",
+                        "image_path": "https://source.unsplash.com/500x500/?homemade-instruments",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     }
   ]'::json
 );
@@ -5670,15 +6968,405 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "ffba7897-2e54-45c7-bfdc-73953451a867",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Active Play",
+                "description": "Fostering a love for physical activity and games that promote coordination and fitness.",
+                "image_path": "https://source.unsplash.com/500x500/?active-play",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Catch and Throw",
+                        "description": "Developing hand-eye coordination and motor skills with fun catching and throwing games.",
+                        "image_path": "https://source.unsplash.com/500x500/?catch-throw",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Hop, Skip, and Jump",
+                        "description": "Engaging in activities that encourage jumping, hopping, and skipping to promote balance and strength.",
+                        "image_path": "https://source.unsplash.com/500x500/?hop-skip-jump",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Animal Movements",
+                        "description": "Mimicking the movements of various animals to encourage imagination and physical development.",
+                        "image_path": "https://source.unsplash.com/500x500/?animal-movements",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Toddler Yoga",
+                        "description": "Introducing basic yoga poses that promote flexibility, balance, and calmness.",
+                        "image_path": "https://source.unsplash.com/500x500/?toddler-yoga",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Fine Motor Skills",
+                "description": "Enhancing fine motor skills and dexterity with fun and interactive tasks.",
+                "image_path": "https://source.unsplash.com/500x500/?fine-motor-skills",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Clay Play",
+                        "description": "Building strength and coordination in little hands through molding and shaping clay.",
+                        "image_path": "https://source.unsplash.com/500x500/?clay-play",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Bead Stringing",
+                        "description": "Developing fine motor skills and concentration through the careful task of bead stringing.",
+                        "image_path": "https://source.unsplash.com/500x500/?bead-stringing",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Puzzling Fun",
+                        "description": "Engaging in puzzle activities to enhance spatial awareness and problem-solving skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?puzzle",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Finger Painting",
+                        "description": "Exploring creativity and fine motor skills through the sensory experience of finger painting.",
+                        "image_path": "https://source.unsplash.com/500x500/?finger-painting",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Gross Motor Skills",
+                "description": "Developing large muscle groups through movement and playful activities.",
+                "image_path": "https://source.unsplash.com/500x500/?gross-motor-skills",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Tummy Time",
+                        "description": "Strengthening neck, back, and arm muscles through supervised tummy time activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?tummy-time",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Crawling Course",
+                        "description": "Encouraging crawling through fun obstacle courses to strengthen muscles and improve coordination.",
+                        "image_path": "https://source.unsplash.com/500x500/?crawling-course",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Baby Bootcamp",
+                        "description": "Engaging in exercises that promote strength, balance, and body awareness.",
+                        "image_path": "https://source.unsplash.com/500x500/?baby-bootcamp",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Water Play",
+                        "description": "Exploring the physical properties of water, promoting sensory learning and motor skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?water-play",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Nutrition and Health",
+                "description": "Introducing basic concepts of health and nutrition through fun and interactive activities.",
+                "image_path": "https://source.unsplash.com/500x500/?nutrition-health",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Food Groups",
+                        "description": "Learning about different food groups and their importance to our bodies.",
+                        "image_path": "https://source.unsplash.com/500x500/?food-groups",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Hygiene Habits",
+                        "description": "Establishing good hygiene habits like hand washing, teeth brushing, and more.",
+                        "image_path": "https://source.unsplash.com/500x500/?hygiene-habits",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Healthy Habits",
+                        "description": "Understanding the importance of sleep, physical activity, and healthy eating.",
+                        "image_path": "https://source.unsplash.com/500x500/?healthy-habits",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Snack Time",
+                        "description": "Preparing simple, healthy snacks together to encourage an interest in nutrition.",
+                        "image_path": "https://source.unsplash.com/500x500/?snack-time",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "eb6f4266-542d-4978-aa87-cd2444cedd46",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Active Games",
+                "description": "Engaging in active games that promote agility, coordination, and fun.",
+                "image_path": "https://source.unsplash.com/500x500/?active-games",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Tag and Chase",
+                        "description": "Playing tag and chase games to develop speed, agility, and spatial awareness.",
+                        "image_path": "https://source.unsplash.com/500x500/?tag-chase",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Ball Games",
+                        "description": "Introducing different ball games to enhance hand-eye coordination and team play.",
+                        "image_path": "https://source.unsplash.com/500x500/?ball-games",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Balance Beam",
+                        "description": "Using a balance beam to develop balance, coordination, and focus.",
+                        "image_path": "https://source.unsplash.com/500x500/?balance-beam",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Dance Party",
+                        "description": "Encouraging free expression and movement through dance to different types of music.",
+                        "image_path": "https://source.unsplash.com/500x500/?dance-party",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Fine Motor Mastery",
+                "description": "Further enhancing fine motor skills with creative and challenging tasks.",
+                "image_path": "https://source.unsplash.com/500x500/?fine-motor-mastery",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Scissor Skills",
+                        "description": "Developing dexterity and coordination through safe scissor activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?scissor-skills",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Lacing and Tying",
+                        "description": "Learning to lace and tie, enhancing hand-eye coordination and self-help skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?lacing-tying",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sorting and Stacking",
+                        "description": "Sorting and stacking objects by size, color, or shape to enhance problem-solving skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?sorting-stacking",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Creative Origami",
+                        "description": "Folding origami paper to create various shapes, promoting concentration and fine motor skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?origami",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Gross Motor Development",
+                "description": "Continuing to develop large muscle groups through movement and playful challenges.",
+                "image_path": "https://source.unsplash.com/500x500/?gross-motor-development",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Obstacle Course",
+                        "description": "Navigating a fun obstacle course to promote agility, coordination, and problem-solving.",
+                        "image_path": "https://source.unsplash.com/500x500/?obstacle-course",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Yoga for Kids",
+                        "description": "Introducing basic yoga poses to enhance flexibility, balance, and mindfulness.",
+                        "image_path": "https://source.unsplash.com/500x500/?yoga-kids",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Bike Riding",
+                        "description": "Learning to ride a tricycle or bike, enhancing balance, coordination, and confidence.",
+                        "image_path": "https://source.unsplash.com/500x500/?bike-riding",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Gardening Fun",
+                        "description": "Participating in simple gardening tasks, fostering an appreciation for nature and enhancing motor skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?gardening",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Healthy Habits",
+                "description": "Deepening understanding of health, nutrition, and self-care habits.",
+                "image_path": "https://source.unsplash.com/500x500/?healthy-habits",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "My Plate",
+                        "description": "Exploring the MyPlate guide to learn about balanced meals and healthy eating.",
+                        "image_path": "https://source.unsplash.com/500x500/?my-plate",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Personal Hygiene",
+                        "description": "Understanding the importance of personal hygiene and developing daily self-care routines.",
+                        "image_path": "https://source.unsplash.com/500x500/?personal-hygiene",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Fit and Active",
+                        "description": "Recognizing the importance of regular physical activity for maintaining health and well-being.",
+                        "image_path": "https://source.unsplash.com/500x500/?fit-active",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Cooking Together",
+                        "description": "Preparing simple, nutritious meals together to promote cooking skills and healthy eating.",
+                        "image_path": "https://source.unsplash.com/500x500/?cooking-together",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "ee90a562-4b34-4590-9757-cfcb866876d7",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Team Sports",
+                "description": "Fostering teamwork and coordination through simple team sports and games.",
+                "image_path": "https://source.unsplash.com/500x500/?team-sports",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Introduction to Soccer",
+                        "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+                        "image_path": "https://source.unsplash.com/500x500/?soccer",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Basic Basketball",
+                        "description": "Understanding the basics of basketball for coordination and team spirit.",
+                        "image_path": "https://source.unsplash.com/500x500/?basketball",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Fun with Frisbee",
+                        "description": "Playing frisbee to enhance hand-eye coordination and enjoy the outdoors.",
+                        "image_path": "https://source.unsplash.com/500x500/?frisbee",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Family Olympics",
+                        "description": "Organizing a fun ‘Olympic‘ event with various sports activities for the whole family.",
+                        "image_path": "https://source.unsplash.com/500x500/?family-olympics",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Advanced Fine Motor Skills",
+                "description": "Perfecting fine motor skills with more complex and creative tasks.",
+                "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Advanced Origami",
+                        "description": "Creating complex origami figures to promote dexterity and concentration.",
+                        "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Model Building",
+                        "description": "Building models to enhance precision, patience, and problem-solving skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?model-building",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Crafting and Sewing",
+                        "description": "Engaging in simple sewing or beading activities for fine motor practice and creativity.",
+                        "image_path": "https://source.unsplash.com/500x500/?sewing-beading",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Cooking Class",
+                        "description": "Participating in a cooking class to learn about nutrition and enhance fine motor skills.",
+                        "image_path": "https://source.unsplash.com/500x500/?cooking-class",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Challenging Gross Motor Skills",
+                "description": "Pushing boundaries in gross motor skills with challenging and exciting activities.",
+                "image_path": "https://source.unsplash.com/500x500/?challenging-gross-motor-skills",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Climbing and Rope Courses",
+                        "description": "Exploring climbing and rope courses to develop strength, agility, and confidence.",
+                        "image_path": "https://source.unsplash.com/500x500/?climbing-rope-courses",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Advanced Yoga",
+                        "description": "Practicing more complex yoga poses to promote flexibility, balance, and calm.",
+                        "image_path": "https://source.unsplash.com/500x500/?advanced-yoga",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Biking Trails",
+                        "description": "Riding bikes on different terrains to enhance balance, strength, and endurance.",
+                        "image_path": "https://source.unsplash.com/500x500/?biking-trails",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Nature Walks",
+                        "description": "Taking nature walks to enjoy the outdoors, learn about the environment, and enhance physical fitness.",
+                        "image_path": "https://source.unsplash.com/500x500/?nature-walks",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Healthy Lifestyle",
+                "description": "Cementing understanding of healthy habits and self-care routines.",
+                "image_path": "https://source.unsplash.com/500x500/?healthy-lifestyle",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Balanced Nutrition",
+                        "description": "Delving deeper into nutrition and balanced meals for a healthy lifestyle.",
+                        "image_path": "https://source.unsplash.com/500x500/?balanced-nutrition",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Fitness Routine",
+                        "description": "Understanding the importance of maintaining a regular fitness routine for lifelong health.",
+                        "image_path": "https://source.unsplash.com/500x500/?fitness-routine",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Self-Care and Mindfulness",
+                        "description": "Learning about self-care and mindfulness techniques for mental well-being.",
+                        "image_path": "https://source.unsplash.com/500x500/?self-care-mindfulness",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Family Health Challenge",
+                        "description": "Organizing a health challenge for the family to promote healthy habits together.",
+                        "image_path": "https://source.unsplash.com/500x500/?family-health-challenge",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     }
   ]'::json
 );
@@ -5690,19 +7378,446 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "ffba7897-2e54-45c7-bfdc-73953451a867",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Emotion Exploration",
+                "description": "Creating a safe space for emotional literacy and expression.",
+                "image_path": "https://source.unsplash.com/500x500/?emotion-exploration",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Face the Emotion",
+                        "description": "Identifying and naming basic emotions through facial expressions and body language.",
+                        "image_path": "https://source.unsplash.com/500x500/?emotions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Emotion in Art",
+                        "description": "Expressing emotions creatively through simple art activities.",
+                        "image_path": "https://source.unsplash.com/500x500/?art-emotions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Storytime Emotions",
+                        "description": "Reading and discussing stories that illustrate different emotions.",
+                        "image_path": "https://source.unsplash.com/500x500/?story-emotions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Feelings Through Music",
+                        "description": "Exploring how music can express and influence our feelings.",
+                        "image_path": "https://source.unsplash.com/500x500/?music-emotions",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Self and Society",
+                "description": "Understanding oneself and one‘s place in the family and community.",
+                "image_path": "https://source.unsplash.com/500x500/?self-society",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "All About Me",
+                        "description": "Creating a personal book or poster that celebrates each child‘s uniqueness.",
+                        "image_path": "https://source.unsplash.com/500x500/?all-about-me",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "My Family, My Community",
+                        "description": "Discussing the roles and relationships within the family and local community.",
+                        "image_path": "https://source.unsplash.com/500x500/?family-community",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Helping Hands",
+                        "description": "Recognizing how we can help others in our family and community.",
+                        "image_path": "https://source.unsplash.com/500x500/?helping-hands",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Culture and Traditions",
+                        "description": "Exploring family traditions and cultural celebrations to foster a sense of identity.",
+                        "image_path": "https://source.unsplash.com/500x500/?culture-traditions",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Positive Relationships",
+                "description": "Fostering positive interactions and friendships.",
+                "image_path": "https://source.unsplash.com/500x500/?positive-relationships",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Kind Words, Kind Actions",
+                        "description": "Learning to use kind words and actions in our interactions with others.",
+                        "image_path": "https://source.unsplash.com/500x500/?kindness",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sharing and Taking Turns",
+                        "description": "Understanding the importance of sharing and taking turns during play.",
+                        "image_path": "https://source.unsplash.com/500x500/?sharing",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Resolving Conflicts",
+                        "description": "Using simple strategies to resolve conflicts with peers.",
+                        "image_path": "https://source.unsplash.com/500x500/?conflict-resolution",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Celebrating Friendships",
+                        "description": "Engaging in activities that celebrate friendships and unity.",
+                        "image_path": "https://source.unsplash.com/500x500/?friendships",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Coping Skills",
+                "description": "Equipping children with simple coping strategies for dealing with challenges.",
+                "image_path": "https://source.unsplash.com/500x500/?coping-skills",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Breathe and Relax",
+                        "description": "Practicing simple breathing exercises and relaxation techniques for stress relief.",
+                        "image_path": "https://source.unsplash.com/500x500/?relaxation",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Managing Frustration",
+                        "description": "Learning strategies to manage frustration and disappointment in a healthy way.",
+                        "image_path": "https://source.unsplash.com/500x500/?frustration-management",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Dealing with Change",
+                        "description": "Discussing and dealing with changes and transitions in a positive way.",
+                        "image_path": "https://source.unsplash.com/500x500/?change-management",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Yoga for Kids",
+                        "description": "Using yoga as a fun and effective way to promote emotional regulation.",
+                        "image_path": "https://source.unsplash.com/500x500/?yoga-kids",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "eb6f4266-542d-4978-aa87-cd2444cedd46",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Advanced Emotion Exploration",
+                "description": "Diving deeper into emotional literacy and expression, with an emphasis on empathy and compassion.",
+                "image_path": "https://source.unsplash.com/500x500/?emotion-exploration",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Understanding Empathy",
+                        "description": "Learning to understand and share the feelings of others through activities and stories.",
+                        "image_path": "https://source.unsplash.com/500x500/?empathy",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Expressing Complex Emotions",
+                        "description": "Recognizing and expressing more complex emotions, such as frustration or disappointment.",
+                        "image_path": "https://source.unsplash.com/500x500/?complex-emotions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Problem-Solving Emotions",
+                        "description": "Using problem-solving strategies to navigate emotional situations.",
+                        "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Emotion in Drama",
+                        "description": "Exploring emotions through dramatic play and role-playing scenarios.",
+                        "image_path": "https://source.unsplash.com/500x500/?drama-emotions",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Advanced Self and Society",
+                "description": "Deepening understanding of oneself, family roles, and community structures.",
+                "image_path": "https://source.unsplash.com/500x500/?self-society",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Family Roles and Responsibilities",
+                        "description": "Exploring the different roles and responsibilities within a family.",
+                        "image_path": "https://source.unsplash.com/500x500/?family-roles",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Community Helpers",
+                        "description": "Learning about the roles of various community helpers and their importance.",
+                        "image_path": "https://source.unsplash.com/500x500/?community-helpers",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Cultural Appreciation",
+                        "description": "Understanding and appreciating diverse cultures and traditions within the community.",
+                        "image_path": "https://source.unsplash.com/500x500/?cultural-appreciation",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "My Community Project",
+                        "description": "Creating a project or presentation about their community to share with the class.",
+                        "image_path": "https://source.unsplash.com/500x500/?community-project",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Advanced Positive Relationships",
+                "description": "Building on social skills to foster positive interactions and deeper friendships.",
+                "image_path": "https://source.unsplash.com/500x500/?positive-relationships",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Effective Communication",
+                        "description": "Practicing effective communication skills in various social scenarios.",
+                        "image_path": "https://source.unsplash.com/500x500/?communication",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Respectful Behavior",
+                        "description": "Understanding the importance of respect in all interactions and relationships.",
+                        "image_path": "https://source.unsplash.com/500x500/?respect",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Problem-Solving in Friendships",
+                        "description": "Learning to navigate and åresolve conflicts within friendships.",
+                        "image_path": "https://source.unsplash.com/500x500/?friendship-problems",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Friendship Circle",
+                        "description": "Creating a class ‘friendship circle‘ where children can share about their friendships and learn from each other.",
+                        "image_path": "https://source.unsplash.com/500x500/?friendship-circle",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Advanced Coping Skills",
+                "description": "Continuing to build on coping strategies and introducing self-regulation techniques.",
+                "image_path": "https://source.unsplash.com/500x500/?coping-skills",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Self-Regulation Strategies",
+                        "description": "Learning techniques for self-regulation and emotional control.",
+                        "image_path": "https://source.unsplash.com/500x500/?self-regulation",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Dealing with Stress",
+                        "description": "Understanding what stress is and learning healthy ways to manage it.",
+                        "image_path": "https://source.unsplash.com/500x500/?stress-management",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Resilience Building",
+                        "description": "Learning about resilience and how to bounce back from challenges.",
+                        "image_path": "https://source.unsplash.com/500x500/?resilience",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Mindfulness for Kids",
+                        "description": "Using mindfulness practices as a way to promote emotional regulation and stress relief.",
+                        "image_path": "https://source.unsplash.com/500x500/?mindfulness-kids",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "ee90a562-4b34-4590-9757-cfcb866876d7",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Mastering Emotion Exploration",
+                "description": "Mastering emotional literacy, focusing on emotional intelligence and sophisticated emotional expression.",
+                "image_path": "https://source.unsplash.com/500x500/?emotion-exploration",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Understanding Emotional Intelligence",
+                        "description": "Diving into emotional intelligence and its role in understanding and managing emotions.",
+                        "image_path": "https://source.unsplash.com/500x500/?emotional-intelligence",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Expressing and Controlling Emotions",
+                        "description": "Learning to express and control emotions appropriately in different social situations.",
+                        "image_path": "https://source.unsplash.com/500x500/?express-emotions",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Emotions and Decision Making",
+                        "description": "Understanding how emotions affect decision making and learning to make emotionally intelligent decisions.",
+                        "image_path": "https://source.unsplash.com/500x500/?decision-making",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Emotions in Art",
+                        "description": "Expressing and exploring emotions through various forms of art.",
+                        "image_path": "https://source.unsplash.com/500x500/?emotions-art",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Mastering Self and Society",
+                "description": "Exploring personal identity, social roles, and societal structures at an advanced level.",
+                "image_path": "https://source.unsplash.com/500x500/?self-society",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Personal Identity and Roles",
+                        "description": "Exploring personal identity and understanding individual roles within different social structures.",
+                        "image_path": "https://source.unsplash.com/500x500/?personal-identity",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Understanding Social Structures",
+                        "description": "Learning about societal structures, including communities, countries, and global connections.",
+                        "image_path": "https://source.unsplash.com/500x500/?social-structures",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Cultural Diversity and Respect",
+                        "description": "Deepening understanding and respect for cultural diversity within the community and the world.",
+                        "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "My Society Project",
+                        "description": "Creating a project about a specific societal structure to present to the class.",
+                        "image_path": "https://source.unsplash.com/500x500/?society-project",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Mastering Positive Relationships",
+                "description": "Enhancing interpersonal skills for maintaining positive, respectful, and supportive relationships.",
+                "image_path": "https://source.unsplash.com/500x500/?positive-relationships",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Advanced Communication Skills",
+                        "description": "Developing advanced communication skills to express needs, wants, and feelings clearly and respectfully.",
+                        "image_path": "https://source.unsplash.com/500x500/?advanced-communication",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Maintaining Positive Relationships",
+                        "description": "Learning strategies to maintain and foster positive relationships with peers, family, and community members.",
+                        "image_path": "https://source.unsplash.com/500x500/?positive-relationships",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Conflict Resolution",
+                        "description": "Mastering conflict resolution skills to handle disagreements in a positive and respectful manner.",
+                        "image_path": "https://source.unsplash.com/500x500/?conflict-resolution",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Building Community",
+                        "description": "Engaging in a class project to build a sense of community and teamwork.",
+                        "image_path": "https://source.unsplash.com/500x500/?building-community",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Mastering Coping Skills",
+                "description": "Mastering coping and self-regulation strategies for managing emotions and stress in various situations.",
+                "image_path": "https://source.unsplash.com/500x500/?coping-skills",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Mastering Self-Regulation",
+                        "description": "Learning advanced self-regulation techniques for better control over emotions and behaviors.",
+                        "image_path": "https://source.unsplash.com/500x500/?self-regulation",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Stress Management Strategies",
+                        "description": "Mastering strategies for managing stress and developing a personal stress management plan.",
+                        "image_path": "https://source.unsplash.com/500x500/?stress-management",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Developing Resilience",
+                        "description": "Building resilience to handle challenges and bounce back from setbacks more effectively.",
+                        "image_path": "https://source.unsplash.com/500x500/?resilience",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Mindfulness and Meditation",
+                        "description": "Using mindfulness and meditation practices for emotional regulation and stress relief.",
+                        "image_path": "https://source.unsplash.com/500x500/?mindfulness-meditation",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     }
   ]'::json
 );
 
+
+-- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first 3 topics and all the lessons for those toipcs for Kindergarten Mathematics.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--    {
+--        "name": "Advanced Fine Motor Skills",
+--        "description": "Perfecting fine motor skills with more complex and creative tasks.",
+--        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Advanced Origami",
+--                "description": "Creating complex origami figures to promote dexterity and concentration.",
+--                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--   . . .
 
 --- Comprehensive K-5
 ---- Mathematics
@@ -5737,6 +7852,43 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
+
+-- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first 3 topics and all the lessons for those toipcs for Kindergarten Science.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--    {
+--        "name": "Advanced Fine Motor Skills",
+--        "description": "Perfecting fine motor skills with more complex and creative tasks.",
+--        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Advanced Origami",
+--                "description": "Creating complex origami figures to promote dexterity and concentration.",
+--                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--   . . .
 ---- Science
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -5769,6 +7921,43 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
+
+-- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first 3 topics and all the lessons for those toipcs for Kindergarten English.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--    {
+--        "name": "Advanced Fine Motor Skills",
+--        "description": "Perfecting fine motor skills with more complex and creative tasks.",
+--        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Advanced Origami",
+--                "description": "Creating complex origami figures to promote dexterity and concentration.",
+--                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--   . . .
 ---- English
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -5801,6 +7990,43 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
+
+-- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first 3 topics and all the lessons for those toipcs for Kindergarten Social Studies.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--    {
+--        "name": "Advanced Fine Motor Skills",
+--        "description": "Perfecting fine motor skills with more complex and creative tasks.",
+--        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Advanced Origami",
+--                "description": "Creating complex origami figures to promote dexterity and concentration.",
+--                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--   . . .
 ---- Social Studies
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -5833,6 +8059,43 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
+
+-- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first 4 topics and all the lessons for those toipcs for Kindergarten Physical Development.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--    {
+--        "name": "Advanced Fine Motor Skills",
+--        "description": "Perfecting fine motor skills with more complex and creative tasks.",
+--        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Advanced Origami",
+--                "description": "Creating complex origami figures to promote dexterity and concentration.",
+--                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--   . . .
 ---- Physical Development (Health/PE)
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -5865,6 +8128,44 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
+
+
+-- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first 4 topics and all the lessons for those toipcs for Kindergarten Creative Arts.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--    {
+--        "name": "Advanced Fine Motor Skills",
+--        "description": "Perfecting fine motor skills with more complex and creative tasks.",
+--        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Advanced Origami",
+--                "description": "Creating complex origami figures to promote dexterity and concentration.",
+--                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--   . . .
 ---- Creative Arts
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -5897,6 +8198,44 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
+
+
+-- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first 4 topics and all the lessons for those toipcs for Kindergarten Social Emotional Learning.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--    {
+--        "name": "Advanced Fine Motor Skills",
+--        "description": "Perfecting fine motor skills with more complex and creative tasks.",
+--        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Advanced Origami",
+--                "description": "Creating complex origami figures to promote dexterity and concentration.",
+--                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--   . . .
 ---- Social Emotional Learning
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -5929,6 +8268,44 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
+
+
+-- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first 4 topics and all the lessons for those toipcs for Kindergarten Computer Science.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--    {
+--        "name": "Advanced Fine Motor Skills",
+--        "description": "Perfecting fine motor skills with more complex and creative tasks.",
+--        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Advanced Origami",
+--                "description": "Creating complex origami figures to promote dexterity and concentration.",
+--                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+--    },
+--   . . .
 ---- Computer Science
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
