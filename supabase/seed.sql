@@ -145,16 +145,16 @@ VALUES
 INSERT INTO levels
 (id, name, animal, image_path)
 VALUES
-('ffba7897-2e54-45c7-bfdc-73953451a867', 'Buds', 'Caterpillars', '/images/animals/buds.jpg'),
-('eb6f4266-542d-4978-aa87-cd2444cedd46', 'Sprouts', 'Dogs', '/images/animals/saplings.jpg'),
-('ee90a562-4b34-4590-9757-cfcb866876d7', 'Oaks', 'Bees', '/images/animals/oaks.jpg'),
-('7567fec9-1a5a-47ac-a2d4-df72df106a53', 'Pre-K', 'Bears', '/images/animals/bears.jpg'),
-('8787a66e-9e03-42c7-8870-ada6df021491', 'K', 'Monkies', '/images/animals/monkey.jpg'),
-('ca0b37a7-47c4-4abb-81a3-64e84f803abd', '1', 'Turtles', '/images/animals/turtle.jpg'),
-('485fe542-3c7c-453b-9e18-7baf3c773004', '2', 'Rabbits', '/images/animals/rabbit.jpg'),
-('0679cb12-dd80-4fea-9d01-64c141cba349', '3', 'Foxes', '/images/animals/fox.jpg'),
-('4af5ff40-a612-4114-b4fc-01ad0cd8fbf4', '4', 'Deer', '/images/animals/deer.jpg'),
-('0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa', '5', 'Elephants', '/images/animals/elephant.jpg');
+('ffba7897-2e54-45c7-bfdc-73953451a867', 'Buds', 'Caterpillars', '/static/images/animals/buds.jpg'),
+('eb6f4266-542d-4978-aa87-cd2444cedd46', 'Sprouts', 'Dogs', '/static/images/animals/saplings.jpg'),
+('ee90a562-4b34-4590-9757-cfcb866876d7', 'Oaks', 'Bees', '/static/images/animals/oaks.jpg'),
+('7567fec9-1a5a-47ac-a2d4-df72df106a53', 'Pre-K', 'Bears', '/static/images/animals/bears.jpg'),
+('8787a66e-9e03-42c7-8870-ada6df021491', 'K', 'Monkies', '/static/images/animals/monkey.jpg'),
+('ca0b37a7-47c4-4abb-81a3-64e84f803abd', '1', 'Turtles', '/static/images/animals/turtle.jpg'),
+('485fe542-3c7c-453b-9e18-7baf3c773004', '2', 'Rabbits', '/static/images/animals/rabbit.jpg'),
+('0679cb12-dd80-4fea-9d01-64c141cba349', '3', 'Foxes', '/static/images/animals/fox.jpg'),
+('4af5ff40-a612-4114-b4fc-01ad0cd8fbf4', '4', 'Deer', '/static/images/animals/deer.jpg'),
+('0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa', '5', 'Elephants', '/static/images/animals/elephant.jpg');
 
 
 -- Lesson Creator Dropdown Topics (656)
@@ -4597,28 +4597,497 @@ SELECT create_complete_curriculum(
   'Little Learners',
   'b408d3b0-ca53-4385-9c38-388508f6f777'::uuid,
   'CORE'::module_type,
-  '[
+    '[
     {
       "level_id": "ffba7897-2e54-45c7-bfdc-73953451a867",
       "topics_data": [
         {
-          "name": "First Topic",
-          "description": "Description for the first topic",
-          "image_path": "https://www.google.com",
-          "type": "CORE",
-          "lessons_data": []
-        },
-        {
-          "name": "Second Topic",
-          "description": "Description for the second topic",
-          "image_path": "https://www.google.com",
+          "name": "Tiny Tot Numeracy",
+          "description": "An enchanting journey into the realm of numbers, fostering the essential counting skills and numeric understanding for our budding geniuses.",
+          "image_path": "https://source.unsplash.com/500x500/?math,numbers",
           "type": "CORE",
           "lessons_data": [
             {
-              "name": "Second Lesson",
-              "description": "Description for the second lesson",
-              "image_path": "https://www.google.com",
+              "name": "Counting Companions",
+              "description": "An engaging lesson on early counting, embedding numbers in daily experiences to make learning natural and fun.",
+              "image_path": "https://source.unsplash.com/500x500/?counting",
               "type": "CORE"
+            },
+            {
+              "name": "Shapes Around Us",
+              "description": "A playful exploration of basic shapes and their presence in the world around us, nurturing spatial reasoning and perception.",
+              "image_path": "https://source.unsplash.com/500x500/?shapes",
+              "type": "CORE"
+            },
+            {
+              "name": "Pattern Parade",
+              "description": "A colourful introduction to patterns, fostering cognitive growth and early algebraic thinking.",
+              "image_path": "https://source.unsplash.com/500x500/?patterns",
+              "type": "CORE"
+            },
+            {
+              "name": "Mini Mathematicians",
+              "description": "A fun elective that builds on basic numeracy skills to create a strong foundation for future mathematical concepts.",
+              "image_path": "https://source.unsplash.com/500x500/?math",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Sprouting Sums",
+          "description": "A delightful adventure into the world of addition and subtraction, building solid arithmetic skills for our sprouting learners.",
+          "image_path": "https://source.unsplash.com/500x500/?addition,subtraction",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Addition Adventures",
+              "description": "An exciting exploration of addition, turning math into an adventure that inspires curiosity and understanding.",
+              "image_path": "https://source.unsplash.com/500x500/?addition",
+              "type": "CORE"
+            },
+            {
+              "name": "Subtraction Safari",
+              "description": "A fun-filled journey into subtraction, making learning math a thrilling and meaningful experience.",
+              "image_path": "https://source.unsplash.com/500x500/?subtraction",
+              "type": "CORE"
+            },
+            {
+              "name": "Numbers in Nature",
+              "description": "A fascinating study of how numbers appear in our natural environment, nurturing a deeper understanding and appreciation for math.",
+              "image_path": "https://source.unsplash.com/500x500/?nature,numbers",
+              "type": "CORE"
+            },
+            {
+              "name": "Sums and Stories",
+              "description": "An elective that combines math and storytelling, cultivating a love for numbers through immersive and interactive tales.",
+              "image_path": "https://source.unsplash.com/500x500/?math,storytelling",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Magical Measurements",
+          "description": "A captivating expedition into measurement, enhancing practical understanding and everyday mathematical application for our little learners.",
+          "image_path": "https://source.unsplash.com/500x500/?measurement",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Time Travelers",
+              "description": "An interactive introduction to telling time, transforming young learners into confident timekeepers.",
+              "image_path": "https://source.unsplash.com/500x500/?clock,time",
+              "type": "CORE"
+            },
+            {
+              "name": "Little Length Explorers",
+              "description": "A practical exploration of length, height and distance, providing hands-on experience with real world objects.",
+              "image_path": "https://source.unsplash.com/500x500/?length",
+              "type": "CORE"
+            },
+            {
+              "name": "Wonderful Weights",
+              "description": "An engaging introduction to weight and balance, creating a sense of wonder and understanding about everyday objects.",
+              "image_path": "https://source.unsplash.com/500x500/?weight",
+              "type": "CORE"
+            },
+            {
+              "name": "Measurement Masterminds",
+              "description": "An elective that dives deeper into measurement, enabling our little learners to relate mathematical concepts to their world.",
+              "image_path": "https://source.unsplash.com/500x500/?measurement",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Fantastic Fractions",
+          "description": "A fun-filled exploration of fractions, demystifying them and making them relatable for our near-kindergarten Oaks.",
+          "image_path": "https://source.unsplash.com/500x500/?fractions",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Friendly Fractions",
+              "description": "An introduction to fractions using familiar, everyday experiences to instill comfort and comprehension.",
+              "image_path": "https://source.unsplash.com/500x500/?fraction",
+              "type": "CORE"
+            },
+            {
+              "name": "Pizza Portions",
+              "description": "An engaging lesson using the context of a pizza to illustrate the concept of fractions in a tangible and appetizing way.",
+              "image_path": "https://source.unsplash.com/500x500/?pizza,fractions",
+              "type": "CORE"
+            },
+            {
+              "name": "Fraction Fun with Art",
+              "description": "An innovative lesson that uses art to demonstrate fractions, making learning visually appealing and fun.",
+              "image_path": "https://source.unsplash.com/500x500/?art,fractions",
+              "type": "CORE"
+            },
+            {
+              "name": "Fraction Fiesta",
+              "description": "An elective where fractions come alive through music and dance, enhancing understanding and enjoyment of fractions.",
+              "image_path": "https://source.unsplash.com/500x500/?music,dance,fractions",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Marvelous Money",
+          "description": "A practical immersion into the world of money, enabling a fundamental understanding of currency, value, and early financial literacy.",
+          "image_path": "https://source.unsplash.com/500x500/?money,currency",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Counting Coins",
+              "description": "A fun introduction to coins and their value, promoting counting skills in a real-world context.",
+              "image_path": "https://source.unsplash.com/500x500/?coins",
+              "type": "CORE"
+            },
+            {
+              "name": "My Little Shop",
+              "description": "An interactive lesson where students run their own shop, teaching them about money in an engaging and practical way.",
+              "image_path": "https://source.unsplash.com/500x500/?shop",
+              "type": "CORE"
+            },
+            {
+              "name": "Saving and Spending",
+              "description": "A valuable lesson in saving and spending money wisely, laying the groundwork for lifelong financial literacy.",
+              "image_path": "https://source.unsplash.com/500x500/?saving",
+              "type": "CORE"
+            },
+            {
+              "name": "Money Magic",
+              "description": "An elective that uncovers the magical world of money, stimulating curiosity and comprehension through interactive activities.",
+              "image_path": "https://source.unsplash.com/500x500/?money",
+              "type": "ELECTIVE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "eb6f4266-542d-4978-aa87-cd2444cedd46",
+      "topics_data": [
+        {
+          "name": "Number Novelties",
+          "description": "A fascinating exploration of numbers and operations, inspiring confidence and joy in mathematical thinking.",
+          "image_path": "https://source.unsplash.com/500x500/?numbers",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Dynamic Digits",
+              "description": "A vibrant dive into the world of numbers, sparking curiosity and numerical proficiency.",
+              "image_path": "https://source.unsplash.com/500x500/?digits",
+              "type": "CORE"
+            },
+            {
+              "name": "Operation Excitement",
+              "description": "A hands-on exploration of basic operations, reinforcing mathematical concepts through fun activities.",
+              "image_path": "https://source.unsplash.com/500x500/?operations",
+              "type": "CORE"
+            },
+            {
+              "name": "Fantastic Fractions",
+              "description": "An intriguing introduction to fractions, making them approachable and exciting.",
+              "image_path": "https://source.unsplash.com/500x500/?fractions",
+              "type": "CORE"
+            },
+            {
+              "name": "Mathematical Masterpieces",
+              "description": "An elective that combines art and numbers, enhancing mathematical understanding through creativity.",
+              "image_path": "https://source.unsplash.com/500x500/?math,art",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Geometry Gems",
+          "description": "A delightful journey into shapes and patterns, developing spatial reasoning and appreciation for geometric beauty.",
+          "image_path": "https://source.unsplash.com/500x500/?geometry",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Shape Searchers",
+              "description": "A fun-filled lesson on identifying and creating shapes, promoting observation skills and creativity.",
+              "image_path": "https://source.unsplash.com/500x500/?shapes",
+              "type": "CORE"
+            },
+            {
+              "name": "Pattern Puzzles",
+              "description": "An engaging exploration of patterns in nature and art, fostering analytical thinking and pattern recognition.",
+              "image_path": "https://source.unsplash.com/500x500/?patterns",
+              "type": "CORE"
+            },
+            {
+              "name": "Sensational Symmetry",
+              "description": "An exciting discovery of symmetry in everyday life, nurturing appreciation for balance and design.",
+              "image_path": "https://source.unsplash.com/500x500/?symmetry",
+              "type": "CORE"
+            },
+            {
+              "name": "Geometry Artistry",
+              "description": "An elective that integrates geometry with art, inspiring creativity and a deeper understanding of shapes and patterns.",
+              "image_path": "https://source.unsplash.com/500x500/?geometry,art",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Measurement Marvels",
+          "description": "An interactive exploration of length, weight, and time, making abstract concepts tangible and applicable.",
+          "image_path": "https://source.unsplash.com/500x500/?measurement",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Length Legends",
+              "description": "A practical dive into the world of length, equipping saplings with essential measuring skills.",
+              "image_path": "https://source.unsplash.com/500x500/?length",
+              "type": "CORE"
+            },
+            {
+              "name": "Weight Wonders",
+              "description": "A captivating investigation of weight, encouraging critical thinking through hands-on experiments.",
+              "image_path": "https://source.unsplash.com/500x500/?weight",
+              "type": "CORE"
+            },
+            {
+              "name": "Time Trekkers",
+              "description": "An engaging lesson on time and its measurement, making sense of the days, hours, and minutes that structure our lives.",
+              "image_path": "https://source.unsplash.com/500x500/?time",
+              "type": "CORE"
+            },
+            {
+              "name": "Measurement Magic",
+              "description": "An elective that makes measurement fun and practical, building foundational skills for everyday life.",
+              "image_path": "https://source.unsplash.com/500x500/?measurement",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Data Detectives",
+          "description": "An enlightening introduction to data and graphs, fostering a sense of curiosity and equipping saplings with tools for informed decision-making.",
+          "image_path": "https://source.unsplash.com/500x500/?data",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Graph Gurus",
+              "description": "A stimulating exploration of graphs, making data visually exciting and accessible.",
+              "image_path": "https://source.unsplash.com/500x500/?graphs",
+              "type": "CORE"
+            },
+            {
+              "name": "Chance Champions",
+              "description": "An entertaining look at probability and chance, developing mathematical intuition and an understanding of likelihood.",
+              "image_path": "https://source.unsplash.com/500x500/?probability",
+              "type": "CORE"
+            },
+            {
+              "name": "Survey Scholars",
+              "description": "A practical lesson on conducting surveys and interpreting results, boosting confidence and critical thinking skills.",
+              "image_path": "https://source.unsplash.com/500x500/?survey",
+              "type": "CORE"
+            },
+            {
+              "name": "Data Wizards",
+              "description": "An elective that delves deeper into the world of data, encouraging logical thinking and the ability to draw meaningful conclusions.",
+              "image_path": "https://source.unsplash.com/500x500/?data",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Money Matters",
+          "description": "An exciting dive into the concept of money, building financial literacy through playful, practical experiences.",
+          "image_path": "https://source.unsplash.com/500x500/?money",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Coin Collectors",
+              "description": "An interactive introduction to the value and use of coins, fostering understanding and responsible money habits.",
+              "image_path": "https://source.unsplash.com/500x500/?coins",
+              "type": "CORE"
+            },
+            {
+              "name": "Bill Busters",
+              "description": "A dynamic lesson on bills and their value, demystifying paper money and its role in transactions.",
+              "image_path": "https://source.unsplash.com/500x500/?bills",
+              "type": "CORE"
+            },
+            {
+              "name": "Savvy Savers",
+              "description": "A motivating exploration of saving and spending money wisely, laying the groundwork for lifelong financial literacy.",
+              "image_path": "https://source.unsplash.com/500x500/?saving",
+              "type": "CORE"
+            },
+            {
+              "name": "Little Entrepreneurs",
+              "description": "An elective that inspires entrepreneurship, combining creative thinking with basic economic principles for a fun, real-world experience.",
+              "image_path": "https://source.unsplash.com/500x500/?entrepreneur",
+              "type": "ELECTIVE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "ee90a562-4b34-4590-9757-cfcb866876d7",
+      "topics_data": [
+        {
+          "name": "Number Ninjas",
+          "description": "A captivating exploration of numbers and operations, instilling a deep understanding of mathematics and its applications.",
+          "image_path": "https://source.unsplash.com/500x500/?numbers",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Number Whizzes",
+              "description": "A dynamic lesson that deepens number sense, sparking curiosity and analytical thinking.",
+              "image_path": "https://source.unsplash.com/500x500/?numbers",
+              "type": "CORE"
+            },
+            {
+              "name": "Operational Masters",
+              "description": "An interactive deep dive into operations, reinforcing mathematical fluency through hands-on activities.",
+              "image_path": "https://source.unsplash.com/500x500/?operations",
+              "type": "CORE"
+            },
+            {
+              "name": "Fraction Fanatics",
+              "description": "An engrossing introduction to fractions and decimals, making them approachable and relatable.",
+              "image_path": "https://source.unsplash.com/500x500/?fractions,decimals",
+              "type": "CORE"
+            },
+            {
+              "name": "Mathematical Puzzlers",
+              "description": "An elective that challenges mathematical reasoning through fun puzzles, promoting critical thinking and problem-solving skills.",
+              "image_path": "https://source.unsplash.com/500x500/?math,puzzles",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Geometry Geniuses",
+          "description": "An exciting adventure into shapes, patterns and spatial reasoning, building a strong geometric foundation.",
+          "image_path": "https://source.unsplash.com/500x500/?geometry",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Shape Shifters",
+              "description": "A stimulating lesson on identifying and creating complex shapes, cultivating observation skills and creative thinking.",
+              "image_path": "https://source.unsplash.com/500x500/?shapes",
+              "type": "CORE"
+            },
+            {
+              "name": "Pattern Pros",
+              "description": "A fascinating exploration of complex patterns in nature and art, fostering analytical thinking and pattern recognition.",
+              "image_path": "https://source.unsplash.com/500x500/?patterns",
+              "type": "CORE"
+            },
+            {
+              "name": "Symmetry Savants",
+              "description": "A deep dive into symmetry in design and nature, nurturing appreciation for balance and aesthetics.",
+              "image_path": "https://source.unsplash.com/500x500/?symmetry",
+              "type": "CORE"
+            },
+            {
+              "name": "Geometric Architects",
+              "description": "An elective that incorporates architecture and design, inspiring creativity and a comprehensive understanding of geometry.",
+              "image_path": "https://source.unsplash.com/500x500/?geometry,architecture",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Measurement Maestros",
+          "description": "A practical exploration of measurement in everyday life, fostering real-world skills and comprehension.",
+          "image_path": "https://source.unsplash.com/500x500/?measurement",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Length Luminaries",
+              "description": "A deeper look into the concept of length, empowering Oaks with essential measuring skills.",
+              "image_path": "https://source.unsplash.com/500x500/?length",
+              "type": "CORE"
+            },
+            {
+              "name": "Weight Wizards",
+              "description": "A thorough investigation of weight and its practical applications, encouraging critical thinking through hands-on experiments.",
+              "image_path": "https://source.unsplash.com/500x500/?weight",
+              "type": "CORE"
+            },
+            {
+              "name": "Time Titans",
+              "description": "An advanced lesson on time and its measurement, facilitating a clear understanding of calendars, clocks, and the passage of time.",
+              "image_path": "https://source.unsplash.com/500x500/?time",
+              "type": "CORE"
+            },
+            {
+              "name": "Measurement Magicians",
+              "description": "An elective that makes measurement engaging and practical, building essential skills for everyday life and future learning.",
+              "image_path": "https://source.unsplash.com/500x500/?measurement",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Data Gurus",
+          "description": "A comprehensive introduction to data, graphs, and statistics, instilling a sense of curiosity and the tools for informed decision-making.",
+          "image_path": "https://source.unsplash.com/500x500/?data",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Graph Geeks",
+              "description": "An advanced exploration of graphs, bringing data to life in visually exciting and accessible ways.",
+              "image_path": "https://source.unsplash.com/500x500/?graphs",
+              "type": "CORE"
+            },
+            {
+              "name": "Probability Professors",
+              "description": "A comprehensive look at probability and chance, developing a keen understanding of likelihood and mathematical prediction.",
+              "image_path": "https://source.unsplash.com/500x500/?probability",
+              "type": "CORE"
+            },
+            {
+              "name": "Survey Savants",
+              "description": "A practical lesson on creating, conducting, and interpreting complex surveys, boosting confidence and critical thinking skills.",
+              "image_path": "https://source.unsplash.com/500x500/?survey",
+              "type": "CORE"
+            },
+            {
+              "name": "Data Scientists",
+              "description": "An elective that delves into data analytics, fostering logical thinking and the ability to draw insightful conclusions.",
+              "image_path": "https://source.unsplash.com/500x500/?data,analytics",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Financial Whizzes",
+          "description": "An enlightening exploration of money and economics, instilling financial literacy through engaging, real-world scenarios.",
+          "image_path": "https://source.unsplash.com/500x500/?money",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Coin Connoisseurs",
+              "description": "A practical lesson on the value and use of different coins and currencies, fostering responsible money habits.",
+              "image_path": "https://source.unsplash.com/500x500/?coins",
+              "type": "CORE"
+            },
+            {
+              "name": "Bill Buffs",
+              "description": "A detailed lesson on bills and their role in financial transactions, demystifying paper money and its value.",
+              "image_path": "https://source.unsplash.com/500x500/?bills",
+              "type": "CORE"
+            },
+            {
+              "name": "Savings Superstars",
+              "description": "An engaging exploration of saving, spending, and investing money wisely, laying the groundwork for lifelong financial literacy.",
+              "image_path": "https://source.unsplash.com/500x500/?saving",
+              "type": "CORE"
+            },
+            {
+              "name": "Young Economists",
+              "description": "An elective that introduces the basic principles of economics, combining critical thinking with fun, real-world activities.",
+              "image_path": "https://source.unsplash.com/500x500/?economics",
+              "type": "ELECTIVE"
             }
           ]
         }
@@ -4631,18 +5100,505 @@ SELECT create_complete_curriculum(
   'Little Learners',
   '2c0970f3-18fe-491f-879e-82e43d50bb57'::uuid,
   'CORE'::module_type,
+
   '[
     {
       "level_id": "ffba7897-2e54-45c7-bfdc-73953451a867",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Budding Biologists",
+                "description": "An awe-inspiring journey into the world of living things, instilling a fascination and respect for nature in our youngest scientists.",
+                "image_path": "https://source.unsplash.com/500x500/?biology",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Plants and Their Parts",
+                        "description": "An introduction to plants and their parts, fostering an early love and appreciation for nature.",
+                        "image_path": "https://source.unsplash.com/500x500/?plants",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Furry Friends",
+                        "description": "An exciting exploration of common animals, promoting empathy and understanding of our furry friends.",
+                        "image_path": "https://source.unsplash.com/500x500/?animals",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Incredible Insects",
+                        "description": "A fun dive into the world of insects, developing a sense of wonder and curiosity about these tiny creatures.",
+                        "image_path": "https://source.unsplash.com/500x500/?insects",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Nature Detectives",
+                        "description": "An elective that encourages outdoor exploration, igniting a lifelong passion for biology and the environment.",
+                        "image_path": "https://source.unsplash.com/500x500/?nature",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "My World and Beyond",
+                "description": "An enticing adventure into space and the Earth, sparking a sense of awe and wonder about the universe in our budding astronauts.",
+                "image_path": "https://source.unsplash.com/500x500/?space,earth",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Little Astronauts",
+                        "description": "An exciting introduction to space and the stars, fuelling dreams of interstellar exploration.",
+                        "image_path": "https://source.unsplash.com/500x500/?astronaut",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Marvelous Moon",
+                        "description": "A fascinating exploration of the moon and its phases, grounding scientific concepts in everyday experiences.",
+                        "image_path": "https://source.unsplash.com/500x500/?moon",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Our Blue Planet",
+                        "description": "A captivating study of Earth and its features, nurturing a love for our planet and its care.",
+                        "image_path": "https://source.unsplash.com/500x500/?earth",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Explorers of the Universe",
+                        "description": "An elective that fosters a deeper understanding of space and Earth, inspiring a sense of wonder and discovery.",
+                        "image_path": "https://source.unsplash.com/500x500/?space,earth",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Wonderful Weather",
+                "description": "An enchanting voyage into the world of weather, enabling an understanding of meteorological phenomena and their daily impact.",
+                "image_path": "https://source.unsplash.com/500x500/?weather",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Sunny Days and Cloudy Skies",
+                        "description": "An engaging exploration of the sun and clouds, revealing the science behind common weather patterns.",
+                        "image_path": "https://source.unsplash.com/500x500/?sun,cloud",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Rain and Rainbows",
+                        "description": "A delightful lesson on rain and rainbows, intertwining science and wonder in everyday phenomena.",
+                        "image_path": "https://source.unsplash.com/500x500/?rain,rainbow",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Wind and Seasons",
+                        "description": "A fun investigation into wind and the changing seasons, cultivating an appreciation for the cycle of the year.",
+                        "image_path": "https://source.unsplash.com/500x500/?wind,seasons",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Junior Meteorologists",
+                        "description": "An elective that nurtures a deeper understanding of weather, fostering an appreciation for the beauty and power of nature.",
+                        "image_path": "https://source.unsplash.com/500x500/?meteorology",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Sensational Scientists",
+                "description": "A lively exploration of the five senses, promoting self-awareness and a fundamental understanding of human biology.",
+                "image_path": "https://source.unsplash.com/500x500/?senses",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Seeing and Hearing",
+                        "description": "An interactive lesson on sight and hearing, unveiling the magic of our sensory experiences.",
+                        "image_path": "https://source.unsplash.com/500x500/?eye,ear",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Touch and Smell",
+                        "description": "A tactile journey into touch and smell, connecting children to their environment in a meaningful way.",
+                        "image_path": "https://source.unsplash.com/500x500/?touch,smell",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Tasting Life",
+                        "description": "A yummy exploration of taste, enhancing understanding and enjoyment of a variety of flavors.",
+                        "image_path": "https://source.unsplash.com/500x500/?taste",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Sensory Detectives",
+                        "description": "An elective that deepens the exploration of senses, encouraging observation, experimentation, and curiosity.",
+                        "image_path": "https://source.unsplash.com/500x500/?senses",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Little Physicists",
+                "description": "A thrilling dive into the laws of physics, bringing abstract concepts to life through engaging, age-appropriate experiments.",
+                "image_path": "https://source.unsplash.com/500x500/?physics",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Fantastic Forces",
+                        "description": "An intriguing exploration of force and motion, making everyday interactions exciting and educational.",
+                        "image_path": "https://source.unsplash.com/500x500/?force,motion",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Magnetic Magic",
+                        "description": "A fun-filled lesson on magnetism, turning everyday materials into sources of amazement and learning.",
+                        "image_path": "https://source.unsplash.com/500x500/?magnet",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Light and Shadows",
+                        "description": "An illuminating study of light and shadows, enhancing perception and understanding of the world.",
+                        "image_path": "https://source.unsplash.com/500x500/?light,shadows",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Physics Fun",
+                        "description": "An elective that extends the physics adventure, fostering a love for science through hands-on experiences.",
+                        "image_path": "https://source.unsplash.com/500x500/?physics",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "eb6f4266-542d-4978-aa87-cd2444cedd46",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Nature Navigators",
+                "description": "An enthralling journey into the wonders of the natural world, inspiring curiosity and nurturing a deep appreciation for the environment.",
+                "image_path": "https://source.unsplash.com/500x500/?nature",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Plant Pioneers",
+                        "description": "A captivating lesson exploring the fascinating world of plants, promoting observation and hands-on interaction with nature.",
+                        "image_path": "https://source.unsplash.com/500x500/?plants",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Animal Adventurers",
+                        "description": "An intriguing dive into the diversity of the animal kingdom, stimulating inquiry and respect for all creatures.",
+                        "image_path": "https://source.unsplash.com/500x500/?animals",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Weather Watchers",
+                        "description": "An exciting exploration of weather patterns and phenomena, fostering understanding of daily and seasonal changes.",
+                        "image_path": "https://source.unsplash.com/500x500/?weather",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Outdoor Explorers",
+                        "description": "An elective that brings learning outdoors, creating a unique platform for experiential, inquiry-based learning.",
+                        "image_path": "https://source.unsplash.com/500x500/?outdoors",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Physical Phenomena",
+                "description": "A fascinating look at physical processes, instilling a love for scientific investigation and practical understanding.",
+                "image_path": "https://source.unsplash.com/500x500/?physics",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Sound Scientists",
+                        "description": "An engrossing lesson on the science of sound, encouraging experimentation with waves and vibrations.",
+                        "image_path": "https://source.unsplash.com/500x500/?sound",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Light Leaders",
+                        "description": "A captivating exploration of light and color, inspiring creativity and appreciation for visual phenomena.",
+                        "image_path": "https://source.unsplash.com/500x500/?light",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Motion Masters",
+                        "description": "A dynamic lesson on the principles of motion and force, making physics tangible and fun.",
+                        "image_path": "https://source.unsplash.com/500x500/?motion",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Invention Inventors",
+                        "description": "An elective that fuels innovation, inviting saplings to create their own contraptions while learning about engineering principles.",
+                        "image_path": "https://source.unsplash.com/500x500/?invention",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Space Cadets",
+                "description": "An inspiring expedition into space, nurturing a sense of wonder and interest in the cosmos.",
+                "image_path": "https://source.unsplash.com/500x500/?space",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Solar System Scholars",
+                        "description": "An awe-inspiring journey through the solar system, broadening understanding of our celestial neighborhood.",
+                        "image_path": "https://source.unsplash.com/500x500/?solar,system",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Astronomy Enthusiasts",
+                        "description": "A deeper dive into the stars and galaxies beyond our solar system, sparking intrigue and a love for astronomy.",
+                        "image_path": "https://source.unsplash.com/500x500/?astronomy",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Rocket Racers",
+                        "description": "An exhilarating lesson on rockets and space travel, fostering dreams of exploration and discovery.",
+                        "image_path": "https://source.unsplash.com/500x500/?rockets",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Alien Anthropologists",
+                        "description": "An elective that imagines life beyond Earth, stimulating creativity and scientific reasoning through fun, fictional scenarios.",
+                        "image_path": "https://source.unsplash.com/500x500/?aliens",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Body Buffs",
+                "description": "A comprehensive exploration of the human body and health, fostering self-care and awareness.",
+                "image_path": "https://source.unsplash.com/500x500/?body",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Sensory Superstars",
+                        "description": "A fun investigation of the five senses, encouraging self-exploration and an understanding of human perception.",
+                        "image_path": "https://source.unsplash.com/500x500/?senses",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Health Heroes",
+                        "description": "A vital lesson on health and hygiene, promoting positive habits and personal responsibility.",
+                        "image_path": "https://source.unsplash.com/500x500/?health",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Nutrition Navigators",
+                        "description": "An appetizing look at food and nutrition, inspiring healthy choices and a love for cooking.",
+                        "image_path": "https://source.unsplash.com/500x500/?nutrition",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Fitness Fanatics",
+                        "description": "An elective that gets saplings moving, teaching the importance of physical fitness through fun exercises and games.",
+                        "image_path": "https://source.unsplash.com/500x500/?fitness",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Chemistry Champions",
+                "description": "An interactive introduction to chemistry, making scientific concepts exciting and relatable.",
+                "image_path": "https://source.unsplash.com/500x500/?chemistry",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Matter Maestros",
+                        "description": "A detailed lesson on the states of matter, offering hands-on experiments to solidify understanding.",
+                        "image_path": "https://source.unsplash.com/500x500/?matter",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Reaction Rangers",
+                        "description": "An exhilarating exploration of chemical reactions, sparking curiosity through fun, safe experiments.",
+                        "image_path": "https://source.unsplash.com/500x500/?reaction",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Solution Sleuths",
+                        "description": "A practical lesson on solutions, mixtures, and separations, promoting investigation and analytical thinking.",
+                        "image_path": "https://source.unsplash.com/500x500/?solution",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Kitchen Chemists",
+                        "description": "An elective that brings chemistry to the kitchen, demonstrating scientific principles through edible experiments.",
+                        "image_path": "https://source.unsplash.com/500x500/?kitchen",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     },
     {
       "level_id": "ee90a562-4b34-4590-9757-cfcb866876d7",
-      "topics_data": []
+      "topics_data":
+        [
+            {
+                "name": "Ecosystem Experts",
+                "description": "A deep dive into the wonders of various ecosystems, fostering respect for biodiversity and environmental conservation.",
+                "image_path": "https://source.unsplash.com/500x500/?ecosystem",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Forest Fact-finders",
+                        "description": "An immersive journey into the forests of the world, inspiring a deeper understanding of these crucial ecosystems.",
+                        "image_path": "https://source.unsplash.com/500x500/?forest",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Ocean Observers",
+                        "description": "A captivating exploration of the ocean‘s depths, stirring curiosity and respect for marine life.",
+                        "image_path": "https://source.unsplash.com/500x500/?ocean",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Desert Detectives",
+                        "description": "A fascinating investigation of desert environments, highlighting the adaptability and resilience of life.",
+                        "image_path": "https://source.unsplash.com/500x500/?desert",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Rainforest Researchers",
+                        "description": "An elective that ventures into the lush rainforests, fostering a keen interest in biodiversity and conservation.",
+                        "image_path": "https://source.unsplash.com/500x500/?rainforest",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Elementary Engineers",
+                "description": "A comprehensive exploration of engineering principles, sparking creativity and problem-solving through exciting design challenges.",
+                "image_path": "https://source.unsplash.com/500x500/?engineering",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Structure Strategists",
+                        "description": "A hands-on lesson on the science behind structures, encouraging imaginative design and practical understanding.",
+                        "image_path": "https://source.unsplash.com/500x500/?structure",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Mechanical Maestros",
+                        "description": "A dynamic exploration of mechanical systems and simple machines, making physics practical and engaging.",
+                        "image_path": "https://source.unsplash.com/500x500/?mechanics",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Electrical Enthusiasts",
+                        "description": "An electrifying lesson on circuits and electricity, promoting safe experimentation and technological literacy.",
+                        "image_path": "https://source.unsplash.com/500x500/?electricity",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Robotics Rangers",
+                        "description": "An elective that dives into the world of robotics, stimulating critical thinking and creativity with engaging coding challenges.",
+                        "image_path": "https://source.unsplash.com/500x500/?robotics",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Quantum Questers",
+                "description": "An exciting introduction to the quantum world, fostering curiosity and a thirst for discovery in advanced science.",
+                "image_path": "https://source.unsplash.com/500x500/?quantum",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Atom Investigators",
+                        "description": "An in-depth look at atoms and particles, sparking a sense of wonder at the building blocks of the universe.",
+                        "image_path": "https://source.unsplash.com/500x500/?atom",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Photon Fanatics",
+                        "description": "A bright exploration of light and photonics, offering insight into the crucial role of light in modern technology.",
+                        "image_path": "https://source.unsplash.com/500x500/?photon",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Energy Explorers",
+                        "description": "A comprehensive lesson on energy and its transformations, equipping students with an essential understanding of scientific principles.",
+                        "image_path": "https://source.unsplash.com/500x500/?energy",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Future Physicists",
+                        "description": "An elective that peeks into the future of physics, inspiring awe and ambition with cutting-edge science topics.",
+                        "image_path": "https://source.unsplash.com/500x500/?future,physics",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Bio Buddies",
+                "description": "An engaging journey through the life sciences, cultivating a love for biology and the complexity of life.",
+                "image_path": "https://source.unsplash.com/500x500/?biology",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Cell Specialists",
+                        "description": "A microscopic adventure into the world of cells, illuminating the inner workings of life on a minute scale.",
+                        "image_path": "https://source.unsplash.com/500x500/?cells",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "DNA Detectives",
+                        "description": "A fascinating investigation into DNA and genetics, fostering appreciation for diversity and the wonder of inheritance.",
+                        "image_path": "https://source.unsplash.com/500x500/?DNA",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Ecology Enthusiasts",
+                        "description": "An enlightening lesson on ecology and the interconnectedness of life, promoting environmental stewardship and global awareness.",
+                        "image_path": "https://source.unsplash.com/500x500/?ecology",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Evolution Experts",
+                        "description": "An elective that explores the theory of evolution, inspiring a sense of awe at the vast scale of biological history.",
+                        "image_path": "https://source.unsplash.com/500x500/?evolution",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "Geo Geniuses",
+                "description": "A stimulating journey through the earth sciences, cultivating respect for the planet and its dynamic nature.",
+                "image_path": "https://source.unsplash.com/500x500/?geology",
+                "type": "CORE",
+                "lessons_data": [
+                    {
+                        "name": "Rock Researchers",
+                        "description": "A hands-on exploration of rocks and minerals, fostering appreciation for the solid foundations of our planet.",
+                        "image_path": "https://source.unsplash.com/500x500/?rocks",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Volcano Voyagers",
+                        "description": "A thrilling investigation of volcanoes and tectonic activity, bringing earth science to life with explosive fun.",
+                        "image_path": "https://source.unsplash.com/500x500/?volcano",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Climate Champions",
+                        "description": "An essential lesson on climate and weather, promoting environmental literacy and stewardship.",
+                        "image_path": "https://source.unsplash.com/500x500/?climate",
+                        "type": "CORE"
+                    },
+                    {
+                        "name": "Paleontology Pioneers",
+                        "description": "An elective that delves into the world of fossils and prehistoric life, sparking a fascination for earth‘s ancient past.",
+                        "image_path": "https://source.unsplash.com/500x500/?fossils",
+                        "type": "ELECTIVE"
+                    }
+                ]
+            }
+        ]
     }
   ]'::json
 );

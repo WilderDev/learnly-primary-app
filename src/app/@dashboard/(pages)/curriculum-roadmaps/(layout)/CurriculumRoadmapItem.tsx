@@ -17,6 +17,9 @@ export default function CurriculumRoadmapItem({ item, idx }: IProps) {
   // * Data
   const { name, type, image, description, completion_percentage, url } = item;
 
+  console.log('name:', name);
+  console.log('url:', url);
+
   // * Render
   return (
     <motion.li
@@ -30,7 +33,7 @@ export default function CurriculumRoadmapItem({ item, idx }: IProps) {
           'group relative h-24 md:h-48 xl:h-64 flex items-center justify-center rounded-lg bg-navy-900 shadow-lg hocus:shadow-xl hocus:scale-105 active:scale-95 transition-all transform-gpu duration-300 ease-in-out', // Base
           type === 'CORE' && 'ring-2 ring-offset-1 ring-blue-500', // Core
         )}
-        href={url}
+        href={url || '/curriculum-roadmaps'}
       >
         {/* Content */}
         <div className="flex flex-col items-center text-center p-4 space-y-2 z-20">

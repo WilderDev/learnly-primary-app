@@ -12,8 +12,6 @@ CREATE TYPE module_type AS ENUM ('CORE', 'ELECTIVE');
 CREATE TYPE progress_status AS ENUM ('IN_PROGRESS', 'COMPLETED', 'SKIPPED', 'LOCKED');
 
 
-
-
 -- * TABLES
 --- Curriculums
 CREATE TABLE curriculums (
@@ -78,6 +76,9 @@ CREATE TABLE curriculum_levels (
 
   -- Level ID
   level_id uuid NOT NULL REFERENCES levels(id),
+
+  -- Level Number
+  level_number SERIAL NOT NULL,
 
   -- Timestamps
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -210,53 +211,191 @@ CREATE TABLE user_curriculum_progress (
 
 -- * VIEWS
 --- Get all Subjects with Progress for a Curriculum
--- CREATE VIEW curriculum_subjects_with_progress_view AS
--- SELECT
---     cs.id,
---     cs.curriculum_id,
---     cs.subject_id,
---     s.name AS subject_name,
---     s.description AS subject_description,
---     s.image_path AS subject_image_path,
---     cs.type AS subject_type,
---     CASE
---         WHEN COALESCE(total_lessons, 0) = 0 THEN 0
---         ELSE (COALESCE(completed_lessons, 0)::decimal / COALESCE(total_lessons, 0)::decimal) * 100
---     END AS completion_percentage
--- FROM
---     curriculum_subjects cs
--- JOIN
---     subjects s ON cs.subject_id = s.id
--- LEFT JOIN (
---     SELECT
---         curriculum_id,
---         COUNT(*) AS total_lessons
---     FROM
---         curriculum_lessons cl
---     GROUP BY
---         curriculum_id
--- ) t1 ON cs.curriculum_id = t1.curriculum_id
--- LEFT JOIN (
---     SELECT
---         ucp.user_curriculum_id,
---         COUNT(*) AS completed_lessons
---     FROM
---         user_curriculum_progress ucp
---     JOIN
---         user_curriculums uc ON ucp.user_curriculum_id = uc.id
---     WHERE
---         ucp.status = 'COMPLETED'
---     GROUP BY
---         ucp.user_curriculum_id
--- ) t2 ON cs.curriculum_id = t2.user_curriculum_id
--- ORDER BY
---     cs.type ASC, completion_percentage ASC;
+CREATE VIEW curriculum_subjects_with_progress_view AS
+SELECT
+    cs.id,
+    cs.curriculum_id,
+    cs.subject_id,
+    s.name AS subject_name,
+    s.description AS subject_description,
+    s.image_path AS subject_image_path,
+    cs.type AS subject_type,
+    CASE
+        WHEN COALESCE(total_lessons, 0) = 0 THEN 0
+        ELSE (COALESCE(completed_lessons, 0)::decimal / COALESCE(total_lessons, 0)::decimal) * 100
+    END AS completion_percentage
+FROM
+    curriculum_subjects cs
+JOIN
+    subjects s ON cs.subject_id = s.id
+LEFT JOIN (
+    SELECT
+        curriculum_subject_id,
+        COUNT(*) AS total_lessons
+    FROM
+        curriculum_levels cl
+    JOIN curriculum_topics ct ON cl.id = ct.curriculum_level_id
+    JOIN curriculum_lessons clsn ON ct.id = clsn.curriculum_topic_id
+    GROUP BY
+        curriculum_subject_id
+) t1 ON cs.id = t1.curriculum_subject_id
+LEFT JOIN (
+    SELECT
+        uc.curriculum_id,
+        COUNT(*) AS completed_lessons
+    FROM
+        user_curriculum_progress ucp
+    JOIN
+        user_curriculums uc ON ucp.user_curriculum_id = uc.id
+    WHERE
+        ucp.status = 'COMPLETED'
+    GROUP BY
+        uc.curriculum_id
+) t2 ON cs.curriculum_id = t2.curriculum_id
+ORDER BY
+    cs.type ASC, completion_percentage ASC;
 
 --- Get all Subject Levels with Progress for a Curriculum
+CREATE VIEW curriculum_levels_with_progress_view AS
+SELECT
+    cl.id,
+    cs.curriculum_id,
+    cs.subject_id,
+    cl.level_id,
+    cl.level_number,
+    lv.animal AS level_description,
+    lv.image_path AS level_image_path,
+    lv.name AS level_name,
+    CASE
+        WHEN COALESCE(total_lessons, 0) = 0 THEN 0
+        ELSE (COALESCE(completed_lessons, 0)::decimal / COALESCE(total_lessons, 0)::decimal) * 100
+    END AS completion_percentage
+FROM
+    curriculum_levels cl
+JOIN
+    levels lv ON cl.level_id = lv.id
+JOIN
+    curriculum_subjects cs ON cl.curriculum_subject_id = cs.id
+LEFT JOIN (
+    SELECT
+        curriculum_level_id,
+        COUNT(*) AS total_lessons
+    FROM
+        curriculum_topics ct
+    JOIN curriculum_lessons clsn ON ct.id = clsn.curriculum_topic_id
+    GROUP BY
+        curriculum_level_id
+) t1 ON cl.id = t1.curriculum_level_id
+LEFT JOIN (
+    SELECT
+        uc.curriculum_id,
+        COUNT(*) AS completed_lessons
+    FROM
+        user_curriculum_progress ucp
+    JOIN
+        user_curriculums uc ON ucp.user_curriculum_id = uc.id
+    WHERE
+        ucp.status = 'COMPLETED'
+    GROUP BY
+        uc.curriculum_id
+) t2 ON cs.curriculum_id = t2.curriculum_id
+ORDER BY
+    cl.level_number ASC;
+
 
 --- Get all Subject Level Topics with Progress for a Curriculum
+CREATE VIEW curriculum_topics_with_progress_view AS
+SELECT
+    ct.id,
+    cs.curriculum_id,
+    cs.subject_id,
+    cl.level_id,
+    lv.name AS level_name,
+    lv.animal AS level_description,
+    tp.name AS topic_name,
+    tp.description AS topic_description,
+    tp.image_path AS topic_image_path,
+    ct.id AS topic_id,
+    ct.type AS topic_type,
+    ct.topic_number,
+    CASE
+        WHEN COALESCE(total_lessons, 0) = 0 THEN 0
+        ELSE (COALESCE(completed_lessons, 0)::decimal / COALESCE(total_lessons, 0)::decimal) * 100
+    END AS completion_percentage
+FROM
+    curriculum_topics ct
+JOIN
+    topics tp ON ct.topic_id = tp.id
+JOIN
+    curriculum_levels cl ON ct.curriculum_level_id = cl.id
+JOIN
+    levels lv ON cl.level_id = lv.id
+JOIN
+    curriculum_subjects cs ON cl.curriculum_subject_id = cs.id
+LEFT JOIN (
+    SELECT
+        curriculum_topic_id,
+        COUNT(*) AS total_lessons
+    FROM
+        curriculum_lessons clsn
+    GROUP BY
+        curriculum_topic_id
+) t1 ON ct.id = t1.curriculum_topic_id
+LEFT JOIN (
+    SELECT
+        uc.curriculum_id,
+        COUNT(*) AS completed_lessons
+    FROM
+        user_curriculum_progress ucp
+    JOIN
+        user_curriculums uc ON ucp.user_curriculum_id = uc.id
+    WHERE
+        ucp.status = 'COMPLETED'
+    GROUP BY
+        uc.curriculum_id
+) t2 ON cs.curriculum_id = t2.curriculum_id
+ORDER BY
+    cl.level_number ASC,
+    ct.topic_number ASC;
+
 
 --- Get all Subject Level Topic Lessons with Progress for a Curriculum
+CREATE VIEW curriculum_lessons_with_progress_view AS
+SELECT
+    cls.id as lesson_id,
+    cs.curriculum_id as curriculum_id,
+    cs.subject_id as subject_id,
+    cl.level_id as level_id,
+    ct.topic_number as topic_number,
+    ct.id as topic_id,
+    cls.name AS lesson_name,
+    cls.description AS lesson_description,
+    cls.image_path AS lesson_image_path,
+    cls.type AS lesson_type,
+    cls.lesson_number,
+    CASE
+        WHEN ucp.status = 'COMPLETED' THEN 100
+        ELSE 0
+    END AS completion_percentage
+FROM
+    curriculum_lessons cls
+JOIN
+    curriculum_topics ct ON cls.curriculum_topic_id = ct.id
+JOIN
+    topics tp ON ct.topic_id = tp.id
+JOIN
+    curriculum_levels cl ON ct.curriculum_level_id = cl.id
+JOIN
+    levels lv ON cl.level_id = lv.id
+JOIN
+    curriculum_subjects cs ON cl.curriculum_subject_id = cs.id
+LEFT JOIN
+    user_curriculum_progress ucp ON ucp.lesson_id = cls.id AND ucp.user_curriculum_id = cs.curriculum_id
+ORDER BY
+    cl.level_number ASC,
+    ct.topic_number ASC,
+    cls.lesson_number ASC;
+
 
 
 -- * FUNCTIONS

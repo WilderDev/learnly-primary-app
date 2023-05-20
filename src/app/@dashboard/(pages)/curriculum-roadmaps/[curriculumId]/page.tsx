@@ -37,7 +37,7 @@ async function getCurriculumRoadmapSubjects(curriculumId: string) {
     .eq('curriculum_id', curriculumId);
 
   // Handle errors
-  if (error || data.length === 0) return redirect('/curriculum-roadmaps');
+  if (error || data.length === 0) return redirect(`/curriculum-roadmaps`);
 
   // Transform data
   const transformedData: ICurriculumListItem[] = data.map((item) => ({
@@ -47,7 +47,7 @@ async function getCurriculumRoadmapSubjects(curriculumId: string) {
     image: item.subject_image_path!,
     description: item.subject_description!,
     completion_percentage: item.completion_percentage!,
-    url: `/curriculum-roadmpas/${curriculumId}/${item.subject_id}`,
+    url: `/curriculum-roadmaps/${curriculumId}/${item.subject_id}`,
   }));
 
   // Return transformed data
