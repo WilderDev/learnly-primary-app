@@ -1258,20 +1258,15 @@ export interface Database {
         Row: {
           completion_percentage: number | null
           curriculum_id: string | null
-          id: string | null
           lesson_description: string | null
           lesson_id: string | null
           lesson_image_path: string | null
           lesson_name: string | null
           lesson_number: number | null
           lesson_type: Database["public"]["Enums"]["module_type"] | null
-          level_description: Database["public"]["Enums"]["animal"] | null
           level_id: string | null
-          level_name: Database["public"]["Enums"]["level"] | null
           subject_id: string | null
-          topic_description: string | null
-          topic_image_path: string | null
-          topic_name: string | null
+          topic_id: string | null
           topic_number: number | null
         }
       }

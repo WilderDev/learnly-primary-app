@@ -56,76 +56,44 @@ async function getCurriculumRoadmapSubjects(curriculumId: string) {
 
 // * Metadata
 export async function generateMetadata({ params: { curriculumId } }: IParams) {
-  const subjects = await getCurriculumRoadmapSubjects(curriculumId);
+  const supabase = supabaseServer(); // Create supabase instance for server-side
+
+  const { data } = await supabase
+    .from('curriculums')
+    .select('id, name, image_path, description')
+    .eq('id', curriculumId)
+    .single();
+
+  const { id, name, image_path, description } = data!;
 
   return {
-    slug: `/curriculum-roadmaps/${curriculumId}`,
-    title: `Curriculum Roadmap Subjects`,
-    image: subjects[0].image,
-    keywords: ['Homeschool Curriculum Roadmap', 'Subjects'],
-    description: `Subjects for the ${subjects[0].name} curriculum roadmap`,
+    slug: `/curriculum-roadmaps/${id}`,
+    title: `Subjects | ${name}`,
+    image: image_path,
+    keywords: ['Homeschool Curriculum Roadmap', name],
+    description: description,
     openGraph: {
-      title: `Curriculum Roadmap Subjects`,
-      description: `Subjects for the ${subjects[0].name} curriculum roadmap`,
+      title: `Subjects | ${name}`,
+      description: description,
       images: [
         {
-          url: subjects[0].image,
+          url: image_path,
           width: 800,
           height: 600,
-          alt: `Curriculum Roadmap Subjects`,
-        },
-        {
-          url: subjects[1].image,
-          width: 800,
-          height: 600,
-          alt: `Curriculum Roadmap Subjects`,
-        },
-        {
-          url: subjects[2].image,
-          width: 800,
-          height: 600,
-          alt: `Curriculum Roadmap Subjects`,
-        },
-        {
-          url: subjects[3].image,
-          width: 800,
-          height: 600,
-          alt: `Curriculum Roadmap Subjects`,
+          alt: name,
         },
       ],
     },
   };
-
-  // return {
-  //   slug: `/lesson-plans/${id}`,
-  //   title,
-  //   image: image_path,
-  //   keywords: ['Homeschool Lesson Plan', title, tags],
-  //   description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
-  //   openGraph: {
-  //     title: title,
-  //     description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
-  //     images: [
-  //       {
-  //         url: image_path,
-  //         width: 800,
-  //         height: 600,
-  //         alt: title,
-  //       },
-  //     ],
-  //   },
-  // };
 }
 
 // * Static Params
 export async function generateStaticParams() {
   const supabase = supabaseServer();
 
-  const { data: lessonPlans } = await supabase
-    .from('lesson_plans')
-    .select('id');
+  const { data: curriculums } = await supabase.from('curriculums').select('id');
 
-  const dynamicRoutes = lessonPlans?.map((lp) => ({ id: lp.id }));
+  const dynamicRoutes = curriculums?.map((c) => ({ id: c.id }));
 
   return dynamicRoutes;
 }

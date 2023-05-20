@@ -7782,10 +7782,11 @@ SELECT create_complete_curriculum(
 );
 
 
+
 -- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 3 topics and all the lessons for those toipcs for Kindergarten Mathematics.
+-- Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten Mathematics.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -7801,24 +7802,7 @@ SELECT create_complete_curriculum(
 --            },
 --           // . . .
 --        ]
---    },
---    {
---        "name": "Advanced Fine Motor Skills",
---        "description": "Perfecting fine motor skills with more complex and creative tasks.",
---        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Advanced Origami",
---                "description": "Creating complex origami figures to promote dexterity and concentration.",
---                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
---                "type": "CORE"
---            },
---           // . . .
---        ]
---    },
---   . . .
-
+-- }
 --- Comprehensive K-5
 ---- Mathematics
 SELECT create_complete_curriculum(
@@ -7856,7 +7840,7 @@ SELECT create_complete_curriculum(
 -- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 3 topics and all the lessons for those toipcs for Kindergarten Science.
+-- Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten Science.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -7872,23 +7856,7 @@ SELECT create_complete_curriculum(
 --            },
 --           // . . .
 --        ]
---    },
---    {
---        "name": "Advanced Fine Motor Skills",
---        "description": "Perfecting fine motor skills with more complex and creative tasks.",
---        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Advanced Origami",
---                "description": "Creating complex origami figures to promote dexterity and concentration.",
---                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
---                "type": "CORE"
---            },
---           // . . .
---        ]
---    },
---   . . .
+-- }
 ---- Science
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -7897,7 +7865,652 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "8787a66e-9e03-42c7-8870-ada6df021491",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Exploring Nature",
+            "description": "Igniting the natural curiosity of kindergarteners, promoting exploration, and fostering a sense of wonder for the natural world.",
+            "image_path": "https://source.unsplash.com/500x500/?nature-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Plants",
+                    "description": "An interactive journey to discover various types of plants and their parts, nurturing a love for green life.",
+                    "image_path": "https://source.unsplash.com/500x500/?plants",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Adventures in Animal Kingdom",
+                    "description": "A virtual safari introducing the diverse animal kingdom and instilling the importance of co-existence.",
+                    "image_path": "https://source.unsplash.com/500x500/?animal",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Weather",
+                    "description": "A playful introduction to different types of weather and how they impact our daily life.",
+                    "image_path": "https://source.unsplash.com/500x500/?weather",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Colorful World of Flowers",
+                    "description": "A vibrant exploration of flowers, their colors, and how they play an essential role in nature.",
+                    "image_path": "https://source.unsplash.com/500x500/?flowers",
+                    "type": "CORE"
+                },
+                {
+                    "name": "All About Seasons",
+                    "description": "Understanding the magic of changing seasons and how it affects the world around us.",
+                    "image_path": "https://source.unsplash.com/500x500/?seasons",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Day and Night",
+                    "description": "Learning the concept of day and night, sun and moon, in a fun and interactive way.",
+                    "image_path": "https://source.unsplash.com/500x500/?day-night",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Magnificent Mini-beasts",
+                    "description": "Getting up close with insects and learning about their important role in our ecosystem.",
+                    "image_path": "https://source.unsplash.com/500x500/?insects",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Habitats",
+                    "description": "An exciting adventure through different habitats and the diverse creatures that call them home.",
+                    "image_path": "https://source.unsplash.com/500x500/?habitats",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Beautiful Butterflies",
+                    "description": "Unraveling the magical journey of caterpillar to butterfly and understanding the concept of metamorphosis.",
+                    "image_path": "https://source.unsplash.com/500x500/?butterflies",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Seeds and Growth",
+                    "description": "A hands-on lesson in planting seeds, understanding their growth, and appreciating the miracle of life.",
+                    "image_path": "https://source.unsplash.com/500x500/?seeds",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Our Bodies and Health",
+            "description": "Creating a strong foundation of understanding our bodies, promoting good health, hygiene, and instilling a sense of care towards self and others.",
+            "image_path": "https://source.unsplash.com/500x500/?kids-health",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Our Five Senses",
+                    "description": "An engaging exploration of the five senses, helping kindergarteners understand how we perceive the world.",
+                    "image_path": "https://source.unsplash.com/500x500/?five-senses",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Keeping Clean",
+                    "description": "Teaching the importance of hygiene, personal cleanliness, and good habits to stay healthy.",
+                    "image_path": "https://source.unsplash.com/500x500/?cleanliness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Our Teeth and Their Care",
+                    "description": "An introduction to the role of teeth, proper brushing techniques, and the significance of oral hygiene.",
+                    "image_path": "https://source.unsplash.com/500x500/?teeth",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Healthy Eating",
+                    "description": "Cultivating an understanding of nutritious foods, the food pyramid, and why balanced meals are essential.",
+                    "image_path": "https://source.unsplash.com/500x500/?healthy-eating",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Fun with Exercise",
+                    "description": "Promoting the benefits of physical activity through fun, exercise-related games and activities.",
+                    "image_path": "https://source.unsplash.com/500x500/?exercise",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Sleep and Rest",
+                    "description": "Learning about the importance of sufficient sleep and rest for our bodies and minds.",
+                    "image_path": "https://source.unsplash.com/500x500/?sleep",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Body Parts and Their Functions",
+                    "description": "A fun-filled journey to learn about different body parts and their basic functions.",
+                    "image_path": "https://source.unsplash.com/500x500/?body-parts",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Feelings",
+                    "description": "Building emotional intelligence by identifying and expressing different feelings and emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?feelings",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Safety First",
+                    "description": "Teaching basic safety rules at home, school, and outdoors to ensure a safe environment for children.",
+                    "image_path": "https://source.unsplash.com/500x500/?safety",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Our Beautiful Skin Colors",
+                    "description": "Celebrating diversity by recognizing and appreciating different skin colors and ethnicities.",
+                    "image_path": "https://source.unsplash.com/500x500/?diversity",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Space and Beyond",
+            "description": "Igniting a love for the cosmos by introducing the fascinating world of stars, planets, and the mysteries of space.",
+            "image_path": "https://source.unsplash.com/500x500/?space-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "The Night Sky",
+                    "description": "A tour of the night sky, exploring constellations, stars, and the moon.",
+                    "image_path": "https://source.unsplash.com/500x500/?night-sky",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Meet the Planets",
+                    "description": "An exciting journey through our solar system, introducing the unique characteristics of each planet.",
+                    "image_path": "https://source.unsplash.com/500x500/?planets",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Amazing Sun",
+                    "description": "Understanding the sun‘s importance, its role in day and night, and how it affects life on earth.",
+                    "image_path": "https://source.unsplash.com/500x500/?sun",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Space Explorers",
+                    "description": "Learning about astronauts, their training, space missions, and life in space.",
+                    "image_path": "https://source.unsplash.com/500x500/?astronaut",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Moon Phases",
+                    "description": "Exploring the moon‘s phases, its craters and the concept of lunar months.",
+                    "image_path": "https://source.unsplash.com/500x500/?moon-phases",
+                    "type": "CORE"
+                },
+                {
+                    "name": "What is Gravity?",
+                    "description": "Introducing the concept of gravity in a fun and engaging manner.",
+                    "image_path": "https://source.unsplash.com/500x500/?gravity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Asteroids and Comets",
+                    "description": "Unraveling the mysteries of asteroids and comets and their impact on Earth.",
+                    "image_path": "https://source.unsplash.com/500x500/?asteroids",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Aliens and Life Beyond",
+                    "description": "A playful exploration of the idea of extraterrestrial life and its possibilities.",
+                    "image_path": "https://source.unsplash.com/500x500/?aliens",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Rocket Science Basics",
+                    "description": "Diving into the basics of rocket science with easy and fun activities.",
+                    "image_path": "https://source.unsplash.com/500x500/?rocket-science",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Star Stories",
+                    "description": "Learning about different constellations and their associated mythologies and stories.",
+                    "image_path": "https://source.unsplash.com/500x500/?constellations",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Understanding Matter",
+            "description": "Introducing the exciting world of matter, its various states, and understanding how it changes from one form to another.",
+            "image_path": "https://source.unsplash.com/500x500/?matter",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "What is Matter?",
+                    "description": "A simple and fun introduction to the concept of matter and its presence in our daily lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?matter",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Solids All Around Us",
+                    "description": "Exploring solids, their characteristics, and examples in our surrounding environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?solids",
+                    "type": "CORE"
+                },
+                {
+                    "name": "World of Liquids",
+                    "description": "Understanding liquids, their properties, and how they differ from solids.",
+                    "image_path": "https://source.unsplash.com/500x500/?liquids",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Gases in our Life",
+                    "description": "Unveiling the invisible world of gases, their properties, and significance in our life.",
+                    "image_path": "https://source.unsplash.com/500x500/?gases",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Changing States: Melting and Freezing",
+                    "description": "Exploring how matter changes state, specifically focusing on melting and freezing.",
+                    "image_path": "https://source.unsplash.com/500x500/?melting-freezing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Changing States: Evaporation and Condensation",
+                    "description": "Understanding the process of evaporation and condensation through engaging experiments.",
+                    "image_path": "https://source.unsplash.com/500x500/?evaporation-condensation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mixing and Separating",
+                    "description": "Exploring how different forms of matter mix together and how they can be separated.",
+                    "image_path": "https://source.unsplash.com/500x500/?mixing-separating",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Density: A Float and Sink Experiment",
+                    "description": "Introducing the concept of density through a fun and interactive float and sink experiment.",
+                    "image_path": "https://source.unsplash.com/500x500/?density",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Invisible Forces: Magnets",
+                    "description": "Discovering the invisible force of magnets and their everyday applications.",
+                    "image_path": "https://source.unsplash.com/500x500/?magnets",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Dissolving Matters",
+                    "description": "Understanding the process of dissolving through simple and safe experiments.",
+                    "image_path": "https://source.unsplash.com/500x500/?dissolving",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Adventures in Earth Science",
+            "description": "Creating a sense of awe for our planet through the exploration of landforms, water bodies, and the rock cycle.",
+            "image_path": "https://source.unsplash.com/500x500/?earth-science",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "The Land We Live On",
+                    "description": "Understanding different landforms and appreciating the beauty and diversity of our planet‘s terrain.",
+                    "image_path": "https://source.unsplash.com/500x500/?landforms",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Water Around Us",
+                    "description": "Exploring the various bodies of water, their characteristics, and the role they play in our lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?water-bodies",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rocks and Minerals",
+                    "description": "Learning about different types of rocks and minerals, their formation, and uses.",
+                    "image_path": "https://source.unsplash.com/500x500/?rocks-minerals",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Rock Cycle",
+                    "description": "Unraveling the journey of a rock through the rock cycle, understanding how it transforms over time.",
+                    "image_path": "https://source.unsplash.com/500x500/?rock-cycle",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Fossils: Stories in Stone",
+                    "description": "Introducing the concept of fossils, how they are formed, and what they tell us about Earth‘s past.",
+                    "image_path": "https://source.unsplash.com/500x500/?fossils",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Volcanoes and Earthquakes",
+                    "description": "Exploring the phenomena of volcanoes and earthquakes, their causes, and effects on our planet.",
+                    "image_path": "https://source.unsplash.com/500x500/?volcanoes-earthquakes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Soil Beneath Our Feet",
+                    "description": "Investigating the composition of soil, its layers, and the role it plays in our environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?soil",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Wonders of Sand",
+                    "description": "Understanding the properties of sand, its origin, and applications through fun hands-on experiments.",
+                    "image_path": "https://source.unsplash.com/500x500/?sand",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Formation of Islands",
+                    "description": "Learning about the creation of islands and exploring some of the most unique islands on Earth.",
+                    "image_path": "https://source.unsplash.com/500x500/?islands",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Mysteries of Caves",
+                    "description": "Discovering the formation of caves, their types, and the creatures that inhabit them.",
+                    "image_path": "https://source.unsplash.com/500x500/?caves",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "The Magic of Weather",
+            "description": "Cultivating a sense of wonder about the ever-changing weather, its patterns, and effects on our daily life.",
+            "image_path": "https://source.unsplash.com/500x500/?weather",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Sunshine and Shadows",
+                    "description": "Understanding sunlight, its effects on temperature, and the formation of shadows.",
+                    "image_path": "https://source.unsplash.com/500x500/?sunshine",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Clouds and Rain",
+                    "description": "Exploring different types of clouds, how rain is formed, and its importance.",
+                    "image_path": "https://source.unsplash.com/500x500/?clouds",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Winds and Storms",
+                    "description": "Learning about winds, storms, and how weather conditions change.",
+                    "image_path": "https://source.unsplash.com/500x500/?storm",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Seasons and Change",
+                    "description": "Understanding the four seasons, how they change, and their impact on the environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?seasons",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Snow and Ice",
+                    "description": "Discovering the science behind snow and ice, its formation and fun facts.",
+                    "image_path": "https://source.unsplash.com/500x500/?snow",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Water Cycle",
+                    "description": "Understanding the water cycle, how it works, and its importance for life on Earth.",
+                    "image_path": "https://source.unsplash.com/500x500/?water-cycle",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Weather Instruments",
+                    "description": "Learning about different instruments that are used to measure weather conditions.",
+                    "image_path": "https://source.unsplash.com/500x500/?weather-instruments",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Extreme Weather Phenomena",
+                    "description": "A fascinating introduction to extreme weather phenomena like tornadoes, hurricanes, and blizzards.",
+                    "image_path": "https://source.unsplash.com/500x500/?extreme-weather",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Reading a Weather Map",
+                    "description": "Learning to interpret weather symbols and read a basic weather map.",
+                    "image_path": "https://source.unsplash.com/500x500/?weather-map",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Weather and Climate Change",
+                    "description": "Discussing climate change, its effects on weather patterns, and how we can help.",
+                    "image_path": "https://source.unsplash.com/500x500/?climate-change",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Plants and Their Friends",
+            "description": "Nurturing an appreciation for plants, understanding their life cycle, and exploring the creatures that live among them.",
+            "image_path": "https://source.unsplash.com/500x500/?plants",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "The Magic of Seeds",
+                    "description": "Understanding seeds, their structure, and the journey they take to become a plant.",
+                    "image_path": "https://source.unsplash.com/500x500/?seeds",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Parts of a Plant",
+                    "description": "Learning about the different parts of a plant and their functions.",
+                    "image_path": "https://source.unsplash.com/500x500/?plant-parts",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Flowers and Fruits",
+                    "description": "Exploring the world of flowers and fruits, their purpose, and how they form.",
+                    "image_path": "https://source.unsplash.com/500x500/?flowers-fruits",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Plants and Sunlight",
+                    "description": "Discovering the importance of sunlight for plants and the process of photosynthesis.",
+                    "image_path": "https://source.unsplash.com/500x500/?sunlight-photosynthesis",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Plant Defenses",
+                    "description": "Learning about various ways plants protect themselves from pests and harsh conditions.",
+                    "image_path": "https://source.unsplash.com/500x500/?plant-defenses",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Plant Needs and Care",
+                    "description": "Understanding the needs of a plant and learning how to care for plants at home.",
+                    "image_path": "https://source.unsplash.com/500x500/?plant-care",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Role of Insects",
+                    "description": "Exploring the important role of insects in the life of plants, including pollination.",
+                    "image_path": "https://source.unsplash.com/500x500/?insects-pollination",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Moss and Ferns",
+                    "description": "Introduction to moss and ferns, understanding their life cycle and unique characteristics.",
+                    "image_path": "https://source.unsplash.com/500x500/?moss-ferns",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Plants and Medicine",
+                    "description": "Learning about medicinal plants and their uses in treating various ailments.",
+                    "image_path": "https://source.unsplash.com/500x500/?medicinal-plants",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Gardening at Home",
+                    "description": "Encouraging hands-on learning by growing a plant from a seed at home.",
+                    "image_path": "https://source.unsplash.com/500x500/?home-gardening",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Wonders of Space",
+            "description": "Embarking on a cosmic journey to explore our solar system, the stars, and the vastness of space.",
+            "image_path": "https://source.unsplash.com/500x500/?space",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Our Solar System",
+                    "description": "An engaging introduction to our solar system, exploring the sun, planets, and their moons.",
+                    "image_path": "https://source.unsplash.com/500x500/?solar-system",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Moon and its Phases",
+                    "description": "Understanding the moon, its phases, and its impact on Earth.",
+                    "image_path": "https://source.unsplash.com/500x500/?moon",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Stars and Constellations",
+                    "description": "Discovering the beauty of stars and constellations, their stories, and how to identify them in the night sky.",
+                    "image_path": "https://source.unsplash.com/500x500/?stars",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Day and Night",
+                    "description": "Learning about the Earth‘s rotation, why we have day and night, and the concept of time zones.",
+                    "image_path": "https://source.unsplash.com/500x500/?day-night",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Sun, Our Star",
+                    "description": "Exploring the sun, its importance, and safety measures when observing the sun.",
+                    "image_path": "https://source.unsplash.com/500x500/?sun",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Wonders of Gravity",
+                    "description": "Understanding gravity, how it works, and its role in our solar system.",
+                    "image_path": "https://source.unsplash.com/500x500/?gravity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Earth, Our Home",
+                    "description": "Learning about Earth‘s unique features that make it suitable for life.",
+                    "image_path": "https://source.unsplash.com/500x500/?earth",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Comets, Asteroids and Meteors",
+                    "description": "Unveiling the mysteries of comets, asteroids, and meteors, and their interactions with our planet.",
+                    "image_path": "https://source.unsplash.com/500x500/?comets-asteroids",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Space Exploration",
+                    "description": "Exploring the history of space exploration, major achievements, and future plans.",
+                    "image_path": "https://source.unsplash.com/500x500/?space-exploration",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Astronauts and Space Travel",
+                    "description": "Learning about astronauts, their training, and the experience of space travel.",
+                    "image_path": "https://source.unsplash.com/500x500/?astronauts",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Inventions and Innovations",
+            "description": "Unveiling the magic of science through the lens of remarkable inventions and technological advancements.",
+            "image_path": "https://source.unsplash.com/500x500/?inventions",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "The Wheel and Its Uses",
+                    "description": "Exploring the invention of the wheel and its wide range of applications.",
+                    "image_path": "https://source.unsplash.com/500x500/?wheel",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Inventors and Their Inventions",
+                    "description": "Inspiring young minds with stories of renowned inventors and their groundbreaking inventions.",
+                    "image_path": "https://source.unsplash.com/500x500/?inventors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Simple Machines Around Us",
+                    "description": "Identifying and understanding the uses of simple machines in our daily life.",
+                    "image_path": "https://source.unsplash.com/500x500/?simple-machines",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Magic of Electricity",
+                    "description": "Introducing the concept of electricity, its generation, and its role in powering our world.",
+                    "image_path": "https://source.unsplash.com/500x500/?electricity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Internet and Computers",
+                    "description": "Exploring the world of computers and the internet, and understanding their significance in the modern world.",
+                    "image_path": "https://source.unsplash.com/500x500/?computers-internet",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Robotics and AI",
+                    "description": "A peek into the fascinating world of robotics and artificial intelligence.",
+                    "image_path": "https://source.unsplash.com/500x500/?robotics-ai",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Green Energy Innovations",
+                    "description": "Discussing the importance of green energy innovations for a sustainable future.",
+                    "image_path": "https://source.unsplash.com/500x500/?green-energy",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Scientific Wonders of the Ancient World",
+            "description": "Exploring ancient civilizations‘ scientific knowledge and marvels, fostering an appreciation for their ingenuity.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-world",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Egyptian Pyramids and Mathematics",
+                    "description": "Learning about the Egyptian pyramids and the ancient Egyptians‘ understanding of mathematics.",
+                    "image_path": "https://source.unsplash.com/500x500/?egyptian-pyramids",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Greek Philosophers and Natural Sciences",
+                    "description": "Exploring the contributions of ancient Greek philosophers to the natural sciences.",
+                    "image_path": "https://source.unsplash.com/500x500/?greek-philosophers",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Roman Engineering and Architecture",
+                    "description": "Understanding the marvels of Roman engineering and architecture, like aqueducts and the Colosseum.",
+                    "image_path": "https://source.unsplash.com/500x500/?roman-engineering",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Astronomy in Ancient Civilizations",
+                    "description": "Exploring the understanding and significance of astronomy in various ancient civilizations.",
+                    "image_path": "https://source.unsplash.com/500x500/?ancient-astronomy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Medicine in the Ancient World",
+                    "description": "Understanding the development of medicine and health practices in ancient civilizations.",
+                    "image_path": "https://source.unsplash.com/500x500/?ancient-medicine",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Ancient Indian Science and Technology",
+                    "description": "Exploring the scientific and technological advancements of ancient India, including Ayurveda and zero‘s concept.",
+                    "image_path": "https://source.unsplash.com/500x500/?ancient-india",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Chinese Inventions and Discoveries",
+                    "description": "Learning about significant inventions and discoveries from ancient China, like paper and the compass.",
+                    "image_path": "https://source.unsplash.com/500x500/?ancient-china",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
@@ -7925,7 +8538,7 @@ SELECT create_complete_curriculum(
 -- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 3 topics and all the lessons for those toipcs for Kindergarten English.
+-- Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten English.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -7941,23 +8554,7 @@ SELECT create_complete_curriculum(
 --            },
 --           // . . .
 --        ]
---    },
---    {
---        "name": "Advanced Fine Motor Skills",
---        "description": "Perfecting fine motor skills with more complex and creative tasks.",
---        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Advanced Origami",
---                "description": "Creating complex origami figures to promote dexterity and concentration.",
---                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
---                "type": "CORE"
---            },
---           // . . .
---        ]
---    },
---   . . .
+-- }
 ---- English
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -7994,7 +8591,7 @@ SELECT create_complete_curriculum(
 -- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 3 topics and all the lessons for those toipcs for Kindergarten Social Studies.
+-- Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten Social Studies.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -8010,23 +8607,7 @@ SELECT create_complete_curriculum(
 --            },
 --           // . . .
 --        ]
---    },
---    {
---        "name": "Advanced Fine Motor Skills",
---        "description": "Perfecting fine motor skills with more complex and creative tasks.",
---        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Advanced Origami",
---                "description": "Creating complex origami figures to promote dexterity and concentration.",
---                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
---                "type": "CORE"
---            },
---           // . . .
---        ]
---    },
---   . . .
+-- }
 ---- Social Studies
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -8063,7 +8644,7 @@ SELECT create_complete_curriculum(
 -- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 4 topics and all the lessons for those toipcs for Kindergarten Physical Development.
+-- Right Now, your job is to create the first 4 topics and ALL the lessons for those topics for Kindergarten Physical Development.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -8079,23 +8660,29 @@ SELECT create_complete_curriculum(
 --            },
 --           // . . .
 --        ]
---    },
---    {
---        "name": "Advanced Fine Motor Skills",
---        "description": "Perfecting fine motor skills with more complex and creative tasks.",
---        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
+-- }
+-- Every subject has 6 levels (Kindergarten, 1, 2, 3, 4, 5). Every level has 9 topics (7 CORE and 2 ELECTIVE). Every topic has 7 lessons (5 CORE and 2 ELECTIVE). Create the 7 lessons (5 CORE and 2 ELECTIVE) for the first 2 topics for Kindergarten Physical Development.
+--
+-- Here is what the JSON output should look like:
+-- ```
+-- {
+--        "name": "Topic name",
+--        "description": "Short inspiring description",
+--        "image_path": "https://source.unsplash.com/500x500/?topic-name",
 --        "type": "CORE",
 --        "lessons_data": [
 --            {
---                "name": "Advanced Origami",
---                "description": "Creating complex origami figures to promote dexterity and concentration.",
---                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
+--                "name": "Lesson name",
+--                "description": "Short inspiring description",
+--                "image_path": "https://source.unsplash.com/500x500/?lesson-name",
 --                "type": "CORE"
 --            },
 --           // . . .
 --        ]
---    },
---   . . .
+-- },
+-- // . . .
+-- ```
+
 ---- Physical Development (Health/PE)
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -8133,7 +8720,7 @@ SELECT create_complete_curriculum(
 -- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 4 topics and all the lessons for those toipcs for Kindergarten Creative Arts.
+-- Right Now, your job is to create the first 4 topics and ALL the lessons for those topics for Kindergarten Creative Arts.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -8149,23 +8736,7 @@ SELECT create_complete_curriculum(
 --            },
 --           // . . .
 --        ]
---    },
---    {
---        "name": "Advanced Fine Motor Skills",
---        "description": "Perfecting fine motor skills with more complex and creative tasks.",
---        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Advanced Origami",
---                "description": "Creating complex origami figures to promote dexterity and concentration.",
---                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
---                "type": "CORE"
---            },
---           // . . .
---        ]
---    },
---   . . .
+-- }
 ---- Creative Arts
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -8203,7 +8774,7 @@ SELECT create_complete_curriculum(
 -- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 4 topics and all the lessons for those toipcs for Kindergarten Social Emotional Learning.
+-- Right Now, your job is to create the first 4 topics and ALL the lessons for those topics for Kindergarten Social Emotional Learning.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -8219,23 +8790,7 @@ SELECT create_complete_curriculum(
 --            },
 --           // . . .
 --        ]
---    },
---    {
---        "name": "Advanced Fine Motor Skills",
---        "description": "Perfecting fine motor skills with more complex and creative tasks.",
---        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Advanced Origami",
---                "description": "Creating complex origami figures to promote dexterity and concentration.",
---                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
---                "type": "CORE"
---            },
---           // . . .
---        ]
---    },
---   . . .
+-- }
 ---- Social Emotional Learning
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -8273,7 +8828,7 @@ SELECT create_complete_curriculum(
 -- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 4 topics and all the lessons for those toipcs for Kindergarten Computer Science.
+-- Right Now, your job is to create the first 4 topics and ALL the lessons for those topics for Kindergarten Computer Science.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -8289,23 +8844,7 @@ SELECT create_complete_curriculum(
 --            },
 --           // . . .
 --        ]
---    },
---    {
---        "name": "Advanced Fine Motor Skills",
---        "description": "Perfecting fine motor skills with more complex and creative tasks.",
---        "image_path": "https://source.unsplash.com/500x500/?advanced-fine-motor-skills",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Advanced Origami",
---                "description": "Creating complex origami figures to promote dexterity and concentration.",
---                "image_path": "https://source.unsplash.com/500x500/?advanced-origami",
---                "type": "CORE"
---            },
---           // . . .
---        ]
---    },
---   . . .
+-- }
 ---- Computer Science
 SELECT create_complete_curriculum(
   'Comprehensive K-5',

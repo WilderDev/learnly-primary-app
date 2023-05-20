@@ -58,3 +58,54 @@ async function getCurriculumRoadmapLevels(
   // Return transformed data
   return transformedData;
 }
+
+// * Metadata
+export async function generateMetadata({ params: { curriculumId } }: IParams) {
+  const supabase = supabaseServer(); // Create supabase instance for server-side
+
+  const { data } = await supabase
+    .from('curriculums')
+    .select('id, name, image_path, description')
+    .eq('id', curriculumId)
+    .single();
+
+  const { id, name, image_path, description } = data!;
+
+  return {
+    slug: `/curriculum-roadmaps/${id}`,
+    title: `Levels | ${name}`,
+    image: image_path,
+    keywords: ['Homeschool Curriculum Roadmap', name],
+    description: description,
+    openGraph: {
+      title: `Levels | ${name}`,
+      description: description,
+      images: [
+        {
+          url: image_path,
+          width: 800,
+          height: 600,
+          alt: name,
+        },
+      ],
+    },
+  };
+}
+
+// * Static Params
+export async function generateStaticParams() {
+  const supabase = supabaseServer();
+
+  const { data: subjects } = await supabase
+    .from('curriculum_levels_with_progress_view')
+    .select('id, curriculum_id');
+
+  console.log('subjects:', subjects);
+
+  const dynamicRoutes = subjects?.map((subject) => ({
+    curriculumId: subject.curriculum_id,
+    subjectId: subject.id,
+  }));
+
+  return dynamicRoutes || [];
+}
