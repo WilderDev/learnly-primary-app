@@ -17,9 +17,6 @@ export default function CurriculumRoadmapItem({ item, idx }: IProps) {
   // * Data
   const { name, type, image, description, completion_percentage, url } = item;
 
-  console.log('name:', name);
-  console.log('url:', url);
-
   // * Render
   return (
     <motion.li
@@ -31,7 +28,7 @@ export default function CurriculumRoadmapItem({ item, idx }: IProps) {
       <Link
         className={cn(
           'group relative h-24 md:h-48 xl:h-64 flex items-center justify-center rounded-lg bg-navy-900 shadow-lg hocus:shadow-xl hocus:scale-105 active:scale-95 transition-all transform-gpu duration-300 ease-in-out', // Base
-          type === 'CORE' && 'ring-2 ring-offset-1 ring-blue-500', // Core
+          type === 'CORE' && 'ring-2 ring-offset-2 ring-blue-500', // Core
         )}
         href={url || '/curriculum-roadmaps'}
       >
@@ -61,6 +58,21 @@ export default function CurriculumRoadmapItem({ item, idx }: IProps) {
         />
 
         {/* Progress Bubble */}
+        <div
+          className={cn(
+            'absolute right-0 top-0 sm:flex sm:m-3 items-center justify-center hidden sm:p-3 rounded-full font-semibold text-xs bg-navy-800',
+            completion_percentage === 100 && 'text-green-50',
+            completion_percentage < 100 &&
+              completion_percentage >= 50 &&
+              'text-blue-50',
+            completion_percentage < 50 &&
+              completion_percentage >= 25 &&
+              'text-yellow-50',
+            completion_percentage < 25 && 'text-red-50',
+          )}
+        >
+          {completion_percentage}%
+        </div>
       </Link>
     </motion.li>
   );
