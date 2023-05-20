@@ -119,12 +119,13 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
   return (
     <>
       {/* Lesson Plan Form */}
-      <Form onSubmit={handleCreateLessonPlan}>
+      <Form className="lg:grid-cols-3" onSubmit={handleCreateLessonPlan}>
         {/* Section 1 - Lesson Style */}
         <LessonCreatorFormSection
+          small={true}
           title="Lesson Style"
           description="What type of lesson is this?"
-          colNum={2}
+          colNum={1}
           showAdvancedOptions={false}
         >
           {/* Philosophy (Select) */}
@@ -133,7 +134,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
             options={createSelectOptions(philosophyOptions)}
             value={philosophy}
             setValue={setPhilosophy as Dispatch<SetStateAction<string>>}
-            cols={2}
+            cols={1}
             icon={BookOpenIcon}
           />
 
@@ -160,6 +161,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
 
         {/* Section 2 - Lesson Requests */}
         <LessonCreatorFormSection
+          small={true}
           title="Lesson Requests"
           description="What else do you want to include in this lesson?"
           colNum={2}
@@ -177,7 +179,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
 
         {/* Submit Button */}
         <Button
-          className="md:col-start-2 lg:col-start-4"
+          className="md:col-start-2 lg:col-start-3"
           type="submit"
           loading={loading}
           disabled={loading}

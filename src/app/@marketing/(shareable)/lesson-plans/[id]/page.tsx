@@ -28,7 +28,7 @@ export default async function PublicLessonPlanPage({
     <Main>
       <Container>
         {/* Body */}
-        <main className="relative mx-auto bg-white dark:bg-navy-800 p-6 print:my-0 max-w-3xl rounded-lg shadow-lg">
+        <section className="relative mx-auto bg-white dark:bg-navy-800 p-6 print:my-0 max-w-3xl rounded-lg shadow-lg">
           {/* Info */}
           <div className="mb-6 flex flex-col print:hidden">
             {/* Top */}
@@ -58,7 +58,7 @@ export default async function PublicLessonPlanPage({
 
           {/* Big Share Button */}
           <ShareButton id={lessonPlan.id} />
-        </main>
+        </section>
 
         {/* <TryLearningCTA /> TSK */}
       </Container>

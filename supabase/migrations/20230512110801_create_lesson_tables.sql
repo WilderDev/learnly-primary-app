@@ -63,6 +63,9 @@ CREATE TABLE levels (
   -- Name
   name level NOT NULL,
 
+  -- Description
+  description text NOT NULL,
+
   -- Animal
   animal animal NOT NULL,
 

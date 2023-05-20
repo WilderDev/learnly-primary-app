@@ -1413,6 +1413,33 @@ export interface Database {
           topic: string | null
         }
       }
+      shareable_curriculum_levels_view: {
+        Row: {
+          curriculum_id: string | null
+          curriculum_name: string | null
+          id: string | null
+          level_description: Database["public"]["Enums"]["animal"] | null
+          level_image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          subject_description: string | null
+          subject_id: string | null
+          subject_image_path: string | null
+          subject_name: string | null
+        }
+      }
+      shareable_curriculum_subjects_view: {
+        Row: {
+          curriculum_description: string | null
+          curriculum_id: string | null
+          curriculum_image_path: string | null
+          curriculum_name: string | null
+          id: string | null
+          subject_description: string | null
+          subject_image_path: string | null
+          subject_name: string | null
+          type: Database["public"]["Enums"]["module_type"] | null
+        }
+      }
       teacher_me_view: {
         Row: {
           avatar_url: string | null

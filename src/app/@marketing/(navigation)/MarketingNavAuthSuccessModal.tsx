@@ -50,7 +50,14 @@ export default function MarketingNavAuthSuccessModal({
   close,
 }: IProps) {
   return (
-    <Modal size="xs" isVisible={isOpen} close={close} rounded="lg" shadow="lg">
+    <Modal
+      size="xs"
+      isVisible={isOpen}
+      close={close}
+      rounded="lg"
+      shadow="lg"
+      noCloseOnOutsideClick={true}
+    >
       {/* Message */}
       <div className="flex flex-col items-center justify-center">
         <h3 className="text-center text-lg font-semibold text-green-600 dark:text-green-500 md:text-xl">

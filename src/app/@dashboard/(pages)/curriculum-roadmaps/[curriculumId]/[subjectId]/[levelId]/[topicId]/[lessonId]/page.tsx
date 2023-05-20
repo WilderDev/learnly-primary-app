@@ -36,7 +36,7 @@ export default async function CurriculumRoadmapLessonPage({
   return (
     <>
       {/* Main Column */}
-      <DashMainCol className="xl:col-span-9">
+      <DashMainCol>
         {/* Form */}
         <DashPanel colNum={1}>
           <DashPanelHeader title={`Create "${lesson.name}" Lesson`} />
@@ -45,7 +45,7 @@ export default async function CurriculumRoadmapLessonPage({
       </DashMainCol>
 
       {/* Side Column */}
-      <DashSideCol className="xl:col-span-3">
+      <DashSideCol>
         {/* Community Lessons */}
         <DashPanel colNum={1}>
           <DashPanelHeader title="Community Creations" />

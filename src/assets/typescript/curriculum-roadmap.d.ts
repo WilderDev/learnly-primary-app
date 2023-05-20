@@ -10,6 +10,14 @@ export interface ICurriculumListItem {
   type?: Database['public']['Enums']['module_type'];
 }
 
+export interface IShareableCurriculumListItem {
+  id: string;
+  name: string;
+  description: string;
+  imagePath: string;
+  url: string;
+}
+
 export interface ICurriculumLessonPromptReq {
   curriculum: string;
   subject: string;

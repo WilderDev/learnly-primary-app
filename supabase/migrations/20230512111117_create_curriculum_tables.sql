@@ -263,7 +263,7 @@ SELECT
     cs.subject_id,
     cl.level_id,
     cl.level_number,
-    lv.animal AS level_description,
+    lv.description AS level_description,
     lv.image_path AS level_image_path,
     lv.name AS level_name,
     CASE
@@ -396,6 +396,46 @@ ORDER BY
     ct.topic_number ASC,
     cls.lesson_number ASC;
 
+--- Shareable Curriculum View
+
+--- Shareable Curriculum Subjects View
+CREATE VIEW shareable_curriculum_subjects_view AS
+SELECT
+  cs.id,
+  cs.type,
+  c.id AS curriculum_id,
+  c.name AS curriculum_name,
+  c.description AS curriculum_description,
+  c.image_path AS curriculum_image_path,
+  s.name AS subject_name,
+  s.description AS subject_description,
+  s.image_path AS subject_image_path
+FROM curriculum_subjects cs
+JOIN curriculums c ON cs.curriculum_id = c.id
+JOIN subjects s ON cs.subject_id = s.id
+WHERE c.status = 'PUBLISHED' AND c.is_public = TRUE
+ORDER BY cs.type ASC;
+
+--- Shareable Curriculum Levels View
+CREATE VIEW shareable_curriculum_levels_view AS
+SELECT
+  clv.id,
+  c.id AS curriculum_id,
+  c.name AS curriculum_name,
+  cs.id AS subject_id,
+  s.name AS subject_name,
+  s.description AS subject_description,
+  s.image_path AS subject_image_path,
+  lv.name AS level_name,
+  lv.description AS level_description,
+  lv.image_path AS level_image_path
+FROM curriculum_levels clv
+JOIN levels lv ON clv.level_id = lv.id
+JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
+JOIN subjects s ON cs.subject_id = s.id
+JOIN curriculums c ON cs.curriculum_id = c.id
+WHERE c.status = 'PUBLISHED' AND c.is_public = TRUE
+ORDER BY cs.type ASC;
 
 
 -- * FUNCTIONS
