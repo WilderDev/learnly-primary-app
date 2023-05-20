@@ -9,8 +9,9 @@ interface IProps {
   title: string;
   description: string;
   colNum: number;
-  isShowingAdvancedOptions: boolean;
-  toggleAdvancedOptions: () => void;
+  isShowingAdvancedOptions?: boolean;
+  toggleAdvancedOptions?: () => void;
+  showAdvancedOptions?: boolean;
 }
 
 export default function LessonCreatorFormSection({
@@ -20,6 +21,7 @@ export default function LessonCreatorFormSection({
   colNum,
   isShowingAdvancedOptions,
   toggleAdvancedOptions,
+  showAdvancedOptions = true,
 }: IProps) {
   // * State
 
@@ -44,17 +46,19 @@ export default function LessonCreatorFormSection({
         </p>
 
         {/* Hide/Show Advanced Options */}
-        <div className="mt-3 flex items-center">
-          <AdjustmentsHorizontalIcon className="mr-1 h-4 w-4 text-blue-400/80 dark:text-navy-300/90" />
+        {showAdvancedOptions && (
+          <div className="mt-3 flex items-center">
+            <AdjustmentsHorizontalIcon className="mr-1 h-4 w-4 text-blue-400/80 dark:text-navy-300/90" />
 
-          <button
-            className="text-xs text-blue-500/80 dark:text-blue-300/90"
-            type="button"
-            onClick={toggleAdvancedOptions}
-          >
-            {isShowingAdvancedOptions ? 'Less Options' : 'More Options'}
-          </button>
-        </div>
+            <button
+              className="text-xs text-blue-500/80 dark:text-blue-300/90"
+              type="button"
+              onClick={toggleAdvancedOptions}
+            >
+              {isShowingAdvancedOptions ? 'Less Options' : 'More Options'}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Section Body */}

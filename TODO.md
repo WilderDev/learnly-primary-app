@@ -26,7 +26,8 @@
 26. Fix Facebook Open Graph Image on Lesson Plans and test
 27. help-center/faq page
 28. Users can create their own lessons, topics, subjects, and curriculum
-29. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+29. Generate Metadata on @dashboard /curriculum-roadmaps should change the query to get the curriculum name as well so we can use the same query and instead of Topics | Little Learners it would be Topics | Mathematics | Little Learners
+30. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 
     ```tsx
     <a

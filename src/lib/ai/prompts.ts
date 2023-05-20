@@ -1,3 +1,4 @@
+import { IAICurriculumLessonPlanPostReq } from '@/app/api/ai/lesson-plans/curriculum/route';
 import { IAILessonPlanPostReq } from '@/app/api/ai/lesson-plans/route';
 
 // * Generate Lesson Plan Prompt
@@ -102,4 +103,71 @@ export function generateLessonPlanPrompt({
   `;
 
   return prompt.trim();
+}
+
+export function generateCurriculumLessonPlanPrompt({
+  lessonBody,
+  teacherBody,
+  studentsBody,
+}: IAICurriculumLessonPlanPostReq) {
+  const {
+    curriculum,
+    subject,
+    level,
+    topic,
+    lessonName,
+    lessonDescription,
+    philosophy,
+    difficulty,
+    length_in_min,
+    additional_requests,
+  } = lessonBody;
+
+  const { name, role, teaching_preferences } = teacherBody; // TSK
+
+  // Generate the students section
+  const studentsSection =
+    studentsBody
+      ?.map(
+        (student, index) =>
+          `- Student ${index + 1}: ${student.name}, Age: ${
+            student.age
+          }, Learning Styles: ${student?.learning_styles?.join(', ')}
+            `,
+      )
+      ?.join('\n') || '';
+
+  // Add the special considerations section if it exists
+  const additionalRequestsSection = additional_requests
+    ? `Please follow these additional requests: ${additional_requests}.`
+    : '';
+
+  const prompt = `
+You are a lesson plan generator for homeschool parents.
+
+Create a detailed and well-structured lesson plan that includes time allocation for each activity.
+
+The class is for curriculum: ${curriculum}, subject: ${subject}, topic: ${topic}, (Grade Level: ${level}).
+
+The Lesson is called: ${lessonName}, and the description is: ${lessonDescription}.
+
+The philosophy is ${philosophy}.
+
+The difficulty level is ${difficulty}.
+
+The lesson's length is ${length_in_min} minutes.
+
+The students (children) are:
+${studentsSection}
+
+${additionalRequestsSection}
+
+Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson.
+
+Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Important!
+
+Return the lesson plan in clean markdown format.
+    `.trim();
+
+  return prompt;
 }

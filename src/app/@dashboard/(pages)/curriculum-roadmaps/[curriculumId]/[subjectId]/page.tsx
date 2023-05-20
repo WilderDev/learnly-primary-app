@@ -100,8 +100,6 @@ export async function generateStaticParams() {
     .from('curriculum_levels_with_progress_view')
     .select('id, curriculum_id');
 
-  console.log('subjects:', subjects);
-
   const dynamicRoutes = subjects?.map((subject) => ({
     curriculumId: subject.curriculum_id,
     subjectId: subject.id,

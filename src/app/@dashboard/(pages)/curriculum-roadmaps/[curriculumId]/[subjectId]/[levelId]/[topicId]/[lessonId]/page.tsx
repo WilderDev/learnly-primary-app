@@ -1,5 +1,12 @@
+import DashMainCol from '@/app/@dashboard/(layout)/DashMainCol';
+import {
+  DashPanel,
+  DashPanelHeader,
+} from '@/app/@dashboard/(layout)/DashPanel';
+import DashSideCol from '@/app/@dashboard/(layout)/DashSideCol';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { redirect } from 'next/navigation';
+import CurriculumLessonForm from './CurriculumLessonForm';
 
 // * IParams
 interface IParams {
@@ -28,7 +35,23 @@ export default async function CurriculumRoadmapLessonPage({
   // * Render
   return (
     <>
-      <h1>Lesson: {lesson.name}</h1>
+      {/* Main Column */}
+      <DashMainCol className="xl:col-span-9">
+        {/* Form */}
+        <DashPanel colNum={1}>
+          <DashPanelHeader title={`Create "${lesson.name}" Lesson`} />
+          <CurriculumLessonForm lesson={lesson} />
+        </DashPanel>
+      </DashMainCol>
+
+      {/* Side Column */}
+      <DashSideCol className="xl:col-span-3">
+        {/* Community Lessons */}
+        <DashPanel colNum={1}>
+          <DashPanelHeader title="Community Creations" />
+          {/* TSK */}
+        </DashPanel>
+      </DashSideCol>
     </>
   );
 }

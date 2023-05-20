@@ -7863,676 +7863,2244 @@ SELECT create_complete_curriculum(
   '2c0970f3-18fe-491f-879e-82e43d50bb57'::uuid,
   'CORE'::module_type,
   '[
-    {
-      "level_id": "8787a66e-9e03-42c7-8870-ada6df021491",
-      "topics_data": [
-        {
-            "name": "Exploring Nature",
-            "description": "Igniting the natural curiosity of kindergarteners, promoting exploration, and fostering a sense of wonder for the natural world.",
-            "image_path": "https://source.unsplash.com/500x500/?nature-kids",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Introduction to Plants",
-                    "description": "An interactive journey to discover various types of plants and their parts, nurturing a love for green life.",
-                    "image_path": "https://source.unsplash.com/500x500/?plants",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Adventures in Animal Kingdom",
-                    "description": "A virtual safari introducing the diverse animal kingdom and instilling the importance of co-existence.",
-                    "image_path": "https://source.unsplash.com/500x500/?animal",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Weather",
-                    "description": "A playful introduction to different types of weather and how they impact our daily life.",
-                    "image_path": "https://source.unsplash.com/500x500/?weather",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Colorful World of Flowers",
-                    "description": "A vibrant exploration of flowers, their colors, and how they play an essential role in nature.",
-                    "image_path": "https://source.unsplash.com/500x500/?flowers",
-                    "type": "CORE"
-                },
-                {
-                    "name": "All About Seasons",
-                    "description": "Understanding the magic of changing seasons and how it affects the world around us.",
-                    "image_path": "https://source.unsplash.com/500x500/?seasons",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Day and Night",
-                    "description": "Learning the concept of day and night, sun and moon, in a fun and interactive way.",
-                    "image_path": "https://source.unsplash.com/500x500/?day-night",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Magnificent Mini-beasts",
-                    "description": "Getting up close with insects and learning about their important role in our ecosystem.",
-                    "image_path": "https://source.unsplash.com/500x500/?insects",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Introduction to Habitats",
-                    "description": "An exciting adventure through different habitats and the diverse creatures that call them home.",
-                    "image_path": "https://source.unsplash.com/500x500/?habitats",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Beautiful Butterflies",
-                    "description": "Unraveling the magical journey of caterpillar to butterfly and understanding the concept of metamorphosis.",
-                    "image_path": "https://source.unsplash.com/500x500/?butterflies",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Seeds and Growth",
-                    "description": "A hands-on lesson in planting seeds, understanding their growth, and appreciating the miracle of life.",
-                    "image_path": "https://source.unsplash.com/500x500/?seeds",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Our Bodies and Health",
-            "description": "Creating a strong foundation of understanding our bodies, promoting good health, hygiene, and instilling a sense of care towards self and others.",
-            "image_path": "https://source.unsplash.com/500x500/?kids-health",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Our Five Senses",
-                    "description": "An engaging exploration of the five senses, helping kindergarteners understand how we perceive the world.",
-                    "image_path": "https://source.unsplash.com/500x500/?five-senses",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Keeping Clean",
-                    "description": "Teaching the importance of hygiene, personal cleanliness, and good habits to stay healthy.",
-                    "image_path": "https://source.unsplash.com/500x500/?cleanliness",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Our Teeth and Their Care",
-                    "description": "An introduction to the role of teeth, proper brushing techniques, and the significance of oral hygiene.",
-                    "image_path": "https://source.unsplash.com/500x500/?teeth",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Healthy Eating",
-                    "description": "Cultivating an understanding of nutritious foods, the food pyramid, and why balanced meals are essential.",
-                    "image_path": "https://source.unsplash.com/500x500/?healthy-eating",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Fun with Exercise",
-                    "description": "Promoting the benefits of physical activity through fun, exercise-related games and activities.",
-                    "image_path": "https://source.unsplash.com/500x500/?exercise",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Sleep and Rest",
-                    "description": "Learning about the importance of sufficient sleep and rest for our bodies and minds.",
-                    "image_path": "https://source.unsplash.com/500x500/?sleep",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Body Parts and Their Functions",
-                    "description": "A fun-filled journey to learn about different body parts and their basic functions.",
-                    "image_path": "https://source.unsplash.com/500x500/?body-parts",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Feelings",
-                    "description": "Building emotional intelligence by identifying and expressing different feelings and emotions.",
-                    "image_path": "https://source.unsplash.com/500x500/?feelings",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Safety First",
-                    "description": "Teaching basic safety rules at home, school, and outdoors to ensure a safe environment for children.",
-                    "image_path": "https://source.unsplash.com/500x500/?safety",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Our Beautiful Skin Colors",
-                    "description": "Celebrating diversity by recognizing and appreciating different skin colors and ethnicities.",
-                    "image_path": "https://source.unsplash.com/500x500/?diversity",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Space and Beyond",
-            "description": "Igniting a love for the cosmos by introducing the fascinating world of stars, planets, and the mysteries of space.",
-            "image_path": "https://source.unsplash.com/500x500/?space-kids",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "The Night Sky",
-                    "description": "A tour of the night sky, exploring constellations, stars, and the moon.",
-                    "image_path": "https://source.unsplash.com/500x500/?night-sky",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Meet the Planets",
-                    "description": "An exciting journey through our solar system, introducing the unique characteristics of each planet.",
-                    "image_path": "https://source.unsplash.com/500x500/?planets",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Amazing Sun",
-                    "description": "Understanding the sun‘s importance, its role in day and night, and how it affects life on earth.",
-                    "image_path": "https://source.unsplash.com/500x500/?sun",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Space Explorers",
-                    "description": "Learning about astronauts, their training, space missions, and life in space.",
-                    "image_path": "https://source.unsplash.com/500x500/?astronaut",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Moon Phases",
-                    "description": "Exploring the moon‘s phases, its craters and the concept of lunar months.",
-                    "image_path": "https://source.unsplash.com/500x500/?moon-phases",
-                    "type": "CORE"
-                },
-                {
-                    "name": "What is Gravity?",
-                    "description": "Introducing the concept of gravity in a fun and engaging manner.",
-                    "image_path": "https://source.unsplash.com/500x500/?gravity",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Asteroids and Comets",
-                    "description": "Unraveling the mysteries of asteroids and comets and their impact on Earth.",
-                    "image_path": "https://source.unsplash.com/500x500/?asteroids",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Aliens and Life Beyond",
-                    "description": "A playful exploration of the idea of extraterrestrial life and its possibilities.",
-                    "image_path": "https://source.unsplash.com/500x500/?aliens",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Rocket Science Basics",
-                    "description": "Diving into the basics of rocket science with easy and fun activities.",
-                    "image_path": "https://source.unsplash.com/500x500/?rocket-science",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Star Stories",
-                    "description": "Learning about different constellations and their associated mythologies and stories.",
-                    "image_path": "https://source.unsplash.com/500x500/?constellations",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Understanding Matter",
-            "description": "Introducing the exciting world of matter, its various states, and understanding how it changes from one form to another.",
-            "image_path": "https://source.unsplash.com/500x500/?matter",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "What is Matter?",
-                    "description": "A simple and fun introduction to the concept of matter and its presence in our daily lives.",
-                    "image_path": "https://source.unsplash.com/500x500/?matter",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Solids All Around Us",
-                    "description": "Exploring solids, their characteristics, and examples in our surrounding environment.",
-                    "image_path": "https://source.unsplash.com/500x500/?solids",
-                    "type": "CORE"
-                },
-                {
-                    "name": "World of Liquids",
-                    "description": "Understanding liquids, their properties, and how they differ from solids.",
-                    "image_path": "https://source.unsplash.com/500x500/?liquids",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Gases in our Life",
-                    "description": "Unveiling the invisible world of gases, their properties, and significance in our life.",
-                    "image_path": "https://source.unsplash.com/500x500/?gases",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Changing States: Melting and Freezing",
-                    "description": "Exploring how matter changes state, specifically focusing on melting and freezing.",
-                    "image_path": "https://source.unsplash.com/500x500/?melting-freezing",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Changing States: Evaporation and Condensation",
-                    "description": "Understanding the process of evaporation and condensation through engaging experiments.",
-                    "image_path": "https://source.unsplash.com/500x500/?evaporation-condensation",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Mixing and Separating",
-                    "description": "Exploring how different forms of matter mix together and how they can be separated.",
-                    "image_path": "https://source.unsplash.com/500x500/?mixing-separating",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Density: A Float and Sink Experiment",
-                    "description": "Introducing the concept of density through a fun and interactive float and sink experiment.",
-                    "image_path": "https://source.unsplash.com/500x500/?density",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Invisible Forces: Magnets",
-                    "description": "Discovering the invisible force of magnets and their everyday applications.",
-                    "image_path": "https://source.unsplash.com/500x500/?magnets",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Dissolving Matters",
-                    "description": "Understanding the process of dissolving through simple and safe experiments.",
-                    "image_path": "https://source.unsplash.com/500x500/?dissolving",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Adventures in Earth Science",
-            "description": "Creating a sense of awe for our planet through the exploration of landforms, water bodies, and the rock cycle.",
-            "image_path": "https://source.unsplash.com/500x500/?earth-science",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "The Land We Live On",
-                    "description": "Understanding different landforms and appreciating the beauty and diversity of our planet‘s terrain.",
-                    "image_path": "https://source.unsplash.com/500x500/?landforms",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Water Around Us",
-                    "description": "Exploring the various bodies of water, their characteristics, and the role they play in our lives.",
-                    "image_path": "https://source.unsplash.com/500x500/?water-bodies",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Rocks and Minerals",
-                    "description": "Learning about different types of rocks and minerals, their formation, and uses.",
-                    "image_path": "https://source.unsplash.com/500x500/?rocks-minerals",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Rock Cycle",
-                    "description": "Unraveling the journey of a rock through the rock cycle, understanding how it transforms over time.",
-                    "image_path": "https://source.unsplash.com/500x500/?rock-cycle",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Fossils: Stories in Stone",
-                    "description": "Introducing the concept of fossils, how they are formed, and what they tell us about Earth‘s past.",
-                    "image_path": "https://source.unsplash.com/500x500/?fossils",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Volcanoes and Earthquakes",
-                    "description": "Exploring the phenomena of volcanoes and earthquakes, their causes, and effects on our planet.",
-                    "image_path": "https://source.unsplash.com/500x500/?volcanoes-earthquakes",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Soil Beneath Our Feet",
-                    "description": "Investigating the composition of soil, its layers, and the role it plays in our environment.",
-                    "image_path": "https://source.unsplash.com/500x500/?soil",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Wonders of Sand",
-                    "description": "Understanding the properties of sand, its origin, and applications through fun hands-on experiments.",
-                    "image_path": "https://source.unsplash.com/500x500/?sand",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Formation of Islands",
-                    "description": "Learning about the creation of islands and exploring some of the most unique islands on Earth.",
-                    "image_path": "https://source.unsplash.com/500x500/?islands",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Mysteries of Caves",
-                    "description": "Discovering the formation of caves, their types, and the creatures that inhabit them.",
-                    "image_path": "https://source.unsplash.com/500x500/?caves",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "The Magic of Weather",
-            "description": "Cultivating a sense of wonder about the ever-changing weather, its patterns, and effects on our daily life.",
-            "image_path": "https://source.unsplash.com/500x500/?weather",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Sunshine and Shadows",
-                    "description": "Understanding sunlight, its effects on temperature, and the formation of shadows.",
-                    "image_path": "https://source.unsplash.com/500x500/?sunshine",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Clouds and Rain",
-                    "description": "Exploring different types of clouds, how rain is formed, and its importance.",
-                    "image_path": "https://source.unsplash.com/500x500/?clouds",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Winds and Storms",
-                    "description": "Learning about winds, storms, and how weather conditions change.",
-                    "image_path": "https://source.unsplash.com/500x500/?storm",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Seasons and Change",
-                    "description": "Understanding the four seasons, how they change, and their impact on the environment.",
-                    "image_path": "https://source.unsplash.com/500x500/?seasons",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Snow and Ice",
-                    "description": "Discovering the science behind snow and ice, its formation and fun facts.",
-                    "image_path": "https://source.unsplash.com/500x500/?snow",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Water Cycle",
-                    "description": "Understanding the water cycle, how it works, and its importance for life on Earth.",
-                    "image_path": "https://source.unsplash.com/500x500/?water-cycle",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Weather Instruments",
-                    "description": "Learning about different instruments that are used to measure weather conditions.",
-                    "image_path": "https://source.unsplash.com/500x500/?weather-instruments",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Extreme Weather Phenomena",
-                    "description": "A fascinating introduction to extreme weather phenomena like tornadoes, hurricanes, and blizzards.",
-                    "image_path": "https://source.unsplash.com/500x500/?extreme-weather",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Reading a Weather Map",
-                    "description": "Learning to interpret weather symbols and read a basic weather map.",
-                    "image_path": "https://source.unsplash.com/500x500/?weather-map",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Weather and Climate Change",
-                    "description": "Discussing climate change, its effects on weather patterns, and how we can help.",
-                    "image_path": "https://source.unsplash.com/500x500/?climate-change",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Plants and Their Friends",
-            "description": "Nurturing an appreciation for plants, understanding their life cycle, and exploring the creatures that live among them.",
+  {
+    "level_id": "8787a66e-9e03-42c7-8870-ada6df021491",
+    "topics_data": [
+      {
+        "name": "Exploring Nature",
+        "description": "Igniting the natural curiosity of kindergarteners, promoting exploration, and fostering a sense of wonder for the natural world.",
+        "image_path": "https://source.unsplash.com/500x500/?nature-kids",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Introduction to Plants",
+            "description": "An interactive journey to discover various types of plants and their parts, nurturing a love for green life.",
             "image_path": "https://source.unsplash.com/500x500/?plants",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "The Magic of Seeds",
-                    "description": "Understanding seeds, their structure, and the journey they take to become a plant.",
-                    "image_path": "https://source.unsplash.com/500x500/?seeds",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Parts of a Plant",
-                    "description": "Learning about the different parts of a plant and their functions.",
-                    "image_path": "https://source.unsplash.com/500x500/?plant-parts",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Flowers and Fruits",
-                    "description": "Exploring the world of flowers and fruits, their purpose, and how they form.",
-                    "image_path": "https://source.unsplash.com/500x500/?flowers-fruits",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Plants and Sunlight",
-                    "description": "Discovering the importance of sunlight for plants and the process of photosynthesis.",
-                    "image_path": "https://source.unsplash.com/500x500/?sunlight-photosynthesis",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Plant Defenses",
-                    "description": "Learning about various ways plants protect themselves from pests and harsh conditions.",
-                    "image_path": "https://source.unsplash.com/500x500/?plant-defenses",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Plant Needs and Care",
-                    "description": "Understanding the needs of a plant and learning how to care for plants at home.",
-                    "image_path": "https://source.unsplash.com/500x500/?plant-care",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Role of Insects",
-                    "description": "Exploring the important role of insects in the life of plants, including pollination.",
-                    "image_path": "https://source.unsplash.com/500x500/?insects-pollination",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Exploring Moss and Ferns",
-                    "description": "Introduction to moss and ferns, understanding their life cycle and unique characteristics.",
-                    "image_path": "https://source.unsplash.com/500x500/?moss-ferns",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Plants and Medicine",
-                    "description": "Learning about medicinal plants and their uses in treating various ailments.",
-                    "image_path": "https://source.unsplash.com/500x500/?medicinal-plants",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Gardening at Home",
-                    "description": "Encouraging hands-on learning by growing a plant from a seed at home.",
-                    "image_path": "https://source.unsplash.com/500x500/?home-gardening",
-                    "type": "ELECTIVE"
-                }
-            ]
+            "type": "CORE"
+          },
+          {
+            "name": "Adventures in Animal Kingdom",
+            "description": "A virtual safari introducing the diverse animal kingdom and instilling the importance of co-existence.",
+            "image_path": "https://source.unsplash.com/500x500/?animal",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Weather",
+            "description": "A playful introduction to different types of weather and how they impact our daily life.",
+            "image_path": "https://source.unsplash.com/500x500/?weather",
+            "type": "CORE"
+          },
+          {
+            "name": "The Colorful World of Flowers",
+            "description": "A vibrant exploration of flowers, their colors, and how they play an essential role in nature.",
+            "image_path": "https://source.unsplash.com/500x500/?flowers",
+            "type": "CORE"
+          },
+          {
+            "name": "All About Seasons",
+            "description": "Understanding the magic of changing seasons and how it affects the world around us.",
+            "image_path": "https://source.unsplash.com/500x500/?seasons",
+            "type": "CORE"
+          },
+          {
+            "name": "Day and Night",
+            "description": "Learning the concept of day and night, sun and moon, in a fun and interactive way.",
+            "image_path": "https://source.unsplash.com/500x500/?day-night",
+            "type": "CORE"
+          },
+          {
+            "name": "Magnificent Mini-beasts",
+            "description": "Getting up close with insects and learning about their important role in our ecosystem.",
+            "image_path": "https://source.unsplash.com/500x500/?insects",
+            "type": "CORE"
+          },
+          {
+            "name": "Introduction to Habitats",
+            "description": "An exciting adventure through different habitats and the diverse creatures that call them home.",
+            "image_path": "https://source.unsplash.com/500x500/?habitats",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Beautiful Butterflies",
+            "description": "Unraveling the magical journey of caterpillar to butterfly and understanding the concept of metamorphosis.",
+            "image_path": "https://source.unsplash.com/500x500/?butterflies",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Seeds and Growth",
+            "description": "A hands-on lesson in planting seeds, understanding their growth, and appreciating the miracle of life.",
+            "image_path": "https://source.unsplash.com/500x500/?seeds",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Our Bodies and Health",
+        "description": "Creating a strong foundation of understanding our bodies, promoting good health, hygiene, and instilling a sense of care towards self and others.",
+        "image_path": "https://source.unsplash.com/500x500/?kids-health",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Our Five Senses",
+            "description": "An engaging exploration of the five senses, helping kindergarteners understand how we perceive the world.",
+            "image_path": "https://source.unsplash.com/500x500/?five-senses",
+            "type": "CORE"
+          },
+          {
+            "name": "Keeping Clean",
+            "description": "Teaching the importance of hygiene, personal cleanliness, and good habits to stay healthy.",
+            "image_path": "https://source.unsplash.com/500x500/?cleanliness",
+            "type": "CORE"
+          },
+          {
+            "name": "Our Teeth and Their Care",
+            "description": "An introduction to the role of teeth, proper brushing techniques, and the significance of oral hygiene.",
+            "image_path": "https://source.unsplash.com/500x500/?teeth",
+            "type": "CORE"
+          },
+          {
+            "name": "Healthy Eating",
+            "description": "Cultivating an understanding of nutritious foods, the food pyramid, and why balanced meals are essential.",
+            "image_path": "https://source.unsplash.com/500x500/?healthy-eating",
+            "type": "CORE"
+          },
+          {
+            "name": "Fun with Exercise",
+            "description": "Promoting the benefits of physical activity through fun, exercise-related games and activities.",
+            "image_path": "https://source.unsplash.com/500x500/?exercise",
+            "type": "CORE"
+          },
+          {
+            "name": "Sleep and Rest",
+            "description": "Learning about the importance of sufficient sleep and rest for our bodies and minds.",
+            "image_path": "https://source.unsplash.com/500x500/?sleep",
+            "type": "CORE"
+          },
+          {
+            "name": "Body Parts and Their Functions",
+            "description": "A fun-filled journey to learn about different body parts and their basic functions.",
+            "image_path": "https://source.unsplash.com/500x500/?body-parts",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Feelings",
+            "description": "Building emotional intelligence by identifying and expressing different feelings and emotions.",
+            "image_path": "https://source.unsplash.com/500x500/?feelings",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Safety First",
+            "description": "Teaching basic safety rules at home, school, and outdoors to ensure a safe environment for children.",
+            "image_path": "https://source.unsplash.com/500x500/?safety",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Our Beautiful Skin Colors",
+            "description": "Celebrating diversity by recognizing and appreciating different skin colors and ethnicities.",
+            "image_path": "https://source.unsplash.com/500x500/?diversity",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Space and Beyond",
+        "description": "Igniting a love for the cosmos by introducing the fascinating world of stars, planets, and the mysteries of space.",
+        "image_path": "https://source.unsplash.com/500x500/?space-kids",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Night Sky",
+            "description": "A tour of the night sky, exploring constellations, stars, and the moon.",
+            "image_path": "https://source.unsplash.com/500x500/?night-sky",
+            "type": "CORE"
+          },
+          {
+            "name": "Meet the Planets",
+            "description": "An exciting journey through our solar system, introducing the unique characteristics of each planet.",
+            "image_path": "https://source.unsplash.com/500x500/?planets",
+            "type": "CORE"
+          },
+          {
+            "name": "The Amazing Sun",
+            "description": "Understanding the sun‘s importance, its role in day and night, and how it affects life on earth.",
+            "image_path": "https://source.unsplash.com/500x500/?sun",
+            "type": "CORE"
+          },
+          {
+            "name": "Space Explorers",
+            "description": "Learning about astronauts, their training, space missions, and life in space.",
+            "image_path": "https://source.unsplash.com/500x500/?astronaut",
+            "type": "CORE"
+          },
+          {
+            "name": "Moon Phases",
+            "description": "Exploring the moon‘s phases, its craters and the concept of lunar months.",
+            "image_path": "https://source.unsplash.com/500x500/?moon-phases",
+            "type": "CORE"
+          },
+          {
+            "name": "What is Gravity?",
+            "description": "Introducing the concept of gravity in a fun and engaging manner.",
+            "image_path": "https://source.unsplash.com/500x500/?gravity",
+            "type": "CORE"
+          },
+          {
+            "name": "Asteroids and Comets",
+            "description": "Unraveling the mysteries of asteroids and comets and their impact on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?asteroids",
+            "type": "CORE"
+          },
+          {
+            "name": "Aliens and Life Beyond",
+            "description": "A playful exploration of the idea of extraterrestrial life and its possibilities.",
+            "image_path": "https://source.unsplash.com/500x500/?aliens",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Rocket Science Basics",
+            "description": "Diving into the basics of rocket science with easy and fun activities.",
+            "image_path": "https://source.unsplash.com/500x500/?rocket-science",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Star Stories",
+            "description": "Learning about different constellations and their associated mythologies and stories.",
+            "image_path": "https://source.unsplash.com/500x500/?constellations",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Understanding Matter",
+        "description": "Introducing the exciting world of matter, its various states, and understanding how it changes from one form to another.",
+        "image_path": "https://source.unsplash.com/500x500/?matter",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "What is Matter?",
+            "description": "A simple and fun introduction to the concept of matter and its presence in our daily lives.",
+            "image_path": "https://source.unsplash.com/500x500/?matter",
+            "type": "CORE"
+          },
+          {
+            "name": "Solids All Around Us",
+            "description": "Exploring solids, their characteristics, and examples in our surrounding environment.",
+            "image_path": "https://source.unsplash.com/500x500/?solids",
+            "type": "CORE"
+          },
+          {
+            "name": "World of Liquids",
+            "description": "Understanding liquids, their properties, and how they differ from solids.",
+            "image_path": "https://source.unsplash.com/500x500/?liquids",
+            "type": "CORE"
+          },
+          {
+            "name": "Gases in our Life",
+            "description": "Unveiling the invisible world of gases, their properties, and significance in our life.",
+            "image_path": "https://source.unsplash.com/500x500/?gases",
+            "type": "CORE"
+          },
+          {
+            "name": "Changing States: Melting and Freezing",
+            "description": "Exploring how matter changes state, specifically focusing on melting and freezing.",
+            "image_path": "https://source.unsplash.com/500x500/?melting-freezing",
+            "type": "CORE"
+          },
+          {
+            "name": "Changing States: Evaporation and Condensation",
+            "description": "Understanding the process of evaporation and condensation through engaging experiments.",
+            "image_path": "https://source.unsplash.com/500x500/?evaporation-condensation",
+            "type": "CORE"
+          },
+          {
+            "name": "Mixing and Separating",
+            "description": "Exploring how different forms of matter mix together and how they can be separated.",
+            "image_path": "https://source.unsplash.com/500x500/?mixing-separating",
+            "type": "CORE"
+          },
+          {
+            "name": "Density: A Float and Sink Experiment",
+            "description": "Introducing the concept of density through a fun and interactive float and sink experiment.",
+            "image_path": "https://source.unsplash.com/500x500/?density",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Invisible Forces: Magnets",
+            "description": "Discovering the invisible force of magnets and their everyday applications.",
+            "image_path": "https://source.unsplash.com/500x500/?magnets",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Dissolving Matters",
+            "description": "Understanding the process of dissolving through simple and safe experiments.",
+            "image_path": "https://source.unsplash.com/500x500/?dissolving",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Adventures in Earth Science",
+        "description": "Creating a sense of awe for our planet through the exploration of landforms, water bodies, and the rock cycle.",
+        "image_path": "https://source.unsplash.com/500x500/?earth-science",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Land We Live On",
+            "description": "Understanding different landforms and appreciating the beauty and diversity of our planet‘s terrain.",
+            "image_path": "https://source.unsplash.com/500x500/?landforms",
+            "type": "CORE"
+          },
+          {
+            "name": "The Water Around Us",
+            "description": "Exploring the various bodies of water, their characteristics, and the role they play in our lives.",
+            "image_path": "https://source.unsplash.com/500x500/?water-bodies",
+            "type": "CORE"
+          },
+          {
+            "name": "Rocks and Minerals",
+            "description": "Learning about different types of rocks and minerals, their formation, and uses.",
+            "image_path": "https://source.unsplash.com/500x500/?rocks-minerals",
+            "type": "CORE"
+          },
+          {
+            "name": "The Rock Cycle",
+            "description": "Unraveling the journey of a rock through the rock cycle, understanding how it transforms over time.",
+            "image_path": "https://source.unsplash.com/500x500/?rock-cycle",
+            "type": "CORE"
+          },
+          {
+            "name": "Fossils: Stories in Stone",
+            "description": "Introducing the concept of fossils, how they are formed, and what they tell us about Earth‘s past.",
+            "image_path": "https://source.unsplash.com/500x500/?fossils",
+            "type": "CORE"
+          },
+          {
+            "name": "Volcanoes and Earthquakes",
+            "description": "Exploring the phenomena of volcanoes and earthquakes, their causes, and effects on our planet.",
+            "image_path": "https://source.unsplash.com/500x500/?volcanoes-earthquakes",
+            "type": "CORE"
+          },
+          {
+            "name": "The Soil Beneath Our Feet",
+            "description": "Investigating the composition of soil, its layers, and the role it plays in our environment.",
+            "image_path": "https://source.unsplash.com/500x500/?soil",
+            "type": "CORE"
+          },
+          {
+            "name": "The Wonders of Sand",
+            "description": "Understanding the properties of sand, its origin, and applications through fun hands-on experiments.",
+            "image_path": "https://source.unsplash.com/500x500/?sand",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Formation of Islands",
+            "description": "Learning about the creation of islands and exploring some of the most unique islands on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?islands",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Mysteries of Caves",
+            "description": "Discovering the formation of caves, their types, and the creatures that inhabit them.",
+            "image_path": "https://source.unsplash.com/500x500/?caves",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Magic of Weather",
+        "description": "Cultivating a sense of wonder about the ever-changing weather, its patterns, and effects on our daily life.",
+        "image_path": "https://source.unsplash.com/500x500/?weather",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Sunshine and Shadows",
+            "description": "Understanding sunlight, its effects on temperature, and the formation of shadows.",
+            "image_path": "https://source.unsplash.com/500x500/?sunshine",
+            "type": "CORE"
+          },
+          {
+            "name": "Clouds and Rain",
+            "description": "Exploring different types of clouds, how rain is formed, and its importance.",
+            "image_path": "https://source.unsplash.com/500x500/?clouds",
+            "type": "CORE"
+          },
+          {
+            "name": "Winds and Storms",
+            "description": "Learning about winds, storms, and how weather conditions change.",
+            "image_path": "https://source.unsplash.com/500x500/?storm",
+            "type": "CORE"
+          },
+          {
+            "name": "Seasons and Change",
+            "description": "Understanding the four seasons, how they change, and their impact on the environment.",
+            "image_path": "https://source.unsplash.com/500x500/?seasons",
+            "type": "CORE"
+          },
+          {
+            "name": "Snow and Ice",
+            "description": "Discovering the science behind snow and ice, its formation and fun facts.",
+            "image_path": "https://source.unsplash.com/500x500/?snow",
+            "type": "CORE"
+          },
+          {
+            "name": "The Water Cycle",
+            "description": "Understanding the water cycle, how it works, and its importance for life on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?water-cycle",
+            "type": "CORE"
+          },
+          {
+            "name": "Weather Instruments",
+            "description": "Learning about different instruments that are used to measure weather conditions.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-instruments",
+            "type": "CORE"
+          },
+          {
+            "name": "Extreme Weather Phenomena",
+            "description": "A fascinating introduction to extreme weather phenomena like tornadoes, hurricanes, and blizzards.",
+            "image_path": "https://source.unsplash.com/500x500/?extreme-weather",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Reading a Weather Map",
+            "description": "Learning to interpret weather symbols and read a basic weather map.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-map",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Weather and Climate Change",
+            "description": "Discussing climate change, its effects on weather patterns, and how we can help.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-change",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Plants and Their Friends",
+        "description": "Nurturing an appreciation for plants, understanding their life cycle, and exploring the creatures that live among them.",
+        "image_path": "https://source.unsplash.com/500x500/?plants",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Magic of Seeds",
+            "description": "Understanding seeds, their structure, and the journey they take to become a plant.",
+            "image_path": "https://source.unsplash.com/500x500/?seeds",
+            "type": "CORE"
+          },
+          {
+            "name": "Parts of a Plant",
+            "description": "Learning about the different parts of a plant and their functions.",
+            "image_path": "https://source.unsplash.com/500x500/?plant-parts",
+            "type": "CORE"
+          },
+          {
+            "name": "Flowers and Fruits",
+            "description": "Exploring the world of flowers and fruits, their purpose, and how they form.",
+            "image_path": "https://source.unsplash.com/500x500/?flowers-fruits",
+            "type": "CORE"
+          },
+          {
+            "name": "Plants and Sunlight",
+            "description": "Discovering the importance of sunlight for plants and the process of photosynthesis.",
+            "image_path": "https://source.unsplash.com/500x500/?sunlight-photosynthesis",
+            "type": "CORE"
+          },
+          {
+            "name": "Plant Defenses",
+            "description": "Learning about various ways plants protect themselves from pests and harsh conditions.",
+            "image_path": "https://source.unsplash.com/500x500/?plant-defenses",
+            "type": "CORE"
+          },
+          {
+            "name": "Plant Needs and Care",
+            "description": "Understanding the needs of a plant and learning how to care for plants at home.",
+            "image_path": "https://source.unsplash.com/500x500/?plant-care",
+            "type": "CORE"
+          },
+          {
+            "name": "The Role of Insects",
+            "description": "Exploring the important role of insects in the life of plants, including pollination.",
+            "image_path": "https://source.unsplash.com/500x500/?insects-pollination",
+            "type": "CORE"
+          },
+          {
+            "name": "Exploring Moss and Ferns",
+            "description": "Introduction to moss and ferns, understanding their life cycle and unique characteristics.",
+            "image_path": "https://source.unsplash.com/500x500/?moss-ferns",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Plants and Medicine",
+            "description": "Learning about medicinal plants and their uses in treating various ailments.",
+            "image_path": "https://source.unsplash.com/500x500/?medicinal-plants",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Gardening at Home",
+            "description": "Encouraging hands-on learning by growing a plant from a seed at home.",
+            "image_path": "https://source.unsplash.com/500x500/?home-gardening",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Wonders of Space",
+        "description": "Embarking on a cosmic journey to explore our solar system, the stars, and the vastness of space.",
+        "image_path": "https://source.unsplash.com/500x500/?space",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Our Solar System",
+            "description": "An engaging introduction to our solar system, exploring the sun, planets, and their moons.",
+            "image_path": "https://source.unsplash.com/500x500/?solar-system",
+            "type": "CORE"
+          },
+          {
+            "name": "The Moon and its Phases",
+            "description": "Understanding the moon, its phases, and its impact on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?moon",
+            "type": "CORE"
+          },
+          {
+            "name": "Stars and Constellations",
+            "description": "Discovering the beauty of stars and constellations, their stories, and how to identify them in the night sky.",
+            "image_path": "https://source.unsplash.com/500x500/?stars",
+            "type": "CORE"
+          },
+          {
+            "name": "Day and Night",
+            "description": "Learning about the Earth‘s rotation, why we have day and night, and the concept of time zones.",
+            "image_path": "https://source.unsplash.com/500x500/?day-night",
+            "type": "CORE"
+          },
+          {
+            "name": "The Sun, Our Star",
+            "description": "Exploring the sun, its importance, and safety measures when observing the sun.",
+            "image_path": "https://source.unsplash.com/500x500/?sun",
+            "type": "CORE"
+          },
+          {
+            "name": "The Wonders of Gravity",
+            "description": "Understanding gravity, how it works, and its role in our solar system.",
+            "image_path": "https://source.unsplash.com/500x500/?gravity",
+            "type": "CORE"
+          },
+          {
+            "name": "Earth, Our Home",
+            "description": "Learning about Earth‘s unique features that make it suitable for life.",
+            "image_path": "https://source.unsplash.com/500x500/?earth",
+            "type": "CORE"
+          },
+          {
+            "name": "Comets, Asteroids and Meteors",
+            "description": "Unveiling the mysteries of comets, asteroids, and meteors, and their interactions with our planet.",
+            "image_path": "https://source.unsplash.com/500x500/?comets-asteroids",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Space Exploration",
+            "description": "Exploring the history of space exploration, major achievements, and future plans.",
+            "image_path": "https://source.unsplash.com/500x500/?space-exploration",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Astronauts and Space Travel",
+            "description": "Learning about astronauts, their training, and the experience of space travel.",
+            "image_path": "https://source.unsplash.com/500x500/?astronauts",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Inventions and Innovations",
+        "description": "Unveiling the magic of science through the lens of remarkable inventions and technological advancements.",
+        "image_path": "https://source.unsplash.com/500x500/?inventions",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "The Wheel and Its Uses",
+            "description": "Exploring the invention of the wheel and its wide range of applications.",
+            "image_path": "https://source.unsplash.com/500x500/?wheel",
+            "type": "CORE"
+          },
+          {
+            "name": "Inventors and Their Inventions",
+            "description": "Inspiring young minds with stories of renowned inventors and their groundbreaking inventions.",
+            "image_path": "https://source.unsplash.com/500x500/?inventors",
+            "type": "CORE"
+          },
+          {
+            "name": "Simple Machines Around Us",
+            "description": "Identifying and understanding the uses of simple machines in our daily life.",
+            "image_path": "https://source.unsplash.com/500x500/?simple-machines",
+            "type": "CORE"
+          },
+          {
+            "name": "The Magic of Electricity",
+            "description": "Introducing the concept of electricity, its generation, and its role in powering our world.",
+            "image_path": "https://source.unsplash.com/500x500/?electricity",
+            "type": "CORE"
+          },
+          {
+            "name": "Internet and Computers",
+            "description": "Exploring the world of computers and the internet, and understanding their significance in the modern world.",
+            "image_path": "https://source.unsplash.com/500x500/?computers-internet",
+            "type": "CORE"
+          },
+          {
+            "name": "Robotics and AI",
+            "description": "A peek into the fascinating world of robotics and artificial intelligence.",
+            "image_path": "https://source.unsplash.com/500x500/?robotics-ai",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Green Energy Innovations",
+            "description": "Discussing the importance of green energy innovations for a sustainable future.",
+            "image_path": "https://source.unsplash.com/500x500/?green-energy",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Scientific Wonders of the Ancient World",
+        "description": "Exploring ancient civilizations‘ scientific knowledge and marvels, fostering an appreciation for their ingenuity.",
+        "image_path": "https://source.unsplash.com/500x500/?ancient-world",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Egyptian Pyramids and Mathematics",
+            "description": "Learning about the Egyptian pyramids and the ancient Egyptians‘ understanding of mathematics.",
+            "image_path": "https://source.unsplash.com/500x500/?egyptian-pyramids",
+            "type": "CORE"
+          },
+          {
+            "name": "Greek Philosophers and Natural Sciences",
+            "description": "Exploring the contributions of ancient Greek philosophers to the natural sciences.",
+            "image_path": "https://source.unsplash.com/500x500/?greek-philosophers",
+            "type": "CORE"
+          },
+          {
+            "name": "Roman Engineering and Architecture",
+            "description": "Understanding the marvels of Roman engineering and architecture, like aqueducts and the Colosseum.",
+            "image_path": "https://source.unsplash.com/500x500/?roman-engineering",
+            "type": "CORE"
+          },
+          {
+            "name": "Astronomy in Ancient Civilizations",
+            "description": "Exploring the understanding and significance of astronomy in various ancient civilizations.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-astronomy",
+            "type": "CORE"
+          },
+          {
+            "name": "Medicine in the Ancient World",
+            "description": "Understanding the development of medicine and health practices in ancient civilizations.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-medicine",
+            "type": "CORE"
+          },
+          {
+            "name": "Ancient Indian Science and Technology",
+            "description": "Exploring the scientific and technological advancements of ancient India, including Ayurveda and zero‘s concept.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-india",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Chinese Inventions and Discoveries",
+            "description": "Learning about significant inventions and discoveries from ancient China, like paper and the compass.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-china",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
+    "topics_data": [
+      {
+        "name": "Exploring the Natural World",
+        "description": "Igniting a passion for the environment through the fascinating world of plants, animals, and ecosystems.",
+        "image_path": "https://source.unsplash.com/500x500/?nature",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Wonders of Plant Life",
+            "description": "Discover the magic of photosynthesis and the lifecycle of a plant.",
+            "image_path": "https://source.unsplash.com/500x500/?plants",
+            "type": "CORE"
+          },
+          {
+            "name": "Amazing Animal Adaptations",
+            "description": "Explore how animals have adapted to survive in their environments.",
+            "image_path": "https://source.unsplash.com/500x500/?animals",
+            "type": "CORE"
+          },
+          {
+            "name": "The Web of Life: Introduction to Ecosystems",
+            "description": "Unravel the complex relationships between plants, animals, and the environment in an ecosystem.",
+            "image_path": "https://source.unsplash.com/500x500/?ecosystem",
+            "type": "CORE"
+          },
+          {
+            "name": "Earth‘s Biomes",
+            "description": "Venture through desert, rainforest, tundra, and other biomes to see the diversity of life on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?biomes",
+            "type": "CORE"
+          },
+          {
+            "name": "Water Cycle Wonders",
+            "description": "Understand how water travels from Earth to the sky and back in an amazing journey.",
+            "image_path": "https://source.unsplash.com/500x500/?water-cycle",
+            "type": "CORE"
+          },
+          {
+            "name": "Weather Patterns",
+            "description": "Explore how weather forms and how it impacts the world around us.",
+            "image_path": "https://source.unsplash.com/500x500/?weather",
+            "type": "CORE"
+          },
+          {
+            "name": "Beneath Our Feet: Introduction to Geology",
+            "description": "Journey to the center of the Earth and discover the secrets beneath the ground we walk on.",
+            "image_path": "https://source.unsplash.com/500x500/?geology",
+            "type": "CORE"
+          },
+          {
+            "name": "Creepy Crawlies: Introduction to Insects",
+            "description": "Get a closer look at the smallest creatures and their role in our ecosystem.",
+            "image_path": "https://source.unsplash.com/500x500/?insects",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Garden to Table: Grow Your Own Food",
+            "description": "Learn about the lifecycle of a plant by growing your own vegetables.",
+            "image_path": "https://source.unsplash.com/500x500/?gardening",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Birds of a Feather: Bird Watching Basics",
+            "description": "Discover the wide world of birds and learn some basics of bird watching.",
+            "image_path": "https://source.unsplash.com/500x500/?birds",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Adventures in Physical Science",
+        "description": "Fostering an understanding of the physical world by exploring the wonders of matter, force, and energy.",
+        "image_path": "https://source.unsplash.com/500x500/?physical-science",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "What‘s the Matter: An Introduction to States of Matter",
+            "description": "Discover the fascinating world of solids, liquids, and gases and how they transform.",
+            "image_path": "https://source.unsplash.com/500x500/?states-of-matter",
+            "type": "CORE"
+          },
+          {
+            "name": "Push and Pull: Introduction to Forces",
+            "description": "Understand the basics of forces and see how they shape our everyday life.",
+            "image_path": "https://source.unsplash.com/500x500/?forces",
+            "type": "CORE"
+          },
+          {
+            "name": "Energy All Around: Understanding Energy Forms",
+            "description": "Explore the various forms of energy and how they impact our world.",
+            "image_path": "https://source.unsplash.com/500x500/?energy",
+            "type": "CORE"
+          },
+          {
+            "name": "Light it Up: Basics of Light and Shadows",
+            "description": "Investigate the properties of light and how shadows form.",
+            "image_path": "https://source.unsplash.com/500x500/?light-and-shadows",
+            "type": "CORE"
+          },
+          {
+            "name": "Sound Waves: The Science of Sound",
+            "description": "Unravel the mystery of sound, how it‘s produced, and how it travels.",
+            "image_path": "https://source.unsplash.com/500x500/?sound-waves",
+            "type": "CORE"
+          },
+          {
+            "name": "Magnets and More: Exploring Magnetism",
+            "description": "Discover the fascinating world of magnets and the invisible force of magnetism.",
+            "image_path": "https://source.unsplash.com/500x500/?magnet",
+            "type": "CORE"
+          },
+          {
+            "name": "Simple Machines: Making Work Easier",
+            "description": "Learn about simple machines and see how they make our work easier.",
+            "image_path": "https://source.unsplash.com/500x500/?simple-machines",
+            "type": "CORE"
+          },
+          {
+            "name": "The Power of Wind: Wind Energy Basics",
+            "description": "Explore the power of wind and how we can harness it to create energy.",
+            "image_path": "https://source.unsplash.com/500x500/?wind-energy",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Solar Science: Understanding Solar Energy",
+            "description": "Discover the immense power of the sun and how we can use it for clean energy.",
+            "image_path": "https://source.unsplash.com/500x500/?solar-energy",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Magic of Mirrors: Reflection and Refraction",
+            "description": "Dive into the science behind mirrors, lenses, and how light interacts with them.",
+            "image_path": "https://source.unsplash.com/500x500/?mirrors",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Our Changing Earth",
+        "description": "Encouraging a deeper appreciation for the planet through the study of its changes and processes over time.",
+        "image_path": "https://source.unsplash.com/500x500/?earth-science",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Rock Cycle: Understanding Rocks and Minerals",
+            "description": "Embark on a journey through time to discover the story of Earth as told by rocks and minerals.",
+            "image_path": "https://source.unsplash.com/500x500/?rocks",
+            "type": "CORE"
+          },
+          {
+            "name": "From Mountains to Valleys: Exploring Landforms",
+            "description": "Learn about various landforms and the natural processes that shape our Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?landforms",
+            "type": "CORE"
+          },
+          {
+            "name": "Volcanoes and Earthquakes: Earth‘s Restless Surface",
+            "description": "Discover the dynamic nature of our planet through the study of volcanoes and earthquakes.",
+            "image_path": "https://source.unsplash.com/500x500/?volcanoes",
+            "type": "CORE"
+          },
+          {
+            "name": "The Power of Wind and Water: Erosion and Weathering",
+            "description": "Explore how wind and water change the landscape over time through erosion and weathering.",
+            "image_path": "https://source.unsplash.com/500x500/?erosion",
+            "type": "CORE"
+          },
+          {
+            "name": "Fossils: Windows to the Past",
+            "description": "Unearth the mysteries of the past by studying fossils and what they tell us about extinct life.",
+            "image_path": "https://source.unsplash.com/500x500/?fossils",
+            "type": "CORE"
+          },
+          {
+            "name": "The Ocean‘s Depths: Introduction to Oceanography",
+            "description": "Dive into the world of oceans, exploring their depth, creatures, and importance to Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?ocean",
+            "type": "CORE"
+          },
+          {
+            "name": "Caring for Our Planet: Basics of Conservation",
+            "description": "Understand our role in preserving our planet and learn basic conservation practices.",
+            "image_path": "https://source.unsplash.com/500x500/?conservation",
+            "type": "CORE"
+          },
+          {
+            "name": "Space Rocks: Introduction to Meteors and Asteroids",
+            "description": "Journey into space to learn about meteors and asteroids and their impact on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?meteors",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Nature‘s Fury: Understanding Storms and Tornadoes",
+            "description": "Discover the science behind storms, tornadoes, and other extreme weather phenomena.",
+            "image_path": "https://source.unsplash.com/500x500/?storms",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Amazing Caves: Exploring Underground Ecosystems",
+            "description": "Take a journey underground to explore caves and the unique life they harbor.",
+            "image_path": "https://source.unsplash.com/500x500/?caves",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Mysteries of Space",
+        "description": "Inspiring awe and wonder as we delve into the vast expanse of the cosmos, exploring planets, stars, and beyond.",
+        "image_path": "https://source.unsplash.com/500x500/?space",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Journey to the Moon: Introduction to the Lunar Cycle",
+            "description": "Travel to our closest celestial neighbor and discover the phases of the moon.",
+            "image_path": "https://source.unsplash.com/500x500/?moon",
+            "type": "CORE"
+          },
+          {
+            "name": "Our Home: Understanding Earth and Its Rotation",
+            "description": "Learn about Earth, how it rotates, and the impact it has on day and night.",
+            "image_path": "https://source.unsplash.com/500x500/?earth",
+            "type": "CORE"
+          },
+          {
+            "name": "Blinking Stars: Introduction to Constellations",
+            "description": "Venture into the night sky to learn about stars and constellations.",
+            "image_path": "https://source.unsplash.com/500x500/?stars",
+            "type": "CORE"
+          },
+          {
+            "name": "The Sun: Our Local Star",
+            "description": "Discover the power and importance of our nearest star - the Sun.",
+            "image_path": "https://source.unsplash.com/500x500/?sun",
+            "type": "CORE"
+          },
+          {
+            "name": "Exploring our Solar System: Planets and More",
+            "description": "Journey through our solar system, learning about the planets and their unique characteristics.",
+            "image_path": "https://source.unsplash.com/500x500/?planets",
+            "type": "CORE"
+          },
+          {
+            "name": "The Mystery of Black Holes",
+            "description": "Dive into the intriguing world of black holes and their role in the universe.",
+            "image_path": "https://source.unsplash.com/500x500/?black-hole",
+            "type": "CORE"
+          },
+          {
+            "name": "Comets, Asteroids, and Meteors: Space Debris",
+            "description": "Uncover the facts about the different types of space debris and their impacts on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?meteor",
+            "type": "CORE"
+          },
+          {
+            "name": "Alien Worlds: Exoplanets and the Search for Life",
+            "description": "Explore the concept of exoplanets and the exciting search for extraterrestrial life.",
+            "image_path": "https://source.unsplash.com/500x500/?exoplanets",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Galaxies Far, Far Away",
+            "description": "Embark on an intergalactic journey to understand what galaxies are and how they form.",
+            "image_path": "https://source.unsplash.com/500x500/?galaxies",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Space Exploration: Past, Present, and Future",
+            "description": "Learn about the history and future of space exploration, from the moon landing to Mars rovers and beyond.",
+            "image_path": "https://source.unsplash.com/500x500/?space-exploration",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Magic of Life",
+        "description": "Cultivating an understanding and appreciation for life in all its forms, from tiny cells to complex ecosystems.",
+        "image_path": "https://source.unsplash.com/500x500/?biology",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Building Blocks of Life: Introduction to Cells",
+            "description": "Explore cells, the smallest units of life, and discover how they work together to create living organisms.",
+            "image_path": "https://source.unsplash.com/500x500/?cells",
+            "type": "CORE"
+          },
+          {
+            "name": "Plants: More than Meets the Eye",
+            "description": "Discover the fascinating world of plants, from photosynthesis to various plant parts.",
+            "image_path": "https://source.unsplash.com/500x500/?plants",
+            "type": "CORE"
+          },
+          {
+            "name": "Amazing Animals: Understanding Animal Classifications",
+            "description": "Learn about the diversity of animal life and how we classify different animal species.",
+            "image_path": "https://source.unsplash.com/500x500/?animals",
+            "type": "CORE"
+          },
+          {
+            "name": "The Human Body: Our Bodies, Our Selves",
+            "description": "Explore the human body, learning about different organs and systems that keep us alive and healthy.",
+            "image_path": "https://source.unsplash.com/500x500/?human-body",
+            "type": "CORE"
+          },
+          {
+            "name": "Insect Investigations: The World of Bugs",
+            "description": "Delve into the world of insects, exploring their unique features and their role in ecosystems.",
+            "image_path": "https://source.unsplash.com/500x500/?insects",
+            "type": "CORE"
+          },
+          {
+            "name": "Under the Sea: Marine Life and Habitats",
+            "description": "Journey under the sea to explore diverse marine life and their habitats.",
+            "image_path": "https://source.unsplash.com/500x500/?marine-life",
+            "type": "CORE"
+          },
+          {
+            "name": "The Cycle of Life: Understanding Life Cycles",
+            "description": "Learn about the life cycles of different organisms, from plants and insects to mammals.",
+            "image_path": "https://source.unsplash.com/500x500/?life-cycles",
+            "type": "CORE"
+          },
+          {
+            "name": "Feathered Friends: Introduction to Birds",
+            "description": "Discover the world of birds, exploring their features, behaviors, and the concept of migration.",
+            "image_path": "https://source.unsplash.com/500x500/?birds",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Furry Friends: Introduction to Mammals",
+            "description": "Learn about mammals, their distinguishing features, and diverse adaptations.",
+            "image_path": "https://source.unsplash.com/500x500/?mammals",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Beneath the Soil: Unearthing Soil Creatures",
+            "description": "Investigate the world beneath the soil and meet the creatures that call it home.",
+            "image_path": "https://source.unsplash.com/500x500/?soil",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Power of Energy",
+        "description": "Sparking curiosity about the invisible force that powers our world, from the heat of the sun to electricity at the flip of a switch.",
+        "image_path": "https://source.unsplash.com/500x500/?energy",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Sunshine and Shadows: Understanding Light and Heat Energy",
+            "description": "Discover the energy of light and heat, exploring how sunlight creates shadows and warms our world.",
+            "image_path": "https://source.unsplash.com/500x500/?sunlight",
+            "type": "CORE"
+          },
+          {
+            "name": "Energy in Motion: Introduction to Kinetic Energy",
+            "description": "Learn about kinetic energy and see it in action through various activities and experiments.",
+            "image_path": "https://source.unsplash.com/500x500/?motion",
+            "type": "CORE"
+          },
+          {
+            "name": "Sound Waves: The Energy of Sound",
+            "description": "Explore sound energy, understanding how sound waves travel and create the sounds we hear.",
+            "image_path": "https://source.unsplash.com/500x500/?sound-waves",
+            "type": "CORE"
+          },
+          {
+            "name": "The Power of Water: Understanding Hydroelectric Energy",
+            "description": "Learn how moving water creates energy, exploring the concept of hydroelectric power.",
+            "image_path": "https://source.unsplash.com/500x500/?hydroelectric",
+            "type": "CORE"
+          },
+          {
+            "name": "Harnessing the Wind: The Power of Wind Energy",
+            "description": "Discover how wind can generate power and explore its use in producing electricity.",
+            "image_path": "https://source.unsplash.com/500x500/?wind-energy",
+            "type": "CORE"
+          },
+          {
+            "name": "The Mighty Atom: An Introduction to Atomic Energy",
+            "description": "Learn about the power hidden within atoms and the principles of atomic energy.",
+            "image_path": "https://source.unsplash.com/500x500/?atom",
+            "type": "CORE"
+          },
+          {
+            "name": "From Food to Fuel: The Energy in Living Things",
+            "description": "Explore how plants and animals use food for energy and survival.",
+            "image_path": "https://source.unsplash.com/500x500/?food-energy",
+            "type": "CORE"
+          },
+          {
+            "name": "Electricity at Home: Understanding Electrical Energy",
+            "description": "Discover how electricity powers our lives, from lights to appliances, and learn about safety around electricity.",
+            "image_path": "https://source.unsplash.com/500x500/?electricity",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Roller Coasters and Cars: Energy in Motion",
+            "description": "Learn about the transformation of potential energy to kinetic energy in roller coasters and cars.",
+            "image_path": "https://source.unsplash.com/500x500/?roller-coaster",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Future of Energy: Exploring Sustainable Energy Sources",
+            "description": "Learn about sustainable energy sources and how they can power the future in a cleaner, greener way.",
+            "image_path": "https://source.unsplash.com/500x500/?sustainable-energy",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Wonders of Weather",
+        "description": "Engaging young minds in understanding the dynamic nature of our atmosphere and the weather patterns that impact our everyday lives.",
+        "image_path": "https://source.unsplash.com/500x500/?weather",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Introduction to Weather: Sunny, Rainy, Cloudy, and More",
+            "description": "Introduce the concept of weather and the different types we experience throughout the year.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-types",
+            "type": "CORE"
+          },
+          {
+            "name": "The Water Cycle: Evaporation, Condensation, and Precipitation",
+            "description": "Explore the water cycle and how it affects our weather and the world around us.",
+            "image_path": "https://source.unsplash.com/500x500/?water-cycle",
+            "type": "CORE"
+          },
+          {
+            "name": "Cloudy with a Chance: An Introduction to Clouds",
+            "description": "Learn about different types of clouds and what they can tell us about upcoming weather.",
+            "image_path": "https://source.unsplash.com/500x500/?clouds",
+            "type": "CORE"
+          },
+          {
+            "name": "The Power of Wind: Understanding Wind and Weather",
+            "description": "Discover the role of wind in weather and how it‘s created.",
+            "image_path": "https://source.unsplash.com/500x500/?wind",
+            "type": "CORE"
+          },
+          {
+            "name": "Temperature Tells a Story: Understanding Heat and Cold",
+            "description": "Learn about temperature, how it‘s measured, and its impact on weather and our lives.",
+            "image_path": "https://source.unsplash.com/500x500/?temperature",
+            "type": "CORE"
+          },
+          {
+            "name": "Storm Chasers: Introduction to Storms and Severe Weather",
+            "description": "Investigate storms and severe weather, learning about safety and preparation.",
+            "image_path": "https://source.unsplash.com/500x500/?storm",
+            "type": "CORE"
+          },
+          {
+            "name": "Seasons and Changes: How Weather Changes Throughout the Year",
+            "description": "Understand how and why weather changes with the seasons.",
+            "image_path": "https://source.unsplash.com/500x500/?seasons",
+            "type": "CORE"
+          },
+          {
+            "name": "Snowflakes and Snowstorms: The Science of Snow",
+            "description": "Discover the science behind snow, why it forms, and its role in the ecosystem.",
+            "image_path": "https://source.unsplash.com/500x500/?snow",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Rainbows and Refraction: The Magic of Light and Rain",
+            "description": "Learn about the beautiful phenomenon of rainbows, how they form, and the science behind it.",
+            "image_path": "https://source.unsplash.com/500x500/?rainbows",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Hurricanes and Tornadoes: Power of Extreme Weather",
+            "description": "Explore the formation and impact of hurricanes and tornadoes, and learn about safety measures.",
+            "image_path": "https://source.unsplash.com/500x500/?hurricanes",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Fantastic Forces",
+        "description": "Encouraging young scientists to discover the invisible pushes and pulls that keep our world in motion.",
+        "image_path": "https://source.unsplash.com/500x500/?forces",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Push and Pull: Introduction to Forces",
+            "description": "Learn the basic concepts of force, exploring how pushes and pulls can move objects.",
+            "image_path": "https://source.unsplash.com/500x500/?push-pull",
+            "type": "CORE"
+          },
+          {
+            "name": "Gravity: The Force That Keeps Us Grounded",
+            "description": "Discover gravity, the force that keeps us on Earth and governs the movements of the planets.",
+            "image_path": "https://source.unsplash.com/500x500/?gravity",
+            "type": "CORE"
+          },
+          {
+            "name": "Friction: The Force That Slows Us Down",
+            "description": "Explore friction, a force that resists motion and plays a crucial role in our daily lives.",
+            "image_path": "https://source.unsplash.com/500x500/?friction",
+            "type": "CORE"
+          },
+          {
+            "name": "Magnets: The Invisible Force",
+            "description": "Learn about the fascinating world of magnets and the forces they exert.",
+            "image_path": "https://source.unsplash.com/500x500/?magnets",
+            "type": "CORE"
+          },
+          {
+            "name": "Up, Up and Away: Exploring Lift and Air Resistance",
+            "description": "Discover how forces like lift and air resistance allow birds, planes, and even seeds to fly.",
+            "image_path": "https://source.unsplash.com/500x500/?air-resistance",
+            "type": "CORE"
+          },
+          {
+            "name": "Buoyancy: Why Things Float",
+            "description": "Explore buoyancy, the force that allows objects to float on water.",
+            "image_path": "https://source.unsplash.com/500x500/?buoyancy",
+            "type": "CORE"
+          },
+          {
+            "name": "Inertia: Why Things Keep Moving or Stay Still",
+            "description": "Learn about inertia, the tendency of objects to keep doing what they're doing, whether it's moving or staying still.",
+            "image_path": "https://source.unsplash.com/500x500/?inertia",
+            "type": "CORE"
+          },
+          {
+            "name": "Simple Machines: Forces at Work",
+            "description": "Discover simple machines and how they make work easier by manipulating force.",
+            "image_path": "https://source.unsplash.com/500x500/?simple-machines",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Pressure: The Force That Can Crush or Propel",
+            "description": "Explore pressure, the force that can crush a submarine or shoot water high into the air.",
+            "image_path": "https://source.unsplash.com/500x500/?pressure",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Centrifugal and Centripetal Forces: The Forces That Keep Things Spinning",
+            "description": "Learn about the forces that keep objects spinning in a circle, from twirling a ball on a string to riding a roller coaster.",
+            "image_path": "https://source.unsplash.com/500x500/?spinning",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Our Beautiful Planet",
+        "description": "Helping students develop an appreciation for the natural beauty and complexity of Earth, our home in the universe.",
+        "image_path": "https://source.unsplash.com/500x500/?earth",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Blue Marble: Introduction to Earth",
+            "description": "Get introduced to Earth, learning about its position in the solar system, its structure, and why it‘s unique.",
+            "image_path": "https://source.unsplash.com/500x500/?earth-globe",
+            "type": "CORE"
+          },
+          {
+            "name": "Landforms: The Shape of Our Planet",
+            "description": "Explore different landforms on Earth, from mountains and valleys to plains and plateaus.",
+            "image_path": "https://source.unsplash.com/500x500/?landforms",
+            "type": "CORE"
+          },
+          {
+            "name": "Water, Water, Everywhere: Oceans, Lakes, and Rivers",
+            "description": "Learn about the different bodies of water on Earth, their importance, and the life they support.",
+            "image_path": "https://source.unsplash.com/500x500/?bodies-of-water",
+            "type": "CORE"
+          },
+          {
+            "name": "Under the Ground: Exploring Earth‘s Crust",
+            "description": "Dive beneath the surface to learn about Earth‘s crust, the soil that supports life, and what lies even deeper.",
+            "image_path": "https://source.unsplash.com/500x500/?earth-crust",
+            "type": "CORE"
+          },
+          {
+            "name": "Earth‘s Atmosphere: The Air Around Us",
+            "description": "Discover Earth‘s atmosphere, the layer of air that protects us and makes life possible.",
+            "image_path": "https://source.unsplash.com/500x500/?atmosphere",
+            "type": "CORE"
+          },
+          {
+            "name": "Poles Apart: Life at the North and South Poles",
+            "description": "Explore the North and South Poles, learning about the unique climates, animals, and people who live there.",
+            "image_path": "https://source.unsplash.com/500x500/?poles",
+            "type": "CORE"
+          },
+          {
+            "name": "Desert Biomes: Hot, Dry, and Full of Life",
+            "description": "Investigate desert biomes, learning how plants and animals adapt to survive in these extreme environments.",
+            "image_path": "https://source.unsplash.com/500x500/?desert",
+            "type": "CORE"
+          },
+          {
+            "name": "Forests and Jungles: Earth‘s Green Lungs",
+            "description": "Learn about forest and jungle biomes, the diverse life they contain, and their importance for the planet.",
+            "image_path": "https://source.unsplash.com/500x500/?forests",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Exploring Wetlands: Earth‘s Natural Filters",
+            "description": "Discover the vital role of wetlands, their diverse ecosystems, and how they protect our planet.",
+            "image_path": "https://source.unsplash.com/500x500/?wetlands",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Mountains: Reaching for the Sky",
+            "description": "Explore mountain biomes, their unique ecosystems, and the impact they have on the planet.",
+            "image_path": "https://source.unsplash.com/500x500/?mountains",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Amazing Animal Kingdom",
+        "description": "Inviting young learners on a journey to explore the wide array of creatures that inhabit our planet and the fascinating world of animal behaviors, adaptations, and habitats.",
+        "image_path": "https://source.unsplash.com/500x500/?animals",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Introduction to Animals: Exploring the Animal Kingdom",
+            "description": "Introduce the vast diversity of animals on Earth, discussing basic animal classifications.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-kingdom",
+            "type": "CORE"
+          },
+          {
+            "name": "Amazing Adaptations: How Animals Survive",
+            "description": "Explore the concept of animal adaptations and how they help animals survive in their habitats.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-adaptations",
+            "type": "CORE"
+          },
+          {
+            "name": "Animals at Home: Exploring Animal Habitats",
+            "description": "Discover the different types of habitats animals live in, from oceans and forests to deserts and tundras.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-habitats",
+            "type": "CORE"
+          },
+          {
+            "name": "Big and Small: Understanding Animal Sizes",
+            "description": "Learn about the sizes of different animals, from the smallest insects to the largest mammals.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-sizes",
+            "type": "CORE"
+          },
+          {
+            "name": "Carnivores, Herbivores, and Omnivores: Animal Diets",
+            "description": "Explore the different diets of animals, learning what carnivores, herbivores, and omnivores eat.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-diets",
+            "type": "CORE"
+          },
+          {
+            "name": "Animal Movements: Walk, Fly, Slither, and Swim",
+            "description": "Discover how various animals move, including those that walk, fly, slither, hop, and swim.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-movements",
+            "type": "CORE"
+          },
+          {
+            "name": "The Cycle of Life: Animal Life Cycles",
+            "description": "Learn about the life cycles of different animals, from birth to adulthood.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-life-cycles",
+            "type": "CORE"
+          },
+          {
+            "name": "Furry Friends: All About Mammals",
+            "description": "Explore the world of mammals, their characteristics, and examples from around the world.",
+            "image_path": "https://source.unsplash.com/500x500/?mammals",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Feathered Friends: All About Birds",
+            "description": "Learn about birds, their characteristics, and the amazing diversity of bird species.",
+            "image_path": "https://source.unsplash.com/500x500/?birds",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Scaly and Slimy: Reptiles and Amphibians",
+            "description": "Discover the world of reptiles and amphibians, learning about their unique characteristics.",
+            "image_path": "https://source.unsplash.com/500x500/?reptiles",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
+    "topics_data": [
+      {
+        "name": "Exploring the Wonders of Nature",
+        "description": "Unveiling the secrets of nature through hands-on experiences, fostering a deep appreciation for biodiversity and ecosystems.",
+        "image_path": "https://source.unsplash.com/500x500/?nature",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Plant Life",
+            "description": "Discovering the intricacies of plant life cycles, their role in ecosystems, and the art of gardening.",
+            "image_path": "https://source.unsplash.com/500x500/?plants",
+            "type": "CORE"
+          },
+          {
+            "name": "Bird Watching Basics",
+            "description": "Learning to observe and identify different bird species while understanding their unique behaviors.",
+            "image_path": "https://source.unsplash.com/500x500/?birds",
+            "type": "CORE"
+          },
+          {
+            "name": "Insect Investigation",
+            "description": "Exploring the small world of insects and their incredible diversity, with a focus on life cycles and habitats.",
+            "image_path": "https://source.unsplash.com/500x500/?insects",
+            "type": "CORE"
+          },
+          {
+            "name": "Fun with Fossils",
+            "description": "Introducing paleontology by studying fossils, discussing what they tell us about Earth‘s history.",
+            "image_path": "https://source.unsplash.com/500x500/?fossils",
+            "type": "CORE"
+          },
+          {
+            "name": "Mysteries of Weather",
+            "description": "Observing weather patterns, understanding their causes and effects, and learning how to forecast weather.",
+            "image_path": "https://source.unsplash.com/500x500/?weather",
+            "type": "CORE"
+          },
+          {
+            "name": "The Rock Cycle",
+            "description": "Exploring the rock cycle and the formation of different types of rocks, minerals and crystals.",
+            "image_path": "https://source.unsplash.com/500x500/?rocks",
+            "type": "CORE"
+          },
+          {
+            "name": "The Magic of Photosynthesis",
+            "description": "Diving into the process of photosynthesis, exploring how plants make their own food from sunlight.",
+            "image_path": "https://source.unsplash.com/500x500/?photosynthesis",
+            "type": "CORE"
+          },
+          {
+            "name": "Introduction to Renewable Energy",
+            "description": "Exploring the concept of renewable energy, focusing on how sun and wind can generate power.",
+            "image_path": "https://source.unsplash.com/500x500/?renewable-energy",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Beneath the Oceans",
+            "description": "Discovering the fascinating world beneath the oceans, from coral reefs to deep-sea creatures.",
+            "image_path": "https://source.unsplash.com/500x500/?ocean-life",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Story of Evolution",
+            "description": "Unraveling the story of evolution, discussing how species adapt and change over time.",
+            "image_path": "https://source.unsplash.com/500x500/?evolution",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Space and Beyond",
+        "description": "Diving into the infinite universe, sparking imagination and curiosity about planets, stars, and galaxies.",
+        "image_path": "https://source.unsplash.com/500x500/?space",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Planet Parade",
+            "description": "Learning about the eight planets of our solar system, their unique characteristics and orbits.",
+            "image_path": "https://source.unsplash.com/500x500/?planets",
+            "type": "CORE"
+          },
+          {
+            "name": "Stellar Journey",
+            "description": "Understanding stars, constellations, and galaxies, and how we observe them from Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?stars",
+            "type": "CORE"
+          },
+          {
+            "name": "The Moon and Its Phases",
+            "description": "Discovering the moon, its phases, craters, and its relationship with Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?moon",
+            "type": "CORE"
+          },
+          {
+            "name": "The Sun: Our Stellar Neighbor",
+            "description": "Exploring the Sun‘s role in our solar system, its properties, and importance for life on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?sun",
+            "type": "CORE"
+          },
+          {
+            "name": "Asteroids, Meteors, and Comets",
+            "description": "Understanding the differences between asteroids, meteors, and comets, and their impact on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?asteroids",
+            "type": "CORE"
+          },
+          {
+            "name": "Gravity and Its Wonders",
+            "description": "Learning about the concept of gravity, its effects, and how it shapes the universe.",
+            "image_path": "https://source.unsplash.com/500x500/?gravity",
+            "type": "CORE"
+          },
+          {
+            "name": "The International Space Station",
+            "description": "Introducing the International Space Station, its purpose, and life of astronauts aboard the station.",
+            "image_path": "https://source.unsplash.com/500x500/?space-station",
+            "type": "CORE"
+          },
+          {
+            "name": "Space Exploration History",
+            "description": "Journeying through the history of space exploration, from early astronomers to modern space missions.",
+            "image_path": "https://source.unsplash.com/500x500/?space-exploration",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Aliens and the Search for Extraterrestrial Life",
+            "description": "Exploring the possibility of life beyond Earth and the scientific search for extraterrestrial life.",
+            "image_path": "https://source.unsplash.com/500x500/?aliens",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Rovers on Mars",
+            "description": "Understanding Mars rovers, their missions, and what they tell us about the Red Planet.",
+            "image_path": "https://source.unsplash.com/500x500/?mars-rover",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Chemistry in Everyday Life",
+        "description": "Diving into the world of atoms and molecules, discovering the magic of chemical reactions in everyday life.",
+        "image_path": "https://source.unsplash.com/500x500/?chemistry",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Matter and Its Properties",
+            "description": "Exploring the concept of matter, its states and how it changes from one state to another.",
+            "image_path": "https://source.unsplash.com/500x500/?matter",
+            "type": "CORE"
+          },
+          {
+            "name": "The Periodic Table: An Introduction",
+            "description": "Introducing the periodic table, understanding elements, and their significance.",
+            "image_path": "https://source.unsplash.com/500x500/?periodic-table",
+            "type": "CORE"
+          },
+          {
+            "name": "The World of Atoms and Molecules",
+            "description": "Discovering atoms and molecules, their structure, and how they combine to form substances.",
+            "image_path": "https://source.unsplash.com/500x500/?atoms",
+            "type": "CORE"
+          },
+          {
+            "name": "Fun with Chemical Reactions",
+            "description": "Learning about chemical reactions through fun and safe experiments, observing changes in color, temperature, and states of matter.",
+            "image_path": "https://source.unsplash.com/500x500/?chemical-reactions",
+            "type": "CORE"
+          },
+          {
+            "name": "Acids and Bases in Our Foods",
+            "description": "Exploring the concept of acids and bases through examples in our daily diet.",
+            "image_path": "https://source.unsplash.com/500x500/?acids-bases",
+            "type": "CORE"
+          },
+          {
+            "name": "The Magic of Mixtures and Solutions",
+            "description": "Understanding the difference between mixtures and solutions, and exploring solubility.",
+            "image_path": "https://source.unsplash.com/500x500/?mixtures",
+            "type": "CORE"
+          },
+          {
+            "name": "Exploring Crystals",
+            "description": "Learning about crystal formation through salt and sugar crystallization experiments.",
+            "image_path": "https://source.unsplash.com/500x500/?crystals",
+            "type": "CORE"
+          },
+          {
+            "name": "Chemistry in Cooking",
+            "description": "Understanding the role of chemistry in cooking, from baking soda to caramelization.",
+            "image_path": "https://source.unsplash.com/500x500/?cooking-chemistry",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Amazing Polymers",
+            "description": "Exploring polymers through hands-on experiments like making slime and understanding their uses in everyday life.",
+            "image_path": "https://source.unsplash.com/500x500/?polymers",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Science of Soap",
+            "description": "Learning about the chemistry behind soap and how it cleans, with a chance to make homemade soap.",
+            "image_path": "https://source.unsplash.com/500x500/?soap",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Mysteries of Physics",
+        "description": "Exploring the fundamental principles of physics, igniting curiosity about energy, forces, and motion through fun experiments.",
+        "image_path": "https://source.unsplash.com/500x500/?physics",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Energy in Our Lives",
+            "description": "Understanding the concept of energy, its forms, and how it changes from one form to another.",
+            "image_path": "https://source.unsplash.com/500x500/?energy",
+            "type": "CORE"
+          },
+          {
+            "name": "The Power of Force",
+            "description": "Learning about forces, the concept of push and pull, and understanding its effects on objects.",
+            "image_path": "https://source.unsplash.com/500x500/?force",
+            "type": "CORE"
+          },
+          {
+            "name": "Making Things Move",
+            "description": "Exploring the principles of motion through hands-on experiments and activities.",
+            "image_path": "https://source.unsplash.com/500x500/?motion",
+            "type": "CORE"
+          },
+          {
+            "name": "The Magic of Magnets",
+            "description": "Learning about magnets, their properties, and how they interact with each other.",
+            "image_path": "https://source.unsplash.com/500x500/?magnets",
+            "type": "CORE"
+          },
+          {
+            "name": "Light and Shadows",
+            "description": "Discovering the properties of light, its interaction with objects, and the creation of shadows.",
+            "image_path": "https://source.unsplash.com/500x500/?light-shadows",
+            "type": "CORE"
+          },
+          {
+            "name": "Sound and Vibrations",
+            "description": "Understanding sound, its production, and how it travels through different mediums.",
+            "image_path": "https://source.unsplash.com/500x500/?sound",
+            "type": "CORE"
+          },
+          {
+            "name": "The World of Simple Machines",
+            "description": "Exploring simple machines and their applications in everyday life.",
+            "image_path": "https://source.unsplash.com/500x500/?simple-machines",
+            "type": "CORE"
+          },
+          {
+            "name": "Physics in Sports",
+            "description": "Discovering the role of physics in sports and how understanding physics can improve performance.",
+            "image_path": "https://source.unsplash.com/500x500/?sports-physics",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Wonders of Electricity",
+            "description": "Understanding the basics of electricity, circuit building and safety precautions.",
+            "image_path": "https://source.unsplash.com/500x500/?electricity",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Physics in Music",
+            "description": "Exploring the physics behind music, understanding how instruments create different pitches and tones.",
+            "image_path": "https://source.unsplash.com/500x500/?music-physics",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Wonders of Weather and Climate",
+        "description": "Discovering the dynamics of weather and climate, their influences on our daily lives and the planet.",
+        "image_path": "https://source.unsplash.com/500x500/?weather",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Weather",
+            "description": "Learning about weather patterns, symbols, and the factors that influence our daily weather.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-patterns",
+            "type": "CORE"
+          },
+          {
+            "name": "The Water Cycle",
+            "description": "Exploring the journey of water from the ground to the sky and back again, understanding evaporation, condensation, and precipitation.",
+            "image_path": "https://source.unsplash.com/500x500/?water-cycle",
+            "type": "CORE"
+          },
+          {
+            "name": "Clouds and What They Tell Us",
+            "description": "Learning about different types of clouds, their formation, and what they tell us about the weather.",
+            "image_path": "https://source.unsplash.com/500x500/?clouds",
+            "type": "CORE"
+          },
+          {
+            "name": "Storms and Other Extreme Weather",
+            "description": "Understanding storms, tornadoes, hurricanes, and other extreme weather conditions and safety measures to take.",
+            "image_path": "https://source.unsplash.com/500x500/?storms",
+            "type": "CORE"
+          },
+          {
+            "name": "Climate Zones of the World",
+            "description": "Exploring different climate zones around the world, understanding the unique weather patterns of each zone.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-zones",
+            "type": "CORE"
+          },
+          {
+            "name": "Climate Change and Its Effects",
+            "description": "Learning about the concept of climate change, its causes, effects, and how we can help combat it.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-change",
+            "type": "CORE"
+          },
+          {
+            "name": "Adaptation to Climate",
+            "description": "Understanding how plants, animals, and humans adapt to their specific climates.",
+            "image_path": "https://source.unsplash.com/500x500/?adaptation",
+            "type": "CORE"
+          },
+          {
+            "name": "Building a Weather Station",
+            "description": "Hands-on project to build a simple weather station, using it to observe and record weather patterns.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-station",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Weather Forecasting",
+            "description": "Understanding the science behind weather forecasting and the tools meteorologists use.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-forecast",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Role of Oceans in Weather and Climate",
+            "description": "Learning about the role of oceans in regulating weather and climate, understanding ocean currents and their effects.",
+            "image_path": "https://source.unsplash.com/500x500/?oceans",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Magic of Ecosystems",
+        "description": "Unveiling the complex web of life in various ecosystems, understanding biodiversity, and the significance of each organism‘s role.",
+        "image_path": "https://source.unsplash.com/500x500/?ecosystems",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Ecosystems",
+            "description": "Exploring the concept of ecosystems, their components, and how they function.",
+            "image_path": "https://source.unsplash.com/500x500/?ecosystems",
+            "type": "CORE"
+          },
+          {
+            "name": "Different Types of Ecosystems",
+            "description": "Learning about various types of ecosystems, including forests, deserts, oceans, and more.",
+            "image_path": "https://source.unsplash.com/500x500/?forest,desert,ocean",
+            "type": "CORE"
+          },
+          {
+            "name": "Food Chains and Food Webs",
+            "description": "Understanding the flow of energy in an ecosystem through food chains and food webs.",
+            "image_path": "https://source.unsplash.com/500x500/?food-chain",
+            "type": "CORE"
+          },
+          {
+            "name": "The Role of Plants in Ecosystems",
+            "description": "Exploring the crucial role of plants in ecosystems, from providing oxygen to being a food source for animals.",
+            "image_path": "https://source.unsplash.com/500x500/?plants",
+            "type": "CORE"
+          },
+          {
+            "name": "The Role of Animals in Ecosystems",
+            "description": "Understanding the roles different animals play in various ecosystems, from pollinators to predators.",
+            "image_path": "https://source.unsplash.com/500x500/?animals",
+            "type": "CORE"
+          },
+          {
+            "name": "The Impact of Humans on Ecosystems",
+            "description": "Exploring how human activities can affect ecosystems positively and negatively, and discussing sustainable practices.",
+            "image_path": "https://source.unsplash.com/500x500/?sustainable-practices",
+            "type": "CORE"
+          },
+          {
+            "name": "The Magic of Micro-ecosystems",
+            "description": "Discovering micro-ecosystems, from a drop of pond water to the world under a rotting log.",
+            "image_path": "https://source.unsplash.com/500x500/?micro-ecosystems",
+            "type": "CORE"
+          },
+          {
+            "name": "Creating a Mini Ecosystem",
+            "description": "A fun hands-on project to create a mini ecosystem, observing it, and understanding how it works.",
+            "image_path": "https://source.unsplash.com/500x500/?mini-ecosystem",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Ecosystems in Danger: Endangered Species",
+            "description": "Learning about endangered species, the threats they face, and discussing how we can help.",
+            "image_path": "https://source.unsplash.com/500x500/?endangered-species",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Exploring Biomes of the World",
+            "description": "Understanding the concept of biomes, exploring different types and the life forms they support.",
+            "image_path": "https://source.unsplash.com/500x500/?biomes",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Unveiling the Universe",
+        "description": "Embarking on a journey through the universe, understanding our place in it, and exploring the mysteries of space.",
+        "image_path": "https://source.unsplash.com/500x500/?universe",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Our Place in the Universe",
+            "description": "Understanding our planet‘s position in the solar system, galaxy, and the larger universe.",
+            "image_path": "https://source.unsplash.com/500x500/?earth-universe",
+            "type": "CORE"
+          },
+          {
+            "name": "The Solar System",
+            "description": "Exploring the planets, moons, asteroids, and comets that make up our solar system.",
+            "image_path": "https://source.unsplash.com/500x500/?solar-system",
+            "type": "CORE"
+          },
+          {
+            "name": "The Sun: Our Nearest Star",
+            "description": "Understanding the importance of the sun, its structure, and the energy it provides.",
+            "image_path": "https://source.unsplash.com/500x500/?sun",
+            "type": "CORE"
+          },
+          {
+            "name": "Moon Phases and Eclipses",
+            "description": "Learning about the phases of the moon, solar and lunar eclipses, and their causes.",
+            "image_path": "https://source.unsplash.com/500x500/?moon-phases",
+            "type": "CORE"
+          },
+          {
+            "name": "The Mystery of Black Holes",
+            "description": "Unveiling the intriguing mysteries of black holes and their characteristics.",
+            "image_path": "https://source.unsplash.com/500x500/?black-holes",
+            "type": "CORE"
+          },
+          {
+            "name": "Constellations and Star Gazing",
+            "description": "Identifying constellations, understanding their significance, and experiencing the joy of star gazing.",
+            "image_path": "https://source.unsplash.com/500x500/?constellations",
+            "type": "CORE"
+          },
+          {
+            "name": "Space Exploration and Astronauts",
+            "description": "Learning about the history of space exploration, the life of astronauts, and famous space missions.",
+            "image_path": "https://source.unsplash.com/500x500/?astronauts",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Telescopes",
+            "description": "Learning about the operation of telescopes, their importance in astronomy, and how to use them for observation.",
+            "image_path": "https://source.unsplash.com/500x500/?telescope",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Wonder of Comets, Meteors, and Asteroids",
+            "description": "Exploring the fascinating world of comets, meteors, and asteroids and their roles in the solar system.",
+            "image_path": "https://source.unsplash.com/500x500/?comets",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Building a Solar System Model",
+            "description": "A fun, hands-on project to build a model of the solar system, helping to visualize its vastness and the scale of celestial bodies.",
+            "image_path": "https://source.unsplash.com/500x500/?solar-system-model",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Amazing Human Body",
+        "description": "Exploring the complexities and wonders of the human body, understanding how our organs and systems function together.",
+        "image_path": "https://source.unsplash.com/500x500/?human-body",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Body Systems Overview",
+            "description": "Understanding the different systems of the human body and how they work together.",
+            "image_path": "https://source.unsplash.com/500x500/?body-systems",
+            "type": "CORE"
+          },
+          {
+            "name": "The Muscular and Skeletal Systems",
+            "description": "Learning about our muscles and bones, how they provide support, enable movement, and protect vital organs.",
+            "image_path": "https://source.unsplash.com/500x500/?skeleton,muscles",
+            "type": "CORE"
+          },
+          {
+            "name": "The Digestive System",
+            "description": "Understanding the journey of food in the body, from intake to waste removal.",
+            "image_path": "https://source.unsplash.com/500x500/?digestive-system",
+            "type": "CORE"
+          },
+          {
+            "name": "The Respiratory System",
+            "description": "Learning about how we breathe, the journey of air into our bodies, and the role of lungs.",
+            "image_path": "https://source.unsplash.com/500x500/?respiratory-system",
+            "type": "CORE"
+          },
+          {
+            "name": "The Circulatory System",
+            "description": "Exploring the role of the heart, blood vessels, and blood in delivering oxygen and nutrients to the body.",
+            "image_path": "https://source.unsplash.com/500x500/?circulatory-system",
+            "type": "CORE"
+          },
+          {
+            "name": "The Nervous System",
+            "description": "Understanding the workings of the brain, spinal cord, and nerves, and how they control our actions and reactions.",
+            "image_path": "https://source.unsplash.com/500x500/?nervous-system",
+            "type": "CORE"
+          },
+          {
+            "name": "The Sensory System",
+            "description": "Exploring our senses, how they help us perceive the world around us, and the organs involved.",
+            "image_path": "https://source.unsplash.com/500x500/?sensory-system",
+            "type": "CORE"
+          },
+          {
+            "name": "Building a Body Part Model",
+            "description": "A hands-on activity to build a model of a human body part, enhancing understanding of its structure and function.",
+            "image_path": "https://source.unsplash.com/500x500/?human-body-model",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Miracle of Human Life",
+            "description": "Understanding human growth and development from birth to adulthood.",
+            "image_path": "https://source.unsplash.com/500x500/?human-growth",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Our Body’s Defense System",
+            "description": "Learning about the immune system, how it fights off diseases, and the importance of hygiene.",
+            "image_path": "https://source.unsplash.com/500x500/?immune-system",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Discovering Dinosaurs",
+        "description": "Diving into the fascinating world of dinosaurs, understanding their life, characteristics, and what led to their extinction.",
+        "image_path": "https://source.unsplash.com/500x500/?dinosaurs",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "What are Dinosaurs?",
+            "description": "Introduction to dinosaurs, their characteristics, and the time period they lived in.",
+            "image_path": "https://source.unsplash.com/500x500/?dinosaurs",
+            "type": "CORE"
+          },
+          {
+            "name": "Different Types of Dinosaurs",
+            "description": "Learning about the variety of dinosaurs, from herbivores and carnivores to flying and aquatic dinosaurs.",
+            "image_path": "https://source.unsplash.com/500x500/?different-dinosaurs",
+            "type": "CORE"
+          },
+          {
+            "name": "Dinosaur Fossils",
+            "description": "Understanding how dinosaur fossils are formed, and what they tell us about the life of dinosaurs.",
+            "image_path": "https://source.unsplash.com/500x500/?dinosaur-fossils",
+            "type": "CORE"
+          },
+          {
+            "name": "Paleontologists: Dinosaur Detectives",
+            "description": "Learning about the work of paleontologists and how they uncover the secrets of prehistoric life.",
+            "image_path": "https://source.unsplash.com/500x500/?paleontology",
+            "type": "CORE"
+          },
+          {
+            "name": "The Mystery of Dinosaur Extinction",
+            "description": "Exploring theories about why dinosaurs became extinct and the evidence supporting them.",
+            "image_path": "https://source.unsplash.com/500x500/?dinosaur-extinction",
+            "type": "CORE"
+          },
+          {
+            "name": "Dinosaurs and Birds: Are They Related?",
+            "description": "Understanding the link between dinosaurs and birds, and why some scientists believe birds are living dinosaurs.",
+            "image_path": "https://source.unsplash.com/500x500/?birds-dinosaurs",
+            "type": "CORE"
+          },
+          {
+            "name": "Dinosaur Habitats",
+            "description": "Learning about the different environments dinosaurs lived in, from lush forests to arid deserts.",
+            "image_path": "https://source.unsplash.com/500x500/?dinosaur-habitats",
+            "type": "CORE"
+          },
+          {
+            "name": "Building a Dinosaur Diorama",
+            "description": "A fun, hands-on project to create a diorama of a dinosaur habitat, using research and creativity.",
+            "image_path": "https://source.unsplash.com/500x500/?dinosaur-diorama",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Creating a Dinosaur Fossil",
+            "description": "An engaging activity to create a mock dinosaur fossil, understanding the fossilization process in a fun way.",
+            "image_path": "https://source.unsplash.com/500x500/?fossil-making",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Dinosaur Timeline",
+            "description": "Understanding the timeline of dinosaurs, from their first appearance to their extinction.",
+            "image_path": "https://source.unsplash.com/500x500/?dinosaur-timeline",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Exploring Weather and Climate",
+        "description": "Understanding the fascinating world of weather and climate, their patterns, causes, and impacts on life on Earth.",
+        "image_path": "https://source.unsplash.com/500x500/?weather,climate",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "What is Weather?",
+            "description": "Understanding the basics of weather, elements that influence it, and its daily variations.",
+            "image_path": "https://source.unsplash.com/500x500/?weather",
+            "type": "CORE"
+          },
+          {
+            "name": "Types of Weather",
+            "description": "Exploring different types of weather conditions like sunny, rainy, windy, and snowy days, and understanding what causes them.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-types",
+            "type": "CORE"
+          },
+          {
+            "name": "What is Climate?",
+            "description": "Understanding the concept of climate, how it differs from weather, and the factors that influence it.",
+            "image_path": "https://source.unsplash.com/500x500/?climate",
+            "type": "CORE"
+          },
+          {
+            "name": "Different Climates Around the World",
+            "description": "Learning about various climates around the world, from deserts and tropical rainforests to polar regions.",
+            "image_path": "https://source.unsplash.com/500x500/?world-climates",
+            "type": "CORE"
+          },
+          {
+            "name": "The Water Cycle",
+            "description": "Understanding the water cycle and its role in weather patterns and climate.",
+            "image_path": "https://source.unsplash.com/500x500/?water-cycle",
+            "type": "CORE"
+          },
+          {
+            "name": "Weather Instruments and Forecasting",
+            "description": "Learning about instruments used to measure weather and the science behind weather forecasting.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-instruments",
+            "type": "CORE"
+          },
+          {
+            "name": "Climate Change and Its Effects",
+            "description": "Understanding the concept of climate change, its causes, and impacts on the planet.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-change",
+            "type": "CORE"
+          },
+          {
+            "name": "Building a Homemade Weather Station",
+            "description": "A hands-on project to build a simple weather station at home, to record and understand weather patterns.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-station",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Extreme Weather Phenomena",
+            "description": "Exploring extreme weather events like hurricanes, tornadoes, and blizzards, understanding what causes them and their effects.",
+            "image_path": "https://source.unsplash.com/500x500/?extreme-weather",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "How Animals and Plants Adapt to Climate",
+            "description": "Learning about how different plants and animals have adapted to survive in various climates around the world.",
+            "image_path": "https://source.unsplash.com/500x500/?animals-plants-climate",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
+    "topics_data": [
+{
+    "name": "Exploring Ecosystems",
+    "description": "An exciting dive into the interconnected world of plants, animals, and their environments, inspiring appreciation and understanding of nature‘s balance.",
+    "image_path": "https://source.unsplash.com/500x500/?ecosystems",
+    "type": "CORE",
+    "lessons_data": [
+        {
+            "name": "Understanding Habitats",
+            "description": "Learn about diverse habitats around the world and how they support unique forms of life.",
+            "image_path": "https://source.unsplash.com/500x500/?habitats",
+            "type": "CORE"
         },
         {
-            "name": "Wonders of Space",
-            "description": "Embarking on a cosmic journey to explore our solar system, the stars, and the vastness of space.",
-            "image_path": "https://source.unsplash.com/500x500/?space",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Our Solar System",
-                    "description": "An engaging introduction to our solar system, exploring the sun, planets, and their moons.",
-                    "image_path": "https://source.unsplash.com/500x500/?solar-system",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Moon and its Phases",
-                    "description": "Understanding the moon, its phases, and its impact on Earth.",
-                    "image_path": "https://source.unsplash.com/500x500/?moon",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Stars and Constellations",
-                    "description": "Discovering the beauty of stars and constellations, their stories, and how to identify them in the night sky.",
-                    "image_path": "https://source.unsplash.com/500x500/?stars",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Day and Night",
-                    "description": "Learning about the Earth‘s rotation, why we have day and night, and the concept of time zones.",
-                    "image_path": "https://source.unsplash.com/500x500/?day-night",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Sun, Our Star",
-                    "description": "Exploring the sun, its importance, and safety measures when observing the sun.",
-                    "image_path": "https://source.unsplash.com/500x500/?sun",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Wonders of Gravity",
-                    "description": "Understanding gravity, how it works, and its role in our solar system.",
-                    "image_path": "https://source.unsplash.com/500x500/?gravity",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Earth, Our Home",
-                    "description": "Learning about Earth‘s unique features that make it suitable for life.",
-                    "image_path": "https://source.unsplash.com/500x500/?earth",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Comets, Asteroids and Meteors",
-                    "description": "Unveiling the mysteries of comets, asteroids, and meteors, and their interactions with our planet.",
-                    "image_path": "https://source.unsplash.com/500x500/?comets-asteroids",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Space Exploration",
-                    "description": "Exploring the history of space exploration, major achievements, and future plans.",
-                    "image_path": "https://source.unsplash.com/500x500/?space-exploration",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Astronauts and Space Travel",
-                    "description": "Learning about astronauts, their training, and the experience of space travel.",
-                    "image_path": "https://source.unsplash.com/500x500/?astronauts",
-                    "type": "ELECTIVE"
-                }
-            ]
+            "name": "Food Chains and Webs",
+            "description": "Discover the interconnected relationships of predators and prey, and how energy flows in an ecosystem.",
+            "image_path": "https://source.unsplash.com/500x500/?food-chain",
+            "type": "CORE"
         },
         {
-            "name": "Inventions and Innovations",
-            "description": "Unveiling the magic of science through the lens of remarkable inventions and technological advancements.",
-            "image_path": "https://source.unsplash.com/500x500/?inventions",
-            "type": "ELECTIVE",
-            "lessons_data": [
-                {
-                    "name": "The Wheel and Its Uses",
-                    "description": "Exploring the invention of the wheel and its wide range of applications.",
-                    "image_path": "https://source.unsplash.com/500x500/?wheel",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Inventors and Their Inventions",
-                    "description": "Inspiring young minds with stories of renowned inventors and their groundbreaking inventions.",
-                    "image_path": "https://source.unsplash.com/500x500/?inventors",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Simple Machines Around Us",
-                    "description": "Identifying and understanding the uses of simple machines in our daily life.",
-                    "image_path": "https://source.unsplash.com/500x500/?simple-machines",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Magic of Electricity",
-                    "description": "Introducing the concept of electricity, its generation, and its role in powering our world.",
-                    "image_path": "https://source.unsplash.com/500x500/?electricity",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Internet and Computers",
-                    "description": "Exploring the world of computers and the internet, and understanding their significance in the modern world.",
-                    "image_path": "https://source.unsplash.com/500x500/?computers-internet",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Robotics and AI",
-                    "description": "A peek into the fascinating world of robotics and artificial intelligence.",
-                    "image_path": "https://source.unsplash.com/500x500/?robotics-ai",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Green Energy Innovations",
-                    "description": "Discussing the importance of green energy innovations for a sustainable future.",
-                    "image_path": "https://source.unsplash.com/500x500/?green-energy",
-                    "type": "ELECTIVE"
-                }
-            ]
+            "name": "Adaptation for Survival",
+            "description": "Understand how organisms adapt to their environment to survive and thrive.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-adaptations",
+            "type": "CORE"
         },
         {
-            "name": "Scientific Wonders of the Ancient World",
-            "description": "Exploring ancient civilizations‘ scientific knowledge and marvels, fostering an appreciation for their ingenuity.",
-            "image_path": "https://source.unsplash.com/500x500/?ancient-world",
-            "type": "ELECTIVE",
-            "lessons_data": [
-                {
-                    "name": "Egyptian Pyramids and Mathematics",
-                    "description": "Learning about the Egyptian pyramids and the ancient Egyptians‘ understanding of mathematics.",
-                    "image_path": "https://source.unsplash.com/500x500/?egyptian-pyramids",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Greek Philosophers and Natural Sciences",
-                    "description": "Exploring the contributions of ancient Greek philosophers to the natural sciences.",
-                    "image_path": "https://source.unsplash.com/500x500/?greek-philosophers",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Roman Engineering and Architecture",
-                    "description": "Understanding the marvels of Roman engineering and architecture, like aqueducts and the Colosseum.",
-                    "image_path": "https://source.unsplash.com/500x500/?roman-engineering",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Astronomy in Ancient Civilizations",
-                    "description": "Exploring the understanding and significance of astronomy in various ancient civilizations.",
-                    "image_path": "https://source.unsplash.com/500x500/?ancient-astronomy",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Medicine in the Ancient World",
-                    "description": "Understanding the development of medicine and health practices in ancient civilizations.",
-                    "image_path": "https://source.unsplash.com/500x500/?ancient-medicine",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Ancient Indian Science and Technology",
-                    "description": "Exploring the scientific and technological advancements of ancient India, including Ayurveda and zero‘s concept.",
-                    "image_path": "https://source.unsplash.com/500x500/?ancient-india",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Chinese Inventions and Discoveries",
-                    "description": "Learning about significant inventions and discoveries from ancient China, like paper and the compass.",
-                    "image_path": "https://source.unsplash.com/500x500/?ancient-china",
-                    "type": "ELECTIVE"
-                }
-            ]
+            "name": "Decomposers in Action",
+            "description": "Uncover the vital role of decomposers in recycling nutrients and sustaining life.",
+            "image_path": "https://source.unsplash.com/500x500/?decomposers",
+            "type": "CORE"
+        },
+        {
+            "name": "Humans and Ecosystems",
+            "description": "Explore how human activities impact ecosystems and what we can do to protect our planet.",
+            "image_path": "https://source.unsplash.com/500x500/?environmental-impact",
+            "type": "CORE"
+        },
+        {
+            "name": "Ecological Conservation",
+            "description": "Learn about efforts to protect ecosystems, species, and biodiversity around the world.",
+            "image_path": "https://source.unsplash.com/500x500/?conservation",
+            "type": "CORE"
+        },
+        {
+            "name": "Ecosystems Project",
+            "description": "Apply your knowledge to create a model of an ecosystem, demonstrating the relationships and interactions within it.",
+            "image_path": "https://source.unsplash.com/500x500/?science-project",
+            "type": "CORE"
+        },
+        {
+            "name": "Extreme Habitats",
+            "description": "Dive into extreme environments such as deserts and deep-sea vents, exploring how life adapts to survive.",
+            "image_path": "https://source.unsplash.com/500x500/?extreme-habitats",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "Invasive Species",
+            "description": "Understand the impact of invasive species on native ecosystems, and how humans can help.",
+            "image_path": "https://source.unsplash.com/500x500/?invasive-species",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "Ecology in Action",
+            "description": "A hands-on elective where students can observe and document local ecosystems in real time.",
+            "image_path": "https://source.unsplash.com/500x500/?nature-exploration",
+            "type": "ELECTIVE"
         }
-      ]
-    },
-    {
-      "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
-      "topics_data": []
-    },
-    {
-      "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
-      "topics_data": []
-    },
-    {
-      "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
-      "topics_data": []
-    },
-    {
-      "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
-      "topics_data": []
-    },
-    {
-      "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",
-      "topics_data": []
-    }
-  ]'::json
+    ]
+},
+{
+    "name": "The Wonders of Weather",
+    "description": "Embark on a journey into the atmospheric world, understanding the fascinating science behind weather patterns and phenomena.",
+    "image_path": "https://source.unsplash.com/500x500/?weather",
+    "type": "CORE",
+    "lessons_data": [
+        {
+            "name": "Introduction to Weather",
+            "description": "Discover the elements that make up the weather around us and how they interact with each other.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-introduction",
+            "type": "CORE"
+        },
+        {
+            "name": "Cloud Formations",
+            "description": "Learn about the various types of clouds and what they can tell us about the weather.",
+            "image_path": "https://source.unsplash.com/500x500/?clouds",
+            "type": "CORE"
+        },
+        {
+            "name": "The Water Cycle",
+            "description": "Understand the journey of water from the sea to the sky and back again in the continuous water cycle.",
+            "image_path": "https://source.unsplash.com/500x500/?water-cycle",
+            "type": "CORE"
+        },
+        {
+            "name": "Weather Instruments & Measurements",
+            "description": "Explore the tools that meteorologists use to measure and predict weather patterns.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-instruments",
+            "type": "CORE"
+        },
+        {
+            "name": "Stormy Weather",
+            "description": "Learn about extreme weather phenomena, like tornadoes and hurricanes, and the science behind them.",
+            "image_path": "https://source.unsplash.com/500x500/?stormy-weather",
+            "type": "CORE"
+        },
+        {
+            "name": "Weather and Climate Change",
+            "description": "Investigate the impact of climate change on weather patterns and the environment.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-change",
+            "type": "CORE"
+        },
+        {
+            "name": "Weather Forecasting",
+            "description": "Learn the basics of weather prediction and the importance of accurate forecasts.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-forecasting",
+            "type": "CORE"
+        },
+        {
+            "name": "Climate Zones",
+            "description": "Journey through Earth‘s diverse climate zones and understand their distinct weather patterns.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-zones",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "The Effects of Weather on Humans",
+            "description": "Examine how weather affects our lives, from agriculture to lifestyle and even mood.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-effects",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "Creating a Weather Station",
+            "description": "A hands-on project to design and build a simple weather station, applying your knowledge of weather instruments.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-station",
+            "type": "ELECTIVE"
+        }
+    ]
+},
+{
+    "name": "Magical World of Magnets",
+    "description": "Embark on a journey of attraction and repulsion, and discover the invisible force that makes compasses point north.",
+    "image_path": "https://source.unsplash.com/500x500/?magnet",
+    "type": "CORE",
+    "lessons_data": [
+        {
+            "name": "Magnetism Basics",
+            "description": "An introduction to the unseen world of magnetism and its fundamental principles.",
+            "image_path": "https://source.unsplash.com/500x500/?magnetism",
+            "type": "CORE"
+        },
+        {
+            "name": "Types of Magnets",
+            "description": "Discover different types of magnets, including permanent, temporary, and electromagnets.",
+            "image_path": "https://source.unsplash.com/500x500/?types-of-magnets",
+            "type": "CORE"
+        },
+        {
+            "name": "Magnetic and Non-Magnetic Materials",
+            "description": "Learn about materials that are magnetic and those that are not, and investigate why this is the case.",
+            "image_path": "https://source.unsplash.com/500x500/?magnetic-materials",
+            "type": "CORE"
+        },
+        {
+            "name": "Earth‘s Magnetic Field",
+            "description": "Explore how our planet acts like a giant magnet, and how it influences everything from navigation to auroras.",
+            "image_path": "https://source.unsplash.com/500x500/?earth-magnetism",
+            "type": "CORE"
+        },
+        {
+            "name": "Magnetism in Everyday Life",
+            "description": "Uncover the myriad of ways we use magnetism in our everyday life, from speakers to MRI machines.",
+            "image_path": "https://source.unsplash.com/500x500/?magnetism-daily-life",
+            "type": "CORE"
+        },
+        {
+            "name": "Magnetic Fields and Forces",
+            "description": "Delve into the concept of magnetic fields and learn how they interact to exert forces.",
+            "image_path": "https://source.unsplash.com/500x500/?magnetic-fields",
+            "type": "CORE"
+        },
+        {
+            "name": "Creating a Compass",
+            "description": "Apply your understanding of magnetism to create a simple homemade compass.",
+            "image_path": "https://source.unsplash.com/500x500/?compass",
+            "type": "CORE"
+        },
+        {
+            "name": "Electricity and Magnetism",
+            "description": "Investigate the close relationship between electricity and magnetism, introducing the concept of electromagnetism.",
+            "image_path": "https://source.unsplash.com/500x500/?electromagnetism",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "Magnetic Levitation",
+            "description": "Explore the fascinating concept of magnetic levitation and how it is used in technology like maglev trains.",
+            "image_path": "https://source.unsplash.com/500x500/?maglev",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "Magnetism in Space",
+            "description": "Learn about the role of magnetism in space, from the Sun‘s magnetic fields to interstellar magnetism.",
+            "image_path": "https://source.unsplash.com/500x500/?space-magnetism",
+            "type": "ELECTIVE"
+        }
+    ]
+},
+--------------------------------------------------------------------------------------
+    ]
+  },
+  {
+    "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
+    "topics_data": []
+  },
+  {
+    "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",
+    "topics_data": []
+  }
+]'::json
 );
 
 -- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
@@ -8588,7 +10156,7 @@ SELECT create_complete_curriculum(
   ]'::json
 );
 
--- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Our goal is to create 8 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
 -- Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten Social Studies.
