@@ -5,8 +5,12 @@ import HomeWelcomePanel from './HomeWelcomePanel';
 import UpcomingLessonsCards from './UpcomingLessonsCards';
 import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccordions';
 import MiniCalendar from '../schedule-builder/MiniCalendar';
+import AssignmentsTable from './AssignmentsTable';
+import { supabaseServer } from '@/lib/auth/supabaseServer';
+import AssignmentsFormModal from './AssignmentsFormModal';
+import AssignmentForm from './AssignmentForm';
 
-export default function ParentDashboardHomePage() {
+export default async function ParentDashboardHomePage() {
   // * Render
   return (
     <>
@@ -31,8 +35,19 @@ export default function ParentDashboardHomePage() {
 
         {/* Home Assignments */}
         <DashPanel colNum={3}>
-          <DashPanelHeader title="Assignments" />
-
+          <DashPanelHeader
+            title="Assignments"
+            ctaText="View All Assignments"
+            ctaLink="/assignments"
+            hasModal={true}
+            modalSize="lg"
+            modalContent={
+              <div className="h-full">
+                <AssignmentForm isModal={true} />
+              </div>
+            }
+          />
+          <AssignmentsTable />
           {/* TSK */}
         </DashPanel>
       </DashMainCol>

@@ -30,7 +30,7 @@ export function generateLessonPlanPrompt({
     students
       ?.map(
         (student, index) =>
-          `- Student ${index + 1}: ${student.name}, Age: ${student.age}`,
+          `- Student ${index + 1}: ${student.name}, Age: ${student.age}`
       )
       ?.join('\n') || '';
 
@@ -86,7 +86,7 @@ export function generateLessonPlanPrompt({
   ${paceSection}
   ${materialsSection}
   The preferred learning styles for this lesson are ${lessonLearningStyles?.join(
-    ', ',
+    ', '
   )}.
 
   The students (children) are:

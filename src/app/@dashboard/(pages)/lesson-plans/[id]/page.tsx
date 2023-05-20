@@ -9,6 +9,10 @@ import {
 } from '@/app/@dashboard/(layout)/DashPanel';
 import { redirect } from 'next/navigation';
 import LessonPlanContainerSkeleton from './LessonPlanContainerSkeleton';
+import { IAssignment } from '@/assets/typescript/assignment';
+import Assignment from './Assignment';
+import { AssignmentCreator } from './AssignmentCreator';
+// import { useAssignmentStore } from '@/lib/store/assignmentStore';
 
 // * Props
 interface IProps {
@@ -21,6 +25,9 @@ interface IProps {
 export default async function LessonPlanPage({ params: { id } }: IProps) {
   // * Data
   const lessonPlan = await getLessonPlan(id);
+
+  const assignment = await getAssignment(id);
+  console.log(assignment);
 
   // * Render
   return (
@@ -50,8 +57,10 @@ export default async function LessonPlanPage({ params: { id } }: IProps) {
       <DashSideCol className="2xl:col-span-4">
         {/* Lesson Plan Assessments */}
         <DashPanel colNum={1}>
-          <DashPanelHeader title="Assessments" />
-          {/* Assessments */}
+          <DashPanelHeader title="Assignment" />
+          {/* Assessment */}
+          <Assignment lessonPlan={lessonPlan} assignment={assignment} />
+
           {/* TSK */}
         </DashPanel>
 
@@ -59,6 +68,20 @@ export default async function LessonPlanPage({ params: { id } }: IProps) {
       </DashSideCol>
     </>
   );
+}
+
+export async function getAssignment(id: string) {
+  const supabase = supabaseServer();
+
+  const { data, error } = await supabase
+    .from('assignments')
+    .select('*')
+    .eq('lesson_plan_id', id)
+    .single();
+
+  if (error) console.log('error', error);
+
+  return data as IAssignment;
 }
 
 async function getLessonPlan(id: string) {
