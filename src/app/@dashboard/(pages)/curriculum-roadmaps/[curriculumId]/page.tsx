@@ -18,6 +18,8 @@ export default async function CurriculumRoadmapSubjectsPage({
   // * Data
   const subjects = await getCurriculumRoadmapSubjects(curriculumId);
 
+  console.log('subjects:', subjects);
+
   // * Render
   return (
     <CurriculumRoadmapSection>
@@ -93,7 +95,7 @@ export async function generateStaticParams() {
 
   const { data: curriculums } = await supabase.from('curriculums').select('id');
 
-  const dynamicRoutes = curriculums?.map((c) => ({ id: c.id }));
+  const dynamicRoutes = curriculums?.map((c) => ({ curriculumId: c.id }));
 
   return dynamicRoutes;
 }

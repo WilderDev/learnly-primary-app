@@ -115,7 +115,7 @@ export async function getStaticPaths() {
 
   const paths =
     data?.map((c) => ({
-      curriculum_id: c.curriculum_id,
+      curriculumId: c.curriculum_id,
     })) || [];
 
   // 2. Return Paths

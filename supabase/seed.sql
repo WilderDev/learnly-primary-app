@@ -15924,28 +15924,6 @@ SELECT create_complete_curriculum(
 --           // . . .
 --        ]
 -- }
--- Every subject has 6 levels (Kindergarten, 1, 2, 3, 4, 5). Every level has 9 topics (7 CORE and 2 ELECTIVE). Every topic has 7 lessons (5 CORE and 2 ELECTIVE). Create the 7 lessons (5 CORE and 2 ELECTIVE) for the first 2 topics for Kindergarten Physical Development.
---
--- Here is what the JSON output should look like:
--- ```
--- {
---        "name": "Topic name",
---        "description": "Short inspiring description",
---        "image_path": "https://source.unsplash.com/500x500/?topic-name",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Lesson name",
---                "description": "Short inspiring description",
---                "image_path": "https://source.unsplash.com/500x500/?lesson-name",
---                "type": "CORE"
---            },
---           // . . .
---        ]
--- },
--- // . . .
--- ```
-
 ---- Physical Development (Health/PE)
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
