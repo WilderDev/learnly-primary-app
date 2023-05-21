@@ -13,7 +13,7 @@ interface IProps {
   isShowingAdvancedOptions?: boolean;
   toggleAdvancedOptions?: () => void;
   showAdvancedOptions?: boolean;
-  small: boolean;
+  small?: boolean;
 }
 
 export default function LessonCreatorFormSection({

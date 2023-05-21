@@ -43,6 +43,7 @@ export const config = {
     '/help-center/:path*',
     '/curriculum-roadmap/:path*',
     '/schedule-builder/:path*',
+    '/curriculum-roadmaps/:path/:path/:path/:path/:path/:path*',
     '/onboarding/:path*',
   ],
 };

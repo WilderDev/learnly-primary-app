@@ -42,7 +42,7 @@ export default async function ShareableCurriculumRoadmapTopics({
           />
 
           {/* Body */}
-          <CurriculumRoadmapPageCards items={lessons} />
+          <CurriculumRoadmapPageCards items={lessons} isPublicEnd={true} />
         </Container>
       </Main>
     </>
@@ -80,7 +80,7 @@ async function getLessons(
       description: lesson.lesson_description!,
       imagePath: lesson.lesson_image_path!,
       type: lesson.lesson_type!,
-      url: `/onboarding`,
+      url: `/curriculum-roadmaps/${curriculumId}/${subjectId}/${levelId}/${topicId}/${lesson.id}`!,
     }),
   );
   const transformedMetadata = {
