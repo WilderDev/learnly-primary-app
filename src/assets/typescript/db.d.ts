@@ -469,6 +469,7 @@ export interface Database {
         Row: {
           animal: Database["public"]["Enums"]["animal"]
           created_at: string
+          description: string
           id: string
           image_path: string
           name: Database["public"]["Enums"]["level"]
@@ -477,6 +478,7 @@ export interface Database {
         Insert: {
           animal: Database["public"]["Enums"]["animal"]
           created_at?: string
+          description: string
           id?: string
           image_path: string
           name: Database["public"]["Enums"]["level"]
@@ -485,6 +487,7 @@ export interface Database {
         Update: {
           animal?: Database["public"]["Enums"]["animal"]
           created_at?: string
+          description?: string
           id?: string
           image_path?: string
           name?: Database["public"]["Enums"]["level"]
@@ -1275,7 +1278,7 @@ export interface Database {
           completion_percentage: number | null
           curriculum_id: string | null
           id: string | null
-          level_description: Database["public"]["Enums"]["animal"] | null
+          level_description: string | null
           level_id: string | null
           level_image_path: string | null
           level_name: Database["public"]["Enums"]["level"] | null
@@ -1413,12 +1416,34 @@ export interface Database {
           topic: string | null
         }
       }
+      shareable_curriculum_lessons_view: {
+        Row: {
+          curriculum_id: string | null
+          curriculum_name: string | null
+          id: string | null
+          lesson_description: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_number: number | null
+          lesson_plan_ids: string[] | null
+          lesson_type: Database["public"]["Enums"]["module_type"] | null
+          level_description: string | null
+          level_id: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          subject_id: string | null
+          subject_name: string | null
+          topic_description: string | null
+          topic_id: string | null
+          topic_image_path: string | null
+          topic_name: string | null
+        }
+      }
       shareable_curriculum_levels_view: {
         Row: {
           curriculum_id: string | null
           curriculum_name: string | null
           id: string | null
-          level_description: Database["public"]["Enums"]["animal"] | null
+          level_description: string | null
           level_image_path: string | null
           level_name: Database["public"]["Enums"]["level"] | null
           subject_description: string | null
@@ -1438,6 +1463,23 @@ export interface Database {
           subject_image_path: string | null
           subject_name: string | null
           type: Database["public"]["Enums"]["module_type"] | null
+        }
+      }
+      shareable_curriculum_topics_view: {
+        Row: {
+          curriculum_id: string | null
+          curriculum_name: string | null
+          id: string | null
+          level_description: string | null
+          level_id: string | null
+          level_image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          subject_id: string | null
+          subject_name: string | null
+          topic_description: string | null
+          topic_image_path: string | null
+          topic_name: string | null
+          topic_type: Database["public"]["Enums"]["module_type"] | null
         }
       }
       teacher_me_view: {

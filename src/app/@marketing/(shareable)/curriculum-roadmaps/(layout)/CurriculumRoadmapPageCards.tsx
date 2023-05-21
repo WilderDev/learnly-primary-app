@@ -44,12 +44,12 @@ export default function CurriculumRoadmapPageCards({ items }: IProps) {
 
           {/* Button */}
           <Button
-            className="absolute bottom-0 right-0 mb-4 mr-4 px-1.5 py-1.5 md:px-1.5 group-hover:from-green-500 group-hover:to-emerald-600 transition-colors duration-300 group-focus:from-green-500 group-focus:to-emerald-600"
+            className="absolute pointer-events-none bottom-0 right-0 mb-4 mr-4 px-1.5 py-1.5 md:px-1.5 group-hover:from-green-500 group-hover:to-emerald-600 transition-colors duration-300 group-focus:from-green-500 group-focus:to-emerald-600"
             fill="gradient"
             variant="dark"
             size="xs"
             rounded="full"
-            url={item.url}
+            type="button"
           >
             <ArrowSmallUpIcon
               className="h-5 w-5 rotate-45 font-bold"

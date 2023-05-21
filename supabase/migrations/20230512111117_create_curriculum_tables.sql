@@ -478,6 +478,8 @@ SELECT
   cs.id AS subject_id,
   s.name AS subject_name,
   clv.id AS level_id,
+  lv.name AS level_name,
+  lv.description AS level_description,
   ct.id AS topic_id,
   t.name AS topic_name,
   t.description AS topic_description,
@@ -486,6 +488,7 @@ FROM curriculum_lessons cls
 JOIN curriculum_topics ct ON cls.curriculum_topic_id = ct.id
 JOIN topics t ON ct.topic_id = t.id
 JOIN curriculum_levels clv ON ct.curriculum_level_id = clv.id
+JOIN levels lv ON clv.level_id = lv.id
 JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
 JOIN subjects s ON cs.subject_id = s.id
 JOIN curriculums c ON cs.curriculum_id = c.id

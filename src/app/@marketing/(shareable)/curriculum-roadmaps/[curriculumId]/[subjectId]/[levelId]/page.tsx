@@ -33,9 +33,9 @@ export default async function ShareableCurriculumRoadmapLevels({
       <Container className="shadow rounded-lg p-4 sm:-5">
         {/* Header */}
         <CurriculumRoadmapPageHeader
-          title="Level Topics"
+          title={metadata.displayTitle}
           description={metadata.description}
-          subtitle={metadata.name}
+          subtitle={metadata.displaySubtitle}
         />
 
         {/* Body */}
@@ -77,6 +77,8 @@ async function getTopics(
     name: `${data[0].level_name} - ${data[0].subject_name} (${data[0].curriculum_name})`,
     description: `${data[0].level_description!}`,
     imagePath: data[0].level_image_path!,
+    displayTitle: `Topics for ${data[0].level_name!}`,
+    displaySubtitle: `${data[0].curriculum_name} ${data[0].subject_name}`,
   };
 
   // 4. Return Transformed Data and Metadata

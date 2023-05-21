@@ -27,9 +27,9 @@ export default async function ShareableCurriculumRoadmapSubjects({
       <Container className="shadow rounded-lg p-4 sm:-5">
         {/* Header */}
         <CurriculumRoadmapPageHeader
-          title="Curriculum Subjects"
+          title={metadata.displayTitle}
           description={metadata.description}
-          subtitle={metadata.name}
+          subtitle={metadata.displaySubtitle}
         />
 
         {/* Body */}
@@ -67,6 +67,8 @@ async function getSubjects(curriculumId: string) {
     name: data[0].curriculum_name!,
     description: data[0].curriculum_description!,
     imagePath: data[0].curriculum_image_path!,
+    displayTitle: `${data[0].curriculum_name!} Subjects`,
+    displaySubtitle: `Learnly Curriculums`,
   };
 
   // 4. Return Transformed Data and Metadata
