@@ -2,8 +2,8 @@
 
 import Image, { StaticImageData } from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import facebook from '@/assets/icons/facebook.png';
-import google from '@/assets/icons/google.png';
+import facebook from '@/assets/icons/companies/facebook.png';
+import google from '@/assets/icons/companies/google.png';
 import { toast } from 'sonner';
 import baseUrl from '../common/baseUrl';
 import { useAuth } from '../components/providers/AuthProvider';

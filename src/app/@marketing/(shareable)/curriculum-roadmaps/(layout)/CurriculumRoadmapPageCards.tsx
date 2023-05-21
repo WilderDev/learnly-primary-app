@@ -2,12 +2,16 @@
 
 // * Imports
 import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmap';
+import AuthDividerMessage from '@/lib/auth/AuthDividerMessage';
+import AuthHeader from '@/lib/auth/AuthHeader';
+import AuthProviderButtons from '@/lib/auth/AuthProviderButtons';
 import Modal from '@/lib/components/popouts/Modal';
 import Button from '@/lib/components/ui/Button';
 import { Card, CardContainer } from '@/lib/components/ui/Card';
 import { ArrowSmallUpIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import { useState } from 'react';
+import CurriculumRoadmapAuthModal from './CurriculumRoadmapAuthModal';
 
 // * Props
 interface IProps {
@@ -74,12 +78,10 @@ export default function CurriculumRoadmapPageCards({
       </CardContainer>
 
       {/* Auth Modal */}
-      <Modal
-        isVisible={isAuthModalOpen}
+      <CurriculumRoadmapAuthModal
+        isOpen={isAuthModalOpen}
         close={() => setIsAuthModalOpen(false)}
-      >
-        AuthModal
-      </Modal>
+      />
     </>
   );
 }

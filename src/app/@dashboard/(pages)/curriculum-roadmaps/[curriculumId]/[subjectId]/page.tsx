@@ -19,6 +19,8 @@ export default async function CurriculumRoadmapLevelsPage({
   // * Data
   const levels = await getCurriculumRoadmapLevels(curriculumId, subjectId);
 
+  console.log('levels:', levels);
+
   // * Render
   return (
     <CurriculumRoadmapSection>
@@ -32,6 +34,8 @@ async function getCurriculumRoadmapLevels(
   curriculumId: string,
   subjectId: string,
 ) {
+  console.log('curriclumId:', curriculumId);
+  console.log('subjectId:', subjectId);
   const supabase = supabaseServer(); // Create supabase instance for server-side
 
   // Get all curriculum roadmaps
@@ -40,6 +44,9 @@ async function getCurriculumRoadmapLevels(
     .select(`*`)
     .eq('curriculum_id', curriculumId)
     .eq('subject_id', subjectId);
+
+  console.log('data:', data);
+  console.log('error:', error);
 
   // Handle errors
   if (error || data.length === 0)
@@ -54,6 +61,8 @@ async function getCurriculumRoadmapLevels(
     completion_percentage: item.completion_percentage!,
     url: `/curriculum-roadmaps/${curriculumId}/${subjectId}/${item.level_id}`,
   }));
+
+  console.log('transformedData:', transformedData);
 
   // Return transformed data
   return transformedData;
