@@ -4591,8 +4591,8 @@ VALUES
 ('c5004381-fe4d-452e-8925-2697159a0e7c', '185f2f83-d63a-4c9b-b4a0-7e4a885799e2', 'STEM K-5', 'A dynamic playground of ideas, immersing students in the realms of science, technology, engineering, and math, encouraging innovative thinking and equipping future world-changers.', '/static/images/subjects/k-5-stem.jpg', 'PUBLISHED', 'POPULAR', '{"STEM", "K-5"}', true);
 
 -- Curriculum Subjects, Levels, Topics, Lessons
---- Little Learners
----- Mathematics
+--- Little Learners ✅
+---- Mathematics ✅
 SELECT create_complete_curriculum(
   'Little Learners',
   'b408d3b0-ca53-4385-9c38-388508f6f777'::uuid,
@@ -5095,7 +5095,7 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
----- Science
+---- Science ✅
 SELECT create_complete_curriculum(
   'Little Learners',
   '2c0970f3-18fe-491f-879e-82e43d50bb57'::uuid,
@@ -5602,7 +5602,7 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
----- Language & Literacy
+---- Language & Literacy ✅
 SELECT create_complete_curriculum(
   'Little Learners',
   '4eeb92e8-a55b-4398-a7e9-ed616fc4760e'::uuid,
@@ -6108,7 +6108,7 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
----- Social Studies
+---- Social Studies ✅
 SELECT create_complete_curriculum(
   'Little Learners',
   'cdc09ea6-6e30-4550-9d1d-4b7a30d376d5'::uuid,
@@ -6582,7 +6582,7 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
----- Creative Arts
+---- Creative Arts ✅
 SELECT create_complete_curriculum(
   'Little Learners',
   '21b7556c-4d89-4ae7-b367-f0d3e47a04b3'::uuid,
@@ -6960,7 +6960,7 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
----- Physical Development
+---- Physical Development ✅
 SELECT create_complete_curriculum(
   'Little Learners',
   'ed34e97c-5758-4414-933b-f61370a4e7af'::uuid,
@@ -7370,7 +7370,7 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
----- Social Emotional Learning
+---- Social Emotional Learning ✅
 SELECT create_complete_curriculum(
   'Little Learners',
   '38525bb6-a2fb-4e0a-b0af-47af9efedce2'::uuid,
@@ -7838,7 +7838,7 @@ SELECT create_complete_curriculum(
 );
 
 
----- Science
+---- Science ✅
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
   '2c0970f3-18fe-491f-879e-82e43d50bb57'::uuid,

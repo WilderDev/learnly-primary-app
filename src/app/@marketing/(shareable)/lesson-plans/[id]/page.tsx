@@ -8,6 +8,7 @@ import Main from '@/lib/components/layout/Main';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import { redirect } from 'next/navigation';
 import ShareButton from './ShareButton';
+import TryLearnlyCTA from '@/lib/components/brand/TryLearnlyCTA';
 
 // * Params
 interface IParams {
@@ -60,7 +61,7 @@ export default async function PublicLessonPlanPage({
           <ShareButton id={lessonPlan.id} />
         </section>
 
-        {/* <TryLearningCTA /> TSK */}
+        <TryLearnlyCTA />
       </Container>
     </Main>
   );
