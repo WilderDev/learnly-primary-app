@@ -239,7 +239,6 @@ Card.Tag = function CardTag({ content, colors, url }: ICardTagProps) {
 // Card Action Props
 interface ICardActionProps {
   url: string;
-  icon?: TIcon;
   target?: HTMLAnchorElement['target'];
   className?: string;
 }
@@ -247,7 +246,6 @@ interface ICardActionProps {
 // Card Action Component
 Card.Action = function CardAction({
   url,
-  icon,
   target = '_self',
   className,
 }: ICardActionProps) {
@@ -260,11 +258,7 @@ Card.Action = function CardAction({
       href={url}
       target={target}
     >
-      {icon ? (
-        <>{icon}</>
-      ) : (
-        <ArrowSmallUpIcon className="h-5 w-5 rotate-45 font-bold" />
-      )}
+      <ArrowSmallUpIcon className="h-5 w-5 rotate-45 font-bold" />
     </Link>
   );
 };

@@ -110,7 +110,15 @@ export async function getStaticPaths() {
   const supabase = supabaseServer();
   const { data } = await supabase
     .from('shareable_curriculum_subjects_view')
-    .select('curriculum_id');
+    .select('id, curriculum_id');
 
-  return data?.map((c) => c.curriculum_id) || []; // 2. Return Data
+  const paths =
+    data?.map((c) => ({
+      subject_id: c.id,
+      curriculum_id: c.curriculum_id,
+    })) || [];
+
+  return paths;
 }
+
+// /curriculum-roadmaps/[curriculumId]/[subjectId]

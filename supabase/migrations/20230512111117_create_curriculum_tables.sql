@@ -437,6 +437,61 @@ JOIN curriculums c ON cs.curriculum_id = c.id
 WHERE c.status = 'PUBLISHED' AND c.is_public = TRUE
 ORDER BY cs.type ASC;
 
+--- Shareable Curriculum Topics View
+CREATE VIEW shareable_curriculum_topics_view AS
+SELECT
+  ct.id,
+  ct.type AS topic_type,
+  c.id AS curriculum_id,
+  c.name AS curriculum_name,
+  cs.id AS subject_id,
+  s.name AS subject_name,
+  clv.id AS level_id,
+  lv.name AS level_name,
+  lv.description AS level_description,
+  lv.image_path AS level_image_path,
+  t.name AS topic_name,
+  t.description AS topic_description,
+  t.image_path AS topic_image_path
+FROM curriculum_topics ct
+JOIN topics t ON ct.topic_id = t.id
+JOIN curriculum_levels clv ON ct.curriculum_level_id = clv.id
+JOIN levels lv ON clv.level_id = lv.id
+JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
+JOIN subjects s ON cs.subject_id = s.id
+JOIN curriculums c ON cs.curriculum_id = c.id
+WHERE c.status = 'PUBLISHED' AND c.is_public = TRUE
+ORDER BY ct.type ASC;
+
+--- Shareable Curriculum Lessons View
+CREATE VIEW shareable_curriculum_lessons_view AS
+SELECT
+  cls.id,
+  cls.type AS lesson_type,
+  cls.lesson_number AS lesson_number,
+  cls.name AS lesson_name,
+  cls.description AS lesson_description,
+  cls.image_path AS lesson_image_path,
+  cls.lesson_plan_ids AS lesson_plan_ids,
+  c.id AS curriculum_id,
+  c.name AS curriculum_name,
+  cs.id AS subject_id,
+  s.name AS subject_name,
+  clv.id AS level_id,
+  ct.id AS topic_id,
+  t.name AS topic_name,
+  t.description AS topic_description,
+  t.image_path AS topic_image_path
+FROM curriculum_lessons cls
+JOIN curriculum_topics ct ON cls.curriculum_topic_id = ct.id
+JOIN topics t ON ct.topic_id = t.id
+JOIN curriculum_levels clv ON ct.curriculum_level_id = clv.id
+JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
+JOIN subjects s ON cs.subject_id = s.id
+JOIN curriculums c ON cs.curriculum_id = c.id
+WHERE c.status = 'PUBLISHED' AND c.is_public = TRUE
+ORDER BY cls.type ASC;
+
 
 -- * FUNCTIONS
 -- Create curriculum_subject from curriculum_name, subject_id, and type

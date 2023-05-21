@@ -1,6 +1,8 @@
 // * Imports
 import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmap';
+import Button from '@/lib/components/ui/Button';
 import { Card, CardContainer } from '@/lib/components/ui/Card';
+import { ArrowSmallUpIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 
 // * Props
@@ -14,7 +16,7 @@ export default function CurriculumRoadmapPageCards({ items }: IProps) {
   return (
     <CardContainer>
       {/* Curriculum Roadmaps */}
-      {items.map((item) => (
+      {items?.map((item) => (
         <Card
           className="relative group h-32 md:h-40 lg:h-64 text-white dark:text-navy-50 bg-navy-900 hocus:bg-slate-900 hocus:scale-105 active:scale-95 transition-all duration-300 ease-in-out transform-gpu"
           url={item.url}
@@ -27,6 +29,7 @@ export default function CurriculumRoadmapPageCards({ items }: IProps) {
             alt={item.name}
             width={6000}
             height={4000}
+            priority={true}
           />
 
           {/* Name */}
@@ -40,10 +43,19 @@ export default function CurriculumRoadmapPageCards({ items }: IProps) {
           </Card.Subtitle>
 
           {/* Button */}
-          <Card.Action
-            className="absolute bottom-0 right-0 mb-4 mr-4 text-sm font-medium transition-all duration-300 ease-in-out transform-gpu group-hover:scale-105 group-focus:scale-105 active:scale-95"
+          <Button
+            className="absolute bottom-0 right-0 mb-4 mr-4 px-1.5 py-1.5 md:px-1.5 group-hover:from-green-500 group-hover:to-emerald-600 transition-colors duration-300 group-focus:from-green-500 group-focus:to-emerald-600"
+            fill="gradient"
+            variant="dark"
+            size="xs"
+            rounded="full"
             url={item.url}
-          />
+          >
+            <ArrowSmallUpIcon
+              className="h-5 w-5 rotate-45 font-bold"
+              aria-hidden="true"
+            />
+          </Button>
         </Card>
       ))}
     </CardContainer>

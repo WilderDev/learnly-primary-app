@@ -111,5 +111,11 @@ export async function getStaticPaths() {
     .from('shareable_curriculum_subjects_view')
     .select('curriculum_id');
 
-  return data?.map((c) => c.curriculum_id) || []; // 2. Return Data
+  const paths =
+    data?.map((c) => ({
+      curriculum_id: c.curriculum_id,
+    })) || [];
+
+  // 2. Return Paths
+  return paths;
 }
