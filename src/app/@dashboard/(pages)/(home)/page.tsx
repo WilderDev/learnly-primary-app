@@ -7,8 +7,11 @@ import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccord
 import MiniCalendar from '../schedule-builder/MiniCalendar';
 import AssignmentsTable from './AssignmentsTable';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
-import AssignmentsFormModal from './AssignmentsFormModal';
 import AssignmentForm from './AssignmentForm';
+import AssignmentCreatorForm from '../lesson-plans/[id]/(assignments)/AssignmentCreatorForm';
+import Modal from '@/lib/components/popouts/Modal';
+import AssignmentCreatorModal from '../lesson-plans/[id]/(assignments)/AssignmentCreatorModal';
+import Assignment from '../lesson-plans/[id]/(assignments)/Assignment';
 
 export default async function ParentDashboardHomePage() {
   // * Render
@@ -41,13 +44,13 @@ export default async function ParentDashboardHomePage() {
             ctaLink="/assignments"
             hasModal={true}
             modalSize="lg"
-            modalContent={
-              <div className="h-full">
-                <AssignmentForm isModal={true} />
-              </div>
-            }
+            modalContent={<AssignmentCreatorModal />}
+            closeBtn={true}
+            noCloseOnOutsideClick={true}
           />
-          <AssignmentsTable />
+          {/* <AssignmentsTable /> */}
+          {/* <Assignment /> */}
+          {/* <AssignmentCreatorForm /> */}
           {/* TSK */}
         </DashPanel>
       </DashMainCol>

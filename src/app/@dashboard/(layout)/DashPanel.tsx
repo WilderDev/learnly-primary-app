@@ -30,7 +30,7 @@ export function DashPanel({
     <motion.article
       className={cn(
         'relative flex flex-col p-4 sm:px-5 rounded-md bg-white shadow-md dark:shadow-navy-700 dark:bg-navy-800 print:shadow-none',
-        className,
+        className
       )}
       initial={{ opacity: 0, y: 20 * colNum }}
       animate={{ opacity: 1, y: 0 }}
@@ -54,6 +54,8 @@ interface IDashPanelProps {
   hasModal?: boolean;
   modalSize?: TSize;
   modalContent?: React.ReactNode;
+  noCloseOnOutsideClick?: boolean;
+  closeBtn?: boolean;
 }
 
 // Component
@@ -64,6 +66,8 @@ export function DashPanelHeader({
   hasModal,
   modalSize,
   modalContent,
+  noCloseOnOutsideClick,
+  closeBtn,
 }: IDashPanelProps) {
   // * State
   const [isModalOpen, setModalOpen] = useState(false);
@@ -109,6 +113,8 @@ export function DashPanelHeader({
           isVisible={isModalOpen}
           close={() => setModalOpen(false)}
           size={modalSize || 'md'}
+          noCloseOnOutsideClick={noCloseOnOutsideClick}
+          closeBtn={closeBtn}
         >
           {modalContent}
         </Modal>
