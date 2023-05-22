@@ -484,6 +484,9 @@ SELECT
   uc.id AS user_curriculum_id, -- added this field
   c.name AS curriculum_name,
   s.name AS subject_name,
+  s.id AS subject_id,
+  lv.id AS level_id,
+  t.id AS topic_id,
   lv.name AS level_name,
   t.name AS topic_name,
   cl.id AS curriculum_lesson_id,

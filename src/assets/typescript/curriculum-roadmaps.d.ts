@@ -1,4 +1,5 @@
 import { Database } from './db';
+import { IStudentPromptReq } from './lesson-plan';
 
 export interface ICurriculumListItem {
   id: string;
@@ -31,4 +32,33 @@ export interface ICurriculumLessonPromptReq {
   difficulty: Database['public']['Enums']['difficulty'];
   length_in_min: number;
   additional_requests: string;
+}
+
+export interface ICurriculumFormData {
+  curriculum: {
+    id: string;
+    name: string;
+  };
+  subject: {
+    id: string;
+    subjectId: string;
+    name: string;
+  };
+  level: {
+    id: string;
+    levelId: string;
+    name: string;
+  };
+  topic: {
+    id: string;
+    topicId: string;
+    name: string;
+  };
+  lesson: {
+    id: string;
+    name: string;
+    description: string;
+    image_path: string;
+  };
+  students: IStudentPromptReq['students'];
 }

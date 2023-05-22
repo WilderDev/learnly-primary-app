@@ -12,31 +12,29 @@ import {
   BookOpenIcon,
   ClockIcon,
   RocketLaunchIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/solid';
 import Input from '@/lib/components/form/Input';
 import { philosophyOptions } from '@/app/@dashboard/(pages)/lesson-creator/LessonCreatorStructureSection';
 import TextArea from '@/lib/components/form/TextArea';
-import { ICurriculumLessonPromptReq } from '@/assets/typescript/curriculum-roadmaps';
 import {
-  IStudentPromptReq,
-  ITeacherPromptReq,
-} from '@/assets/typescript/lesson-plan';
+  ICurriculumFormData,
+  ICurriculumLessonPromptReq,
+} from '@/assets/typescript/curriculum-roadmaps';
+import { ITeacherPromptReq } from '@/assets/typescript/lesson-plan';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
 import Modal from '@/lib/components/popouts/Modal';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import { useAuth } from '@/lib/components/providers/AuthProvider';
+import CurriculumLessonDock from './CurriculumLessonDock';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import cn from '@/lib/common/cn';
 
 // * Props
 interface IProps {
-  lesson: {
-    curriculum_name: string;
-    subject_name: string;
-    level_name: string;
-    topic_name: string;
-    lesson_name: string;
-    lesson_description: string;
-    students: IStudentPromptReq['students'];
-  };
+  lesson: ICurriculumFormData;
 }
 
 // * Data
@@ -45,6 +43,8 @@ interface IProps {
 export default function CurriculumLessonForm({ lesson }: IProps) {
   // * Hooks / Context
   const { user } = useUser();
+  const { supabase } = useAuth();
+  const router = useRouter();
 
   // * State
   const [lessonOutput, setLessonOutput] = useState('');
@@ -55,20 +55,23 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
     useState<Database['public']['Enums']['difficulty']>('MODERATE');
   const [additionalRequests, setAdditionalRequests] = useState('');
   const [loading, setLoading] = useState(false);
+  const [lessonId, setLessonId] = useState('');
 
   // * Handlers
+  // Create Lesson Plan (Modal)
   const handleCreateLessonPlan = async () => {
     // 1. Set Initial States
     setLoading(true); // Set loading state
+    setLessonId(''); // Set complete state
 
     // 2. Create Lesson Plan Request Body Objects
     const lessonBody: ICurriculumLessonPromptReq = {
-      curriculum: lesson.curriculum_name,
-      subject: lesson.subject_name,
-      level: lesson.level_name,
-      topic: lesson.topic_name,
-      lessonName: lesson.lesson_name,
-      lessonDescription: lesson.lesson_description,
+      curriculum: lesson.curriculum.name,
+      subject: lesson.subject.name,
+      level: lesson.level.name,
+      topic: lesson.topic.name,
+      lessonName: lesson.lesson.name,
+      lessonDescription: lesson.lesson.description,
       philosophy,
       length_in_min: lengthInMin,
       difficulty,
@@ -98,8 +101,50 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
       if (!res.ok) return setLoading(false); // If not ok, return
 
       // Stream Response Body && Insert into Supabase
-      streamReader(res.body!, setLessonOutput, async () => {
-        console.log('CALLBACK');
+      streamReader(res.body!, setLessonOutput, async (content) => {
+        // 1. Save to Supabase
+        const { data, error } = await supabase
+          .from('lesson_plans')
+          .insert({
+            subject: lesson.subject.subjectId,
+            level: lesson.level.levelId,
+            topic: lesson.topic.topicId,
+            content,
+            creator_id: user?.id!,
+            title: `${lesson.topic.name} for ${lesson.level.name} (${lesson.subject.name})`,
+            image_path: lesson.lesson.image_path,
+            length_in_min: lengthInMin,
+            tags: [lesson.subject.name, lesson.level.name, lesson.topic.name],
+          })
+          .select('id')
+          .single();
+
+        if (error) {
+          toast.error('Error saving lesson plan');
+        } else {
+          toast.success('Lesson Plan Generated!', {
+            action: {
+              label: 'View Lesson Plan',
+              onClick: () => router.push(`/lesson-plans/${data.id}`),
+            },
+            duration: 10000,
+          });
+
+          // 2. Set States
+          setLessonId(data.id); // Set lesson id
+
+          // 3. Save Lesson Plan Ids to Lesson
+          const { error: lesson_plan_ids_error } = await supabase.rpc(
+            'add_item_to_array',
+            {
+              p_table_name: 'curriculum_lessons',
+              p_column_name: 'lesson_plan_ids',
+              p_id_column: 'id',
+              p_id_value: lesson.lesson.id,
+              p_item_value: data.id,
+            },
+          );
+        }
       });
     } catch (e) {
       console.log(e);
@@ -107,8 +152,6 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
       // Reset States
       setLoading(false); // Set loading state
     }
-
-    console.log('Submitted');
   };
 
   // * Render
@@ -189,22 +232,33 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
         isVisible={lessonOutput !== ''}
         close={() => {}}
         noCloseOnOutsideClick={true}
+        size="lg"
       >
         <LessonPlanMarkdown content={lessonOutput} />
       </Modal>
+      {lessonId && (
+        <CurriculumLessonDock
+          lessonId={lessonId}
+          studentIds={lesson.students.map((s) => s.id)}
+          shareUrl={`/lesson-plans/${lessonId}`}
+        />
+      )}
 
-      {/* No User Curriculum Modal */}
-      <Modal
-        isVisible={lesson.students.length === 0}
-        close={() => {}}
-        noCloseOnOutsideClick={true}
-      >
-        <h1>Hey!</h1>
-        <h2>It looks like you haven&apos;t saved this curriculum...</h2>
-        <p>To use the curriculum lesson generate, please save it first</p>
-        <button>Save</button>
-        {/* TSK TSK TSK */}
-      </Modal>
+      {/* Close Button */}
+      {lessonId && (
+        <button
+          className={cn(
+            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors',
+          )}
+          onClick={() =>
+            router.push(
+              `/curriculum-roadmaps/user/${lesson.curriculum.id}/${lesson.subject.id}/${lesson.level.id}/${lesson.topic.id}/${lesson.lesson.id}`,
+            )
+          }
+        >
+          <XMarkIcon className="w-6 h-6 text-slate-300 group:text-slate-100 dark:text-navy-200 dark:focus:text-navy-100" />
+        </button>
+      )}
     </>
   );
 }

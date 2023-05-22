@@ -8,6 +8,8 @@ import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { redirect } from 'next/navigation';
 import CurriculumLessonForm from './CurriculumLessonForm';
 import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
+import { ICurriculumFormData } from '@/assets/typescript/curriculum-roadmaps';
+import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 
 // * IParams
 interface IParams {
@@ -33,6 +35,8 @@ export default async function CurriculumRoadmapLessonPage({
     lessonId,
   );
 
+  console.log('lessonPlan:', lessonPlan);
+
   // * Render
   return (
     <>
@@ -41,10 +45,10 @@ export default async function CurriculumRoadmapLessonPage({
         {/* Form */}
         <DashPanel colNum={1}>
           <DashPanelHeader
-            title={`Create "${lessonForm.lesson_name}" Lesson`}
+            title={`Create "${lessonForm.lesson.name}" Lesson`}
           />
           {lessonPlan ? (
-            <>{lessonPlan.content}</>
+            <LessonPlanMarkdown content={lessonPlan.content} />
           ) : (
             <CurriculumLessonForm lesson={lessonForm} />
           )}
@@ -87,15 +91,33 @@ async function getCurriculumRoadmapLesson(
     );
 
   // Create lesson plan form data
-  const lessonFormData = {
-    curriculum_name: data.curriculum_name!,
-    subject_name: data.subject_name!,
-    level_name: data.level_name!,
-    topic_name: data.topic_name!,
-    lesson_name: data.lesson_name!,
-    lesson_description: data.lesson_description!,
+  const lessonFormData: ICurriculumFormData = {
+    curriculum: {
+      id: curriculumId,
+      name: data.curriculum_name!,
+    },
+    subject: {
+      id: subjectId,
+      subjectId: data.subject_id!,
+      name: data.subject_name!,
+    },
+    level: {
+      id: levelId,
+      levelId: data.level_id!,
+      name: data.level_name!,
+    },
+    topic: {
+      id: topicId,
+      topicId: data.topic_id!,
+      name: data.topic_name!,
+    },
+    lesson: {
+      id: lessonId,
+      name: data.lesson_name!,
+      description: data.lesson_description!,
+      image_path: data.lesson_image_path!,
+    },
     students: data.students! as IStudentPromptReq['students'],
-    // teacher data???? And then show a modal if the user_curriculum or if students is emtpy is not set up and they need to save the curriculum to continue (TSK)
   };
 
   // Return data

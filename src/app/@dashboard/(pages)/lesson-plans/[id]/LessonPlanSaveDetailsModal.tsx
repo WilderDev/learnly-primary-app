@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Modal from '@/lib/components/popouts/Modal';
 import Form from '@/lib/components/form/Form';
 import { useRequest } from '@/lib/hooks/useRequest';
-import { saveLessonPlan } from './_actions';
 import { toast } from 'sonner';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import DatePicker from '@/lib/components/form/DatePicker';
@@ -15,6 +14,8 @@ import {
   CheckIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid';
+import { useParams } from 'next/navigation';
+import { saveCurriculumLessonPlan } from '../../curriculum-roadmaps/_actions';
 
 interface IProps {
   lessonPlanId: string;
@@ -29,11 +30,12 @@ export default function LessonPlanSaveDetailsModalForm({
   isVisible,
   close,
 }: IProps) {
-  // * Contexts
+  // * Contexts / Hooks
   const { students } = useUser();
+  const params = useParams();
 
   // * Requests / Mutations
-  const { mutate, isLoading } = useRequest(saveLessonPlan, {
+  const { mutate, isLoading } = useRequest(saveCurriculumLessonPlan, {
     onSuccess: (data) => {
       if (data.ok) {
         toast.success('Lesson Plan Saved!');
@@ -73,6 +75,8 @@ export default function LessonPlanSaveDetailsModalForm({
               lesson_plan_id: lessonPlanId,
               scheduled_date: scheduledDate!,
               students: savedStudents,
+              curriculum_lesson_id: params.lessonId,
+              user_curriculum_id: params.curriculumId,
             })
           }
         >

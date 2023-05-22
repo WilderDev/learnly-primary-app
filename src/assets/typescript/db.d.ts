@@ -1265,9 +1265,12 @@ export interface Database {
           lesson_image_path: string | null
           lesson_name: string | null
           lesson_plan: Json | null
+          level_id: string | null
           level_name: Database["public"]["Enums"]["level"] | null
           students: Json[] | null
+          subject_id: string | null
           subject_name: string | null
+          topic_id: string | null
           topic_name: string | null
           user_curriculum_id: string | null
         }
@@ -1701,6 +1704,16 @@ export interface Database {
       }
     }
     Functions: {
+      add_item_to_array: {
+        Args: {
+          p_table_name: string
+          p_column_name: string
+          p_id_column: string
+          p_id_value: string
+          p_item_value: string
+        }
+        Returns: undefined
+      }
       create_complete_curriculum: {
         Args: {
           curriculum_name: string

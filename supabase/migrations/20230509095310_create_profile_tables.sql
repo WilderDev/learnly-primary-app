@@ -326,6 +326,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Function to add an item to an array
+CREATE OR REPLACE FUNCTION add_item_to_array(p_table_name TEXT, p_column_name TEXT, p_id_column TEXT, p_id_value UUID, p_item_value UUID)
+RETURNS VOID AS $$
+BEGIN
+  EXECUTE format('UPDATE %I SET %I = array_append(%I, %L) WHERE %I = %L', p_table_name, p_column_name, p_column_name, p_item_value, p_id_column, p_id_value);
+END;
+$$ LANGUAGE plpgsql;
+
 
 -- * TRIGGERS
 -- Call the handle_new_teacher function when a new user is created (sign up)

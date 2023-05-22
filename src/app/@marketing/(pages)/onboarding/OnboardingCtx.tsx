@@ -17,7 +17,7 @@ import OnboardingPreferences from './OnboardingPreferences';
 import OnboardingChildren from './OnboardingChildren';
 import { IOnboardingChild } from '@/assets/typescript/onboarding';
 import { avatarImages } from './avatarImages';
-import MarketingNavAuthSuccessModal from '../(navigation)/MarketingNavAuthSuccessModal';
+import MarketingNavAuthSuccessModal from '../../(navigation)/MarketingNavAuthSuccessModal';
 
 // * Context
 // Interface
@@ -90,6 +90,8 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
     if (step === 1) {
       // Confirm Email isn't already in use
       const res = await fetch(`/api/users/${email}`);
+
+      console.log('res:', res);
 
       // If Email is in use, show error and return
       if (res.status === 200) {

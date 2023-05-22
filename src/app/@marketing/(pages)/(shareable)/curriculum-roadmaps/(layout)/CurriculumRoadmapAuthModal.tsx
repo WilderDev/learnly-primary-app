@@ -1,5 +1,4 @@
 import MarketingNavAuthSuccessModal from '@/app/@marketing/(navigation)/MarketingNavAuthSuccessModal';
-import { useOnboarding } from '@/app/@marketing/onboarding/OnboardingCtx';
 import AuthDividerMessage from '@/lib/auth/AuthDividerMessage';
 import AuthHeader from '@/lib/auth/AuthHeader';
 import AuthProviderButtons from '@/lib/auth/AuthProviderButtons';
@@ -8,9 +7,10 @@ import Input from '@/lib/components/form/Input';
 import Modal from '@/lib/components/popouts/Modal';
 import Button from '@/lib/components/ui/Button';
 import { EnvelopeIcon, UserIcon } from '@heroicons/react/24/outline';
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { useOnboarding } from '../../../onboarding/OnboardingCtx';
+import { useRouter } from 'next/navigation';
 
 // * Props
 interface IProps {
@@ -22,10 +22,10 @@ interface IProps {
 export default function CurriculumRoadmapAuthModal({ isOpen, close }: IProps) {
   // * Contexts
   const { name, setName, email, setEmail, next, loading } = useOnboarding();
-  const pathname = usePathname(); // Pathname for redirecting after sign in
+  const router = useRouter();
 
   // * State
-  const [isSignIn, setIsSignIn] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(false);
   const [signInEmail, setSignInEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -66,6 +66,9 @@ export default function CurriculumRoadmapAuthModal({ isOpen, close }: IProps) {
       return toast.error('Please enter a valid email address');
 
     next(); // Go to next step
+
+    // Navigate to onboarding
+    router.push('/onboarding');
   };
 
   // * Render

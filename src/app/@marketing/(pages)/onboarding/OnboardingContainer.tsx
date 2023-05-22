@@ -5,7 +5,6 @@ import Container from '@/lib/components/layout/Container';
 import VerticleScrollingGrid from '@/lib/components/containers/verticleScrollingGrid';
 
 import dynamic from 'next/dynamic';
-import { OnboardingProvider } from './OnboardingCtx';
 import OnboardingContent from './OnboardingContent';
 
 const OnboardingTestimonialBox = dynamic(
@@ -75,7 +74,7 @@ const testimonials = [
 export default function OnboardingContainer() {
   // * Render
   return (
-    <OnboardingProvider>
+    <>
       {/* Testimonials Left */}
       <VerticleScrollingGrid
         className="h-full max-h-screen w-full left-0 xl:w-4/12 2xl:w-3/12 absolute 2xl:relative opacity-20"
@@ -98,6 +97,6 @@ export default function OnboardingContainer() {
         colsAndColItems={[{ list: testimonials.reverse(), msPerPixel: 15 }]}
         component={OnboardingTestimonialBox}
       />
-    </OnboardingProvider>
+    </>
   );
 }
