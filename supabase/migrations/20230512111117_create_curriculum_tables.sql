@@ -229,11 +229,12 @@ SELECT
     ELSE (COALESCE(lesson_stats.completed_lessons, 0) / COALESCE(lesson_stats.total_lessons, 0)) * 100
   END AS progress_percentage,
   students.students,
-  EXISTS (
-    SELECT 1
+  (
+    SELECT uc.id
     FROM user_curriculums uc
     WHERE uc.curriculum_id = c.id AND uc.user_id = auth.uid()
-  ) AS is_saved_by_user
+    LIMIT 1
+  ) AS user_curriculum_id
 FROM
   curriculums c
   INNER JOIN teacher_profiles tp ON c.creator_id = tp.id
@@ -272,9 +273,11 @@ WHERE
 
 
 
+
 --- Get all Subjects (with Progress for a Curriculum if the User has it saved in their User Curriculums)
 CREATE VIEW curriculum_subjects_with_progress_view AS
 SELECT
+  uc.id AS user_curriculum_id,   -- added this field
   c.id AS curriculum_id,
   c.name AS curriculum_name,
   c.description AS curriculum_description,
@@ -291,33 +294,38 @@ SELECT
     ELSE (COALESCE(lesson_stats.completed_lessons, 0) / COALESCE(lesson_stats.total_lessons, 0)) * 100
   END AS progress_percentage
 FROM
-  curriculum_subjects cs
-  INNER JOIN curriculums c ON cs.curriculum_id = c.id
+  user_curriculums uc
+  INNER JOIN curriculums c ON uc.curriculum_id = c.id
+  INNER JOIN curriculum_subjects cs ON c.id = cs.curriculum_id
   INNER JOIN subjects s ON cs.subject_id = s.id
   LEFT JOIN (
     SELECT
+      ucp.user_curriculum_id,
       clv.curriculum_subject_id AS curriculum_subject_id,
       COUNT(*) AS total_lessons,
       COUNT(ucp.status = 'COMPLETED' OR NULL) AS completed_lessons
     FROM
       user_curriculum_progress ucp
-      INNER JOIN user_curriculums uc ON ucp.user_curriculum_id = uc.id
       INNER JOIN curriculum_lessons cl ON ucp.lesson_id = cl.id
       INNER JOIN curriculum_topics ct ON cl.curriculum_topic_id = ct.id
       INNER JOIN curriculum_levels clv ON ct.curriculum_level_id = clv.id
     WHERE
-      uc.user_id = auth.uid() AND
       ucp.status IS NOT NULL
     GROUP BY
+      ucp.user_curriculum_id,
       clv.curriculum_subject_id
   ) AS lesson_stats
-    ON lesson_stats.curriculum_subject_id = cs.id
+    ON lesson_stats.user_curriculum_id = uc.id AND lesson_stats.curriculum_subject_id = cs.id
+WHERE
+  uc.user_id = auth.uid()
 ORDER BY cs.type ASC, progress_percentage ASC;
+
 
 
 --- Get all Levels (with Progress for a Curriculum if the User has it saved in their User Curriculums)
 CREATE VIEW curriculum_levels_with_progress_view AS
 SELECT
+  uc.id AS user_curriculum_id,   -- added this field
   c.id AS curriculum_id,
   c.name AS curriculum_name,
   cs.id AS curriculum_subject_id,
@@ -328,7 +336,7 @@ SELECT
   lv.name AS level_name,
   lv.description AS level_description,
   lv.image_path AS level_image_path,
-  lv.level_number AS level_number,
+  clv.level_number AS level_number,
   COALESCE(lesson_stats.total_lessons, 0) AS total_lessons,
   COALESCE(lesson_stats.completed_lessons, 0) AS completed_lessons,
   CASE
@@ -336,33 +344,37 @@ SELECT
     ELSE (COALESCE(lesson_stats.completed_lessons, 0) / COALESCE(lesson_stats.total_lessons, 0)) * 100
   END AS progress_percentage
 FROM
-  curriculum_levels clv
-  INNER JOIN levels lv ON clv.level_id = lv.id
-  INNER JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
+  user_curriculums uc
+  INNER JOIN curriculum_subjects cs ON uc.curriculum_id = cs.curriculum_id
   INNER JOIN curriculums c ON cs.curriculum_id = c.id
+  INNER JOIN curriculum_levels clv ON cs.id = clv.curriculum_subject_id
+  INNER JOIN levels lv ON clv.level_id = lv.id
   INNER JOIN subjects s ON cs.subject_id = s.id
   LEFT JOIN (
     SELECT
+      ucp.user_curriculum_id,
       ct.curriculum_level_id AS curriculum_level_id,
       COUNT(*) AS total_lessons,
       COUNT(ucp.status = 'COMPLETED' OR NULL) AS completed_lessons
     FROM
       user_curriculum_progress ucp
-      INNER JOIN user_curriculums uc ON ucp.user_curriculum_id = uc.id
       INNER JOIN curriculum_lessons cl ON ucp.lesson_id = cl.id
       INNER JOIN curriculum_topics ct ON cl.curriculum_topic_id = ct.id
     WHERE
-      uc.user_id = auth.uid() AND
       ucp.status IS NOT NULL
     GROUP BY
+      ucp.user_curriculum_id,
       ct.curriculum_level_id
   ) AS lesson_stats
-    ON lesson_stats.curriculum_level_id = clv.id
-ORDER BY lv.level_number ASC, progress_percentage ASC;
+    ON lesson_stats.user_curriculum_id = uc.id AND lesson_stats.curriculum_level_id = clv.id
+WHERE
+  uc.user_id = auth.uid()
+ORDER BY clv.level_number ASC, progress_percentage ASC;
 
 --- Get all Topics (with Progress for a Curriculum if the User has it saved in their User Curriculums)
 CREATE VIEW curriculum_topics_with_progress_view AS
 SELECT
+  uc.id AS user_curriculum_id,   -- added this field
   c.id AS curriculum_id,
   c.name AS curriculum_name,
   s.name AS subject_name,
@@ -383,34 +395,38 @@ SELECT
     ELSE (COALESCE(lesson_stats.completed_lessons, 0) / COALESCE(lesson_stats.total_lessons, 0)) * 100
   END AS progress_percentage
 FROM
-  curriculum_topics ct
-  INNER JOIN topics t ON ct.topic_id = t.id
-  INNER JOIN curriculum_levels clv ON ct.curriculum_level_id = clv.id
-  INNER JOIN levels lv ON clv.level_id = lv.id
-  INNER JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
+  user_curriculums uc
+  INNER JOIN curriculum_subjects cs ON uc.curriculum_id = cs.curriculum_id
   INNER JOIN curriculums c ON cs.curriculum_id = c.id
+  INNER JOIN curriculum_levels clv ON cs.id = clv.curriculum_subject_id
+  INNER JOIN curriculum_topics ct ON clv.id = ct.curriculum_level_id
+  INNER JOIN topics t ON ct.topic_id = t.id
+  INNER JOIN levels lv ON clv.level_id = lv.id
   INNER JOIN subjects s ON cs.subject_id = s.id
   LEFT JOIN (
     SELECT
+      ucp.user_curriculum_id,
       cl.curriculum_topic_id AS curriculum_topic_id,
       COUNT(*) AS total_lessons,
       COUNT(ucp.status = 'COMPLETED' OR NULL) AS completed_lessons
     FROM
       user_curriculum_progress ucp
-      INNER JOIN user_curriculums uc ON ucp.user_curriculum_id = uc.id
       INNER JOIN curriculum_lessons cl ON ucp.lesson_id = cl.id
     WHERE
-      uc.user_id = auth.uid() AND
       ucp.status IS NOT NULL
     GROUP BY
+      ucp.user_curriculum_id,
       cl.curriculum_topic_id
   ) AS lesson_stats
-    ON lesson_stats.curriculum_topic_id = ct.id
+    ON lesson_stats.user_curriculum_id = uc.id AND lesson_stats.curriculum_topic_id = ct.id
+WHERE
+  uc.user_id = auth.uid()
 ORDER BY ct.type ASC, progress_percentage ASC;
 
 --- Get all Lessons (with Progress for a Curriculum if the User has it saved in their User Curriculums)
 CREATE VIEW curriculum_lessons_with_progress_view AS
 SELECT
+  uc.id AS user_curriculum_id,  -- added this field
   c.id AS curriculum_id,
   c.name AS curriculum_name,
   cs.id AS curriculum_subject_id,
@@ -434,34 +450,38 @@ SELECT
     ELSE (COALESCE(lesson_stats.completed_lessons, 0) / COALESCE(lesson_stats.total_lessons, 0)) * 100
   END AS progress_percentage
 FROM
-  curriculum_lessons cl
-  INNER JOIN curriculum_topics ct ON cl.curriculum_topic_id = ct.id
-  INNER JOIN topics t ON ct.topic_id = t.id
-  INNER JOIN curriculum_levels clv ON ct.curriculum_level_id = clv.id
-  INNER JOIN levels lv ON clv.level_id = lv.id
-  INNER JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
+  user_curriculums uc
+  INNER JOIN curriculum_subjects cs ON uc.curriculum_id = cs.curriculum_id
   INNER JOIN curriculums c ON cs.curriculum_id = c.id
+  INNER JOIN curriculum_levels clv ON cs.id = clv.curriculum_subject_id
+  INNER JOIN curriculum_topics ct ON clv.id = ct.curriculum_level_id
+  INNER JOIN curriculum_lessons cl ON ct.id = cl.curriculum_topic_id
+  INNER JOIN topics t ON ct.topic_id = t.id
+  INNER JOIN levels lv ON clv.level_id = lv.id
   INNER JOIN subjects s ON cs.subject_id = s.id
   LEFT JOIN (
     SELECT
+      ucp.user_curriculum_id,
       ucp.lesson_id AS lesson_id,
       COUNT(*) AS total_lessons,
       COUNT(ucp.status = 'COMPLETED' OR NULL) AS completed_lessons
     FROM
       user_curriculum_progress ucp
-      INNER JOIN user_curriculums uc ON ucp.user_curriculum_id = uc.id
     WHERE
-      uc.user_id = auth.uid() AND
       ucp.status IS NOT NULL
     GROUP BY
+      ucp.user_curriculum_id,
       ucp.lesson_id
   ) AS lesson_stats
-    ON lesson_stats.lesson_id = cl.id
+    ON lesson_stats.user_curriculum_id = uc.id AND lesson_stats.lesson_id = cl.id
+WHERE
+  uc.user_id = auth.uid()
 ORDER BY cl.lesson_number ASC, progress_percentage ASC;
 
 --- User Curriculum Lesson With User Lesson View
 CREATE VIEW curriculum_lesson_with_user_lesson_view AS
 SELECT
+  uc.id AS user_curriculum_id, -- added this field
   c.name AS curriculum_name,
   s.name AS subject_name,
   lv.name AS level_name,
@@ -499,22 +519,21 @@ SELECT
       lesson_plans
     WHERE
       lesson_plans.id = ANY(cl.lesson_plan_ids) AND lesson_plans.creator_id = auth.uid()
-    SELECT 1
-      -- The problem with this query is that a user might have mutliple user_curriculums with the same curriculum_lesson_id... we would need to change the whole structure of our routing
-      -- to contain the user_curriculum_id instead of the curriculum_id... whichh would mess up almost every query... something to think about if we think it will happen ofter
+    LIMIT 1
   ) AS lesson_plan
 FROM
-  curriculum_lessons cl
-  INNER JOIN curriculum_topics ct ON cl.curriculum_topic_id = ct.id
-  INNER JOIN topics t ON ct.topic_id = t.id
-  INNER JOIN curriculum_levels clv ON ct.curriculum_level_id = clv.id
-  INNER JOIN levels lv ON clv.level_id = lv.id
-  INNER JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
-  INNER JOIN subjects s ON cs.subject_id = s.id
+  user_curriculums uc
+  INNER JOIN curriculum_subjects cs ON uc.curriculum_id = cs.curriculum_id
   INNER JOIN curriculums c ON cs.curriculum_id = c.id
-  LEFT JOIN user_curriculums uc ON uc.curriculum_id = c.id
+  INNER JOIN curriculum_levels clv ON cs.id = clv.curriculum_subject_id
+  INNER JOIN curriculum_topics ct ON clv.id = ct.curriculum_level_id
+  INNER JOIN curriculum_lessons cl ON ct.id = cl.curriculum_topic_id
+  INNER JOIN topics t ON ct.topic_id = t.id
+  INNER JOIN levels lv ON clv.level_id = lv.id
+  INNER JOIN subjects s ON cs.subject_id = s.id
   LEFT JOIN user_curriculum_progress ucp ON ucp.user_curriculum_id = uc.id AND ucp.lesson_id = cl.id
-  LEFT JOIN teacher_profiles teacher ON uc.user_id = teacher.id;
+WHERE
+  uc.user_id = auth.uid();
 
 --- Shareable Curriculum View
 

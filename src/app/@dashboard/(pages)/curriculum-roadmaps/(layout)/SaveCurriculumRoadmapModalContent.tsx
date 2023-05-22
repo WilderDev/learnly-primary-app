@@ -20,10 +20,12 @@ import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 // * Props
 interface IProps {
   roadmaps: ICurriculumListItem[];
+  close?: () => void;
 }
 
 export default function SaveCurriculumRoadmapModalContent({
   roadmaps,
+  close,
 }: IProps) {
   // * Hooks / Context
   const { students } = useUser();
@@ -41,14 +43,13 @@ export default function SaveCurriculumRoadmapModalContent({
         toast.success('Curriculum Saved!');
         setSelectedCurriculum('');
         setCurriculumStudents([]);
-        close();
       } else {
         toast.error(
           "Something went wrong... You might've already saved this curriculum.",
         );
       }
 
-      close();
+      close && close();
     },
     onError: (error) => toast.error(error),
   });

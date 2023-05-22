@@ -2,8 +2,8 @@
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { redirect } from 'next/navigation';
 import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
-import CurriculumRoadmapSection from '../../(layout)/CurriculumRoadmapSection';
-import CurriculumRoadmapList from '../../(layout)/CurriculumRoadmapList';
+import CurriculumRoadmapSection from '../../../(layout)/CurriculumRoadmapSection';
+import CurriculumRoadmapList from '../../../(layout)/CurriculumRoadmapList';
 
 // * Params
 interface IParams {
@@ -35,12 +35,12 @@ async function getLevels(curriculumId: string, subjectId: string) {
   const { data, error } = await supabase
     .from('curriculum_levels_with_progress_view')
     .select('*')
-    .eq('curriculum_id', curriculumId)
+    .eq('user_curriculum_id', curriculumId)
     .eq('curriculum_subject_id', subjectId);
 
   // 2. Handle Errors
   if (error || data.length === 0)
-    return redirect(`/curriculum-roadmaps/${curriculumId}`);
+    return redirect(`/curriculum-roadmaps/user/${curriculumId}`);
 
   // 3. Transform Data
   const transformedData: ICurriculumListItem[] = data.map((level) => ({
@@ -49,7 +49,7 @@ async function getLevels(curriculumId: string, subjectId: string) {
     description: level.level_description!,
     image: level.level_image_path!,
     progress: level.progress_percentage!,
-    url: `/curriculum-roadmaps/${curriculumId}/${subjectId}/${level.curriculum_level_id}`!,
+    url: `/curriculum-roadmaps/user/${curriculumId}/${subjectId}/${level.curriculum_level_id}`!,
   }));
   const transformedMetadata = {
     name: `${data[0].curriculum_name} | ${data[0].subject_name} | Levels`,
@@ -71,7 +71,7 @@ export async function generateMetadata({
   const { metadata } = await getLevels(curriculumId, subjectId);
 
   return {
-    slug: `/curriculum-roadmaps/${curriculumId}/${subjectId}`,
+    slug: `/curriculum-roadmaps/user/${curriculumId}/${subjectId}`,
     title: `${metadata.name} | Curriculum Roadmap | Levels`,
     description: `${metadata.description} - view all levels`,
     keywords: [
@@ -100,11 +100,11 @@ export async function getStaticPaths() {
   const supabase = supabaseServer();
   const { data } = await supabase
     .from('curriculum_levels_with_progress_view')
-    .select('curriculum_id, curriculum_subject_id');
+    .select('user_curriculum_id, curriculum_subject_id');
 
   const paths =
     data?.map((c) => ({
-      curriculumId: c.curriculum_id,
+      curriculumId: c.user_curriculum_id,
       subjectId: c.curriculum_subject_id,
     })) || [];
 

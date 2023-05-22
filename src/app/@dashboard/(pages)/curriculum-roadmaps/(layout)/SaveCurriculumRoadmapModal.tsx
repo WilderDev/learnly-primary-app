@@ -26,7 +26,7 @@ export default function SaveCurriculumRoadmapModal({
       noCloseOnOutsideClick={true}
       size="xl"
     >
-      <SaveCurriculumRoadmapModalContent roadmaps={roadmaps} />
+      <SaveCurriculumRoadmapModalContent roadmaps={roadmaps} close={close} />
     </Modal>
   );
 }

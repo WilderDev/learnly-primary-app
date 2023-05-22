@@ -75,7 +75,7 @@ async function getCurriculumRoadmaps() {
 
   // Transform data
   const userRoadmaps = data
-    .filter((r) => r.is_saved_by_user)
+    .filter((r) => !!r.user_curriculum_id)
     .map((roadmap) => ({
       id: roadmap.curriculum_id!,
       name: roadmap.curriculum_name!,
@@ -83,7 +83,7 @@ async function getCurriculumRoadmaps() {
       image: roadmap.curriculum_image_path!,
       progress: roadmap.progress_percentage!,
       tags: roadmap.curriculum_tags || [],
-      url: `/curriculum-roadmaps/${roadmap.curriculum_id}`,
+      url: `/curriculum-roadmaps/user/${roadmap.user_curriculum_id}`,
       students: roadmap.students as { name: string; avatar_url: string }[],
     }));
   const allRoadmaps: ICurriculumListItem[] = data.map((roadmap) => ({
@@ -93,8 +93,8 @@ async function getCurriculumRoadmaps() {
     image: roadmap.curriculum_image_path!,
     progress: roadmap.progress_percentage!,
     tags: roadmap.curriculum_tags || [],
-    url: `/curriculum-roadmaps/${roadmap.curriculum_id}`,
-    students: roadmap.students as { name: string; avatar_url: string }[],
+    // url: `/curriculum-roadmaps/${roadmap.curriculum_id}`,
+    // students: roadmap.students as { name: string; avatar_url: string }[],
   }));
 
   return {

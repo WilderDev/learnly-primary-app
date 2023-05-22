@@ -40,7 +40,10 @@ export default function CurriculumRoadmapAuthModal({ isOpen, close }: IProps) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: signInEmail, redirectUrl: pathname }),
+      body: JSON.stringify({
+        email: signInEmail,
+        redirectUrl: '/curriculum-roadmaps',
+      }),
     });
 
     if (res.ok) {

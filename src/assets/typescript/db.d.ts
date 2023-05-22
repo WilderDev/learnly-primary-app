@@ -1269,6 +1269,7 @@ export interface Database {
           students: Json[] | null
           subject_name: string | null
           topic_name: string | null
+          user_curriculum_id: string | null
         }
       }
       curriculum_lessons_with_progress_view: {
@@ -1292,6 +1293,7 @@ export interface Database {
           topic_image_path: string | null
           topic_name: string | null
           total_lessons: number | null
+          user_curriculum_id: string | null
         }
       }
       curriculum_levels_with_progress_view: {
@@ -1304,11 +1306,13 @@ export interface Database {
           level_description: string | null
           level_image_path: string | null
           level_name: Database["public"]["Enums"]["level"] | null
+          level_number: number | null
           progress_percentage: number | null
           subject_description: string | null
           subject_image_path: string | null
           subject_name: string | null
           total_lessons: number | null
+          user_curriculum_id: string | null
         }
       }
       curriculum_subjects_with_progress_view: {
@@ -1325,6 +1329,7 @@ export interface Database {
           subject_name: string | null
           subject_type: Database["public"]["Enums"]["module_type"] | null
           total_lessons: number | null
+          user_curriculum_id: string | null
         }
       }
       curriculum_topics_with_progress_view: {
@@ -1345,6 +1350,7 @@ export interface Database {
           topic_name: string | null
           topic_type: Database["public"]["Enums"]["module_type"] | null
           total_lessons: number | null
+          user_curriculum_id: string | null
         }
       }
       curriculum_with_progress_view: {
@@ -1359,10 +1365,10 @@ export interface Database {
           curriculum_image_path: string | null
           curriculum_name: string | null
           curriculum_tags: string[] | null
-          is_saved_by_user: boolean | null
           progress_percentage: number | null
           students: Json | null
           total_lessons: number | null
+          user_curriculum_id: string | null
         }
       }
       hosted_events_view: {

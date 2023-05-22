@@ -83,7 +83,7 @@ async function getCurriculumRoadmapLesson(
   // Handle errors
   if (error || !data)
     return redirect(
-      `/curriculum-roadmaps/${curriculumId}/${subjectId}/${levelId}/${topicId}`,
+      `/curriculum-roadmaps/user/${curriculumId}/${subjectId}/${levelId}/${topicId}`,
     );
 
   // Create lesson plan form data
@@ -123,7 +123,7 @@ export async function generateMetadata({
   const { data } = await supabase
     .from('curriculum_lessons_with_progress_view')
     .select('*')
-    .eq('curriculum_id', curriculumId)
+    .eq('user_curriculum_id', curriculumId)
     .eq('curriculum_subject_id', subjectId)
     .eq('curriculum_level_id', levelId)
     .eq('curriculum_topic_id', topicId)
@@ -131,7 +131,7 @@ export async function generateMetadata({
     .single();
 
   return {
-    slug: `/curriculum-roadmaps/${curriculumId}/${subjectId}/${levelId}/${topicId}/${lessonId}`,
+    slug: `/curriculum-roadmaps/user/${curriculumId}/${subjectId}/${levelId}/${topicId}/${lessonId}`,
     title: `${data?.lesson_name} | Curriculum Lessons Creator | ${data?.curriculum_name}`,
     image: data?.lesson_image_path,
     keywords: ['Homeschool Curriculum Roadmap', 'Homeschool Curriculum'],
@@ -158,12 +158,12 @@ export async function getStaticPaths() {
   const { data } = await supabase
     .from('curriculum_lessons_with_progress_view')
     .select(
-      'curriculum_id, curriculum_subject_id, curriculum_level_id, curriculum_topic_id, curriculum_lesson_id',
+      'user_curriculum_id, curriculum_subject_id, curriculum_level_id, curriculum_topic_id, curriculum_lesson_id',
     );
 
   const paths =
     data?.map((c) => ({
-      curriculumId: c.curriculum_id,
+      curriculumId: c.user_curriculum_id,
       subjectId: c.curriculum_subject_id,
       levelId: c.curriculum_level_id,
       topicId: c.curriculum_topic_id,
