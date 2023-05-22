@@ -6,7 +6,8 @@ import { toast } from 'sonner';
 import DatePicker from '@/lib/components/form/DatePicker';
 import Button from '@/lib/components/ui/Button';
 import { BookmarkSquareIcon } from '@heroicons/react/24/solid';
-import { saveLessonPlan } from '@/app/@dashboard/(pages)/lesson-plans/[id]/_actions';
+import { saveCurriculumLessonPlan } from '@/app/@dashboard/(pages)/curriculum-roadmaps/_actions';
+import { useParams } from 'next/navigation';
 
 interface IProps {
   lessonPlanId: string;
@@ -21,8 +22,11 @@ export default function CurriculumLessonSaveModal({
   isVisible,
   close,
 }: IProps) {
+  // * Hooks / Context
+  const params = useParams();
+
   // * Requests / Mutations
-  const { mutate, isLoading } = useRequest(saveLessonPlan, {
+  const { mutate, isLoading } = useRequest(saveCurriculumLessonPlan, {
     onSuccess: (data) => {
       if (data.ok) {
         toast.success('Lesson Plan Saved!');
@@ -60,6 +64,8 @@ export default function CurriculumLessonSaveModal({
               lesson_plan_id: lessonPlanId,
               scheduled_date: scheduledDate!,
               students: studentIds,
+              curriculum_lesson_id: params.lessonId,
+              user_curriculum_id: params.curriculumId,
             })
           }
         >

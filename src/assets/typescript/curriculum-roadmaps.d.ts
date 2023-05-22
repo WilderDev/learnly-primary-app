@@ -62,3 +62,17 @@ export interface ICurriculumFormData {
   };
   students: IStudentPromptReq['students'];
 }
+
+export interface ICurriculumLessonPlan {
+  lesson_plan: {
+    id: string;
+    title: string;
+    content: string;
+    tags: string[];
+    image_path: string;
+    length_in_min: number;
+    creator_name: string;
+    creator_avatar_url: string;
+    // . . . Creator info, etc.
+  } | null;
+}

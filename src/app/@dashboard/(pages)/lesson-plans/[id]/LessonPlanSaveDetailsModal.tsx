@@ -16,6 +16,7 @@ import {
 } from '@heroicons/react/24/solid';
 import { useParams } from 'next/navigation';
 import { saveCurriculumLessonPlan } from '../../curriculum-roadmaps/_actions';
+import { saveLessonPlan } from './_actions';
 
 interface IProps {
   lessonPlanId: string;
@@ -32,10 +33,9 @@ export default function LessonPlanSaveDetailsModalForm({
 }: IProps) {
   // * Contexts / Hooks
   const { students } = useUser();
-  const params = useParams();
 
   // * Requests / Mutations
-  const { mutate, isLoading } = useRequest(saveCurriculumLessonPlan, {
+  const { mutate, isLoading } = useRequest(saveLessonPlan, {
     onSuccess: (data) => {
       if (data.ok) {
         toast.success('Lesson Plan Saved!');
@@ -75,8 +75,6 @@ export default function LessonPlanSaveDetailsModalForm({
               lesson_plan_id: lessonPlanId,
               scheduled_date: scheduledDate!,
               students: savedStudents,
-              curriculum_lesson_id: params.lessonId,
-              user_curriculum_id: params.curriculumId,
             })
           }
         >

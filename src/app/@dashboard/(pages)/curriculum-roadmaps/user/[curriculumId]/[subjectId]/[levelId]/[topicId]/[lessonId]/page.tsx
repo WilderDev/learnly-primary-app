@@ -8,8 +8,12 @@ import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { redirect } from 'next/navigation';
 import CurriculumLessonForm from './CurriculumLessonForm';
 import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
-import { ICurriculumFormData } from '@/assets/typescript/curriculum-roadmaps';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import {
+  ICurriculumFormData,
+  ICurriculumLessonPlan,
+} from '@/assets/typescript/curriculum-roadmaps';
+import LessonPlanContainer from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanContainer';
+import CurriculumLessonPlanContainer from './CurriculumLessonPlanContainer';
 
 // * IParams
 interface IParams {
@@ -35,8 +39,6 @@ export default async function CurriculumRoadmapLessonPage({
     lessonId,
   );
 
-  console.log('lessonPlan:', lessonPlan);
-
   // * Render
   return (
     <>
@@ -48,7 +50,7 @@ export default async function CurriculumRoadmapLessonPage({
             title={`Create "${lessonForm.lesson.name}" Lesson`}
           />
           {lessonPlan ? (
-            <LessonPlanMarkdown content={lessonPlan.content} />
+            <CurriculumLessonPlanContainer lessonPlan={lessonPlan} />
           ) : (
             <CurriculumLessonForm lesson={lessonForm} />
           )}
@@ -124,15 +126,7 @@ async function getCurriculumRoadmapLesson(
   return {
     lessonForm: lessonFormData,
     lessonPlan:
-      (data.lesson_plan as {
-        id: string;
-        title: string;
-        content: string;
-        tags: string[];
-        image_path: string;
-        length_in_min: number;
-        // . . . Creator info, etc.
-      }) || null,
+      data.lesson_plan as unknown as ICurriculumLessonPlan['lesson_plan'],
   };
 }
 

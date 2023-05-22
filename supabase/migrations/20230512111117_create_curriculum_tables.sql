@@ -481,7 +481,7 @@ ORDER BY cl.lesson_number ASC, progress_percentage ASC;
 --- User Curriculum Lesson With User Lesson View
 CREATE VIEW curriculum_lesson_with_user_lesson_view AS
 SELECT
-  uc.id AS user_curriculum_id, -- added this field
+  uc.id AS user_curriculum_id,
   c.name AS curriculum_name,
   s.name AS subject_name,
   s.id AS subject_id,
@@ -516,10 +516,13 @@ SELECT
         'content', lesson_plans.content,
         'tags', lesson_plans.tags,
         'image_path', lesson_plans.image_path,
-        'length_in_min', lesson_plans.length_in_min
+        'length_in_min', lesson_plans.length_in_min,
+        'creator_name', teacher_profiles.first_name || ' ' || teacher_profiles.last_name, -- included creator_name
+        'creator_avatar_url', teacher_profiles.avatar_url -- included creator_avatar_url
       )
     FROM
       lesson_plans
+      INNER JOIN teacher_profiles ON lesson_plans.creator_id = teacher_profiles.id -- added join to teacher_profiles
     WHERE
       lesson_plans.id = ANY(cl.lesson_plan_ids) AND lesson_plans.creator_id = auth.uid()
     LIMIT 1
@@ -537,6 +540,7 @@ FROM
   LEFT JOIN user_curriculum_progress ucp ON ucp.user_curriculum_id = uc.id AND ucp.lesson_id = cl.id
 WHERE
   uc.user_id = auth.uid();
+
 
 --- Shareable Curriculum View
 
