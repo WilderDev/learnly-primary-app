@@ -45,7 +45,7 @@ async function getLevels(curriculumId: string, subjectId: string) {
   // 3. Transform Data
   const transformedData: ICurriculumListItem[] = data.map((level) => ({
     id: level.curriculum_level_id!,
-    name: level.level_name!,
+    name: `Level: ${level.level_name!}`,
     description: level.level_description!,
     image: level.level_image_path!,
     progress: level.progress_percentage!,

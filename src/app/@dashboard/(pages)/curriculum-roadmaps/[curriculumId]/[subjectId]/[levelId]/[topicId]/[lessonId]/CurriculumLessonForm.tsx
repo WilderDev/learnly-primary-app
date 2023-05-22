@@ -25,11 +25,18 @@ import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
 import Modal from '@/lib/components/popouts/Modal';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
-import { getAgeFromBirthday } from '@/lib/common/date.helpers';
 
 // * Props
 interface IProps {
-  lesson: Database['public']['Tables']['curriculum_lessons']['Row'];
+  lesson: {
+    curriculum_name: string;
+    subject_name: string;
+    level_name: string;
+    topic_name: string;
+    lesson_name: string;
+    lesson_description: string;
+    students: IStudentPromptReq['students'];
+  };
 }
 
 // * Data
@@ -56,12 +63,12 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
 
     // 2. Create Lesson Plan Request Body Objects
     const lessonBody: ICurriculumLessonPromptReq = {
-      curriculum: 'TSK',
-      subject: 'TSK',
-      level: 'TSK',
-      topic: 'TSK',
-      lessonName: lesson.name,
-      lessonDescription: lesson.description,
+      curriculum: lesson.curriculum_name,
+      subject: lesson.subject_name,
+      level: lesson.level_name,
+      topic: lesson.topic_name,
+      lessonName: lesson.lesson_name,
+      lessonDescription: lesson.lesson_description,
       philosophy,
       length_in_min: lengthInMin,
       difficulty,
@@ -72,15 +79,6 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
       role: user?.type!,
       teaching_preferences: {},
     };
-    const studentsBody: IStudentPromptReq['students'] = [
-      // TSK
-      {
-        id: 'TSK',
-        name: 'Little Timmy',
-        age: getAgeFromBirthday('2015-01-01'),
-        learning_styles: ['Auditory', 'Visual'],
-      },
-    ];
 
     // 3. Send Request to API
     try {
@@ -93,7 +91,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
         body: JSON.stringify({
           lessonBody,
           teacherBody,
-          studentsBody,
+          studentsBody: lesson.students,
         }),
       });
 
@@ -112,8 +110,6 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
 
     console.log('Submitted');
   };
-
-  console.log('lessonOutput:', lessonOutput);
 
   // * Render
   return (
@@ -182,7 +178,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
           className="md:col-start-2 lg:col-start-3"
           type="submit"
           loading={loading}
-          disabled={loading}
+          disabled={loading || lesson.students.length === 0}
         >
           Create Lesson Plan
         </Button>
@@ -195,6 +191,19 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
         noCloseOnOutsideClick={true}
       >
         <LessonPlanMarkdown content={lessonOutput} />
+      </Modal>
+
+      {/* No User Curriculum Modal */}
+      <Modal
+        isVisible={lesson.students.length === 0}
+        close={() => {}}
+        noCloseOnOutsideClick={true}
+      >
+        <h1>Hey!</h1>
+        <h2>It looks like you haven&apos;t saved this curriculum...</h2>
+        <p>To use the curriculum lesson generate, please save it first</p>
+        <button>Save</button>
+        {/* TSK TSK TSK */}
       </Modal>
     </>
   );

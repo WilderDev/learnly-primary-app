@@ -4,12 +4,15 @@ import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
 import { redirect } from 'next/navigation';
 import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
-import CurriculumRoadmapList from './(layout)/CurriculumRoadmapList';
+import CurriculumRoadmapCards, {
+  NoCurriculumRoadmapCard,
+} from './(layout)/CurriculumRoadmapCards';
+import SaveCurriculumRoadmapModalContent from './(layout)/SaveCurriculumRoadmapModalContent';
 
 // * Page
 export default async function CurriculumRoadmapsPage() {
   // * Data
-  const { roadmaps, metadata } = await getCurriculumRoadmaps();
+  const { user_roadmaps, roadmaps, metadata } = await getCurriculumRoadmaps();
 
   // * Render
   return (
@@ -18,10 +21,19 @@ export default async function CurriculumRoadmapsPage() {
       <DashMainCol>
         {/* Curriculum Roadmaps */}
         <DashPanel colNum={1}>
-          <DashPanelHeader title="Your Curriculum Roadmaps" />
-
-          <CurriculumRoadmapList data={roadmaps} />
-          {/* TSK: Do Custom Cards for this and state if they don't have any saved!!!!! */}
+          <DashPanelHeader
+            title="Your Curriculum Roadmaps"
+            modalSize="xl"
+            hasModal={true}
+            modalContent={
+              <SaveCurriculumRoadmapModalContent roadmaps={roadmaps} />
+            }
+          />
+          {user_roadmaps.length > 0 ? (
+            <CurriculumRoadmapCards roadmaps={user_roadmaps} />
+          ) : (
+            <NoCurriculumRoadmapCard roadmaps={roadmaps} />
+          )}
         </DashPanel>
 
         {/* Curriculum Roadmap Next Lessons */}
@@ -62,7 +74,19 @@ async function getCurriculumRoadmaps() {
   if (error || data.length === 0) return redirect(`/`);
 
   // Transform data
-  const transformedData: ICurriculumListItem[] = data.map((roadmap) => ({
+  const userRoadmaps = data
+    .filter((r) => r.is_saved_by_user)
+    .map((roadmap) => ({
+      id: roadmap.curriculum_id!,
+      name: roadmap.curriculum_name!,
+      description: roadmap.curriculum_description!,
+      image: roadmap.curriculum_image_path!,
+      progress: roadmap.progress_percentage!,
+      tags: roadmap.curriculum_tags || [],
+      url: `/curriculum-roadmaps/${roadmap.curriculum_id}`,
+      students: roadmap.students as { name: string; avatar_url: string }[],
+    }));
+  const allRoadmaps: ICurriculumListItem[] = data.map((roadmap) => ({
     id: roadmap.curriculum_id!,
     name: roadmap.curriculum_name!,
     description: roadmap.curriculum_description!,
@@ -74,7 +98,8 @@ async function getCurriculumRoadmaps() {
   }));
 
   return {
-    roadmaps: transformedData,
+    user_roadmaps: userRoadmaps,
+    roadmaps: allRoadmaps,
     metadata: {
       title: 'Curriculum Roadmaps',
       description: 'Find the perfect curriculum for your family.',

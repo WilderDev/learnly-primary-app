@@ -228,7 +228,12 @@ SELECT
     WHEN COALESCE(lesson_stats.total_lessons, 0) = 0 THEN 0
     ELSE (COALESCE(lesson_stats.completed_lessons, 0) / COALESCE(lesson_stats.total_lessons, 0)) * 100
   END AS progress_percentage,
-  students.students
+  students.students,
+  EXISTS (
+    SELECT 1
+    FROM user_curriculums uc
+    WHERE uc.curriculum_id = c.id AND uc.user_id = auth.uid()
+  ) AS is_saved_by_user
 FROM
   curriculums c
   INNER JOIN teacher_profiles tp ON c.creator_id = tp.id
@@ -264,6 +269,7 @@ FROM
 WHERE
   c.is_public = TRUE AND
   c.status = 'PUBLISHED';
+
 
 
 --- Get all Subjects (with Progress for a Curriculum if the User has it saved in their User Curriculums)
@@ -453,7 +459,62 @@ FROM
     ON lesson_stats.lesson_id = cl.id
 ORDER BY cl.lesson_number ASC, progress_percentage ASC;
 
-
+--- User Curriculum Lesson With User Lesson View
+CREATE VIEW curriculum_lesson_with_user_lesson_view AS
+SELECT
+  c.name AS curriculum_name,
+  s.name AS subject_name,
+  lv.name AS level_name,
+  t.name AS topic_name,
+  cl.id AS curriculum_lesson_id,
+  cl.name AS lesson_name,
+  cl.description AS lesson_description,
+  cl.image_path AS lesson_image_path,
+  ARRAY(
+    SELECT
+      json_build_object(
+        'id', student_profiles.id,
+        'first_name', student_profiles.first_name,
+        'last_name', student_profiles.last_name,
+        'avatar_url', student_profiles.avatar_url,
+        'age', EXTRACT(YEAR FROM AGE(student_profiles.birthday)),
+        'learning_styles', student_preferences.learning_styles
+      )
+    FROM
+      student_profiles
+      INNER JOIN student_preferences ON student_profiles.id = student_preferences.id
+    WHERE
+      student_profiles.id = ANY(uc.student_ids)
+  ) AS students,
+  (SELECT
+      json_build_object(
+        'id', lesson_plans.id,
+        'title', lesson_plans.title,
+        'content', lesson_plans.content,
+        'tags', lesson_plans.tags,
+        'image_path', lesson_plans.image_path,
+        'length_in_min', lesson_plans.length_in_min
+      )
+    FROM
+      lesson_plans
+    WHERE
+      lesson_plans.id = ANY(cl.lesson_plan_ids) AND lesson_plans.creator_id = auth.uid()
+    SELECT 1
+      -- The problem with this query is that a user might have mutliple user_curriculums with the same curriculum_lesson_id... we would need to change the whole structure of our routing
+      -- to contain the user_curriculum_id instead of the curriculum_id... whichh would mess up almost every query... something to think about if we think it will happen ofter
+  ) AS lesson_plan
+FROM
+  curriculum_lessons cl
+  INNER JOIN curriculum_topics ct ON cl.curriculum_topic_id = ct.id
+  INNER JOIN topics t ON ct.topic_id = t.id
+  INNER JOIN curriculum_levels clv ON ct.curriculum_level_id = clv.id
+  INNER JOIN levels lv ON clv.level_id = lv.id
+  INNER JOIN curriculum_subjects cs ON clv.curriculum_subject_id = cs.id
+  INNER JOIN subjects s ON cs.subject_id = s.id
+  INNER JOIN curriculums c ON cs.curriculum_id = c.id
+  LEFT JOIN user_curriculums uc ON uc.curriculum_id = c.id
+  LEFT JOIN user_curriculum_progress ucp ON ucp.user_curriculum_id = uc.id AND ucp.lesson_id = cl.id
+  LEFT JOIN teacher_profiles teacher ON uc.user_id = teacher.id;
 
 --- Shareable Curriculum View
 

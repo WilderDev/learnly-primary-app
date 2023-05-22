@@ -1257,6 +1257,20 @@ export interface Database {
           url?: string | null
         }
       }
+      curriculum_lesson_with_user_lesson_view: {
+        Row: {
+          curriculum_lesson_id: string | null
+          curriculum_name: string | null
+          lesson_description: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_plan: Json | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          students: Json[] | null
+          subject_name: string | null
+          topic_name: string | null
+        }
+      }
       curriculum_lessons_with_progress_view: {
         Row: {
           completed_lessons: number | null
@@ -1345,6 +1359,7 @@ export interface Database {
           curriculum_image_path: string | null
           curriculum_name: string | null
           curriculum_tags: string[] | null
+          is_saved_by_user: boolean | null
           progress_percentage: number | null
           students: Json | null
           total_lessons: number | null
