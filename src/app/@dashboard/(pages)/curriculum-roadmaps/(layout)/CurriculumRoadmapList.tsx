@@ -10,7 +10,7 @@ interface IProps {
 export default function CurriculumRoadmapList({ data }: IProps) {
   // * Render
   return (
-    <CardContainer>
+    <CardContainer className="xl:grid-cols-2 2xl:grid-cols-3">
       {/* Curriculum Roadmap List */}
       {data?.map((item, idx) => (
         <CurriculumRoadmapItem item={item} idx={idx} key={item.id} />

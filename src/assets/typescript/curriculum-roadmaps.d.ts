@@ -5,9 +5,11 @@ export interface ICurriculumListItem {
   name: string;
   image: string;
   description: string;
-  completion_percentage: number;
+  progress: number;
   url?: string;
   type?: Database['public']['Enums']['module_type'];
+  tags?: string[];
+  students?: { name: string; avatar_url: string }[];
 }
 
 export interface IShareableCurriculumListItem {

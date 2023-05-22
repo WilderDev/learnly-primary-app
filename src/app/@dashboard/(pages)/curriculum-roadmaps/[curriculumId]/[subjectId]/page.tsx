@@ -1,10 +1,11 @@
+// * Imports
 import { supabaseServer } from '@/lib/auth/supabaseServer';
+import { redirect } from 'next/navigation';
+import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumRoadmapSection from '../../(layout)/CurriculumRoadmapSection';
 import CurriculumRoadmapList from '../../(layout)/CurriculumRoadmapList';
-import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
-import { redirect } from 'next/navigation';
 
-// * IParams
+// * Params
 interface IParams {
   params: {
     curriculumId: string;
@@ -13,13 +14,11 @@ interface IParams {
 }
 
 // * Page
-export default async function CurriculumRoadmapLevelsPage({
+export default async function CurriculumRoadmapLevels({
   params: { curriculumId, subjectId },
 }: IParams) {
   // * Data
-  const levels = await getCurriculumRoadmapLevels(curriculumId, subjectId);
-
-  console.log('levels:', levels);
+  const { levels } = await getLevels(curriculumId, subjectId);
 
   // * Render
   return (
@@ -30,89 +29,85 @@ export default async function CurriculumRoadmapLevelsPage({
 }
 
 // * Fetcher
-async function getCurriculumRoadmapLevels(
-  curriculumId: string,
-  subjectId: string,
-) {
-  console.log('curriclumId:', curriculumId);
-  console.log('subjectId:', subjectId);
-  const supabase = supabaseServer(); // Create supabase instance for server-side
-
-  // Get all curriculum roadmaps
+async function getLevels(curriculumId: string, subjectId: string) {
+  // 1. Get Data
+  const supabase = supabaseServer();
   const { data, error } = await supabase
     .from('curriculum_levels_with_progress_view')
-    .select(`*`)
+    .select('*')
     .eq('curriculum_id', curriculumId)
-    .eq('subject_id', subjectId);
+    .eq('curriculum_subject_id', subjectId);
 
-  console.log('data:', data);
-  console.log('error:', error);
-
-  // Handle errors
+  // 2. Handle Errors
   if (error || data.length === 0)
     return redirect(`/curriculum-roadmaps/${curriculumId}`);
 
-  // Transform data
-  const transformedData: ICurriculumListItem[] = data.map((item) => ({
-    id: item.level_id!,
-    name: item.level_name!,
-    image: item.level_image_path!,
-    description: item.level_description!,
-    completion_percentage: item.completion_percentage!,
-    url: `/curriculum-roadmaps/${curriculumId}/${subjectId}/${item.level_id}`,
+  // 3. Transform Data
+  const transformedData: ICurriculumListItem[] = data.map((level) => ({
+    id: level.curriculum_level_id!,
+    name: level.level_name!,
+    description: level.level_description!,
+    image: level.level_image_path!,
+    progress: level.progress_percentage!,
+    url: `/curriculum-roadmaps/${curriculumId}/${subjectId}/${level.curriculum_level_id}`!,
   }));
+  const transformedMetadata = {
+    name: `${data[0].curriculum_name} | ${data[0].subject_name} | Levels`,
+    description: data[0].subject_description!,
+    imagePath: data[0].subject_image_path!,
+  };
 
-  console.log('transformedData:', transformedData);
-
-  // Return transformed data
-  return transformedData;
+  // 4. Return Transformed Data and Metadata
+  return {
+    levels: transformedData,
+    metadata: transformedMetadata,
+  };
 }
 
 // * Metadata
-export async function generateMetadata({ params: { curriculumId } }: IParams) {
-  const supabase = supabaseServer(); // Create supabase instance for server-side
-
-  const { data } = await supabase
-    .from('curriculums')
-    .select('id, name, image_path, description')
-    .eq('id', curriculumId)
-    .single();
-
-  const { id, name, image_path, description } = data!;
+export async function generateMetadata({
+  params: { curriculumId, subjectId },
+}: IParams) {
+  const { metadata } = await getLevels(curriculumId, subjectId);
 
   return {
-    slug: `/curriculum-roadmaps/${id}`,
-    title: `Levels | ${name}`,
-    image: image_path,
-    keywords: ['Homeschool Curriculum Roadmap', name],
-    description: description,
+    slug: `/curriculum-roadmaps/${curriculumId}/${subjectId}`,
+    title: `${metadata.name} | Curriculum Roadmap | Levels`,
+    description: `${metadata.description} - view all levels`,
+    keywords: [
+      `${metadata.name} curriculum`,
+      `${metadata.name} curriculum roadmap`,
+      'homeschool curriculum',
+    ],
     openGraph: {
-      title: `Levels | ${name}`,
-      description: description,
+      title: `${metadata.name} | Curriculum Roadmap | Levels`,
+      description: `${metadata.description} - view all levels`,
       images: [
         {
-          url: image_path,
-          width: 800,
-          height: 600,
-          alt: name,
+          url: metadata.imagePath,
+          width: 4800, // TSK
+          height: 3200, // TSK
+          alt: metadata.name,
         },
       ],
     },
   };
 }
 
-// * Static Params
-export async function generateStaticParams() {
+// * Paths
+export async function getStaticPaths() {
+  // 1. Get Data
   const supabase = supabaseServer();
-
-  const { data: subjects } = await supabase
+  const { data } = await supabase
     .from('curriculum_levels_with_progress_view')
-    .select('id, curriculum_id');
+    .select('curriculum_id, curriculum_subject_id');
 
-  const dynamicRoutes = subjects?.map((subject) => ({
-    curriculumId: subject.curriculum_id,
-    subjectId: subject.id,
-  }));
+  const paths =
+    data?.map((c) => ({
+      curriculumId: c.curriculum_id,
+      subjectId: c.curriculum_subject_id,
+    })) || [];
 
-  return dynamicRoutes || [];
+  // 2. Return Paths
+  return paths;
 }

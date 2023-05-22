@@ -15798,7 +15798,26 @@ SELECT create_complete_curriculum(
 ]'::json
 );
 
-
+-- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
+-- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+-- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+-- Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten English.
+-- the output will look like:
+-- {
+--        "name": "Team Sports",
+--        "description": "Fostering teamwork and coordination through simple team sports and games.",
+--        "image_path": "https://source.unsplash.com/500x500/?team-sports",
+--        "type": "CORE",
+--        "lessons_data": [
+--            {
+--                "name": "Introduction to Soccer",
+--                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+--                "image_path": "https://source.unsplash.com/500x500/?soccer",
+--                "type": "CORE"
+--            },
+--           // . . .
+--        ]
+-- }
 ---- English
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -16457,26 +16476,7 @@ SELECT create_complete_curriculum(
     {
       "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
       "topics_data": [
-Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
-Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
-We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
-Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten English.
-the output will look like:
-{
-       "name": "Team Sports",
-       "description": "Fostering teamwork and coordination through simple team sports and games.",
-       "image_path": "https://source.unsplash.com/500x500/?team-sports",
-       "type": "CORE",
-       "lessons_data": [
-           {
-               "name": "Introduction to Soccer",
-               "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
-               "image_path": "https://source.unsplash.com/500x500/?soccer",
-               "type": "CORE"
-           },
-          // . . .
-       ]
-}
+
       ]
     },
     {

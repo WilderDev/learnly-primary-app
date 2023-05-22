@@ -19,13 +19,16 @@ export default function CurriculumRoadmapBreadcrumbs() {
   // * Helpers
   // Generate levels based on params
   const generateLevels = () => {
-    const levels: IBreadcrumb[] = [
-      {
+    const levels: IBreadcrumb[] = []; // Init levels
+
+    // If there is a curriculumID, add subjects to the levels
+    if (params.curriculumId) {
+      levels.push({
         label: 'Subjects',
         url: `/curriculum-roadmaps/${params.curriculumId}`,
         isCurrent: !params.subjectId,
-      },
-    ]; // Init levels
+      });
+    }
 
     // If there is a subjectId, add levels it to the levels
     if (params.subjectId) {
@@ -64,17 +67,22 @@ export default function CurriculumRoadmapBreadcrumbs() {
         role="list"
         className="flex space-x-4 rounded-md bg-white px-6 shadow dark:bg-navy-800"
       >
-        <li className="flex">
-          <div className="flex items-center">
-            <Link
-              href="/curriculum-roadmaps"
-              className="text-slate-400 transition-all duration-200 hocus:scale-105 hocus:text-slate-500 dark:text-navy-200 dark:hocus:text-navy-100"
-            >
-              <HomeIcon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
-              <span className="sr-only">Home</span>
-            </Link>
-          </div>
-        </li>
+        {params.curriculumId && (
+          <li className="flex">
+            <div className="flex items-center">
+              <Link
+                href="/curriculum-roadmaps"
+                className="text-slate-400 transition-all duration-200 hocus:scale-105 hocus:text-slate-500 dark:text-navy-200 dark:hocus:text-navy-100"
+              >
+                <HomeIcon
+                  className="h-5 w-5 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Home</span>
+              </Link>
+            </div>
+          </li>
+        )}
 
         {/* Dynamic Breadcrumbs */}
         {generateLevels().map((level) => (

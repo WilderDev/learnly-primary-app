@@ -1259,60 +1259,95 @@ export interface Database {
       }
       curriculum_lessons_with_progress_view: {
         Row: {
-          completion_percentage: number | null
+          completed_lessons: number | null
           curriculum_id: string | null
+          curriculum_lesson_id: string | null
+          curriculum_level_id: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          curriculum_topic_id: string | null
           lesson_description: string | null
-          lesson_id: string | null
           lesson_image_path: string | null
           lesson_name: string | null
           lesson_number: number | null
           lesson_type: Database["public"]["Enums"]["module_type"] | null
-          level_id: string | null
-          subject_id: string | null
-          topic_id: string | null
-          topic_number: number | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          progress_percentage: number | null
+          subject_name: string | null
+          topic_description: string | null
+          topic_image_path: string | null
+          topic_name: string | null
+          total_lessons: number | null
         }
       }
       curriculum_levels_with_progress_view: {
         Row: {
-          completion_percentage: number | null
+          completed_lessons: number | null
           curriculum_id: string | null
-          id: string | null
+          curriculum_level_id: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
           level_description: string | null
-          level_id: string | null
           level_image_path: string | null
           level_name: Database["public"]["Enums"]["level"] | null
-          level_number: number | null
-          subject_id: string | null
+          progress_percentage: number | null
+          subject_description: string | null
+          subject_image_path: string | null
+          subject_name: string | null
+          total_lessons: number | null
         }
       }
       curriculum_subjects_with_progress_view: {
         Row: {
-          completion_percentage: number | null
+          completed_lessons: number | null
+          curriculum_description: string | null
           curriculum_id: string | null
-          id: string | null
+          curriculum_image_path: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          progress_percentage: number | null
           subject_description: string | null
-          subject_id: string | null
           subject_image_path: string | null
           subject_name: string | null
           subject_type: Database["public"]["Enums"]["module_type"] | null
+          total_lessons: number | null
         }
       }
       curriculum_topics_with_progress_view: {
         Row: {
-          completion_percentage: number | null
+          completed_lessons: number | null
           curriculum_id: string | null
-          id: string | null
-          level_description: Database["public"]["Enums"]["animal"] | null
-          level_id: string | null
+          curriculum_level_id: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          curriculum_topic_id: string | null
+          level_description: string | null
+          level_image_path: string | null
           level_name: Database["public"]["Enums"]["level"] | null
-          subject_id: string | null
+          progress_percentage: number | null
+          subject_name: string | null
           topic_description: string | null
-          topic_id: string | null
           topic_image_path: string | null
           topic_name: string | null
-          topic_number: number | null
           topic_type: Database["public"]["Enums"]["module_type"] | null
+          total_lessons: number | null
+        }
+      }
+      curriculum_with_progress_view: {
+        Row: {
+          completed_lessons: number | null
+          creator_avatar_url: string | null
+          creator_first_name: string | null
+          creator_id: string | null
+          creator_last_name: string | null
+          curriculum_description: string | null
+          curriculum_id: string | null
+          curriculum_image_path: string | null
+          curriculum_name: string | null
+          curriculum_tags: string[] | null
+          progress_percentage: number | null
+          students: Json | null
+          total_lessons: number | null
         }
       }
       hosted_events_view: {

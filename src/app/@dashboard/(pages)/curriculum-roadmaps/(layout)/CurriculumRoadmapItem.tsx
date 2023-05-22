@@ -15,7 +15,7 @@ interface IProps {
 // * Component
 export default function CurriculumRoadmapItem({ item, idx }: IProps) {
   // * Data
-  const { name, type, image, description, completion_percentage, url } = item;
+  const { name, type, image, description, progress, url } = item;
 
   // * Render
   return (
@@ -27,7 +27,7 @@ export default function CurriculumRoadmapItem({ item, idx }: IProps) {
     >
       <Link
         className={cn(
-          'group relative h-24 md:h-48 xl:h-64 flex items-center justify-center rounded-lg bg-navy-900 shadow-lg hocus:shadow-xl hocus:scale-105 active:scale-95 transition-all transform-gpu duration-300 ease-in-out', // Base
+          'group relative h-24 md:h-48 xl:h-64 flex items-center justify-center rounded-lg bg-navy-900 hocus:bg-slate-900 shadow-lg hocus:shadow-xl hocus:scale-105 active:scale-95 transition-all transform-gpu duration-300 ease-in-out', // Base
           type === 'CORE' && 'ring-2 ring-offset-2 ring-blue-500', // Core
         )}
         href={url || '/curriculum-roadmaps'}
@@ -40,18 +40,18 @@ export default function CurriculumRoadmapItem({ item, idx }: IProps) {
           </h2>
 
           {/* Description */}
-          <p className="hidden px-8 lg:block text-sm font-medium text-slate-300 dark:text-navy-200 group-hover:text-slate-100 group-focus:text-slate-100 dark:group-hover:text-navy-100 dark:group-focus:text-navy-100 transition-colors duration-300">
+          <p className="hidden lg:line-clamp-3 lg:overflow-ellipsis px-8 lg:block text-sm font-medium text-slate-300 dark:text-navy-200 group-hover:text-slate-100 group-focus:text-slate-100 dark:group-hover:text-navy-100 dark:group-focus:text-navy-100 transition-colors duration-300">
             {description}
           </p>
         </div>
 
         {/* Background Image */}
         <Image
-          className="absolute inset-0 object-cover w-full h-full rounded-lg opacity-30 group-hover:opacity-50 group-focus:opacity-50 transition-opacity duration-300 ease-in-out overflow-hidden"
+          className="absolute inset-0 w-full transition-opacity duration-300 ease-in-out -z-10 h-full object-cover object-center opacity-30 rounded-md group-hover:opacity-10 group-focus:opacity-10"
           src={image}
-          alt={name}
-          width={800}
-          height={600}
+          alt={name || 'Curriculum Roadmap Image'}
+          width={500}
+          height={500}
           placeholder="blur"
           blurDataURL={image}
           priority={true}
@@ -61,17 +61,13 @@ export default function CurriculumRoadmapItem({ item, idx }: IProps) {
         <div
           className={cn(
             'absolute right-0 top-0 sm:flex sm:m-3 items-center justify-center hidden sm:p-3 rounded-full font-semibold text-xs bg-navy-800',
-            completion_percentage === 100 && 'text-green-50',
-            completion_percentage < 100 &&
-              completion_percentage >= 50 &&
-              'text-blue-50',
-            completion_percentage < 50 &&
-              completion_percentage >= 25 &&
-              'text-yellow-50',
-            completion_percentage < 25 && 'text-red-50',
+            progress === 100 && 'text-green-50',
+            progress < 100 && progress >= 50 && 'text-blue-50',
+            progress < 50 && progress >= 25 && 'text-yellow-50',
+            progress < 25 && 'text-red-50',
           )}
         >
-          {completion_percentage}%
+          {progress}%
         </div>
       </Link>
     </motion.li>

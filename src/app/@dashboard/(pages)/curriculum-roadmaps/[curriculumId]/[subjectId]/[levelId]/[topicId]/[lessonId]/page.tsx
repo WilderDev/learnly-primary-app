@@ -79,39 +79,41 @@ async function getCurriculumRoadmapLesson(
       `/curriculum-roadmaps/${curriculumId}/${subjectId}/${levelId}/${topicId}`,
     );
 
-  // Transform data
-
-  // Return transformed data
+  // Return data
   return data;
 }
 
 // * Metadata
-export async function generateMetadata({ params: { curriculumId } }: IParams) {
+export async function generateMetadata({
+  params: { curriculumId, subjectId, levelId, topicId, lessonId },
+}: IParams) {
   const supabase = supabaseServer(); // Create supabase instance for server-side
 
   const { data } = await supabase
-    .from('curriculums')
-    .select('id, name, image_path, description')
-    .eq('id', curriculumId)
+    .from('curriculum_lessons_with_progress_view')
+    .select('*')
+    .eq('curriculum_id', curriculumId)
+    .eq('curriculum_subject_id', subjectId)
+    .eq('curriculum_level_id', levelId)
+    .eq('curriculum_topic_id', topicId)
+    .eq('curriculum_lesson_id', lessonId)
     .single();
 
-  const { id, name, image_path, description } = data!;
-
   return {
-    slug: `/curriculum-roadmaps/${id}`,
-    title: `Lessons | ${name}`,
-    image: image_path,
-    keywords: ['Homeschool Curriculum Roadmap', name],
-    description: description,
+    slug: `/curriculum-roadmaps/${curriculumId}/${subjectId}/${levelId}/${topicId}/${lessonId}`,
+    title: `${data?.lesson_name} | Curriculum Lessons Creator | ${data?.curriculum_name}`,
+    image: data?.lesson_image_path,
+    keywords: ['Homeschool Curriculum Roadmap', 'Homeschool Curriculum'],
+    description: data?.lesson_description,
     openGraph: {
-      title: `Lessons | ${name}`,
-      description: description,
+      title: `${data?.lesson_name} | Curriculum Lessons Creator | ${data?.curriculum_name}`,
+      description: data?.lesson_description,
       images: [
         {
-          url: image_path,
+          url: data?.lesson_image_path,
           width: 800,
           height: 600,
-          alt: name,
+          alt: data?.lesson_name || 'Curriculum Lesson Creator',
         },
       ],
     },
@@ -119,20 +121,24 @@ export async function generateMetadata({ params: { curriculumId } }: IParams) {
 }
 
 // * Static Params
-export async function generateStaticParams() {
+export async function getStaticPaths() {
+  // 1. Get Data
   const supabase = supabaseServer();
-
-  const { data: levels } = await supabase
+  const { data } = await supabase
     .from('curriculum_lessons_with_progress_view')
-    .select('lesson_id, topic_id, level_id, subject_id, curriculum_id');
+    .select(
+      'curriculum_id, curriculum_subject_id, curriculum_level_id, curriculum_topic_id, curriculum_lesson_id',
+    );
 
-  const dynamicRoutes = levels?.map((l) => ({
-    curriculumId: l.curriculum_id,
-    subjectId: l.subject_id,
-    levelId: l.level_id,
-    topicId: l.topic_id,
-    lessonId: l.lesson_id,
-  }));
+  const paths =
+    data?.map((c) => ({
+      curriculumId: c.curriculum_id,
+      subjectId: c.curriculum_subject_id,
+      levelId: c.curriculum_level_id,
+      topicId: c.curriculum_topic_id,
+      lessonId: c.curriculum_lesson_id,
+    })) || [];
 
-  return dynamicRoutes || [];
+  // 2. Return Paths
+  return paths;
 }
