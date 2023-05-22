@@ -10544,7 +10544,7 @@ SELECT create_complete_curriculum(
           },
           {
             "name": "The X-Factor",
-            "description": "Understand the concept of 'x', demystifying the most infamous and misunderstood character in Algebra.",
+            "description": "Understand the concept of ‘x‘, demystifying the most infamous and misunderstood character in Algebra.",
             "image_path": "https://source.unsplash.com/500x500/?x-factor",
             "type": "CORE"
           },
@@ -15798,26 +15798,7 @@ SELECT create_complete_curriculum(
 ]'::json
 );
 
--- Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
--- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
--- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten English.
--- the output will look like:
--- {
---        "name": "Team Sports",
---        "description": "Fostering teamwork and coordination through simple team sports and games.",
---        "image_path": "https://source.unsplash.com/500x500/?team-sports",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Introduction to Soccer",
---                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
---                "image_path": "https://source.unsplash.com/500x500/?soccer",
---                "type": "CORE"
---            },
---           // . . .
---        ]
--- }
+
 ---- English
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
@@ -15826,11 +15807,677 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "8787a66e-9e03-42c7-8870-ada6df021491",
-      "topics_data": []
+      "topics_data": [
+        {
+          "name": "Phonics Fun",
+          "description": "A magical journey into the world of sounds, fostering the foundation for language and reading skills.",
+          "image_path": "https://source.unsplash.com/500x500/?phonics",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Phonics",
+                  "description": "Embark on a fun-filled ride exploring the basic sounds of the alphabet.",
+                  "image_path": "https://source.unsplash.com/500x500/?alphabet",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Vowels and Consonants",
+                  "description": "Dive into the wonderful world of vowels and consonants and learn their distinct sounds.",
+                  "image_path": "https://source.unsplash.com/500x500/?vowels,consonants",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Blending Sounds",
+                  "description": "Experience the joy of blending different sounds to create new words.",
+                  "image_path": "https://source.unsplash.com/500x500/?blending",
+                  "type": "CORE"
+              },
+              {
+                  "name": "CVC Words",
+                  "description": "Learn to form simple Consonant-Vowel-Consonant words and ignite the spark of reading.",
+                  "image_path": "https://source.unsplash.com/500x500/?cvc-words",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Digraphs and Diphthongs",
+                  "description": "Discover the power of pairs with phonics digraphs and diphthongs.",
+                  "image_path": "https://source.unsplash.com/500x500/?digraphs,diphthongs",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Phonics through Rhymes",
+                  "description": "Explore phonics with delightful rhymes, enriching both language and musical rhythm.",
+                  "image_path": "https://source.unsplash.com/500x500/?rhymes",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Review and Practice",
+                  "description": "Revisit all the phonics learned through exciting practice sessions and activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?phonics-practice",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Storytime Phonics",
+                  "description": "Integrating phonics learning into enchanting story sessions.",
+                  "image_path": "https://source.unsplash.com/500x500/?storytime",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Phonics through Art",
+                  "description": "Express and reinforce phonics knowledge through creative art activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?art",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Phonics Games",
+                  "description": "Reinforce phonics learning in a playful way through engaging games.",
+                  "image_path": "https://source.unsplash.com/500x500/?games",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Marvelous Words",
+          "description": "Stepping into the enchanting realm of words, nurturing vocabulary and language comprehension.",
+          "image_path": "https://source.unsplash.com/500x500/?words",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Words",
+                  "description": "Start the word journey by learning simple words and their meanings.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-words",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Categories of Words",
+                  "description": "Group words into fun categories, boosting recognition and memory.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-categories",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Opposites Attract",
+                  "description": "Discover the concept of antonyms and how opposites do attract in the world of words.",
+                  "image_path": "https://source.unsplash.com/500x500/?antonyms",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Word Families",
+                  "description": "Explore how words belong to families, building reading fluency and comprehension.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-families",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Sight Words Magic",
+                  "description": "Dive into the world of sight words, enhancing reading speed and confidence.",
+                  "image_path": "https://source.unsplash.com/500x500/?sight-words",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Words and Feelings",
+                  "description": "Learn to express emotions and feelings through words, fostering empathy and communication skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?emotions",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Review and Practice",
+                  "description": "Reinforce the love for words through stimulating revision sessions and activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?words-practice",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Words through Storytelling",
+                  "description": "Cultivate vocabulary skills through interactive storytelling sessions.",
+                  "image_path": "https://source.unsplash.com/500x500/?storytelling",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Words in Music",
+                  "description": "Reinforce word recognition through lyrics and rhythm, amplifying learning with music.",
+                  "image_path": "https://source.unsplash.com/500x500/?music",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Word Play Games",
+                  "description": "Play with words and reinforce learning through engaging word games.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-games",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Sentence Superheroes",
+          "description": "Venture into the world of sentences, empowering communication and comprehension.",
+          "image_path": "https://source.unsplash.com/500x500/?sentences",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Sentences",
+                  "description": "Unlock the power of sentences, the building blocks of communication.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-sentences",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Statement Sentences",
+                  "description": "Master the art of making statements, the most common type of sentence.",
+                  "image_path": "https://source.unsplash.com/500x500/?statement-sentences",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Asking Questions",
+                  "description": "Dive into the world of question sentences and awaken the curiosity within.",
+                  "image_path": "https://source.unsplash.com/500x500/?question-sentences",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Expressing Emotions",
+                  "description": "Discover how to express excitement, surprise, or command using exclamatory and imperative sentences.",
+                  "image_path": "https://source.unsplash.com/500x500/?exclamatory-imperative-sentences",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Punctuation Power",
+                  "description": "Explore the importance of punctuation in bringing sentences to life.",
+                  "image_path": "https://source.unsplash.com/500x500/?punctuation",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Ordering Words",
+                  "description": "Learn how to order words correctly to form coherent sentences.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-order",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Review and Practice",
+                  "description": "Fortify sentence-building skills through engaging revision sessions and activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?sentence-practice",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Sentence Stories",
+                  "description": "Construct an imaginative story using different types of sentences.",
+                  "image_path": "https://source.unsplash.com/500x500/?sentence-stories",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Sentence Art",
+                  "description": "Visualize sentences by creating vibrant word art, marrying creativity with comprehension.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-art",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Sentence Games",
+                  "description": "Play exciting games that reinforce sentence-building skills in a fun way.",
+                  "image_path": "https://source.unsplash.com/500x500/?sentence-games",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Adventures in Reading",
+          "description": "Embark on a captivating journey, fostering early reading skills and a love for books.",
+          "image_path": "https://source.unsplash.com/500x500/?reading",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Reading",
+                  "description": "Step into the world of stories and discover the joy of reading.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-reading",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Reading Aloud",
+                  "description": "Master the art of reading aloud, enhancing fluency and expression.",
+                  "image_path": "https://source.unsplash.com/500x500/?reading-aloud",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Picture Reading",
+                  "description": "Unleash imagination and comprehension skills through reading and interpreting pictures.",
+                  "image_path": "https://source.unsplash.com/500x500/?picture-reading",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Reading Comprehension",
+                  "description": "Develop understanding of what‘s being read, a fundamental step in becoming an independent reader.",
+                  "image_path": "https://source.unsplash.com/500x500/?reading-comprehension",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Predicting Stories",
+                  "description": "Learn to predict the progression of stories, enriching critical thinking and engagement.",
+                  "image_path": "https://source.unsplash.com/500x500/?predicting-stories",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Reading and Retelling",
+                  "description": "Reinforce comprehension and memory by reading and retelling favorite stories.",
+                  "image_path": "https://source.unsplash.com/500x500/?story-retelling",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Review and Practice",
+                  "description": "Boost reading confidence through revision sessions and reading practice.",
+                  "image_path": "https://source.unsplash.com/500x500/?reading-practice",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Reading Club",
+                  "description": "Join a reading club and enjoy sharing and discussing favorite books with peers.",
+                  "image_path": "https://source.unsplash.com/500x500/?reading-club",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Story Acting",
+                  "description": "Transform into characters and act out favorite stories, deepening understanding and empathy.",
+                  "image_path": "https://source.unsplash.com/500x500/?story-acting",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Reading Games",
+                  "description": "Turn reading into a fun activity through interactive games that reinforce reading skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?reading-games",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Wonderful Writing",
+          "description": "Dive into the world of writing, crafting stories, and expressing ideas creatively.",
+          "image_path": "https://source.unsplash.com/500x500/?writing",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Writing",
+                  "description": "Discover the power of writing, from scribbles to forming words and sentences.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-writing",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Writing Letters",
+                  "description": "Master the formation of letters, the basic building blocks of writing.",
+                  "image_path": "https://source.unsplash.com/500x500/?writing-letters",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Writing Words",
+                  "description": "Progress from letters to words, fueling self-expression and communication.",
+                  "image_path": "https://source.unsplash.com/500x500/?writing-words",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Writing Sentences",
+                  "description": "Start composing sentences, paving the way for storytelling and self-expression.",
+                  "image_path": "https://source.unsplash.com/500x500/?writing-sentences",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creative Writing",
+                  "description": "Unleash imagination to create simple stories, enhancing creativity and language skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Writing and Emotions",
+                  "description": "Express feelings and thoughts through writing, fostering emotional intelligence.",
+                  "image_path": "https://source.unsplash.com/500x500/?writing-emotions",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Review and Practice",
+                  "description": "Cement writing skills through engaging practice sessions and creative exercises.",
+                  "image_path": "https://source.unsplash.com/500x500/?writing-practice",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Writing a Diary",
+                  "description": "Start a diary to practice writing and express daily thoughts and experiences.",
+                  "image_path": "https://source.unsplash.com/500x500/?diary-writing",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Pen Pal Exchange",
+                  "description": "Connect with a pen pal to practice writing and learn about different perspectives.",
+                  "image_path": "https://source.unsplash.com/500x500/?pen-pal",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Writing Games",
+                  "description": "Reinforce writing skills in a playful way through engaging writing games.",
+                  "image_path": "https://source.unsplash.com/500x500/?writing-games",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Listening & Speaking",
+          "description": "Exploring the realm of spoken language, nurturing active listening and confident speaking.",
+          "image_path": "https://source.unsplash.com/500x500/?listening-speaking",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Listening & Speaking",
+                  "description": "Unveil the power of spoken words and the art of attentive listening.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-listening-speaking",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Follow the Instructions",
+                  "description": "Develop listening skills and understanding by following simple verbal instructions.",
+                  "image_path": "https://source.unsplash.com/500x500/?instructions",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Tell Your Story",
+                  "description": "Practice storytelling and public speaking, promoting self-expression and confidence.",
+                  "image_path": "https://source.unsplash.com/500x500/?storytelling",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Listen and Draw",
+                  "description": "Draw a picture by listening to a description, strengthening comprehension and creativity.",
+                  "image_path": "https://source.unsplash.com/500x500/?listen-draw",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Ask and Answer",
+                  "description": "Improve conversational skills by asking and answering questions, boosting social interaction.",
+                  "image_path": "https://source.unsplash.com/500x500/?ask-answer",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Narrate and Describe",
+                  "description": "Enhance speaking skills by narrating events and describing objects or pictures.",
+                  "image_path": "https://source.unsplash.com/500x500/?narrate-describe",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Review and Practice",
+                  "description": "Sharpen listening and speaking skills through engaging revision sessions and activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?listening-speaking-practice",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Rhyme and Rhythm",
+                  "description": "Enjoy the rhythm of language by listening to and reciting rhymes and poems.",
+                  "image_path": "https://source.unsplash.com/500x500/?rhyme-rhythm",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Debate and Discuss",
+                  "description": "Engage in simple debates and discussions, fostering critical thinking and articulate speech.",
+                  "image_path": "https://source.unsplash.com/500x500/?debate-discuss",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Listening Games",
+                  "description": "Boost listening skills through interactive games that involve sound and instructions.",
+                  "image_path": "https://source.unsplash.com/500x500/?listening-games",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Poetic Play",
+          "description": "Experience the beauty of language through rhythm, rhyme, and simple poems.",
+          "image_path": "https://source.unsplash.com/500x500/?poetry",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Poetry",
+                  "description": "Embrace the beauty and creativity of language through simple poems and rhymes.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-poetry",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Rhyme Time",
+                  "description": "Discover the joy of rhymes and create some of your own.",
+                  "image_path": "https://source.unsplash.com/500x500/?rhyme",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Rhythm and Pattern",
+                  "description": "Explore the rhythm and pattern in poetry, enhancing phonological awareness and memory.",
+                  "image_path": "https://source.unsplash.com/500x500/?rhythm-pattern",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Imagery in Poetry",
+                  "description": "Unearth the power of imagery and how it brings poems to life.",
+                  "image_path": "https://source.unsplash.com/500x500/?imagery",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Emotions in Poetry",
+                  "description": "Connect with feelings expressed in poems, nurturing emotional intelligence and empathy.",
+                  "image_path": "https://source.unsplash.com/500x500/?emotions",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating a Poem",
+                  "description": "Combine creativity, language, and emotions to write a simple poem.",
+                  "image_path": "https://source.unsplash.com/500x500/?creating-poem",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Review and Practice",
+                  "description": "Reinforce understanding of poetry through review, recitation, and creative activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?poetry-practice",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Poetry Recital",
+                  "description": "Build confidence and public speaking skills by reciting favorite poems.",
+                  "image_path": "https://source.unsplash.com/500x500/?poetry-recital",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Poetic Art",
+                  "description": "Visualize a poem by creating artwork, strengthening the connection between words and images.",
+                  "image_path": "https://source.unsplash.com/500x500/?poetic-art",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Poetry Games",
+                  "description": "Play fun games that enhance understanding of rhyme, rhythm, and language in poetry.",
+                  "image_path": "https://source.unsplash.com/500x500/?poetry-games",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Vocabulary Voyage",
+          "description": "Venture into a sea of words, expanding vocabulary and enriching language comprehension.",
+          "image_path": "https://source.unsplash.com/500x500/?vocabulary",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Vocabulary",
+                  "description": "Set sail on the voyage of vocabulary, discovering the importance of words in language.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-vocabulary",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Word Categories",
+                  "description": "Explore different categories of words, such as action words, describing words, and naming words.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-categories",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Context Clues",
+                  "description": "Decode the meaning of new words by using context clues from sentences and stories.",
+                  "image_path": "https://source.unsplash.com/500x500/?context-clues",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Synonyms and Antonyms",
+                  "description": "Uncover synonyms and antonyms, expanding the range of vocabulary and understanding of words.",
+                  "image_path": "https://source.unsplash.com/500x500/?synonyms-antonyms",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Using a Dictionary",
+                  "description": "Learn to use a dictionary, a handy tool for understanding and learning new words.",
+                  "image_path": "https://source.unsplash.com/500x500/?dictionary",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Word Application",
+                  "description": "Apply new vocabulary in daily conversation and writing, reinforcing word understanding.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-application",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Review and Practice",
+                  "description": "Enhance vocabulary retention through fun review sessions and practical exercises.",
+                  "image_path": "https://source.unsplash.com/500x500/?vocabulary-practice",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Word Creation",
+                  "description": "Stimulate creativity and understanding of words by inventing new, meaningful words.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-creation",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Word Games",
+                  "description": "Engage in word games that boost vocabulary, spelling, and cognitive abilities.",
+                  "image_path": "https://source.unsplash.com/500x500/?word-games",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Vocabulary Art",
+                  "description": "Visualize vocabulary by drawing representations of new words, strengthening word-image associations.",
+                  "image_path": "https://source.unsplash.com/500x500/?vocabulary-art",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Fairy Tales & Fables",
+          "description": "Step into a world of magic and morals, exploring timeless tales and life lessons.",
+          "image_path": "https://source.unsplash.com/500x500/?fairy-tales",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Fairy Tales & Fables",
+                  "description": "Begin the journey into enchanted worlds, understanding the structure and purpose of these tales.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-fairy-tales",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Characters & Settings",
+                  "description": "Discover the charming characters and magical settings that make these tales enchanting.",
+                  "image_path": "https://source.unsplash.com/500x500/?characters-settings",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Plot & Structure",
+                  "description": "Understand the progression of events and structure that form the backbone of these tales.",
+                  "image_path": "https://source.unsplash.com/500x500/?plot-structure",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Lessons & Morals",
+                  "description": "Unearth the valuable lessons and morals embedded within these age-old tales.",
+                  "image_path": "https://source.unsplash.com/500x500/?lessons-morals",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Story Retelling",
+                  "description": "Retell a favorite fairy tale or fable, enhancing comprehension, memory, and language skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?story-retelling",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Create Your Own Tale",
+                  "description": "Craft an original fairy tale or fable, utilizing creativity and understanding of story elements.",
+                  "image_path": "https://source.unsplash.com/500x500/?create-tale",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Dramatize a Tale",
+                  "description": "Bring a tale to life through drama, improving expression, confidence, and cooperative skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?dramatize-tale",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Storytelling & Drama",
+          "description": "Unleash creativity and expression through storytelling and playful drama activities.",
+          "image_path": "https://source.unsplash.com/500x500/?storytelling-drama",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Storytelling & Drama",
+                  "description": "Dive into the world of stories and the expressive art of drama.",
+                  "image_path": "https://source.unsplash.com/500x500/?intro-storytelling-drama",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Elements of a Story",
+                  "description": "Explore key elements of a story: characters, setting, plot, conflict, and resolution.",
+                  "image_path": "https://source.unsplash.com/500x500/?elements-story",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Body Language & Expression",
+                  "description": "Discover the power of body language and expression in storytelling and drama.",
+                  "image_path": "https://source.unsplash.com/500x500/?body-language",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Voice Modulation",
+                  "description": "Learn the importance of voice modulation in effective storytelling and dramatic expression.",
+                  "image_path": "https://source.unsplash.com/500x500/?voice-modulation",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Story Performance",
+                  "description": "Deliver a performance of a favorite story, honing public speaking and acting skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?story-performance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Create Your Own Story",
+                  "description": "Conceive and deliver an original story, encouraging creativity and language skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?create-story",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Role Play",
+                  "description": "Participate in role-playing activities to enhance understanding of characters and situations.",
+                  "image_path": "https://source.unsplash.com/500x500/?role-play",
+                  "type": "ELECTIVE"
+              }
+          ]
+        }
+      ]
     },
     {
       "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
-      "topics_data": []
+      "topics_data": [
+Our goal is to create 10 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 7 "CORE" lessons and 3 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
+Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
+We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
+Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten English.
+the output will look like:
+{
+       "name": "Team Sports",
+       "description": "Fostering teamwork and coordination through simple team sports and games.",
+       "image_path": "https://source.unsplash.com/500x500/?team-sports",
+       "type": "CORE",
+       "lessons_data": [
+           {
+               "name": "Introduction to Soccer",
+               "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
+               "image_path": "https://source.unsplash.com/500x500/?soccer",
+               "type": "CORE"
+           },
+          // . . .
+       ]
+}
+      ]
     },
     {
       "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",

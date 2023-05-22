@@ -1,6 +1,6 @@
 'use client';
 
-import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmap';
+import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 import cn from '@/lib/common/cn';
 import { motion } from 'framer-motion';
 import Image from 'next/image';

@@ -5,7 +5,7 @@ import Main from '@/lib/components/layout/Main';
 import { redirect } from 'next/navigation';
 import CurriculumRoadmapPageHeader from '../../../../(layout)/CurriculumRoadmapPageHeader';
 import CurriculumRoadmapPageCards from '../../../../(layout)/CurriculumRoadmapPageCards';
-import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmap';
+import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 
 // * Params
 interface IParams {

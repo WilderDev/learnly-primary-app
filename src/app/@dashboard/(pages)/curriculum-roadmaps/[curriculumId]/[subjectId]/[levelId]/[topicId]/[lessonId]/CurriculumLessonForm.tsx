@@ -16,7 +16,7 @@ import {
 import Input from '@/lib/components/form/Input';
 import { philosophyOptions } from '@/app/@dashboard/(pages)/lesson-creator/LessonCreatorStructureSection';
 import TextArea from '@/lib/components/form/TextArea';
-import { ICurriculumLessonPromptReq } from '@/assets/typescript/curriculum-roadmap';
+import { ICurriculumLessonPromptReq } from '@/assets/typescript/curriculum-roadmaps';
 import {
   IStudentPromptReq,
   ITeacherPromptReq,

@@ -3,7 +3,7 @@ import Container from '@/lib/components/layout/Container';
 import Main from '@/lib/components/layout/Main';
 import { redirect } from 'next/navigation';
 import CurriculumRoadmapPageCards from './(layout)/CurriculumRoadmapPageCards';
-import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmap';
+import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumRoadmapPageHeader from './(layout)/CurriculumRoadmapPageHeader';
 
 export default async function ShareableCurriculumRoadmapsPage() {

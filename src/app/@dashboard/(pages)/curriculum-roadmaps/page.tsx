@@ -1,62 +1,45 @@
-import { supabaseServer } from '@/lib/auth/supabaseServer';
 import DashMainCol from '../../(layout)/DashMainCol';
 import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
-import Link from 'next/link';
+import CurrentCurriculumRoadmaps from './CurrentCurriculumRoadmaps';
 
 // * Page
 export default async function CurriculumRoadmapsPage() {
-  // * Data
-  const recommendedRoadmaps = await getCurriculumRoadmaps();
-
   // * Render
   return (
     <>
+      {/* Main Column */}
       <DashMainCol>
+        {/* Curriculum Roadmaps */}
         <DashPanel colNum={1}>
-          <DashPanelHeader title="Recommended Curriculum Roadmaps" />
-          {/* TSK */}
-          {recommendedRoadmaps?.map((rm) => (
-            <Link href={`/curriculum-roadmaps/${rm.id}`} key={rm.id}>
-              {rm.name}
-            </Link>
-          ))}
+          <DashPanelHeader title="Your Curriculum Roadmaps" />
+          {/* @ts-expect-error Server Component */}
+          <CurrentCurriculumRoadmaps />
         </DashPanel>
 
+        {/* Curriculum Roadmap Next Lessons */}
         <DashPanel colNum={2}>
-          <DashPanelHeader title="Community Created Roadmaps" />
+          <DashPanelHeader title="Next Lessons" />
           {/* TSK */}
         </DashPanel>
       </DashMainCol>
 
+      {/* Side Column */}
       <DashSideCol>
+        {/* Popular Curriculum Roadmaps */}
         <DashPanel colNum={1}>
-          <DashPanelHeader title="TSK" />
+          <DashPanelHeader title="Popular Roadmaps" />
+          {/* TSK */}
+        </DashPanel>
+
+        {/* Curriculum Roadmap Timeline */}
+        <DashPanel colNum={2}>
+          <DashPanelHeader title="Timeline" />
           {/* TSK */}
         </DashPanel>
       </DashSideCol>
     </>
   );
-}
-
-// * Fetcher
-async function getCurriculumRoadmaps() {
-  const supabase = supabaseServer(); // Create supabase instance for server-side
-
-  // Get all curriculum roadmaps
-  const { data, error } = await supabase
-    .from('curriculums')
-    .select(`*`)
-    .eq('status', 'PUBLISHED');
-
-  // Handle errors
-  if (error) return [];
-
-  // Filter data
-  const recommenedRoadmaps = data.filter((rm) => rm.type === 'RECOMMENDED');
-
-  // Return transformed data
-  return recommenedRoadmaps;
 }
 
 // * Metadata

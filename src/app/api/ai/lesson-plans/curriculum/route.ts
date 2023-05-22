@@ -1,4 +1,4 @@
-import { ICurriculumLessonPromptReq } from '@/assets/typescript/curriculum-roadmap';
+import { ICurriculumLessonPromptReq } from '@/assets/typescript/curriculum-roadmaps';
 import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
 import { ITeacherPromptReq } from '@/assets/typescript/lesson-plan';
 import { OpenAIStream } from '@/lib/ai/openai';

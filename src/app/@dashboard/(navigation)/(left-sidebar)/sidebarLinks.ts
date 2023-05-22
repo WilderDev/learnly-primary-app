@@ -19,8 +19,8 @@ export const sidebarLinks: ILink[] = [
   },
   {
     id: 2,
-    name: 'Curriculum Roadmap',
-    slug: '/curriculum-roadmap',
+    name: 'Curriculum Roadmaps',
+    slug: '/curriculum-roadmaps',
     icon: MapIcon,
   },
   {

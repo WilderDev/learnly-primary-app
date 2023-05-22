@@ -1,11 +1,7 @@
 'use client';
 
 // * Imports
-import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmap';
-import AuthDividerMessage from '@/lib/auth/AuthDividerMessage';
-import AuthHeader from '@/lib/auth/AuthHeader';
-import AuthProviderButtons from '@/lib/auth/AuthProviderButtons';
-import Modal from '@/lib/components/popouts/Modal';
+import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 import Button from '@/lib/components/ui/Button';
 import { Card, CardContainer } from '@/lib/components/ui/Card';
 import { ArrowSmallUpIcon } from '@heroicons/react/24/solid';

@@ -1,7 +1,7 @@
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import CurriculumRoadmapSection from '../(layout)/CurriculumRoadmapSection';
 import CurriculumRoadmapList from '../(layout)/CurriculumRoadmapList';
-import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmap';
+import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 import { redirect } from 'next/navigation';
 
 // * IParams

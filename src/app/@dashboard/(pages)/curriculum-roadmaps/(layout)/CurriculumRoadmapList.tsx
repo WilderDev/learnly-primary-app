@@ -1,6 +1,6 @@
 import { CardContainer } from '@/lib/components/ui/Card';
 import CurriculumRoadmapItem from './CurriculumRoadmapItem';
-import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmap';
+import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 
 // * Props
 interface IProps {

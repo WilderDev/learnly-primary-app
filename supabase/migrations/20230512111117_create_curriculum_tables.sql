@@ -53,10 +53,10 @@ CREATE TABLE curriculum_subjects (
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Curriculum ID
-  curriculum_id uuid NOT NULL REFERENCES curriculums(id),
+  curriculum_id uuid NOT NULL REFERENCES curriculums(id) ON DELETE CASCADE,
 
   -- Subject ID
-  subject_id uuid NOT NULL REFERENCES subjects(id),
+  subject_id uuid NOT NULL REFERENCES subjects(id) ON DELETE CASCADE,
 
   -- Core / Elective
   type module_type NOT NULL DEFAULT 'CORE',
@@ -72,10 +72,10 @@ CREATE TABLE curriculum_levels (
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Subject ID
-  curriculum_subject_id uuid NOT NULL REFERENCES curriculum_subjects(id),
+  curriculum_subject_id uuid NOT NULL REFERENCES curriculum_subjects(id) ON DELETE CASCADE,
 
   -- Level ID
-  level_id uuid NOT NULL REFERENCES levels(id),
+  level_id uuid NOT NULL REFERENCES levels(id) ON DELETE CASCADE,
 
   -- Level Number
   level_number SERIAL NOT NULL,
@@ -91,10 +91,10 @@ CREATE TABLE curriculum_topics (
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Level ID
-  curriculum_level_id uuid NOT NULL REFERENCES curriculum_levels(id),
+  curriculum_level_id uuid NOT NULL REFERENCES curriculum_levels(id) ON DELETE CASCADE,
 
   -- Topic ID
-  topic_id uuid NOT NULL REFERENCES topics(id),
+  topic_id uuid NOT NULL REFERENCES topics(id) ON DELETE CASCADE,
 
   -- Topic Number
   topic_number SERIAL NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE curriculum_lessons (
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Topic ID
-  curriculum_topic_id uuid NOT NULL REFERENCES curriculum_topics(id),
+  curriculum_topic_id uuid NOT NULL REFERENCES curriculum_topics(id) ON DELETE CASCADE,
 
   -- Name
   name text NOT NULL,
@@ -144,10 +144,10 @@ CREATE TABLE curriculum_prerequisites (
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Curriculum Lesson ID
-  lesson_id uuid NOT NULL REFERENCES curriculum_lessons(id),
+  lesson_id uuid NOT NULL REFERENCES curriculum_lessons(id) ON DELETE CASCADE,
 
   -- Curriculum Lesson Prerequisite ID
-  lesson_prerequisite_id uuid NOT NULL REFERENCES curriculum_lessons(id),
+  lesson_prerequisite_id uuid NOT NULL REFERENCES curriculum_lessons(id) ON DELETE CASCADE,
 
   -- Timestamps
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -164,10 +164,10 @@ CREATE TABLE user_curriculums (
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- User ID
-  user_id uuid NOT NULL REFERENCES teacher_profiles(id),
+  user_id uuid NOT NULL REFERENCES teacher_profiles(id) ON DELETE CASCADE,
 
   -- Curriculum ID
-  curriculum_id uuid NOT NULL REFERENCES curriculums(id),
+  curriculum_id uuid NOT NULL REFERENCES curriculums(id) ON DELETE CASCADE,
 
   -- Students
   student_ids uuid[] NOT NULL DEFAULT '{}'::uuid[],
@@ -186,13 +186,13 @@ CREATE TABLE user_curriculum_progress (
   id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- User ID
-  user_id uuid NOT NULL REFERENCES teacher_profiles(id),
+  user_id uuid NOT NULL REFERENCES teacher_profiles(id) ON DELETE CASCADE,
 
   -- User Curriculum ID
-  user_curriculum_id uuid NOT NULL REFERENCES user_curriculums(id),
+  user_curriculum_id uuid NOT NULL REFERENCES user_curriculums(id) ON DELETE CASCADE,
 
   -- Curriculum Lesson ID
-  lesson_id uuid NOT NULL REFERENCES curriculum_lessons(id),
+  lesson_id uuid NOT NULL REFERENCES curriculum_lessons(id) ON DELETE CASCADE,
 
   -- Status
   status progress_status NOT NULL DEFAULT 'IN_PROGRESS',
@@ -213,13 +213,13 @@ CREATE TABLE user_curriculum_progress (
 --- Get all Subjects with Progress for a Curriculum
 CREATE VIEW curriculum_subjects_with_progress_view AS
 SELECT
-    cs.id,
-    cs.curriculum_id,
-    cs.subject_id,
+    cs.id AS subject_id,
+    cs.type AS subject_type,
+    c.id AS curriculum_id,
+    c.name AS curriculum_name,
     s.name AS subject_name,
     s.description AS subject_description,
     s.image_path AS subject_image_path,
-    cs.type AS subject_type,
     CASE
         WHEN COALESCE(total_lessons, 0) = 0 THEN 0
         ELSE (COALESCE(completed_lessons, 0)::decimal / COALESCE(total_lessons, 0)::decimal) * 100
