@@ -1,117 +1,130 @@
 import Image from 'next/image';
+
+import { InboxIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import dashboardImage from '@/assets/images/brand/dashboard.png';
-import {
-  AcademicCapIcon,
-  ArrowPathIcon,
-  BeakerIcon,
-  BoltIcon,
-  BookmarkSquareIcon,
-  CloudArrowUpIcon,
-  Cog6ToothIcon,
-  FingerPrintIcon,
-  LockClosedIcon,
-  ServerIcon,
-  ShieldCheckIcon,
-  StarIcon,
-} from '@heroicons/react/24/solid';
 
-// * Data
-const features = [
-  {
-    name: 'Personalized Learning Experience & Lessons',
-    description:
-      'Provide a flexible & high-quality education tailored to your child’s unique needs and goals, all in just 30 seconds, anytime, anywhere.',
-    icon: BookmarkSquareIcon,
-  },
-  {
-    name: 'Simple & Streamlined Homeschool Process',
-    description:
-      'Foster a love of learning by nurturing your childrens intellectual curiousity and creativity in the easiest way imaginable.',
-    icon: AcademicCapIcon,
-  },
-  {
-    name: 'Safe & Wholistic Learning Environment',
-    description:
-      'Take a breath of relief knowing that your children are learning in a safe, supportive environment that encourages them to be their best selves.',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: 'Research-Backed & Scienctifically Crafted Curriculums',
-    description:
-      'Feel confident knowing that your children are learning from the best curriculums available, without the hassle of researching and planning.',
-    icon: BeakerIcon,
-  },
-  {
-    name: 'Instant Access to Expert Guidance & Support',
-    description:
-      'Get real-time feedback and support on all of your homeschooling questions from our team of experts.',
-    icon: BoltIcon,
-  },
-  {
-    name: 'Supportive Community of Like-Minded Parents',
-    description:
-      'Join a community of like-minded parents who are on the same journey as you, and share your experiences, tips, and tricks.',
-    icon: StarIcon,
-  },
-];
-
+// * Component
 export default function LandingFeatures() {
   // * Render
   return (
-    <section id="features" className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl sm:text-center">
-          {/* Title */}
-          <h2>
-            <span className="text-base font-semibold leading-7 text-green-600 dark:text-green-500 block">
-              Everything you need to
-            </span>
+    <div className="relative overflow-hidden bg-white dark:bg-navy-900 pb-32 pt-16">
+      <div className="relative">
+        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+          <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:px-0 lg:py-16">
+            <div>
+              <div>
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-600 dark:bg-green-500">
+                  <InboxIcon
+                    className="h-8 w-8 text-white dark:text-navy-50"
+                    aria-hidden="true"
+                  />
+                </span>
+              </div>
+              <div className="mt-6">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-navy-50">
+                  Lorem ipsum dolor sit amet.
+                </h2>
+                <p className="mt-4 text-lg text-gray-500 dark:text-navy-200">
+                  Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis
+                  bibendum malesuada faucibus lacinia porttitor. Pulvinar
+                  laoreet sagittis viverra duis. In venenatis sem arcu pretium
+                  pharetra at. Lectus viverra dui tellus ornare pharetra.
+                </p>
+                <div className="mt-6">
+                  <a
+                    href="#"
+                    className="inline-flex rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white dark:text-navy-50 shadow-sm ring-1 ring-green-600 hover:bg-green-700 hover:ring-green-700"
+                  >
+                    Get started
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 border-t border-gray-200 pt-6">
+              <blockquote>
+                <div>
+                  <p className="text-base text-gray-500">
+                    &ldquo;Cras velit quis eros eget rhoncus lacus ultrices sed
+                    diam. Sit orci risus aenean curabitur donec aliquet. Mi
+                    venenatis in euismod ut.&rdquo;
+                  </p>
+                </div>
+                <footer className="mt-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex-shrink-0">
+                      <Image
+                        className="h-6 w-6 rounded-full"
+                        src="/static/icons/avatars/bear.png"
+                        alt=""
+                        width={512}
+                        height={512}
+                      />
+                    </div>
+                    <div className="text-base font-medium text-gray-700">
+                      TSK TSK, homeschooling
+                    </div>
+                  </div>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
 
-            <span className="mt-2 block text-3xl font-bold tracking-tight text-slate-900 dark:text-navy-50 sm:text-4xl md:text-5xl">
-              Empower Your Inner Teacher
-            </span>
-          </h2>
-
-          <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-navy-200">
-            Feel confident in your ability to teach your children by having all
-            the tools you need to create personalized lesson plans and
-            curriculums, all in one place.
-          </p>
-        </div>
-      </div>
-
-      <div className="relative overflow-hidden pt-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <Image
-            src={dashboardImage}
-            alt="App screenshot"
-            className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-slate-900/10 dark:ring-navy-50/10"
-            width={1918}
-            height={1002}
-          />
-
-          <div className="relative" aria-hidden="true">
-            <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-slate-50 dark:from-navy-900 pt-[7%]" />
+          <div className="mt-12 sm:mt-16 lg:mt-0">
+            <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+              <Image
+                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+                src={dashboardImage}
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-        <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-slate-600 dark:text-navy-200 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-          {features.map((feature) => (
-            <div key={feature.name} className="relative pl-9">
-              <dt className="inline font-semibold text-slate-900 dark:text-navy-50">
-                <feature.icon
-                  className="absolute left-1 top-1 h-5 w-5 text-green-600 dark:text-green-500"
-                  aria-hidden="true"
-                />
-                {feature.name}
-              </dt>{' '}
-              <dd className="inline">{feature.description}</dd>
+      <div className="mt-24 lg:mt-32">
+        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+          <div className="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:px-0 lg:py-32">
+            <div>
+              <div>
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-600">
+                  <SparklesIcon
+                    className="h-8 w-8 text-white"
+                    aria-hidden="true"
+                  />
+                </span>
+              </div>
+              <div className="mt-6">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+                  Lorem ipsum dolor sit amet.
+                </h2>
+                <p className="mt-4 text-lg text-gray-500">
+                  Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis
+                  bibendum malesuada faucibus lacinia porttitor. Pulvinar
+                  laoreet sagittis viverra duis. In venenatis sem arcu pretium
+                  pharetra at. Lectus viverra dui tellus ornare pharetra.
+                </p>
+                <div className="mt-6">
+                  <a
+                    href="#"
+                    className="inline-flex rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-green-600 hover:bg-green-700 hover:ring-green-700"
+                  >
+                    Get started
+                  </a>
+                </div>
+              </div>
             </div>
-          ))}
-        </dl>
+          </div>
+          <div className="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
+            <div className="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+              <Image
+                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
+                src={dashboardImage}
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

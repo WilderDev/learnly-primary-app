@@ -114,13 +114,13 @@ export default function LandingHero() {
                     effect="scale"
                     shadow="xl"
                     url="/onboarding"
-                    className="px-4 text-sm uppercase sm:px-8"
+                    className="px-4 text-sm uppercase sm:px-8 w-full sm:w-auto"
                   >
                     Start My Free 14-Day Trial
                   </Button>
 
                   {/* Disclaimer */}
-                  <p className="mt-3 ml-4 text-xs italic text-slate-700 dark:text-navy-200 md:text-sm">
+                  <p className="mt-3 ml-4 text-xs italic text-center sm:text-left text-slate-700 dark:text-navy-200 md:text-sm">
                     No credit card required.{' '}
                     <span className="hidden sm:inline-block">
                       Cancel anytime.

@@ -6,6 +6,13 @@ export interface ITestimonial {
   image: string;
 }
 
+export interface IReview {
+  title: string;
+  body: string;
+  author: string;
+  rating: number;
+}
+
 export interface IEmail {
   to: string;
   from?: string;

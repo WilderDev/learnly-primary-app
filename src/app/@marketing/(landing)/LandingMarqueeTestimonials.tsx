@@ -6,17 +6,17 @@ interface IProps {
   testimonials: ITestimonial[];
 }
 
-export default function MarqueeTestimonials({ testimonials }: IProps) {
+export default function LandingMarqueeTestimonials({ testimonials }: IProps) {
   return (
-    <div className="relative select-none dark:bg-navy-800 bg-white py-12 md:py-16">
+    <div className="relative select-none py-12 md:py-16">
       <div className="space-x-16 sm:space-x-16 md:space-x-16 flex overflow-hidden">
         <MarqueeTestimonialItems testimonials={testimonials} />
         <MarqueeTestimonialItems testimonials={testimonials} />
       </div>
 
       {/* Side Fade Overlays */}
-      <div className="absolute inset-y-0 left-0 w-16 pointer-events-none bg-gradient-to-r from-white dark:from-navy-800" />
-      <div className="absolute inset-y-0 right-0 w-16 pointer-events-none bg-gradient-to-l from-white dark:from-navy-800" />
+      <div className="hidden sm:block absolute inset-y-0 left-0 w-16 pointer-events-none bg-gradient-to-r from-white dark:from-navy-900" />
+      <div className="hidden sm:block absolute inset-y-0 right-0 w-16 pointer-events-none bg-gradient-to-l from-white dark:from-navy-900" />
     </div>
   );
 }
