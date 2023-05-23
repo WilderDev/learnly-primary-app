@@ -38,6 +38,7 @@ module.exports = {
         marquee: 'marquee var(--marquee-duration) linear infinite',
         scroll: 'scroll 35s linear infinite',
         wiggle: 'wiggle 0.5s ease-in-out infinite',
+        spinSlow: 'spin 3s linear infinite',
         // https://github.com/WilderDev/learnly-app/blob/main/tailwind.config.js
       },
       keyframes: {
@@ -69,6 +70,11 @@ module.exports = {
         wiggle: {
           '0%, 100%': { transform: 'rotate(-5deg)' },
           '50%': { transform: 'rotate(5deg)' },
+        },
+        spin: {
+          to: {
+            transform: 'rotate(360deg)',
+          },
         },
       },
     },

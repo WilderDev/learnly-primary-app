@@ -8,9 +8,15 @@ interface IProps {
 
 export default function MarqueeTestimonials({ testimonials }: IProps) {
   return (
-    <div className="relative flex overflow-hidden select-none bg-white py-12 md:py-16 space-x-16 sm:space-x-16 md:space-x-16">
-      <MarqueeTestimonialItems testimonials={testimonials} />
-      <MarqueeTestimonialItems testimonials={testimonials} />
+    <div className="relative select-none dark:bg-navy-800 bg-white py-12 md:py-16">
+      <div className="space-x-16 sm:space-x-16 md:space-x-16 flex overflow-hidden">
+        <MarqueeTestimonialItems testimonials={testimonials} />
+        <MarqueeTestimonialItems testimonials={testimonials} />
+      </div>
+
+      {/* Side Fade Overlays */}
+      <div className="absolute inset-y-0 left-0 w-16 pointer-events-none bg-gradient-to-r from-white dark:from-navy-800" />
+      <div className="absolute inset-y-0 right-0 w-16 pointer-events-none bg-gradient-to-l from-white dark:from-navy-800" />
     </div>
   );
 }
@@ -38,7 +44,7 @@ function MarqueeTestimonialItem({
     <figure className="max-w-lg opacity-0 animate-fadeIn" key={testimonial.id}>
       {/* Stars */}
       <p className="sr-only">5 out of 5 stars</p>
-      <div className="flex gap-x-1 text-green-600">
+      <div className="flex gap-x-1 text-green-600 dark:text-green-500">
         <StarIcon className="h-5 w-5 flex-none" aria-hidden="true" />
         <StarIcon className="h-5 w-5 flex-none" aria-hidden="true" />
         <StarIcon className="h-5 w-5 flex-none" aria-hidden="true" />
@@ -47,22 +53,24 @@ function MarqueeTestimonialItem({
       </div>
 
       {/* Quote */}
-      <blockquote className="mt-10 text-xl font-semibold leading-8 tracking-tight text-slate-900 sm:text-2xl sm:leading-9">
+      <blockquote className="mt-10 text-xl font-semibold leading-8 tracking-tight dark:text-navy-50 text-slate-900 sm:text-2xl sm:leading-9">
         <p>{quote}</p>
       </blockquote>
 
       {/* Info */}
       <figcaption className="mt-10 flex items-center gap-x-6">
         <Image
-          className="h-12 w-12 rounded-full bg-slate-50"
+          className="h-12 w-12 rounded-full bg-slate-50 dark:bg-navy-800"
           src={image}
           alt={name}
           width={48}
           height={48}
         />
         <div className="text-sm leading-6">
-          <div className="font-semibold text-slate-900">{name}</div>
-          <div className="mt-0.5 text-slate-600">{role}</div>
+          <div className="font-semibold text-slate-900 dark:text-navy-100">
+            {name}
+          </div>
+          <div className="mt-0.5 text-slate-600 dark:text-navy-200">{role}</div>
         </div>
       </figcaption>
     </figure>
