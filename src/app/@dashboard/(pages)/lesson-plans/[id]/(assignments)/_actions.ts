@@ -58,13 +58,14 @@ export const saveAssignment = createRequest(
 // Action to change assignment status
 
 const changeAssignmentStatusSchema = z.object({
+  id: z.string().uuid(),
   status: z.enum(['PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELED']),
 });
 
 const changeAssignmentStatusAction = async (
   input: z.infer<typeof changeAssignmentStatusSchema>
 ) => {
-  const { status } = input;
+  const { id, status } = input;
 
   const statuses = ['PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELED'];
   const currentStatusIdx = statuses.indexOf(status);
@@ -79,9 +80,12 @@ const changeAssignmentStatusAction = async (
   try {
     const supabase = supabaseServer();
 
-    const { error } = await supabase.from('assignments').update({
-      status: newStatus,
-    });
+    const { error } = await supabase
+      .from('assignments')
+      .update({
+        status: newStatus,
+      })
+      .eq('id', id);
 
     if (error) return responseContract(error.message, false);
 
@@ -96,6 +100,45 @@ const changeAssignmentStatusAction = async (
 export const changeAssignmentStatus = createRequest(
   changeAssignmentStatusAction,
   changeAssignmentStatusSchema
+);
+
+// Action to edit an assignment
+
+const editAssignmentStatusSchema = z.object({
+  id: z.string().uuid(),
+  title: z.string().optional(),
+  dueDate: z.date(),
+});
+
+const editAssignmentStatusAction = async (
+  input: z.infer<typeof editAssignmentStatusSchema>
+) => {
+  const { id, title, dueDate } = input;
+
+  try {
+    const supabase = supabaseServer();
+
+    const { error } = await supabase
+      .from('assignments')
+      .update({
+        title,
+        dueDate,
+      })
+      .eq('id', id);
+
+    if (error) return responseContract(error.message, false);
+
+    revalidatePath('/');
+
+    return responseContract('Success!', true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
+};
+
+export const editAssignmentStatus = createRequest(
+  editAssignmentStatusAction,
+  editAssignmentStatusSchema
 );
 
 // Call to fetch a single assignment
@@ -140,7 +183,7 @@ export async function fetchAssignments(): Promise<IAssignment[]> {
       .from('assignments')
       .select('*')
       .eq('creator_id', user?.id)
-      .limit(5);
+      .limit(10);
 
     if (error) {
       throw new Error(error.message);
@@ -178,7 +221,8 @@ export async function fetchUserLessonPlans(): Promise<any[]> {
         `*, lesson_plan:lesson_plans(title, subject:subjects(name), content, level:levels(name))`
       )
       .not('id', 'in', assignedIdsStr)
-      .eq('teacher_id', user?.id);
+      .eq('teacher_id', user?.id)
+      .limit(10);
 
     if (error) {
       throw new Error(error.message);

@@ -10,10 +10,12 @@ import { supabaseServer } from '@/lib/auth/supabaseServer';
 import AssignmentForm from './AssignmentForm';
 import AssignmentCreatorForm from '../lesson-plans/[id]/(assignments)/AssignmentCreatorForm';
 import Modal from '@/lib/components/popouts/Modal';
-import AssignmentCreatorModal from '../lesson-plans/[id]/(assignments)/AssignmentCreatorModal';
+import AssignmentCreatorModal from './(assignments-table)/AssignmentCreatorModal';
 import Assignment from '../lesson-plans/[id]/(assignments)/Assignment';
+import { fetchAssignments } from '../lesson-plans/[id]/(assignments)/_actions';
 
 export default async function ParentDashboardHomePage() {
+  const assignments = await fetchAssignments();
   // * Render
   return (
     <>
@@ -49,8 +51,7 @@ export default async function ParentDashboardHomePage() {
             noCloseOnOutsideClick={true}
           />
           {/* <AssignmentsTable /> */}
-          {/* <Assignment /> */}
-          {/* <AssignmentCreatorForm /> */}
+          <AssignmentsTable assignments={assignments} />
           {/* TSK */}
         </DashPanel>
       </DashMainCol>
