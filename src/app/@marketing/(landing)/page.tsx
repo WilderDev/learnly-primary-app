@@ -1,10 +1,11 @@
 import Main from '@/lib/components/layout/Main';
-import LandingHero from './LandingHero';
+import LandingHeroAlt from './LandingHeroAlt';
 
 export default function MarketingLandingPage() {
   return (
     <Main>
-      <LandingHero />
+      {/* <LandingHero /> */}
+      <LandingHeroAlt />
     </Main>
   );
 }
