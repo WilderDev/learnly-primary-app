@@ -70,6 +70,189 @@ export interface Database {
           updated_at?: string | null
         }
       }
+      curriculum_lessons: {
+        Row: {
+          created_at: string
+          curriculum_topic_id: string
+          description: string
+          id: string
+          image_path: string
+          lesson_number: number
+          lesson_plan_ids: string[]
+          name: string
+          type: Database["public"]["Enums"]["module_type"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          curriculum_topic_id: string
+          description: string
+          id?: string
+          image_path: string
+          lesson_number?: number
+          lesson_plan_ids?: string[]
+          name: string
+          type?: Database["public"]["Enums"]["module_type"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          curriculum_topic_id?: string
+          description?: string
+          id?: string
+          image_path?: string
+          lesson_number?: number
+          lesson_plan_ids?: string[]
+          name?: string
+          type?: Database["public"]["Enums"]["module_type"]
+          updated_at?: string
+        }
+      }
+      curriculum_levels: {
+        Row: {
+          created_at: string
+          curriculum_subject_id: string
+          id: string
+          level_id: string
+          level_number: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          curriculum_subject_id: string
+          id?: string
+          level_id: string
+          level_number?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          curriculum_subject_id?: string
+          id?: string
+          level_id?: string
+          level_number?: number
+          updated_at?: string
+        }
+      }
+      curriculum_prerequisites: {
+        Row: {
+          created_at: string
+          id: string
+          lesson_id: string
+          lesson_prerequisite_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          lesson_id: string
+          lesson_prerequisite_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          lesson_id?: string
+          lesson_prerequisite_id?: string
+          updated_at?: string
+        }
+      }
+      curriculum_subjects: {
+        Row: {
+          created_at: string
+          curriculum_id: string
+          id: string
+          subject_id: string
+          type: Database["public"]["Enums"]["module_type"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          curriculum_id: string
+          id?: string
+          subject_id: string
+          type?: Database["public"]["Enums"]["module_type"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          curriculum_id?: string
+          id?: string
+          subject_id?: string
+          type?: Database["public"]["Enums"]["module_type"]
+          updated_at?: string
+        }
+      }
+      curriculum_topics: {
+        Row: {
+          created_at: string
+          curriculum_level_id: string
+          id: string
+          topic_id: string
+          topic_number: number
+          type: Database["public"]["Enums"]["module_type"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          curriculum_level_id: string
+          id?: string
+          topic_id: string
+          topic_number?: number
+          type?: Database["public"]["Enums"]["module_type"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          curriculum_level_id?: string
+          id?: string
+          topic_id?: string
+          topic_number?: number
+          type?: Database["public"]["Enums"]["module_type"]
+          updated_at?: string
+        }
+      }
+      curriculums: {
+        Row: {
+          created_at: string
+          creator_id: string
+          description: string
+          id: string
+          image_path: string
+          is_public: boolean
+          name: string
+          status: Database["public"]["Enums"]["curriculum_status"]
+          tags: string[]
+          type: Database["public"]["Enums"]["curriculum_type"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          creator_id: string
+          description: string
+          id?: string
+          image_path: string
+          is_public?: boolean
+          name: string
+          status?: Database["public"]["Enums"]["curriculum_status"]
+          tags?: string[]
+          type?: Database["public"]["Enums"]["curriculum_type"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          creator_id?: string
+          description?: string
+          id?: string
+          image_path?: string
+          is_public?: boolean
+          name?: string
+          status?: Database["public"]["Enums"]["curriculum_status"]
+          tags?: string[]
+          type?: Database["public"]["Enums"]["curriculum_type"]
+          updated_at?: string
+        }
+      }
       customers: {
         Row: {
           created_at: string
@@ -286,6 +469,7 @@ export interface Database {
         Row: {
           animal: Database["public"]["Enums"]["animal"]
           created_at: string
+          description: string
           id: string
           image_path: string
           name: Database["public"]["Enums"]["level"]
@@ -294,6 +478,7 @@ export interface Database {
         Insert: {
           animal: Database["public"]["Enums"]["animal"]
           created_at?: string
+          description: string
           id?: string
           image_path: string
           name: Database["public"]["Enums"]["level"]
@@ -302,6 +487,7 @@ export interface Database {
         Update: {
           animal?: Database["public"]["Enums"]["animal"]
           created_at?: string
+          description?: string
           id?: string
           image_path?: string
           name?: Database["public"]["Enums"]["level"]
@@ -862,6 +1048,64 @@ export interface Database {
           updated_at?: string
         }
       }
+      user_curriculum_progress: {
+        Row: {
+          completion_date: string | null
+          created_at: string
+          id: string
+          lesson_id: string
+          status: Database["public"]["Enums"]["progress_status"]
+          updated_at: string
+          user_curriculum_id: string
+          user_id: string
+        }
+        Insert: {
+          completion_date?: string | null
+          created_at?: string
+          id?: string
+          lesson_id: string
+          status?: Database["public"]["Enums"]["progress_status"]
+          updated_at?: string
+          user_curriculum_id: string
+          user_id: string
+        }
+        Update: {
+          completion_date?: string | null
+          created_at?: string
+          id?: string
+          lesson_id?: string
+          status?: Database["public"]["Enums"]["progress_status"]
+          updated_at?: string
+          user_curriculum_id?: string
+          user_id?: string
+        }
+      }
+      user_curriculums: {
+        Row: {
+          created_at: string
+          curriculum_id: string
+          id: string
+          student_ids: string[]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          curriculum_id: string
+          id?: string
+          student_ids?: string[]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          curriculum_id?: string
+          id?: string
+          student_ids?: string[]
+          updated_at?: string
+          user_id?: string
+        }
+      }
       user_lesson_plan_templates: {
         Row: {
           created_at: string
@@ -1013,6 +1257,123 @@ export interface Database {
           url?: string | null
         }
       }
+      curriculum_lesson_with_user_lesson_view: {
+        Row: {
+          curriculum_lesson_id: string | null
+          curriculum_name: string | null
+          lesson_description: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_plan: Json | null
+          level_id: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          students: Json[] | null
+          subject_id: string | null
+          subject_name: string | null
+          topic_id: string | null
+          topic_name: string | null
+          user_curriculum_id: string | null
+        }
+      }
+      curriculum_lessons_with_progress_view: {
+        Row: {
+          completed_lessons: number | null
+          curriculum_id: string | null
+          curriculum_lesson_id: string | null
+          curriculum_level_id: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          curriculum_topic_id: string | null
+          lesson_description: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_number: number | null
+          lesson_type: Database["public"]["Enums"]["module_type"] | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          progress_percentage: number | null
+          subject_name: string | null
+          topic_description: string | null
+          topic_image_path: string | null
+          topic_name: string | null
+          total_lessons: number | null
+          user_curriculum_id: string | null
+        }
+      }
+      curriculum_levels_with_progress_view: {
+        Row: {
+          completed_lessons: number | null
+          curriculum_id: string | null
+          curriculum_level_id: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          level_description: string | null
+          level_image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          level_number: number | null
+          progress_percentage: number | null
+          subject_description: string | null
+          subject_image_path: string | null
+          subject_name: string | null
+          total_lessons: number | null
+          user_curriculum_id: string | null
+        }
+      }
+      curriculum_subjects_with_progress_view: {
+        Row: {
+          completed_lessons: number | null
+          curriculum_description: string | null
+          curriculum_id: string | null
+          curriculum_image_path: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          progress_percentage: number | null
+          subject_description: string | null
+          subject_image_path: string | null
+          subject_name: string | null
+          subject_type: Database["public"]["Enums"]["module_type"] | null
+          total_lessons: number | null
+          user_curriculum_id: string | null
+        }
+      }
+      curriculum_topics_with_progress_view: {
+        Row: {
+          completed_lessons: number | null
+          curriculum_id: string | null
+          curriculum_level_id: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          curriculum_topic_id: string | null
+          level_description: string | null
+          level_image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          progress_percentage: number | null
+          subject_name: string | null
+          topic_description: string | null
+          topic_image_path: string | null
+          topic_name: string | null
+          topic_type: Database["public"]["Enums"]["module_type"] | null
+          total_lessons: number | null
+          user_curriculum_id: string | null
+        }
+      }
+      curriculum_with_progress_view: {
+        Row: {
+          completed_lessons: number | null
+          creator_avatar_url: string | null
+          creator_first_name: string | null
+          creator_id: string | null
+          creator_last_name: string | null
+          curriculum_description: string | null
+          curriculum_id: string | null
+          curriculum_image_path: string | null
+          curriculum_name: string | null
+          curriculum_tags: string[] | null
+          progress_percentage: number | null
+          students: Json | null
+          total_lessons: number | null
+          user_curriculum_id: string | null
+        }
+      }
       hosted_events_view: {
         Row: {
           attendees: string[] | null
@@ -1112,6 +1473,72 @@ export interface Database {
           subject: string | null
           title: string | null
           topic: string | null
+        }
+      }
+      shareable_curriculum_lessons_view: {
+        Row: {
+          curriculum_id: string | null
+          curriculum_name: string | null
+          id: string | null
+          lesson_description: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_number: number | null
+          lesson_plan_ids: string[] | null
+          lesson_type: Database["public"]["Enums"]["module_type"] | null
+          level_description: string | null
+          level_id: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          subject_id: string | null
+          subject_name: string | null
+          topic_description: string | null
+          topic_id: string | null
+          topic_image_path: string | null
+          topic_name: string | null
+        }
+      }
+      shareable_curriculum_levels_view: {
+        Row: {
+          curriculum_id: string | null
+          curriculum_name: string | null
+          id: string | null
+          level_description: string | null
+          level_image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          subject_description: string | null
+          subject_id: string | null
+          subject_image_path: string | null
+          subject_name: string | null
+        }
+      }
+      shareable_curriculum_subjects_view: {
+        Row: {
+          curriculum_description: string | null
+          curriculum_id: string | null
+          curriculum_image_path: string | null
+          curriculum_name: string | null
+          id: string | null
+          subject_description: string | null
+          subject_image_path: string | null
+          subject_name: string | null
+          type: Database["public"]["Enums"]["module_type"] | null
+        }
+      }
+      shareable_curriculum_topics_view: {
+        Row: {
+          curriculum_id: string | null
+          curriculum_name: string | null
+          id: string | null
+          level_description: string | null
+          level_id: string | null
+          level_image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          subject_id: string | null
+          subject_name: string | null
+          topic_description: string | null
+          topic_image_path: string | null
+          topic_name: string | null
+          topic_type: Database["public"]["Enums"]["module_type"] | null
         }
       }
       teacher_me_view: {
@@ -1277,6 +1704,66 @@ export interface Database {
       }
     }
     Functions: {
+      add_item_to_array: {
+        Args: {
+          p_table_name: string
+          p_column_name: string
+          p_id_column: string
+          p_id_value: string
+          p_item_value: string
+        }
+        Returns: undefined
+      }
+      create_complete_curriculum: {
+        Args: {
+          curriculum_name: string
+          subject_id: string
+          subject_type: Database["public"]["Enums"]["module_type"]
+          levels_topics_lessons_data: Json
+        }
+        Returns: undefined
+      }
+      create_curriculum_lesson: {
+        Args: {
+          curriculum_topic_id: string
+          name: string
+          description: string
+          image_path: string
+          type: Database["public"]["Enums"]["module_type"]
+        }
+        Returns: string
+      }
+      create_curriculum_level: {
+        Args: {
+          curriculum_subject_id: string
+          level_id: string
+        }
+        Returns: {
+          new_curriculum_level_id: string
+          ret_level_id: string
+          ret_subject_id: string
+        }[]
+      }
+      create_curriculum_subject: {
+        Args: {
+          curriculum_name: string
+          subject_id: string
+          type: Database["public"]["Enums"]["module_type"]
+        }
+        Returns: string
+      }
+      create_curriculum_topic: {
+        Args: {
+          curriculum_level_id: string
+          level_id: string
+          subject_id: string
+          name: string
+          description: string
+          image_path: string
+          type: Database["public"]["Enums"]["module_type"]
+        }
+        Returns: string
+      }
       create_topic: {
         Args: {
           topic_name: string
@@ -1339,14 +1826,6 @@ export interface Database {
         }
         Returns: undefined
       }
-      unnest_uuid_array: {
-        Args: {
-          "": string[]
-        }
-        Returns: {
-          id: string
-        }[]
-      }
     }
     Enums: {
       animal:
@@ -1379,6 +1858,13 @@ export interface Database {
         | "LEARNING_PATH"
         | "LESSON_TEMPLATE"
         | "OTHER"
+      curriculum_status: "DRAFT" | "PUBLISHED" | "ARCHIVED"
+      curriculum_type:
+        | "RECOMMENDED"
+        | "POPULAR"
+        | "SUPPLEMENTARY"
+        | "COMMUNITY"
+        | "CUSTOM"
       difficulty: "EASY" | "MODERATE" | "CHALLENGING"
       environment_preferences:
         | "Quiet_and_individual"
@@ -1431,6 +1917,7 @@ export interface Database {
         | "Manipulatives"
         | "Technology"
         | "Other"
+      module_type: "CORE" | "ELECTIVE"
       notification_status:
         | "PENDING"
         | "SENT"
@@ -1507,6 +1994,7 @@ export interface Database {
       pricing_type: "one_time" | "recurring"
       profile_status: "ONLINE" | "OFFLINE" | "BUSY" | "AWAY" | "INVISIBLE"
       profile_type: "PARENT" | "COOP" | "TUTOR" | "SCHOOL" | "STUDENT"
+      progress_status: "IN_PROGRESS" | "COMPLETED" | "SKIPPED" | "LOCKED"
       reflection_method: "Written" | "Verbal" | "Other"
       reflection_type: "Self" | "Peer" | "Teacher" | "Other"
       resource_preferences:

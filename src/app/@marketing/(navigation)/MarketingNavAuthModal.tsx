@@ -37,7 +37,12 @@ export default function MarketingNavAuthModal({
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, redirectUrl: pathname }),
+      body: JSON.stringify({
+        email,
+        redirectUrl: pathname.includes('curriculum-roadmaps')
+          ? '/curriculum-roadmaps'
+          : pathname,
+      }),
     });
 
     if (res.ok) {

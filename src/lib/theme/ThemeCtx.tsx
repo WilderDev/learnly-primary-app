@@ -13,6 +13,7 @@ import {
 } from 'react';
 import { createContext } from 'react';
 import { themeScript } from './themeScript';
+import Script from 'next/script';
 
 // * Constants
 const THEMES: TTheme[] = ['light', 'dark', 'system']; // Available Themes
@@ -152,10 +153,12 @@ export function ThemeProvider({ children }: PropsWithChildren) {
   return (
     <ThemeCtx.Provider value={value}>
       {/* Script */}
-      <script
+      <Script
         dangerouslySetInnerHTML={{
           __html: themeScript,
         }}
+        strategy="lazyOnload"
+        id="theme-script"
       />
 
       {/* Children */}

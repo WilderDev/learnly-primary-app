@@ -146,7 +146,7 @@ export default function AddEventModal({ isOpen, close }: IProps) {
             cols={2}
             options={{
               enableTime: true,
-              dateFormat: 'Y-m-d H:i',
+              dateFormat: 'D, M d (h:i K)',
               minDate: 'today',
               defaultDate: new Date(),
               defaultHour: new Date().getHours() + 1,

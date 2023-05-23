@@ -63,6 +63,9 @@ CREATE TABLE levels (
   -- Name
   name level NOT NULL,
 
+  -- Description
+  description text NOT NULL,
+
   -- Animal
   animal animal NOT NULL,
 
@@ -92,10 +95,10 @@ CREATE TABLE topics (
   topic_number SERIAL NOT NULL,
 
   -- Level ID
-  level_id uuid REFERENCES levels(id),
+  level_id uuid REFERENCES levels(id) ON DELETE CASCADE,
 
   -- Subject ID
-  subject_id uuid REFERENCES subjects(id),
+  subject_id uuid REFERENCES subjects(id) ON DELETE CASCADE,
 
   -- Timestamps
   created_at timestamptz NOT NULL DEFAULT now(),

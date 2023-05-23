@@ -16,7 +16,7 @@ import {
 
 // * Data
 // Philosophy
-const philosophyOptions: Database['public']['Enums']['philosophy'][] = [
+export const philosophyOptions: Database['public']['Enums']['philosophy'][] = [
   'Eclectic/Relaxed',
   'Traditional',
   'Montessori',
@@ -45,7 +45,7 @@ const teachingStrategyOptions: Database['public']['Enums']['teaching_strategy'][
     'Other',
   ];
 // Pace
-const paceOptions: Database['public']['Enums']['pace'][] = [
+export const paceOptions: Database['public']['Enums']['pace'][] = [
   'SLOW',
   'MEDIUM',
   'FAST',

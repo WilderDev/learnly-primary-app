@@ -239,27 +239,26 @@ Card.Tag = function CardTag({ content, colors, url }: ICardTagProps) {
 // Card Action Props
 interface ICardActionProps {
   url: string;
-  icon?: TIcon;
   target?: HTMLAnchorElement['target'];
+  className?: string;
 }
 
 // Card Action Component
 Card.Action = function CardAction({
   url,
-  icon,
   target = '_self',
+  className,
 }: ICardActionProps) {
   return (
     <Link
-      className="dark:shadow-navy-450/50 flex h-7 w-7 items-center justify-center rounded-full bg-slate-200/80 p-0 font-medium text-slate-700 active:bg-slate-200/80 hocus:bg-slate-200 hocus:shadow hocus:shadow-navy-300/80 dark:bg-navy-500 dark:text-navy-200 dark:active:bg-navy-400/80 dark:hocus:bg-navy-400/90"
+      className={cn(
+        'dark:shadow-navy-450/50 flex h-7 w-7 items-center justify-center rounded-full bg-slate-200/80 p-0 font-medium text-slate-700 active:bg-slate-200/80 hocus:bg-slate-200 hocus:shadow hocus:shadow-navy-300/80 dark:bg-navy-500 dark:text-navy-200 dark:active:bg-navy-400/80 dark:hocus:bg-navy-400/90',
+        className,
+      )}
       href={url}
       target={target}
     >
-      {icon ? (
-        <>{icon}</>
-      ) : (
-        <ArrowSmallUpIcon className="h-5 w-5 rotate-45 font-bold" />
-      )}
+      <ArrowSmallUpIcon className="h-5 w-5 rotate-45 font-bold" />
     </Link>
   );
 };

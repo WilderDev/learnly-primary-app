@@ -3,8 +3,6 @@ import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import LessonPlanCreatorInfo from './LessonPlanCreatorInfo';
 import LessonPlanTags from './LessonPlanTags';
 import LessonPlanActionIcons from './LessonPlanActionIcons';
-import Button from '@/lib/components/ui/Button';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import LessonPlanMarkComplete from './LessonPlanMarkComplete';
 
 // * Props
@@ -19,7 +17,7 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
     <>
       <main className="mx-auto my-3 max-w-4xl print:my-0">
         {/* Info */}
-        <div className="mb-6 flex flex-col print:hidden print:mb-0">
+        <div className="mb-6 flex flex-col print:hidden print:invisible print:mb-0">
           {/* Top */}
           <div className="flex items-center justify-between">
             {/* Creator */}
