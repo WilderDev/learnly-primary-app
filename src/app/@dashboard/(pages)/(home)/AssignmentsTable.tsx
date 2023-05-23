@@ -7,9 +7,19 @@ interface IProps {
 }
 export default function AssignmentsTable({ assignments }: IProps) {
   const dumbAssignments = [
-    { id: '07e84099-d585-4954-b4ea-fe3a63f6d700', status: 'PENDING' },
+    {
+      id: '07e84099-d585-4954-b4ea-fe3a63f6d700',
+      status: 'PENDING',
+      student: { name: 'joseph' },
+      title: 'Exploring The Jungle',
+    },
 
-    { id: '07e84099-d585-4954-b4ea-fe3a63f6d704', status: 'IN_PROGRESS' },
+    {
+      id: '07e84099-d585-4954-b4ea-fe3a63f6d704',
+      status: 'IN_PROGRESS',
+      student: { name: 'joseph' },
+      title: 'Exploring The Wild',
+    },
   ];
 
   return (
