@@ -41,8 +41,9 @@ export const config = {
     '/account/:path*',
     '/lesson-creator/:path*',
     '/help-center/:path*',
-    '/curriculum-roadmap/:path*',
     '/schedule-builder/:path*',
+    '/curriculum-roadmaps/:path/:path/:path/:path/:path/:path*',
+    '/curriculum-roadmaps/user/:path*',
     '/onboarding/:path*',
   ],
 };

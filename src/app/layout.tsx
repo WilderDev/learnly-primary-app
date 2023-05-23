@@ -10,6 +10,8 @@ import { AuthProvider } from '@/lib/components/providers/AuthProvider';
 import AuthListener from '@/lib/auth/AuthListener';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { ThemeProvider } from '@/lib/theme/ThemeCtx';
+import Script from 'next/script';
+import { themeScript } from '@/lib/theme/themeScript';
 
 // * Props
 interface IProps {

@@ -5,6 +5,7 @@ import { TEffect, TFill, TSize, TVariant } from '@/assets/typescript/ui';
 import cn from '@/lib/common/cn';
 import Link from 'next/link';
 import LoadingDots from '../loading/LoadingDots';
+import ClientWrapper from '../layout/ClientWrapper';
 
 // * Props
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -125,21 +126,23 @@ export default function Button({
 
   // * Render
   return url ? (
-    <Link
-      className={cn(
-        defaultStyles,
-        sizes[size],
-        variants[variant],
-        fills[fill][variant],
-        effects[effect],
-        shadows[shadow],
-        roundeds[rounded],
-        className,
-      )}
-      href={url}
-    >
-      {children}
-    </Link>
+    <ClientWrapper>
+      <Link
+        className={cn(
+          defaultStyles,
+          sizes[size],
+          variants[variant],
+          fills[fill][variant],
+          effects[effect],
+          shadows[shadow],
+          roundeds[rounded],
+          className,
+        )}
+        href={url}
+      >
+        {children}
+      </Link>
+    </ClientWrapper>
   ) : (
     <button
       className={cn(

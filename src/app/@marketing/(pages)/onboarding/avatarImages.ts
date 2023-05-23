@@ -1,0 +1,18 @@
+export const avatarImages = [
+  '/static/icons/avatars/bear.png',
+  '/static/icons/avatars/bird.png',
+  '/static/icons/avatars/cat.png',
+  '/static/icons/avatars/dog.png',
+  '/static/icons/avatars/dolphin.png',
+  '/static/icons/avatars/elephant.png',
+  '/static/icons/avatars/fox.png',
+  '/static/icons/avatars/koala.png',
+  '/static/icons/avatars/lion.png',
+  '/static/icons/avatars/monkey.png',
+  '/static/icons/avatars/panda.png',
+  '/static/icons/avatars/penguin.png',
+  '/static/icons/avatars/sheep.png',
+  '/static/icons/avatars/tiger.png',
+  '/static/icons/avatars/turtle.png',
+  '/static/icons/avatars/wolf.png',
+];

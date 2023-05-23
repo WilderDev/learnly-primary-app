@@ -109,6 +109,7 @@ export function DashPanelHeader({
           isVisible={isModalOpen}
           close={() => setModalOpen(false)}
           size={modalSize || 'md'}
+          closeBtn={true}
         >
           {modalContent}
         </Modal>
