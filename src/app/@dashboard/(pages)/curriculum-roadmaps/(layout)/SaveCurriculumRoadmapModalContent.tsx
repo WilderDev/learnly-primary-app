@@ -153,7 +153,7 @@ export default function SaveCurriculumRoadmapModalContent({
           </label>
 
           {/* Students */}
-          <div className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between">
+          <div className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between gap-x-6">
             {students?.map((student) => (
               <button
                 className={cn(

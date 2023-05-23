@@ -29,8 +29,6 @@ const saveCurriculumAction = async (
       user_id: session?.user.id!,
     });
 
-    console.log('error:', error);
-
     if (error) return responseContract(error.message, false);
 
     revalidatePath(`/curriculum-roadmaps`);
@@ -79,8 +77,6 @@ const saveCurriculumLessonPlanAction = async (
       status: 'scheduled',
     });
 
-    console.log('error:', error);
-
     if (error) return responseContract(error.message, false);
 
     const { error: user_curriculum_progress_error } = await supabase
@@ -90,11 +86,6 @@ const saveCurriculumLessonPlanAction = async (
         user_id: session?.user.id!,
         user_curriculum_id: user_curriculum_id,
       });
-
-    console.log(
-      'user_curriculum_progress_error:',
-      user_curriculum_progress_error,
-    );
 
     revalidatePath(`/lesson-plans/${lesson_plan_id}`);
     revalidatePath('/schedule-builder');

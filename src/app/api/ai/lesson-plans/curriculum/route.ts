@@ -2,10 +2,7 @@ import { ICurriculumLessonPromptReq } from '@/assets/typescript/curriculum-roadm
 import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
 import { ITeacherPromptReq } from '@/assets/typescript/lesson-plan';
 import { OpenAIStream } from '@/lib/ai/openai';
-import {
-  generateCurriculumLessonPlanPrompt,
-  generateLessonPlanPrompt,
-} from '@/lib/ai/prompts';
+import { generateCurriculumLessonPlanPrompt } from '@/lib/ai/prompts';
 
 // * Props
 export interface IAICurriculumLessonPlanPostReq {
@@ -44,8 +41,6 @@ export async function POST(request: Request) {
 
   // 4. Send request to OpenAI
   const stream = await OpenAIStream(payload);
-
-  console.log('stream:', stream);
 
   if (!stream) return new Response('Error', { status: 500 });
 

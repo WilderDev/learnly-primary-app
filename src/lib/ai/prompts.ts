@@ -125,6 +125,16 @@ export function generateCurriculumLessonPlanPrompt({
 
   const { name, role, teaching_preferences } = teacherBody; // TSK
 
+  // If level is "Buds", "Sprouts", or "Oaks" change it to "Pre-K (Buds)", "K-2 (Sprouts)", or "3-5 (Oaks)
+  const gradeLevel =
+    level === 'Buds'
+      ? 'Pre-K (Buds)'
+      : level === 'Sprouts'
+      ? 'Pre-K (Sprouts)'
+      : level === 'Oaks'
+      ? 'Pre-K (Oaks)'
+      : level;
+
   // Generate the students section
   const studentsSection =
     studentsBody
@@ -147,7 +157,7 @@ You are a lesson plan generator for homeschool parents.
 
 Create a detailed and well-structured lesson plan that includes time allocation for each activity.
 
-The class is for curriculum: ${curriculum}, subject: ${subject}, topic: ${topic}, (Grade Level: ${level}).
+The class is for curriculum: ${curriculum}, subject: ${subject}, topic: ${topic}, (Grade Level: ${gradeLevel}).
 
 The Lesson is called: ${lessonName}, and the description is: ${lessonDescription}.
 

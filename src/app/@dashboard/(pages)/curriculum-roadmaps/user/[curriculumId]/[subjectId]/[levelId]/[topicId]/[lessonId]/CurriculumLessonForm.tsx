@@ -94,7 +94,12 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
         body: JSON.stringify({
           lessonBody,
           teacherBody,
-          studentsBody: lesson.students,
+          studentsBody: lesson.students.map((s) => ({
+            id: s.id,
+            name: `${s.first_name} ${s.last_name}`,
+            age: s.age,
+            learning_styles: s.learning_styles,
+          })),
         }),
       });
 
@@ -147,7 +152,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
         }
       });
     } catch (e) {
-      console.log(e);
+      toast.error('Error generating lesson plan');
     } finally {
       // Reset States
       setLoading(false); // Set loading state

@@ -60,7 +60,14 @@ export interface ICurriculumFormData {
     description: string;
     image_path: string;
   };
-  students: IStudentPromptReq['students'];
+  students: {
+    id: string;
+    first_name: string;
+    last_name: string;
+    avatar_url: string;
+    age: number;
+    learning_styles: Database['public']['Enums']['learning_style'][];
+  }[];
 }
 
 export interface ICurriculumLessonPlan {

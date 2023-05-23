@@ -7,12 +7,10 @@ import DashSideCol from '@/app/@dashboard/(layout)/DashSideCol';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { redirect } from 'next/navigation';
 import CurriculumLessonForm from './CurriculumLessonForm';
-import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
 import {
   ICurriculumFormData,
   ICurriculumLessonPlan,
 } from '@/assets/typescript/curriculum-roadmaps';
-import LessonPlanContainer from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanContainer';
 import CurriculumLessonPlanContainer from './CurriculumLessonPlanContainer';
 
 // * IParams
@@ -43,22 +41,24 @@ export default async function CurriculumRoadmapLessonPage({
   return (
     <>
       {/* Main Column */}
-      <DashMainCol>
+      <DashMainCol className="2xl:col-span-8">
         {/* Form */}
         <DashPanel colNum={1}>
-          <DashPanelHeader
-            title={`Create "${lessonForm.lesson.name}" Lesson`}
-          />
           {lessonPlan ? (
             <CurriculumLessonPlanContainer lessonPlan={lessonPlan} />
           ) : (
-            <CurriculumLessonForm lesson={lessonForm} />
+            <>
+              <DashPanelHeader
+                title={`Create "${lessonForm.lesson.name}" Lesson`}
+              />
+              <CurriculumLessonForm lesson={lessonForm} />
+            </>
           )}
         </DashPanel>
       </DashMainCol>
 
       {/* Side Column */}
-      <DashSideCol>
+      <DashSideCol className="2xl:col-span-4">
         {/* Community Lessons */}
         <DashPanel colNum={1}>
           <DashPanelHeader title="Community Creations" />
@@ -119,7 +119,7 @@ async function getCurriculumRoadmapLesson(
       description: data.lesson_description!,
       image_path: data.lesson_image_path!,
     },
-    students: data.students! as IStudentPromptReq['students'],
+    students: data.students! as ICurriculumFormData['students'],
   };
 
   // Return data
@@ -168,7 +168,7 @@ export async function generateMetadata({
 }
 
 // * Static Params
-export async function getStaticPaths() {
+export async function generateStaticParams() {
   // 1. Get Data
   const supabase = supabaseServer();
   const { data } = await supabase

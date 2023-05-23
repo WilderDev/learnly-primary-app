@@ -91,8 +91,6 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
       // Confirm Email isn't already in use
       const res = await fetch(`/api/users/${email}`);
 
-      console.log('res:', res);
-
       // If Email is in use, show error and return
       if (res.status === 200) {
         setLoading(false); // Stop Loading

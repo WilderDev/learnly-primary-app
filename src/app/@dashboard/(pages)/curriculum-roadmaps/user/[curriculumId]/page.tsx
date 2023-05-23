@@ -91,7 +91,7 @@ export async function generateMetadata({ params: { curriculumId } }: IParams) {
 }
 
 // * Paths
-export async function getStaticPaths() {
+export async function generateStaticParams() {
   // 1. Get Data
   const supabase = supabaseServer();
   const { data } = await supabase

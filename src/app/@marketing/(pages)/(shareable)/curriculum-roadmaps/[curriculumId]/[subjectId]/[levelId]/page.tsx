@@ -118,7 +118,7 @@ export async function generateMetadata({
 }
 
 // * Paths
-export async function getStaticPaths() {
+export async function generateStaticParams() {
   // 1. Get Data
   const supabase = supabaseServer();
   const { data } = await supabase

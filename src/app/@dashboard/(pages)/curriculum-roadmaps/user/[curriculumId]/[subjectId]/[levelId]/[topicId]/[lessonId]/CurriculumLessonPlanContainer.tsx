@@ -14,7 +14,7 @@ interface IProps {
 export default function CurriculumLessonPlanContainer({ lessonPlan }: IProps) {
   return (
     <>
-      <main className="mx-auto my-3 max-w-4xl print:my-0">
+      <main className="my-3 print:my-0">
         {/* Info */}
         <div className="mb-6 flex flex-col print:hidden print:mb-0">
           {/* Top */}

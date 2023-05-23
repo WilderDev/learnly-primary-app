@@ -49,5 +49,3 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
     </>
   );
 }
-
-// TSK: Fix Print
