@@ -14,7 +14,7 @@ export default function LandingLayout({ children }: PropsWithChildren) {
       {children}
 
       {/* Marketing Footer */}
-      <MarketingFooter />
+      {/* <MarketingFooter /> */}
 
       {/* Marketing Theme Toggler */}
       <MarketingThemeToggler />

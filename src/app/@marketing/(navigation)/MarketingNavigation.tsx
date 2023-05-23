@@ -1,6 +1,8 @@
 import Logo from '@/lib/components/brand/Logo';
 import Container from '@/lib/components/layout/Container';
 import MarketingNavCTA from './MarketingNavCTA';
+import MarketingNavMobileMenu from './MarketingNavMobileMenu';
+import MarketingNavLinks from './MarketingNavLinks';
 
 export default function MarketingNavigation() {
   return (
@@ -16,20 +18,19 @@ export default function MarketingNavigation() {
             <Logo withText={true} />
 
             {/* Main Nav Links (Desktop) */}
-            <div className="flex lg:gap-10">{/* <MarketingNavLinks /> */}</div>
+            <div className="flex lg:gap-10 relative">
+              <MarketingNavLinks />
+            </div>
           </div>
 
           <div className="flex items-center gap-6">
             {/* Mobile Menu */}
-            {/* <MarketingMobileMenu /> */}
+            <MarketingNavMobileMenu />
 
             {/* Right Buttons (Desktop) */}
             <MarketingNavCTA />
           </div>
         </Container>
-
-        {/* Theme Toggler */}
-        {/* <ThemeToggler /> */}
       </nav>
     </header>
   );
