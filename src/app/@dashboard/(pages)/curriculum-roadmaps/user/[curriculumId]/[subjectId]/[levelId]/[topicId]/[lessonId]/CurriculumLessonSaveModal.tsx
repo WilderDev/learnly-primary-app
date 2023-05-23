@@ -78,7 +78,7 @@ export default function CurriculumLessonSaveModal({
             required={true}
             options={{
               enableTime: true,
-              dateFormat: 'Y-m-d H:i',
+              dateFormat: 'D, M d (h:i K)',
               minDate: 'today',
               defaultHour: new Date().getHours() + 1,
               defaultMinute: 0,

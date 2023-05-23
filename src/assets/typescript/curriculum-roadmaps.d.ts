@@ -60,14 +60,6 @@ export interface ICurriculumFormData {
     description: string;
     image_path: string;
   };
-  students: {
-    id: string;
-    first_name: string;
-    last_name: string;
-    avatar_url: string;
-    age: number;
-    learning_styles: Database['public']['Enums']['learning_style'][];
-  }[];
 }
 
 export interface ICurriculumLessonPlan {
@@ -80,6 +72,16 @@ export interface ICurriculumLessonPlan {
     length_in_min: number;
     creator_name: string;
     creator_avatar_url: string;
-    // . . . Creator info, etc.
+    scheduled_date: string | null;
+    completion_date: string | null;
   } | null;
+}
+
+export interface ICurriculumLessonPlanStudent {
+  id: string;
+  first_name: string;
+  last_name: string;
+  avatar_url: string;
+  age: number;
+  learning_styles: Database['public']['Enums']['learning_style'][];
 }

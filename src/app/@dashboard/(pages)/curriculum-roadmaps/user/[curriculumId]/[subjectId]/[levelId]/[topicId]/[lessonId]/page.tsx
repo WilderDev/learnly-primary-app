@@ -10,6 +10,7 @@ import CurriculumLessonForm from './CurriculumLessonForm';
 import {
   ICurriculumFormData,
   ICurriculumLessonPlan,
+  ICurriculumLessonPlanStudent,
 } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumLessonPlanContainer from './CurriculumLessonPlanContainer';
 
@@ -29,7 +30,7 @@ export default async function CurriculumRoadmapLessonPage({
   params: { curriculumId, subjectId, levelId, topicId, lessonId },
 }: IParams) {
   // * Data
-  const { lessonForm, lessonPlan } = await getCurriculumRoadmapLesson(
+  const { lessonForm, lessonPlan, students } = await getCurriculumRoadmapLesson(
     curriculumId,
     subjectId,
     levelId,
@@ -45,13 +46,16 @@ export default async function CurriculumRoadmapLessonPage({
         {/* Form */}
         <DashPanel colNum={1}>
           {lessonPlan ? (
-            <CurriculumLessonPlanContainer lessonPlan={lessonPlan} />
+            <CurriculumLessonPlanContainer
+              lessonPlan={lessonPlan}
+              studentIds={students?.map((s) => s.id) || []}
+            />
           ) : (
             <>
               <DashPanelHeader
                 title={`Create "${lessonForm.lesson.name}" Lesson`}
               />
-              <CurriculumLessonForm lesson={lessonForm} />
+              <CurriculumLessonForm lesson={lessonForm} students={students!} />
             </>
           )}
         </DashPanel>
@@ -93,6 +97,8 @@ async function getCurriculumRoadmapLesson(
     );
 
   // Create lesson plan form data
+  const students = data.students! as unknown as ICurriculumLessonPlanStudent[];
+
   const lessonFormData: ICurriculumFormData = {
     curriculum: {
       id: curriculumId,
@@ -119,7 +125,6 @@ async function getCurriculumRoadmapLesson(
       description: data.lesson_description!,
       image_path: data.lesson_image_path!,
     },
-    students: data.students! as ICurriculumFormData['students'],
   };
 
   // Return data
@@ -127,6 +132,7 @@ async function getCurriculumRoadmapLesson(
     lessonForm: lessonFormData,
     lessonPlan:
       data.lesson_plan as unknown as ICurriculumLessonPlan['lesson_plan'],
+    students,
   };
 }
 

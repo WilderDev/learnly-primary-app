@@ -19,6 +19,7 @@ import { philosophyOptions } from '@/app/@dashboard/(pages)/lesson-creator/Lesso
 import TextArea from '@/lib/components/form/TextArea';
 import {
   ICurriculumFormData,
+  ICurriculumLessonPlanStudent,
   ICurriculumLessonPromptReq,
 } from '@/assets/typescript/curriculum-roadmaps';
 import { ITeacherPromptReq } from '@/assets/typescript/lesson-plan';
@@ -35,12 +36,13 @@ import cn from '@/lib/common/cn';
 // * Props
 interface IProps {
   lesson: ICurriculumFormData;
+  students: ICurriculumLessonPlanStudent[];
 }
 
 // * Data
 
 // * Component
-export default function CurriculumLessonForm({ lesson }: IProps) {
+export default function CurriculumLessonForm({ lesson, students }: IProps) {
   // * Hooks / Context
   const { user } = useUser();
   const { supabase } = useAuth();
@@ -94,7 +96,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
         body: JSON.stringify({
           lessonBody,
           teacherBody,
-          studentsBody: lesson.students.map((s) => ({
+          studentsBody: students.map((s) => ({
             id: s.id,
             name: `${s.first_name} ${s.last_name}`,
             age: s.age,
@@ -116,7 +118,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
             topic: lesson.topic.topicId,
             content,
             creator_id: user?.id!,
-            title: `${lesson.topic.name} for ${lesson.level.name} (${lesson.subject.name})`,
+            title: lesson.lesson.name,
             image_path: lesson.lesson.image_path,
             length_in_min: lengthInMin,
             tags: [lesson.subject.name, lesson.level.name, lesson.topic.name],
@@ -226,7 +228,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
           className="md:col-start-2 lg:col-start-3"
           type="submit"
           loading={loading}
-          disabled={loading || lesson.students.length === 0}
+          disabled={loading || students.length === 0}
         >
           Create Lesson Plan
         </Button>
@@ -244,7 +246,7 @@ export default function CurriculumLessonForm({ lesson }: IProps) {
       {lessonId && (
         <CurriculumLessonDock
           lessonId={lessonId}
-          studentIds={lesson.students.map((s) => s.id)}
+          studentIds={students.map((s) => s.id)}
           shareUrl={`/lesson-plans/${lessonId}`}
         />
       )}
