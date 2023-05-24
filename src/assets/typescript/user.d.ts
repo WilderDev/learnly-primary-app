@@ -1,5 +1,11 @@
 import { Database } from './db';
 
+export interface IUserSubscription {
+  status: Database['public']['Enums']['subscription_status'];
+  trialEnd: string | null;
+  isAuthorized: boolean;
+}
+
 export interface Me {
   id: string;
   firstName: string;

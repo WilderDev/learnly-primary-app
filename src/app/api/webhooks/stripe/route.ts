@@ -12,6 +12,7 @@ import {
   handleUpdatePrice,
   handleUpdateProduct,
   handleDeleteCustomer,
+  handleTrialWillEnd,
 } from '@/lib/stripe/stripeWebhookHandlers';
 
 // * CONSTANTS
@@ -31,6 +32,7 @@ export const runtime = 'nodejs'; // Set the runtime to Edge
 const relevantEvents: Stripe.Event['type'][] = [
   'customer.created', // => Create Customer Record ✅
   'customer.deleted', // => Delete Customer Record ✅
+  'customer.subscription.trial_will_end', // => Send Trial Ending Email & Open Checkout ✅
   'product.created', // => Create Product Record ✅
   'product.updated', // => Update Product Record ✅
   'product.deleted', // => Delete Product Record ✅
@@ -51,9 +53,7 @@ export async function POST(request: Request) {
   try {
     // Construct the event from the raw body and signature
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
-    console.log('event:', event);
   } catch (err) {
-    console.log('err:', err);
     return new Response('Webhook Error: ' + err, { status: 400 }); // Return a response with error message
   }
 
@@ -61,8 +61,6 @@ export async function POST(request: Request) {
   // Run proper handler for relevant events
   if (relevantEvents.includes(event.type)) {
     const evt = event.data.object;
-
-    console.log('evt:', evt);
 
     switch (event.type) {
       // *** Handle customer.created event *** \\
@@ -73,6 +71,11 @@ export async function POST(request: Request) {
       // *** Handle customer.deleted event *** \\
       case 'customer.deleted':
         await handleDeleteCustomer({ customerId: (evt as Stripe.Customer).id }); // Run the handler function
+
+        break; // Exit switch statement
+      // *** Handle customer.subscription.trial_will_end event *** \\
+      case 'customer.subscription.trial_will_end':
+        await handleTrialWillEnd({ subscription: evt as Stripe.Subscription }); // Run the handler function
 
         break; // Exit switch statement
       // *** Handle product.created event *** \\

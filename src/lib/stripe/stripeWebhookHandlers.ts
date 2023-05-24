@@ -3,6 +3,8 @@
 import Stripe from 'stripe';
 import { supabaseAdmin } from '../auth/supabaseAdmin';
 import { stripe } from './stripe';
+import { secondsToIso } from '../common/date.helpers';
+import baseUrl from '../common/baseUrl';
 
 // * Handle Create or Retrieve Customer Event ✅
 // Interface
@@ -10,12 +12,14 @@ import { stripe } from './stripe';
 interface ICreateOrRetrieveCustomer {
   supabaseId: string;
   email: string;
+  name: string;
 }
 
 // Handler
 export async function handleCreateOrRetrieveCustomer({
   supabaseId,
   email,
+  name,
 }: ICreateOrRetrieveCustomer) {
   // 1. Check if the Customer already exists in the database
   const { data: customer } = await supabaseAdmin()
@@ -34,6 +38,8 @@ export async function handleCreateOrRetrieveCustomer({
   // 3. Otherwise Create the Customer in Stripe
   const stripeCustomer = await stripe.customers.create({
     email,
+    name,
+    // promotion_code
     metadata: {
       supabaseId,
     },
@@ -84,6 +90,10 @@ export async function handleCreateCustomer({ customer }: ICreateCustomer) {
   });
 
   console.log('subscription:', subscription);
+  console.log(
+    'subscription.cancel_at_period_end:',
+    subscription.cancel_at_period_end,
+  );
 
   // 2. Insert the Subscription into the database
   const { error: subscriptionError } = await supabaseAdmin()
@@ -91,28 +101,28 @@ export async function handleCreateCustomer({ customer }: ICreateCustomer) {
     .insert({
       id: subscription.id,
       user_id: customer.metadata.supabaseId,
+      items: subscription.items.data as any,
       status: subscription.status,
-      price_id: subscription.items.data[0].price.id,
-      current_period_start: subscription.current_period_start.toString(),
-      current_period_end: subscription.current_period_end.toString(),
+      description: subscription.description || '',
+      stripe_product_id: subscription.items.data[0].price.product as string,
+      current_period_start: secondsToIso(subscription.current_period_start),
+      current_period_end: secondsToIso(subscription.current_period_end),
       trial_start: subscription.trial_start
-        ? subscription.trial_start.toString()
+        ? secondsToIso(subscription.trial_start)
         : null,
       trial_end: subscription.trial_end
-        ? subscription.trial_end.toString()
+        ? secondsToIso(subscription.trial_end)
         : null,
-      created: subscription.created.toString(),
       metadata: subscription.metadata,
       cancel_at_period_end: subscription.cancel_at_period_end,
       canceled_at: subscription.canceled_at
-        ? subscription.canceled_at.toString()
+        ? secondsToIso(subscription.canceled_at)
         : null,
       stripe_price_id: subscription.items.data[0].price.id,
       stripe_customer_id: subscription.customer as string,
       cancel_at: subscription.cancel_at
-        ? subscription.cancel_at.toString()
+        ? secondsToIso(subscription.cancel_at)
         : null,
-      days_until_due: subscription.days_until_due ?? undefined,
     });
 
   console.log('subscriptionError:', subscriptionError);
@@ -137,6 +147,83 @@ export async function handleDeleteCustomer({ customerId }: IDeleteCustomer) {
 
   // 2. Check if there was an error deleting the Customer
   if (customerError) throw new Error(customerError.message);
+}
+
+// * Handle Customer Subscription Trial Will End Event ✅
+// Interface
+interface ITrialWillEnd {
+  subscription: Stripe.Subscription;
+}
+
+// Handler
+export async function handleTrialWillEnd({ subscription }: ITrialWillEnd) {
+  // 1. Get the customers paymentMethods
+  const paymentMethods = await stripe.paymentMethods.list({
+    customer: subscription.customer as string,
+    type: 'card',
+  });
+
+  // TSK: Probably check if they already paid the trial????
+
+  // 2. Get the customer supabaseId
+  const { data: customer } = await supabaseAdmin()
+    .from('customers')
+    .select('id, stripe_customer_id')
+    .eq('stripe_customer_id', subscription.customer as string)
+    .single();
+
+  // 3. Ensure there is a payment method -> Notify either way
+  if (paymentMethods.data.length < 1) {
+    // 3a1. Create a portal session to allow the user to add a payment method
+    const url = await handleCreateBillingPortalSession({
+      customerId: customer?.stripe_customer_id!,
+    });
+
+    // 3a2. Send Notification to User
+    await supabaseAdmin().from('notifications').insert({
+      recipient_id: customer?.id!,
+      title: 'Payment Method Required',
+      body: `Please add a payment method to continue your subscription by following this link:`,
+      action_text: 'Add Payment Method',
+      action_url: url,
+      type: 'BILLING',
+      sent_at: new Date().toISOString(),
+      status: 'SENT',
+    });
+  } else {
+    // 3b. Send Notification to User
+    await supabaseAdmin().from('notifications').insert({
+      recipient_id: customer?.id!,
+      title: 'You have an upcoming payment',
+      body: 'Your subscription will renew soon.',
+      type: 'BILLING',
+      sent_at: new Date().toISOString(),
+      status: 'SENT',
+    });
+  }
+}
+
+// * Create Billing Portal Session ✅
+// Interface
+interface ICreateBillingPortalSession {
+  customerId: string;
+}
+
+// Handler
+export async function handleCreateBillingPortalSession({
+  customerId,
+}: ICreateBillingPortalSession) {
+  // 1. Create a portal session
+  const { url } = await stripe.billingPortal.sessions.create({
+    customer: customerId,
+    return_url: baseUrl,
+    flow_data: {
+      type: 'payment_method_update',
+    },
+  });
+
+  // 2. Return the URL
+  return url;
 }
 
 // * Handle Product Created Event ✅

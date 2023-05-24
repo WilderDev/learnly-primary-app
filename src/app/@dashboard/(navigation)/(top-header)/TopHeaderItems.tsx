@@ -56,6 +56,8 @@ async function getNotifications() {
     type: n.type!,
     sent_at: n.sent_at!,
     read_at: n.read_at,
+    action_text: n.action_text,
+    action_url: n.action_url,
     from: {
       id: n.sender_id!,
       name: `${n.sender_first_name} ${n.sender_last_name}`,

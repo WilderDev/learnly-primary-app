@@ -1,7 +1,7 @@
 'use client';
 
 import { INotification } from '@/assets/typescript/notification';
-import { TNotificationType } from '../../../../assets/typescript/notification';
+import { TNotificationType } from '@/assets/typescript/notification';
 import {
   BellAlertIcon,
   BookOpenIcon,
@@ -49,8 +49,18 @@ const notificationIcons: {
 // * Component
 export default function NotificationItem({ notification }: IProps) {
   // * Data
-  const { id, title, body, type, status, from, read_at, sent_at } =
-    notification;
+  const {
+    id,
+    title,
+    body,
+    type,
+    status,
+    from,
+    read_at,
+    sent_at,
+    action_text,
+    action_url,
+  } = notification;
   const Icon = notificationIcons[type];
 
   // * State
@@ -105,8 +115,17 @@ export default function NotificationItem({ notification }: IProps) {
                 read_at && 'font-normal text-slate-400 dark:text-navy-300',
               )}
             >
-              {body}
+              {body}{' '}
             </p>
+
+            {action_url && (
+              <a
+                href={action_url}
+                className="text-green-600 block dark:text-green-500 hocus:underline transition-all duration-200 ease-in-out"
+              >
+                {action_text}
+              </a>
+            )}
           </div>
         </div>
       </button>
@@ -123,6 +142,15 @@ export default function NotificationItem({ notification }: IProps) {
           <div className="flex flex-col space-y-4">
             {/* Message */}
             <p className="text-slate-600 dark:text-navy-200">{body}</p>
+
+            {action_url && (
+              <a
+                href={action_url}
+                className="text-green-600 font-semibold text-lg block dark:text-green-500 hocus:underline transition-all duration-200 ease-in-out"
+              >
+                {action_text}
+              </a>
+            )}
 
             {/* Divider */}
             <div className="border-b border-slate-200 dark:border-navy-700/90" />

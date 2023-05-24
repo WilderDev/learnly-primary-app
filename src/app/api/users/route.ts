@@ -104,6 +104,7 @@ export async function POST(request: Request) {
 
     // 8. Create Stripe Customer
     const customer = await handleCreateOrRetrieveCustomer({
+      name: first_name + ' ' + last_name,
       email,
       supabaseId: data?.user?.id!,
     });

@@ -79,29 +79,17 @@ WHERE
   id = '185f2f83-d63a-4c9b-b4a0-7e4a885799e9';
 
 
--- Trial 1
-INSERT INTO trials
-(teacher_id, start_date, end_date)
-VALUES
-('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', CURRENT_DATE, CURRENT_DATE + INTERVAL '14 days');
-
 -- Customers (1)
 INSERT INTO customers
 (id, stripe_customer_id, subscriptions)
 VALUES
 ('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NxDFsBVSEuDFLB', '{}'); -- TSK. Chnage customer id
 
--- Payment & Billing Details (1)
-INSERT INTO payment_and_billing_details
-(id, stripe_payment_method_id, stripe_customer_id, card_brand, last4, exp_month, exp_year, billing_address_line1, billing_address_line2, billing_city, billing_state, billing_postal_code, billing_country, billing_name, billing_email, billing_phone, default_method, payment_details, metadata)
-VALUES
-('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'pi_3NBIrtImwAD1T4RH1BDCdcQk', 'cus_NxDFsBVSEuDFLB', 'Visa', '4242', '12', '2022', '123 Main St', '', 'San Francisco', 'CA', '94111', 'US', 'Will Wilder', 'learnly@gmail.com', '415-555-5555', TRUE, '{}', '{}');
-
 -- Subscriptions (1)
 INSERT INTO subscriptions
-(id, user_id, stripe_customer_id, stripe_product_id, status, items, cancel_at_period_end, current_period_start, current_period_end, days_until_due, metadata)
+(id, user_id, stripe_customer_id, stripe_product_id, status, items, cancel_at_period_end, current_period_start, current_period_end, metadata)
 VALUES
-('sub_1MuOxKImwAD1T4RHYqF1pQVK', '185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NxDFsBVSEuDFLB', 'prod_NxDDcbb6EX57YM', 'active', '{}', FALSE, timezone('utc'::text, now()), timezone('utc'::text, now()) + interval '1 month', 30, '{}');
+('sub_1MuOxKImwAD1T4RHYqF1pQVK', '185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NxDFsBVSEuDFLB', 'prod_NxDDcbb6EX57YM', 'active', '{}', FALSE, timezone('utc'::text, now()), timezone('utc'::text, now()) + interval '14 days', '{}');
 
 -- Products (1)
 INSERT INTO products
