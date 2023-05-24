@@ -25,7 +25,7 @@ export default function OnboardingContainer() {
       />
 
       {/* Content */}
-      <Container className="space-y-6 z-30 flex w-full h-full max-w-3xl items-center flex-col justify-center">
+      <Container className="space-y-6 z-30 flex w-full h-full max-w-3xl items-center flex-col justify-center mb-8 sm:mb-0">
         {/* Progress */}
         <OnboardingProgressBar />
 

@@ -56,9 +56,13 @@ export default function AddOrEditChildForm({
         label="Birthday"
         required={true}
         options={{
-          maxDate: 'today',
+          enableTime: true,
+          dateFormat: 'D, M d (h:i K)',
+          minDate: 'today',
+          defaultHour: new Date().getHours() + 1,
+          defaultMinute: 0,
+          position: 'above right',
         }}
-        defaultValue="2010-01-01 00:00"
         cols={2}
       />
 
@@ -72,9 +76,10 @@ export default function AddOrEditChildForm({
       />
 
       {/* Buttons */}
-      <div className="col-span-4 mt-6 flex justify-between md:mt-0">
+      <div className="col-span-4 mt-6 space-x-2 flex justify-between md:mt-0">
         {/* Cancel */}
         <Button
+          size="sm"
           className="w-32 border border-slate-200 bg-transparent text-slate-600 hocus:border-white hocus:bg-transparent dark:border-navy-500 dark:text-navy-200 dark:hocus:border-navy-200"
           type="button"
           onClick={() => {

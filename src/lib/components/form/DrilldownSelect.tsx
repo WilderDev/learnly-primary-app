@@ -437,6 +437,3 @@ IProps) {
     </FormItem>
   );
 }
-
-// TSK: Accesibility | Keyboard Navigation | Animations | Typescript | Refactor
-// I am proud of this. There are things we can make better for sure, but I need to move on for now as I spent way too much time on this already. I will come back to it later.

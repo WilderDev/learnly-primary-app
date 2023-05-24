@@ -238,9 +238,6 @@ CREATE TABLE lesson_plan_templates (
   -- Assessments
   assessments jsonb[] DEFAULT '{}'::jsonb[],
 
-  -- Reflections
-  reflections jsonb[] DEFAULT '{}'::jsonb[],
-
   -- Special Considerations
   special_considerations text,
 

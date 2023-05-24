@@ -30,4 +30,3 @@ export default function SaveCurriculumRoadmapModal({
     </Modal>
   );
 }
-// TSK: Don't allow to save if the curriculum and students already exist

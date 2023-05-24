@@ -36,7 +36,6 @@ export interface ILessonPlanPromptReq {
   pace: Database['public']['Enums']['pace'] | null;
   materials: Database['public']['Enums']['material'][];
   special_considerations: string;
-  reflections: any; // TSK
   learning_styles?: Database['public']['Enums']['learning_style'][];
 }
 
