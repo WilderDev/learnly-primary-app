@@ -39,8 +39,6 @@ export default function LessonCreatorContextSection() {
     setMaterials,
     specialConsiderations,
     setSpecialConsiderations,
-    reflections,
-    setReflections,
     learningStyles,
     setLearningStyles,
   } = useLessonCreator();
@@ -76,9 +74,6 @@ export default function LessonCreatorContextSection() {
             cols={2}
             icon={BeakerIcon}
           />
-
-          {/* Reflections (TSK) */}
-          {/* TSK */}
 
           {/* Materials (Multi-Select) */}
           {/* <MultiSelect

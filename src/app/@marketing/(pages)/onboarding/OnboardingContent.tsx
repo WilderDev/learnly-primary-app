@@ -9,7 +9,7 @@ export default function OnboardingContent() {
 
   // * Render
   return (
-    <Box size="lg" shadow="xl" rounded="xl">
+    <Box className="overflow-y-scroll" size="lg" shadow="xl" rounded="xl">
       {steps.find((s) => s.step === step)?.component ?? <h1>Uh Oh!</h1>}
     </Box>
   );

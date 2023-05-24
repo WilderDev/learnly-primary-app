@@ -238,9 +238,6 @@ CREATE TABLE lesson_plan_templates (
   -- Assessments
   assessments jsonb[] DEFAULT '{}'::jsonb[],
 
-  -- Reflections
-  reflections jsonb[] DEFAULT '{}'::jsonb[],
-
   -- Special Considerations
   special_considerations text,
 
@@ -401,7 +398,8 @@ LEFT JOIN
   student_profiles sp ON sp.id = ANY(ulp.students)
 WHERE
   ulp.teacher_id = auth.uid() AND
-  ulp.scheduled_date BETWEEN date_trunc('day', now()) AND date_trunc('day', now()) + interval '30 days'
+  ulp.scheduled_date BETWEEN date_trunc('day', now()) AND date_trunc('day', now()) + interval '30 days' AND
+  ulp.status = 'scheduled'
 GROUP BY
   lp.id, lp.title, s.name, lv.name, t.name, lp.image_path, lp.tags, lp.length_in_min, ulp.scheduled_date
 ORDER BY

@@ -33,14 +33,17 @@ export default function RadioImages({
       labelHidden={labelHidden}
       className={className}
     >
-      <div className="flex items-center gap-4 flex-wrap" {...props}>
+      <div
+        className="flex items-center gap-4 flex-wrap justify-between"
+        {...props}
+      >
         {options.map((option) => (
           <button
             type="button"
             key={option}
             onClick={() => setValue(option)}
             className={cn(
-              'relative w-16 h-16 p-1 rounded-lg border-2 border-transparent focus:outline-none ring-2 ring-transparent focus:ring-offset-2 focus:ring-green-500',
+              'relative w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 p-1 rounded-lg border-2 border-transparent focus:outline-none ring-2 ring-transparent focus:ring-offset-2 focus:ring-green-500',
               value === option && 'border-green-500',
             )}
             aria-label={`Select ${option}`}

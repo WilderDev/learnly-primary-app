@@ -31,6 +31,7 @@ export default function MarketingNavCTA() {
 
         {/* CTA Free Trial */}
         <Button
+          className="text-xs sm:text-sm md:text-base"
           size="md"
           fill="gradient"
           effect="scale"
@@ -38,7 +39,8 @@ export default function MarketingNavCTA() {
           rounded="lg"
           url="/onboarding"
         >
-          <span className="mr-2">👉</span> Start My Free Trial
+          <span className="hidden sm:inline-block mr-2">👉</span> Start My Free
+          Trial
         </Button>
       </div>
 

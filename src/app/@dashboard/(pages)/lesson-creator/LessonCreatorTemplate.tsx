@@ -28,7 +28,6 @@ export default function LessonCreatorTemplate({ template }: IProps) {
     setStudents,
     setMaterials,
     setSpecialConsiderations,
-    setReflections,
     setLearningStyles,
     reset,
   } = useLessonCreator();
@@ -61,7 +60,6 @@ export default function LessonCreatorTemplate({ template }: IProps) {
 
     setMaterials(template.materials || []);
     setSpecialConsiderations(template.special_considerations || '');
-    // setReflections(template.reflections || {});
     setLearningStyles(template.learning_styles || []);
   };
 
