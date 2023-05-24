@@ -28,7 +28,7 @@ const objectiveOptions: Database['public']['Enums']['objective'][] = [
   'Synthesis',
 ];
 // Difficulties
-const difficultyOptions: Database['public']['Enums']['difficulty'][] = [
+export const difficultyOptions: Database['public']['Enums']['difficulty'][] = [
   'EASY',
   'MODERATE',
   'CHALLENGING',

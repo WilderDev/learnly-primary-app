@@ -12,7 +12,7 @@ CREATE TYPE event AS ENUM (
 -- Events
 CREATE TABLE events (
   -- Unique ID (Primary Key)
-  id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
 
   -- Event Type
   type event NOT NULL DEFAULT 'LESSON',

@@ -55,7 +55,6 @@ interface IDashPanelProps {
   modalSize?: TSize;
   modalContent?: React.ReactNode;
   noCloseOnOutsideClick?: boolean;
-  closeBtn?: boolean;
 }
 
 // Component
@@ -67,7 +66,6 @@ export function DashPanelHeader({
   modalSize,
   modalContent,
   noCloseOnOutsideClick,
-  closeBtn,
 }: IDashPanelProps) {
   // * State
   const [isModalOpen, setModalOpen] = useState(false);
@@ -114,7 +112,7 @@ export function DashPanelHeader({
           close={() => setModalOpen(false)}
           size={modalSize || 'md'}
           noCloseOnOutsideClick={noCloseOnOutsideClick}
-          closeBtn={closeBtn}
+          closeBtn={true}
         >
           {modalContent}
         </Modal>

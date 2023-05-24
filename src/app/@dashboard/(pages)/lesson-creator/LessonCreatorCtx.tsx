@@ -49,7 +49,6 @@ interface ILessonCreatorCtx {
   materials: Database['public']['Enums']['material'][];
   specialConsiderations: string | null;
   /// Context - Extra
-  reflections: {}; // TSK
   learningStyles: Database['public']['Enums']['learning_style'][];
   // Output
   lessonContent: string;
@@ -94,7 +93,6 @@ interface ILessonCreatorCtx {
     SetStateAction<Database['public']['Enums']['material'][]>
   >;
   setSpecialConsiderations: Dispatch<SetStateAction<string>>;
-  setReflections: Dispatch<SetStateAction<{}>>; // TSK
   setLearningStyles: Dispatch<
     SetStateAction<Database['public']['Enums']['learning_style'][]>
   >;
@@ -134,7 +132,6 @@ const initialCtxValue: ILessonCreatorCtx = {
   materials: [],
   specialConsiderations: '',
   /// Context - Extra
-  reflections: {}, // TSK
   learningStyles: [],
   // Output
   lessonContent: '',
@@ -165,7 +162,6 @@ const initialCtxValue: ILessonCreatorCtx = {
   setStudents: () => {},
   setMaterials: () => {},
   setSpecialConsiderations: () => {},
-  setReflections: () => {},
   setLearningStyles: () => {},
   setComplete: () => {},
   setIsLoading: () => {},
@@ -223,7 +219,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   const [specialConsiderations, setSpecialConsiderations] =
     useState<string>('');
   /// Context - Extra
-  const [reflections, setReflections] = useState<{}>({}); // TSK
   const [learningStyles, setLearningStyles] = useState<
     Database['public']['Enums']['learning_style'][]
   >([]);
@@ -264,7 +259,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       pace,
       materials,
       special_considerations: specialConsiderations,
-      reflections,
       learning_styles: learningStyles,
     };
     const teacher: ITeacherPromptReq = {
@@ -347,7 +341,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     pace,
     materials,
     specialConsiderations,
-    reflections,
     learningStyles,
     students,
     user?.type,
@@ -373,7 +366,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setStudents([]);
       setMaterials([]);
       setSpecialConsiderations('');
-      setReflections({});
       setLearningStyles([]);
     }
 
@@ -412,7 +404,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       materials,
       specialConsiderations,
       /// Context - Extra
-      reflections,
       learningStyles,
       // Output
       lessonContent,
@@ -443,7 +434,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setStudents,
       setMaterials,
       setSpecialConsiderations,
-      setReflections,
       setLearningStyles,
       setComplete,
       setIsLoading,
@@ -466,7 +456,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       students,
       materials,
       specialConsiderations,
-      reflections,
       learningStyles,
       isLoading,
       lessonContent,

@@ -1,8 +1,16 @@
 export interface ITestimonial {
+  id: number;
   name: string;
   quote: string;
   role: string;
   image: string;
+}
+
+export interface IReview {
+  title: string;
+  body: string;
+  author: string;
+  rating: number;
 }
 
 export interface IEmail {

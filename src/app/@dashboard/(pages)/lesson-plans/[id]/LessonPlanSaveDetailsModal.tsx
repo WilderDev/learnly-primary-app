@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Modal from '@/lib/components/popouts/Modal';
 import Form from '@/lib/components/form/Form';
 import { useRequest } from '@/lib/hooks/useRequest';
-import { saveLessonPlan } from './_actions';
 import { toast } from 'sonner';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import DatePicker from '@/lib/components/form/DatePicker';
@@ -15,6 +14,9 @@ import {
   CheckIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid';
+import { useParams } from 'next/navigation';
+import { saveCurriculumLessonPlan } from '../../curriculum-roadmaps/_actions';
+import { saveLessonPlan } from './_actions';
 
 interface IProps {
   lessonPlanId: string;
@@ -29,7 +31,7 @@ export default function LessonPlanSaveDetailsModalForm({
   isVisible,
   close,
 }: IProps) {
-  // * Contexts
+  // * Contexts / Hooks
   const { students } = useUser();
 
   // * Requests / Mutations
@@ -85,7 +87,7 @@ export default function LessonPlanSaveDetailsModalForm({
             required={true}
             options={{
               enableTime: true,
-              dateFormat: 'Y-m-d H:i',
+              dateFormat: 'D, M d (h:i K)',
               minDate: 'today',
               defaultHour: new Date().getHours() + 1,
               defaultMinute: 0,

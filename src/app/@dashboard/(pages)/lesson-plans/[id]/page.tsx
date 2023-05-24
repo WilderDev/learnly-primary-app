@@ -16,15 +16,15 @@ import { fetchAssignmentCall } from './(assignments)/_actions';
 import Assignment from './(assignments)/Assignment';
 // import { useAssignmentStore } from '@/lib/store/assignmentStore';
 
-// * Props
-interface IProps {
+// * Params
+interface IParams {
   params: {
     id: string;
   };
 }
 
-// * Component
-export default async function LessonPlanPage({ params: { id } }: IProps) {
+// * Page
+export default async function LessonPlanPage({ params: { id } }: IParams) {
   // * Data
   const lessonPlan = await getLessonPlan(id);
   const assignment = await fetchAssignmentCall({ lesson_plan_id: id });
@@ -70,6 +70,7 @@ export default async function LessonPlanPage({ params: { id } }: IProps) {
   );
 }
 
+// * Fetcher
 async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
@@ -84,7 +85,8 @@ async function getLessonPlan(id: string) {
   return data as ILessonPlan;
 }
 
-export async function generateMetadata({ params: { id } }: IProps) {
+// * Metadata
+export async function generateMetadata({ params: { id } }: IParams) {
   const { title, image_path, subject, level, topic, tags } =
     await getLessonPlan(id);
 
@@ -109,6 +111,7 @@ export async function generateMetadata({ params: { id } }: IProps) {
   };
 }
 
+// * Static Params
 export async function generateStaticParams() {
   const supabase = supabaseServer();
 
