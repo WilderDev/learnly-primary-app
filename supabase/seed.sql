@@ -89,32 +89,32 @@ VALUES
 INSERT INTO customers
 (id, stripe_customer_id, subscriptions)
 VALUES
-('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NfjzKF2WtQEoNX', '{}');
+('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NxDFsBVSEuDFLB', '{}'); -- TSK. Chnage customer id
 
 -- Payment & Billing Details (1)
 INSERT INTO payment_and_billing_details
 (id, stripe_payment_method_id, stripe_customer_id, card_brand, last4, exp_month, exp_year, billing_address_line1, billing_address_line2, billing_city, billing_state, billing_postal_code, billing_country, billing_name, billing_email, billing_phone, default_method, payment_details, metadata)
 VALUES
-('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'pm_1MqxwvImwAD1T4RH2Z2Z2Z2Z', 'cus_NfjzKF2WtQEoNX', 'Visa', '4242', '12', '2022', '123 Main St', '', 'San Francisco', 'CA', '94111', 'US', 'Will Wilder', 'learnly@gmail.com', '415-555-5555', TRUE, '{}', '{}');
+('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'pi_3NBIrtImwAD1T4RH1BDCdcQk', 'cus_NxDFsBVSEuDFLB', 'Visa', '4242', '12', '2022', '123 Main St', '', 'San Francisco', 'CA', '94111', 'US', 'Will Wilder', 'learnly@gmail.com', '415-555-5555', TRUE, '{}', '{}');
 
 -- Subscriptions (1)
 INSERT INTO subscriptions
 (id, user_id, stripe_customer_id, stripe_product_id, status, items, cancel_at_period_end, current_period_start, current_period_end, days_until_due, metadata)
 VALUES
-('sub_1MuOxKImwAD1T4RHYqF1pQVK', '185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NfjzKF2WtQEoNX', 'prod_NbzlM7B5YH5saJ', 'active', '{}', FALSE, timezone('utc'::text, now()), timezone('utc'::text, now()) + interval '1 month', 30, '{}');
+('sub_1MuOxKImwAD1T4RHYqF1pQVK', '185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NxDFsBVSEuDFLB', 'prod_NxDDcbb6EX57YM', 'active', '{}', FALSE, timezone('utc'::text, now()), timezone('utc'::text, now()) + interval '1 month', 30, '{}');
 
 -- Products (1)
 INSERT INTO products
 (id, active, name, description, image, metadata)
 VALUES
-('prod_NbzlM7B5YH5saJ', TRUE, 'Learnly Premium Plus', 'Learnly for parents and one child with advanced features and support', '/favicon/logo-res.png', '{}');
+('prod_NxDDcbb6EX57YM', TRUE, 'Learnly Premium Plus', 'Learnly for parents and one child with advanced features and support', '/favicon/logo-res.png', '{}');
 
 -- Prices (2)
 INSERT INTO prices
 (id, stripe_product_id, active, description, nickname, recurring_interval, recurring_interval_count, metadata)
 VALUES
-('price_1MqxwwImwAD1T4RHVeBgE47e', 'prod_NbzlM7B5YH5saJ', TRUE, 'Learnly for parents and one child with advanced features and support', 'Monthly', 'month', 1, '{"features": "Everything Included in Solo, Interactive Learning Materials, Advanced Performance Reports & Analytics, Parental Controls, Real-time Feedback, 2 Child Accounts Included, 24/7 Dedicated Support", "level": "plus"}'),
-('price_1MqlmHImwAD1T4RH15cLpyuT', 'prod_NbzlM7B5YH5saJ', TRUE, 'Learnly for parents and one child with advanced features and support', 'Yearly', 'year', 1, '{"features": "20% Off, Everything Included in Solo, Interactive Learning Materials, Advanced Performance Reports & Analytics, Parental Controls, Real-time Feedback, 2 Child Accounts Included, 24/7 Dedicated Support", "level": "plus"}');
+('price_1NBImpImwAD1T4RHjKzp7NjK', 'prod_NxDDcbb6EX57YM', TRUE, 'Learnly for parents and one child with advanced features and support', 'Monthly', 'month', 1, '{"features": "Everything Included in Solo, Interactive Learning Materials, Advanced Performance Reports & Analytics, Parental Controls, Real-time Feedback, 2 Child Accounts Included, 24/7 Dedicated Support", "level": "plus"}'),
+('price_1NBImpImwAD1T4RHocjEbSJH', 'prod_NxDDcbb6EX57YM', TRUE, 'Learnly for parents and one child with advanced features and support', 'Yearly', 'year', 1, '{"features": "20% Off, Everything Included in Solo, Interactive Learning Materials, Advanced Performance Reports & Analytics, Parental Controls, Real-time Feedback, 2 Child Accounts Included, 24/7 Dedicated Support", "level": "plus"}');
 
 -- Notificaitons (4)
 INSERT INTO notifications

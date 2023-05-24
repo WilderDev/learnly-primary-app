@@ -848,7 +848,7 @@ export interface Database {
           created_at: string;
           currency: string;
           current_period_end: string;
-          current_period_start: string;
+          current_period_start: number;
           days_until_due: number;
           default_payment_method_id: string;
           description: string;

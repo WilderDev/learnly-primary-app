@@ -8,8 +8,10 @@ import {
   handleCreateProduct,
   handleDeletePrice,
   handleDeleteProduct,
+  handleCreateCustomer,
   handleUpdatePrice,
   handleUpdateProduct,
+  handleDeleteCustomer,
 } from '@/lib/stripe/stripeWebhookHandlers';
 
 // * CONSTANTS
@@ -17,16 +19,18 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!; // Retrieve the endpo
 
 // * HELPERS
 // Disable body parsing since we are retrieving the raw body
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
-export const runtime = 'edge'; // Set the runtime to Edge
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+export const runtime = 'nodejs'; // Set the runtime to Edge
 
 // * EVENTS
 // Webhook Events to listen for: https://stripe.com/docs/api/events/types
 const relevantEvents: Stripe.Event['type'][] = [
+  'customer.created', // => Create Customer Record ✅
+  'customer.deleted', // => Delete Customer Record ✅
   'product.created', // => Create Product Record ✅
   'product.updated', // => Update Product Record ✅
   'product.deleted', // => Delete Product Record ✅
@@ -41,14 +45,15 @@ const relevantEvents: Stripe.Event['type'][] = [
 export async function POST(request: Request) {
   const body = await request.text(); // Retrieve the request's body
   const sig = headers().get('stripe-signature')!; // Retrieve the signature from the request header
-
   let event: Stripe.Event; // Declare the event variable
 
   // Verify the request against the endpoint secret
   try {
     // Construct the event from the raw body and signature
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
+    console.log('event:', event);
   } catch (err) {
+    console.log('err:', err);
     return new Response('Webhook Error: ' + err, { status: 400 }); // Return a response with error message
   }
 
@@ -57,7 +62,19 @@ export async function POST(request: Request) {
   if (relevantEvents.includes(event.type)) {
     const evt = event.data.object;
 
+    console.log('evt:', evt);
+
     switch (event.type) {
+      // *** Handle customer.created event *** \\
+      case 'customer.created':
+        await handleCreateCustomer({ customer: evt as Stripe.Customer }); // Run the handler function
+
+        break; // Exit switch statement
+      // *** Handle customer.deleted event *** \\
+      case 'customer.deleted':
+        await handleDeleteCustomer({ customerId: (evt as Stripe.Customer).id }); // Run the handler function
+
+        break; // Exit switch statement
       // *** Handle product.created event *** \\
       case 'product.created':
         await handleCreateProduct({ product: evt as Stripe.Product }); // Run the handler function

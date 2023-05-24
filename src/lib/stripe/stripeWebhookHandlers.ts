@@ -4,8 +4,10 @@ import Stripe from 'stripe';
 import { supabaseAdmin } from '../auth/supabaseAdmin';
 import { stripe } from './stripe';
 
+// * Handle Create or Retrieve Customer Event ✅
 // Interface
-interface ICreateCustomer {
+// Interface
+interface ICreateOrRetrieveCustomer {
   supabaseId: string;
   email: string;
 }
@@ -14,7 +16,7 @@ interface ICreateCustomer {
 export async function handleCreateOrRetrieveCustomer({
   supabaseId,
   email,
-}: ICreateCustomer) {
+}: ICreateOrRetrieveCustomer) {
   // 1. Check if the Customer already exists in the database
   const { data: customer } = await supabaseAdmin()
     .from('customers')
@@ -53,6 +55,88 @@ export async function handleCreateOrRetrieveCustomer({
     stripeCustomerId: stripeCustomer.id,
     isNewCustomer: true,
   };
+}
+
+// * Handle Customer Created Event ✅
+// Interface
+interface ICreateCustomer {
+  customer: Stripe.Customer;
+}
+
+// Handler
+export async function handleCreateCustomer({ customer }: ICreateCustomer) {
+  console.log('customer:', customer);
+  console.log('STRIPE_DEFAULT_:', process.env.STRIPE_DEFAULT_PRICE_ID);
+  // 1. Create a new Stripe Trial Subscription
+  const subscription = await stripe.subscriptions.create({
+    customer: customer.id,
+
+    items: [{ price: process.env.STRIPE_DEFAULT_PRICE_ID as string }],
+    trial_period_days: 14,
+    payment_settings: {
+      save_default_payment_method: 'on_subscription',
+    },
+    trial_settings: {
+      end_behavior: {
+        missing_payment_method: 'cancel',
+      },
+    },
+  });
+
+  console.log('subscription:', subscription);
+
+  // 2. Insert the Subscription into the database
+  const { error: subscriptionError } = await supabaseAdmin()
+    .from('subscriptions')
+    .insert({
+      id: subscription.id,
+      user_id: customer.metadata.supabaseId,
+      status: subscription.status,
+      price_id: subscription.items.data[0].price.id,
+      current_period_start: subscription.current_period_start.toString(),
+      current_period_end: subscription.current_period_end.toString(),
+      trial_start: subscription.trial_start
+        ? subscription.trial_start.toString()
+        : null,
+      trial_end: subscription.trial_end
+        ? subscription.trial_end.toString()
+        : null,
+      created: subscription.created.toString(),
+      metadata: subscription.metadata,
+      cancel_at_period_end: subscription.cancel_at_period_end,
+      canceled_at: subscription.canceled_at
+        ? subscription.canceled_at.toString()
+        : null,
+      stripe_price_id: subscription.items.data[0].price.id,
+      stripe_customer_id: subscription.customer as string,
+      cancel_at: subscription.cancel_at
+        ? subscription.cancel_at.toString()
+        : null,
+      days_until_due: subscription.days_until_due ?? undefined,
+    });
+
+  console.log('subscriptionError:', subscriptionError);
+
+  // 3. Check if there was an error inserting the Subscription
+  if (subscriptionError) throw new Error(subscriptionError.message);
+}
+
+// * Handle Customer Deleted Event ✅
+// Interface
+interface IDeleteCustomer {
+  customerId: string;
+}
+
+// Handler
+export async function handleDeleteCustomer({ customerId }: IDeleteCustomer) {
+  // 1. Delete the Customer from the database
+  const { error: customerError } = await supabaseAdmin()
+    .from('customers')
+    .delete()
+    .eq('id', customerId);
+
+  // 2. Check if there was an error deleting the Customer
+  if (customerError) throw new Error(customerError.message);
 }
 
 // * Handle Product Created Event ✅
