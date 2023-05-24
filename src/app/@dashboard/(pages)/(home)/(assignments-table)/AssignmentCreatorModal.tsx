@@ -5,11 +5,12 @@ import AssignmentCreatorForm from '../../lesson-plans/[id]/(assignments)/Assignm
 import { fetchUserLessonPlans } from '../../lesson-plans/[id]/(assignments)/_actions';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 
 export default function AssignmentCreatorModal() {
   const [userLessonPlans, setUserLessonPlans] = useState([] as any);
+  const [assignmentContent, setAssignmentContent] = useState('');
 
-  // const _userLessonPlans = await fetchUserLessonPlans()
   useEffect(() => {
     fetchUserLessonPlans()
       .then((userLessonPlans) => {
@@ -19,15 +20,24 @@ export default function AssignmentCreatorModal() {
         toast.error('Failed to get your lesson plans!');
       });
   }, []);
+
   return (
     <>
-      <Modal.Header title="Create an Assignment" />
-      <Modal.Body>
-        <AssignmentCreatorForm
-          isModal={true}
-          userLessonPlans={userLessonPlans}
-        />
-      </Modal.Body>
+      {assignmentContent ? (
+        <LessonPlanMarkdown content={assignmentContent} />
+      ) : (
+        <>
+          <Modal.Header title="Create an Assignment" />
+          <Modal.Body>
+            <AssignmentCreatorForm
+              isModal={true}
+              userLessonPlans={userLessonPlans}
+              assignmentContent={assignmentContent}
+              setAssignmentContent={setAssignmentContent}
+            />
+          </Modal.Body>
+        </>
+      )}
     </>
   );
 }

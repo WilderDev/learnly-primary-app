@@ -16,13 +16,21 @@ import AssignmentEditModalForm from './AssignmentEditModalForm';
 import LoadingDots from '@/lib/components/loading/LoadingDots';
 import cn from '@/lib/common/cn';
 import Tag from '@/lib/components/ui/Tag';
-import { getStatusColor } from '../../lesson-plans/[id]/(assignments)/helpers';
+import {
+  getStatusColor,
+  getStudentCreds,
+} from '../../lesson-plans/[id]/(assignments)/helpers';
 import capitalize from '@/lib/common/capitalize';
+import { useUser } from '@/lib/components/providers/UserProvider';
+import React from 'react';
+import Image from 'next/image';
 
 interface IProps {
   assignments: any[];
 }
 export default function AssignmentsTableBody({ assignments }: IProps) {
+  const { students: usersStudents } = useUser();
+
   // State
   const [assignmentsEditModal, setAssignmentsEditModal] = useState(false);
   const [selectedAssignment, setSelectedAssignment] = useState(null);
@@ -47,10 +55,28 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             )}
           >
             {/* Student */}
-            <Table.Cell className="font-medium flex gap-2">Timmy</Table.Cell>
+            <Table.Cell className="flex items-center px-1">
+              {getStudentCreds(
+                assignment.user_lesson_plan.students,
+                usersStudents
+              ).map((student, index) => (
+                <React.Fragment key={index}>
+                  <Image
+                    className="mr-2 h-8 w-8 rounded-full"
+                    src={student.avatarUrl}
+                    alt="Student"
+                    width={32}
+                    height={32}
+                  />
+                  <span className="text-sm mr-2">
+                    {student.firstName} {student.lastName}
+                  </span>
+                </React.Fragment>
+              ))}
+            </Table.Cell>
 
             {/* Title */}
-            <Table.Cell className="font-medium">Title</Table.Cell>
+            <Table.Cell className="font-medium">{assignment.title}</Table.Cell>
 
             {/* Status */}
             <Table.Cell className="font-medium">
@@ -87,13 +113,27 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             </Table.Cell>
 
             {/* Subject */}
-            <Table.Cell className="font-medium">Science</Table.Cell>
+            <Table.Cell className="font-medium">
+              {assignment.lesson_plan.subject.name}
+            </Table.Cell>
 
             {/* Assignment Date */}
-            <Table.Cell className="font-medium">Date</Table.Cell>
+            <Table.Cell className="font-medium">
+              {new Date(assignment.assigned_on).toLocaleDateString('en-US', {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </Table.Cell>
 
             {/* Due Date */}
-            <Table.Cell className="font-medium">Date</Table.Cell>
+            <Table.Cell className="font-medium">
+              {new Date(assignment.due_date).toLocaleDateString('en-US', {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </Table.Cell>
 
             {/* More */}
             <Table.Cell>
@@ -116,9 +156,15 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
           setAssignmentsEditModal(false);
           setSelectedAssignment(null);
         }}
+        noCloseOnOutsideClick={true}
+        closeBtn={true}
       >
         {selectedAssignment && (
-          <AssignmentEditModalForm assignment={selectedAssignment} />
+          <AssignmentEditModalForm
+            assignment={selectedAssignment}
+            setAssignmentsEditModal={setAssignmentsEditModal}
+            usersStudents={usersStudents}
+          />
         )}
       </Modal>
     </>

@@ -16,6 +16,7 @@ import { fetchAssignments } from '../lesson-plans/[id]/(assignments)/_actions';
 
 export default async function ParentDashboardHomePage() {
   const assignments = await fetchAssignments();
+
   // * Render
   return (
     <>

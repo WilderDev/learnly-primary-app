@@ -1,3 +1,5 @@
+import { UserStudent } from '@/assets/typescript/user';
+
 // * Status Enums
 export type StatusT = 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELED';
 
@@ -36,3 +38,9 @@ const statusColors = {
       'from-red-500 via-rose-600 to-red-700 text-red-100 dark:text-red-100',
   },
 };
+
+export function getStudentCreds(ids: string[], students: UserStudent[]) {
+  return ids
+    .map((id) => students.find((student) => student.id === id))
+    .filter(Boolean) as UserStudent[];
+}

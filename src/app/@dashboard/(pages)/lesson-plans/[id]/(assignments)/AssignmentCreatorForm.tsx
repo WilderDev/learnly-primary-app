@@ -62,7 +62,7 @@ export default function AssignmentCreatorForm({
         : getLessonWithId(userLessonOption).lesson_plan.title + ' Assignment';
     const lessonPlanId = lessonPlan
       ? lessonPlan.id
-      : getLessonWithId(userLessonOption).lesson_plan.id;
+      : getLessonWithId(userLessonOption).lesson_plan_id;
 
     //  TSK We need to pull the user lesson plan id when we are on the lesson page this only works currently for the dashboard modal
     const userLessonPlanId = getLessonWithId(userLessonOption).id;
@@ -74,7 +74,6 @@ export default function AssignmentCreatorForm({
       additionalComments,
     };
 
-    console.log(lessonPlan ? lessonPlan : getLessonWithId(userLessonOption));
     const res = await fetch('/api/ai/assignments', {
       method: 'POST',
       headers: {

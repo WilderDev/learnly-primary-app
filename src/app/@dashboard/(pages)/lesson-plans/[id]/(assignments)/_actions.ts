@@ -104,16 +104,17 @@ export const changeAssignmentStatus = createRequest(
 
 // Action to edit an assignment
 
-const editAssignmentStatusSchema = z.object({
+const editAssignmentSchema = z.object({
   id: z.string().uuid(),
-  title: z.string().optional(),
+  title: z.string(),
   dueDate: z.date(),
+  assignedOn: z.date(),
 });
 
-const editAssignmentStatusAction = async (
-  input: z.infer<typeof editAssignmentStatusSchema>
+const editAssignmentAction = async (
+  input: z.infer<typeof editAssignmentSchema>
 ) => {
-  const { id, title, dueDate } = input;
+  const { id, title, dueDate, assignedOn } = input;
 
   try {
     const supabase = supabaseServer();
@@ -122,7 +123,8 @@ const editAssignmentStatusAction = async (
       .from('assignments')
       .update({
         title,
-        dueDate,
+        due_date: dueDate,
+        assigned_on: assignedOn,
       })
       .eq('id', id);
 
@@ -136,9 +138,40 @@ const editAssignmentStatusAction = async (
   }
 };
 
-export const editAssignmentStatus = createRequest(
-  editAssignmentStatusAction,
-  editAssignmentStatusSchema
+export const editAssignment = createRequest(
+  editAssignmentAction,
+  editAssignmentSchema
+);
+
+// Action to delte assignment
+
+const deleteAssignmentSchema = z.object({
+  id: z.string().uuid(),
+});
+
+const deleteAssignmentAction = async (
+  input: z.infer<typeof deleteAssignmentSchema>
+) => {
+  const { id } = input;
+
+  try {
+    const supabase = supabaseServer();
+
+    const { error } = await supabase.from('assignments').delete().eq('id', id);
+
+    if (error) return responseContract(error.message, false);
+
+    revalidatePath('/');
+
+    return responseContract('Success!', true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
+};
+
+export const deleteAssignment = createRequest(
+  deleteAssignmentAction,
+  deleteAssignmentSchema
 );
 
 // Call to fetch a single assignment
@@ -181,7 +214,9 @@ export async function fetchAssignments(): Promise<IAssignment[]> {
 
     const { data, error } = await supabase
       .from('assignments')
-      .select('*')
+      .select(
+        '*, user_lesson_plan:user_lesson_plans(students), lesson_plan:lesson_plans(subject:subjects(name))'
+      )
       .eq('creator_id', user?.id)
       .limit(10);
 
