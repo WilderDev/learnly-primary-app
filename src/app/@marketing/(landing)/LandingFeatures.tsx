@@ -1,7 +1,12 @@
 import Image from 'next/image';
 
 import { InboxIcon, SparklesIcon } from '@heroicons/react/24/outline';
-import dashboardImage from '@/assets/images/brand/dashboard.png';
+import learnlyLessonCreator from '@/assets/screenshots/learnly-lesson-creator.png';
+import learnlyChat from '@/assets/screenshots/learnly-chat.png';
+import learnlyCurriculum from '@/assets/screenshots/learnly-curriculum.png';
+import learnlySchedule from '@/assets/screenshots/learnly-schedule.png';
+import learnlyLessonModal from '@/assets/screenshots/learnly-lesson-modal.png';
+import Link from 'next/link';
 
 // * Component
 export default function LandingFeatures() {
@@ -22,21 +27,22 @@ export default function LandingFeatures() {
               </div>
               <div className="mt-6">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-navy-50">
-                  Lorem ipsum dolor sit amet.
+                  Create Personalized Lesson Plans in 30 Seconds
                 </h2>
                 <p className="mt-4 text-lg text-slate-500 dark:text-navy-200">
-                  Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis
-                  bibendum malesuada faucibus lacinia porttitor. Pulvinar
-                  laoreet sagittis viverra duis. In venenatis sem arcu pretium
-                  pharetra at. Lectus viverra dui tellus ornare pharetra.
+                  No longer will you stay up late at night after an exhausting
+                  day of teaching, trying to figure out what to teach tomorrow.
+                  With Learnly, you can create a personalized lesson plan in 30
+                  seconds. Just select the topics you want to teach, and Learnly
+                  will automatically generate a lesson plan for you.
                 </p>
                 <div className="mt-6">
-                  <a
-                    href="#"
-                    className="inline-flex rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white dark:text-navy-50 shadow-sm ring-1 ring-green-600 hover:bg-green-700 hover:ring-green-700"
+                  <Link
+                    className="inline-flex items-center space-x-2 transition-all duration-300 hocus:shadow-md rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white dark:text-navy-50 shadow-sm ring-1 ring-green-600 hover:bg-green-700 hover:ring-green-700"
+                    href="/onboarding"
                   >
-                    Get started
-                  </a>
+                    Get started for free →
+                  </Link>
                 </div>
               </div>
             </div>
@@ -44,9 +50,8 @@ export default function LandingFeatures() {
               <blockquote>
                 <div>
                   <p className="text-base text-slate-500 dark:text-navy-100">
-                    &ldquo;Cras velit quis eros eget rhoncus lacus ultrices sed
-                    diam. Sit orci risus aenean curabitur donec aliquet. Mi
-                    venenatis in euismod ut.&rdquo;
+                    &ldquo;The lesson created literally saves me 10 hours every
+                    week. I can&apos;t believe this exists!!&rdquo;
                   </p>
                 </div>
                 <footer className="mt-3">
@@ -61,7 +66,7 @@ export default function LandingFeatures() {
                       />
                     </div>
                     <div className="text-base font-medium text-slate-700 dark:text-navy-200">
-                      TSK TSK, homeschooling
+                      Marie M. - Learnly Enthusiast
                     </div>
                   </div>
                 </footer>
@@ -73,7 +78,7 @@ export default function LandingFeatures() {
             <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
               <Image
                 className="w-full rounded-xl shadow-xl ring-1 ring-black dark:ring-navy-50 ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                src={dashboardImage}
+                src={learnlyLessonCreator}
                 alt=""
               />
             </div>
@@ -95,21 +100,21 @@ export default function LandingFeatures() {
               </div>
               <div className="mt-6">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-navy-50">
-                  Lorem ipsum dolor sit amet.
+                  Engaging & Science-Backed Curriculums
                 </h2>
                 <p className="mt-4 text-lg text-slate-500 dark:text-navy-100">
-                  Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis
-                  bibendum malesuada faucibus lacinia porttitor. Pulvinar
-                  laoreet sagittis viverra duis. In venenatis sem arcu pretium
-                  pharetra at. Lectus viverra dui tellus ornare pharetra.
+                  Choose from a variety of curriculums that are designed to be
+                  engaging and effective. Learnly curriculums are designed by
+                  experts and backed by science. You can also create your own
+                  curriculum and share it with the community.
                 </p>
                 <div className="mt-6">
-                  <a
-                    href="#"
-                    className="inline-flex rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white dark:text-navy-50 shadow-sm ring-1 ring-green-600 dark:ring-green-500 hocus:bg-green-700 dark:hocus:bg-gren-600 hocus:ring-green-700 dark:hocus:ring-green-600"
+                  <Link
+                    className="inline-flex rounded-lg transition-all duration-300 hocus:shadow-md bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white dark:text-navy-50 shadow-sm ring-1 ring-green-600 dark:ring-green-500 hocus:bg-green-700 dark:hocus:bg-gren-600 hocus:ring-green-700 dark:hocus:ring-green-600"
+                    href="/onboarding"
                   >
-                    Get started
-                  </a>
+                    I&apos;m ready to try it out! 🚀
+                  </Link>
                 </div>
               </div>
             </div>
@@ -118,7 +123,7 @@ export default function LandingFeatures() {
             <div className="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
               <Image
                 className="w-full rounded-xl shadow-xl ring-1 ring-black dark:ring-navy-50 ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
-                src={dashboardImage}
+                src={learnlyCurriculum}
                 alt=""
               />
             </div>
