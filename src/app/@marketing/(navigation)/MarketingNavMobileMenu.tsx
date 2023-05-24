@@ -4,6 +4,7 @@ import { Popover } from '@headlessui/react';
 import { Bars3Icon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { AnimatePresence, motion } from 'framer-motion';
 import MarketingNavLinkMobile from './MarketingNavLinkMobile';
+import MarketingNavCTA from './MarketingNavCTA';
 
 export default function MarketingNavMobileMenu() {
   return (
@@ -55,10 +56,12 @@ export default function MarketingNavMobileMenu() {
                     <MarketingNavLinkMobile href="/#faqs">
                       FAQs
                     </MarketingNavLinkMobile>
+                    <MarketingNavLinkMobile href="/#get-started">
+                      Get Started
+                    </MarketingNavLinkMobile>
                   </div>
                   <div className="mt-8 flex flex-col gap-4">
-                    {/* TSK */}
-                    {/* <LandingHeaderActionButtons isMobile={true} /> */}
+                    <MarketingNavCTA />
                   </div>
                 </Popover.Panel>
               </>

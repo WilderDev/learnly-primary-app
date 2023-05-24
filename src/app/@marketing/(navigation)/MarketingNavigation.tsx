@@ -12,7 +12,7 @@ export default function MarketingNavigation() {
         role="navigation"
         aria-label="Main Navigation"
       >
-        <Container className="z-30 flex justify-between py-6">
+        <Container className="z-30 flex justify-between mx-0 md:mx-auto py-6 max-w-7xl">
           <div className="hidden relative z-10 lg:flex items-center gap-16">
             {/* Logo */}
             <Logo withText={true} />
@@ -23,7 +23,7 @@ export default function MarketingNavigation() {
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 justify-between w-full lg:w-auto lg:justify-normal sm:px-6 lg:px-0">
             {/* Mobile Menu */}
             <MarketingNavMobileMenu />
 

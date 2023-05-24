@@ -106,10 +106,10 @@ function LandingVerticleTestimonialColumn({
   // Update the column height when the window is resized
   useEffect(() => {
     let resizeObserver = new window.ResizeObserver(() => {
-      setColumnHeight(columnRef.current!.offsetHeight); // Update the column height
+      columnRef.current && setColumnHeight(columnRef.current.offsetHeight); // Update the column height
     });
 
-    resizeObserver.observe(columnRef.current!); // Observe the column element
+    columnRef.current && resizeObserver.observe(columnRef.current); // Observe the column element
 
     return () => {
       resizeObserver.disconnect(); // Disconnect the observer when the component unmounts

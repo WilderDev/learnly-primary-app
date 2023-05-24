@@ -27,9 +27,10 @@
 27. I never figured out why students needed to be required for the lesson to not bug out... such an odd bug.
 28. Fix Facebook Open Graph Image on Lesson Plans and test
 29. help-center/faq page
-30. Users can create their own lessons, topics, subjects, and curriculum
-31. Generate Metadata on @dashboard /curriculum-roadmaps should change the query to get the curriculum name as well so we can use the same query and instead of Topics | Little Learners it would be Topics | Mathematics | Little Learners
-32. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+30. Marketing Partners page where we show all the companies we are partnered with and the deals and put in footer
+31. Users can create their own lessons, topics, subjects, and curriculum
+32. Generate Metadata on @dashboard /curriculum-roadmaps should change the query to get the curriculum name as well so we can use the same query and instead of Topics | Little Learners it would be Topics | Mathematics | Little Learners
+33. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 
     ```tsx
     <a

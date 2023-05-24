@@ -32,7 +32,7 @@ export default function MarketingFooterNewsletter() {
         <>
           {/* Newsletter Form */}
           <Form
-            className="md:flex md:flex-col space-y-3 sm:flex-row gap-y-0"
+            className="md:flex md:items-center space-y-3 sm:space-y-0 sm:flex-row gap-y-0"
             action={() => mutate({ email })}
           >
             {/* Email Input */}
