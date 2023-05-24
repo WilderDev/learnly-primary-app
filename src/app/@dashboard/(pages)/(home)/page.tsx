@@ -48,7 +48,6 @@ export default async function ParentDashboardHomePage() {
             hasModal={true}
             modalSize="lg"
             modalContent={<AssignmentCreatorModal />}
-            closeBtn={true}
             noCloseOnOutsideClick={true}
           />
           {/* <AssignmentsTable /> */}
