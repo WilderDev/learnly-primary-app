@@ -103,8 +103,6 @@ const saveLessonPlanTemplateAction = async (
       standards: (standards as Database['public']['Enums']['standard'][]) || [],
       objectives:
         (objectives as Database['public']['Enums']['objective'][]) || [],
-      // assessments: {},
-      // reflections: {},
       // is_public: true,
       special_considerations: specialConsiderations || '',
     };
