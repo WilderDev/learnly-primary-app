@@ -1,7 +1,7 @@
 -- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
 -- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
 -- We are doing a curriculum called STEM K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first 4 topics and ALL the lessons for those topics for level 4 Mathematics.
+-- Right Now, your job is to create the first 4 topics and ALL the lessons for those topics for level 5 Mathematics.
 -- the output will look like:
 -- {
 --        "name": "Team Sports",
@@ -443,7 +443,7 @@ SELECT create_complete_curriculum(
             },
             {
               "name": "Understanding Pitch",
-              "description": "Explore the concept of high and low pitches and connect it with the concept of 'more than' and 'less than'.",
+              "description": "Explore the concept of high and low pitches and connect it with the concept of ‘more than‘ and ‘less than‘.",
               "image_path": "https://source.unsplash.com/500x500/?understanding-pitch",
               "type": "CORE"
             },
@@ -1800,11 +1800,901 @@ SELECT create_complete_curriculum(
     },
     {
       "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
-      "topics_data": []
+      "topics_data": [
+        {
+          "name": "Multiplication Mastery",
+          "description": "Turning multiplication into an exciting adventure that fosters numerical fluency and confidence.",
+          "image_path": "https://source.unsplash.com/500x500/?multiplication",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Times Tables Thrills",
+              "description": "Delving into times tables, transforming them into enjoyable challenges.",
+              "image_path": "https://source.unsplash.com/500x500/?times-table",
+              "type": "CORE"
+            },
+            {
+              "name": "Exploring Multiplicative Patterns",
+              "description": "Discovering the fascinating patterns hidden within multiplication.",
+              "image_path": "https://source.unsplash.com/500x500/?math-patterns",
+              "type": "CORE"
+            },
+            {
+              "name": "Multiply Large Numbers",
+              "description": "Empowering learners to multiply larger numbers fearlessly.",
+              "image_path": "https://source.unsplash.com/500x500/?large-numbers",
+              "type": "CORE"
+            },
+            {
+              "name": "Properties of Multiplication",
+              "description": "Unraveling the intriguing properties of multiplication, including distributivity and associativity.",
+              "image_path": "https://source.unsplash.com/500x500/?math-properties",
+              "type": "CORE"
+            },
+            {
+              "name": "Apply Multiplication in Real Life",
+              "description": "Applying multiplication skills to solve real-world problems, boosting practical understanding.",
+              "image_path": "https://source.unsplash.com/500x500/?real-life-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Multiplication Art",
+              "description": "Bridging the gap between art and mathematics through creative multiplication activities.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Game-based Multiplication",
+              "description": "Cementing multiplication understanding through fun and engaging games.",
+              "image_path": "https://source.unsplash.com/500x500/?math-games",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Delving into Division",
+          "description": "Making division delightful, fostering a solid understanding of splitting and sharing equally.",
+          "image_path": "https://source.unsplash.com/500x500/?division",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Understanding Division Basics",
+              "description": "Building a strong foundation in division through basic exercises.",
+              "image_path": "https://source.unsplash.com/500x500/?division-basic",
+              "type": "CORE"
+            },
+            {
+              "name": "Division with Remainders",
+              "description": "Decoding the concept of remainders in division, fostering advanced comprehension.",
+              "image_path": "https://source.unsplash.com/500x500/?division-remainders",
+              "type": "CORE"
+            },
+            {
+              "name": "Long Division Adventure",
+              "description": "Taking the learners on a journey through long division, simplifying complex calculations.",
+              "image_path": "https://source.unsplash.com/500x500/?long-division",
+              "type": "CORE"
+            },
+            {
+              "name": "Division Facts and Strategies",
+              "description": "Exploring efficient strategies forquick division, nurturing fast problem-solving skills.",
+              "image_path": "https://source.unsplash.com/500x500/?division-strategies",
+              "type": "CORE"
+            },
+            {
+              "name": "Division in Everyday Life",
+              "description": "Applying division skills to solve real-world problems, providing practical understanding.",
+              "image_path": "https://source.unsplash.com/500x500/?real-life-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Division Art",
+              "description": "Using art to enrich learners‘ understanding of division concepts.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Division with Games",
+              "description": "Incorporating games to solidify division understanding in an enjoyable way.",
+              "image_path": "https://source.unsplash.com/500x500/?math-games",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Fraction Fundamentals",
+          "description": "Unlocking the mystery of fractions, empowering learners with the skills to handle part-whole relationships.",
+          "image_path": "https://source.unsplash.com/500x500/?fractions",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Understanding Fractions",
+              "description": "Demystifying the basic concepts of fractions and their representation.",
+              "image_path": "https://source.unsplash.com/500x500/?fraction-basic",
+              "type": "CORE"
+            },
+            {
+              "name": "Adding and Subtracting Fractions",
+              "description": "Turning addition and subtraction of fractions into an enjoyable mathematical journey.",
+              "image_path": "https://source.unsplash.com/500x500/?fraction-addition",
+              "type": "CORE"
+            },
+            {
+              "name": "Comparing and Ordering Fractions",
+              "description": "Building skills to compare and order fractions efficiently and accurately.",
+              "image_path": "https://source.unsplash.com/500x500/?fraction-comparison",
+              "type": "CORE"
+            },
+            {
+              "name": "Fraction to Decimal Conversion",
+              "description": "Mastering the skill of converting fractions to decimals, enhancing numerical flexibility.",
+              "image_path": "https://source.unsplash.com/500x500/?fraction-decimal",
+              "type": "CORE"
+            },
+            {
+              "name": "Real-life Fractions",
+              "description": "Discovering the application of fractions in everyday life to boost practical understanding.",
+              "image_path": "https://source.unsplash.com/500x500/?real-life-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Fun with Fraction Art",
+              "description": "Combining art with fractions to encourage creative understanding of mathematical concepts.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Fraction Games",
+              "description": "Learning fractions through games, making learning fun and memorable.",
+              "image_path": "https://source.unsplash.com/500x500/?math-games",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Geometry and Shapes",
+          "description": "Venturing into the world of geometry, identifying shapes and understanding their properties.",
+          "image_path": "https://source.unsplash.com/500x500/?geometry",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Identifying Shapes",
+              "description": "Recognizing and classifying various shapes in a fun and interactive manner.",
+              "image_path": "https://source.unsplash.com/500x500/?shapes",
+              "type": "CORE"
+            },
+            {
+              "name": "Exploring Polygon Properties",
+              "description": "Exploring the exciting properties of polygons and their classifications.",
+              "image_path": "https://source.unsplash.com/500x500/?polygons",
+              "type": "CORE"
+            },
+            {
+              "name": "Geometry in Nature",
+              "description": "Identifying geometrical patterns in nature, connecting mathematics to the real world.",
+              "image_path": "https://source.unsplash.com/500x500/?geometry-nature",
+              "type": "CORE"
+            },
+            {
+              "name": "Shapes and Angles",
+              "description": "Diving into the relationship between shapes and angles, sharpening analytical skills.",
+              "image_path": "https://source.unsplash.com/500x500/?angles",
+              "type": "CORE"
+            },
+            {
+              "name": "Practical Geometry",
+              "description": "Applying knowledge of shapes and geometry to solve practical problems.",
+              "image_path": "https://source.unsplash.com/500x500/?real-life-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Geometric Art",
+              "description": "Fusing art with geometry to stimulate creative thinking in mathematics.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Geometry Games",
+              "description": "Making geometry tangible and fun through interactive games.",
+              "image_path": "https://source.unsplash.com/500x500/?math-games",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Dynamics of Data",
+          "description": "Sailing on the sea of data, interpreting graphs and understanding measures of central tendency.",
+          "image_path": "https://source.unsplash.com/500x500/?data",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Understanding Graphs",
+              "description": "Demystifying the world of data visualization through graphs and charts.",
+              "image_path": "https://source.unsplash.com/500x500/?graphs",
+              "type": "CORE"
+            },
+            {
+              "name": "Data Collection and Representation",
+              "description": "Gathering data and representing it visually for easy understanding and interpretation.",
+              "image_path": "https://source.unsplash.com/500x500/?data-collection",
+              "type": "CORE"
+            },
+            {
+              "name": "Mean, Median, Mode",
+              "description": "Exploring the concept of mean, median, and mode to understand data better.",
+              "image_path": "https://source.unsplash.com/500x500/?mean-median-mode",
+              "type": "CORE"
+            },
+            {
+              "name": "Probability Basics",
+              "description": "Stepping into the intriguing world of probability, understanding chances and likelihood.",
+              "image_path": "https://source.unsplash.com/500x500/?probability",
+              "type": "CORE"
+            },
+            {
+              "name": "Real-life Data Applications",
+              "description": "Applying data interpretation skills to solve real-world problems and make decisions.",
+              "image_path": "https://source.unsplash.com/500x500/?real-life-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Data-driven Art",
+              "description": "Creating art based on data interpretation to foster creativity in mathematics.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Data Games",
+              "description": "Making data fun and engaging through interactive data-driven games.",
+              "image_path": "https://source.unsplash.com/500x500/?math-games",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Algebra Adventures",
+          "description": "Embarking on an exciting algebra journey, discovering the power of symbols in mathematics.",
+          "image_path": "https://source.unsplash.com/500x500/?algebra",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Introduction to Algebra",
+              "description": "Laying the foundation with an introduction to the basics of algebra.",
+              "image_path": "https://source.unsplash.com/500x500/?introduction-algebra",
+              "type": "CORE"
+            },
+            {
+              "name": "Exploring Variables",
+              "description": "Understanding the role and application of variables in mathematical expressions.",
+              "image_path": "https://source.unsplash.com/500x500/?variables",
+              "type": "CORE"
+            },
+            {
+              "name": "Solving Simple Equations",
+              "description": "Making sense of equations and finding solutions in a fun, interactive way.",
+              "image_path": "https://source.unsplash.com/500x500/?equations",
+              "type": "CORE"
+            },
+            {
+              "name": "Algebraic Expressions",
+              "description": "Building skills to express and solve problems algebraically.",
+              "image_path": "https://source.unsplash.com/500x500/?algebraic-expressions",
+              "type": "CORE"
+            },
+            {
+              "name": "Applying Algebra in Real Life",
+              "description": "Using algebra to solve real-world problems, providing practical understanding.",
+              "image_path": "https://source.unsplash.com/500x500/?real-life-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Algebra through Puzzles",
+              "description": "Engaging with algebra through puzzles and games, making learning fun.",
+              "image_path": "https://source.unsplash.com/500x500/?math-puzzles",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Creative Algebra",
+              "description": "Exploring the artistic side of algebra to stimulate creativity in problem-solving.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Measurement Mastery",
+          "description": "Journeying into the practical realm of measurements, learning to quantify the world around us.",
+          "image_path": "https://source.unsplash.com/500x500/?measurements",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Units of Measurement",
+              "description": "Understanding the importance and application of different units of measurement.",
+              "image_path": "https://source.unsplash.com/500x500/?units-measurement",
+              "type": "CORE"
+            },
+            {
+              "name": "Measuring Length, Weight, and Volume",
+              "description": "Mastering the measurements of length, weight, and volume in everyday objects.",
+              "image_path": "https://source.unsplash.com/500x500/?measurements",
+              "type": "CORE"
+            },
+            {
+              "name": "Understanding Scale",
+              "description": "Exploring the concept of scale in maps and models, connecting measurement with representation.",
+              "image_path": "https://source.unsplash.com/500x500/?scale-maps",
+              "type": "CORE"
+            },
+            {
+              "name": "Measurement Conversion",
+              "description": "Developing conversion skills to navigate between different measurement units effortlessly.",
+              "image_path": "https://source.unsplash.com/500x500/?conversion",
+              "type": "CORE"
+            },
+            {
+              "name": "Real-life Measurement Applications",
+              "description": "Applying measurement skills to solve real-world problems, enhancing practical understanding.",
+              "image_path": "https://source.unsplash.com/500x500/?real-life-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Fun with Measurement Games",
+              "description": "Learning measurements through interactive games, making learning fun and tangible.",
+              "image_path": "https://source.unsplash.com/500x500/?math-games",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Creative Measurements",
+              "description": "Combining art with measurements to promote creativity and mathematical understanding.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Math Magic Tricks",
+          "description": "Unveiling the magic of mathematics, showcasing amazing tricks and shortcuts to amaze friends and family.",
+          "image_path": "https://source.unsplash.com/500x500/?magic-tricks",
+          "type": "ELECTIVE",
+          "lessons_data": [
+            {
+              "name": "Number Tricks",
+              "description": "Exploring fascinating number tricks that will make mathematics seem like magic.",
+              "image_path": "https://source.unsplash.com/500x500/?number-tricks",
+              "type": "CORE"
+            },
+            {
+              "name": "Magic Squares",
+              "description": "Delving into the world of magic squares, where numbers form amazing patterns.",
+              "image_path": "https://source.unsplash.com/500x500/?magic-squares",
+              "type": "CORE"
+            },
+            {
+              "name": "Algebraic Magic Tricks",
+              "description": "Using the power of algebra to create mind-boggling mathematical magic tricks.",
+              "image_path": "https://source.unsplash.com/500x500/?algebra-tricks",
+              "type": "CORE"
+            },
+            {
+              "name": "Geometry Magic",
+              "description": "Exploring the intriguing connections between magic tricks and geometric concepts.",
+              "image_path": "https://source.unsplash.com/500x500/?geometry-magic",
+              "type": "CORE"
+            },
+            {
+              "name": "Probability and Magic",
+              "description": "Unveiling the role of probability in predicting outcomes and performing magic tricks.",
+              "image_path": "https://source.unsplash.com/500x500/?probability-magic",
+              "type": "CORE"
+            },
+            {
+              "name": "Card Math Tricks",
+              "description": "Uncovering the mathematics behind popular card tricks, blending entertainment with learning.",
+              "image_path": "https://source.unsplash.com/500x500/?card-tricks",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Math Magic in Real Life",
+              "description": "Applying mathematical tricks to real-life scenarios, adding a dash of magic to everyday experiences.",
+              "image_path": "https://source.unsplash.com/500x500/?real-life-magic",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Math in Art and Nature",
+          "description": "Exploring the aesthetic side of mathematics, witnessing its hidden presence in art and natural patterns.",
+          "image_path": "https://source.unsplash.com/500x500/?math-art-nature",
+          "type": "ELECTIVE",
+          "lessons_data": [
+            {
+              "name": "Math and Symmetry",
+              "description": "Discovering the concept of symmetry in art and nature, understanding its mathematical roots.",
+              "image_path": "https://source.unsplash.com/500x500/?symmetry",
+              "type": "CORE"
+            },
+            {
+              "name": "Patterns in Nature",
+              "description": "Observing and understanding the mathematical patterns inherent in natural phenomena.",
+              "image_path": "https://source.unsplash.com/500x500/?patterns-nature",
+              "type": "CORE"
+            },
+            {
+              "name": "The Golden Ratio",
+              "description": "Unraveling the mystery of the Golden Ratio and its omnipresence in art and nature.",
+              "image_path": "https://source.unsplash.com/500x500/?golden-ratio",
+              "type": "CORE"
+            },
+            {
+              "name": "Fractals",
+              "description": "Learning about fractals, the complex, repetitive patterns found in nature and mathematical theories.",
+              "image_path": "https://source.unsplash.com/500x500/?fractals",
+              "type": "CORE"
+            },
+            {
+              "name": "Geometry in Art",
+              "description": "Recognizing the role of geometric shapes and principles in artwork and design.",
+              "image_path": "https://source.unsplash.com/500x500/?geometry-art",
+              "type": "CORE"
+            },
+            {
+              "name": "Artistic Math Projects",
+              "description": "Creating beautiful art projects that integrate and demonstrate mathematical concepts.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art-projects",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Math Photography",
+              "description": "Using photography to capture and explore mathematical patterns in everyday life.",
+              "image_path": "https://source.unsplash.com/500x500/?math-photography",
+              "type": "ELECTIVE"
+            }
+          ]
+        }
+      ]
     },
     {
       "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",
-      "topics_data": []
+      "topics_data": [
+        {
+          "name": "Advanced Arithmetic",
+          "description": "Dive deeper into the world of numbers, enhancing skills with more complex calculations.",
+          "image_path": "https://source.unsplash.com/500x500/?arithmetic",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Mastering Multiplication",
+              "description": "An in-depth understanding of multiplication of larger numbers for advanced calculations.",
+              "image_path": "https://source.unsplash.com/500x500/?multiplication",
+              "type": "CORE"
+            },
+            {
+              "name": "Delving into Division",
+              "description": "A focus on division techniques to solve complex numerical problems.",
+              "image_path": "https://source.unsplash.com/500x500/?division",
+              "type": "CORE"
+            },
+            {
+              "name": "Practical Problem Solving",
+              "description": "Using arithmetic in real-life situations to improve problem-solving skills.",
+              "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+              "type": "CORE"
+            },
+            {
+              "name": "Fun with Fractions",
+              "description": "A journey into the world of fractions to add, subtract, and compare fractional values.",
+              "image_path": "https://source.unsplash.com/500x500/?fractions",
+              "type": "CORE"
+            },
+            {
+              "name": "Decimals Decoded",
+              "description": "Understanding the value and use of decimals in daily life.",
+              "image_path": "https://source.unsplash.com/500x500/?decimals",
+              "type": "CORE"
+            },
+            {
+              "name": "Arithmetic Art",
+              "description": "Applying mathematical concepts creatively in an artistic context.",
+              "image_path": "https://source.unsplash.com/500x500/?math-art",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Coding with Numbers",
+              "description": "Introduction to using arithmetic in simple coding tasks.",
+              "image_path": "https://source.unsplash.com/500x500/?coding-math",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Geometry & Measurement",
+          "description": "Unlock the shapes and sizes of the world, exploring spatial understanding and measurement.",
+          "image_path": "https://source.unsplash.com/500x500/?geometry",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Understanding Angles",
+              "description": "Deepening the understanding of angles and their uses in geometry.",
+              "image_path": "https://source.unsplash.com/500x500/?angles",
+              "type": "CORE"
+            },
+            {
+              "name": "Fantastic Polygons",
+              "description": "Exploring the properties of polygons to deepen geometric understanding.",
+              "image_path": "https://source.unsplash.com/500x500/?polygons",
+              "type": "CORE"
+            },
+            {
+              "name": "Mastering Measurement",
+              "description": "Acquiring advanced techniques to measure distance, area, volume, and time.",
+              "image_path": "https://source.unsplash.com/500x500/?measurement",
+              "type": "CORE"
+            },
+            {
+              "name": "Symmetry and Patterns",
+              "description": "Identifying symmetry in shapes and creating patterns using geometric figures.",
+              "image_path": "https://source.unsplash.com/500x500/?symmetry",
+              "type": "CORE"
+            },
+            {
+              "name": "3D Geometry Exploration",
+              "description": "Expanding geometric understanding into the third dimension.",
+              "image_path": "https://source.unsplash.com/500x500/?3d-geometry",
+              "type": "CORE"
+            },
+            {
+              "name": "Artistic Applications of Geometry",
+              "description": "Exploring the creative side of geometry by incorporating it into art.",
+              "image_path": "https://source.unsplash.com/500x500/?geometry-art",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Mathematical Origami",
+              "description": "Applying geometric principles in the fascinating art of origami.",
+              "image_path": "https://source.unsplash.com/500x500/?origami",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Data Analysis",
+          "description": "Understanding the power of data and learning how to interpret and present it effectively.",
+          "image_path": "https://source.unsplash.com/500x500/?data-analysis",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Creating Graphs",
+              "description": "Learning how to represent data in various graphical formats.",
+              "image_path": "https://source.unsplash.com/500x500/?graphs",
+              "type": "CORE"
+            },
+            {
+              "name": "Data Interpretation",
+              "description": "Honing skills to interpret data from various sources and formats.",
+              "image_path": "https://source.unsplash.com/500x500/?data-interpretation",
+              "type": "CORE"
+            },
+            {
+              "name": "Real-world Statistics",
+              "description": "Understanding the use of statistics in real-world situations.",
+              "image_path": "https://source.unsplash.com/500x500/?statistics",
+              "type": "CORE"
+            },
+            {
+              "name": "Probability Principles",
+              "description": "Grasping the concept of probability and its applications.",
+              "image_path": "https://source.unsplash.com/500x500/?probability",
+              "type": "CORE"
+            },
+            {
+              "name": "The Power of Predictions",
+              "description": "Learning how data can be used to make informed predictions.",
+              "image_path": "https://source.unsplash.com/500x500/?predictions",
+              "type": "CORE"
+            },
+            {
+              "name": "Sports Statistics",
+              "description": "Applying data analysis skills to explore statistics in the sports world.",
+              "image_path": "https://source.unsplash.com/500x500/?sports-statistics",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Data and Environment",
+              "description": "Understanding environmental data and its importance.",
+              "image_path": "https://source.unsplash.com/500x500/?environmental-data",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Algebraic Thinking",
+          "description": "Discover the fascinating world of algebra that provides a powerful tool for solving problems.",
+          "image_path": "https://source.unsplash.com/500x500/?algebra",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Introduction to Variables",
+              "description": "Learning about variables and their applications in algebra.",
+              "image_path": "https://source.unsplash.com/500x500/?variables",
+              "type": "CORE"
+            },
+            {
+              "name": "Solving Simple Equations",
+              "description": "Mastering the basic techniques for solving simple algebraic equations.",
+              "image_path": "https://source.unsplash.com/500x500/?equations",
+              "type": "CORE"
+            },
+            {
+              "name": "Algebraic Expressions",
+              "description": "Understanding and forming algebraic expressions to represent real-world situations.",
+              "image_path": "https://source.unsplash.com/500x500/?algebraic-expressions",
+              "type": "CORE"
+            },
+            {
+              "name": "Function Fundamentals",
+              "description": "Exploring the concept of functions and their importance in algebra.",
+              "image_path": "https://source.unsplash.com/500x500/?functions",
+              "type": "CORE"
+            },
+            {
+              "name": "Graphing Equations",
+              "description": "Learning how to represent algebraic equations on a graph.",
+              "image_path": "https://source.unsplash.com/500x500/?graphing-equations",
+              "type": "CORE"
+            },
+            {
+              "name": "Algebra in Nature",
+              "description": "Identifying and understanding algebraic patterns in nature.",
+              "image_path": "https://source.unsplash.com/500x500/?math-nature",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Coding with Algebra",
+              "description": "Applying algebraic concepts to simple coding tasks.",
+              "image_path": "https://source.unsplash.com/500x500/?coding-algebra",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Problem Solving & Logic",
+          "description": "Unleashing the power of critical thinking and logical reasoning to solve mathematical problems.",
+          "image_path": "https://source.unsplash.com/500x500/?logic",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Logical Reasoning",
+              "description": "Developing logical reasoning skills to solve complex mathematical problems.",
+              "image_path": "https://source.unsplash.com/500x500/?logical-reasoning",
+              "type": "CORE"
+            },
+            {
+              "name": "Mathematical Puzzles",
+              "description": "Solving a variety of puzzles to foster critical thinking skills.",
+              "image_path": "https://source.unsplash.com/500x500/?math-puzzles",
+              "type": "CORE"
+            },
+            {
+              "name": "Problem-Solving Strategies",
+              "description": "Learning various strategies and approaches to tackle different mathematical problems.",
+              "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+              "type": "CORE"
+            },
+            {
+              "name": "Real-World Applications",
+              "description": "Applying problem-solving and logical reasoning skills to real-world situations.",
+              "image_path": "https://source.unsplash.com/500x500/?real-world-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Mathematical Games",
+              "description": "Exploring various mathematical games that stimulate logical thinking.",
+              "image_path": "https://source.unsplash.com/500x500/?math-games",
+              "type": "CORE"
+            },
+            {
+              "name": "Chess and Mathematics",
+              "description": "Understanding the connection between mathematics and chess strategy.",
+              "image_path": "https://source.unsplash.com/500x500/?chess",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Coding for Problem Solving",
+              "description": "Using coding as a tool to enhance problem-solving skills in mathematics.",
+              "image_path": "https://source.unsplash.com/500x500/?coding-math",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Financial Literacy",
+          "description": "Laying the foundation for understanding finances, from basic transactions to smart money management.",
+          "image_path": "https://source.unsplash.com/500x500/?financial-literacy",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Understanding Money",
+              "description": "Learning about the concept and value of money, different currencies, and exchange rates.",
+              "image_path": "https://source.unsplash.com/500x500/?money",
+              "type": "CORE"
+            },
+            {
+              "name": "Basics of Banking",
+              "description": "An introduction to banking, including the concept of savings and checking accounts.",
+              "image_path": "https://source.unsplash.com/500x500/?banking",
+              "type": "CORE"
+            },
+            {
+              "name": "Making Transactions",
+              "description": "Understanding transactions, including debits, credits, and the use of checks and cards.",
+              "image_path": "https://source.unsplash.com/500x500/?transactions",
+              "type": "CORE"
+            },
+            {
+              "name": "Introduction to Budgeting",
+              "description": "Learning how to create a basic budget and understanding the importance of financial planning.",
+              "image_path": "https://source.unsplash.com/500x500/?budgeting",
+              "type": "CORE"
+            },
+            {
+              "name": "Principles of Investing",
+              "description": "A simple introduction to investing and how it can lead to growth over time.",
+              "image_path": "https://source.unsplash.com/500x500/?investing",
+              "type": "CORE"
+            },
+            {
+              "name": "Entrepreneurship and Math",
+              "description": "Applying financial literacy skills to understand the math behind running a small business.",
+              "image_path": "https://source.unsplash.com/500x500/?entrepreneurship",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Math and Philanthropy",
+              "description": "Understanding how math helps in making informed decisions about charitable giving.",
+              "image_path": "https://source.unsplash.com/500x500/?philanthropy",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Mathematical Exploration",
+          "description": "Fostering a sense of adventure in the realm of mathematics, making connections and discoveries.",
+          "image_path": "https://source.unsplash.com/500x500/?math-exploration",
+          "type": "CORE",
+          "lessons_data": [
+            {
+              "name": "Famous Mathematical Problems",
+              "description": "Exploring historical mathematical problems and their significance in the field.",
+              "image_path": "https://source.unsplash.com/500x500/?math-problems",
+              "type": "CORE"
+            },
+            {
+              "name": "Math in Nature",
+              "description": "Discovering the amazing patterns and mathematical principles found in nature.",
+              "image_path": "https://source.unsplash.com/500x500/?math-nature",
+              "type": "CORE"
+            },
+            {
+              "name": "Math and Music",
+              "description": "Understanding the fascinating connections between mathematics and music.",
+              "image_path": "https://source.unsplash.com/500x500/?math-music",
+              "type": "CORE"
+            },
+            {
+              "name": "Math and Architecture",
+              "description": "Exploring how math is used in architecture to create stunning and stable structures.",
+              "image_path": "https://source.unsplash.com/500x500/?math-architecture",
+              "type": "CORE"
+            },
+            {
+              "name": "Futuristic Math",
+              "description": "Looking into future applications of math in technology, space exploration, and more.",
+              "image_path": "https://source.unsplash.com/500x500/?futuristic-math",
+              "type": "CORE"
+            },
+            {
+              "name": "Math Magic Tricks",
+              "description": "Learning mathematical magic tricks to amaze friends and family.",
+              "image_path": "https://source.unsplash.com/500x500/?math-magic",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Math in Other Cultures",
+              "description": "Exploring how different cultures have understood and used mathematics throughout history.",
+              "image_path": "https://source.unsplash.com/500x500/?math-cultures",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Math and Sports",
+          "description": "Understanding the fascinating connection between math and sports, from strategy to statistics.",
+          "image_path": "https://source.unsplash.com/500x500/?math-sports",
+          "type": "ELECTIVE",
+          "lessons_data": [
+            {
+              "name": "Scorekeeping and Stats",
+              "description": "Learning how statistics and math play a crucial role in sports scorekeeping.",
+              "image_path": "https://source.unsplash.com/500x500/?scorekeeping",
+              "type": "CORE"
+            },
+            {
+              "name": "Game Strategy and Probability",
+              "description": "Understanding how probability and mathematical thinking influence game strategies.",
+              "image_path": "https://source.unsplash.com/500x500/?game-strategy",
+              "type": "CORE"
+            },
+            {
+              "name": "Sports Physics",
+              "description": "Exploring the physics behind various sports and how math is involved.",
+              "image_path": "https://source.unsplash.com/500x500/?sports-physics",
+              "type": "CORE"
+            },
+            {
+              "name": "Fantasy Sports and Math",
+              "description": "Learning how to use mathematics to pick a winning fantasy sports team.",
+              "image_path": "https://source.unsplash.com/500x500/?fantasy-sports",
+              "type": "CORE"
+            },
+            {
+              "name": "Sports and Geometry",
+              "description": "Identifying the role of geometric principles in different sports.",
+              "image_path": "https://source.unsplash.com/500x500/?sports-geometry",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Math in Extreme Sports",
+              "description": "Discovering the math behind the thrilling world of extreme sports.",
+              "image_path": "https://source.unsplash.com/500x500/?extreme-sports",
+              "type": "ELECTIVE"
+            }
+          ]
+        },
+        {
+          "name": "Math and Arts",
+          "description": "Exploring the captivating intersection of mathematics and various forms of art.",
+          "image_path": "https://source.unsplash.com/500x500/?math-art",
+          "type": "ELECTIVE",
+          "lessons_data": [
+            {
+              "name": "Math in Visual Art",
+              "description": "Understanding how mathematical concepts contribute to the creation of visual art.",
+              "image_path": "https://source.unsplash.com/500x500/?visual-art",
+              "type": "CORE"
+            },
+            {
+              "name": "Geometry in Architecture",
+              "description": "Learning about the important role of geometry in architectural design.",
+              "image_path": "https://source.unsplash.com/500x500/?architecture",
+              "type": "CORE"
+            },
+            {
+              "name": "Math and Music Theory",
+              "description": "Discovering the connections between mathematical principles and music theory.",
+              "image_path": "https://source.unsplash.com/500x500/?music-theory",
+              "type": "CORE"
+            },
+            {
+              "name": "Symmetry and Patterns",
+              "description": "Exploring the concepts of symmetry and patterns in various forms of art.",
+              "image_path": "https://source.unsplash.com/500x500/?symmetry-patterns",
+              "type": "CORE"
+            },
+            {
+              "name": "Math and Dance",
+              "description": "Understanding how mathematical concepts are utilized in choreography and dance performances.",
+              "image_path": "https://source.unsplash.com/500x500/?dance",
+              "type": "ELECTIVE"
+            },
+            {
+              "name": "Film and Math",
+              "description": "Exploring how mathematics influence aspects of filmmaking, from animation to special effects.",
+              "image_path": "https://source.unsplash.com/500x500/?filmmaking",
+              "type": "ELECTIVE"
+            }
+          ]
+        }
+      ]
     }
   ]'::json
 );
