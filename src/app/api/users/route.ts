@@ -2,6 +2,7 @@ import { IOnboardingChild } from '@/assets/typescript/onboarding';
 import { supabaseAdmin } from '../../../lib/auth/supabaseAdmin';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import * as sgClient from '@sendgrid/client';
+import { handleCreateOrRetrieveCustomer } from '@/lib/stripe/stripeWebhookHandlers';
 
 sgClient.setApiKey(process.env.SENDGRID_CLIENT_API_KEY!);
 
@@ -93,7 +94,7 @@ export async function POST(request: Request) {
       },
     });
 
-    // Check if email is already subscribed
+    // 7a. Check if email is already subscribed
     if (sgRes[0].statusCode !== 202) {
       return new Response(
         JSON.stringify({ error: 'Failed to add user to app users list' }),
@@ -101,7 +102,18 @@ export async function POST(request: Request) {
       );
     }
 
-    // 7. Return the user data
+    // 8. Create Stripe Customer
+    const customer = await handleCreateOrRetrieveCustomer({
+      name: first_name + ' ' + last_name,
+      email,
+      supabaseId: data?.user?.id!,
+    });
+
+    // 8a. Check if there was an error creating the customer
+    if (!customer)
+      return new Response('Failed to create customer', { status: 500 });
+
+    // 10. Return the user data
     return new Response(JSON.stringify({ user: data.user! }), {
       status: 200,
     });

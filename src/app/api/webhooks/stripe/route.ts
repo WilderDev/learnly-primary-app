@@ -8,32 +8,35 @@ import {
   handleCreateProduct,
   handleDeletePrice,
   handleDeleteProduct,
+  handleCreateCustomer,
   handleUpdatePrice,
   handleUpdateProduct,
+  handleDeleteCustomer,
+  handleTrialWillEnd,
+  handleUpdateSubscription,
+  handleDeleteSubscription,
 } from '@/lib/stripe/stripeWebhookHandlers';
 
 // * CONSTANTS
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!; // Retrieve the endpoint secret from the environment variables
 
 // * HELPERS
-// Disable body parsing since we are retrieving the raw body
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
-export const runtime = 'edge'; // Set the runtime to Edge
+export const runtime = 'nodejs'; // Set the runtime to Edge
 
 // * EVENTS
 // Webhook Events to listen for: https://stripe.com/docs/api/events/types
 const relevantEvents: Stripe.Event['type'][] = [
+  'customer.created', // => Create Customer Record ✅
+  'customer.deleted', // => Delete Customer Record ✅
+  'customer.subscription.trial_will_end', // => Send Trial Ending Email & Open Checkout ✅
   'product.created', // => Create Product Record ✅
   'product.updated', // => Update Product Record ✅
   'product.deleted', // => Delete Product Record ✅
   'price.created', // => Create Price Record ✅
   'price.updated', // => Update Price Record ✅
   'price.deleted', // => Delete Price Record ✅
-  //   . . .
+  'customer.subscription.updated', // => Updated Subscription Record (Subscription Renewed/Changed Plan/Changed from Trial to Active) ✅
+  'customer.subscription.deleted', // => Delete Subscription Record (Subscription Ends) ✅
 ];
 
 // * API ROUTE
@@ -41,7 +44,6 @@ const relevantEvents: Stripe.Event['type'][] = [
 export async function POST(request: Request) {
   const body = await request.text(); // Retrieve the request's body
   const sig = headers().get('stripe-signature')!; // Retrieve the signature from the request header
-
   let event: Stripe.Event; // Declare the event variable
 
   // Verify the request against the endpoint secret
@@ -58,6 +60,21 @@ export async function POST(request: Request) {
     const evt = event.data.object;
 
     switch (event.type) {
+      // *** Handle customer.created event *** \\
+      case 'customer.created':
+        await handleCreateCustomer({ customer: evt as Stripe.Customer }); // Run the handler function
+
+        break; // Exit switch statement
+      // *** Handle customer.deleted event *** \\
+      case 'customer.deleted':
+        await handleDeleteCustomer({ customerId: (evt as Stripe.Customer).id }); // Run the handler function
+
+        break; // Exit switch statement
+      // *** Handle customer.subscription.trial_will_end event *** \\
+      case 'customer.subscription.trial_will_end':
+        await handleTrialWillEnd({ subscription: evt as Stripe.Subscription }); // Run the handler function
+
+        break; // Exit switch statement
       // *** Handle product.created event *** \\
       case 'product.created':
         await handleCreateProduct({ product: evt as Stripe.Product }); // Run the handler function
@@ -86,6 +103,20 @@ export async function POST(request: Request) {
       // *** Handle price.deleted event *** \\
       case 'price.deleted':
         await handleDeletePrice({ priceId: (evt as Stripe.Price).id }); // Run the handler function
+
+        break; // Exit switch statement
+      // *** Handle customer.subscription.updated event *** \\
+      case 'customer.subscription.updated':
+        await handleUpdateSubscription({
+          subscription: evt as Stripe.Subscription,
+        }); // Run the handler function
+
+        break; // Exit switch statement
+      // *** Handle customer.subscription.deleted event *** \\
+      case 'customer.subscription.deleted':
+        await handleDeleteSubscription({
+          subscriptionId: (evt as Stripe.Subscription).id,
+        }); // Run the handler function
 
         break; // Exit switch statement
       // *** Handle default case *** \\

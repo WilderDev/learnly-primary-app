@@ -17,77 +17,8 @@ CREATE TABLE customers (
 	-- The Stripe Customer Id
 	stripe_customer_id text NOT NULL DEFAULT '' UNIQUE,
 
-	-- Email, Phone, Name, Shipping, Metadata, Address, Description (optional)
-
 	-- Stripe Subscriptions
 	subscriptions jsonb NOT NULL DEFAULT '{}',
-
-	-- Timestamps
-	created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
-	updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
-);
-
--- Payment Method & Billing Details (Private) - https://stripe.com/docs/api/payment_methods
-CREATE TABLE payment_and_billing_details (
-	-- The Learnly App User's UUID (auth.users)
-	id uuid REFERENCES auth.users NOT NULL PRIMARY KEY,
-
-	-- The Stripe Payment Method Id
-	stripe_payment_method_id text NOT NULL DEFAULT '',
-
-	-- The Stripe Customer Id
-	stripe_customer_id text NOT NULL DEFAULT '',
-
-	-- The Stripe Payment Method Type
-	payment_method_type payment_type NOT NULL DEFAULT 'card',
-
-	-- The Stripe Card Brand
-	card_brand text NOT NULL DEFAULT '',
-
-	-- The Stripe Card Last 4
-	last4 text NOT NULL DEFAULT '',
-
-	-- The Stripe Card Expiration Month
-	exp_month text NOT NULL DEFAULT '',
-
-	-- The Stripe Card Expiration Year
-	exp_year text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing Address Line 1
-	billing_address_line1 text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing Address Line 2
-	billing_address_line2 text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing City
-	billing_city text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing State or State
-	billing_state text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing Postal Code
-	billing_postal_code text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing Country
-	billing_country text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing Name
-	billing_name text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing Email
-	billing_email text NOT NULL DEFAULT '',
-
-	-- The Stripe Billing Phone
-	billing_phone text NOT NULL DEFAULT '',
-
-	-- Is this the user's default payment method?
-	default_method boolean NOT NULL DEFAULT false,
-
-	-- Payment Details
-	payment_details jsonb NOT NULL DEFAULT '{}',
-
-	-- The Stripe Payment Method Metadata
-	metadata jsonb NOT NULL DEFAULT '{}',
 
 	-- Timestamps
 	created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
@@ -111,9 +42,6 @@ CREATE TABLE subscriptions (
 	-- Stripe Product ID
 	stripe_product_id text NOT NULL DEFAULT '',
 
-	-- Subscription Quantity
-	quantity integer NOT NULL DEFAULT 1,
-
 	-- Status of Subscription Object
 	status subscription_status NOT NULL DEFAULT 'trialing',
 
@@ -123,20 +51,11 @@ CREATE TABLE subscriptions (
 	-- Subscription Items List - https://stripe.com/docs/api/subscriptions/object#subscription_object-items
 	items jsonb NOT NULL DEFAULT '[]',
 
-	-- Stripe Currency (3-Letter ISO Currency Code [lowercase])
-	currency text NOT NULL DEFAULT 'usd' CHECK (char_length(currency) = 3),
-
 	-- Stripe Default Payment Method ID
 	default_payment_method_id text NOT NULL DEFAULT '',
 
 	-- Stripe Cancel at Period End
 	cancel_at_period_end boolean NOT NULL DEFAULT false,
-
-	-- Stripe Subscription Metadata
-	metadata jsonb NOT NULL DEFAULT '{}',
-
-	-- Time at which the subscription was created.
-	created timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
 
 	-- Start of the current period that the subscription has been invoiced for.
 	current_period_start timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
@@ -153,23 +72,14 @@ CREATE TABLE subscriptions (
 	-- If the subscription has been canceled, the date of that cancellation. If the subscription was canceled with `cancel_at_period_end`, `canceled_at` will still reflect the date of the initial cancellation request, not the end of the subscription period when the subscription is automatically moved to a canceled state.
 	canceled_at timestamp with time zone DEFAULT timezone('utc'::text, now()),
 
-	-- Stripe Cancellation Details
-	cancellation_reason jsonb NOT NULL DEFAULT '{}',
-
-	-- Stripe Collection Method
-	collection_method text NOT NULL DEFAULT 'charge_automatically', -- 'charge_automatically' or 'send_invoice'
-
 	-- If the subscription has a trial, the beginning of that trial.
 	trial_start timestamp with time zone DEFAULT timezone('utc'::text, now()),
 
 	-- If the subscription has a trial, the end of that trial.
 	trial_end timestamp with time zone DEFAULT timezone('utc'::text, now()),
 
-	-- Days Until Due
-	days_until_due integer NOT NULL DEFAULT 0,
-
-	-- Discount
-	discount jsonb NOT NULL DEFAULT '{}',
+	-- Metadata
+	metadata jsonb NOT NULL DEFAULT '{}',
 
 	-- Timestamps
 	created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
@@ -247,27 +157,25 @@ FROM customers c
 JOIN subscriptions s ON c.id = s.user_id
 JOIN products p ON s.stripe_product_id = p.id;
 
+-- Teacher's Me View (for a given teacher)
+CREATE VIEW teacher_me_view AS
+SELECT
+  teacher_profiles.id AS id,
+  teacher_profiles.first_name AS first_name,
+  teacher_profiles.last_name AS last_name,
+  teacher_profiles.avatar_url AS avatar_url,
+  teacher_profiles.status AS status,
+  teacher_profiles.type AS type,
+  teacher_profiles.role AS role,
+  subscriptions.status AS subscription_status,
+  subscriptions.trial_end AS subscription_trial_end
+FROM teacher_profiles
+JOIN subscriptions ON teacher_profiles.id = subscriptions.user_id
+WHERE teacher_profiles.id = auth.uid();
+
 
 -- * FUNCTIONS
--- Calculate Subscription End Date
-CREATE FUNCTION calculate_subscription_end_date(start_date timestamp, interval, pricing_plan_interval, interval_count integer) RETURNS timestamp AS $$
-DECLARE
-    end_date timestamp;
-BEGIN
-    IF interval = 'day' THEN
-        end_date := start_date + interval_count * INTERVAL '1 day';
-    ELSIF interval = 'week' THEN
-        end_date := start_date + interval_count * INTERVAL '1 week';
-    ELSIF interval = 'month' THEN
-        end_date := start_date + interval_count * INTERVAL '1 month';
-    ELSE
-        end_date := start_date + interval_count * INTERVAL '1 year';
-    END IF;
-
-    RETURN end_date;
-END;
-$$ LANGUAGE plpgsql;
-
+-- N/A
 
 
 -- * TRIGGERS
@@ -283,7 +191,6 @@ CREATE publication supabase_realtime for TABLE products, prices;
 -- * POLICIES (ROW LEVEL SECURITY)
 -- RLS
 ALTER TABLE customers ENABLE ROW LEVEL SECURITY;
-ALTER TABLE payment_and_billing_details ENABLE ROW LEVEL SECURITY;
 ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE products ENABLE ROW LEVEL SECURITY;
 ALTER TABLE prices ENABLE ROW LEVEL SECURITY;

@@ -58,7 +58,6 @@ export default function AddOrEditChildForm({
         options={{
           enableTime: true,
           dateFormat: 'D, M d (h:i K)',
-          minDate: 'today',
           defaultHour: new Date().getHours() + 1,
           defaultMinute: 0,
           position: 'above right',

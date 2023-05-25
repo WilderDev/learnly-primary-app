@@ -1,3 +1,4 @@
+1. Signing up with an email that has numbers fails
 2. Fix Print on lesson plan [id] page and curriclum [lessonId] pages
 3. Onboarding Generate Lesson Flow and Show Them Around the App
 4. Mark Lesson plan as complete (change status and completion_date)
@@ -25,3 +26,6 @@
 26. Marketing Partners page where we show all the companies we are partnered with and the deals and put in footer
 27. Users can create their own lessons, topics, subjects, and curriculum
 28. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+29. DMARC & SPF Records
+30. Stripe Hooks and Handlers for payments that don't go through or need actions
+31. [Stripe Elements to add credit card inside dashboard](https://stripe.com/docs/payments/payment-element)

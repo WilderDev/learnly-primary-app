@@ -13,6 +13,8 @@ export interface INotification {
   type: TNotificationType;
   sent_at: string | null;
   read_at: string | null;
+  action_text: string | null;
+  action_url: string | null;
   from: {
     id: string;
     name: string;

@@ -3,8 +3,6 @@
 CREATE TYPE profile_status AS ENUM ('ONLINE', 'OFFLINE', 'BUSY', 'AWAY', 'INVISIBLE');
 -- Profile Types (front-end facing)
 CREATE TYPE profile_type AS ENUM ('PARENT', 'COOP', 'TUTOR', 'SCHOOL', 'STUDENT');
--- Enum for trial status
-CREATE TYPE trial_status AS ENUM ('ACTIVE', 'CONVERTED', 'EXPIRED');
 -- Role Types (for authorization)
 CREATE TYPE user_role AS ENUM ('ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT', 'BANNISHED');
 -- Learning Styles
@@ -102,28 +100,6 @@ CREATE TABLE teaching_preferences (
   updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
 );
 
--- User Trials
-CREATE TABLE trials (
-  -- The trial's unique identifier.
-  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
-
-  -- The teacher's unique identifier.
-  teacher_id uuid REFERENCES teacher_profiles(id) ON DELETE CASCADE NOT NULL,
-
-  -- The trial's status.
-  status trial_status NOT NULL DEFAULT 'ACTIVE',
-
-  -- The start date of the trial.
-  start_date date NOT NULL DEFAULT CURRENT_DATE,
-
-  -- The end date of the trial.
-  end_date date NOT NULL DEFAULT (CURRENT_DATE + INTERVAL '14 days'),
-
-  -- Timestamps.
-  created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
-  updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
-);
-
 -- Student Profiles
 CREATE TABLE student_profiles (
   -- The student's unique identifier.
@@ -209,19 +185,6 @@ auth.users.email
 FROM auth.users;
 REVOKE all ON public.users FROM anon, authenticated;
 
--- Teacher's Me View (for a given teacher)
-CREATE VIEW teacher_me_view AS
-SELECT
-  teacher_profiles.id AS id,
-  teacher_profiles.first_name AS first_name,
-  teacher_profiles.last_name AS last_name,
-  teacher_profiles.avatar_url AS avatar_url,
-  teacher_profiles.status AS status,
-  teacher_profiles.type AS type,
-  teacher_profiles.role AS role
-FROM teacher_profiles
-WHERE teacher_profiles.id = auth.uid();
-
 
 -- Teacher's Students View (for a given teacher)
 CREATE VIEW teacher_students_profiles_view AS
@@ -278,11 +241,7 @@ BEGIN
   INSERT into public.teacher_profiles (id, first_name, last_name, avatar_url)
   VALUES (new.id, new.raw_user_meta_data->>'first_name', new.raw_user_meta_data->>'last_name', new.raw_user_meta_data->>'avatar_url');
 
-  -- Second Operation (Insert into Trials)
-  INSERT into public.trials (teacher_id, start_date, end_date)
-  VALUES (new.id, CURRENT_DATE, CURRENT_DATE + INTERVAL '14 days');
-
-  -- Third Operation (Insert Welcome Notification) TSK
+  -- Second Operation (Insert Welcome Notification) TSK
 
   -- Return the new user
   return new;

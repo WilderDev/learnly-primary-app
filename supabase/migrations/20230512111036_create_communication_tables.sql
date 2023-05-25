@@ -34,6 +34,12 @@ CREATE TABLE notifications (
 	-- Notification Body
 	body text NOT NULL DEFAULT '',
 
+    -- Notification Action
+    action_text text NOT NULL DEFAULT '',
+
+    -- Notification Action URL
+    action_url text NOT NULL DEFAULT '',
+
 	-- Date Sent
 	sent_at timestamp with time zone NOT NULL DEFAULT now(),
 
@@ -170,6 +176,8 @@ SELECT
   notifications.sent_at,
   notifications.received_at,
   notifications.read_at,
+  notifications.action_text,
+  notifications.action_url,
   notifications.metadata
 FROM notifications
 LEFT JOIN teacher_profiles ON teacher_profiles.id = notifications.sender_id
