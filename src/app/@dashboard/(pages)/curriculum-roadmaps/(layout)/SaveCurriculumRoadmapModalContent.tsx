@@ -16,6 +16,7 @@ import Modal from '@/lib/components/popouts/Modal';
 import Form from '@/lib/components/form/Form';
 import cn from '@/lib/common/cn';
 import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
+import { revalidatePath } from 'next/cache';
 
 // * Props
 interface IProps {
@@ -43,6 +44,7 @@ export default function SaveCurriculumRoadmapModalContent({
         toast.success('Curriculum Saved!');
         setSelectedCurriculum('');
         setCurriculumStudents([]);
+        revalidatePath(`/curriculum-roadmaps`); // ✅
       } else {
         toast.error(
           "Something went wrong... You might've already saved this curriculum.",

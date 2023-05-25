@@ -29,3 +29,4 @@
 29. DMARC & SPF Records
 30. Stripe Hooks and Handlers for payments that don't go through or need actions
 31. [Stripe Elements to add credit card inside dashboard](https://stripe.com/docs/payments/payment-element)
+32. We might need to move all revalidate tags to the data.ok success case instead of in the \_actions.ts

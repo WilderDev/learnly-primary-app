@@ -10,6 +10,7 @@ import { CheckBadgeIcon } from '@heroicons/react/24/outline';
 import Form from '@/lib/components/form/Form';
 import { useParams } from 'next/navigation';
 import DatePicker from '@/lib/components/form/DatePicker';
+import { revalidatePath } from 'next/cache';
 
 // * Props
 interface IProps {
@@ -28,6 +29,8 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
     onSuccess: (data) => {
       if (data.ok) {
         toast.success('Lesson Plan Completed!');
+        revalidatePath(`/lesson-plans/${lessonPlanId}`); // ✅
+        revalidatePath('/'); // ✅
         close();
       } else {
         toast.error(

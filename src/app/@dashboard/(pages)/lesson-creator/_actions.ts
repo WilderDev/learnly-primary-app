@@ -128,7 +128,7 @@ const saveLessonPlanTemplateAction = async (
     if (userTemplateError)
       return responseContract('Something went wrong', false);
 
-    revalidatePath('/lesson-creator');
+    revalidatePath('/lesson-creator'); // ✅
 
     return responseContract('Success!', true);
   } catch (error) {

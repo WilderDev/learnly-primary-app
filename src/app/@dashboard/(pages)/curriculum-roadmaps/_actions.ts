@@ -31,7 +31,7 @@ const saveCurriculumAction = async (
 
     if (error) return responseContract(error.message, false);
 
-    revalidatePath(`/curriculum-roadmaps`);
+    revalidatePath(`/curriculum-roadmaps`); // ✅
 
     return responseContract('Success!', true);
   } catch (error) {
@@ -87,9 +87,9 @@ const saveCurriculumLessonPlanAction = async (
         user_curriculum_id: user_curriculum_id,
       });
 
-    revalidatePath(`/lesson-plans/${lesson_plan_id}`);
-    revalidatePath('/schedule-builder');
-    revalidatePath('/');
+    revalidatePath(`/lesson-plans/${lesson_plan_id}`); // ✅
+    revalidatePath('/schedule-builder'); // ✅
+    revalidatePath('/'); // ✅
 
     return responseContract('Success!', true);
   } catch (error) {

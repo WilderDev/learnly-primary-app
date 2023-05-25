@@ -17,6 +17,7 @@ import {
 import { useParams } from 'next/navigation';
 import { saveCurriculumLessonPlan } from '../../curriculum-roadmaps/_actions';
 import { saveLessonPlan } from './_actions';
+import { revalidatePath } from 'next/cache';
 
 interface IProps {
   lessonPlanId: string;
@@ -39,6 +40,9 @@ export default function LessonPlanSaveDetailsModalForm({
     onSuccess: (data) => {
       if (data.ok) {
         toast.success('Lesson Plan Saved!');
+        revalidatePath(`/lesson-plans/${lessonPlanId}`); // ✅
+        revalidatePath('/schedule-builder'); // ✅
+        revalidatePath('/'); // ✅
         close();
       } else {
         toast.error(

@@ -23,6 +23,7 @@ import Select from '@/lib/components/form/Select';
 import Image from 'next/image';
 import cn from '@/lib/common/cn';
 import { useSchedule } from './ScheduleCtx';
+import { revalidatePath } from 'next/cache';
 
 // * Props
 interface IProps {
@@ -52,6 +53,7 @@ export default function AddEventModal({ isOpen, close }: IProps) {
       if (data.ok) {
         setDate(new Date());
         toast.success('Event Saved!');
+        revalidatePath('/schedule-builder'); // ✅
         close();
       } else {
         toast.error(
