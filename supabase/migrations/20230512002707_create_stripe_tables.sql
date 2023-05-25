@@ -57,9 +57,6 @@ CREATE TABLE subscriptions (
 	-- Stripe Cancel at Period End
 	cancel_at_period_end boolean NOT NULL DEFAULT false,
 
-	-- Stripe Subscription Metadata
-	metadata jsonb NOT NULL DEFAULT '{}',
-
 	-- Start of the current period that the subscription has been invoiced for.
 	current_period_start timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
 
@@ -159,6 +156,22 @@ SELECT c.id as user_id, s.id as subscription_id, p.name as product_name
 FROM customers c
 JOIN subscriptions s ON c.id = s.user_id
 JOIN products p ON s.stripe_product_id = p.id;
+
+-- Teacher's Me View (for a given teacher)
+CREATE VIEW teacher_me_view AS
+SELECT
+  teacher_profiles.id AS id,
+  teacher_profiles.first_name AS first_name,
+  teacher_profiles.last_name AS last_name,
+  teacher_profiles.avatar_url AS avatar_url,
+  teacher_profiles.status AS status,
+  teacher_profiles.type AS type,
+  teacher_profiles.role AS role,
+  subscriptions.status AS subscription_status,
+  subscriptions.trial_end AS subscription_trial_end
+FROM teacher_profiles
+JOIN subscriptions ON teacher_profiles.id = subscriptions.user_id
+WHERE teacher_profiles.id = auth.uid();
 
 
 -- * FUNCTIONS

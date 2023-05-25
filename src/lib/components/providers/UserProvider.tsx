@@ -11,6 +11,7 @@ import {
 import { createContext } from 'react';
 import { IUserSubscription, Me, UserStudent } from '@/assets/typescript/user';
 import { useAuth } from './AuthProvider';
+import Modal from '../popouts/Modal';
 
 // * Context
 // Interface
@@ -152,7 +153,18 @@ export function UserProvider({ children }: PropsWithChildren) {
   );
 
   // * Render
-  return <UserCtx.Provider value={value}>{children}</UserCtx.Provider>;
+  return (
+    <UserCtx.Provider value={value}>
+      {/* If Not Authorized */}
+      {/* TSK */}
+
+      {/* If Trial Ending Soon */}
+      {/* TSK */}
+
+      {/* Children */}
+      {children}
+    </UserCtx.Provider>
+  );
 }
 
 // * Hooks

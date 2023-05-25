@@ -16480,12 +16480,1300 @@ SELECT create_complete_curriculum(
     {
       "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
       "topics_data": [
-
+{
+   "name": "Building Blocks of Stories",
+   "description": "Exploring the magical realm of stories that cultivates imagination, enhances vocabulary, and promotes a lifelong love for literature.",
+   "image_path": "https://source.unsplash.com/500x500/?storybook",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Story Elements",
+           "description": "Unveiling the vital components of a story to understand and appreciate narratives.",
+           "image_path": "https://source.unsplash.com/500x500/?storybook-elements",
+           "type": "CORE"
+       },
+       {
+           "name": "Discovering Characters",
+           "description": "Delving into the world of characters, their roles and the importance they play in stories.",
+           "image_path": "https://source.unsplash.com/500x500/?storybook-characters",
+           "type": "CORE"
+       },
+       {
+           "name": "The Magic of Settings",
+           "description": "Exploring different settings and their influence on the storyline.",
+           "image_path": "https://source.unsplash.com/500x500/?storybook-settings",
+           "type": "CORE"
+       },
+       {
+           "name": "The Journey of Plot",
+           "description": "Unfolding the mystery of plots and their structure in a captivating story.",
+           "image_path": "https://source.unsplash.com/500x500/?storybook-plot",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Conflict & Resolution",
+           "description": "Learning about conflict and resolution in narratives and their impact on the story flow.",
+           "image_path": "https://source.unsplash.com/500x500/?conflict-resolution",
+           "type": "CORE"
+       },
+       {
+           "name": "The Power of Themes",
+           "description": "Identifying themes in stories and their role in connecting the story elements together.",
+           "image_path": "https://source.unsplash.com/500x500/?storybook-themes",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Narration & Point of View",
+           "description": "Distinguishing different points of view in storytelling and their effects on reader engagement.",
+           "image_path": "https://source.unsplash.com/500x500/?narration",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Your Own Characters",
+           "description": "A creative journey into crafting unique characters for our own stories.",
+           "image_path": "https://source.unsplash.com/500x500/?create-characters",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Designing a Story Setting",
+           "description": "Imagination knows no bounds as we learn to design captivating settings for our stories.",
+           "image_path": "https://source.unsplash.com/500x500/?create-setting",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Crafting a Plot",
+           "description": "Harnessing creativity and critical thinking skills to weave intriguing plots.",
+           "image_path": "https://source.unsplash.com/500x500/?create-plot",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Magical World of Words",
+   "description": "Venturing into the vibrant world of words that enhances vocabulary, fosters communication skills, and encourages creative expression.",
+   "image_path": "https://source.unsplash.com/500x500/?words",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Fun with Nouns",
+           "description": "Introducing the concept of nouns as the fundamental building blocks of sentences.",
+           "image_path": "https://source.unsplash.com/500x500/?nouns",
+           "type": "CORE"
+       },
+       {
+           "name": "Venturing into Verbs",
+           "description": "Exploring the dynamic world of verbs and their power in action.",
+           "image_path": "https://source.unsplash.com/500x500/?verbs",
+           "type": "CORE"
+       },
+       {
+           "name": "Adventures with Adjectives",
+           "description": "Delving into the descriptive universe of adjectives and their role in adding color to sentences.",
+           "image_path": "https://source.unsplash.com/500x500/?adjectives",
+           "type": "CORE"
+       },
+       {
+           "name": "A Look at Pronouns",
+           "description": "Discovering the role of pronouns in simplifying our language.",
+           "image_path": "https://source.unsplash.com/500x500/?pronouns",
+           "type": "CORE"
+       },
+       {
+           "name": "The Charm of Conjunctions",
+           "description": "Understanding the role of conjunctions in linking words, phrases, and clauses together.",
+           "image_path": "https://source.unsplash.com/500x500/?conjunctions",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Prepositions",
+           "description": "Embarking on a journey to understand prepositions and their usefulness in sentences.",
+           "image_path": "https://source.unsplash.com/500x500/?prepositions",
+           "type": "CORE"
+       },
+       {
+           "name": "Diving into Adverbs",
+           "description": "Unveiling the versatile role of adverbs in adding extra detail to verbs, adjectives, and other adverbs.",
+           "image_path": "https://source.unsplash.com/500x500/?adverbs",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Sentences",
+           "description": "Merging knowledge of words and their types to create meaningful sentences.",
+           "image_path": "https://source.unsplash.com/500x500/?create-sentences",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Building Stories with Words",
+           "description": "Harnessing our expanded vocabulary to weave short, engaging stories.",
+           "image_path": "https://source.unsplash.com/500x500/?create-story",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Word Games and Fun",
+           "description": "Applying knowledge of words through fun-filled and interactive word games.",
+           "image_path": "https://source.unsplash.com/500x500/?word-games",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Journey through Rhymes and Poetry",
+   "description": "Delving into the rhythmic world of rhymes and poetry that enhances auditory skills, fosters creativity, and nurtures an appreciation for linguistic aesthetics.",
+   "image_path": "https://source.unsplash.com/500x500/?poetry",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Rhymes",
+           "description": "Unraveling the joyous world of rhymes and their importance in language learning.",
+           "image_path": "https://source.unsplash.com/500x500/?rhymes",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Nursery Rhymes",
+           "description": "A delightful expedition into popular nursery rhymes that bring joy and learning together.",
+           "image_path": "https://source.unsplash.com/500x500/?nursery-rhymes",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Poetry",
+           "description": "Stepping into the magical realm of poetry that houses emotion, imagination, and creativity.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry-introduction",
+           "type": "CORE"
+       },
+       {
+           "name": "Understanding Verses and Stanzas",
+           "description": "Deciphering the structure of poems through verses and stanzas and their rhythmic beauty.",
+           "image_path": "https://source.unsplash.com/500x500/?verses-stanzas",
+           "type": "CORE"
+       },
+       {
+           "name": "The Power of Imagery in Poetry",
+           "description": "Exploring how poets use imagery to paint vivid pictures and invoke emotions in readers.",
+           "image_path": "https://source.unsplash.com/500x500/?imagery",
+           "type": "CORE"
+       },
+       {
+           "name": "Rhymes and Rhythms in Poetry",
+           "description": "Understanding the role of rhymes and rhythms in creating a musical flow in poems.",
+           "image_path": "https://source.unsplash.com/500x500/?rhymes-rhythms",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring the Emotion in Poetry",
+           "description": "Appreciating how poets express deep emotions and feelings through their words.",
+           "image_path": "https://source.unsplash.com/500x500/?emotions-poetry",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Your Own Rhymes",
+           "description": "Empowering creativity by guiding students to create their own enchanting rhymes.",
+           "image_path": "https://source.unsplash.com/500x500/?create-rhymes",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Writing Our First Poem",
+           "description": "Igniting the inner poets as students embark on writing their first poem.",
+           "image_path": "https://source.unsplash.com/500x500/?create-poem",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Poetry Reading and Appreciation",
+           "description": "Cultivating a love for poetry through reading, understanding, and appreciating diverse poems.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry-reading",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "World of Fairy Tales",
+   "description": "Embarking on a fantastical journey through fairy tales that spark imagination, teach life lessons, and nurture a love for reading.",
+   "image_path": "https://source.unsplash.com/500x500/?fairy-tales",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Fairy Tales",
+           "description": "Stepping into the magical realm of fairy tales and understanding their importance in literature.",
+           "image_path": "https://source.unsplash.com/500x500/?fairy-tales-introduction",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Characters in Fairy Tales",
+           "description": "Unraveling the colorful array of characters that make fairy tales enchanting.",
+           "image_path": "https://source.unsplash.com/500x500/?fairy-tales-characters",
+           "type": "CORE"
+       },
+       {
+           "name": "The Magic of Settings in Fairy Tales",
+           "description": "Venturing into magical kingdoms and fantastical settings that make fairy tales captivating.",
+           "image_path": "https://source.unsplash.com/500x500/?fairy-tales-settings",
+           "type": "CORE"
+       },
+       {
+           "name": "Understanding Plots in Fairy Tales",
+           "description": "Deciphering the plots that guide our favorite characters through their adventures in fairy tales.",
+           "image_path": "https://source.unsplash.com/500x500/?fairy-tales-plots",
+           "type": "CORE"
+       },
+       {
+           "name": "The Role of Magic in Fairy Tales",
+           "description": "Exploring the use of magic in fairy tales and its effect on the story.",
+           "image_path": "https://source.unsplash.com/500x500/?magic-fairy-tales",
+           "type": "CORE"
+       },
+       {
+           "name": "Identifying Morals in Fairy Tales",
+           "description": "Understanding the underlying morals and lessons embedded in fairy tales.",
+           "image_path": "https://source.unsplash.com/500x500/?morals-fairy-tales",
+           "type": "CORE"
+       },
+       {
+           "name": "Classic Fairy Tales from Around the World",
+           "description": "Exploring a collection of beloved fairy tales from various cultures around the world.",
+           "image_path": "https://source.unsplash.com/500x500/?fairy-tales-world",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Your Own Fairy Tale Characters",
+           "description": "Empowering creativity by guiding students to create their own unique fairy tale characters.",
+           "image_path": "https://source.unsplash.com/500x500/?create-fairy-tale-characters",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Designing a Fairy Tale Setting",
+           "description": "Nurturing creativity as students learn to design captivating settings for their own fairy tales.",
+           "image_path": "https://source.unsplash.com/500x500/?create-fairy-tale-setting",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Writing Our First Fairy Tale",
+           "description": "Encouraging students to weave their characters and settings into their very first fairy tale.",
+           "image_path": "https://source.unsplash.com/500x500/?create-fairy-tale",
+           "type": "ELECTIVE"
+        }
+      ]
+},
+{
+   "name": "Exploring Nonfiction",
+   "description": "Navigating the intriguing world of nonfiction to cultivate critical thinking, improve comprehension, and learn real-world knowledge.",
+   "image_path": "https://source.unsplash.com/500x500/?nonfiction",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Nonfiction",
+           "description": "Taking the first steps into the diverse and informative world of nonfiction literature.",
+           "image_path": "https://source.unsplash.com/500x500/?nonfiction-introduction",
+           "type": "CORE"
+       },
+       {
+           "name": "Types of Nonfiction",
+           "description": "Uncovering the variety of nonfiction texts, from biographies to informational books and more.",
+           "image_path": "https://source.unsplash.com/500x500/?types-nonfiction",
+           "type": "CORE"
+       },
+       {
+           "name": "Facts vs. Opinions",
+           "description": "Distinguishing between facts and opinions to build critical reading skills.",
+           "image_path": "https://source.unsplash.com/500x500/?facts-opinions",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading for Information",
+           "description": "Learning how to extract and comprehend valuable information from nonfiction texts.",
+           "image_path": "https://source.unsplash.com/500x500/?reading-information",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Biographies",
+           "description": "Exploring biographies as a window into the lives of notable individuals.",
+           "image_path": "https://source.unsplash.com/500x500/?biographies",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Nonfiction in Nature",
+           "description": "Understanding the natural world around us through informative nonfiction texts.",
+           "image_path": "https://source.unsplash.com/500x500/?nature-nonfiction",
+           "type": "CORE"
+       },
+       {
+           "name": "Nonfiction and History",
+           "description": "Gaining historical knowledge and understanding through nonfiction texts.",
+           "image_path": "https://source.unsplash.com/500x500/?history-nonfiction",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Our Own Informational Text",
+           "description": "Guiding students to research and create their own nonfiction informational text on a subject of their choice.",
+           "image_path": "https://source.unsplash.com/500x500/?create-informational-text",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Presenting Nonfiction",
+           "description": "Developing presentation skills as students share what they‘ve learned from a nonfiction book.",
+           "image_path": "https://source.unsplash.com/500x500/?presenting-nonfiction",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Exploring Nonfiction in Current Events",
+           "description": "Encouraging students to understand and engage with the world around them through nonfiction texts on current events.",
+           "image_path": "https://source.unsplash.com/500x500/?current-events",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Adventures in Writing",
+   "description": "Embarking on a creative journey that nurtures writing skills, cultivates imagination, and empowers students to express their thoughts and feelings.",
+   "image_path": "https://source.unsplash.com/500x500/?writing",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Writing",
+           "description": "Setting off on the exciting journey of learning to express ideas and emotions through written words.",
+           "image_path": "https://source.unsplash.com/500x500/?writing-introduction",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Writing Styles",
+           "description": "Unveiling the various styles of writing, each with its unique characteristics and charm.",
+           "image_path": "https://source.unsplash.com/500x500/?writing-styles",
+           "type": "CORE"
+       },
+       {
+           "name": "Elements of a Story",
+           "description": "Understanding the fundamental elements that construct a captivating story: characters, setting, plot, and more.",
+           "image_path": "https://source.unsplash.com/500x500/?story-elements",
+           "type": "CORE"
+       },
+       {
+           "name": "Writing Our First Story",
+           "description": "Guiding students as they weave their thoughts and creativity into their very first story.",
+           "image_path": "https://source.unsplash.com/500x500/?first-story",
+           "type": "CORE"
+       },
+       {
+           "name": "The Power of Descriptive Writing",
+           "description": "Exploring how descriptive writing can paint vivid pictures and invoke emotions in readers.",
+           "image_path": "https://source.unsplash.com/500x500/?descriptive-writing",
+           "type": "CORE"
+       },
+       {
+           "name": "Writing Letters and Emails",
+           "description": "Learning to craft thoughtful letters and emails, fostering communication skills and digital literacy.",
+           "image_path": "https://source.unsplash.com/500x500/?writing-letters",
+           "type": "CORE"
+       },
+       {
+           "name": "Proofreading and Editing",
+           "description": "Developing the essential skills of proofreading and editing to improve and refine their written works.",
+           "image_path": "https://source.unsplash.com/500x500/?proofreading-editing",
+           "type": "CORE"
+       },
+       {
+           "name": "Writing a Book Review",
+           "description": "Applying critical thinking to compose a book review, fostering reading comprehension and writing skills.",
+           "image_path": "https://source.unsplash.com/500x500/?book-review",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Creating a Comic Strip Story",
+           "description": "Combining creativity, storytelling, and art to create their own engaging comic strip story.",
+           "image_path": "https://source.unsplash.com/500x500/?comic-strip",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Publishing Our Writings",
+           "description": "Exploring the publishing process as students compile their written works into a class book.",
+           "image_path": "https://source.unsplash.com/500x500/?publishing",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Journey Through Poetry",
+   "description": "Embarking on a lyrical journey that nurtures an appreciation for poetry, cultivates expressiveness, and encourages emotional exploration.",
+   "image_path": "https://source.unsplash.com/500x500/?poetry",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Poetry",
+           "description": "Taking the first steps into the rhythmic world of poetry, exploring its importance and charm.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry-introduction",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Rhyme and Rhythm",
+           "description": "Understanding the use of rhyme and rhythm in poetry, and how they bring verses to life.",
+           "image_path": "https://source.unsplash.com/500x500/?rhyme-rhythm",
+           "type": "CORE"
+       },
+       {
+           "name": "The Power of Imagery in Poetry",
+           "description": "Learning how poets use vivid imagery to create powerful emotions and pictures in the reader‘s mind.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry-imagery",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading and Interpreting Poems",
+           "description": "Building skills to read and extract meaning from various styles of poetry.",
+           "image_path": "https://source.unsplash.com/500x500/?reading-poems",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Our First Poem",
+           "description": "Guiding students to express their emotions and creativity in their very first poem.",
+           "image_path": "https://source.unsplash.com/500x500/?first-poem",
+           "type": "CORE"
+       },
+       {
+           "name": "Poetry in Songs",
+           "description": "Exploring the intersection of music and poetry, and how song lyrics carry poetic elements.",
+           "image_path": "https://source.unsplash.com/500x500/?songs-poetry",
+           "type": "CORE"
+       },
+       {
+           "name": "Classic Poems for Children",
+           "description": "Introducing students to a collection of classic poems designed to engage and inspire young minds.",
+           "image_path": "https://source.unsplash.com/500x500/?classic-poems",
+           "type": "CORE"
+       },
+       {
+           "name": "Writing a Haiku",
+           "description": "Learning the traditional art of Haiku writing and creating their own concise and evocative poem.",
+           "image_path": "https://source.unsplash.com/500x500/?haiku",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Creating Visual Poetry",
+           "description": "Combining art and poetry, students create visual poems that represent their feelings and imagination.",
+           "image_path": "https://source.unsplash.com/500x500/?visual-poetry",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Presenting Our Poems",
+           "description": "Nurturing confidence and expression as students present their original poems to the class.",
+           "image_path": "https://source.unsplash.com/500x500/?presenting-poems",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "The Art of Communication",
+   "description": "Delving into the essentials of effective communication, enhancing listening skills, verbal expression, and understanding of non-verbal cues.",
+   "image_path": "https://source.unsplash.com/500x500/?communication",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Basics of Communication",
+           "description": "Unraveling the fundamentals of effective communication and its importance in everyday life.",
+           "image_path": "https://source.unsplash.com/500x500/?communication-basics",
+           "type": "CORE"
+       },
+       {
+           "name": "The Power of Listening",
+           "description": "Exploring the art of active listening and its role in understanding and empathy.",
+           "image_path": "https://source.unsplash.com/500x500/?listening",
+           "type": "CORE"
+       },
+       {
+           "name": "Expressing Ourselves",
+           "description": "Learning to convey thoughts, feelings, and ideas clearly and confidently.",
+           "image_path": "https://source.unsplash.com/500x500/?expression",
+           "type": "CORE"
+       },
+       {
+           "name": "Understanding Non-Verbal Communication",
+           "description": "Decoding the language of facial expressions, body language, and other non-verbal cues.",
+           "image_path": "https://source.unsplash.com/500x500/?non-verbal",
+           "type": "CORE"
+       },
+       {
+           "name": "The Role of Questions",
+           "description": "Understanding the importance of asking questions for gaining information and sparking conversations.",
+           "image_path": "https://source.unsplash.com/500x500/?questions",
+           "type": "CORE"
+       },
+       {
+           "name": "Communicating in Different Settings",
+           "description": "Exploring how communication changes depending on the setting, from classroom discussions to talking with friends.",
+           "image_path": "https://source.unsplash.com/500x500/?different-settings",
+           "type": "CORE"
+       },
+       {
+           "name": "Respectful Communication",
+           "description": "Learning to communicate respectfully, taking into account the feelings and perspectives of others.",
+           "image_path": "https://source.unsplash.com/500x500/?respectful-communication",
+           "type": "CORE"
+       },
+       {
+           "name": "Public Speaking Basics",
+           "description": "Introducing the basics of public speaking and practicing presenting in front of a group.",
+           "image_path": "https://source.unsplash.com/500x500/?public-speaking",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Role-Playing Exercises",
+           "description": "Using role-play scenarios to practice effective and respectful communication in various situations.",
+           "image_path": "https://source.unsplash.com/500x500/?role-play",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Understanding and Using Tone",
+           "description": "Exploring how tone of voice can change the meaning of a message and how to use it effectively.",
+           "image_path": "https://source.unsplash.com/500x500/?tone-voice",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "The World of Comics",
+   "description": "Venturing into the vibrant world of comics, fostering creativity, storytelling skills, and visual interpretation.",
+   "image_path": "https://source.unsplash.com/500x500/?comics",
+   "type": "ELECTIVE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Comics",
+           "description": "Exploring the colourful world of comics, understanding its components, and why we love them.",
+           "image_path": "https://source.unsplash.com/500x500/?comics-introduction",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading and Interpreting Comics",
+           "description": "Learning to read and extract meaning from the combination of visuals and text in comics.",
+           "image_path": "https://source.unsplash.com/500x500/?reading-comics",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Simple Comic Strips",
+           "description": "Guiding students to create their own simple comic strips, combining art and storytelling.",
+           "image_path": "https://source.unsplash.com/500x500/?creating-comics",
+           "type": "CORE"
+       },
+       {
+           "name": "The Art of Visual Storytelling",
+           "description": "Delving into how comics use visual storytelling, and how this enhances engagement and understanding.",
+           "image_path": "https://source.unsplash.com/500x500/?visual-storytelling",
+           "type": "CORE"
+       },
+       {
+           "name": "Famous Comic Book Characters",
+           "description": "Introducing famous comic book characters and exploring what makes them memorable.",
+           "image_path": "https://source.unsplash.com/500x500/?comic-characters",
+           "type": "CORE"
+       },
+       {
+           "name": "Drawing Our Favorite Characters",
+           "description": "Inviting students to draw and describe their favorite comic book characters, fostering creativity and expressive skills.",
+           "image_path": "https://source.unsplash.com/500x500/?drawing-characters",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Creating a Comic Book Cover",
+           "description": "Designing a captivating comic book cover that tells a story, enhancing art and creativity skills.",
+           "image_path": "https://source.unsplash.com/500x500/?comic-book-cover",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "The Magic of Fairy Tales",
+   "description": "Stepping into the enchanting world of fairy tales, sparking imagination, and deepening understanding of narrative structure.",
+   "image_path": "https://source.unsplash.com/500x500/?fairy-tales",
+   "type": "ELECTIVE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Fairy Tales",
+           "description": "Embarking on a journey through magical realms, meeting princes, princesses, witches, and talking animals along the way.",
+           "image_path": "https://source.unsplash.com/500x500/?fairy-tales-introduction",
+           "type": "CORE"
+       },
+       {
+           "name": "Understanding Story Elements",
+           "description": "Learning to identify key elements in a story such as characters, setting, problem, and resolution.",
+           "image_path": "https://source.unsplash.com/500x500/?story-elements",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading and Discussing Fairy Tales",
+           "description": "Reading a selection of fairy tales and encouraging thoughtful discussion and interpretation.",
+           "image_path": "https://source.unsplash.com/500x500/?reading-fairy-tales",
+           "type": "CORE"
+       },
+       {
+           "name": "The Morals of Fairy Tales",
+           "description": "Discussing the morals or lessons that fairy tales convey and their relevance in our daily life.",
+           "image_path": "https://source.unsplash.com/500x500/?fairy-tales-morals",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Our Own Fairy Tales",
+           "description": "Inspiring students to write their own fairy tales, fostering creativity and narrative skills.",
+           "image_path": "https://source.unsplash.com/500x500/?writing-fairy-tales",
+           "type": "CORE"
+       },
+       {
+           "name": "Fairy Tales From Around the World",
+           "description": "Exploring a range of fairy tales from different cultures, highlighting diversity and the universal appeal of storytelling.",
+           "image_path": "https://source.unsplash.com/500x500/?world-fairy-tales",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Performing a Fairy Tale Play",
+           "description": "Creating and performing a simple play based on a fairy tale, enhancing team work and expressive skills.",
+           "image_path": "https://source.unsplash.com/500x500/?fairy-tale-play",
+           "type": "ELECTIVE"
+       }
+   ]
+}
       ]
     },
     {
       "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
-      "topics_data": []
+      "topics_data": [
+{
+   "name": "Exploring Stories",
+   "description": "Embark on a literary journey that cultivates imagination, enriches vocabulary, and fosters a love for reading.",
+   "image_path": "https://source.unsplash.com/500x500/?books",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Journey into Fairy Tales",
+           "description": "Uncover the magic of fairy tales and the valuable lessons they contain.",
+           "image_path": "https://source.unsplash.com/500x500/?fairytales",
+           "type": "CORE"
+       },
+       {
+           "name": "Adventures in Aesop‘s Fables",
+            "description": "Delve into the world of Aesop‘s Fables and the timeless morals they portray.",
+           "image_path": "https://source.unsplash.com/500x500/?aesopsfables",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Story Elements",
+           "description": "Learn about characters, settings, and plot as we dissect stories and see what makes them tick.",
+           "image_path": "https://source.unsplash.com/500x500/?story-elements",
+           "type": "CORE"
+       },
+       {
+           "name": "Creative Storytelling",
+           "description": "Unlock your imagination and craft your very own stories.",
+           "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+           "type": "CORE"
+       },
+       {
+           "name": "The Power of Words",
+           "description": "Discover how words can create emotions, images, and ideas, and how to use them to influence and inspire.",
+           "image_path": "https://source.unsplash.com/500x500/?words",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading Comprehension",
+           "description": "Improve understanding and interpretation of stories with proven reading comprehension strategies.",
+           "image_path": "https://source.unsplash.com/500x500/?reading-comprehension",
+           "type": "CORE"
+       },
+       {
+           "name": "Visualizing and Verbalizing",
+           "description": "Learn to visualize what you read and communicate it effectively to others.",
+           "image_path": "https://source.unsplash.com/500x500/?visualization",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Poetry",
+           "description": "Step into the rhythmical world of poetry and learn how to appreciate its beauty and emotion.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Biographies of Inspiring Personalities",
+           "description": "Explore the lives of inspiring individuals and learn from their experiences and accomplishments.",
+           "image_path": "https://source.unsplash.com/500x500/?biographies",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Multicultural Stories",
+           "description": "Discover stories from different cultures around the world and appreciate the richness of global literature.",
+           "image_path": "https://source.unsplash.com/500x500/?multicultural",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Grammar Guardians",
+   "description": "Embark on a grammar adventure to master the building blocks of English language and become confident communicators.",
+   "image_path": "https://source.unsplash.com/500x500/?grammar",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Parts of Speech Pioneers",
+           "description": "Journey through the world of nouns, verbs, adjectives, and more to discover how they shape our language.",
+           "image_path": "https://source.unsplash.com/500x500/?parts-of-speech",
+           "type": "CORE"
+       },
+       {
+           "name": "Sentence Structure Scouts",
+           "description": "Explore the building blocks of sentences and how they come together to express ideas clearly.",
+           "image_path": "https://source.unsplash.com/500x500/?sentence-structure",
+           "type": "CORE"
+       },
+       {
+           "name": "Punctuation Protectors",
+           "description": "Learn the power of punctuation and how it helps us understand written language.",
+           "image_path": "https://source.unsplash.com/500x500/?punctuation",
+           "type": "CORE"
+       },
+       {
+           "name": "Tense Timekeepers",
+           "description": "Master the tenses to accurately talk about past, present, and future events.",
+           "image_path": "https://source.unsplash.com/500x500/?tenses",
+           "type": "CORE"
+       },
+       {
+           "name": "Spelling Specialists",
+           "description": "Develop your spelling skills and enhance your written communication.",
+           "image_path": "https://source.unsplash.com/500x500/?spelling",
+           "type": "CORE"
+       },
+       {
+           "name": "Conjunction Connectors",
+           "description": "Discover how conjunctions can connect words, phrases, and clauses to make your sentences more interesting.",
+           "image_path": "https://source.unsplash.com/500x500/?conjunctions",
+           "type": "CORE"
+       },
+       {
+           "name": "Preposition Pathfinders",
+           "description": "Explore how prepositions can establish relationships between other words in your sentences.",
+           "image_path": "https://source.unsplash.com/500x500/?prepositions",
+           "type": "CORE"
+       },
+       {
+           "name": "Creative Writing with Grammar",
+           "description": "Apply your grammar knowledge to create your own imaginative stories.",
+           "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Exploring Language Styles",
+           "description": "Learn about different language styles, such as formal, informal, and persuasive, and when to use them.",
+           "image_path": "https://source.unsplash.com/500x500/?language-styles",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Grammar in Poetry",
+           "description": "Appreciate how grammar rules can be bent or broken in poetry to create interesting effects.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Vocabulary Voyagers",
+   "description": "Dive into the sea of words, expanding your vocabulary and enabling articulate expressions.",
+   "image_path": "https://source.unsplash.com/500x500/?vocabulary",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Word Discovery",
+           "description": "Embark on a journey to discover new words and understand their meanings.",
+           "image_path": "https://source.unsplash.com/500x500/?dictionary",
+           "type": "CORE"
+       },
+       {
+           "name": "Word Usage Explorers",
+           "description": "Learn how to use words correctly in context to communicate effectively.",
+           "image_path": "https://source.unsplash.com/500x500/?communication",
+           "type": "CORE"
+       },
+       {
+           "name": "Synonyms and Antonyms",
+           "description": "Uncover the world of synonyms and antonyms to express ideas with precision.",
+           "image_path": "https://source.unsplash.com/500x500/?synonyms,antonyms",
+           "type": "CORE"
+       },
+       {
+           "name": "Homophones and Homonyms",
+           "description": "Explore homophones and homonyms to avoid common misunderstandings in English language.",
+           "image_path": "https://source.unsplash.com/500x500/?homophones,homonyms",
+           "type": "CORE"
+       },
+       {
+           "name": "Root Words, Prefixes, and Suffixes",
+           "description": "Discover the power of root words, prefixes, and suffixes to decode unfamiliar words.",
+           "image_path": "https://source.unsplash.com/500x500/?prefixes,suffixes",
+           "type": "CORE"
+       },
+       {
+           "name": "Vocabulary in Context",
+           "description": "Learn how to infer the meaning of new words from the context in which they are used.",
+           "image_path": "https://source.unsplash.com/500x500/?context",
+           "type": "CORE"
+       },
+       {
+           "name": "Word Families",
+           "description": "Understand word families to quickly recognize and understand related words.",
+           "image_path": "https://source.unsplash.com/500x500/?word-families",
+           "type": "CORE"
+       },
+       {
+           "name": "Vocabulary in Literature",
+           "description": "Expand your vocabulary by exploring the rich language used in literature.",
+           "image_path": "https://source.unsplash.com/500x500/?literature",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Creative Writing and Vocabulary",
+           "description": "Use your expanded vocabulary to express your thoughts and ideas creatively in writing.",
+           "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Vocabulary Games",
+           "description": "Enjoy learning new words and reinforcing your vocabulary through fun games.",
+           "image_path": "https://source.unsplash.com/500x500/?word-games",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Reading Realms",
+   "description": "Embark on a quest to become proficient readers, nurturing the skills to decipher text and unearth the joy of literature.",
+   "image_path": "https://source.unsplash.com/500x500/?reading",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Decoding Strategies",
+           "description": "Master the techniques to decode words and sentences, enhancing your fluency in reading.",
+           "image_path": "https://source.unsplash.com/500x500/?decoding",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading Fluency",
+           "description": "Develop the pace, accuracy, and expression that make reading enjoyable and understandable.",
+           "image_path": "https://source.unsplash.com/500x500/?reading-fluency",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading Comprehension Techniques",
+           "description": "Explore effective techniques to understand and interpret texts, strengthening comprehension skills.",
+           "image_path": "https://source.unsplash.com/500x500/?comprehension",
+           "type": "CORE"
+       },
+       {
+           "name": "Text Connections",
+           "description": "Learn to connect texts to self, other texts, and the world to deepen understanding and meaning.",
+           "image_path": "https://source.unsplash.com/500x500/?text-connections",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading Non-fiction",
+           "description": "Discover the importance of reading non-fiction and the skills to extract information effectively.",
+           "image_path": "https://source.unsplash.com/500x500/?non-fiction",
+           "type": "CORE"
+       },
+       {
+           "name": "Genre Exploration",
+           "description": "Dive into different genres of literature to appreciate the diversity and richness of written works.",
+           "image_path": "https://source.unsplash.com/500x500/?genres",
+           "type": "CORE"
+       },
+       {
+           "name": "Active Reading",
+           "description": "Develop the habit of active reading, nurturing a deeper connection with the text and enhancing comprehension.",
+           "image_path": "https://source.unsplash.com/500x500/?active-reading",
+           "type": "CORE"
+       },
+       {
+           "name": "Reading Aloud",
+           "description": "Experience the joy of reading aloud and improving oral expression and listening skills.",
+           "image_path": "https://source.unsplash.com/500x500/?reading-aloud",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Author Study",
+           "description": "Explore the works of famous authors to appreciate their unique styles and contributions to literature.",
+           "image_path": "https://source.unsplash.com/500x500/?authors",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Book Club",
+           "description": "Engage in group discussions about books, fostering social skills, and deeper understanding of literature.",
+           "image_path": "https://source.unsplash.com/500x500/?book-club",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Writing Wonders",
+   "description": "Unleash your creativity and articulate your thoughts, venturing into the magical realm of written expression.",
+   "image_path": "https://source.unsplash.com/500x500/?writing",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Writing Basics",
+           "description": "Understand the fundamental aspects of writing, including grammar, punctuation, and spelling.",
+           "image_path": "https://source.unsplash.com/500x500/?writing-basics",
+           "type": "CORE"
+       },
+       {
+           "name": "Sentence Crafting",
+           "description": "Explore the art of crafting sentences to convey your ideas effectively and creatively.",
+           "image_path": "https://source.unsplash.com/500x500/?sentence-crafting",
+           "type": "CORE"
+       },
+       {
+           "name": "Paragraph Building",
+           "description": "Learn how to construct meaningful paragraphs as the building blocks of your writing.",
+           "image_path": "https://source.unsplash.com/500x500/?paragraph-building",
+           "type": "CORE"
+       },
+       {
+           "name": "Story Writing",
+           "description": "Unleash your imagination to create engaging stories with interesting characters, settings, and plots.",
+           "image_path": "https://source.unsplash.com/500x500/?story-writing",
+           "type": "CORE"
+       },
+       {
+           "name": "Writing for Clarity",
+           "description": "Develop your writing style to convey your thoughts and ideas with clarity and precision.",
+           "image_path": "https://source.unsplash.com/500x500/?writing-clarity",
+           "type": "CORE"
+       },
+       {
+           "name": "Creative Writing",
+           "description": "Tap into your creativity to write imaginative narratives, poems, and other creative pieces.",
+           "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+           "type": "CORE"
+       },
+       {
+           "name": "Writing Process",
+           "description": "Understand the stages of the writing process: prewriting, drafting, revising, editing, and publishing.",
+           "image_path": "https://source.unsplash.com/500x500/?writing-process",
+           "type": "CORE"
+       },
+       {
+           "name": "Journal Writing",
+           "description": "Experience the joy and benefits of maintaining a personal journal as a space for self-expression.",
+           "image_path": "https://source.unsplash.com/500x500/?journal-writing",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Writing Reviews",
+           "description": "Learn how to write engaging reviews for books, movies, and more to share your opinions and insights.",
+           "image_path": "https://source.unsplash.com/500x500/?review-writing",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Writing Letters",
+           "description": "Explore the art of letter writing, a valuable skill for personal and professional communication.",
+           "image_path": "https://source.unsplash.com/500x500/?letter-writing",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Speaking Stars",
+   "description": "Embark on an empowering journey towards eloquent expression, harnessing the power of spoken words.",
+   "image_path": "https://source.unsplash.com/500x500/?public-speaking",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Elements of Effective Speaking",
+           "description": "Discover the key elements of effective speaking, such as clarity, tone, volume, and pace.",
+           "image_path": "https://source.unsplash.com/500x500/?effective-speaking",
+           "type": "CORE"
+       },
+       {
+           "name": "Public Speaking Basics",
+           "description": "Learn the basics of public speaking to build confidence and express yourself eloquently.",
+           "image_path": "https://source.unsplash.com/500x500/?public-speaking",
+           "type": "CORE"
+       },
+       {
+           "name": "Articulation Activities",
+           "description": "Engage in fun activities to improve your pronunciation and clarity of speech.",
+           "image_path": "https://source.unsplash.com/500x500/?articulation",
+           "type": "CORE"
+       },
+       {
+           "name": "Expressing Opinions",
+           "description": "Develop the skills to articulate your thoughts and opinions effectively and respectfully.",
+           "image_path": "https://source.unsplash.com/500x500/?opinions",
+           "type": "CORE"
+       },
+       {
+           "name": "Storytelling Skills",
+           "description": "Hone your storytelling skills to engage, entertain, and inform your listeners.",
+           "image_path": "https://source.unsplash.com/500x500/?storytelling",
+           "type": "CORE"
+       },
+       {
+           "name": "Speech Preparation",
+           "description": "Learn how to effectively prepare for a speech, from research to rehearsal.",
+           "image_path": "https://source.unsplash.com/500x500/?speech-preparation",
+           "type": "CORE"
+       },
+       {
+           "name": "Body Language Basics",
+           "description": "Understand the importance of body language in enhancing your communication skills.",
+           "image_path": "https://source.unsplash.com/500x500/?body-language",
+           "type": "CORE"
+       },
+       {
+           "name": "Impromptu Speaking",
+           "description": "Develop the ability to speak confidently and clearly without prior preparation.",
+           "image_path": "https://source.unsplash.com/500x500/?impromptu-speaking",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Debate Fundamentals",
+           "description": "Learn the basics of debate to enhance critical thinking, research, and persuasive speaking skills.",
+           "image_path": "https://source.unsplash.com/500x500/?debate",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Presenting Poetry",
+           "description": "Experience the joy of expressing poetry through vocal modulation, rhythm, and intonation.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry-presentation",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Listening Landscapes",
+   "description": "Navigate the world of sound, enhancing understanding and empathy through the power of attentive listening.",
+   "image_path": "https://source.unsplash.com/500x500/?listening",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Listening Skills Basics",
+           "description": "Understand the importance of listening and the basic skills needed for effective comprehension.",
+           "image_path": "https://source.unsplash.com/500x500/?listening-skills",
+           "type": "CORE"
+       },
+       {
+           "name": "Active Listening",
+           "description": "Learn to actively engage in listening, enhancing understanding and empathy.",
+           "image_path": "https://source.unsplash.com/500x500/?active-listening",
+           "type": "CORE"
+       },
+       {
+           "name": "Listening for Details",
+           "description": "Develop the ability to listen for details, improving comprehension and critical thinking skills.",
+           "image_path": "https://source.unsplash.com/500x500/?detail-listening",
+           "type": "CORE"
+       },
+       {
+           "name": "Listening to Understand",
+           "description": "Practice listening to understand different perspectives, fostering empathy and respect.",
+           "image_path": "https://source.unsplash.com/500x500/?empathetic-listening",
+           "type": "CORE"
+       },
+       {
+           "name": "Listening in Conversations",
+           "description": "Cultivate good listening habits in conversations to build meaningful relationships.",
+           "image_path": "https://source.unsplash.com/500x500/?conversation",
+           "type": "CORE"
+       },
+       {
+           "name": "Critical Listening",
+           "description": "Enhance your critical listening skills to evaluate information and make informed decisions.",
+           "image_path": "https://source.unsplash.com/500x500/?critical-listening",
+           "type": "CORE"
+       },
+       {
+           "name": "Listening to Narratives",
+           "description": "Enjoy the art of listening to narratives, appreciating the craft of storytelling.",
+           "image_path": "https://source.unsplash.com/500x500/?narrative",
+           "type": "CORE"
+       },
+       {
+           "name": "Listening to Poetry",
+           "description": "Experience the rhythm and music of poetry through attentive listening.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Listening for Humor",
+           "description": "Develop the ability to appreciate humor and satire through listening, enhancing enjoyment and understanding.",
+           "image_path": "https://source.unsplash.com/500x500/?humor",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Listening to Music",
+           "description": "Engage with music as a form of storytelling, fostering appreciation and emotional connection.",
+           "image_path": "https://source.unsplash.com/500x500/?music",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Vocabulary Voyage",
+   "description": "Embark on a linguistic journey, expanding your horizons and deepening your understanding of the world with each new word you learn.",
+   "image_path": "https://source.unsplash.com/500x500/?vocabulary",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Understanding Words",
+           "description": "Dive into the fascinating world of words and their meanings, learning how to use them correctly and effectively.",
+           "image_path": "https://source.unsplash.com/500x500/?words",
+           "type": "CORE"
+       },
+       {
+           "name": "Building Vocabulary",
+           "description": "Discover strategies for expanding your vocabulary, increasing your ability to express yourself and understand others.",
+           "image_path": "https://source.unsplash.com/500x500/?vocabulary-building",
+           "type": "CORE"
+       },
+       {
+           "name": "Using Context Clues",
+           "description": "Learn how to decipher the meanings of unfamiliar words from the context in which they are used.",
+           "image_path": "https://source.unsplash.com/500x500/?context-clues",
+           "type": "CORE"
+       },
+       {
+           "name": "Synonyms and Antonyms",
+           "description": "Explore the world of synonyms and antonyms to understand the nuances of language and expand your vocabulary.",
+           "image_path": "https://source.unsplash.com/500x500/?synonyms-antonyms",
+           "type": "CORE"
+       },
+       {
+           "name": "Homophones and Homonyms",
+           "description": "Uncover the fun of homophones and homonyms, understanding their differences and their uses.",
+           "image_path": "https://source.unsplash.com/500x500/?homophones-homonyms",
+           "type": "CORE"
+       },
+       {
+           "name": "Word Families",
+           "description": "Explore word families to better understand patterns in spelling and pronunciation.",
+           "image_path": "https://source.unsplash.com/500x500/?word-families",
+           "type": "CORE"
+       },
+       {
+           "name": "Using a Dictionary",
+           "description": "Learn how to use a dictionary to find word meanings, pronunciations, synonyms, antonyms, and more.",
+           "image_path": "https://source.unsplash.com/500x500/?dictionary",
+           "type": "CORE"
+       },
+       {
+           "name": "Root Words, Prefixes, and Suffixes",
+           "description": "Delve into the structure of words by studying root words, prefixes, and suffixes.",
+           "image_path": "https://source.unsplash.com/500x500/?root-words-prefixes-suffixes",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Word Games",
+           "description": "Enjoy word games that challenge and expand your vocabulary in a fun and interactive way.",
+           "image_path": "https://source.unsplash.com/500x500/?word-games",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Creative Word Usage",
+           "description": "Express yourself creatively using your vocabulary, from writing poetry to telling stories.",
+           "image_path": "https://source.unsplash.com/500x500/?creative-word-usage",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Dramatic Expressions",
+   "description": "Step into the enchanting world of drama, using theatrical performance to explore emotions, develop empathy, and express creativity.",
+   "image_path": "https://source.unsplash.com/500x500/?drama",
+   "type": "ELECTIVE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Drama",
+           "description": "Dive into the magical realm of drama, learning about its basic elements and how it can be used to tell stories.",
+           "image_path": "https://source.unsplash.com/500x500/?theater",
+           "type": "CORE"
+       },
+       {
+           "name": "Embodying Characters",
+           "description": "Learn how to portray different characters, understanding their emotions, motivations, and actions.",
+           "image_path": "https://source.unsplash.com/500x500/?characters",
+           "type": "CORE"
+       },
+       {
+           "name": "Storytelling Through Drama",
+           "description": "Experience storytelling in a whole new way by performing dramatic interpretations of stories.",
+           "image_path": "https://source.unsplash.com/500x500/?storytelling",
+           "type": "CORE"
+       },
+       {
+           "name": "Drama Games",
+           "description": "Play drama games that foster creativity, teamwork, and performance skills.",
+           "image_path": "https://source.unsplash.com/500x500/?drama-games",
+           "type": "CORE"
+       },
+       {
+           "name": "Performing a Play",
+           "description": "Put everything together to perform a short play, from rehearsal to the final bow.",
+           "image_path": "https://source.unsplash.com/500x500/?play-performance",
+           "type": "CORE"
+       },
+       {
+           "name": "Pantomime Basics",
+           "description": "Discover the art of pantomime, telling stories without words, using only body movements.",
+           "image_path": "https://source.unsplash.com/500x500/?pantomime",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Improvisation Exploration",
+           "description": "Experience the spontaneous creation of theatre in the moment through improvisation.",
+           "image_path": "https://source.unsplash.com/500x500/?improvisation",
+           "type": "ELECTIVE"
+       }
+   ]
+},
+{
+   "name": "Creative Writing Wonders",
+   "description": "Venture into the captivating world of creative writing, crafting your own tales of adventure, fantasy, and discovery.",
+   "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+   "type": "ELECTIVE",
+   "lessons_data": [
+       {
+           "name": "Introduction to Creative Writing",
+           "description": "Discover the joy of creating your own stories, learning the basics of creative writing.",
+           "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Characters",
+           "description": "Learn how to create compelling characters that drive your story and captivate readers.",
+           "image_path": "https://source.unsplash.com/500x500/?character-creation",
+           "type": "CORE"
+       },
+       {
+           "name": "Building Worlds",
+           "description": "Immerse yourself in world-building, designing unique settings for your stories.",
+           "image_path": "https://source.unsplash.com/500x500/?world-building",
+           "type": "CORE"
+       },
+       {
+           "name": "Plot Development",
+           "description": "Develop engaging plots that take your characters on exciting journeys and keep readers hooked.",
+           "image_path": "https://source.unsplash.com/500x500/?plot-development",
+           "type": "CORE"
+       },
+       {
+           "name": "Writing Dialogues",
+           "description": "Master the art of writing dialogue to bring your characters to life and move your story forward.",
+           "image_path": "https://source.unsplash.com/500x500/?dialogue-writing",
+           "type": "CORE"
+       },
+       {
+           "name": "Poetry Creation",
+           "description": "Express yourself through poetry, exploring rhythm, rhyme, and the power of imagery.",
+           "image_path": "https://source.unsplash.com/500x500/?poetry",
+           "type": "ELECTIVE"
+       },
+       {
+           "name": "Script Writing Basics",
+           "description": "Delve into the world of script writing, creating dialogues and narratives for plays or movies.",
+           "image_path": "https://source.unsplash.com/500x500/?script-writing",
+           "type": "ELECTIVE"
+       }
+   ]
+}
+      ]
     },
     {
       "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",

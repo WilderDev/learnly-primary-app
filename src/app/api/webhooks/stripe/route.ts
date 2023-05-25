@@ -13,18 +13,14 @@ import {
   handleUpdateProduct,
   handleDeleteCustomer,
   handleTrialWillEnd,
+  handleUpdateSubscription,
+  handleDeleteSubscription,
 } from '@/lib/stripe/stripeWebhookHandlers';
 
 // * CONSTANTS
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!; // Retrieve the endpoint secret from the environment variables
 
 // * HELPERS
-// Disable body parsing since we are retrieving the raw body
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 export const runtime = 'nodejs'; // Set the runtime to Edge
 
 // * EVENTS
@@ -39,7 +35,8 @@ const relevantEvents: Stripe.Event['type'][] = [
   'price.created', // => Create Price Record ✅
   'price.updated', // => Update Price Record ✅
   'price.deleted', // => Delete Price Record ✅
-  //   . . .
+  'customer.subscription.updated', // => Updated Subscription Record (Subscription Renewed/Changed Plan/Changed from Trial to Active) ✅
+  'customer.subscription.deleted', // => Delete Subscription Record (Subscription Ends) ✅
 ];
 
 // * API ROUTE
@@ -106,6 +103,20 @@ export async function POST(request: Request) {
       // *** Handle price.deleted event *** \\
       case 'price.deleted':
         await handleDeletePrice({ priceId: (evt as Stripe.Price).id }); // Run the handler function
+
+        break; // Exit switch statement
+      // *** Handle customer.subscription.updated event *** \\
+      case 'customer.subscription.updated':
+        await handleUpdateSubscription({
+          subscription: evt as Stripe.Subscription,
+        }); // Run the handler function
+
+        break; // Exit switch statement
+      // *** Handle customer.subscription.deleted event *** \\
+      case 'customer.subscription.deleted':
+        await handleDeleteSubscription({
+          subscriptionId: (evt as Stripe.Subscription).id,
+        }); // Run the handler function
 
         break; // Exit switch statement
       // *** Handle default case *** \\

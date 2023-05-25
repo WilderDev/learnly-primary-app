@@ -84,7 +84,7 @@ export async function handleCreateCustomer({ customer }: ICreateCustomer) {
     },
     trial_settings: {
       end_behavior: {
-        missing_payment_method: 'cancel',
+        missing_payment_method: 'create_invoice',
       },
     },
   });
@@ -367,4 +367,112 @@ export async function handleDeletePrice({ priceId }: IDeletePrice) {
 
   // 2. Check if there was an error deleting the price
   if (priceError) throw new Error(priceError.message);
+}
+
+// * Handle Subscription Updated Event ✅
+// Interface
+interface IUpdateSubscription {
+  subscription: Stripe.Subscription;
+}
+
+// Handler
+export async function handleUpdateSubscription({
+  subscription,
+}: IUpdateSubscription) {
+  // 1. Get the subscription from Stripe
+  const {
+    id,
+    metadata,
+    status,
+    items,
+    cancel_at_period_end,
+    cancel_at,
+    canceled_at,
+    current_period_start,
+    current_period_end,
+    ended_at,
+    trial_start,
+    trial_end,
+  } = await stripe.subscriptions.retrieve(subscription.id);
+
+  // 2. Update the subscription in the database
+  const { error: subscriptionError } = await supabaseAdmin()
+    .from('subscriptions')
+    .update({
+      id,
+      user_id: metadata.supabaseId,
+      items: items.data as any,
+      status,
+      cancel_at_period_end,
+      cancel_at: cancel_at ? secondsToIso(cancel_at) : null,
+      canceled_at: canceled_at ? secondsToIso(canceled_at) : null,
+      current_period_start: secondsToIso(current_period_start),
+      current_period_end: secondsToIso(current_period_end),
+      ended_at: ended_at ? secondsToIso(ended_at) : null,
+      trial_start: trial_start ? secondsToIso(trial_start) : null,
+      trial_end: trial_end ? secondsToIso(trial_end) : null,
+    });
+
+  // 3. Check if there was an error updating the subscription
+  if (subscriptionError) throw new Error(subscriptionError.message);
+
+  // 4. Check if the subscription is canceled | past_due | unpaid | incomplete_expired
+  if (
+    status === 'canceled' ||
+    status === 'unpaid' ||
+    status === 'incomplete_expired'
+  ) {
+    // 4a. Update the user's role
+    await supabaseAdmin()
+      .from('teacher_profiles')
+      .update({
+        role: 'BANNISHED',
+      })
+      .eq('user_id', metadata.supabaseId);
+
+    // 4b. Log the user out
+    await supabaseAdmin().auth.signOut();
+
+    // 4c. Delete the user's subscription
+    await stripe.subscriptions.del(subscription.id);
+  }
+
+  // 5. Check if the subscription is incomplete
+  if (status === 'incomplete' || status === 'paused' || status === 'past_due') {
+    // 5a. Create billing portal session
+    const url = await handleCreateBillingPortalSession({
+      customerId: metadata.supabaseId,
+    });
+
+    // 5b. Send the user a notification
+    await supabaseAdmin().from('notifications').insert({
+      title: 'Subscription Incomplete',
+      body: 'Your subscription is incomplete. Please try again.',
+      type: 'BILLING',
+      recipient_id: metadata.supabaseId,
+      action_text: 'Manage Subscription',
+      action_url: url,
+    });
+
+    // 5c. Set the user's role to incomplete
+  }
+
+  // 6. Check if the subscription is active
+  if (status === 'active') {
+    // 6a. TSK
+    //
+  }
+}
+
+// * Handle Subscription Deleted Event ✅
+// Interface
+interface IDeleteSubscription {
+  subscriptionId: string;
+}
+
+// Handler
+export async function handleDeleteSubscription({
+  subscriptionId,
+}: IDeleteSubscription) {
+  // TSK
 }

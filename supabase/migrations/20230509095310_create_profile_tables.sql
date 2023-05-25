@@ -185,22 +185,6 @@ auth.users.email
 FROM auth.users;
 REVOKE all ON public.users FROM anon, authenticated;
 
--- Teacher's Me View (for a given teacher)
-CREATE VIEW teacher_me_view AS
-SELECT
-  teacher_profiles.id AS id,
-  teacher_profiles.first_name AS first_name,
-  teacher_profiles.last_name AS last_name,
-  teacher_profiles.avatar_url AS avatar_url,
-  teacher_profiles.status AS status,
-  teacher_profiles.type AS type,
-  teacher_profiles.role AS role,
-  subscriptions.status AS subscription_status,
-  subscriptions.trial_end AS subscription_trial_end
-FROM teacher_profiles
-JOIN subscriptions ON teacher_profiles.id = subscriptions.user_id
-WHERE teacher_profiles.id = auth.uid();
-
 
 -- Teacher's Students View (for a given teacher)
 CREATE VIEW teacher_students_profiles_view AS
