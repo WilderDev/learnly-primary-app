@@ -879,16 +879,34 @@ export interface Database {
         Row: {
           created_at: string
           id: string
+          preferred_lesson_detail_level: Database["public"]["Enums"]["lesson_detail_level"]
+          preferred_lesson_structure:
+            | Database["public"]["Enums"]["lesson_structure"]
+            | null
+          preferred_teaching_strategies: Database["public"]["Enums"]["teaching_strategy"][]
+          preferred_teaching_tools: Database["public"]["Enums"]["teaching_tool"][]
           updated_at: string
         }
         Insert: {
           created_at?: string
           id: string
+          preferred_lesson_detail_level?: Database["public"]["Enums"]["lesson_detail_level"]
+          preferred_lesson_structure?:
+            | Database["public"]["Enums"]["lesson_structure"]
+            | null
+          preferred_teaching_strategies?: Database["public"]["Enums"]["teaching_strategy"][]
+          preferred_teaching_tools?: Database["public"]["Enums"]["teaching_tool"][]
           updated_at?: string
         }
         Update: {
           created_at?: string
           id?: string
+          preferred_lesson_detail_level?: Database["public"]["Enums"]["lesson_detail_level"]
+          preferred_lesson_structure?:
+            | Database["public"]["Enums"]["lesson_structure"]
+            | null
+          preferred_teaching_strategies?: Database["public"]["Enums"]["teaching_strategy"][]
+          preferred_teaching_tools?: Database["public"]["Enums"]["teaching_tool"][]
           updated_at?: string
         }
       }
@@ -1427,6 +1445,12 @@ export interface Database {
           first_name: string | null
           id: string | null
           last_name: string | null
+          lesson_detail_level:
+            | Database["public"]["Enums"]["lesson_detail_level"]
+            | null
+          lesson_structure:
+            | Database["public"]["Enums"]["lesson_structure"]
+            | null
           role: Database["public"]["Enums"]["user_role"] | null
           status: Database["public"]["Enums"]["profile_status"] | null
           subscription_cancel_at_period_end: boolean | null
@@ -1434,6 +1458,10 @@ export interface Database {
             | Database["public"]["Enums"]["subscription_status"]
             | null
           subscription_trial_end: string | null
+          teaching_strategies:
+            | Database["public"]["Enums"]["teaching_strategy"][]
+            | null
+          teaching_tools: Database["public"]["Enums"]["teaching_tool"][] | null
           type: Database["public"]["Enums"]["profile_type"] | null
         }
       }
@@ -1761,6 +1789,19 @@ export interface Database {
         | "Verbal"
         | "Logical"
         | "Social"
+      lesson_detail_level: "Basic" | "Intermediate" | "Detailed"
+      lesson_structure:
+        | "Objective_Introduction"
+        | "Prior_Knowledge_Review"
+        | "New_Material_Presentation"
+        | "Guided_Practice"
+        | "Independent_Practice"
+        | "Discussion_or_Debate"
+        | "Student_Presentations"
+        | "Assessment"
+        | "Summary_and_Review"
+        | "Homework_Assignment"
+        | "Other"
       level:
         | "Buds"
         | "Sprouts"
@@ -1915,6 +1956,19 @@ export interface Database {
         | "Project-Based Learning"
         | "Problem-Based Learning"
         | "Socratic Learning"
+        | "Other"
+      teaching_tool:
+        | "Whiteboard"
+        | "Slide_Presentation"
+        | "Video_Aids"
+        | "Physical_Manipulatives"
+        | "Interactive_Software"
+        | "Document_Camera"
+        | "Audio_Resources"
+        | "Art_Supplies"
+        | "Reading_Materials"
+        | "Science_Lab_Equipment"
+        | "Math_Tools"
         | "Other"
       user_role: "ADMIN" | "TEACHER" | "GROUP_MANAGER" | "STUDENT" | "BANNISHED"
     }

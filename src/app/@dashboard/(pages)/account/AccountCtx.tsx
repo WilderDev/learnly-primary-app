@@ -20,6 +20,7 @@ import AccountProfileTab from './AccountProfileTab';
 import AccountSubscriptionTab from './AccountSubscriptionTab';
 import AccountNotificationsTab from './AccountNotificaitonsTab';
 import AccountChildrenTab from './AccountChildrenTab';
+import DashMainCol from '../../(layout)/DashMainCol';
 
 // * Data
 // Tabs
@@ -99,7 +100,18 @@ export function AccountProvider({ children }: PropsWithChildren) {
   ); // Create memoized value object
 
   // * Render
-  return <AccountCtx.Provider value={value}>{children}</AccountCtx.Provider>;
+  return (
+    <AccountCtx.Provider value={value}>
+      {/* Children */}
+      {children}
+
+      {/* Main Column */}
+      <DashMainCol>
+        {/* Active Panel */}
+        {tabs.find((tab) => tab.id === activeTabId)?.component()}
+      </DashMainCol>
+    </AccountCtx.Provider>
+  );
 }
 
 // * Hook

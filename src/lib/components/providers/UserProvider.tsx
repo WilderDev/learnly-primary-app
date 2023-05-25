@@ -55,13 +55,18 @@ export function UserProvider({ children }: PropsWithChildren) {
 
     const transformedUser: Me = {
       id: data.id!,
-      //   email: data.email!,
       firstName: data.first_name!,
       lastName: data.last_name!,
       avatarUrl: data.avatar_url!,
       status: data.status!,
       type: data.type!,
       role: data.role!,
+      teachingPreferences: {
+        teachingStrategies: data.teaching_strategies!,
+        lessonDetailLevel: data.lesson_detail_level!,
+        teachingTools: data.teaching_tools!,
+        lessonStructure: data.lesson_structure!,
+      },
     };
 
     const subStatus = data?.subscription_status!;

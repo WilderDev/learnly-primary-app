@@ -1,8 +1,14 @@
 'use server';
 
+import { Database } from '@/assets/typescript/db';
+import {
+  ILessonDetailLevel,
+  ILessonStructure,
+  ITeachingStrategy,
+  ITeachingTool,
+} from '@/assets/typescript/user';
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
-import { supabaseAdmin } from '@/lib/auth/supabaseAdmin';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
@@ -24,7 +30,6 @@ const updateProfileAction = async (
 ) => {
   try {
     const supabase = supabaseServer();
-    const sbAdmin = supabaseAdmin();
 
     const {
       data: { session },
@@ -44,10 +49,8 @@ const updateProfileAction = async (
       phone: input.phone,
     });
 
-    // email: input.email, // TSK :on auth.users
-    // phone: input.phone, // TSK :on auth.users
-
-    if (error) return responseContract(error.message, false);
+    if (error || error2)
+      return responseContract('Something went wrong!', false);
 
     revalidatePath('/account'); // ✅
 
@@ -60,4 +63,51 @@ const updateProfileAction = async (
 export const updateProfile = createRequest(
   updateProfileAction,
   updateProfileSchema,
+);
+
+// * Teaching Preferences
+const updateTeachingPreferencesSchema = z.object({
+  teachingStrategies: z.array(z.string()),
+  lessonDetailLevel: z.string(),
+  teachingTools: z.array(z.string()),
+  lessonStructure: z.string().nullable(),
+});
+
+const updateTeachingPreferencesAction = async (
+  input: z.infer<typeof updateTeachingPreferencesSchema>,
+) => {
+  try {
+    const supabase = supabaseServer();
+
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    const { error } = await supabase
+      .from('teaching_preferences')
+      .update({
+        preferred_teaching_strategies:
+          input.teachingStrategies as ITeachingStrategy[],
+        preferred_lesson_detail_level:
+          input.lessonDetailLevel as ILessonDetailLevel,
+        preferred_teaching_tools: input.teachingTools as ITeachingTool[],
+        preferred_lesson_structure:
+          input.lessonStructure as ILessonStructure | null,
+      })
+      .eq('id', session?.user?.id);
+
+    if (error) return responseContract(error.message, false);
+
+    revalidatePath('/account'); // ✅
+    revalidatePath('/lesson-creator'); // ✅
+
+    return responseContract('Success!', true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
+};
+
+export const updateTeachingPreferences = createRequest(
+  updateTeachingPreferencesAction,
+  updateTeachingPreferencesSchema,
 );

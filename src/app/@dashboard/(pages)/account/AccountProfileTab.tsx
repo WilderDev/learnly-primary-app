@@ -1,132 +1,31 @@
-'use client';
-
-import { avatarImages } from '@/app/@marketing/(pages)/onboarding/avatarImages';
-import Form from '@/lib/components/form/Form';
-import Input from '@/lib/components/form/Input';
-import RadioImages from '@/lib/components/form/RadioImages';
-import { useAuth } from '@/lib/components/providers/AuthProvider';
-import { useUser } from '@/lib/components/providers/UserProvider';
-import Button from '@/lib/components/ui/Button';
-import { useRequest } from '@/lib/hooks/useRequest';
-import {
-  UserIcon,
-  EnvelopeIcon,
-  IdentificationIcon,
-} from '@heroicons/react/24/solid';
-import { useEffect, useState } from 'react';
-import { updateProfile } from './_actions';
-import { toast } from 'sonner';
+import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
+import AccountProfileDetailsForm from './AccountProfileDetailsForm';
+import AccountTeachingPreferencesForm from './AccountTeachingPreferencesForm';
 
 // * Component
 export default function AccountProfileTab() {
-  // * Hooks / Context
-  const { user } = useUser();
-  const { session } = useAuth();
-
-  // * Requests / Mutations
-  const { mutate: updateProfileMutation, isLoading } = useRequest(
-    updateProfile,
-    {
-      onSuccess: (data) => {
-        if (data.ok) {
-          toast.success('Profile Updated Successfully');
-        } else {
-          toast.error('Something went wrong');
-        }
-      },
-    },
-  );
-
-  // * State
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [avatar, setAvatar] = useState('');
-
-  // * Effects
-  // Set Initial State from Context
-  useEffect(() => {
-    if (user && session) {
-      setFirstName(user.firstName);
-      setLastName(user.lastName);
-      setEmail(session?.user.email ?? '');
-      setPhone(session?.user.phone ?? '');
-      setAvatar(user.avatarUrl);
-    }
-  }, [user, session]);
-
   // * Render
   return (
-    <Form
-      action={() =>
-        updateProfileMutation({
-          firstName,
-          lastName,
-          email,
-          // phone,
-          avatar,
-        })
-      }
-    >
-      {/* First Name */}
-      <Input
-        label="First Name"
-        value={firstName}
-        setValue={setFirstName}
-        required={true}
-        cols={1}
-        icon={UserIcon}
-      />
+    <section className="flex flex-col 2xl:flex-row 2xl:justify-between gap-y-12 2xl:gap-y-0 2xl:gap-x-12">
+      {/* Profile Details */}
+      <DashPanel className="w-full 2xl:w-1/2" colNum={1}>
+        {/* Header */}
+        <DashPanelHeader title="Update Your Profile Details" />
 
-      {/* Last Name */}
-      <Input
-        label="Last Name"
-        value={lastName}
-        setValue={setLastName}
-        required={true}
-        cols={1}
-        icon={IdentificationIcon}
-      />
+        {/* Form */}
+        <AccountProfileDetailsForm />
+      </DashPanel>
 
-      {/* Email */}
-      <Input
-        label="Email"
-        value={email}
-        setValue={setEmail}
-        required={true}
-        cols={2}
-        icon={EnvelopeIcon}
-      />
+      {/* Teaching Preferences */}
+      <DashPanel className="w-full 2xl:w-1/2" colNum={2}>
+        {/* Header */}
+        <DashPanelHeader title="Update Your Teaching Preferences" />
 
-      {/* Phone */}
-      {/* <Input
-        label="Phone"
-        value={phone}
-        setValue={setPhone}
-        type="tel"
-        cols={1}
-        icon={PhoneIcon}
-      /> */}
-
-      {/* Avatar */}
-      <RadioImages
-        cols={3}
-        label="Avatar"
-        value={avatar}
-        setValue={setAvatar}
-        options={avatarImages}
-      />
-
-      {/* Submit */}
-      <Button
-        className="col-span-1 col-start-4 self-end"
-        type="submit"
-        loading={isLoading}
-        disabled={!firstName || !lastName || !email || !avatar || isLoading}
-      >
-        Save
-      </Button>
-    </Form>
+        {/* Form */}
+        <AccountTeachingPreferencesForm />
+      </DashPanel>
+    </section>
   );
 }
+
+// TSK: Teaching Preferences Form

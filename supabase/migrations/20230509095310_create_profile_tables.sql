@@ -53,6 +53,40 @@ CREATE TYPE resource_preferences AS ENUM (
 -- Learning Disabilities
 CREATE TYPE learning_disabilities AS ENUM
 ('Dyslexia', 'Dyscalculia', 'Dysgraphia', 'Attention_Deficit_Hyperactivity_Disorder', 'Auditory_Processing_Disorder', 'Nonverbal_Learning_Disability', 'Autism');
+-- Teaching Strategies
+CREATE TYPE teaching_strategy AS ENUM ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other');
+-- Lesson Detail Levels
+CREATE TYPE lesson_detail_level AS ENUM ('Basic', 'Intermediate', 'Detailed');
+-- Teaching Tools
+CREATE TYPE teaching_tool AS ENUM (
+  'Whiteboard',
+  'Slide_Presentation',
+  'Video_Aids',
+  'Physical_Manipulatives',
+  'Interactive_Software',
+  'Document_Camera',
+  'Audio_Resources',
+  'Art_Supplies',
+  'Reading_Materials',
+  'Science_Lab_Equipment',
+  'Math_Tools',
+  'Other'
+);
+-- Lesson Structures
+CREATE TYPE lesson_structure AS ENUM (
+  'Objective_Introduction',
+  'Prior_Knowledge_Review',
+  'New_Material_Presentation',
+  'Guided_Practice',
+  'Independent_Practice',
+  'Discussion_or_Debate',
+  'Student_Presentations',
+  'Assessment',
+  'Summary_and_Review',
+  'Homework_Assignment',
+  'Other'
+);
+
 
 
 -- * TABLES
@@ -94,6 +128,18 @@ CREATE TABLE teacher_profiles (
 CREATE TABLE teaching_preferences (
   -- The teaching preferences unique identifier. (DEFERRABLE)
   id uuid REFERENCES teacher_profiles(id) ON DELETE CASCADE NOT NULL PRIMARY KEY,
+
+  -- Preferred teaching strategy
+  preferred_teaching_strategies teaching_strategy[] NOT NULL DEFAULT '{}'::teaching_strategy[],
+
+  -- Preferred level of lesson detail
+  preferred_lesson_detail_level lesson_detail_level NOT NULL DEFAULT 'Intermediate',
+
+  -- Preferred teaching tools (array of teaching_tool)
+  preferred_teaching_tools teaching_tool[] NOT NULL DEFAULT '{}'::teaching_tool[],
+
+  -- Preferred lesson structure (array of lesson_structure)
+  preferred_lesson_structure lesson_structure,
 
   -- Timestamps
   created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
@@ -241,7 +287,13 @@ BEGIN
   INSERT into public.teacher_profiles (id, first_name, last_name, avatar_url)
   VALUES (new.id, new.raw_user_meta_data->>'first_name', new.raw_user_meta_data->>'last_name', new.raw_user_meta_data->>'avatar_url');
 
+  -- Second Operation (Insert Teaching Preferences)
+  INSERT into public.teaching_preferences (id)
+  VALUES (new.id);
+
   -- Second Operation (Insert Welcome Notification) TSK
+  INSERT into public.notifications (id, recipient_id, type, title, body, action_text, action_url)
+  VALUES (uuid_generate_v4(), new.id, 'SUCCESS', 'Welcome to Learnly 🤗', 'We are so exited to have you with us! If you have any questions at all, you can email us at', 'support@learnly.ai', 'mailto:support@learnly.ai');
 
   -- Return the new user
   return new;

@@ -167,11 +167,16 @@ SELECT
   teacher_profiles.status AS status,
   teacher_profiles.type AS type,
   teacher_profiles.role AS role,
+  teaching_preferences.preferred_teaching_strategies AS teaching_strategies,
+  teaching_preferences.preferred_lesson_detail_level AS lesson_detail_level,
+  teaching_preferences.preferred_teaching_tools AS teaching_tools,
+  teaching_preferences.preferred_lesson_structure AS lesson_structure,
   subscriptions.status AS subscription_status,
   subscriptions.trial_end AS subscription_trial_end,
   subscriptions.cancel_at_period_end AS subscription_cancel_at_period_end,
   customers.billing_portal_session_url AS billing_portal_session_url
 FROM teacher_profiles
+JOIN teaching_preferences ON teacher_profiles.id = teaching_preferences.id
 JOIN subscriptions ON teacher_profiles.id = subscriptions.user_id
 JOIN customers ON teacher_profiles.id = customers.id
 WHERE teacher_profiles.id = auth.uid();

@@ -19,12 +19,6 @@ export default function AccountPage() {
         {/* Add Credit Card for 50% off if on trial */}
         {/* TSK */}
       </DashSideCol>
-
-      {/* Main Column */}
-      <DashMainCol>
-        {/* Account */}
-        <AccountPanelContainer />
-      </DashMainCol>
     </AccountProvider>
   );
 }
