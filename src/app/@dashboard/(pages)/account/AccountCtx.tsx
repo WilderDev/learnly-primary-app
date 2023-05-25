@@ -113,3 +113,11 @@ export function useAccount() {
 
   return ctx; // Return the context object to be used in the component
 }
+
+// POST_MVP: Data Privacy Tab
+// ~~ Account Privacy (public or private profile)
+// ~~ Data Encryption (Inform parents of data encryption)
+// ~~ Data Deletion (Inform parents of data deletion)
+// ~~ Third-Party App Permissions (Display list of third-party apps and permissions)
+// ~~ Data Export (Allow parents to export data)
+// ~~Links to PP & TOC
