@@ -17,8 +17,8 @@ CREATE TABLE customers (
 	-- The Stripe Customer Id
 	stripe_customer_id text NOT NULL DEFAULT '' UNIQUE,
 
-	-- Stripe Subscriptions
-	subscriptions jsonb NOT NULL DEFAULT '{}',
+	-- Billing Portal Session URL
+	billing_portal_session_url text NOT NULL DEFAULT '',
 
 	-- Timestamps
 	created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
@@ -168,9 +168,12 @@ SELECT
   teacher_profiles.type AS type,
   teacher_profiles.role AS role,
   subscriptions.status AS subscription_status,
-  subscriptions.trial_end AS subscription_trial_end
+  subscriptions.trial_end AS subscription_trial_end,
+  subscriptions.cancel_at_period_end AS subscription_cancel_at_period_end,
+  customers.billing_portal_session_url AS billing_portal_session_url
 FROM teacher_profiles
 JOIN subscriptions ON teacher_profiles.id = subscriptions.user_id
+JOIN customers ON teacher_profiles.id = customers.id
 WHERE teacher_profiles.id = auth.uid();
 
 

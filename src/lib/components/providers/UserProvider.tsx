@@ -11,7 +11,7 @@ import {
 import { createContext } from 'react';
 import { IUserSubscription, Me, UserStudent } from '@/assets/typescript/user';
 import { useAuth } from './AuthProvider';
-import Modal from '../popouts/Modal';
+import AuthSubscribeModal from '@/lib/auth/AuthSubscribeModal';
 
 // * Context
 // Interface
@@ -67,16 +67,33 @@ export function UserProvider({ children }: PropsWithChildren) {
     const subStatus = data?.subscription_status!;
     const isAuthorized = subStatus === 'active' || subStatus === 'trialing';
 
+    console.log('subStatus:', subStatus);
+
+    const trialEnd = data.subscription_trial_end!; // 2023-05-25 00:10:38.459876+00;
+    const isEndingSoon =
+      new Date(trialEnd).getTime() - Date.now() < 86400000 * 3; // 3 day
+
     const transformedSubscription: IUserSubscription = {
-      status: subStatus,
-      trialEnd: data.subscription_trial_end!,
       isAuthorized,
+      status: subStatus,
+      isEndingSoon: subStatus === 'active' ? false : isEndingSoon,
+      trialEnd: data.subscription_trial_end!,
+      billing_portal_session_url: data.billing_portal_session_url!,
     };
+
+    // If there was a user and they have not paid after subscription, redirect to billing portal
+    if (data && !isAuthorized) {
+      return window.location.replace(
+        transformedSubscription.billing_portal_session_url?.trim() || '/',
+      );
+    }
 
     return {
       user: transformedUser,
       subscription: transformedSubscription,
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase, session]);
 
   // Fetch Students
@@ -155,11 +172,14 @@ export function UserProvider({ children }: PropsWithChildren) {
   // * Render
   return (
     <UserCtx.Provider value={value}>
-      {/* If Not Authorized */}
-      {/* TSK */}
-
       {/* If Trial Ending Soon */}
-      {/* TSK */}
+      {subscription?.isAuthorized && subscription?.isEndingSoon && (
+        <AuthSubscribeModal
+          initialOpen={true}
+          endDate={subscription?.trialEnd!}
+          billingUrl={subscription?.billing_portal_session_url!}
+        />
+      )}
 
       {/* Children */}
       {children}

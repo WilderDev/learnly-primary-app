@@ -114,11 +114,17 @@ export async function POST(request: Request) {
         break; // Exit switch statement
       // *** Handle customer.subscription.deleted event *** \\
       case 'customer.subscription.deleted':
-        await handleDeleteSubscription({
-          subscriptionId: (evt as Stripe.Subscription).id,
+        await handleUpdateSubscription({
+          subscription: evt as Stripe.Subscription,
         }); // Run the handler function
 
         break; // Exit switch statement
+      // case 'customer.subscription.deleted':
+      //   await handleDeleteSubscription({
+      //     subscriptionId: (evt as Stripe.Subscription).id,
+      //   }); // Run the handler function
+
+      //   break; // Exit switch statement
       // *** Handle default case *** \\
       default:
         return new Response('Unhandled relevant event', { status: 400 }); // Return a response with error message

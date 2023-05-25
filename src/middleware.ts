@@ -1,7 +1,9 @@
 import { createMiddlewareSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { NextRequest, NextResponse } from 'next/server';
 import middlewareRedirect from './lib/auth/middlewareRedirect';
+import { Database } from './assets/typescript/db';
 
+const authorizedStatuses = ['active', 'trialing'];
 const authorizedRoles = ['ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT']; // Authorized Roles
 const publicPaths = ['/onboarding']; // Public Paths [only ones we want to do something with if user isn't authed]
 
@@ -9,7 +11,7 @@ const isPublicPath = (path: string) => publicPaths.includes(path); // Check if p
 
 // * Middleware Handler
 export async function middleware(req: NextRequest) {
-  const supabase = createMiddlewareSupabaseClient({
+  const supabase = createMiddlewareSupabaseClient<Database>({
     req,
     res: NextResponse.next(),
   }); // Create Supabase Client for Middleware
@@ -27,7 +29,7 @@ export async function middleware(req: NextRequest) {
   if (isAuthorized && process.env.NODE_ENV === 'production') {
     await supabase
       .from('teacher_profiles')
-      .update({ last_activity: new Date(), status: 'ONLINE' })
+      .update({ last_activity: new Date().toISOString(), status: 'ONLINE' })
       .eq('id', session.user.id);
   }
 

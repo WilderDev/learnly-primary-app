@@ -1,9 +1,11 @@
 import { Database } from './db';
 
 export interface IUserSubscription {
-  status: Database['public']['Enums']['subscription_status'];
-  trialEnd: string | null;
   isAuthorized: boolean;
+  isEndingSoon: boolean;
+  trialEnd: string | null;
+  billing_portal_session_url: string | null;
+  status: Database['public']['Enums']['subscription_status'];
 }
 
 export interface Me {
