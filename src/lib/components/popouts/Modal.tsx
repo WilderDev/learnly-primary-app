@@ -117,7 +117,7 @@ export default function Modal({
     function keyListener(e: KeyboardEvent) {
       if (!modalRef.current || !isVisible) return;
 
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && !noCloseOnOutsideClick) {
         close();
       }
 
@@ -152,7 +152,7 @@ export default function Modal({
 
     // Remove Event Listener
     return () => document.removeEventListener('keydown', keyListener);
-  }, [close, isVisible]);
+  }, [close, isVisible, noCloseOnOutsideClick]);
 
   // * Render
   return (

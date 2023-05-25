@@ -18,8 +18,6 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession(); // Get Session
 
-  console.log('session:', session);
-
   const isAuthorized =
     session && authorizedRoles.includes(session.user.app_metadata.role); // Check if user is authorized
   const allowedAccess =
@@ -31,6 +29,10 @@ export async function middleware(req: NextRequest) {
       .from('teacher_profiles')
       .update({ last_activity: new Date(), status: 'ONLINE' })
       .eq('id', session.user.id);
+  }
+
+  if (isAuthorized && req.nextUrl.pathname === '/onboarding') {
+    return middlewareRedirect(req, '/');
   }
 
   return allowedAccess ? NextResponse.next() : middlewareRedirect(req, '/'); // Return Response or Redirect
