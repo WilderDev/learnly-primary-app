@@ -13,7 +13,7 @@
 13. [global-error.tsx](src/app/global-error.tsx)
 14. [not-found.tsx](src/app/not-found.tsx)
 15. Social Login's?
-16. Notification/Email 3 days before trial ends about all the features they will lose when their account is downgraded. Message them again on the day of. Give them incentive that if they upgrade before the trial ends (put in credit card), they will get 50% off for the first 3 months.
+16. Update Email 3 days before trial ends about all the features they will lose when their account is downgraded. Email them again on the day of. Give them incentive that if they upgrade before the trial ends (put in credit card), they will get 50% off for the first 3 months.
 17. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
 18. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
 19. User's can change the title and image of a lesson plan they have created
@@ -24,6 +24,5 @@
 24. Users can create their own lessons, topics, subjects, and curriculum
 25. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 26. DMARC & SPF Records
-27. Stripe Hooks and Handlers for payments that don't go through or need actions
-28. [Stripe Elements to add credit card inside dashboard](https://stripe.com/docs/payments/payment-element)
-29. We really need to test the stripe flow and make sure it works... when a user signs up it's one subscription, when they don't pay it sends them invoices and sets their status in stripe and supabase and when they don't pay it downgrades them and sends them an email and sets their status in stripe and supabase having the modal pop up and not allow them to move forward.
+27. [Stripe Elements to add credit card inside dashboard](https://stripe.com/docs/payments/payment-element)
+28. We really need to test the stripe flow and make sure it works... when a user signs up it's one subscription, when they don't pay it sends them invoices and sets their status in stripe and supabase and when they don't pay it downgrades them and sends them an email and sets their status in stripe and supabase having the modal pop up and not allow them to move forward.

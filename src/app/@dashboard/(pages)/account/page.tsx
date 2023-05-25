@@ -1,24 +1,31 @@
 import DashMainCol from '../../(layout)/DashMainCol';
+import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
+import { AccountProvider } from './AccountCtx';
+import AccountNav from './AccountNav';
+import AccountPanelContainer from './AccountPanelContainer';
 
 export default function AccountPage() {
   return (
-    <>
+    <AccountProvider>
       {/* Side Column */}
       <DashSideCol>
         {/* Account Navigation */}
+        <DashPanel colNum={1}>
+          <DashPanelHeader title="Account" />
+          <AccountNav />
+        </DashPanel>
+
+        {/* Add Credit Card for 50% off if on trial */}
         {/* TSK */}
       </DashSideCol>
 
       {/* Main Column */}
       <DashMainCol>
-        {/* Account TSK */}
-        {/* TSK */}
-
-        {/* Account TSK */}
-        {/* TSK */}
+        {/* Account */}
+        <AccountPanelContainer />
       </DashMainCol>
-    </>
+    </AccountProvider>
   );
 }
 

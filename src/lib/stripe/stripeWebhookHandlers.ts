@@ -72,8 +72,6 @@ interface ICreateCustomer {
 
 // Handler
 export async function handleCreateCustomer({ customer }: ICreateCustomer) {
-  console.log('customer:', customer);
-  console.log('STRIPE_DEFAULT_:', process.env.STRIPE_DEFAULT_PRICE_ID);
   // 1. Create a new Stripe Trial Subscription
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
@@ -88,12 +86,6 @@ export async function handleCreateCustomer({ customer }: ICreateCustomer) {
       },
     },
   });
-
-  console.log('subscription:', subscription);
-  console.log(
-    'subscription.cancel_at_period_end:',
-    subscription.cancel_at_period_end,
-  );
 
   // 2. Insert the Subscription into the database
   const { error: subscriptionError } = await supabaseAdmin()
@@ -124,8 +116,6 @@ export async function handleCreateCustomer({ customer }: ICreateCustomer) {
         ? secondsToIso(subscription.cancel_at)
         : null,
     });
-
-  console.log('subscriptionError:', subscriptionError);
 
   // 3. Check if there was an error inserting the Subscription
   if (subscriptionError) throw new Error(subscriptionError.message);
@@ -425,8 +415,6 @@ export async function handleUpdateSubscription({
       trial_end: trial_end ? secondsToIso(trial_end) : null,
     })
     .eq('id', id);
-
-  console.log('subscriptionError:', subscriptionError);
 
   // 3. Check if there was an error updating the subscription
   if (subscriptionError) throw new Error(subscriptionError.message);

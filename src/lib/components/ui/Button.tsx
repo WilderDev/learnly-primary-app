@@ -77,7 +77,7 @@ export default function Button({
         'border border-blue-600 hocus:bg-blue-50 focus:ring-offset-blue-600 text-blue-600 hocus:text-blue-70',
       light:
         'border border-slate-100 dark:border-navy-100 hocus:bg-slate-50 focus:ring-offset-slate-100 text-slate-100 dark:text-navy-100 hocus:text-slate-200',
-      dark: 'border border-slate-700 dark:border-navy-700 hocus:bg-slate-900 focus:ring-offset-slate-700 text-slate-700 dark:text-navy-700 hocus:text-slate-800',
+      dark: 'border border-slate-700 dark:border-navy-700 hocus:bg-slate-50 dark:hocus:bg-navy-800 focus:ring-offset-slate-700 text-slate-700 dark:text-navy-200 dark:hocus:text-navy-100 hocus:text-slate-800',
     },
     // Gradient
     gradient: {

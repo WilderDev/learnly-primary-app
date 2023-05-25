@@ -67,8 +67,6 @@ export function UserProvider({ children }: PropsWithChildren) {
     const subStatus = data?.subscription_status!;
     const isAuthorized = subStatus === 'active' || subStatus === 'trialing';
 
-    console.log('subStatus:', subStatus);
-
     const trialEnd = data.subscription_trial_end!; // 2023-05-25 00:10:38.459876+00;
     const isEndingSoon =
       new Date(trialEnd).getTime() - Date.now() < 86400000 * 3; // 3 day
