@@ -28,7 +28,6 @@ import {
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
 import { v4 } from 'uuid';
-import { Database } from '@/assets/typescript/db';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { TLearningStyle, TTeachingStrategy } from '@/assets/typescript/user';
@@ -187,7 +186,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     'Eclectic/Relaxed',
   );
   const [teachingStrategy, setTeachingStrategy] =
-    useState<TTeachingStrategy | null>('Direct Instruction');
+    useState<TTeachingStrategy | null>(null);
   const [lengthInMin, setLengthInMin] = useState<number>(60);
   /// Structure - Extra
   const [pace, setPace] = useState<TPace | null>('MEDIUM');
@@ -336,7 +335,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       setObjectives([]);
       setDifficulty('MODERATE');
       setStandards([]);
-      setTeachingStrategy('Direct Instruction');
+      setTeachingStrategy(null);
       setPhilosophy('Eclectic/Relaxed');
       setLengthInMin(60);
       setPace('MEDIUM');

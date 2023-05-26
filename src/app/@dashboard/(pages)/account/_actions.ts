@@ -111,3 +111,44 @@ export const updateTeachingPreferences = createRequest(
   updateTeachingPreferencesAction,
   updateTeachingPreferencesSchema,
 );
+
+// * Add Student
+const addStudentSchema = z.object({
+  name: z.string(),
+  birthday: z.string(),
+  avatarUrl: z.string(),
+});
+
+const addStudentAction = async (input: z.infer<typeof addStudentSchema>) => {
+  try {
+    const supabase = supabaseServer();
+
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    const first_name = input.name.split(' ')[0] || '';
+    const last_name = input.name.split(' ').slice(1).join(' ') || '';
+
+    const { error } = await supabase.from('student_profiles').insert({
+      first_name,
+      last_name,
+      birthday: input.birthday,
+      avatar_url: input.avatarUrl,
+      teacher_id: session?.user?.id!,
+    });
+
+    // TSK: Student Preferences
+
+    if (error) return responseContract(error.message, false);
+
+    revalidatePath('/account'); // ✅
+    revalidatePath('/lesson-creator'); // ✅
+
+    return responseContract('Success!', true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
+};
+
+export const addStudent = createRequest(addStudentAction, addStudentSchema);

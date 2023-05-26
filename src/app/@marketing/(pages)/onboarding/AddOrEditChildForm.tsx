@@ -56,10 +56,7 @@ export default function AddOrEditChildForm({
         label="Birthday"
         required={true}
         options={{
-          enableTime: true,
-          dateFormat: 'D, M d (h:i K)',
-          defaultHour: new Date().getHours() + 1,
-          defaultMinute: 0,
+          dateFormat: 'M d, Y',
           position: 'above right',
         }}
         cols={2}

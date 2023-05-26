@@ -10,7 +10,6 @@ import { useSearchParams } from 'next/navigation';
 import {
   PropsWithChildren,
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -19,7 +18,7 @@ import {
 import AccountProfileTab from './AccountProfileTab';
 import AccountSubscriptionTab from './AccountSubscriptionTab';
 import AccountNotificationsTab from './AccountNotificaitonsTab';
-import AccountChildrenTab from './AccountChildrenTab';
+import AccountStudentsTab from './AccountStudentsTab';
 import DashMainCol from '../../(layout)/DashMainCol';
 
 // * Data
@@ -44,10 +43,10 @@ const tabs = [
     component: AccountNotificationsTab,
   },
   {
-    id: 'children',
-    title: 'Children',
+    id: 'students',
+    title: 'Students',
     icon: FaceSmileIcon,
-    component: AccountChildrenTab,
+    component: AccountStudentsTab,
   },
 ];
 
@@ -57,6 +56,12 @@ interface IAccountCtxProps {
   tabs: typeof tabs;
   activeTabId: string;
   setActiveTabId: (tabId: string) => void;
+  studentEditId: string | null;
+  setStudentEditId: (studentId: string | null) => void;
+  studentDetailsId: string | null;
+  setStudentDetailsId: (studentId: string | null) => void;
+  addStudentModalOpen: boolean;
+  setAddStudentModalOpen: (open: boolean) => void;
 } // Create an interface for the context props
 
 // Initial State
@@ -64,6 +69,12 @@ const initialState: IAccountCtxProps = {
   tabs,
   activeTabId: tabs[0].id,
   setActiveTabId: () => {},
+  studentEditId: null,
+  setStudentEditId: () => {},
+  studentDetailsId: null,
+  setStudentDetailsId: () => {},
+  addStudentModalOpen: false,
+  setAddStudentModalOpen: () => {},
 }; // Create a context object with default value
 
 // Context
@@ -76,6 +87,9 @@ export function AccountProvider({ children }: PropsWithChildren) {
 
   // * State
   const [activeTabId, setActiveTabId] = useState(tabs[0].id); // Set the active tab id to the first tab id
+  const [studentEditId, setStudentEditId] = useState<string | null>(null); // Set the student edit id to null
+  const [studentDetailsId, setStudentDetailsId] = useState<string | null>(null); // Set the student details id to null
+  const [addStudentModalOpen, setAddStudentModalOpen] = useState(false); // Set the add student modal open state to false
 
   // * Handlers
 
@@ -95,8 +109,23 @@ export function AccountProvider({ children }: PropsWithChildren) {
       tabs,
       activeTabId,
       setActiveTabId,
+      studentEditId,
+      setStudentEditId,
+      studentDetailsId,
+      setStudentDetailsId,
+      addStudentModalOpen,
+      setAddStudentModalOpen,
     }),
-    [activeTabId, setActiveTabId],
+    [
+      activeTabId,
+      setActiveTabId,
+      studentEditId,
+      setStudentEditId,
+      studentDetailsId,
+      setStudentDetailsId,
+      addStudentModalOpen,
+      setAddStudentModalOpen,
+    ],
   ); // Create memoized value object
 
   // * Render

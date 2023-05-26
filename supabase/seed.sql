@@ -19703,2314 +19703,3043 @@ SELECT create_complete_curriculum(
   }
 ]'::json
 );
-
--- Our goal is to create 8 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 5 "CORE" lessons and 2 "ELECTIVE" lessons.
--- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
--- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first topic and ALL the lessons for those topics for Kindergarten Social Studies.
--- the output will look like:
--- {
---        "name": "Team Sports",
---        "description": "Fostering teamwork and coordination through simple team sports and games.",
---        "image_path": "https://source.unsplash.com/500x500/?team-sports",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Introduction to Soccer",
---                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
---                "image_path": "https://source.unsplash.com/500x500/?soccer",
---                "type": "CORE"
---            },
---           // . . .
---        ]
--- }
 ---- Social Studies
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
   'cdc09ea6-6e30-4550-9d1d-4b7a30d376d5'::uuid,
   'CORE'::module_type,
   '[
-    {
-      "level_id": "8787a66e-9e03-42c7-8870-ada6df021491",
-      "topics_data": [
-        {
-            "name": "Introduction to Community Helpers",
-            "description": "Introducing the tireless helpers around us, fostering gratitude and a sense of community.",
-            "image_path": "https://source.unsplash.com/500x500/?community-helpers",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Understanding Roles: The Policeman",
-                    "description": "Exploring the duties and responsibilities of our friendly neighborhood policemen.",
-                    "image_path": "https://source.unsplash.com/500x500/?policeman",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Roles: The Firefighter",
-                    "description": "Learning about the bravery and skill of firefighters in keeping our community safe.",
-                    "image_path": "https://source.unsplash.com/500x500/?firefighter",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Roles: The Doctor",
-                    "description": "Appreciating the doctors around us who work tirelessly to keep us healthy.",
-                    "image_path": "https://source.unsplash.com/500x500/?doctor",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Roles: The Teacher",
-                    "description": "Recognizing the role of teachers in shaping our minds and futures.",
-                    "image_path": "https://source.unsplash.com/500x500/?teacher",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Roles: The Postman",
-                    "description": "Understanding the key role of the postman in connecting people and delivering happiness.",
-                    "image_path": "https://source.unsplash.com/500x500/?postman",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Interactive Field Visit: The Police Station",
-                    "description": "A virtual trip to the police station, exploring their daily duties and routines.",
-                    "image_path": "https://source.unsplash.com/500x500/?police-station",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Interactive Field Visit: The Fire Station",
-                    "description": "A virtual journey to a fire station to understand the work of firefighters in detail.",
-                    "image_path": "https://source.unsplash.com/500x500/?fire-station",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Exploring Our Neighborhood",
-            "description": "Understanding our immediate surroundings and learning to appreciate the diversity and uniqueness of our local community.",
-            "image_path": "https://source.unsplash.com/500x500/?neighborhood",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Identifying Landmarks",
-                    "description": "Recognizing important landmarks and understanding their significance in our community.",
-                    "image_path": "https://source.unsplash.com/500x500/?landmarks",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Meet the Neighbors",
-                    "description": "Getting familiar with the people around us, promoting community awareness and social skills.",
-                    "image_path": "https://source.unsplash.com/500x500/?neighbors",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Local Flora and Fauna",
-                    "description": "Discovering the plants and animals that share our community, fostering respect for nature.",
-                    "image_path": "https://source.unsplash.com/500x500/?nature",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Community Map Drawing",
-                    "description": "Creating a map of our neighborhood to develop spatial thinking and understanding of geography.",
-                    "image_path": "https://source.unsplash.com/500x500/?map",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Transportation in Our Community",
-                    "description": "Identifying the various modes of transportation in our community and their purposes.",
-                    "image_path": "https://source.unsplash.com/500x500/?transportation",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Visit to a Local Park",
-                    "description": "An interactive exploration of a local park to understand its role in our community.",
-                    "image_path": "https://source.unsplash.com/500x500/?park",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Visit to a Local Market",
-                    "description": "A virtual tour of a local market, learning about different professions and goods.",
-                    "image_path": "https://source.unsplash.com/500x500/?market",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Our Natural World",
-            "description": "Cultivating a love for the natural world and understanding our role in preserving it.",
-            "image_path": "https://source.unsplash.com/500x500/?nature",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Weather Wonders",
-                    "description": "Understanding the different types of weather and how they affect our daily life.",
-                    "image_path": "https://source.unsplash.com/500x500/?weather",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Seasons and Changes",
-                    "description": "Observing the changing seasons and learning about the cycle of life.",
-                    "image_path": "https://source.unsplash.com/500x500/?seasons",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Plants and Their Parts",
-                    "description": "Exploring the fascinating world of plants and understanding their vital role in our ecosystem.",
-                    "image_path": "https://source.unsplash.com/500x500/?plants",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Introduction to Animals",
-                    "description": "Learning about the various animals in our world and their unique characteristics.",
-                    "image_path": "https://source.unsplash.com/500x500/?animals",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Water: Our Precious Resource",
-                    "description": "Understanding the importance of water in our life and how to conserve it.",
-                    "image_path": "https://source.unsplash.com/500x500/?water",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Visit to a Local Garden",
-                    "description": "An interactive exploration of a local garden to discover various plants and insects.",
-                    "image_path": "https://source.unsplash.com/500x500/?garden",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Understanding Recycling",
-                    "description": "Introducing the concept of recycling, reusing, and reducing for a greener future.",
-                    "image_path": "https://source.unsplash.com/500x500/?recycling",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Understanding Family Structures",
-            "description": "Exploring diverse family structures and values, building empathy and social understanding.",
-            "image_path": "https://source.unsplash.com/500x500/?family",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "My Family Tree",
-                    "description": "Creating a family tree to understand familial relationships and heritage.",
-                    "image_path": "https://source.unsplash.com/500x500/?family-tree",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Roles & Responsibilities at Home",
-                    "description": "Learning about different roles and responsibilities in the household and the importance of helping.",
-                    "image_path": "https://source.unsplash.com/500x500/?household",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Celebrating Traditions & Festivals",
-                    "description": "Understanding the cultural significance of different family traditions and festivals.",
-                    "image_path": "https://source.unsplash.com/500x500/?festival",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Respecting Differences",
-                    "description": "Recognizing and appreciating the differences in family structures and traditions.",
-                    "image_path": "https://source.unsplash.com/500x500/?diversity",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Creating a Family Portrait",
-                    "description": "Drawing and coloring a family portrait to express creativity and familial bond.",
-                    "image_path": "https://source.unsplash.com/500x500/?family-portrait",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Storytelling: Family Histories",
-                    "description": "Listening to and sharing family histories through engaging storytelling sessions.",
-                    "image_path": "https://source.unsplash.com/500x500/?storytelling",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Creating a Family Cookbook",
-                    "description": "Gathering family recipes to create a unique cookbook, learning about culinary traditions and collaboration.",
-                    "image_path": "https://source.unsplash.com/500x500/?cookbook",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Early History and Culture",
-            "description": "Uncovering the roots of our society by learning about early civilizations and cultures.",
-            "image_path": "https://source.unsplash.com/500x500/?history,culture",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Life in the Stone Age",
-                    "description": "Exploring the simplicity and ingenuity of Stone Age people and their lifestyle.",
-                    "image_path": "https://source.unsplash.com/500x500/?stone-age",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Introduction to Ancient Egypt",
-                    "description": "Understanding the grandeur and mysteries of ancient Egyptian civilization.",
-                    "image_path": "https://source.unsplash.com/500x500/?ancient-egypt",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Ancient Greek Myths",
-                    "description": "Listening to fascinating Greek myths that teach important life lessons.",
-                    "image_path": "https://source.unsplash.com/500x500/?greek-myths",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Early Forms of Writing",
-                    "description": "Exploring the development of writing in early civilizations and its importance.",
-                    "image_path": "https://source.unsplash.com/500x500/?early-writing",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Cave Paintings and Symbols",
-                    "description": "Understanding the significance of early cave paintings and symbols in human communication.",
-                    "image_path": "https://source.unsplash.com/500x500/?cave-paintings",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Crafting Pottery: Clay Time",
-                    "description": "An interactive session on crafting simple pottery items, just like our ancestors.",
-                    "image_path": "https://source.unsplash.com/500x500/?pottery",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Storytelling: Legends of Old",
-                    "description": "Captivating storytelling sessions of ancient legends and folktales.",
-                    "image_path": "https://source.unsplash.com/500x500/?folktales",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Civic Awareness",
-            "description": "Instilling a sense of responsibility and understanding of the basic workings of our community and government.",
-            "image_path": "https://source.unsplash.com/500x500/?government",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Introduction to the School System",
-                    "description": "Understanding the structure of our school system and the roles of everyone involved.",
-                    "image_path": "https://source.unsplash.com/500x500/?school-system",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Rules and Laws in Our Community",
-                    "description": "Learning about the basic rules and laws that keep our community safe and functional.",
-                    "image_path": "https://source.unsplash.com/500x500/?laws",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Local Government and Services",
-                    "description": "Getting familiar with the local government and the services it provides to the community.",
-                    "image_path": "https://source.unsplash.com/500x500/?government-services",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Elections and Leadership",
-                    "description": "Understanding the process of elections and the importance of leadership in our society.",
-                    "image_path": "https://source.unsplash.com/500x500/?elections",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Concept of Taxes",
-                    "description": "Introducing the basic concept of taxes and why they are important for community services.",
-                    "image_path": "https://source.unsplash.com/500x500/?taxes",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Visit to a City Council Meeting",
-                    "description": "A virtual visit to a city council meeting to see local government in action.",
-                    "image_path": "https://source.unsplash.com/500x500/?city-council",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Organizing a Mock School Election",
-                    "description": "Participating in a mock school election to understand the process of voting and selection of leaders.",
-                    "image_path": "https://source.unsplash.com/500x500/?school-election",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Global Awareness",
-            "description": "Broadening horizons by learning about different countries, cultures, and customs.",
-            "image_path": "https://source.unsplash.com/500x500/?global-awareness",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Continents and Oceans",
-                    "description": "Introducing the seven continents and five oceans, understanding the vastness of our world.",
-                    "image_path": "https://source.unsplash.com/500x500/?continents-oceans",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Famous Landmarks Around the World",
-                    "description": "Exploring famous landmarks around the world, appreciating global heritage and architecture.",
-                    "image_path": "https://source.unsplash.com/500x500/?landmarks",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Cultural Festivals Worldwide",
-                    "description": "Learning about different cultural festivals celebrated around the world, understanding diversity and traditions.",
-                    "image_path": "https://source.unsplash.com/500x500/?cultural-festivals",
-                    "type": "CORE"
-                },
-                {
-                    "name": "World Languages: Fun Phrases",
-                    "description": "Getting introduced to various languages and learning fun phrases, fostering multilingual interest.",
-                    "image_path": "https://source.unsplash.com/500x500/?languages",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Global Cuisines: Tasting Session",
-                    "description": "Introducing global cuisines through a fun tasting session, experiencing culinary diversity.",
-                    "image_path": "https://source.unsplash.com/500x500/?global-cuisines",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Famous Global Art: Virtual Tour",
-                    "description": "A virtual tour of famous art pieces from around the world, appreciating global artistic talents.",
-                    "image_path": "https://source.unsplash.com/500x500/?art",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "World Music and Instruments",
-                    "description": "Exploring the fascinating world of global music and instruments, fostering musical appreciation.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-music",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Technology in Everyday Life",
-            "description": "Exploring the role of technology in our daily lives and understanding its advantages and implications.",
-            "image_path": "https://source.unsplash.com/500x500/?technology",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Understanding the Internet",
-                    "description": "An introduction to the internet, its uses, and the concept of online safety.",
-                    "image_path": "https://source.unsplash.com/500x500/?internet",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Exploring Different Gadgets",
-                    "description": "Identifying and learning about the use of various everyday gadgets.",
-                    "image_path": "https://source.unsplash.com/500x500/?gadgets",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Concept of Coding",
-                    "description": "An introduction to coding through simple and engaging activities.",
-                    "image_path": "https://source.unsplash.com/500x500/?coding",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Virtual Reality Exploration",
-                    "description": "Exploring the concept of virtual reality and its various applications.",
-                    "image_path": "https://source.unsplash.com/500x500/?virtual-reality",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Technology in Transportation",
-                    "description": "Understanding the role of technology in various modes of transportation.",
-                    "image_path": "https://source.unsplash.com/500x500/?transportation",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Animation: Behind the Scenes",
-                    "description": "A peek into the world of animation and the technology behind our favorite animated movies.",
-                    "image_path": "https://source.unsplash.com/500x500/?animation",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Technology in Space Exploration",
-                    "description": "Learning about the use of technology in exploring space and its wonders.",
-                    "image_path": "https://source.unsplash.com/500x500/?space",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Junior Entrepreneurs",
-            "description": "Nurturing creativity and business acumen through engaging entrepreneurial activities for youngsters.",
-            "image_path": "https://source.unsplash.com/500x500/?entrepreneur",
-            "type": "ELECTIVE",
-            "lessons_data": [
-                {
-                    "name": "Brainstorming Business Ideas",
-                    "description": "A fun brainstorming session to come up with innovative business ideas.",
-                    "image_path": "https://source.unsplash.com/500x500/?brainstorming",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Money and Value",
-                    "description": "Learning about money, its value, and its role in business transactions.",
-                    "image_path": "https://source.unsplash.com/500x500/?money",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Designing a Product",
-                    "description": "A creative session where students design a simple product for their business idea.",
-                    "image_path": "https://source.unsplash.com/500x500/?product-design",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Introduction to Marketing",
-                    "description": "Understanding the basic concepts of marketing and promoting a product.",
-                    "image_path": "https://source.unsplash.com/500x500/?marketing",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Setting Up a Lemonade Stand",
-                    "description": "Practical business experience by setting up and running a simple lemonade stand.",
-                    "image_path": "https://source.unsplash.com/500x500/?lemonade-stand",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Field Trip: Visiting a Local Business",
-                    "description": "A visit to a local business to see the workings of a real-life business.",
-                    "image_path": "https://source.unsplash.com/500x500/?business",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Interviewing a Business Owner",
-                    "description": "Interviewing a local business owner to gain insights into the life of an entrepreneur.",
-                    "image_path": "https://source.unsplash.com/500x500/?interview",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Exploring Nature",
-            "description": "Nurturing a love for the outdoors and understanding the importance of environmental conservation.",
-            "image_path": "https://source.unsplash.com/500x500/?nature",
-            "type": "ELECTIVE",
-            "lessons_data": [
-                {
-                    "name": "Understanding the Seasons",
-                    "description": "Learning about the four seasons, weather patterns, and their effects on nature.",
-                    "image_path": "https://source.unsplash.com/500x500/?seasons",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Exploring Local Flora and Fauna",
-                    "description": "Identifying and learning about local plants and animals in their natural habitats.",
-                    "image_path": "https://source.unsplash.com/500x500/?flora-fauna",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Life Cycle of a Plant",
-                    "description": "Understanding the life cycle of a plant through hands-on gardening activities.",
-                    "image_path": "https://source.unsplash.com/500x500/?plant-life-cycle",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Nature Walk and Scavenger Hunt",
-                    "description": "An interactive nature walk and scavenger hunt to observe nature up close.",
-                    "image_path": "https://source.unsplash.com/500x500/?nature-walk",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Introduction to Recycling",
-                    "description": "Understanding the concept of recycling and its importance for environmental conservation.",
-                    "image_path": "https://source.unsplash.com/500x500/?recycling",
-                    "type": "CORE"
-                },
-                {
-                    "name": "DIY Bird Feeder Project",
-                    "description": "Creating a simple DIY bird feeder to attract local birds and observe them.",
-                    "image_path": "https://source.unsplash.com/500x500/?bird-feeder",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Star Gazing: An Introduction to Astronomy",
-                    "description": "An exciting night of star gazing and learning about the basics of astronomy.",
-                    "image_path": "https://source.unsplash.com/500x500/?stars",
-                    "type": "ELECTIVE"
-                }
-            ]
-        }
-      ]
-    },
-    {
-      "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
-      "topics_data": [
-        {
-            "name": "Community Helpers",
-            "description": "Inspiring appreciation and understanding of our local heroes and their roles in our community.",
-            "image_path": "https://source.unsplash.com/500x500/?community-helpers",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Understanding the Role of Firefighters",
-                    "description": "Igniting courage and safety awareness through learning about firefighters and their heroic duties.",
-                    "image_path": "https://source.unsplash.com/500x500/?firefighter",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Meet the Police Officers",
-                    "description": "Fostering respect and knowledge of law enforcement, teaching students about the crucial role of police officers.",
-                    "image_path": "https://source.unsplash.com/500x500/?police",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Helpful Doctors",
-                    "description": "Cultivating gratitude and empathy by exploring the essential role of doctors in our communities.",
-                    "image_path": "https://source.unsplash.com/500x500/?doctor",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Our Friendly Neighborhood Postman",
-                    "description": "Connecting people and stories by understanding the role of postal workers in our daily lives.",
-                    "image_path": "https://source.unsplash.com/500x500/?postman",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Caring Teachers",
-                    "description": "Igniting love for learning and appreciation for teachers who guide us on our educational journey.",
-                    "image_path": "https://source.unsplash.com/500x500/?teacher",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Visit to a Fire Station",
-                    "description": "Enhancing practical understanding and admiration for firefighters through a virtual tour of a fire station.",
-                    "image_path": "https://source.unsplash.com/500x500/?fire-station",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Interview with a Police Officer",
-                    "description": "Facilitating direct interaction and knowledge sharing with a local police officer to foster respect and understanding.",
-                    "image_path": "https://source.unsplash.com/500x500/?police-interview",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Understanding Our Environment",
-            "description": "Nurturing the love for nature and responsibility towards the environment through interactive learning.",
-            "image_path": "https://source.unsplash.com/500x500/?environment",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "The Magic of Recycling",
-                    "description": "Promoting responsibility and creativity through learning the importance and methods of recycling.",
-                    "image_path": "https://source.unsplash.com/500x500/?recycling",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Amazing Animal Habitats",
-                    "description": "Exploring the beautiful and diverse homes of animals around the world, fostering love for biodiversity.",
-                    "image_path": "https://source.unsplash.com/500x500/?animal-habitats",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Our Incredible Oceans",
-                    "description": "Diving into the blue to understand the vast and important role of oceans in our life.",
-                    "image_path": "https://source.unsplash.com/500x500/?ocean",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Plants: The Green Heroes",
-                    "description": "Cultivating the seed of respect for plant life, exploring their crucial role in our ecosystem.",
-                    "image_path": "https://source.unsplash.com/500x500/?plants",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Weather Wonders",
-                    "description": "Uncovering the fascinating world of weather and its effects on our daily lives and the environment.",
-                    "image_path": "https://source.unsplash.com/500x500/?weather",
-                    "type": "CORE"
-                },
-                {
-                    "name": "DIY Home Composting",
-                    "description": "Empowering students to make a difference by learning the simple yet impactful art of composting at home.",
-                    "image_path": "https://source.unsplash.com/500x500/?composting",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Nature Art Project",
-                    "description": "Channeling creativity and appreciation for nature through art using natural materials.",
-                    "image_path": "https://source.unsplash.com/500x500/?nature-art",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Global Cultures",
-            "description": "Embarking on a vibrant journey around the world to understand and appreciate diverse cultures.",
-            "image_path": "https://source.unsplash.com/500x500/?global-cultures",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Festivals of the World",
-                    "description": "Celebrating unity in diversity by exploring vibrant festivals celebrated across the globe.",
-                    "image_path": "https://source.unsplash.com/500x500/?festivals",
-                    "type": "CORE"
-                },
-                {
-                    "name": "World Cuisine Delights",
-                    "description": "Tantalizing taste buds and minds by learning about unique cuisines from different countries.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-cuisine",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Art across Continents",
-                    "description": "Expressing creativity and appreciation for diverse art forms and traditions around the world.",
-                    "image_path": "https://source.unsplash.com/500x500/?global-art",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Global Music and Dance",
-                    "description": "Grooving to the beats of the world, understanding music and dance as universal languages of expression.",
-                    "image_path": "https://source.unsplash.com/500x500/?global-music-dance",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Traditions and Customs",
-                    "description": "Respecting and understanding the diverse traditions and customs that make our world a rich tapestry of cultures.",
-                    "image_path": "https://source.unsplash.com/500x500/?traditions",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Storytelling around the World",
-                    "description": "Traveling the world through enchanting folktales and stories that embody diverse cultural values.",
-                    "image_path": "https://source.unsplash.com/500x500/?storytelling",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "International Dress-Up Day",
-                    "description": "Encouraging self-expression and global awareness by exploring traditional clothing from around the world.",
-                    "image_path": "https://source.unsplash.com/500x500/?traditional-clothing",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Local and National Landmarks",
-            "description": "Taking a virtual tour of significant landmarks to inspire respect for history and appreciation for architectural marvels.",
+  {
+    "level_id": "8787a66e-9e03-42c7-8870-ada6df021491",
+    "topics_data": [
+      {
+        "name": "Introduction to Community Helpers",
+        "description": "Introducing the tireless helpers around us, fostering gratitude and a sense of community.",
+        "image_path": "https://source.unsplash.com/500x500/?community-helpers",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Roles: The Policeman",
+            "description": "Exploring the duties and responsibilities of our friendly neighborhood policemen.",
+            "image_path": "https://source.unsplash.com/500x500/?policeman",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Roles: The Firefighter",
+            "description": "Learning about the bravery and skill of firefighters in keeping our community safe.",
+            "image_path": "https://source.unsplash.com/500x500/?firefighter",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Roles: The Doctor",
+            "description": "Appreciating the doctors around us who work tirelessly to keep us healthy.",
+            "image_path": "https://source.unsplash.com/500x500/?doctor",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Roles: The Teacher",
+            "description": "Recognizing the role of teachers in shaping our minds and futures.",
+            "image_path": "https://source.unsplash.com/500x500/?teacher",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Roles: The Postman",
+            "description": "Understanding the key role of the postman in connecting people and delivering happiness.",
+            "image_path": "https://source.unsplash.com/500x500/?postman",
+            "type": "CORE"
+          },
+          {
+            "name": "Interactive Field Visit: The Police Station",
+            "description": "A virtual trip to the police station, exploring their daily duties and routines.",
+            "image_path": "https://source.unsplash.com/500x500/?police-station",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Interactive Field Visit: The Fire Station",
+            "description": "A virtual journey to a fire station to understand the work of firefighters in detail.",
+            "image_path": "https://source.unsplash.com/500x500/?fire-station",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Exploring Our Neighborhood",
+        "description": "Understanding our immediate surroundings and learning to appreciate the diversity and uniqueness of our local community.",
+        "image_path": "https://source.unsplash.com/500x500/?neighborhood",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Identifying Landmarks",
+            "description": "Recognizing important landmarks and understanding their significance in our community.",
             "image_path": "https://source.unsplash.com/500x500/?landmarks",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Exploring Our Hometown",
-                    "description": "Unraveling the fascinating aspects of our hometown, its history, and prominent structures.",
-                    "image_path": "https://source.unsplash.com/500x500/?hometown",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Story of National Monuments",
-                    "description": "Imbibing pride and respect for our heritage by exploring the stories behind national monuments.",
-                    "image_path": "https://source.unsplash.com/500x500/?national-monuments",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Famous Buildings and Their Architects",
-                    "description": "Appreciating the fusion of art and science in architecture by exploring famous buildings and their creators.",
-                    "image_path": "https://source.unsplash.com/500x500/?famous-buildings",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Natural Wonders in Our Country",
-                    "description": "Exploring the diverse natural landmarks in our country, fostering love for nature and geography.",
-                    "image_path": "https://source.unsplash.com/500x500/?natural-landmarks",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Virtual Visit to a Museum",
-                    "description": "Making history and culture come alive by virtually touring a famous museum.",
-                    "image_path": "https://source.unsplash.com/500x500/?museum",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Creating Our Own Landmarks",
-                    "description": "Unleashing creativity and understanding of structures by building our own mini landmarks.",
-                    "image_path": "https://source.unsplash.com/500x500/?DIY-landmarks",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Interview with a Local Historian",
-                    "description": "Connecting the past and present by interacting with a local historian to learn more about our community.",
-                    "image_path": "https://source.unsplash.com/500x500/?historian",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Introduction to Economics",
-            "description": "Making the abstract concept of economics tangible and fun for young minds, fostering financial literacy from an early age.",
-            "image_path": "https://source.unsplash.com/500x500/?economics",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Needs and Wants",
-                    "description": "Understanding the basic concept of needs and wants, laying the foundation for smart decision-making.",
-                    "image_path": "https://source.unsplash.com/500x500/?needs-wants",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Goods and Services",
-                    "description": "Introducing the concept of goods and services, highlighting their role in daily life.",
-                    "image_path": "https://source.unsplash.com/500x500/?goods-services",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Money",
-                    "description": "Learning about money, its value, and how it‘s used in our society.",
-                    "image_path": "https://source.unsplash.com/500x500/?money",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Concept of Trade",
-                    "description": "Exploring the basic idea of trade, bartering and the evolution of commerce.",
-                    "image_path": "https://source.unsplash.com/500x500/?trade",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Jobs and Income",
-                    "description": "Learning about different jobs and the concept of income, instilling a sense of career awareness.",
-                    "image_path": "https://source.unsplash.com/500x500/?jobs-income",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Classroom Market Day",
-                    "description": "Bringing economics to life by organizing a classroom market, enhancing understanding of buying, selling, and the value of money.",
-                    "image_path": "https://source.unsplash.com/500x500/?market-day",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Money Management and Saving",
-                    "description": "Empowering students with the foundational knowledge of managing and saving money, fostering financial responsibility.",
-                    "image_path": "https://source.unsplash.com/500x500/?saving-money",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Community Helpers",
-            "description": "Recognizing and appreciating the vital role of various professionals in our community, nurturing respect and empathy.",
-            "image_path": "https://source.unsplash.com/500x500/?community-helpers",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Role of a Firefighter",
-                    "description": "Understanding the brave and vital role of firefighters in keeping our community safe.",
-                    "image_path": "https://source.unsplash.com/500x500/?firefighter",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Role of a Doctor",
-                    "description": "Exploring the compassionate profession of doctors, emphasizing their importance in maintaining community health.",
-                    "image_path": "https://source.unsplash.com/500x500/?doctor",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Role of a Police Officer",
-                    "description": "Learning about the responsibilities of police officers in ensuring law and order in our society.",
-                    "image_path": "https://source.unsplash.com/500x500/?police",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Role of a Teacher",
-                    "description": "Appreciating the transformative role of teachers in educating and shaping future citizens.",
-                    "image_path": "https://source.unsplash.com/500x500/?teacher",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Role of a Farmer",
-                    "description": "Exploring the hardworking world of farmers, emphasizing their role in providing the food we eat.",
-                    "image_path": "https://source.unsplash.com/500x500/?farmer",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Community Helper Role Play",
-                    "description": "Bringing empathy and understanding to life by role-playing different community helpers.",
-                    "image_path": "https://source.unsplash.com/500x500/?role-play",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Interview a Community Helper",
-                    "description": "Enhancing real-world connection and communication skills by interviewing a community helper.",
-                    "image_path": "https://source.unsplash.com/500x500/?interview",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Time and Calendar",
-            "description": "Mastering the art of timekeeping and understanding the calendar system, to instill the value of time and seasons.",
-            "image_path": "https://source.unsplash.com/500x500/?calendar",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Understanding Days, Weeks, and Months",
-                    "description": "Grasping the basic concept of days, weeks, and months and how they are organized into a calendar.",
-                    "image_path": "https://source.unsplash.com/500x500/?days-weeks-months",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Seasons and Climate",
-                    "description": "Discovering the four seasons and their characteristics, fostering understanding of climate and nature‘s cycles.",
-                    "image_path": "https://source.unsplash.com/500x500/?seasons",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Reading the Clock",
-                    "description": "Learning to read the hour and minute hand on a clock, instilling the importance of time management.",
-                    "image_path": "https://source.unsplash.com/500x500/?clock",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Importance of Dates and Holidays",
-                    "description": "Understanding the significance of dates and holidays in our cultural and societal life.",
-                    "image_path": "https://source.unsplash.com/500x500/?dates-holidays",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Creating a Personal Calendar",
-                    "description": "Making learning interactive and personal by creating a custom calendar, incorporating important personal and community dates.",
-                    "image_path": "https://source.unsplash.com/500x500/?personal-calendar",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Time Capsule Project",
-                    "description": "Building a time capsule to capture current interests and predictions for the future, teaching respect for the passage of time.",
-                    "image_path": "https://source.unsplash.com/500x500/?time-capsule",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Daily Schedule Planning",
-                    "description": "Learning to plan and organize a daily schedule, reinforcing time management skills and self-discipline.",
-                    "image_path": "https://source.unsplash.com/500x500/?daily-schedule",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "World Cultures",
-            "description": "Embarking on a global adventure to appreciate the beauty of cultural diversity and foster global citizenship.",
-            "image_path": "https://source.unsplash.com/500x500/?world-cultures",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Festivals Around the World",
-                    "description": "Exploring vibrant festivals worldwide to understand how different cultures celebrate and express joy.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-festivals",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Global Food Palette",
-                    "description": "Tasting the flavors of the world through an exploration of global cuisines, fostering cultural understanding.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-food",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Traditional Attires Around the World",
-                    "description": "Appreciating the diversity of traditional attires worldwide, understanding their significance and history.",
-                    "image_path": "https://source.unsplash.com/500x500/?traditional-attires",
-                    "type": "CORE"
-                },
-                {
-                    "name": "World Languages",
-                    "description": "Experiencing the richness of global languages and understanding the importance of communication across cultures.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-languages",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Children‘s Games Around the World",
-                    "description": "Learning about children‘s games from various cultures, reinforcing universal similarities and cultural diversity.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-games",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Global Art and Craft",
-                    "description": "Creating art inspired by different cultures, fostering creativity and appreciation for global artistry.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-art",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Global Music and Dance",
-                    "description": "Exploring world music and dance forms, experiencing the universal language of rhythm and movement.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-music-dance",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Space Exploration",
-            "description": "Launching into the fascinating world of space, sparking curiosity and a sense of wonder about our universe.",
+            "type": "CORE"
+          },
+          {
+            "name": "Meet the Neighbors",
+            "description": "Getting familiar with the people around us, promoting community awareness and social skills.",
+            "image_path": "https://source.unsplash.com/500x500/?neighbors",
+            "type": "CORE"
+          },
+          {
+            "name": "Local Flora and Fauna",
+            "description": "Discovering the plants and animals that share our community, fostering respect for nature.",
+            "image_path": "https://source.unsplash.com/500x500/?nature",
+            "type": "CORE"
+          },
+          {
+            "name": "Community Map Drawing",
+            "description": "Creating a map of our neighborhood to develop spatial thinking and understanding of geography.",
+            "image_path": "https://source.unsplash.com/500x500/?map",
+            "type": "CORE"
+          },
+          {
+            "name": "Transportation in Our Community",
+            "description": "Identifying the various modes of transportation in our community and their purposes.",
+            "image_path": "https://source.unsplash.com/500x500/?transportation",
+            "type": "CORE"
+          },
+          {
+            "name": "Visit to a Local Park",
+            "description": "An interactive exploration of a local park to understand its role in our community.",
+            "image_path": "https://source.unsplash.com/500x500/?park",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Visit to a Local Market",
+            "description": "A virtual tour of a local market, learning about different professions and goods.",
+            "image_path": "https://source.unsplash.com/500x500/?market",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Our Natural World",
+        "description": "Cultivating a love for the natural world and understanding our role in preserving it.",
+        "image_path": "https://source.unsplash.com/500x500/?nature",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Weather Wonders",
+            "description": "Understanding the different types of weather and how they affect our daily life.",
+            "image_path": "https://source.unsplash.com/500x500/?weather",
+            "type": "CORE"
+          },
+          {
+            "name": "Seasons and Changes",
+            "description": "Observing the changing seasons and learning about the cycle of life.",
+            "image_path": "https://source.unsplash.com/500x500/?seasons",
+            "type": "CORE"
+          },
+          {
+            "name": "Plants and Their Parts",
+            "description": "Exploring the fascinating world of plants and understanding their vital role in our ecosystem.",
+            "image_path": "https://source.unsplash.com/500x500/?plants",
+            "type": "CORE"
+          },
+          {
+            "name": "Introduction to Animals",
+            "description": "Learning about the various animals in our world and their unique characteristics.",
+            "image_path": "https://source.unsplash.com/500x500/?animals",
+            "type": "CORE"
+          },
+          {
+            "name": "Water: Our Precious Resource",
+            "description": "Understanding the importance of water in our life and how to conserve it.",
+            "image_path": "https://source.unsplash.com/500x500/?water",
+            "type": "CORE"
+          },
+          {
+            "name": "Visit to a Local Garden",
+            "description": "An interactive exploration of a local garden to discover various plants and insects.",
+            "image_path": "https://source.unsplash.com/500x500/?garden",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Understanding Recycling",
+            "description": "Introducing the concept of recycling, reusing, and reducing for a greener future.",
+            "image_path": "https://source.unsplash.com/500x500/?recycling",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Understanding Family Structures",
+        "description": "Exploring diverse family structures and values, building empathy and social understanding.",
+        "image_path": "https://source.unsplash.com/500x500/?family",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "My Family Tree",
+            "description": "Creating a family tree to understand familial relationships and heritage.",
+            "image_path": "https://source.unsplash.com/500x500/?family-tree",
+            "type": "CORE"
+          },
+          {
+            "name": "Roles & Responsibilities at Home",
+            "description": "Learning about different roles and responsibilities in the household and the importance of helping.",
+            "image_path": "https://source.unsplash.com/500x500/?household",
+            "type": "CORE"
+          },
+          {
+            "name": "Celebrating Traditions & Festivals",
+            "description": "Understanding the cultural significance of different family traditions and festivals.",
+            "image_path": "https://source.unsplash.com/500x500/?festival",
+            "type": "CORE"
+          },
+          {
+            "name": "Respecting Differences",
+            "description": "Recognizing and appreciating the differences in family structures and traditions.",
+            "image_path": "https://source.unsplash.com/500x500/?diversity",
+            "type": "CORE"
+          },
+          {
+            "name": "Creating a Family Portrait",
+            "description": "Drawing and coloring a family portrait to express creativity and familial bond.",
+            "image_path": "https://source.unsplash.com/500x500/?family-portrait",
+            "type": "CORE"
+          },
+          {
+            "name": "Storytelling: Family Histories",
+            "description": "Listening to and sharing family histories through engaging storytelling sessions.",
+            "image_path": "https://source.unsplash.com/500x500/?storytelling",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Creating a Family Cookbook",
+            "description": "Gathering family recipes to create a unique cookbook, learning about culinary traditions and collaboration.",
+            "image_path": "https://source.unsplash.com/500x500/?cookbook",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Early History and Culture",
+        "description": "Uncovering the roots of our society by learning about early civilizations and cultures.",
+        "image_path": "https://source.unsplash.com/500x500/?history,culture",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Life in the Stone Age",
+            "description": "Exploring the simplicity and ingenuity of Stone Age people and their lifestyle.",
+            "image_path": "https://source.unsplash.com/500x500/?stone-age",
+            "type": "CORE"
+          },
+          {
+            "name": "Introduction to Ancient Egypt",
+            "description": "Understanding the grandeur and mysteries of ancient Egyptian civilization.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-egypt",
+            "type": "CORE"
+          },
+          {
+            "name": "Ancient Greek Myths",
+            "description": "Listening to fascinating Greek myths that teach important life lessons.",
+            "image_path": "https://source.unsplash.com/500x500/?greek-myths",
+            "type": "CORE"
+          },
+          {
+            "name": "Early Forms of Writing",
+            "description": "Exploring the development of writing in early civilizations and its importance.",
+            "image_path": "https://source.unsplash.com/500x500/?early-writing",
+            "type": "CORE"
+          },
+          {
+            "name": "Cave Paintings and Symbols",
+            "description": "Understanding the significance of early cave paintings and symbols in human communication.",
+            "image_path": "https://source.unsplash.com/500x500/?cave-paintings",
+            "type": "CORE"
+          },
+          {
+            "name": "Crafting Pottery: Clay Time",
+            "description": "An interactive session on crafting simple pottery items, just like our ancestors.",
+            "image_path": "https://source.unsplash.com/500x500/?pottery",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Storytelling: Legends of Old",
+            "description": "Captivating storytelling sessions of ancient legends and folktales.",
+            "image_path": "https://source.unsplash.com/500x500/?folktales",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Civic Awareness",
+        "description": "Instilling a sense of responsibility and understanding of the basic workings of our community and government.",
+        "image_path": "https://source.unsplash.com/500x500/?government",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Introduction to the School System",
+            "description": "Understanding the structure of our school system and the roles of everyone involved.",
+            "image_path": "https://source.unsplash.com/500x500/?school-system",
+            "type": "CORE"
+          },
+          {
+            "name": "Rules and Laws in Our Community",
+            "description": "Learning about the basic rules and laws that keep our community safe and functional.",
+            "image_path": "https://source.unsplash.com/500x500/?laws",
+            "type": "CORE"
+          },
+          {
+            "name": "Local Government and Services",
+            "description": "Getting familiar with the local government and the services it provides to the community.",
+            "image_path": "https://source.unsplash.com/500x500/?government-services",
+            "type": "CORE"
+          },
+          {
+            "name": "Elections and Leadership",
+            "description": "Understanding the process of elections and the importance of leadership in our society.",
+            "image_path": "https://source.unsplash.com/500x500/?elections",
+            "type": "CORE"
+          },
+          {
+            "name": "The Concept of Taxes",
+            "description": "Introducing the basic concept of taxes and why they are important for community services.",
+            "image_path": "https://source.unsplash.com/500x500/?taxes",
+            "type": "CORE"
+          },
+          {
+            "name": "Visit to a City Council Meeting",
+            "description": "A virtual visit to a city council meeting to see local government in action.",
+            "image_path": "https://source.unsplash.com/500x500/?city-council",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Organizing a Mock School Election",
+            "description": "Participating in a mock school election to understand the process of voting and selection of leaders.",
+            "image_path": "https://source.unsplash.com/500x500/?school-election",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Global Awareness",
+        "description": "Broadening horizons by learning about different countries, cultures, and customs.",
+        "image_path": "https://source.unsplash.com/500x500/?global-awareness",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Continents and Oceans",
+            "description": "Introducing the seven continents and five oceans, understanding the vastness of our world.",
+            "image_path": "https://source.unsplash.com/500x500/?continents-oceans",
+            "type": "CORE"
+          },
+          {
+            "name": "Famous Landmarks Around the World",
+            "description": "Exploring famous landmarks around the world, appreciating global heritage and architecture.",
+            "image_path": "https://source.unsplash.com/500x500/?landmarks",
+            "type": "CORE"
+          },
+          {
+            "name": "Cultural Festivals Worldwide",
+            "description": "Learning about different cultural festivals celebrated around the world, understanding diversity and traditions.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-festivals",
+            "type": "CORE"
+          },
+          {
+            "name": "World Languages: Fun Phrases",
+            "description": "Getting introduced to various languages and learning fun phrases, fostering multilingual interest.",
+            "image_path": "https://source.unsplash.com/500x500/?languages",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Cuisines: Tasting Session",
+            "description": "Introducing global cuisines through a fun tasting session, experiencing culinary diversity.",
+            "image_path": "https://source.unsplash.com/500x500/?global-cuisines",
+            "type": "CORE"
+          },
+          {
+            "name": "Famous Global Art: Virtual Tour",
+            "description": "A virtual tour of famous art pieces from around the world, appreciating global artistic talents.",
+            "image_path": "https://source.unsplash.com/500x500/?art",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "World Music and Instruments",
+            "description": "Exploring the fascinating world of global music and instruments, fostering musical appreciation.",
+            "image_path": "https://source.unsplash.com/500x500/?world-music",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Technology in Everyday Life",
+        "description": "Exploring the role of technology in our daily lives and understanding its advantages and implications.",
+        "image_path": "https://source.unsplash.com/500x500/?technology",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding the Internet",
+            "description": "An introduction to the internet, its uses, and the concept of online safety.",
+            "image_path": "https://source.unsplash.com/500x500/?internet",
+            "type": "CORE"
+          },
+          {
+            "name": "Exploring Different Gadgets",
+            "description": "Identifying and learning about the use of various everyday gadgets.",
+            "image_path": "https://source.unsplash.com/500x500/?gadgets",
+            "type": "CORE"
+          },
+          {
+            "name": "The Concept of Coding",
+            "description": "An introduction to coding through simple and engaging activities.",
+            "image_path": "https://source.unsplash.com/500x500/?coding",
+            "type": "CORE"
+          },
+          {
+            "name": "Virtual Reality Exploration",
+            "description": "Exploring the concept of virtual reality and its various applications.",
+            "image_path": "https://source.unsplash.com/500x500/?virtual-reality",
+            "type": "CORE"
+          },
+          {
+            "name": "Technology in Transportation",
+            "description": "Understanding the role of technology in various modes of transportation.",
+            "image_path": "https://source.unsplash.com/500x500/?transportation",
+            "type": "CORE"
+          },
+          {
+            "name": "Animation: Behind the Scenes",
+            "description": "A peek into the world of animation and the technology behind our favorite animated movies.",
+            "image_path": "https://source.unsplash.com/500x500/?animation",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Technology in Space Exploration",
+            "description": "Learning about the use of technology in exploring space and its wonders.",
             "image_path": "https://source.unsplash.com/500x500/?space",
-            "type": "ELECTIVE",
-            "lessons_data": [
-                {
-                    "name": "The Solar System",
-                    "description": "An exciting journey through our solar system, exploring planets and their unique characteristics.",
-                    "image_path": "https://source.unsplash.com/500x500/?solar-system",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Astronauts and Space Missions",
-                    "description": "Learning about courageous astronauts and their missions, inspiring dreams of space exploration.",
-                    "image_path": "https://source.unsplash.com/500x500/?astronaut",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Moon Phases",
-                    "description": "Understanding the phases of the moon and its impact on our planet.",
-                    "image_path": "https://source.unsplash.com/500x500/?moon-phases",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Stars and Constellations",
-                    "description": "Discovering the patterns of stars in the sky, diving into ancient stories of constellations.",
-                    "image_path": "https://source.unsplash.com/500x500/?stars",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Gravity",
-                    "description": "Grasping the concept of gravity, an invisible force that keeps us grounded and influences our space journeys.",
-                    "image_path": "https://source.unsplash.com/500x500/?gravity",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Rocket Science Experiment",
-                    "description": "Experiencing the thrill of launching a homemade rocket, learning the basics of propulsion.",
-                    "image_path": "https://source.unsplash.com/500x500/?rocket-science",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Space Art Project",
-                    "description": "Unleashing creativity with a space-themed art project, capturing the beauty of our universe.",
-                    "image_path": "https://source.unsplash.com/500x500/?space-art",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Ancient Civilizations",
-            "description": "Time traveling to ancient civilizations, unveiling the roots of human society and culture.",
-            "image_path": "https://source.unsplash.com/500x500/?ancient-civilizations",
-            "type": "ELECTIVE",
-            "lessons_data": [
-                {
-                    "name": "Egyptian Civilization",
-                    "description": "Exploring the pyramids, pharaohs, and the Nile of ancient Egypt, experiencing the grandeur of this civilization.",
-                    "image_path": "https://source.unsplash.com/500x500/?egyptian-civilization",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Greek Civilization",
-                    "description": "Diving into the world of ancient Greece, birthplace of democracy, philosophy, and the Olympics.",
-                    "image_path": "https://source.unsplash.com/500x500/?greek-civilization",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Roman Civilization",
-                    "description": "Discovering the might of the Roman Empire, its roads, laws, and the gladiators.",
-                    "image_path": "https://source.unsplash.com/500x500/?roman-civilization",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Chinese Civilization",
-                    "description": "Unraveling the mysteries of ancient China, its Great Wall, inventions, and dynasties.",
-                    "image_path": "https://source.unsplash.com/500x500/?chinese-civilization",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Mayan Civilization",
-                    "description": "Journeying to the Americas to understand the Mayan civilization, its pyramids, astronomy, and writings.",
-                    "image_path": "https://source.unsplash.com/500x500/?mayan-civilization",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Archeological Dig Role Play",
-                    "description": "Role-playing as archeologists, unearthing artifacts to understand the past and foster curiosity.",
-                    "image_path": "https://source.unsplash.com/500x500/?archeology",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Build Your Civilization",
-                    "description": "Creating a model of an imagined civilization, honing creativity, planning, and storytelling skills.",
-                    "image_path": "https://source.unsplash.com/500x500/?model-civilization",
-                    "type": "ELECTIVE"
-                }
-            ]
-        }
-      ]
-    },
-    {
-      "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
-      "topics_data": [
-        {
-          "name": "Community and Culture",
-          "description": "Unravel the diverse tapestry of communities, exploring cultural nuances that make us unique yet united.",
-          "image_path": "https://source.unsplash.com/500x500/?community-culture",
-          "type": "CORE",
-          "lessons_data": [
-              {
-                  "name": "Our Diverse Community",
-                  "description": "Discover the rich diversity within our community, understanding the different cultures that weave our societal fabric.",
-                  "image_path": "https://source.unsplash.com/500x500/?diverse-community",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Symbols and Traditions",
-                  "description": "Explore various cultural symbols and traditions, fostering respect and appreciation for different cultures.",
-                  "image_path": "https://source.unsplash.com/500x500/?cultural-symbols",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Local Government and Services",
-                  "description": "Delve into the structure of local government and its role in providing community services.",
-                  "image_path": "https://source.unsplash.com/500x500/?local-government",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Community Roles and Jobs",
-                  "description": "Uncover the different roles and jobs within our community, appreciating their contributions to our society.",
-                  "image_path": "https://source.unsplash.com/500x500/?community-jobs",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Community History",
-                  "description": "Embark on a journey through our community‘s history, understanding how our past shapes our present.",
-                  "image_path": "https://source.unsplash.com/500x500/?community-history",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Celebrating Diversity",
-                  "description": "Partake in an immersive exploration of our community‘s diverse cultures, celebrating our unity in diversity.",
-                  "image_path": "https://source.unsplash.com/500x500/?cultural-festival",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "Community Art and Music",
-                  "description": "Experience the vibrant art and music scene in our community, appreciating the creative expressions of different cultures.",
-                  "image_path": "https://source.unsplash.com/500x500/?community-art-music",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "Geography and Environment",
-          "description": "Embark on an exciting journey across the globe, understanding how geographical features shape our environment and lifestyle.",
-          "image_path": "https://source.unsplash.com/500x500/?geography-environment",
-          "type": "CORE",
-          "lessons_data": [
-              {
-                  "name": "Understanding Maps",
-                  "description": "Learn the art of reading and interpreting maps, a fundamental skill for any aspiring explorer.",
-                  "image_path": "https://source.unsplash.com/500x500/?maps",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Major Landforms",
-                  "description": "Discover the major landforms on Earth and how they influence the lifestyle and culture of the people living there.",
-                  "image_path": "https://source.unsplash.com/500x500/?landforms",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Oceans and Seas",
-                  "description": "Dive into the vast and mysterious world of oceans and seas, understanding their importance to life on Earth.",
-                  "image_path": "https://source.unsplash.com/500x500/?oceans",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Weather and Climate",
-                  "description": "Learn about weather patterns and climates, understanding their impacts on our environment and lifestyle.",
-                  "image_path": "https://source.unsplash.com/500x500/?weather-climate",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Natural Resources",
-                  "description": "Explore the concept of natural resources, appreciating their value and learning about the need for their conservation.",
-                  "image_path": "https://source.unsplash.com/500x500/?natural-resources",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Endangered Species",
-                  "description": "Uncover the plight of endangered species, understanding the environmental factors contributing to their endangerment.",
-                  "image_path": "https://source.unsplash.com/500x500/?endangered-species",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "Exploring Antarctica",
-                  "description": "Journey to the last wilderness on Earth - Antarctica, understanding its unique environment and the impact of climate change.",
-                  "image_path": "https://source.unsplash.com/500x500/?antarctica",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "National Symbols and Monuments",
-          "description": "Journey through a grand display of national heritage, unraveling the stories behind our national symbols and monuments.",
-          "image_path": "https://source.unsplash.com/500x500/?national-monuments",
-          "type": "CORE",
-          "lessons_data": [
-              {
-                  "name": "The Flag and The Anthem",
-                  "description": "Explore the significance of our national flag and anthem, understanding their historical and symbolic value.",
-                  "image_path": "https://source.unsplash.com/500x500/?flag-anthem",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Iconic Monuments",
-                  "description": "Discover the stories behind the country‘s most iconic monuments and their role in preserving our national heritage.",
-                  "image_path": "https://source.unsplash.com/500x500/?monuments",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Historical Landmarks",
-                  "description": "Travel back in time as we explore historic landmarks that bear witness to the country‘s rich history.",
-                  "image_path": "https://source.unsplash.com/500x500/?historical-landmarks",
-                  "type": "CORE"
-              },
-              {
-                  "name": "National Holidays",
-                  "description": "Understand the importance and historical significance of our national holidays and how they are celebrated.",
-                  "image_path": "https://source.unsplash.com/500x500/?national-holidays",
-                  "type": "CORE"
-              },
-              {
-                  "name": "National Emblems and Symbols",
-                  "description": "Uncover the meaning behind national emblems and symbols, appreciating their role in representing our national identity.",
-                  "image_path": "https://source.unsplash.com/500x500/?national-symbols",
-                  "type": "CORE"
-              },
-              {
-                  "name": "The National Parks",
-                  "description": "Discover the beauty and importance of our national parks, understanding their role in conservation and recreation.",
-                  "image_path": "https://source.unsplash.com/500x500/?national-parks",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "Presidential Monuments",
-                  "description": "Learn about monuments dedicated to past presidents, understanding their legacy and contributions to our nation‘s history.",
-                  "image_path": "https://source.unsplash.com/500x500/?presidential-monuments",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "Economics and Trade",
-          "description": "Venture into the world of economics and trade, understanding how goods and services flow in our community and the world.",
-          "image_path": "https://source.unsplash.com/500x500/?economics-trade",
-          "type": "CORE",
-          "lessons_data": [
-              {
-                  "name": "Basics of Economics",
-                  "description": "Demystify the basics of economics, understanding concepts like supply, demand, and value.",
-                  "image_path": "https://source.unsplash.com/500x500/?economics",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Goods and Services",
-                  "description": "Explore the difference between goods and services, and learn about their role in the economy.",
-                  "image_path": "https://source.unsplash.com/500x500/?goods-services",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Money and Banking",
-                  "description": "Uncover the role of money in trade and delve into the basic functions of banks.",
-                  "image_path": "https://source.unsplash.com/500x500/?money-banking",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Trade and Markets",
-                  "description": "Learn about the concept of trade and discover how markets function to facilitate the exchange of goods and services.",
-                  "image_path": "https://source.unsplash.com/500x500/?trade-markets",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Jobs and Careers",
-                  "description": "Understand the variety of jobs and careers people have, and learn about the value of different skills in the economy.",
-                  "image_path": "https://source.unsplash.com/500x500/?jobs-careers",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Entrepreneurship",
-                  "description": "Introduce the concept of entrepreneurship, igniting the spirit of innovation and problem-solving.",
-                  "image_path": "https://source.unsplash.com/500x500/?entrepreneurship",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "International Trade",
-                  "description": "Expand the horizon to understand international trade and how different countries exchange goods and services.",
-                  "image_path": "https://source.unsplash.com/500x500/?international-trade",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "Ancient Civilizations",
-          "description": "Time-travel back to the ancient world, unveiling the cultures, inventions, and historical milestones of early civilizations.",
-          "image_path": "https://source.unsplash.com/500x500/?ancient-civilizations",
-          "type": "CORE",
-          "lessons_data": [
-              {
-                  "name": "Egypt: Land of Pharaohs",
-                  "description": "Explore ancient Egypt‘s rich history, from pyramids to the powerful pharaohs and the mystery of hieroglyphs.",
-                  "image_path": "https://source.unsplash.com/500x500/?ancient-egypt",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Majestic Mesopotamia",
-                  "description": "Discover Mesopotamia, often referred to as the cradle of civilization, and its contributions to writing and law.",
-                  "image_path": "https://source.unsplash.com/500x500/?mesopotamia",
-                  "type": "CORE"
-              },
-              {
-                  "name": "The Roman Empire",
-                  "description": "Delve into the grandeur of the Roman Empire, understanding its influence on law, politics, architecture, and language.",
-                  "image_path": "https://source.unsplash.com/500x500/?roman-empire",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Classical Greece",
-                  "description": "Uncover the wonders of Classical Greece, from mythology and philosophy to the original Olympic games.",
-                  "image_path": "https://source.unsplash.com/500x500/?classical-greece",
-                  "type": "CORE"
-              },
-              {
-                  "name": "The Ancient Indus Valley",
-                  "description": "Journey to the Ancient Indus Valley, exploring its unique urban planning, writing system, and advancements in trade.",
-                  "image_path": "https://source.unsplash.com/500x500/?indus-valley",
-                  "type": "CORE"
-              },
-              {
-                  "name": "The Mayan Civilization",
-                  "description": "Navigate through the intriguing world of the Mayan civilization, learning about their astronomical knowledge and unique writing system.",
-                  "image_path": "https://source.unsplash.com/500x500/?mayan-civilization",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "China‘s Dynasties",
-                  "description": "Travel through time to ancient China, understanding the dynastic cycle and contributions to art, philosophy, and technology.",
-                  "image_path": "https://source.unsplash.com/500x500/?ancient-china",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "Local History and Community",
-          "description": "Dive into our local history and community, appreciating its evolution, diversity, and the roles that keep it functioning harmoniously.",
-          "image_path": "https://source.unsplash.com/500x500/?community",
-          "type": "CORE",
-          "lessons_data": [
-              {
-                  "name": "History of Our Town",
-                  "description": "Discover the rich history of our town, its foundation, key events, and how it has evolved over time.",
-                  "image_path": "https://source.unsplash.com/500x500/?town-history",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Community Members and Their Roles",
-                  "description": "Recognize the diverse roles of community members, understanding their responsibilities and contributions to our town.",
-                  "image_path": "https://source.unsplash.com/500x500/?community-roles",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Civic Responsibilities",
-                  "description": "Understand the civic responsibilities that come with being a part of a community, and the importance of fulfilling them.",
-                  "image_path": "https://source.unsplash.com/500x500/?civic-responsibilities",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Local Government and Services",
-                  "description": "Explore the structure of our local government and the services it provides to ensure the smooth functioning of the community.",
-                  "image_path": "https://source.unsplash.com/500x500/?local-government",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Local Landmarks and Cultural Sites",
-                  "description": "Take a virtual tour of local landmarks and cultural sites, appreciating their historical and cultural significance.",
-                  "image_path": "https://source.unsplash.com/500x500/?landmarks",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Community Service and Volunteering",
-                  "description": "Learn about the importance and benefits of community service and volunteering, inspiring a spirit of generosity and mutual aid.",
-                  "image_path": "https://source.unsplash.com/500x500/?volunteering",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "Celebrations and Festivals in Our Town",
-                  "description": "Explore the various celebrations and festivals held in our town, understanding their origins and cultural significance.",
-                  "image_path": "https://source.unsplash.com/500x500/?festivals",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "Environmental Awareness",
-          "description": "Embark on a green journey, fostering respect for nature, understanding environmental issues, and learning about conservation efforts.",
-          "image_path": "https://source.unsplash.com/500x500/?environment",
-          "type": "CORE",
-          "lessons_data": [
-              {
-                  "name": "Introduction to Ecosystems",
-                  "description": "Discover the concept of ecosystems, learning about their diversity and the roles of various organisms within them.",
-                  "image_path": "https://source.unsplash.com/500x500/?ecosystems",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Importance of Conservation",
-                  "description": "Understand the importance of conservation, exploring efforts to protect our planet‘s flora and fauna.",
-                  "image_path": "https://source.unsplash.com/500x500/?conservation",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Climate Change and Its Effects",
-                  "description": "Delve into the concept of climate change, understanding its causes, effects, and ways to mitigate it.",
-                  "image_path": "https://source.unsplash.com/500x500/?climate-change",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Recycling and Waste Management",
-                  "description": "Learn about recycling and waste management, understanding how these practices contribute to a healthier planet.",
-                  "image_path": "https://source.unsplash.com/500x500/?recycling",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Water Conservation",
-                  "description": "Explore the importance of water conservation, learning about the water cycle and ways to save water at home and school.",
-                  "image_path": "https://source.unsplash.com/500x500/?water-conservation",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Endangered Species",
-                  "description": "Investigate the plight of endangered species, understanding the threats they face and how we can help protect them.",
-                  "image_path": "https://source.unsplash.com/500x500/?endangered-species",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "Renewable Energy",
-                  "description": "Explore the world of renewable energy, understanding how it is generated and its importance in combating climate change.",
-                  "image_path": "https://source.unsplash.com/500x500/?renewable-energy",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "Cultural Diversity and Global Citizenship",
-          "description": "Celebrate the colors of our world, understanding cultural diversity, respect for all, and the responsibilities of being a global citizen.",
-          "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
-          "type": "CORE",
-          "lessons_data": [
-              {
-                  "name": "Understanding Cultural Diversity",
-                  "description": "Explore the concept of cultural diversity, appreciating the various cultures and traditions that make up our world.",
-                  "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Respect for All Cultures",
-                  "description": "Cultivate a respect for all cultures, understanding the importance of empathy and acceptance in a diverse world.",
-                  "image_path": "https://source.unsplash.com/500x500/?respect-cultures",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Global Citizenship",
-                  "description": "Discover what it means to be a global citizen, focusing on responsibility, ethics, and active participation in the global community.",
-                  "image_path": "https://source.unsplash.com/500x500/?global-citizenship",
-                  "type": "CORE"
-              },
-              {
-                  "name": "World Languages",
-                  "description": "Introduce the diversity of world languages, highlighting their unique features and cultural significance.",
-                  "image_path": "https://source.unsplash.com/500x500/?world-languages",
-                  "type": "CORE"
-              },
-              {
-                  "name": "World Religions",
-                  "description": "Learn about the various world religions, understanding their beliefs, practices, and impact on culture and society.",
-                  "image_path": "https://source.unsplash.com/500x500/?world-religions",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Famous Landmarks Around the World",
-                  "description": "Take a virtual tour of famous landmarks around the world, appreciating their history and cultural significance.",
-                  "image_path": "https://source.unsplash.com/500x500/?landmarks",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "World Festivals",
-                  "description": "Explore vibrant festivals from around the world, understanding their cultural roots and celebrations.",
-                  "image_path": "https://source.unsplash.com/500x500/?world-festivals",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "Digital Citizenship",
-          "description": "Navigate the digital world safely and responsibly, understanding online etiquette, privacy, and the value of balanced screen time.",
-          "image_path": "https://source.unsplash.com/500x500/?digital-citizenship",
-          "type": "ELECTIVE",
-          "lessons_data": [
-              {
-                  "name": "Understanding the Internet",
-                  "description": "Get introduced to the vast world of the internet, understanding its use and the basics of how it works.",
-                  "image_path": "https://source.unsplash.com/500x500/?internet",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Online Safety",
-                  "description": "Learn about the importance of online safety, from creating strong passwords to identifying and avoiding online threats.",
-                  "image_path": "https://source.unsplash.com/500x500/?online-safety",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Online Etiquette (Netiquette)",
-                  "description": "Understand the etiquette of digital communication (netiquette), including respect for others‘ thoughts and appropriate commenting.",
-                  "image_path": "https://source.unsplash.com/500x500/?netiquette",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Privacy and Personal Information",
-                  "description": "Explore the importance of privacy and protecting personal information while using internet services and social networks.",
-                  "image_path": "https://source.unsplash.com/500x500/?privacy",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Balancing Screen Time",
-                  "description": "Understand the importance of balancing screen time with other activities for a healthy, well-rounded lifestyle.",
-                  "image_path": "https://source.unsplash.com/500x500/?screen-time",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Cyberbullying and How to Address It",
-                  "description": "Learn about the issue of cyberbullying, its impact, and strategies for addressing and preventing it.",
-                  "image_path": "https://source.unsplash.com/500x500/?cyberbullying",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "Understanding Digital Footprint",
-                  "description": "Discover what a digital footprint is, how it‘s created, and why it‘s important to be mindful of the traces we leave online.",
-                  "image_path": "https://source.unsplash.com/500x500/?digital-footprint",
-                  "type": "ELECTIVE"
-              }
-          ]
-        },
-        {
-          "name": "Exploring Space",
-          "description": "Journey through the cosmos, understanding the wonders of the universe, the solar system, and the exciting ventures of space exploration.",
-          "image_path": "https://source.unsplash.com/500x500/?space",
-          "type": "ELECTIVE",
-          "lessons_data": [
-              {
-                  "name": "Our Solar System",
-                  "description": "Embark on a journey through our solar system, learning about the sun, the planets, and their unique characteristics.",
-                  "image_path": "https://source.unsplash.com/500x500/?solar-system",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Astronauts and Space Exploration",
-                  "description": "Discover the brave world of astronauts and the history of space exploration, from the first moon landing to current missions.",
-                  "image_path": "https://source.unsplash.com/500x500/?astronaut",
-                  "type": "CORE"
-              },
-              {
-                  "name": "The Moon and Its Phases",
-                  "description": "Understand our moon, its phases, and why it‘s an important part of our Earthly life.",
-                  "image_path": "https://source.unsplash.com/500x500/?moon",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Stars and Constellations",
-                  "description": "Delve into the night sky, learning about stars, their life cycles, and the constellations they form.",
-                  "image_path": "https://source.unsplash.com/500x500/?stars",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Space Stations and Satellites",
-                  "description": "Explore space stations and satellites, understanding their functions and how they contribute to scientific research and communication.",
-                  "image_path": "https://source.unsplash.com/500x500/?space-station",
-                  "type": "CORE"
-              },
-              {
-                  "name": "Extraterrestrial Life",
-                  "description": "Delve into the possibilities of extraterrestrial life, examining the ongoing scientific search for life beyond Earth.",
-                  "image_path": "https://source.unsplash.com/500x500/?extraterrestrial-life",
-                  "type": "ELECTIVE"
-              },
-              {
-                  "name": "Telescopes and Stargazing",
-                  "description": "Learn about telescopes and the basics of stargazing, inspiring a love for astronomy and the mysteries of the cosmos.",
-                  "image_path": "https://source.unsplash.com/500x500/?telescope",
-                  "type": "ELECTIVE"
-              }
-          ]
-        }
-      ]
-    },
-    {
-      "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
-      "topics_data": [
-        {
-            "name": "Cultures of the World",
-            "description": "Embark on an enriching journey that fosters cultural awareness, inclusivity, and global understanding.",
-            "image_path": "https://source.unsplash.com/500x500/?world-cultures",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Festivals Around the Globe",
-                    "description": "An exciting exploration of vibrant festivals worldwide, celebrating diversity and unity.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-festivals",
-                    "type": "CORE"
-                },
-                {
-                    "name": "World Languages and Communication",
-                    "description": "Discover the richness of global languages and their role in fostering connections.",
-                    "image_path": "https://source.unsplash.com/500x500/?languages",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Traditional Foods and Cuisines",
-                    "description": "A flavorful journey into the world‘s diverse cuisines and their cultural significance.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-cuisine",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Global Art and Craft",
-                    "description": "Unleash creativity while understanding different art forms and their cultural contexts.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-art",
-                    "type": "CORE"
-                },
-                {
-                    "name": "World Music and Dance",
-                    "description": "Experience the rhythm of the world through music and dance forms across cultures.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-music",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Celebrations in America",
-                    "description": "Dive into the cultural significance of various celebrations in the United States.",
-                    "image_path": "https://source.unsplash.com/500x500/?american-celebrations",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Indigenous Cultures Worldwide",
-                    "description": "A thoughtful exploration of indigenous cultures, their history, traditions, and contributions.",
-                    "image_path": "https://source.unsplash.com/500x500/?indigenous-cultures",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "The Ancient Civilizations",
-            "description": "Journey back in time to understand the origins of human civilization, its development, and influence on the modern world.",
-            "image_path": "https://source.unsplash.com/500x500/?ancient-civilizations",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Life in Ancient Egypt",
-                    "description": "Unravel the mysteries of Ancient Egypt, its famous pharaohs, and its unique culture.",
-                    "image_path": "https://source.unsplash.com/500x500/?ancient-egypt",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Wonders of Ancient Greece",
-                    "description": "Discover the wonders of Ancient Greece and its impact on modern society, politics, and culture.",
-                    "image_path": "https://source.unsplash.com/500x500/?ancient-greece",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Legacy of the Roman Empire",
-                    "description": "Explore the lasting influence of the Roman Empire on law, architecture, language and government.",
-                    "image_path": "https://source.unsplash.com/500x500/?roman-empire",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Ancient Indus Valley Civilization",
-                    "description": "Dive into the advanced urban culture of the Indus Valley Civilization and its mysterious script.",
-                    "image_path": "https://source.unsplash.com/500x500/?indus-valley",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Majestic Mayans",
-                    "description": "Discover the Mayan civilization‘s advancements in writing, mathematics, and astronomy.",
-                    "image_path": "https://source.unsplash.com/500x500/?mayan-civilization",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Art of Ancient China",
-                    "description": "Explore the rich artistic heritage of Ancient China and its influence on modern aesthetics.",
-                    "image_path": "https://source.unsplash.com/500x500/?ancient-china-art",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "The Aztec Empire: A Study",
-                    "description": "Understand the culture, religion, and technology of the Aztec Empire and its place in history.",
-                    "image_path": "https://source.unsplash.com/500x500/?aztec-empire",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Local, National, and Global Communities",
-            "description": "Understanding the structure and dynamics of communities and the interconnectedness of our world.",
-            "image_path": "https://source.unsplash.com/500x500/?global-communities",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Building a Community",
-                    "description": "Explore how communities are built, the roles people play, and how they work together for common goals.",
-                    "image_path": "https://source.unsplash.com/500x500/?community-building",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Rights and Responsibilities",
-                    "description": "Learn about individual rights and responsibilities within a community and why they matter.",
-                    "image_path": "https://source.unsplash.com/500x500/?rights-responsibilities",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Local Government and Services",
-                    "description": "Understand the role of local government and the various services it provides to the community.",
-                    "image_path": "https://source.unsplash.com/500x500/?local-government",
-                    "type": "CORE"
-                },
-                {
-                    "name": "National Symbols and Monuments",
-                    "description": "Discover the importance of national symbols and monuments and the history they represent.",
-                    "image_path": "https://source.unsplash.com/500x500/?national-monuments",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Global Connections",
-                    "description": "Explore how communities around the world are interconnected through trade, technology, and culture.",
-                    "image_path": "https://source.unsplash.com/500x500/?global-connections",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Community Service and Volunteering",
-                    "description": "Learn about the importance of community service and the impact of volunteering.",
-                    "image_path": "https://source.unsplash.com/500x500/?community-service",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Exploring International Organizations",
-                    "description": "Discover the role of international organizations in addressing global challenges and fostering cooperation.",
-                    "image_path": "https://source.unsplash.com/500x500/?international-organizations",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Geography and the Environment",
-            "description": "Embrace the diversity of our planet, understanding geographical features, climate zones, and the importance of environmental stewardship.",
-            "image_path": "https://source.unsplash.com/500x500/?world-geography",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "World Landforms and Water Bodies",
-                    "description": "Explore major landforms and water bodies, their characteristics, and geographical locations.",
-                    "image_path": "https://source.unsplash.com/500x500/?landforms",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Understanding Climate Zones",
-                    "description": "Discover the world‘s different climate zones and how they affect the way people live.",
-                    "image_path": "https://source.unsplash.com/500x500/?climate-zones",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Ecosystems of the World",
-                    "description": "Delve into diverse ecosystems, learning about the interdependence of plants, animals, and environments.",
-                    "image_path": "https://source.unsplash.com/500x500/?ecosystems",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Maps and Navigation",
-                    "description": "Master the art of reading maps and understand their importance in exploration and navigation.",
-                    "image_path": "https://source.unsplash.com/500x500/?maps",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Sustainability and Conservation",
-                    "description": "Learn about the importance of sustainable living and conservation efforts for a healthier planet.",
-                    "image_path": "https://source.unsplash.com/500x500/?sustainability",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Natural Disasters and Their Impact",
-                    "description": "Understand different types of natural disasters, their causes, effects, and how communities respond to them.",
-                    "image_path": "https://source.unsplash.com/500x500/?natural-disasters",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Exploring National Parks",
-                    "description": "Take a virtual tour of famous national parks worldwide, appreciating their unique geography and biodiversity.",
-                    "image_path": "https://source.unsplash.com/500x500/?national-parks",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Economic Systems and Resources",
-            "description": "Understanding basic economic concepts, resources, and the role of trade and technology in our daily lives.",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Junior Entrepreneurs",
+        "description": "Nurturing creativity and business acumen through engaging entrepreneurial activities for youngsters.",
+        "image_path": "https://source.unsplash.com/500x500/?entrepreneur",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Brainstorming Business Ideas",
+            "description": "A fun brainstorming session to come up with innovative business ideas.",
+            "image_path": "https://source.unsplash.com/500x500/?brainstorming",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Money and Value",
+            "description": "Learning about money, its value, and its role in business transactions.",
+            "image_path": "https://source.unsplash.com/500x500/?money",
+            "type": "CORE"
+          },
+          {
+            "name": "Designing a Product",
+            "description": "A creative session where students design a simple product for their business idea.",
+            "image_path": "https://source.unsplash.com/500x500/?product-design",
+            "type": "CORE"
+          },
+          {
+            "name": "Introduction to Marketing",
+            "description": "Understanding the basic concepts of marketing and promoting a product.",
+            "image_path": "https://source.unsplash.com/500x500/?marketing",
+            "type": "CORE"
+          },
+          {
+            "name": "Setting Up a Lemonade Stand",
+            "description": "Practical business experience by setting up and running a simple lemonade stand.",
+            "image_path": "https://source.unsplash.com/500x500/?lemonade-stand",
+            "type": "CORE"
+          },
+          {
+            "name": "Field Trip: Visiting a Local Business",
+            "description": "A visit to a local business to see the workings of a real-life business.",
+            "image_path": "https://source.unsplash.com/500x500/?business",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Interviewing a Business Owner",
+            "description": "Interviewing a local business owner to gain insights into the life of an entrepreneur.",
+            "image_path": "https://source.unsplash.com/500x500/?interview",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Exploring Nature",
+        "description": "Nurturing a love for the outdoors and understanding the importance of environmental conservation.",
+        "image_path": "https://source.unsplash.com/500x500/?nature",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Understanding the Seasons",
+            "description": "Learning about the four seasons, weather patterns, and their effects on nature.",
+            "image_path": "https://source.unsplash.com/500x500/?seasons",
+            "type": "CORE"
+          },
+          {
+            "name": "Exploring Local Flora and Fauna",
+            "description": "Identifying and learning about local plants and animals in their natural habitats.",
+            "image_path": "https://source.unsplash.com/500x500/?flora-fauna",
+            "type": "CORE"
+          },
+          {
+            "name": "The Life Cycle of a Plant",
+            "description": "Understanding the life cycle of a plant through hands-on gardening activities.",
+            "image_path": "https://source.unsplash.com/500x500/?plant-life-cycle",
+            "type": "CORE"
+          },
+          {
+            "name": "Nature Walk and Scavenger Hunt",
+            "description": "An interactive nature walk and scavenger hunt to observe nature up close.",
+            "image_path": "https://source.unsplash.com/500x500/?nature-walk",
+            "type": "CORE"
+          },
+          {
+            "name": "Introduction to Recycling",
+            "description": "Understanding the concept of recycling and its importance for environmental conservation.",
+            "image_path": "https://source.unsplash.com/500x500/?recycling",
+            "type": "CORE"
+          },
+          {
+            "name": "DIY Bird Feeder Project",
+            "description": "Creating a simple DIY bird feeder to attract local birds and observe them.",
+            "image_path": "https://source.unsplash.com/500x500/?bird-feeder",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Star Gazing: An Introduction to Astronomy",
+            "description": "An exciting night of star gazing and learning about the basics of astronomy.",
+            "image_path": "https://source.unsplash.com/500x500/?stars",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
+    "topics_data": [
+      {
+        "name": "Community Helpers",
+        "description": "Inspiring appreciation and understanding of our local heroes and their roles in our community.",
+        "image_path": "https://source.unsplash.com/500x500/?community-helpers",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding the Role of Firefighters",
+            "description": "Igniting courage and safety awareness through learning about firefighters and their heroic duties.",
+            "image_path": "https://source.unsplash.com/500x500/?firefighter",
+            "type": "CORE"
+          },
+          {
+            "name": "Meet the Police Officers",
+            "description": "Fostering respect and knowledge of law enforcement, teaching students about the crucial role of police officers.",
+            "image_path": "https://source.unsplash.com/500x500/?police",
+            "type": "CORE"
+          },
+          {
+            "name": "The Helpful Doctors",
+            "description": "Cultivating gratitude and empathy by exploring the essential role of doctors in our communities.",
+            "image_path": "https://source.unsplash.com/500x500/?doctor",
+            "type": "CORE"
+          },
+          {
+            "name": "Our Friendly Neighborhood Postman",
+            "description": "Connecting people and stories by understanding the role of postal workers in our daily lives.",
+            "image_path": "https://source.unsplash.com/500x500/?postman",
+            "type": "CORE"
+          },
+          {
+            "name": "The Caring Teachers",
+            "description": "Igniting love for learning and appreciation for teachers who guide us on our educational journey.",
+            "image_path": "https://source.unsplash.com/500x500/?teacher",
+            "type": "CORE"
+          },
+          {
+            "name": "Visit to a Fire Station",
+            "description": "Enhancing practical understanding and admiration for firefighters through a virtual tour of a fire station.",
+            "image_path": "https://source.unsplash.com/500x500/?fire-station",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Interview with a Police Officer",
+            "description": "Facilitating direct interaction and knowledge sharing with a local police officer to foster respect and understanding.",
+            "image_path": "https://source.unsplash.com/500x500/?police-interview",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Understanding Our Environment",
+        "description": "Nurturing the love for nature and responsibility towards the environment through interactive learning.",
+        "image_path": "https://source.unsplash.com/500x500/?environment",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Magic of Recycling",
+            "description": "Promoting responsibility and creativity through learning the importance and methods of recycling.",
+            "image_path": "https://source.unsplash.com/500x500/?recycling",
+            "type": "CORE"
+          },
+          {
+            "name": "Amazing Animal Habitats",
+            "description": "Exploring the beautiful and diverse homes of animals around the world, fostering love for biodiversity.",
+            "image_path": "https://source.unsplash.com/500x500/?animal-habitats",
+            "type": "CORE"
+          },
+          {
+            "name": "Our Incredible Oceans",
+            "description": "Diving into the blue to understand the vast and important role of oceans in our life.",
+            "image_path": "https://source.unsplash.com/500x500/?ocean",
+            "type": "CORE"
+          },
+          {
+            "name": "Plants: The Green Heroes",
+            "description": "Cultivating the seed of respect for plant life, exploring their crucial role in our ecosystem.",
+            "image_path": "https://source.unsplash.com/500x500/?plants",
+            "type": "CORE"
+          },
+          {
+            "name": "Weather Wonders",
+            "description": "Uncovering the fascinating world of weather and its effects on our daily lives and the environment.",
+            "image_path": "https://source.unsplash.com/500x500/?weather",
+            "type": "CORE"
+          },
+          {
+            "name": "DIY Home Composting",
+            "description": "Empowering students to make a difference by learning the simple yet impactful art of composting at home.",
+            "image_path": "https://source.unsplash.com/500x500/?composting",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Nature Art Project",
+            "description": "Channeling creativity and appreciation for nature through art using natural materials.",
+            "image_path": "https://source.unsplash.com/500x500/?nature-art",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Global Cultures",
+        "description": "Embarking on a vibrant journey around the world to understand and appreciate diverse cultures.",
+        "image_path": "https://source.unsplash.com/500x500/?global-cultures",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Festivals of the World",
+            "description": "Celebrating unity in diversity by exploring vibrant festivals celebrated across the globe.",
+            "image_path": "https://source.unsplash.com/500x500/?festivals",
+            "type": "CORE"
+          },
+          {
+            "name": "World Cuisine Delights",
+            "description": "Tantalizing taste buds and minds by learning about unique cuisines from different countries.",
+            "image_path": "https://source.unsplash.com/500x500/?world-cuisine",
+            "type": "CORE"
+          },
+          {
+            "name": "Art across Continents",
+            "description": "Expressing creativity and appreciation for diverse art forms and traditions around the world.",
+            "image_path": "https://source.unsplash.com/500x500/?global-art",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Music and Dance",
+            "description": "Grooving to the beats of the world, understanding music and dance as universal languages of expression.",
+            "image_path": "https://source.unsplash.com/500x500/?global-music-dance",
+            "type": "CORE"
+          },
+          {
+            "name": "Traditions and Customs",
+            "description": "Respecting and understanding the diverse traditions and customs that make our world a rich tapestry of cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?traditions",
+            "type": "CORE"
+          },
+          {
+            "name": "Storytelling around the World",
+            "description": "Traveling the world through enchanting folktales and stories that embody diverse cultural values.",
+            "image_path": "https://source.unsplash.com/500x500/?storytelling",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "International Dress-Up Day",
+            "description": "Encouraging self-expression and global awareness by exploring traditional clothing from around the world.",
+            "image_path": "https://source.unsplash.com/500x500/?traditional-clothing",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Local and National Landmarks",
+        "description": "Taking a virtual tour of significant landmarks to inspire respect for history and appreciation for architectural marvels.",
+        "image_path": "https://source.unsplash.com/500x500/?landmarks",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Exploring Our Hometown",
+            "description": "Unraveling the fascinating aspects of our hometown, its history, and prominent structures.",
+            "image_path": "https://source.unsplash.com/500x500/?hometown",
+            "type": "CORE"
+          },
+          {
+            "name": "The Story of National Monuments",
+            "description": "Imbibing pride and respect for our heritage by exploring the stories behind national monuments.",
+            "image_path": "https://source.unsplash.com/500x500/?national-monuments",
+            "type": "CORE"
+          },
+          {
+            "name": "Famous Buildings and Their Architects",
+            "description": "Appreciating the fusion of art and science in architecture by exploring famous buildings and their creators.",
+            "image_path": "https://source.unsplash.com/500x500/?famous-buildings",
+            "type": "CORE"
+          },
+          {
+            "name": "Natural Wonders in Our Country",
+            "description": "Exploring the diverse natural landmarks in our country, fostering love for nature and geography.",
+            "image_path": "https://source.unsplash.com/500x500/?natural-landmarks",
+            "type": "CORE"
+          },
+          {
+            "name": "Virtual Visit to a Museum",
+            "description": "Making history and culture come alive by virtually touring a famous museum.",
+            "image_path": "https://source.unsplash.com/500x500/?museum",
+            "type": "CORE"
+          },
+          {
+            "name": "Creating Our Own Landmarks",
+            "description": "Unleashing creativity and understanding of structures by building our own mini landmarks.",
+            "image_path": "https://source.unsplash.com/500x500/?DIY-landmarks",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Interview with a Local Historian",
+            "description": "Connecting the past and present by interacting with a local historian to learn more about our community.",
+            "image_path": "https://source.unsplash.com/500x500/?historian",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Introduction to Economics",
+        "description": "Making the abstract concept of economics tangible and fun for young minds, fostering financial literacy from an early age.",
+        "image_path": "https://source.unsplash.com/500x500/?economics",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Needs and Wants",
+            "description": "Understanding the basic concept of needs and wants, laying the foundation for smart decision-making.",
+            "image_path": "https://source.unsplash.com/500x500/?needs-wants",
+            "type": "CORE"
+          },
+          {
+            "name": "Goods and Services",
+            "description": "Introducing the concept of goods and services, highlighting their role in daily life.",
+            "image_path": "https://source.unsplash.com/500x500/?goods-services",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Money",
+            "description": "Learning about money, its value, and how it‘s used in our society.",
+            "image_path": "https://source.unsplash.com/500x500/?money",
+            "type": "CORE"
+          },
+          {
+            "name": "The Concept of Trade",
+            "description": "Exploring the basic idea of trade, bartering and the evolution of commerce.",
+            "image_path": "https://source.unsplash.com/500x500/?trade",
+            "type": "CORE"
+          },
+          {
+            "name": "Jobs and Income",
+            "description": "Learning about different jobs and the concept of income, instilling a sense of career awareness.",
+            "image_path": "https://source.unsplash.com/500x500/?jobs-income",
+            "type": "CORE"
+          },
+          {
+            "name": "Classroom Market Day",
+            "description": "Bringing economics to life by organizing a classroom market, enhancing understanding of buying, selling, and the value of money.",
+            "image_path": "https://source.unsplash.com/500x500/?market-day",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Money Management and Saving",
+            "description": "Empowering students with the foundational knowledge of managing and saving money, fostering financial responsibility.",
+            "image_path": "https://source.unsplash.com/500x500/?saving-money",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Community Helpers",
+        "description": "Recognizing and appreciating the vital role of various professionals in our community, nurturing respect and empathy.",
+        "image_path": "https://source.unsplash.com/500x500/?community-helpers",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Role of a Firefighter",
+            "description": "Understanding the brave and vital role of firefighters in keeping our community safe.",
+            "image_path": "https://source.unsplash.com/500x500/?firefighter",
+            "type": "CORE"
+          },
+          {
+            "name": "Role of a Doctor",
+            "description": "Exploring the compassionate profession of doctors, emphasizing their importance in maintaining community health.",
+            "image_path": "https://source.unsplash.com/500x500/?doctor",
+            "type": "CORE"
+          },
+          {
+            "name": "Role of a Police Officer",
+            "description": "Learning about the responsibilities of police officers in ensuring law and order in our society.",
+            "image_path": "https://source.unsplash.com/500x500/?police",
+            "type": "CORE"
+          },
+          {
+            "name": "Role of a Teacher",
+            "description": "Appreciating the transformative role of teachers in educating and shaping future citizens.",
+            "image_path": "https://source.unsplash.com/500x500/?teacher",
+            "type": "CORE"
+          },
+          {
+            "name": "Role of a Farmer",
+            "description": "Exploring the hardworking world of farmers, emphasizing their role in providing the food we eat.",
+            "image_path": "https://source.unsplash.com/500x500/?farmer",
+            "type": "CORE"
+          },
+          {
+            "name": "Community Helper Role Play",
+            "description": "Bringing empathy and understanding to life by role-playing different community helpers.",
+            "image_path": "https://source.unsplash.com/500x500/?role-play",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Interview a Community Helper",
+            "description": "Enhancing real-world connection and communication skills by interviewing a community helper.",
+            "image_path": "https://source.unsplash.com/500x500/?interview",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Time and Calendar",
+        "description": "Mastering the art of timekeeping and understanding the calendar system, to instill the value of time and seasons.",
+        "image_path": "https://source.unsplash.com/500x500/?calendar",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Days, Weeks, and Months",
+            "description": "Grasping the basic concept of days, weeks, and months and how they are organized into a calendar.",
+            "image_path": "https://source.unsplash.com/500x500/?days-weeks-months",
+            "type": "CORE"
+          },
+          {
+            "name": "Seasons and Climate",
+            "description": "Discovering the four seasons and their characteristics, fostering understanding of climate and nature‘s cycles.",
+            "image_path": "https://source.unsplash.com/500x500/?seasons",
+            "type": "CORE"
+          },
+          {
+            "name": "Reading the Clock",
+            "description": "Learning to read the hour and minute hand on a clock, instilling the importance of time management.",
+            "image_path": "https://source.unsplash.com/500x500/?clock",
+            "type": "CORE"
+          },
+          {
+            "name": "Importance of Dates and Holidays",
+            "description": "Understanding the significance of dates and holidays in our cultural and societal life.",
+            "image_path": "https://source.unsplash.com/500x500/?dates-holidays",
+            "type": "CORE"
+          },
+          {
+            "name": "Creating a Personal Calendar",
+            "description": "Making learning interactive and personal by creating a custom calendar, incorporating important personal and community dates.",
+            "image_path": "https://source.unsplash.com/500x500/?personal-calendar",
+            "type": "CORE"
+          },
+          {
+            "name": "Time Capsule Project",
+            "description": "Building a time capsule to capture current interests and predictions for the future, teaching respect for the passage of time.",
+            "image_path": "https://source.unsplash.com/500x500/?time-capsule",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Daily Schedule Planning",
+            "description": "Learning to plan and organize a daily schedule, reinforcing time management skills and self-discipline.",
+            "image_path": "https://source.unsplash.com/500x500/?daily-schedule",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "World Cultures",
+        "description": "Embarking on a global adventure to appreciate the beauty of cultural diversity and foster global citizenship.",
+        "image_path": "https://source.unsplash.com/500x500/?world-cultures",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Festivals Around the World",
+            "description": "Exploring vibrant festivals worldwide to understand how different cultures celebrate and express joy.",
+            "image_path": "https://source.unsplash.com/500x500/?world-festivals",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Food Palette",
+            "description": "Tasting the flavors of the world through an exploration of global cuisines, fostering cultural understanding.",
+            "image_path": "https://source.unsplash.com/500x500/?world-food",
+            "type": "CORE"
+          },
+          {
+            "name": "Traditional Attires Around the World",
+            "description": "Appreciating the diversity of traditional attires worldwide, understanding their significance and history.",
+            "image_path": "https://source.unsplash.com/500x500/?traditional-attires",
+            "type": "CORE"
+          },
+          {
+            "name": "World Languages",
+            "description": "Experiencing the richness of global languages and understanding the importance of communication across cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?world-languages",
+            "type": "CORE"
+          },
+          {
+            "name": "Children‘s Games Around the World",
+            "description": "Learning about children‘s games from various cultures, reinforcing universal similarities and cultural diversity.",
+            "image_path": "https://source.unsplash.com/500x500/?world-games",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Art and Craft",
+            "description": "Creating art inspired by different cultures, fostering creativity and appreciation for global artistry.",
+            "image_path": "https://source.unsplash.com/500x500/?world-art",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Global Music and Dance",
+            "description": "Exploring world music and dance forms, experiencing the universal language of rhythm and movement.",
+            "image_path": "https://source.unsplash.com/500x500/?world-music-dance",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Space Exploration",
+        "description": "Launching into the fascinating world of space, sparking curiosity and a sense of wonder about our universe.",
+        "image_path": "https://source.unsplash.com/500x500/?space",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "The Solar System",
+            "description": "An exciting journey through our solar system, exploring planets and their unique characteristics.",
+            "image_path": "https://source.unsplash.com/500x500/?solar-system",
+            "type": "CORE"
+          },
+          {
+            "name": "Astronauts and Space Missions",
+            "description": "Learning about courageous astronauts and their missions, inspiring dreams of space exploration.",
+            "image_path": "https://source.unsplash.com/500x500/?astronaut",
+            "type": "CORE"
+          },
+          {
+            "name": "Moon Phases",
+            "description": "Understanding the phases of the moon and its impact on our planet.",
+            "image_path": "https://source.unsplash.com/500x500/?moon-phases",
+            "type": "CORE"
+          },
+          {
+            "name": "Stars and Constellations",
+            "description": "Discovering the patterns of stars in the sky, diving into ancient stories of constellations.",
+            "image_path": "https://source.unsplash.com/500x500/?stars",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Gravity",
+            "description": "Grasping the concept of gravity, an invisible force that keeps us grounded and influences our space journeys.",
+            "image_path": "https://source.unsplash.com/500x500/?gravity",
+            "type": "CORE"
+          },
+          {
+            "name": "Rocket Science Experiment",
+            "description": "Experiencing the thrill of launching a homemade rocket, learning the basics of propulsion.",
+            "image_path": "https://source.unsplash.com/500x500/?rocket-science",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Space Art Project",
+            "description": "Unleashing creativity with a space-themed art project, capturing the beauty of our universe.",
+            "image_path": "https://source.unsplash.com/500x500/?space-art",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Ancient Civilizations",
+        "description": "Time traveling to ancient civilizations, unveiling the roots of human society and culture.",
+        "image_path": "https://source.unsplash.com/500x500/?ancient-civilizations",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Egyptian Civilization",
+            "description": "Exploring the pyramids, pharaohs, and the Nile of ancient Egypt, experiencing the grandeur of this civilization.",
+            "image_path": "https://source.unsplash.com/500x500/?egyptian-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "Greek Civilization",
+            "description": "Diving into the world of ancient Greece, birthplace of democracy, philosophy, and the Olympics.",
+            "image_path": "https://source.unsplash.com/500x500/?greek-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "Roman Civilization",
+            "description": "Discovering the might of the Roman Empire, its roads, laws, and the gladiators.",
+            "image_path": "https://source.unsplash.com/500x500/?roman-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "Chinese Civilization",
+            "description": "Unraveling the mysteries of ancient China, its Great Wall, inventions, and dynasties.",
+            "image_path": "https://source.unsplash.com/500x500/?chinese-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "Mayan Civilization",
+            "description": "Journeying to the Americas to understand the Mayan civilization, its pyramids, astronomy, and writings.",
+            "image_path": "https://source.unsplash.com/500x500/?mayan-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "Archeological Dig Role Play",
+            "description": "Role-playing as archeologists, unearthing artifacts to understand the past and foster curiosity.",
+            "image_path": "https://source.unsplash.com/500x500/?archeology",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Build Your Civilization",
+            "description": "Creating a model of an imagined civilization, honing creativity, planning, and storytelling skills.",
+            "image_path": "https://source.unsplash.com/500x500/?model-civilization",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
+    "topics_data": [
+      {
+        "name": "Community and Culture",
+        "description": "Unravel the diverse tapestry of communities, exploring cultural nuances that make us unique yet united.",
+        "image_path": "https://source.unsplash.com/500x500/?community-culture",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Our Diverse Community",
+            "description": "Discover the rich diversity within our community, understanding the different cultures that weave our societal fabric.",
+            "image_path": "https://source.unsplash.com/500x500/?diverse-community",
+            "type": "CORE"
+          },
+          {
+            "name": "Symbols and Traditions",
+            "description": "Explore various cultural symbols and traditions, fostering respect and appreciation for different cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-symbols",
+            "type": "CORE"
+          },
+          {
+            "name": "Local Government and Services",
+            "description": "Delve into the structure of local government and its role in providing community services.",
+            "image_path": "https://source.unsplash.com/500x500/?local-government",
+            "type": "CORE"
+          },
+          {
+            "name": "Community Roles and Jobs",
+            "description": "Uncover the different roles and jobs within our community, appreciating their contributions to our society.",
+            "image_path": "https://source.unsplash.com/500x500/?community-jobs",
+            "type": "CORE"
+          },
+          {
+            "name": "Community History",
+            "description": "Embark on a journey through our community‘s history, understanding how our past shapes our present.",
+            "image_path": "https://source.unsplash.com/500x500/?community-history",
+            "type": "CORE"
+          },
+          {
+            "name": "Celebrating Diversity",
+            "description": "Partake in an immersive exploration of our community‘s diverse cultures, celebrating our unity in diversity.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-festival",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Community Art and Music",
+            "description": "Experience the vibrant art and music scene in our community, appreciating the creative expressions of different cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?community-art-music",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Geography and Environment",
+        "description": "Embark on an exciting journey across the globe, understanding how geographical features shape our environment and lifestyle.",
+        "image_path": "https://source.unsplash.com/500x500/?geography-environment",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Maps",
+            "description": "Learn the art of reading and interpreting maps, a fundamental skill for any aspiring explorer.",
+            "image_path": "https://source.unsplash.com/500x500/?maps",
+            "type": "CORE"
+          },
+          {
+            "name": "Major Landforms",
+            "description": "Discover the major landforms on Earth and how they influence the lifestyle and culture of the people living there.",
+            "image_path": "https://source.unsplash.com/500x500/?landforms",
+            "type": "CORE"
+          },
+          {
+            "name": "Oceans and Seas",
+            "description": "Dive into the vast and mysterious world of oceans and seas, understanding their importance to life on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?oceans",
+            "type": "CORE"
+          },
+          {
+            "name": "Weather and Climate",
+            "description": "Learn about weather patterns and climates, understanding their impacts on our environment and lifestyle.",
+            "image_path": "https://source.unsplash.com/500x500/?weather-climate",
+            "type": "CORE"
+          },
+          {
+            "name": "Natural Resources",
+            "description": "Explore the concept of natural resources, appreciating their value and learning about the need for their conservation.",
+            "image_path": "https://source.unsplash.com/500x500/?natural-resources",
+            "type": "CORE"
+          },
+          {
+            "name": "Endangered Species",
+            "description": "Uncover the plight of endangered species, understanding the environmental factors contributing to their endangerment.",
+            "image_path": "https://source.unsplash.com/500x500/?endangered-species",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Exploring Antarctica",
+            "description": "Journey to the last wilderness on Earth - Antarctica, understanding its unique environment and the impact of climate change.",
+            "image_path": "https://source.unsplash.com/500x500/?antarctica",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "National Symbols and Monuments",
+        "description": "Journey through a grand display of national heritage, unraveling the stories behind our national symbols and monuments.",
+        "image_path": "https://source.unsplash.com/500x500/?national-monuments",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Flag and The Anthem",
+            "description": "Explore the significance of our national flag and anthem, understanding their historical and symbolic value.",
+            "image_path": "https://source.unsplash.com/500x500/?flag-anthem",
+            "type": "CORE"
+          },
+          {
+            "name": "Iconic Monuments",
+            "description": "Discover the stories behind the country‘s most iconic monuments and their role in preserving our national heritage.",
+            "image_path": "https://source.unsplash.com/500x500/?monuments",
+            "type": "CORE"
+          },
+          {
+            "name": "Historical Landmarks",
+            "description": "Travel back in time as we explore historic landmarks that bear witness to the country‘s rich history.",
+            "image_path": "https://source.unsplash.com/500x500/?historical-landmarks",
+            "type": "CORE"
+          },
+          {
+            "name": "National Holidays",
+            "description": "Understand the importance and historical significance of our national holidays and how they are celebrated.",
+            "image_path": "https://source.unsplash.com/500x500/?national-holidays",
+            "type": "CORE"
+          },
+          {
+            "name": "National Emblems and Symbols",
+            "description": "Uncover the meaning behind national emblems and symbols, appreciating their role in representing our national identity.",
+            "image_path": "https://source.unsplash.com/500x500/?national-symbols",
+            "type": "CORE"
+          },
+          {
+            "name": "The National Parks",
+            "description": "Discover the beauty and importance of our national parks, understanding their role in conservation and recreation.",
+            "image_path": "https://source.unsplash.com/500x500/?national-parks",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Presidential Monuments",
+            "description": "Learn about monuments dedicated to past presidents, understanding their legacy and contributions to our nation‘s history.",
+            "image_path": "https://source.unsplash.com/500x500/?presidential-monuments",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Economics and Trade",
+        "description": "Venture into the world of economics and trade, understanding how goods and services flow in our community and the world.",
+        "image_path": "https://source.unsplash.com/500x500/?economics-trade",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Basics of Economics",
+            "description": "Demystify the basics of economics, understanding concepts like supply, demand, and value.",
+            "image_path": "https://source.unsplash.com/500x500/?economics",
+            "type": "CORE"
+          },
+          {
+            "name": "Goods and Services",
+            "description": "Explore the difference between goods and services, and learn about their role in the economy.",
+            "image_path": "https://source.unsplash.com/500x500/?goods-services",
+            "type": "CORE"
+          },
+          {
+            "name": "Money and Banking",
+            "description": "Uncover the role of money in trade and delve into the basic functions of banks.",
+            "image_path": "https://source.unsplash.com/500x500/?money-banking",
+            "type": "CORE"
+          },
+          {
+            "name": "Trade and Markets",
+            "description": "Learn about the concept of trade and discover how markets function to facilitate the exchange of goods and services.",
+            "image_path": "https://source.unsplash.com/500x500/?trade-markets",
+            "type": "CORE"
+          },
+          {
+            "name": "Jobs and Careers",
+            "description": "Understand the variety of jobs and careers people have, and learn about the value of different skills in the economy.",
+            "image_path": "https://source.unsplash.com/500x500/?jobs-careers",
+            "type": "CORE"
+          },
+          {
+            "name": "Entrepreneurship",
+            "description": "Introduce the concept of entrepreneurship, igniting the spirit of innovation and problem-solving.",
+            "image_path": "https://source.unsplash.com/500x500/?entrepreneurship",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "International Trade",
+            "description": "Expand the horizon to understand international trade and how different countries exchange goods and services.",
+            "image_path": "https://source.unsplash.com/500x500/?international-trade",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Ancient Civilizations",
+        "description": "Time-travel back to the ancient world, unveiling the cultures, inventions, and historical milestones of early civilizations.",
+        "image_path": "https://source.unsplash.com/500x500/?ancient-civilizations",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Egypt: Land of Pharaohs",
+            "description": "Explore ancient Egypt‘s rich history, from pyramids to the powerful pharaohs and the mystery of hieroglyphs.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-egypt",
+            "type": "CORE"
+          },
+          {
+            "name": "Majestic Mesopotamia",
+            "description": "Discover Mesopotamia, often referred to as the cradle of civilization, and its contributions to writing and law.",
+            "image_path": "https://source.unsplash.com/500x500/?mesopotamia",
+            "type": "CORE"
+          },
+          {
+            "name": "The Roman Empire",
+            "description": "Delve into the grandeur of the Roman Empire, understanding its influence on law, politics, architecture, and language.",
+            "image_path": "https://source.unsplash.com/500x500/?roman-empire",
+            "type": "CORE"
+          },
+          {
+            "name": "Classical Greece",
+            "description": "Uncover the wonders of Classical Greece, from mythology and philosophy to the original Olympic games.",
+            "image_path": "https://source.unsplash.com/500x500/?classical-greece",
+            "type": "CORE"
+          },
+          {
+            "name": "The Ancient Indus Valley",
+            "description": "Journey to the Ancient Indus Valley, exploring its unique urban planning, writing system, and advancements in trade.",
+            "image_path": "https://source.unsplash.com/500x500/?indus-valley",
+            "type": "CORE"
+          },
+          {
+            "name": "The Mayan Civilization",
+            "description": "Navigate through the intriguing world of the Mayan civilization, learning about their astronomical knowledge and unique writing system.",
+            "image_path": "https://source.unsplash.com/500x500/?mayan-civilization",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "China‘s Dynasties",
+            "description": "Travel through time to ancient China, understanding the dynastic cycle and contributions to art, philosophy, and technology.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-china",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Local History and Community",
+        "description": "Dive into our local history and community, appreciating its evolution, diversity, and the roles that keep it functioning harmoniously.",
+        "image_path": "https://source.unsplash.com/500x500/?community",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "History of Our Town",
+            "description": "Discover the rich history of our town, its foundation, key events, and how it has evolved over time.",
+            "image_path": "https://source.unsplash.com/500x500/?town-history",
+            "type": "CORE"
+          },
+          {
+            "name": "Community Members and Their Roles",
+            "description": "Recognize the diverse roles of community members, understanding their responsibilities and contributions to our town.",
+            "image_path": "https://source.unsplash.com/500x500/?community-roles",
+            "type": "CORE"
+          },
+          {
+            "name": "Civic Responsibilities",
+            "description": "Understand the civic responsibilities that come with being a part of a community, and the importance of fulfilling them.",
+            "image_path": "https://source.unsplash.com/500x500/?civic-responsibilities",
+            "type": "CORE"
+          },
+          {
+            "name": "Local Government and Services",
+            "description": "Explore the structure of our local government and the services it provides to ensure the smooth functioning of the community.",
+            "image_path": "https://source.unsplash.com/500x500/?local-government",
+            "type": "CORE"
+          },
+          {
+            "name": "Local Landmarks and Cultural Sites",
+            "description": "Take a virtual tour of local landmarks and cultural sites, appreciating their historical and cultural significance.",
+            "image_path": "https://source.unsplash.com/500x500/?landmarks",
+            "type": "CORE"
+          },
+          {
+            "name": "Community Service and Volunteering",
+            "description": "Learn about the importance and benefits of community service and volunteering, inspiring a spirit of generosity and mutual aid.",
+            "image_path": "https://source.unsplash.com/500x500/?volunteering",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Celebrations and Festivals in Our Town",
+            "description": "Explore the various celebrations and festivals held in our town, understanding their origins and cultural significance.",
+            "image_path": "https://source.unsplash.com/500x500/?festivals",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Environmental Awareness",
+        "description": "Embark on a green journey, fostering respect for nature, understanding environmental issues, and learning about conservation efforts.",
+        "image_path": "https://source.unsplash.com/500x500/?environment",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Introduction to Ecosystems",
+            "description": "Discover the concept of ecosystems, learning about their diversity and the roles of various organisms within them.",
+            "image_path": "https://source.unsplash.com/500x500/?ecosystems",
+            "type": "CORE"
+          },
+          {
+            "name": "Importance of Conservation",
+            "description": "Understand the importance of conservation, exploring efforts to protect our planet‘s flora and fauna.",
+            "image_path": "https://source.unsplash.com/500x500/?conservation",
+            "type": "CORE"
+          },
+          {
+            "name": "Climate Change and Its Effects",
+            "description": "Delve into the concept of climate change, understanding its causes, effects, and ways to mitigate it.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-change",
+            "type": "CORE"
+          },
+          {
+            "name": "Recycling and Waste Management",
+            "description": "Learn about recycling and waste management, understanding how these practices contribute to a healthier planet.",
+            "image_path": "https://source.unsplash.com/500x500/?recycling",
+            "type": "CORE"
+          },
+          {
+            "name": "Water Conservation",
+            "description": "Explore the importance of water conservation, learning about the water cycle and ways to save water at home and school.",
+            "image_path": "https://source.unsplash.com/500x500/?water-conservation",
+            "type": "CORE"
+          },
+          {
+            "name": "Endangered Species",
+            "description": "Investigate the plight of endangered species, understanding the threats they face and how we can help protect them.",
+            "image_path": "https://source.unsplash.com/500x500/?endangered-species",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Renewable Energy",
+            "description": "Explore the world of renewable energy, understanding how it is generated and its importance in combating climate change.",
+            "image_path": "https://source.unsplash.com/500x500/?renewable-energy",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Cultural Diversity and Global Citizenship",
+        "description": "Celebrate the colors of our world, understanding cultural diversity, respect for all, and the responsibilities of being a global citizen.",
+        "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Cultural Diversity",
+            "description": "Explore the concept of cultural diversity, appreciating the various cultures and traditions that make up our world.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
+            "type": "CORE"
+          },
+          {
+            "name": "Respect for All Cultures",
+            "description": "Cultivate a respect for all cultures, understanding the importance of empathy and acceptance in a diverse world.",
+            "image_path": "https://source.unsplash.com/500x500/?respect-cultures",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Citizenship",
+            "description": "Discover what it means to be a global citizen, focusing on responsibility, ethics, and active participation in the global community.",
+            "image_path": "https://source.unsplash.com/500x500/?global-citizenship",
+            "type": "CORE"
+          },
+          {
+            "name": "World Languages",
+            "description": "Introduce the diversity of world languages, highlighting their unique features and cultural significance.",
+            "image_path": "https://source.unsplash.com/500x500/?world-languages",
+            "type": "CORE"
+          },
+          {
+            "name": "World Religions",
+            "description": "Learn about the various world religions, understanding their beliefs, practices, and impact on culture and society.",
+            "image_path": "https://source.unsplash.com/500x500/?world-religions",
+            "type": "CORE"
+          },
+          {
+            "name": "Famous Landmarks Around the World",
+            "description": "Take a virtual tour of famous landmarks around the world, appreciating their history and cultural significance.",
+            "image_path": "https://source.unsplash.com/500x500/?landmarks",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "World Festivals",
+            "description": "Explore vibrant festivals from around the world, understanding their cultural roots and celebrations.",
+            "image_path": "https://source.unsplash.com/500x500/?world-festivals",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Digital Citizenship",
+        "description": "Navigate the digital world safely and responsibly, understanding online etiquette, privacy, and the value of balanced screen time.",
+        "image_path": "https://source.unsplash.com/500x500/?digital-citizenship",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Understanding the Internet",
+            "description": "Get introduced to the vast world of the internet, understanding its use and the basics of how it works.",
+            "image_path": "https://source.unsplash.com/500x500/?internet",
+            "type": "CORE"
+          },
+          {
+            "name": "Online Safety",
+            "description": "Learn about the importance of online safety, from creating strong passwords to identifying and avoiding online threats.",
+            "image_path": "https://source.unsplash.com/500x500/?online-safety",
+            "type": "CORE"
+          },
+          {
+            "name": "Online Etiquette (Netiquette)",
+            "description": "Understand the etiquette of digital communication (netiquette), including respect for others‘ thoughts and appropriate commenting.",
+            "image_path": "https://source.unsplash.com/500x500/?netiquette",
+            "type": "CORE"
+          },
+          {
+            "name": "Privacy and Personal Information",
+            "description": "Explore the importance of privacy and protecting personal information while using internet services and social networks.",
+            "image_path": "https://source.unsplash.com/500x500/?privacy",
+            "type": "CORE"
+          },
+          {
+            "name": "Balancing Screen Time",
+            "description": "Understand the importance of balancing screen time with other activities for a healthy, well-rounded lifestyle.",
+            "image_path": "https://source.unsplash.com/500x500/?screen-time",
+            "type": "CORE"
+          },
+          {
+            "name": "Cyberbullying and How to Address It",
+            "description": "Learn about the issue of cyberbullying, its impact, and strategies for addressing and preventing it.",
+            "image_path": "https://source.unsplash.com/500x500/?cyberbullying",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Understanding Digital Footprint",
+            "description": "Discover what a digital footprint is, how it‘s created, and why it‘s important to be mindful of the traces we leave online.",
+            "image_path": "https://source.unsplash.com/500x500/?digital-footprint",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Exploring Space",
+        "description": "Journey through the cosmos, understanding the wonders of the universe, the solar system, and the exciting ventures of space exploration.",
+        "image_path": "https://source.unsplash.com/500x500/?space",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Our Solar System",
+            "description": "Embark on a journey through our solar system, learning about the sun, the planets, and their unique characteristics.",
+            "image_path": "https://source.unsplash.com/500x500/?solar-system",
+            "type": "CORE"
+          },
+          {
+            "name": "Astronauts and Space Exploration",
+            "description": "Discover the brave world of astronauts and the history of space exploration, from the first moon landing to current missions.",
+            "image_path": "https://source.unsplash.com/500x500/?astronaut",
+            "type": "CORE"
+          },
+          {
+            "name": "The Moon and Its Phases",
+            "description": "Understand our moon, its phases, and why it‘s an important part of our Earthly life.",
+            "image_path": "https://source.unsplash.com/500x500/?moon",
+            "type": "CORE"
+          },
+          {
+            "name": "Stars and Constellations",
+            "description": "Delve into the night sky, learning about stars, their life cycles, and the constellations they form.",
+            "image_path": "https://source.unsplash.com/500x500/?stars",
+            "type": "CORE"
+          },
+          {
+            "name": "Space Stations and Satellites",
+            "description": "Explore space stations and satellites, understanding their functions and how they contribute to scientific research and communication.",
+            "image_path": "https://source.unsplash.com/500x500/?space-station",
+            "type": "CORE"
+          },
+          {
+            "name": "Extraterrestrial Life",
+            "description": "Delve into the possibilities of extraterrestrial life, examining the ongoing scientific search for life beyond Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?extraterrestrial-life",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Telescopes and Stargazing",
+            "description": "Learn about telescopes and the basics of stargazing, inspiring a love for astronomy and the mysteries of the cosmos.",
+            "image_path": "https://source.unsplash.com/500x500/?telescope",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
+    "topics_data": [
+      {
+        "name": "Cultures of the World",
+        "description": "Embark on an enriching journey that fosters cultural awareness, inclusivity, and global understanding.",
+        "image_path": "https://source.unsplash.com/500x500/?world-cultures",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Festivals Around the Globe",
+            "description": "An exciting exploration of vibrant festivals worldwide, celebrating diversity and unity.",
+            "image_path": "https://source.unsplash.com/500x500/?world-festivals",
+            "type": "CORE"
+          },
+          {
+            "name": "World Languages and Communication",
+            "description": "Discover the richness of global languages and their role in fostering connections.",
+            "image_path": "https://source.unsplash.com/500x500/?languages",
+            "type": "CORE"
+          },
+          {
+            "name": "Traditional Foods and Cuisines",
+            "description": "A flavorful journey into the world‘s diverse cuisines and their cultural significance.",
+            "image_path": "https://source.unsplash.com/500x500/?world-cuisine",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Art and Craft",
+            "description": "Unleash creativity while understanding different art forms and their cultural contexts.",
+            "image_path": "https://source.unsplash.com/500x500/?world-art",
+            "type": "CORE"
+          },
+          {
+            "name": "World Music and Dance",
+            "description": "Experience the rhythm of the world through music and dance forms across cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?world-music",
+            "type": "CORE"
+          },
+          {
+            "name": "Celebrations in America",
+            "description": "Dive into the cultural significance of various celebrations in the United States.",
+            "image_path": "https://source.unsplash.com/500x500/?american-celebrations",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Indigenous Cultures Worldwide",
+            "description": "A thoughtful exploration of indigenous cultures, their history, traditions, and contributions.",
+            "image_path": "https://source.unsplash.com/500x500/?indigenous-cultures",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Ancient Civilizations",
+        "description": "Journey back in time to understand the origins of human civilization, its development, and influence on the modern world.",
+        "image_path": "https://source.unsplash.com/500x500/?ancient-civilizations",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Life in Ancient Egypt",
+            "description": "Unravel the mysteries of Ancient Egypt, its famous pharaohs, and its unique culture.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-egypt",
+            "type": "CORE"
+          },
+          {
+            "name": "Wonders of Ancient Greece",
+            "description": "Discover the wonders of Ancient Greece and its impact on modern society, politics, and culture.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-greece",
+            "type": "CORE"
+          },
+          {
+            "name": "Legacy of the Roman Empire",
+            "description": "Explore the lasting influence of the Roman Empire on law, architecture, language and government.",
+            "image_path": "https://source.unsplash.com/500x500/?roman-empire",
+            "type": "CORE"
+          },
+          {
+            "name": "The Ancient Indus Valley Civilization",
+            "description": "Dive into the advanced urban culture of the Indus Valley Civilization and its mysterious script.",
+            "image_path": "https://source.unsplash.com/500x500/?indus-valley",
+            "type": "CORE"
+          },
+          {
+            "name": "The Majestic Mayans",
+            "description": "Discover the Mayan civilization‘s advancements in writing, mathematics, and astronomy.",
+            "image_path": "https://source.unsplash.com/500x500/?mayan-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "The Art of Ancient China",
+            "description": "Explore the rich artistic heritage of Ancient China and its influence on modern aesthetics.",
+            "image_path": "https://source.unsplash.com/500x500/?ancient-china-art",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Aztec Empire: A Study",
+            "description": "Understand the culture, religion, and technology of the Aztec Empire and its place in history.",
+            "image_path": "https://source.unsplash.com/500x500/?aztec-empire",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Local, National, and Global Communities",
+        "description": "Understanding the structure and dynamics of communities and the interconnectedness of our world.",
+        "image_path": "https://source.unsplash.com/500x500/?global-communities",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Building a Community",
+            "description": "Explore how communities are built, the roles people play, and how they work together for common goals.",
+            "image_path": "https://source.unsplash.com/500x500/?community-building",
+            "type": "CORE"
+          },
+          {
+            "name": "Rights and Responsibilities",
+            "description": "Learn about individual rights and responsibilities within a community and why they matter.",
+            "image_path": "https://source.unsplash.com/500x500/?rights-responsibilities",
+            "type": "CORE"
+          },
+          {
+            "name": "Local Government and Services",
+            "description": "Understand the role of local government and the various services it provides to the community.",
+            "image_path": "https://source.unsplash.com/500x500/?local-government",
+            "type": "CORE"
+          },
+          {
+            "name": "National Symbols and Monuments",
+            "description": "Discover the importance of national symbols and monuments and the history they represent.",
+            "image_path": "https://source.unsplash.com/500x500/?national-monuments",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Connections",
+            "description": "Explore how communities around the world are interconnected through trade, technology, and culture.",
+            "image_path": "https://source.unsplash.com/500x500/?global-connections",
+            "type": "CORE"
+          },
+          {
+            "name": "Community Service and Volunteering",
+            "description": "Learn about the importance of community service and the impact of volunteering.",
+            "image_path": "https://source.unsplash.com/500x500/?community-service",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Exploring International Organizations",
+            "description": "Discover the role of international organizations in addressing global challenges and fostering cooperation.",
+            "image_path": "https://source.unsplash.com/500x500/?international-organizations",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Geography and the Environment",
+        "description": "Embrace the diversity of our planet, understanding geographical features, climate zones, and the importance of environmental stewardship.",
+        "image_path": "https://source.unsplash.com/500x500/?world-geography",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "World Landforms and Water Bodies",
+            "description": "Explore major landforms and water bodies, their characteristics, and geographical locations.",
+            "image_path": "https://source.unsplash.com/500x500/?landforms",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Climate Zones",
+            "description": "Discover the world‘s different climate zones and how they affect the way people live.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-zones",
+            "type": "CORE"
+          },
+          {
+            "name": "Ecosystems of the World",
+            "description": "Delve into diverse ecosystems, learning about the interdependence of plants, animals, and environments.",
+            "image_path": "https://source.unsplash.com/500x500/?ecosystems",
+            "type": "CORE"
+          },
+          {
+            "name": "Maps and Navigation",
+            "description": "Master the art of reading maps and understand their importance in exploration and navigation.",
+            "image_path": "https://source.unsplash.com/500x500/?maps",
+            "type": "CORE"
+          },
+          {
+            "name": "Sustainability and Conservation",
+            "description": "Learn about the importance of sustainable living and conservation efforts for a healthier planet.",
+            "image_path": "https://source.unsplash.com/500x500/?sustainability",
+            "type": "CORE"
+          },
+          {
+            "name": "Natural Disasters and Their Impact",
+            "description": "Understand different types of natural disasters, their causes, effects, and how communities respond to them.",
+            "image_path": "https://source.unsplash.com/500x500/?natural-disasters",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Exploring National Parks",
+            "description": "Take a virtual tour of famous national parks worldwide, appreciating their unique geography and biodiversity.",
+            "image_path": "https://source.unsplash.com/500x500/?national-parks",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Economic Systems and Resources",
+        "description": "Understanding basic economic concepts, resources, and the role of trade and technology in our daily lives.",
+        "image_path": "https://source.unsplash.com/500x500/?economic-systems",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "What is Money?",
+            "description": "Learn about the concept of money, its history, and its role in the economy.",
+            "image_path": "https://source.unsplash.com/500x500/?money",
+            "type": "CORE"
+          },
+          {
+            "name": "Goods, Services, and Producers",
+            "description": "Understand the concepts of goods and services, and the role of producers and consumers.",
+            "image_path": "https://source.unsplash.com/500x500/?goods-services",
+            "type": "CORE"
+          },
+          {
+            "name": "Natural, Human, and Capital Resources",
+            "description": "Explore the different types of resources and their impact on production and the economy.",
+            "image_path": "https://source.unsplash.com/500x500/?resources",
+            "type": "CORE"
+          },
+          {
+            "name": "Trade, Imports, and Exports",
+            "description": "Learn about the importance of trade, and the concepts of imports and exports.",
+            "image_path": "https://source.unsplash.com/500x500/?trade",
+            "type": "CORE"
+          },
+          {
+            "name": "Influence of Technology on Economy",
+            "description": "Understand the role of technology in shaping economies and driving change in modern societies.",
+            "image_path": "https://source.unsplash.com/500x500/?technology-economy",
+            "type": "CORE"
+          },
+          {
+            "name": "Personal Finance and Savings",
+            "description": "Introduction to the basics of personal finance, the importance of savings, and making informed decisions.",
+            "image_path": "https://source.unsplash.com/500x500/?personal-finance",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Entrepreneurship and Innovation",
+            "description": "Learn about entrepreneurship, innovation, and their role in driving economic growth and societal progress.",
+            "image_path": "https://source.unsplash.com/500x500/?entrepreneurship",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Historical Figures and Events",
+        "description": "Unravel the tapestry of time through the lives of significant historical figures and watershed moments in history.",
+        "image_path": "https://source.unsplash.com/500x500/?historical-figures",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Inventors and Their Inventions",
+            "description": "Explore the lives of famous inventors and the transformative power of their inventions.",
+            "image_path": "https://source.unsplash.com/500x500/?inventors",
+            "type": "CORE"
+          },
+          {
+            "name": "Leaders Who Shaped the World",
+            "description": "Learn about leaders whose vision, courage, and resolve have significantly shaped the world we live in.",
+            "image_path": "https://source.unsplash.com/500x500/?world-leaders",
+            "type": "CORE"
+          },
+          {
+            "name": "Revolutionary Wars and Their Impact",
+            "description": "Understand revolutionary wars and their profound impact on societies and global politics.",
+            "image_path": "https://source.unsplash.com/500x500/?revolutionary-wars",
+            "type": "CORE"
+          },
+          {
+            "name": "The Civil Rights Movement",
+            "description": "Learn about the Civil Rights Movement, its significance, and influential figures who led the way.",
+            "image_path": "https://source.unsplash.com/500x500/?civil-rights-movement",
+            "type": "CORE"
+          },
+          {
+            "name": "Explorers and Discoveries",
+            "description": "Follow the journey of famous explorers, their adventures, and the discoveries that changed our understanding of the world.",
+            "image_path": "https://source.unsplash.com/500x500/?explorers",
+            "type": "CORE"
+          },
+          {
+            "name": "Women in History",
+            "description": "Celebrate the contributions of inspiring women throughout history and their fight for equality.",
+            "image_path": "https://source.unsplash.com/500x500/?women-history",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Space Race and Exploration",
+            "description": "Delve into the exciting era of the Space Race and its influence on science, technology, and culture.",
+            "image_path": "https://source.unsplash.com/500x500/?space-race",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Cultures and Traditions Around the World",
+        "description": "Embark on a global journey to explore diverse cultures, traditions, and ways of life.",
+        "image_path": "https://source.unsplash.com/500x500/?cultures-traditions",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Festivals of the World",
+            "description": "Experience the vibrant festivals celebrated around the world and the stories they tell.",
+            "image_path": "https://source.unsplash.com/500x500/?world-festivals",
+            "type": "CORE"
+          },
+          {
+            "name": "Traditional Food and Cuisine",
+            "description": "Explore the culinary world, discovering traditional dishes that tell a story of culture and tradition.",
+            "image_path": "https://source.unsplash.com/500x500/?traditional-food",
+            "type": "CORE"
+          },
+          {
+            "name": "Art and Music Across Cultures",
+            "description": "Delve into the diverse world of art and music, and their role in cultural expression and identity.",
+            "image_path": "https://source.unsplash.com/500x500/?art-music",
+            "type": "CORE"
+          },
+          {
+            "name": "Traditional Clothing and Fashion",
+            "description": "Discover the beauty of traditional clothing and fashion, their symbolism, and cultural significance.",
+            "image_path": "https://source.unsplash.com/500x500/?traditional-clothing",
+            "type": "CORE"
+          },
+          {
+            "name": "Cultural Etiquettes and Norms",
+            "description": "Learn about diverse cultural etiquettes and norms, fostering respect and appreciation for global diversity.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-etiquette",
+            "type": "CORE"
+          },
+          {
+            "name": "World Languages and Communication",
+            "description": "Introduction to various world languages, their unique scripts, and the role of communication in connecting cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?world-languages",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Religions Around the World",
+            "description": "Understand the fundamental beliefs and practices of major world religions, promoting global awareness and respect.",
+            "image_path": "https://source.unsplash.com/500x500/?world-religions",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Government and Citizenship",
+        "description": "Delve into the understanding of governance, roles of citizens, and the importance of active civic participation.",
+        "image_path": "https://source.unsplash.com/500x500/?government-citizenship",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Types of Government",
+            "description": "Explore different types of government structures around the world, understanding their characteristics and function.",
+            "image_path": "https://source.unsplash.com/500x500/?government-types",
+            "type": "CORE"
+          },
+          {
+            "name": "The Role of the Citizen",
+            "description": "Learn about the rights, responsibilities, and the pivotal role of citizens in a democratic society.",
+            "image_path": "https://source.unsplash.com/500x500/?citizenship",
+            "type": "CORE"
+          },
+          {
+            "name": "Democracy and Voting",
+            "description": "Understand the importance of democracy and the power of voting in shaping our society.",
+            "image_path": "https://source.unsplash.com/500x500/?democracy-voting",
+            "type": "CORE"
+          },
+          {
+            "name": "The Judicial System",
+            "description": "Learn about the judicial system, the rule of law, and why it‘s essential for maintaining justice in society.",
+            "image_path": "https://source.unsplash.com/500x500/?judicial-system",
+            "type": "CORE"
+          },
+          {
+            "name": "The Constitution and Bill of Rights",
+            "description": "Explore the Constitution, the Bill of Rights, and the principles they uphold.",
+            "image_path": "https://source.unsplash.com/500x500/?constitution",
+            "type": "CORE"
+          },
+          {
+            "name": "Public Policy and Advocacy",
+            "description": "Understand how public policy is made and the role of citizens in advocating for change.",
+            "image_path": "https://source.unsplash.com/500x500/?public-policy",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Local and Global Citizenship",
+            "description": "Discover what it means to be a good citizen in your community and in the global arena.",
+            "image_path": "https://source.unsplash.com/500x500/?global-citizenship",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Myths, Legends, and Folklore",
+        "description": "Venture into the world of myths, legends, and folklore, exploring the rich tapestry of cultural narratives and traditional tales.",
+        "image_path": "https://source.unsplash.com/500x500/?myths-legends",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Greek Mythology",
+            "description": "Dive into the enchanting realm of Greek mythology, its gods, heroes, and epic tales.",
+            "image_path": "https://source.unsplash.com/500x500/?greek-mythology",
+            "type": "CORE"
+          },
+          {
+            "name": "Native American Folklore",
+            "description": "Learn about the rich folklore of Native American tribes and their spiritual connection with nature.",
+            "image_path": "https://source.unsplash.com/500x500/?native-american-folklore",
+            "type": "CORE"
+          },
+          {
+            "name": "African Fables and Proverbs",
+            "description": "Discover African fables and proverbs, their wisdom, and the values they impart.",
+            "image_path": "https://source.unsplash.com/500x500/?african-fables",
+            "type": "CORE"
+          },
+          {
+            "name": "Legends of the Far East",
+            "description": "Explore the captivating legends from the Far East, filled with dragons, spirits, and ancient wisdom.",
+            "image_path": "https://source.unsplash.com/500x500/?far-east-legends",
+            "type": "CORE"
+          },
+          {
+            "name": "European Fairy Tales",
+            "description": "Step into the magical world of European fairy tales and understand the morals they portray.",
+            "image_path": "https://source.unsplash.com/500x500/?european-fairytales",
+            "type": "CORE"
+          },
+          {
+            "name": "The Arabian Nights",
+            "description": "Embark on a journey to the Middle East through the enchanting stories of the Arabian Nights.",
+            "image_path": "https://source.unsplash.com/500x500/?arabian-nights",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Mythical Creatures from Around the World",
+            "description": "Meet fascinating mythical creatures from diverse cultures, understanding their origins and cultural significance.",
+            "image_path": "https://source.unsplash.com/500x500/?mythical-creatures",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Exploration of Outer Space",
+        "description": "Venture beyond our planet and explore the vast, mysterious expanse of outer space and its celestial bodies.",
+        "image_path": "https://source.unsplash.com/500x500/?outer-space",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Solar System and Planets",
+            "description": "Embark on a journey through our solar system, learning about the planets and their unique characteristics.",
+            "image_path": "https://source.unsplash.com/500x500/?solar-system",
+            "type": "CORE"
+          },
+          {
+            "name": "The Moon and Its Phases",
+            "description": "Discover our closest celestial neighbor, the Moon, and learn about its phases and influence on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?moon",
+            "type": "CORE"
+          },
+          {
+            "name": "Stars, Galaxies, and Constellations",
+            "description": "Explore the dazzling world of stars, galaxies, and constellations, and their significance in various cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?stars-galaxies",
+            "type": "CORE"
+          },
+          {
+            "name": "Astronauts and Space Missions",
+            "description": "Learn about famous astronauts and groundbreaking space missions that have expanded our understanding of the universe.",
+            "image_path": "https://source.unsplash.com/500x500/?astronauts",
+            "type": "CORE"
+          },
+          {
+            "name": "Asteroids, Comets, and Meteorites",
+            "description": "Dive into the fascinating world of asteroids, comets, and meteorites, and their impact on Earth.",
+            "image_path": "https://source.unsplash.com/500x500/?asteroids",
+            "type": "CORE"
+          },
+          {
+            "name": "The International Space Station",
+            "description": "Explore the International Space Station, its purpose, and the life of astronauts aboard the ISS.",
+            "image_path": "https://source.unsplash.com/500x500/?space-station",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Future of Space Exploration",
+            "description": "Look into the future of space exploration, upcoming missions, and the possibility of extraterrestrial life.",
+            "image_path": "https://source.unsplash.com/500x500/?future-space",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
+    "topics_data": [
+      {
+        "name": "Exploring American History",
+        "description": "Embarking on an exciting journey through time, understanding the events that shaped America.",
+        "image_path": "https://source.unsplash.com/500x500/?American-History",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Founding Fathers",
+            "description": "Diving into the lives of America‘s founding fathers and their vision for the nation.",
+            "image_path": "https://source.unsplash.com/500x500/?Founding-Fathers",
+            "type": "CORE"
+          },
+          {
+            "name": "The Declaration of Independence",
+            "description": "Understanding the significance of the Declaration of Independence and its influence on American identity.",
+            "image_path": "https://source.unsplash.com/500x500/?Declaration-of-Independence",
+            "type": "CORE"
+          },
+          {
+            "name": "American Revolutionary War",
+            "description": "Exploring the pivotal events of the American Revolutionary War and its impact on the formation of the United States.",
+            "image_path": "https://source.unsplash.com/500x500/?American-Revolution",
+            "type": "CORE"
+          },
+          {
+            "name": "The Constitution of the United States",
+            "description": "Learning about the Constitution of the United States, its structure, and its importance in shaping the American governance system.",
+            "image_path": "https://source.unsplash.com/500x500/?Constitution",
+            "type": "CORE"
+          },
+          {
+            "name": "Louisiana Purchase and Westward Expansion",
+            "description": "Unraveling the events of the Louisiana Purchase and its influence on the Westward expansion of America.",
+            "image_path": "https://source.unsplash.com/500x500/?Louisiana-Purchase",
+            "type": "CORE"
+          },
+          {
+            "name": "America and the World Wars",
+            "description": "Examining the role and impact of America during the two World Wars.",
+            "image_path": "https://source.unsplash.com/500x500/?World-Wars",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Civil Rights Movement",
+            "description": "Understanding the Civil Rights Movement, its leaders, and its impact on the fight for equality in America.",
+            "image_path": "https://source.unsplash.com/500x500/?Civil-Rights-Movement",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Geography: Landforms and Regions",
+        "description": "A fascinating voyage across the diverse landscapes of the world, exploring landforms and regions that make Earth unique.",
+        "image_path": "https://source.unsplash.com/500x500/?landforms",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Mountains, Hills, and Valleys",
+            "description": "Discovering the majesty of mountains, the serenity of valleys, and the charm of hills, and their effects on human life.",
+            "image_path": "https://source.unsplash.com/500x500/?mountains-valleys",
+            "type": "CORE"
+          },
+          {
+            "name": "Oceans, Seas, and Rivers",
+            "description": "Exploring the wonder of water bodies, their formation, significance, and influence on Earth‘s climate.",
+            "image_path": "https://source.unsplash.com/500x500/?oceans-rivers",
+            "type": "CORE"
+          },
+          {
+            "name": "Deserts, Forests, and Grasslands",
+            "description": "Venturing into the heart of Earth‘s diverse ecosystems, understanding the plant and animal life they sustain.",
+            "image_path": "https://source.unsplash.com/500x500/?deserts-forests",
+            "type": "CORE"
+          },
+          {
+            "name": "Polar Regions and Tundras",
+            "description": "Investigating the extreme conditions of polar regions and tundras, and the unique wildlife they harbor.",
+            "image_path": "https://source.unsplash.com/500x500/?polar-regions",
+            "type": "CORE"
+          },
+          {
+            "name": "Plate Tectonics and Earthquakes",
+            "description": "Understanding the science behind the shifting of Earth‘s plates, and how it results in earthquakes and mountain formation.",
+            "image_path": "https://source.unsplash.com/500x500/?plate-tectonics",
+            "type": "CORE"
+          },
+          {
+            "name": "Climate Zones and Weather Patterns",
+            "description": "Learning about different climate zones and the weather patterns associated with each of them.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-zones",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Human Impact on Environment",
+            "description": "Discussing the effects of human activities on the environment, and the importance of sustainable practices.",
+            "image_path": "https://source.unsplash.com/500x500/?human-impact-environment",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Understanding Government",
+        "description": "Delving into the intricate world of government, understanding its role, functions, and impact on society.",
+        "image_path": "https://source.unsplash.com/500x500/?government",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Types of Government",
+            "description": "Exploring different forms of government around the world, such as democracies, monarchies, and dictatorships.",
+            "image_path": "https://source.unsplash.com/500x500/?types-of-government",
+            "type": "CORE"
+          },
+          {
+            "name": "Roles and Responsibilities of Government",
+            "description": "Understanding the essential roles and responsibilities of government in shaping society and maintaining order.",
+            "image_path": "https://source.unsplash.com/500x500/?government-responsibilities",
+            "type": "CORE"
+          },
+          {
+            "name": "Branches of Government",
+            "description": "Learning about the division of powers among different branches of government and their interplay.",
+            "image_path": "https://source.unsplash.com/500x500/?branches-of-government",
+            "type": "CORE"
+          },
+          {
+            "name": "Elections and Voting",
+            "description": "Delving into the democratic process of elections, the importance of voting, and understanding citizens‘ rights.",
+            "image_path": "https://source.unsplash.com/500x500/?elections",
+            "type": "CORE"
+          },
+          {
+            "name": "The Role of Laws",
+            "description": "Exploring the importance of laws in society, their enforcement, and the judicial process.",
+            "image_path": "https://source.unsplash.com/500x500/?laws",
+            "type": "CORE"
+          },
+          {
+            "name": "Local and State Government",
+            "description": "Exploring how local and state government operates, and its relationship with federal government.",
+            "image_path": "https://source.unsplash.com/500x500/?local-government",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "International Organizations",
+            "description": "Learning about international organizations, their role, and impact on global governance and cooperation.",
+            "image_path": "https://source.unsplash.com/500x500/?international-organizations",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "World Cultures and Traditions",
+        "description": "Embarking on a journey around the world, exploring diverse cultures, traditions, and the richness they bring to the global community.",
+        "image_path": "https://source.unsplash.com/500x500/?world-cultures",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Cultural Expressions through Art and Music",
+            "description": "Exploring how cultures express identity, history, and values through art, music, and dance.",
+            "image_path": "https://source.unsplash.com/500x500/?art-music",
+            "type": "CORE"
+          },
+          {
+            "name": "Festivals and Celebrations",
+            "description": "Understanding the significance of various festivals and celebrations around the world.",
+            "image_path": "https://source.unsplash.com/500x500/?festivals",
+            "type": "CORE"
+          },
+          {
+            "name": "Traditional Clothing and Food",
+            "description": "Learning about the diverse traditional clothing and food of different cultures and what they signify.",
+            "image_path": "https://source.unsplash.com/500x500/?traditional-clothing-food",
+            "type": "CORE"
+          },
+          {
+            "name": "Languages of the World",
+            "description": "Exploring the richness and diversity of languages spoken around the world, and their role in cultural identity.",
+            "image_path": "https://source.unsplash.com/500x500/?languages",
+            "type": "CORE"
+          },
+          {
+            "name": "Cultural Landmarks and Monuments",
+            "description": "Visiting renowned cultural landmarks and monuments that encapsulate the history and identity of different cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?landmarks-monuments",
+            "type": "CORE"
+          },
+          {
+            "name": "Religions of the World",
+            "description": "Understanding the basic tenets of major world religions and their influence on culture and traditions.",
+            "image_path": "https://source.unsplash.com/500x500/?world-religions",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Indigenous Cultures",
+            "description": "Delving into the world of indigenous cultures, their unique traditions, and their relationship with nature.",
+            "image_path": "https://source.unsplash.com/500x500/?indigenous-cultures",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Economic Systems and Principles",
+        "description": "Unraveling the fascinating world of economics, understanding the basics of trade, currencies, and economic systems.",
+        "image_path": "https://source.unsplash.com/500x500/?economics",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Money and Currency",
+            "description": "Discovering the concept of money, its uses, and the role of different currencies around the world.",
+            "image_path": "https://source.unsplash.com/500x500/?money-currency",
+            "type": "CORE"
+          },
+          {
+            "name": "Trade and Barter",
+            "description": "Exploring the early methods of trade, understanding the concept of barter, and the evolution to money-based trade.",
+            "image_path": "https://source.unsplash.com/500x500/?trade-barter",
+            "type": "CORE"
+          },
+          {
+            "name": "Supply and Demand",
+            "description": "Learning about the basic economic principle of supply and demand, and its effect on prices and availability.",
+            "image_path": "https://source.unsplash.com/500x500/?supply-demand",
+            "type": "CORE"
+          },
+          {
+            "name": "Types of Economic Systems",
+            "description": "Understanding different economic systems such as capitalism, socialism, and mixed economies.",
             "image_path": "https://source.unsplash.com/500x500/?economic-systems",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "What is Money?",
-                    "description": "Learn about the concept of money, its history, and its role in the economy.",
-                    "image_path": "https://source.unsplash.com/500x500/?money",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Goods, Services, and Producers",
-                    "description": "Understand the concepts of goods and services, and the role of producers and consumers.",
-                    "image_path": "https://source.unsplash.com/500x500/?goods-services",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Natural, Human, and Capital Resources",
-                    "description": "Explore the different types of resources and their impact on production and the economy.",
-                    "image_path": "https://source.unsplash.com/500x500/?resources",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Trade, Imports, and Exports",
-                    "description": "Learn about the importance of trade, and the concepts of imports and exports.",
-                    "image_path": "https://source.unsplash.com/500x500/?trade",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Influence of Technology on Economy",
-                    "description": "Understand the role of technology in shaping economies and driving change in modern societies.",
-                    "image_path": "https://source.unsplash.com/500x500/?technology-economy",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Personal Finance and Savings",
-                    "description": "Introduction to the basics of personal finance, the importance of savings, and making informed decisions.",
-                    "image_path": "https://source.unsplash.com/500x500/?personal-finance",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Entrepreneurship and Innovation",
-                    "description": "Learn about entrepreneurship, innovation, and their role in driving economic growth and societal progress.",
-                    "image_path": "https://source.unsplash.com/500x500/?entrepreneurship",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Historical Figures and Events",
-            "description": "Unravel the tapestry of time through the lives of significant historical figures and watershed moments in history.",
-            "image_path": "https://source.unsplash.com/500x500/?historical-figures",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Inventors and Their Inventions",
-                    "description": "Explore the lives of famous inventors and the transformative power of their inventions.",
-                    "image_path": "https://source.unsplash.com/500x500/?inventors",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Leaders Who Shaped the World",
-                    "description": "Learn about leaders whose vision, courage, and resolve have significantly shaped the world we live in.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-leaders",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Revolutionary Wars and Their Impact",
-                    "description": "Understand revolutionary wars and their profound impact on societies and global politics.",
-                    "image_path": "https://source.unsplash.com/500x500/?revolutionary-wars",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Civil Rights Movement",
-                    "description": "Learn about the Civil Rights Movement, its significance, and influential figures who led the way.",
-                    "image_path": "https://source.unsplash.com/500x500/?civil-rights-movement",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Explorers and Discoveries",
-                    "description": "Follow the journey of famous explorers, their adventures, and the discoveries that changed our understanding of the world.",
-                    "image_path": "https://source.unsplash.com/500x500/?explorers",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Women in History",
-                    "description": "Celebrate the contributions of inspiring women throughout history and their fight for equality.",
-                    "image_path": "https://source.unsplash.com/500x500/?women-history",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Space Race and Exploration",
-                    "description": "Delve into the exciting era of the Space Race and its influence on science, technology, and culture.",
-                    "image_path": "https://source.unsplash.com/500x500/?space-race",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Cultures and Traditions Around the World",
-            "description": "Embark on a global journey to explore diverse cultures, traditions, and ways of life.",
-            "image_path": "https://source.unsplash.com/500x500/?cultures-traditions",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Festivals of the World",
-                    "description": "Experience the vibrant festivals celebrated around the world and the stories they tell.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-festivals",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Traditional Food and Cuisine",
-                    "description": "Explore the culinary world, discovering traditional dishes that tell a story of culture and tradition.",
-                    "image_path": "https://source.unsplash.com/500x500/?traditional-food",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Art and Music Across Cultures",
-                    "description": "Delve into the diverse world of art and music, and their role in cultural expression and identity.",
-                    "image_path": "https://source.unsplash.com/500x500/?art-music",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Traditional Clothing and Fashion",
-                    "description": "Discover the beauty of traditional clothing and fashion, their symbolism, and cultural significance.",
-                    "image_path": "https://source.unsplash.com/500x500/?traditional-clothing",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Cultural Etiquettes and Norms",
-                    "description": "Learn about diverse cultural etiquettes and norms, fostering respect and appreciation for global diversity.",
-                    "image_path": "https://source.unsplash.com/500x500/?cultural-etiquette",
-                    "type": "CORE"
-                },
-                {
-                    "name": "World Languages and Communication",
-                    "description": "Introduction to various world languages, their unique scripts, and the role of communication in connecting cultures.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-languages",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Religions Around the World",
-                    "description": "Understand the fundamental beliefs and practices of major world religions, promoting global awareness and respect.",
-                    "image_path": "https://source.unsplash.com/500x500/?world-religions",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Government and Citizenship",
-            "description": "Delve into the understanding of governance, roles of citizens, and the importance of active civic participation.",
-            "image_path": "https://source.unsplash.com/500x500/?government-citizenship",
-            "type": "CORE",
-            "lessons_data": [
-                {
-                    "name": "Types of Government",
-                    "description": "Explore different types of government structures around the world, understanding their characteristics and function.",
-                    "image_path": "https://source.unsplash.com/500x500/?government-types",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Role of the Citizen",
-                    "description": "Learn about the rights, responsibilities, and the pivotal role of citizens in a democratic society.",
-                    "image_path": "https://source.unsplash.com/500x500/?citizenship",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Democracy and Voting",
-                    "description": "Understand the importance of democracy and the power of voting in shaping our society.",
-                    "image_path": "https://source.unsplash.com/500x500/?democracy-voting",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Judicial System",
-                    "description": "Learn about the judicial system, the rule of law, and why it‘s essential for maintaining justice in society.",
-                    "image_path": "https://source.unsplash.com/500x500/?judicial-system",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Constitution and Bill of Rights",
-                    "description": "Explore the Constitution, the Bill of Rights, and the principles they uphold.",
-                    "image_path": "https://source.unsplash.com/500x500/?constitution",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Public Policy and Advocacy",
-                    "description": "Understand how public policy is made and the role of citizens in advocating for change.",
-                    "image_path": "https://source.unsplash.com/500x500/?public-policy",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Local and Global Citizenship",
-                    "description": "Discover what it means to be a good citizen in your community and in the global arena.",
-                    "image_path": "https://source.unsplash.com/500x500/?global-citizenship",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Myths, Legends, and Folklore",
-            "description": "Venture into the world of myths, legends, and folklore, exploring the rich tapestry of cultural narratives and traditional tales.",
-            "image_path": "https://source.unsplash.com/500x500/?myths-legends",
-            "type": "ELECTIVE",
-            "lessons_data": [
-                {
-                    "name": "Greek Mythology",
-                    "description": "Dive into the enchanting realm of Greek mythology, its gods, heroes, and epic tales.",
-                    "image_path": "https://source.unsplash.com/500x500/?greek-mythology",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Native American Folklore",
-                    "description": "Learn about the rich folklore of Native American tribes and their spiritual connection with nature.",
-                    "image_path": "https://source.unsplash.com/500x500/?native-american-folklore",
-                    "type": "CORE"
-                },
-                {
-                    "name": "African Fables and Proverbs",
-                    "description": "Discover African fables and proverbs, their wisdom, and the values they impart.",
-                    "image_path": "https://source.unsplash.com/500x500/?african-fables",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Legends of the Far East",
-                    "description": "Explore the captivating legends from the Far East, filled with dragons, spirits, and ancient wisdom.",
-                    "image_path": "https://source.unsplash.com/500x500/?far-east-legends",
-                    "type": "CORE"
-                },
-                {
-                    "name": "European Fairy Tales",
-                    "description": "Step into the magical world of European fairy tales and understand the morals they portray.",
-                    "image_path": "https://source.unsplash.com/500x500/?european-fairytales",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Arabian Nights",
-                    "description": "Embark on a journey to the Middle East through the enchanting stories of the Arabian Nights.",
-                    "image_path": "https://source.unsplash.com/500x500/?arabian-nights",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Mythical Creatures from Around the World",
-                    "description": "Meet fascinating mythical creatures from diverse cultures, understanding their origins and cultural significance.",
-                    "image_path": "https://source.unsplash.com/500x500/?mythical-creatures",
-                    "type": "ELECTIVE"
-                }
-            ]
-        },
-        {
-            "name": "Exploration of Outer Space",
-            "description": "Venture beyond our planet and explore the vast, mysterious expanse of outer space and its celestial bodies.",
-            "image_path": "https://source.unsplash.com/500x500/?outer-space",
-            "type": "ELECTIVE",
-            "lessons_data": [
-                {
-                    "name": "Solar System and Planets",
-                    "description": "Embark on a journey through our solar system, learning about the planets and their unique characteristics.",
-                    "image_path": "https://source.unsplash.com/500x500/?solar-system",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The Moon and Its Phases",
-                    "description": "Discover our closest celestial neighbor, the Moon, and learn about its phases and influence on Earth.",
-                    "image_path": "https://source.unsplash.com/500x500/?moon",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Stars, Galaxies, and Constellations",
-                    "description": "Explore the dazzling world of stars, galaxies, and constellations, and their significance in various cultures.",
-                    "image_path": "https://source.unsplash.com/500x500/?stars-galaxies",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Astronauts and Space Missions",
-                    "description": "Learn about famous astronauts and groundbreaking space missions that have expanded our understanding of the universe.",
-                    "image_path": "https://source.unsplash.com/500x500/?astronauts",
-                    "type": "CORE"
-                },
-                {
-                    "name": "Asteroids, Comets, and Meteorites",
-                    "description": "Dive into the fascinating world of asteroids, comets, and meteorites, and their impact on Earth.",
-                    "image_path": "https://source.unsplash.com/500x500/?asteroids",
-                    "type": "CORE"
-                },
-                {
-                    "name": "The International Space Station",
-                    "description": "Explore the International Space Station, its purpose, and the life of astronauts aboard the ISS.",
-                    "image_path": "https://source.unsplash.com/500x500/?space-station",
-                    "type": "ELECTIVE"
-                },
-                {
-                    "name": "Future of Space Exploration",
-                    "description": "Look into the future of space exploration, upcoming missions, and the possibility of extraterrestrial life.",
-                    "image_path": "https://source.unsplash.com/500x500/?future-space",
-                    "type": "ELECTIVE"
-                }
-            ]
-        }
-      ]
-    },
-    {
-      "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
-      "topics_data": [
-{
-   "name": "Exploring American History",
-   "description": "Embarking on an exciting journey through time, understanding the events that shaped America.",
-   "image_path": "https://source.unsplash.com/500x500/?American-History",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Founding Fathers",
-           "description": "Diving into the lives of America‘s founding fathers and their vision for the nation.",
-           "image_path": "https://source.unsplash.com/500x500/?Founding-Fathers",
-           "type": "CORE"
-       },
-       {
-           "name": "The Declaration of Independence",
-           "description": "Understanding the significance of the Declaration of Independence and its influence on American identity.",
-           "image_path": "https://source.unsplash.com/500x500/?Declaration-of-Independence",
-           "type": "CORE"
-       },
-       {
-           "name": "American Revolutionary War",
-           "description": "Exploring the pivotal events of the American Revolutionary War and its impact on the formation of the United States.",
-           "image_path": "https://source.unsplash.com/500x500/?American-Revolution",
-           "type": "CORE"
-       },
-       {
-           "name": "The Constitution of the United States",
-           "description": "Learning about the Constitution of the United States, its structure, and its importance in shaping the American governance system.",
-           "image_path": "https://source.unsplash.com/500x500/?Constitution",
-           "type": "CORE"
-       },
-       {
-           "name": "Louisiana Purchase and Westward Expansion",
-           "description": "Unraveling the events of the Louisiana Purchase and its influence on the Westward expansion of America.",
-           "image_path": "https://source.unsplash.com/500x500/?Louisiana-Purchase",
-           "type": "CORE"
-       },
-       {
-           "name": "America and the World Wars",
-           "description": "Examining the role and impact of America during the two World Wars.",
-           "image_path": "https://source.unsplash.com/500x500/?World-Wars",
-           "type": "ELECTIVE"
-       },
-       {
-           "name": "The Civil Rights Movement",
-           "description": "Understanding the Civil Rights Movement, its leaders, and its impact on the fight for equality in America.",
-           "image_path": "https://source.unsplash.com/500x500/?Civil-Rights-Movement",
-           "type": "ELECTIVE"
-       }
-   ]
-},
-{
-   "name": "Geography: Landforms and Regions",
-   "description": "A fascinating voyage across the diverse landscapes of the world, exploring landforms and regions that make Earth unique.",
-   "image_path": "https://source.unsplash.com/500x500/?landforms",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Mountains, Hills, and Valleys",
-           "description": "Discovering the majesty of mountains, the serenity of valleys, and the charm of hills, and their effects on human life.",
-           "image_path": "https://source.unsplash.com/500x500/?mountains-valleys",
-           "type": "CORE"
-       },
-       {
-           "name": "Oceans, Seas, and Rivers",
-           "description": "Exploring the wonder of water bodies, their formation, significance, and influence on Earth‘s climate.",
-           "image_path": "https://source.unsplash.com/500x500/?oceans-rivers",
-           "type": "CORE"
-       },
-       {
-           "name": "Deserts, Forests, and Grasslands",
-           "description": "Venturing into the heart of Earth‘s diverse ecosystems, understanding the plant and animal life they sustain.",
-           "image_path": "https://source.unsplash.com/500x500/?deserts-forests",
-           "type": "CORE"
-       },
-       {
-           "name": "Polar Regions and Tundras",
-           "description": "Investigating the extreme conditions of polar regions and tundras, and the unique wildlife they harbor.",
-           "image_path": "https://source.unsplash.com/500x500/?polar-regions",
-           "type": "CORE"
-       },
-       {
-           "name": "Plate Tectonics and Earthquakes",
-           "description": "Understanding the science behind the shifting of Earth‘s plates, and how it results in earthquakes and mountain formation.",
-           "image_path": "https://source.unsplash.com/500x500/?plate-tectonics",
-           "type": "CORE"
-       },
-       {
-           "name": "Climate Zones and Weather Patterns",
-           "description": "Learning about different climate zones and the weather patterns associated with each of them.",
-           "image_path": "https://source.unsplash.com/500x500/?climate-zones",
-           "type": "ELECTIVE"
-       },
-       {
-           "name": "Human Impact on Environment",
-           "description": "Discussing the effects of human activities on the environment, and the importance of sustainable practices.",
-           "image_path": "https://source.unsplash.com/500x500/?human-impact-environment",
-           "type": "ELECTIVE"
-       }
-   ]
-},
-{
-   "name": "Understanding Government",
-   "description": "Delving into the intricate world of government, understanding its role, functions, and impact on society.",
-   "image_path": "https://source.unsplash.com/500x500/?government",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Types of Government",
-           "description": "Exploring different forms of government around the world, such as democracies, monarchies, and dictatorships.",
-           "image_path": "https://source.unsplash.com/500x500/?types-of-government",
-           "type": "CORE"
-       },
-       {
-           "name": "Roles and Responsibilities of Government",
-           "description": "Understanding the essential roles and responsibilities of government in shaping society and maintaining order.",
-           "image_path": "https://source.unsplash.com/500x500/?government-responsibilities",
-           "type": "CORE"
-       },
-       {
-           "name": "Branches of Government",
-           "description": "Learning about the division of powers among different branches of government and their interplay.",
-           "image_path": "https://source.unsplash.com/500x500/?branches-of-government",
-           "type": "CORE"
-       },
-       {
-           "name": "Elections and Voting",
-           "description": "Delving into the democratic process of elections, the importance of voting, and understanding citizens‘ rights.",
-           "image_path": "https://source.unsplash.com/500x500/?elections",
-           "type": "CORE"
-       },
-       {
-           "name": "The Role of Laws",
-           "description": "Exploring the importance of laws in society, their enforcement, and the judicial process.",
-           "image_path": "https://source.unsplash.com/500x500/?laws",
-           "type": "CORE"
-       },
-       {
-           "name": "Local and State Government",
-           "description": "Exploring how local and state government operates, and its relationship with federal government.",
-           "image_path": "https://source.unsplash.com/500x500/?local-government",
-           "type": "ELECTIVE"
-       },
-       {
-           "name": "International Organizations",
-           "description": "Learning about international organizations, their role, and impact on global governance and cooperation.",
-           "image_path": "https://source.unsplash.com/500x500/?international-organizations",
-           "type": "ELECTIVE"
-       }
-   ]
-},
-{
-   "name": "World Cultures and Traditions",
-   "description": "Embarking on a journey around the world, exploring diverse cultures, traditions, and the richness they bring to the global community.",
-   "image_path": "https://source.unsplash.com/500x500/?world-cultures",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Cultural Expressions through Art and Music",
-           "description": "Exploring how cultures express identity, history, and values through art, music, and dance.",
-           "image_path": "https://source.unsplash.com/500x500/?art-music",
-           "type": "CORE"
-       },
-       {
-           "name": "Festivals and Celebrations",
-           "description": "Understanding the significance of various festivals and celebrations around the world.",
-           "image_path": "https://source.unsplash.com/500x500/?festivals",
-           "type": "CORE"
-       },
-       {
-           "name": "Traditional Clothing and Food",
-           "description": "Learning about the diverse traditional clothing and food of different cultures and what they signify.",
-           "image_path": "https://source.unsplash.com/500x500/?traditional-clothing-food",
-           "type": "CORE"
-       },
-       {
-           "name": "Languages of the World",
-           "description": "Exploring the richness and diversity of languages spoken around the world, and their role in cultural identity.",
-           "image_path": "https://source.unsplash.com/500x500/?languages",
-           "type": "CORE"
-       },
-       {
-           "name": "Cultural Landmarks and Monuments",
-           "description": "Visiting renowned cultural landmarks and monuments that encapsulate the history and identity of different cultures.",
-           "image_path": "https://source.unsplash.com/500x500/?landmarks-monuments",
-           "type": "CORE"
-       },
-       {
-           "name": "Religions of the World",
-           "description": "Understanding the basic tenets of major world religions and their influence on culture and traditions.",
-           "image_path": "https://source.unsplash.com/500x500/?world-religions",
-           "type": "ELECTIVE"
-       },
-       {
-           "name": "Indigenous Cultures",
-           "description": "Delving into the world of indigenous cultures, their unique traditions, and their relationship with nature.",
-           "image_path": "https://source.unsplash.com/500x500/?indigenous-cultures",
-           "type": "ELECTIVE"
-       }
-   ]
-},
-{
-   "name": "Economic Systems and Principles",
-   "description": "Unraveling the fascinating world of economics, understanding the basics of trade, currencies, and economic systems.",
-   "image_path": "https://source.unsplash.com/500x500/?economics",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Understanding Money and Currency",
-           "description": "Discovering the concept of money, its uses, and the role of different currencies around the world.",
-           "image_path": "https://source.unsplash.com/500x500/?money-currency",
-           "type": "CORE"
-       },
-       {
-           "name": "Trade and Barter",
-           "description": "Exploring the early methods of trade, understanding the concept of barter, and the evolution to money-based trade.",
-           "image_path": "https://source.unsplash.com/500x500/?trade-barter",
-           "type": "CORE"
-       },
-       {
-           "name": "Supply and Demand",
-           "description": "Learning about the basic economic principle of supply and demand, and its effect on prices and availability.",
-           "image_path": "https://source.unsplash.com/500x500/?supply-demand",
-           "type": "CORE"
-       },
-       {
-           "name": "Types of Economic Systems",
-           "description": "Understanding different economic systems such as capitalism, socialism, and mixed economies.",
-           "image_path": "https://source.unsplash.com/500x500/?economic-systems",
-           "type": "CORE"
-       },
-       {
-           "name": "Understanding Taxes",
-           "description": "Learning about taxes, why they are necessary, and how they are used by the government.",
-           "image_path": "https://source.unsplash.com/500x500/?taxes",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Entrepreneurship",
-           "description": "Introducing the concept of entrepreneurship, innovation, and its role in economic growth.",
-           "image_path": "https://source.unsplash.com/500x500/?entrepreneurship",
-           "type": "ELECTIVE"
-       },
-       {
-           "name": "Global Economies",
-           "description": "Exploring how economies around the world interact, and the role of international trade and globalization.",
-           "image_path": "https://source.unsplash.com/500x500/?global-economies",
-           "type": "ELECTIVE"
-       }
-   ]
-},
-
-      ]
-    },
-    {
-      "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",
-      "topics_data": []
-    }
-  ]'::json
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Taxes",
+            "description": "Learning about taxes, why they are necessary, and how they are used by the government.",
+            "image_path": "https://source.unsplash.com/500x500/?taxes",
+            "type": "CORE"
+          },
+          {
+            "name": "Introduction to Entrepreneurship",
+            "description": "Introducing the concept of entrepreneurship, innovation, and its role in economic growth.",
+            "image_path": "https://source.unsplash.com/500x500/?entrepreneurship",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Global Economies",
+            "description": "Exploring how economies around the world interact, and the role of international trade and globalization.",
+            "image_path": "https://source.unsplash.com/500x500/?global-economies",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "History: Ancient Civilizations",
+        "description": "Journeying back in time to explore ancient civilizations, their history, inventions, and influence on modern societies.",
+        "image_path": "https://source.unsplash.com/500x500/?ancient-civilizations",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Egyptian Civilization",
+            "description": "Exploring the mysteries of ancient Egypt, its pyramids, pharaohs, and contribution to knowledge.",
+            "image_path": "https://source.unsplash.com/500x500/?egyptian-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "The Greek Civilization",
+            "description": "Understanding the influence of ancient Greece, its philosophy, democracy, and mythology.",
+            "image_path": "https://source.unsplash.com/500x500/?greek-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "The Roman Civilization",
+            "description": "Learning about the Roman empire, its government, architecture, and impact on languages.",
+            "image_path": "https://source.unsplash.com/500x500/?roman-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "The Mayan, Aztec, and Inca Civilizations",
+            "description": "Exploring the rich cultures of ancient Mesoamerica and South America, their unique calendars, and agricultural advancements.",
+            "image_path": "https://source.unsplash.com/500x500/?mayan-aztec-inca",
+            "type": "CORE"
+          },
+          {
+            "name": "The Ancient Chinese Civilization",
+            "description": "Discovering the profound influence of ancient China, its inventions, the Great Wall, and the concept of dynastic rule.",
+            "image_path": "https://source.unsplash.com/500x500/?chinese-civilization",
+            "type": "CORE"
+          },
+          {
+            "name": "The Indus Valley and Mesopotamian Civilizations",
+            "description": "Exploring the early river-valley civilizations of the Indus Valley and Mesopotamia, their writing systems, and urban planning.",
+            "image_path": "https://source.unsplash.com/500x500/?indus-mesopotamia",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Ancient African Civilizations",
+            "description": "Learning about the rich history and contributions of ancient African civilizations like Kush, Axum, and Mali.",
+            "image_path": "https://source.unsplash.com/500x500/?african-civilizations",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Geography: Understanding Our World",
+        "description": "Navigating the world around us, understanding the importance of geography, landscapes, and how it influences cultures and economies.",
+        "image_path": "https://source.unsplash.com/500x500/?geography",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Introduction to Geography",
+            "description": "Understanding the basics of geography and the diversity of our world‘s landscapes and environments.",
+            "image_path": "https://source.unsplash.com/500x500/?introduction-geography",
+            "type": "CORE"
+          },
+          {
+            "name": "Continents and Oceans",
+            "description": "Learning about the seven continents and five oceans, their unique features, and location.",
+            "image_path": "https://source.unsplash.com/500x500/?continents-oceans",
+            "type": "CORE"
+          },
+          {
+            "name": "Maps and Navigation",
+            "description": "Discovering the art of reading maps, understanding coordinates, and basic navigation skills.",
+            "image_path": "https://source.unsplash.com/500x500/?maps-navigation",
+            "type": "CORE"
+          },
+          {
+            "name": "Climate and Weather",
+            "description": "Exploring the concept of weather and climate, how it varies across the globe and impacts human life.",
+            "image_path": "https://source.unsplash.com/500x500/?climate-weather",
+            "type": "CORE"
+          },
+          {
+            "name": "Natural Resources",
+            "description": "Understanding the importance of natural resources, how they are used, and the concept of sustainability.",
+            "image_path": "https://source.unsplash.com/500x500/?natural-resources",
+            "type": "CORE"
+          },
+          {
+            "name": "Human Impact on Environment",
+            "description": "Discussing the human impact on the environment, pollution, climate change, and conservation efforts.",
+            "image_path": "https://source.unsplash.com/500x500/?human-impact",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Landforms and Biomes",
+            "description": "Exploring the variety of landforms and biomes on Earth, their characteristics, and the life they support.",
+            "image_path": "https://source.unsplash.com/500x500/?landforms-biomes",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Civic Education and Citizenship",
+        "description": "Exploring the responsibilities of citizenship, understanding government structures, and learning about rights and laws.",
+        "image_path": "https://source.unsplash.com/500x500/?citizenship",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Citizenship",
+            "description": "Learning what it means to be a citizen, the rights and responsibilities that come with it.",
+            "image_path": "https://source.unsplash.com/500x500/?citizenship",
+            "type": "CORE"
+          },
+          {
+            "name": "Local, State, and National Government",
+            "description": "Exploring how local, state, and national government functions and their roles in society.",
+            "image_path": "https://source.unsplash.com/500x500/?government",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Laws and Rules",
+            "description": "Learning about the importance of laws and rules, their purpose, and their influence on society.",
+            "image_path": "https://source.unsplash.com/500x500/?laws-rules",
+            "type": "CORE"
+          },
+          {
+            "name": "Elections and Voting",
+            "description": "Understanding the electoral process, the importance of voting, and how leaders are elected.",
+            "image_path": "https://source.unsplash.com/500x500/?elections-voting",
+            "type": "CORE"
+          },
+          {
+            "name": "Rights and Freedoms",
+            "description": "Exploring fundamental rights and freedoms, their importance, and the concept of human rights.",
+            "image_path": "https://source.unsplash.com/500x500/?rights-freedoms",
+            "type": "CORE"
+          },
+          {
+            "name": "Community Service",
+            "description": "Learning about the value of community service, volunteering, and ways to contribute to society.",
+            "image_path": "https://source.unsplash.com/500x500/?community-service",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Media Literacy and Citizenship",
+            "description": "Understanding the role of media in society, developing critical thinking, and responsible digital citizenship.",
+            "image_path": "https://source.unsplash.com/500x500/?media-literacy",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Cultural Diversity and Global Awareness",
+        "description": "Embarking on a journey around the world to appreciate cultural diversity, understand global issues, and foster empathy.",
+        "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Understanding Cultural Diversity",
+            "description": "Learning about different cultures around the world, their traditions, customs, and ways of life.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Issues and Responsibility",
+            "description": "Discussing global issues like poverty, education, and climate change, and our responsibilities as global citizens.",
+            "image_path": "https://source.unsplash.com/500x500/?global-issues",
+            "type": "CORE"
+          },
+          {
+            "name": "World Religions",
+            "description": "Exploring major world religions, their beliefs, practices, and influence on culture and history.",
+            "image_path": "https://source.unsplash.com/500x500/?world-religions",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Food and Cuisine",
+            "description": "Discovering diverse cuisines around the world, their origins, and cultural significance.",
+            "image_path": "https://source.unsplash.com/500x500/?global-cuisine",
+            "type": "CORE"
+          },
+          {
+            "name": "Famous Landmarks Around the World",
+            "description": "Learning about famous landmarks around the world, their history, and cultural importance.",
+            "image_path": "https://source.unsplash.com/500x500/?landmarks",
+            "type": "CORE"
+          },
+          {
+            "name": "World Languages",
+            "description": "Introduction to various languages spoken around the world, their uniqueness, and basic phrases.",
+            "image_path": "https://source.unsplash.com/500x500/?world-languages",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Folklore and Myths from Around the World",
+            "description": "Exploring fascinating folklore, myths, and legends from diverse cultures around the globe.",
+            "image_path": "https://source.unsplash.com/500x500/?folklore-myths",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Economics: Money and Trade",
+        "description": "Demystifying the world of economics, understanding money, trade, and the fundamentals of personal finance.",
+        "image_path": "https://source.unsplash.com/500x500/?economics",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Introduction to Economics",
+            "description": "Understanding the basic concepts of economics, supply and demand, and the role of money.",
+            "image_path": "https://source.unsplash.com/500x500/?introduction-economics",
+            "type": "CORE"
+          },
+          {
+            "name": "Understanding Money and Currency",
+            "description": "Learning about the concept of money, different currencies around the world, and the importance of saving.",
+            "image_path": "https://source.unsplash.com/500x500/?money-currency",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Trade and Commerce",
+            "description": "Exploring the global trade system, understanding exports and imports, and their impact on economies.",
+            "image_path": "https://source.unsplash.com/500x500/?global-trade",
+            "type": "CORE"
+          },
+          {
+            "name": "Jobs and Careers",
+            "description": "Learning about different types of jobs, the concept of careers, and the skills needed for various professions.",
+            "image_path": "https://source.unsplash.com/500x500/?jobs-careers",
+            "type": "CORE"
+          },
+          {
+            "name": "Personal Finance and Budgeting",
+            "description": "Introduction to personal finance, understanding budgeting, saving, and responsible money management.",
+            "image_path": "https://source.unsplash.com/500x500/?personal-finance",
+            "type": "CORE"
+          },
+          {
+            "name": "Entrepreneurship and Innovation",
+            "description": "Understanding entrepreneurship, the role of innovation, and the steps to start a small business.",
+            "image_path": "https://source.unsplash.com/500x500/?entrepreneurship",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Investment and Stock Market Basics",
+            "description": "Learning the basics of investments and the stock market, and understanding financial risk and reward.",
+            "image_path": "https://source.unsplash.com/500x500/?stock-market",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",
+    "topics_data": [
+      {
+        "name": "American Revolution",
+        "description": "Dive into the history of the American Revolution, exploring key events, personalities, and ideas that shaped the United States.",
+        "image_path": "https://source.unsplash.com/500x500/?american-revolution",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Causes of the American Revolution",
+            "description": "Uncover the societal, political, and economic factors that led to the uprising of the American colonies.",
+            "image_path": "https://source.unsplash.com/500x500/?declaration-of-independence",
+            "type": "CORE"
+          },
+          {
+            "name": "Key Figures of the American Revolution",
+            "description": "Explore the lives of influential personalities and their contributions to the American Revolution.",
+            "image_path": "https://source.unsplash.com/500x500/?george-washington",
+            "type": "CORE"
+          },
+          {
+            "name": "Battles of the American Revolution",
+            "description": "Analyze major battles and strategies used in the fight for American independence.",
+            "image_path": "https://source.unsplash.com/500x500/?revolutionary-war",
+            "type": "CORE"
+          },
+          {
+            "name": "The Declaration of Independence",
+            "description": "Unpack the words and principles outlined in the Declaration of Independence, understanding its significance.",
+            "image_path": "https://source.unsplash.com/500x500/?declaration-of-independence",
+            "type": "CORE"
+          },
+          {
+            "name": "Effects of the American Revolution",
+            "description": "Discuss the immediate and long-term consequences of the American Revolution on the newly formed United States.",
+            "image_path": "https://source.unsplash.com/500x500/?us-constitution",
+            "type": "CORE"
+          },
+          {
+            "name": "Art and Culture in Revolutionary America",
+            "description": "Discover how art, literature, and culture were influenced by the American Revolution.",
+            "image_path": "https://source.unsplash.com/500x500/?american-revolution-art",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Comparing Revolutions: America and France",
+            "description": "Examine the parallels and contrasts between the American Revolution and the French Revolution.",
+            "image_path": "https://source.unsplash.com/500x500/?french-revolution",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Civil War Era",
+        "description": "Embark on a journey through one of the most defining periods of American history: The Civil War.",
+        "image_path": "https://source.unsplash.com/500x500/?civil-war",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Slavery and Sectionalism",
+            "description": "Explore the role of slavery and sectional tensions in the lead-up to the Civil War.",
+            "image_path": "https://source.unsplash.com/500x500/?slavery",
+            "type": "CORE"
+          },
+          {
+            "name": "Major Battles and Turning Points",
+            "description": "Learn about key battles and strategic turning points in the Civil War.",
+            "image_path": "https://source.unsplash.com/500x500/?civil-war-battle",
+            "type": "CORE"
+          },
+          {
+            "name": "Abraham Lincoln and the Emancipation Proclamation",
+            "description": "Investigate the life of Abraham Lincoln and the impact of the Emancipation Proclamation.",
+            "image_path": "https://source.unsplash.com/500x500/?abraham-lincoln",
+            "type": "CORE"
+          },
+          {
+            "name": "Life on the Home Front",
+            "description": "Discover how the Civil War affected people on both the Union and Confederate home fronts.",
+            "image_path": "https://source.unsplash.com/500x500/?civil-war-era",
+            "type": "CORE"
+          },
+          {
+            "name": "Reconstruction after the Civil War",
+            "description": "Understand the efforts to rebuild the nation after the Civil War and the impact of Reconstruction policies.",
+            "image_path": "https://source.unsplash.com/500x500/?reconstruction-era",
+            "type": "CORE"
+          },
+          {
+            "name": "Civil War in Literature and Film",
+            "description": "Examine how the Civil War has been portrayed and interpreted in literature and film.",
+            "image_path": "https://source.unsplash.com/500x500/?civil-war-literature",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The Role of Women in the Civil War",
+            "description": "Study the significant contributions and roles women played during the Civil War.",
+            "image_path": "https://source.unsplash.com/500x500/?civil-war-women",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Exploration and Colonization",
+        "description": "Embark on an adventurous journey through time, exploring the era of exploration and colonization.",
+        "image_path": "https://source.unsplash.com/500x500/?exploration",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Age of Exploration",
+            "description": "Discover the motivations, challenges, and consequences of the age of exploration.",
+            "image_path": "https://source.unsplash.com/500x500/?age-of-exploration",
+            "type": "CORE"
+          },
+          {
+            "name": "Life in the Colonies",
+            "description": "Understand the dynamics of colonial life, its hardships, and unique opportunities.",
+            "image_path": "https://source.unsplash.com/500x500/?colonial-life",
+            "type": "CORE"
+          },
+          {
+            "name": "Colonial Economy and Trade",
+            "description": "Explore the foundations of colonial economy, trade relations, and their impact on society.",
+            "image_path": "https://source.unsplash.com/500x500/?colonial-trade",
+            "type": "CORE"
+          },
+          {
+            "name": "Native American Societies and Colonization",
+            "description": "Learn about the diverse Native American societies and their responses to European colonization.",
+            "image_path": "https://source.unsplash.com/500x500/?native-americans",
+            "type": "CORE"
+          },
+          {
+            "name": "Road to Independence",
+            "description": "Trace the path leading to the American independence, from colonial grievances to the Revolutionary War.",
+            "image_path": "https://source.unsplash.com/500x500/?road-to-independence",
+            "type": "CORE"
+          },
+          {
+            "name": "Cultural Exchange and Conflict",
+            "description": "Study the cultural interactions and conflicts between colonists and indigenous populations.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-exchange",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Legacy of Exploration",
+            "description": "Reflect on the enduring legacy of exploration and colonization, evaluating its impacts on today‘s world.",
+            "image_path": "https://source.unsplash.com/500x500/?legacy-of-exploration",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The Age of Invention and Industrialization",
+        "description": "Step into the transformative era of invention and industrialization that reshaped the world.",
+        "image_path": "https://source.unsplash.com/500x500/?industrial-revolution",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Innovations and Inventors",
+            "description": "Learn about groundbreaking innovations and the inventors who brought them to life.",
+            "image_path": "https://source.unsplash.com/500x500/?inventions",
+            "type": "CORE"
+          },
+          {
+            "name": "The Growth of Industry",
+            "description": "Understand the expansion of industries and the economic impacts of industrialization.",
+            "image_path": "https://source.unsplash.com/500x500/?industry",
+            "type": "CORE"
+          },
+          {
+            "name": "Life in Industrial America",
+            "description": "Discover the changing lifestyles and societal shifts prompted by industrialization.",
+            "image_path": "https://source.unsplash.com/500x500/?industrial-america",
+            "type": "CORE"
+          },
+          {
+            "name": "Labor Movement and Unions",
+            "description": "Study the rise of the labor movement and the role of unions in advocating for worker rights.",
+            "image_path": "https://source.unsplash.com/500x500/?labor-movement",
+            "type": "CORE"
+          },
+          {
+            "name": "Environmental Consequences of Industrialization",
+            "description": "Explore the environmental impacts of the industrial revolution and early conservation efforts.",
+            "image_path": "https://source.unsplash.com/500x500/?environmental-impact",
+            "type": "CORE"
+          },
+          {
+            "name": "Industrialization in Art and Literature",
+            "description": "Investigate how industrialization was reflected in the art and literature of the era.",
+            "image_path": "https://source.unsplash.com/500x500/?industrial-art",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Industrialization and Global Relations",
+            "description": "Analyze how industrialization influenced global relations, trade, and imperialism.",
+            "image_path": "https://source.unsplash.com/500x500/?global-relations",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Immigration and the Melting Pot",
+        "description": "Travel the paths of immigrants to America and discover the diverse cultures that contribute to the nation‘s identity.",
+        "image_path": "https://source.unsplash.com/500x500/?immigration",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Migration and Motives",
+            "description": "Explore the reasons behind mass migrations and the dreams that inspired immigrants to start anew.",
+            "image_path": "https://source.unsplash.com/500x500/?migration",
+            "type": "CORE"
+          },
+          {
+            "name": "The Journey to America",
+            "description": "Experience the challenges and triumphs of the journey immigrants undertook to reach America.",
+            "image_path": "https://source.unsplash.com/500x500/?ellis-island",
+            "type": "CORE"
+          },
+          {
+            "name": "Life in a New Land",
+            "description": "Discover the realities of immigrant life in America and the diverse cultures that have shaped our nation.",
+            "image_path": "https://source.unsplash.com/500x500/?immigrant-life",
+            "type": "CORE"
+          },
+          {
+            "name": "Immigration Policies and Reforms",
+            "description": "Understand the evolution of immigration policies and their impact on our society.",
+            "image_path": "https://source.unsplash.com/500x500/?immigration-policy",
+            "type": "CORE"
+          },
+          {
+            "name": "The Melting Pot: Culture and Identity",
+            "description": "Explore the concept of America as a ‘Melting Pot‘ and its implications on cultural identity.",
+            "image_path": "https://source.unsplash.com/500x500/?melting-pot",
+            "type": "CORE"
+          },
+          {
+            "name": "Stories of Success and Struggle",
+            "description": "Hear the inspiring and sometimes challenging stories of immigrants who have shaped America.",
+            "image_path": "https://source.unsplash.com/500x500/?immigrant-stories",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Immigration in Contemporary Perspective",
+            "description": "Reflect on the ongoing debates and issues around immigration in today‘s world.",
+            "image_path": "https://source.unsplash.com/500x500/?modern-immigration",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "The World Wars and Their Impact",
+        "description": "Delve into the world-shattering events of the World Wars and understand their far-reaching impacts.",
+        "image_path": "https://source.unsplash.com/500x500/?world-war",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "The Road to World War I",
+            "description": "Explore the complex web of alliances and events that led to the outbreak of World War I.",
+            "image_path": "https://source.unsplash.com/500x500/?world-war-I",
+            "type": "CORE"
+          },
+          {
+            "name": "Life in the Trenches",
+            "description": "Discover the harsh realities of life in the trenches and the courage of soldiers during World War I.",
+            "image_path": "https://source.unsplash.com/500x500/?trench-warfare",
+            "type": "CORE"
+          },
+          {
+            "name": "World War II: Causes and Global Involvement",
+            "description": "Understand the causes of World War II and how it involved nations around the globe.",
+            "image_path": "https://source.unsplash.com/500x500/?world-war-II",
+            "type": "CORE"
+          },
+          {
+            "name": "The Holocaust and its Consequences",
+            "description": "Study the horrific events of the Holocaust and its lasting consequences on the world.",
+            "image_path": "https://source.unsplash.com/500x500/?holocaust",
+            "type": "CORE"
+          },
+          {
+            "name": "The Aftermath of World Wars",
+            "description": "Reflect on the aftermath of the World Wars, including political changes, the Cold War, and the United Nations.",
+            "image_path": "https://source.unsplash.com/500x500/?post-war",
+            "type": "CORE"
+          },
+          {
+            "name": "Women and War Efforts",
+            "description": "Explore the significant contributions and roles women played during the World Wars.",
+            "image_path": "https://source.unsplash.com/500x500/?women-at-war",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "The World Wars in Literature and Film",
+            "description": "Analyze how the World Wars have been portrayed and interpreted in literature and film.",
+            "image_path": "https://source.unsplash.com/500x500/?war-literature",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Civil Rights Movement and Social Change",
+        "description": "Journey through the struggle for equality and the monumental social changes brought about by the Civil Rights Movement.",
+        "image_path": "https://source.unsplash.com/500x500/?civil-rights",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Origins of the Civil Rights Movement",
+            "description": "Explore the early beginnings of the Civil Rights Movement and its foundational ideologies.",
+            "image_path": "https://source.unsplash.com/500x500/?civil-rights-movement",
+            "type": "CORE"
+          },
+          {
+            "name": "Key Figures and Events",
+            "description": "Learn about the key figures, milestones, and events that shaped the Civil Rights Movement.",
+            "image_path": "https://source.unsplash.com/500x500/?martin-luther-king",
+            "type": "CORE"
+          },
+          {
+            "name": "Impact on Legislation",
+            "description": "Examine the significant legislative changes resulting from the Civil Rights Movement.",
+            "image_path": "https://source.unsplash.com/500x500/?legislation",
+            "type": "CORE"
+          },
+          {
+            "name": "Civil Rights beyond Race",
+            "description": "Understand how the Civil Rights Movement influenced other social movements, including women‘s rights and LGBTQ+ rights.",
+            "image_path": "https://source.unsplash.com/500x500/?equality",
+            "type": "CORE"
+          },
+          {
+            "name": "Legacy of the Civil Rights Movement",
+            "description": "Reflect on the enduring legacy of the Civil Rights Movement and its relevance in today‘s society.",
+            "image_path": "https://source.unsplash.com/500x500/?legacy",
+            "type": "CORE"
+          },
+          {
+            "name": "Art and Music in the Civil Rights Movement",
+            "description": "Investigate the influential role of art and music in communicating the message of the Civil Rights Movement.",
+            "image_path": "https://source.unsplash.com/500x500/?civil-rights-art",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Civil Rights Movement in Global Context",
+            "description": "Analyze the influence of the Civil Rights Movement on global struggles for equality and justice.",
+            "image_path": "https://source.unsplash.com/500x500/?global-civil-rights",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Globalization and the Modern World",
+        "description": "Navigate through the interconnected world of the 21st century and understand the multifaceted impacts of globalization.",
+        "image_path": "https://source.unsplash.com/500x500/?globalization",
+        "type": "CORE",
+        "lessons_data": [
+          {
+            "name": "Understanding Globalization",
+            "description": "Discover the concept of globalization and its implications on societies, economies, and cultures around the world.",
+            "image_path": "https://source.unsplash.com/500x500/?global-trade",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Economy and Trade",
+            "description": "Delve into the global economic system and the importance of international trade in the modern world.",
+            "image_path": "https://source.unsplash.com/500x500/?global-economy",
+            "type": "CORE"
+          },
+          {
+            "name": "Cultural Exchange in a Globalized World",
+            "description": "Explore the cultural exchanges fostered by globalization and their influence on global diversity.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-exchange",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Issues and Challenges",
+            "description": "Investigate major global issues such as climate change, inequality, and conflict in the context of globalization.",
+            "image_path": "https://source.unsplash.com/500x500/?global-issues",
+            "type": "CORE"
+          },
+          {
+            "name": "Technological Advancements and Globalization",
+            "description": "Examine the role of technological advancements in accelerating globalization and transforming societies.",
+            "image_path": "https://source.unsplash.com/500x500/?technology-globalization",
+            "type": "CORE"
+          },
+          {
+            "name": "Global Citizenship and Responsibility",
+            "description": "Learn about the concept of global citizenship and our responsibilities towards our interconnected world.",
+            "image_path": "https://source.unsplash.com/500x500/?global-citizenship",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Globalization in Film and Literature",
+            "description": "Analyze portrayals of globalization in film and literature, and how these mediums contribute to global dialogue.",
+            "image_path": "https://source.unsplash.com/500x500/?global-film",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Architecture Through the Ages",
+        "description": "Marvel at the grandeur of human creativity and engineering in this journey through the world‘s most iconic architectural feats.",
+        "image_path": "https://source.unsplash.com/500x500/?architecture",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Pyramids of Egypt",
+            "description": "Discover the marvels of Egyptian architecture and the symbolism embodied in the ancient pyramids.",
+            "image_path": "https://source.unsplash.com/500x500/?pyramids",
+            "type": "CORE"
+          },
+          {
+            "name": "Greek and Roman Architecture",
+            "description": "Explore the pillars of Greek and Roman architecture that have influenced design principles for centuries.",
+            "image_path": "https://source.unsplash.com/500x500/?roman-architecture",
+            "type": "CORE"
+          },
+          {
+            "name": "Gothic Architecture",
+            "description": "Dive into the world of Gothic architecture, its characteristics, and its most magnificent cathedrals.",
+            "image_path": "https://source.unsplash.com/500x500/?gothic-architecture",
+            "type": "CORE"
+          },
+          {
+            "name": "Modern Architecture",
+            "description": "Understand the evolution of modern architecture and the diverse styles that have emerged in the 20th and 21st centuries.",
+            "image_path": "https://source.unsplash.com/500x500/?modern-architecture",
+            "type": "CORE"
+          },
+          {
+            "name": "Sustainable Architecture",
+            "description": "Explore the field of sustainable architecture and the importance of designing with the environment in mind.",
+            "image_path": "https://source.unsplash.com/500x500/?sustainable-architecture",
+            "type": "CORE"
+          },
+          {
+            "name": "Architecture in Film and Literature",
+            "description": "Analyze portrayals and symbolism of architecture in film and literature.",
+            "image_path": "https://source.unsplash.com/500x500/?architecture-film",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Architecture as a Reflection of Society",
+            "description": "Investigate how architecture reflects societal values, culture, and history.",
+            "image_path": "https://source.unsplash.com/500x500/?society-architecture",
+            "type": "ELECTIVE"
+          }
+        ]
+      },
+      {
+        "name": "Exploring Folklore and Myths",
+        "description": "Dive into the rich tapestry of human imagination and cultural wisdom embodied in global folklore and myths.",
+        "image_path": "https://source.unsplash.com/500x500/?folklore",
+        "type": "ELECTIVE",
+        "lessons_data": [
+          {
+            "name": "Understanding Folklore and Myths",
+            "description": "Learn about the role of folklore and myths in reflecting culture, history, and human nature.",
+            "image_path": "https://source.unsplash.com/500x500/?myths",
+            "type": "CORE"
+          },
+          {
+            "name": "Greek and Roman Myths",
+            "description": "Discover the fascinating world of Greek and Roman mythology, its gods, heroes, and epic tales.",
+            "image_path": "https://source.unsplash.com/500x500/?greek-myths",
+            "type": "CORE"
+          },
+          {
+            "name": "Nordic Myths and Sagas",
+            "description": "Explore the dramatic sagas and mythological figures of the Nordic tradition.",
+            "image_path": "https://source.unsplash.com/500x500/?nordic-myths",
+            "type": "CORE"
+          },
+          {
+            "name": "Folklore from Around the World",
+            "description": "Travel across continents through captivating folk tales and legends that reflect diverse cultures.",
+            "image_path": "https://source.unsplash.com/500x500/?world-folklore",
+            "type": "CORE"
+          },
+          {
+            "name": "Modern Myths and Urban Legends",
+            "description": "Investigate the phenomena of modern myths and urban legends in contemporary society.",
+            "image_path": "https://source.unsplash.com/500x500/?urban-legends",
+            "type": "CORE"
+          },
+          {
+            "name": "Mythology in Literature and Art",
+            "description": "Examine the influence and interpretation of myths in various forms of literature and art.",
+            "image_path": "https://source.unsplash.com/500x500/?mythology-literature",
+            "type": "ELECTIVE"
+          },
+          {
+            "name": "Creating Your Own Myth",
+            "description": "Unleash your creativity by crafting your own myth, incorporating elements of storytelling and symbolic meaning.",
+            "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+            "type": "ELECTIVE"
+          }
+        ]
+      }
+    ]
+  }
+]'::json
 );
 
 -- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
