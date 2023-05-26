@@ -24,7 +24,36 @@ export function generateLessonPlanPrompt({
     learning_styles,
   } = lesson;
 
-  const { name, role, teaching_preferences } = teacher; // TSK
+  const { name, role, teaching_preferences } = teacher; // teaching_preferences: { teachingStrategies, lessonDetailLevel, teachingTools, lessonStructure }
+
+  // Teaching Strategies
+  const teachingStrategies = teaching_preferences?.teachingStrategies?.length
+    ? `Favorite Teaching Strategies: ${teaching_preferences?.teachingStrategies?.join(
+        ', ',
+      )}.`
+    : '';
+
+  // Lesson Detail Level
+  const lessonDetailLevel = teaching_preferences?.lessonDetailLevel
+    ? `Ideal lesson plan detail level: ${teaching_preferences?.lessonDetailLevel} (BASIC, INTERMEDIATE, DETAILED).`
+    : '';
+
+  // Teaching Tools
+  const teachingTools = teaching_preferences?.teachingTools?.length
+    ? `Favorite teaching tools: ${teaching_preferences?.teachingTools?.join(
+        ', ',
+      )}.`
+    : '';
+
+  // Lesson Structure
+  const lessonStructure = teaching_preferences?.lessonStructure
+    ? `Ideal lesson plan structure: ${teaching_preferences?.lessonStructure}.`
+    : '';
+
+  // Generate the teacher section
+  const teachingPreferencesSection = teaching_preferences
+    ? `The teacher's teaching preferences are: ${teachingStrategies}, ${lessonDetailLevel}, ${teachingTools}, ${lessonStructure}.`
+    : '';
 
   // Generate the students section
   const studentsSection =
@@ -93,11 +122,15 @@ export function generateLessonPlanPrompt({
   The students (children) are:
   ${studentsSection}
 
+  The teacher is ${name} and their role is ${role}.
+  ${teachingPreferencesSection}
+
+
   ${specialConsiderationsSection}
 
   Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson.
 
-  Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Important!
+  Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Make the output semantically proper. Important!
 
   Return the lesson plan in clean markdown format.
   `;
@@ -123,7 +156,36 @@ export function generateCurriculumLessonPlanPrompt({
     additional_requests,
   } = lessonBody;
 
-  const { name, role, teaching_preferences } = teacherBody; // TSK
+  const { name, role, teaching_preferences } = teacherBody; // teaching_preferences: { teachingStrategies, lessonDetailLevel, teachingTools, lessonStructure }
+
+  // Teaching Strategies
+  const teachingStrategies = teaching_preferences?.teachingStrategies?.length
+    ? `Favorite Teaching Strategies: ${teaching_preferences?.teachingStrategies?.join(
+        ', ',
+      )}.`
+    : '';
+
+  // Lesson Detail Level
+  const lessonDetailLevel = teaching_preferences?.lessonDetailLevel
+    ? `Ideal lesson plan detail level: ${teaching_preferences?.lessonDetailLevel} (BASIC, INTERMEDIATE, DETAILED).`
+    : '';
+
+  // Teaching Tools
+  const teachingTools = teaching_preferences?.teachingTools?.length
+    ? `Favorite teaching tools: ${teaching_preferences?.teachingTools?.join(
+        ', ',
+      )}.`
+    : '';
+
+  // Lesson Structure
+  const lessonStructure = teaching_preferences?.lessonStructure
+    ? `Ideal lesson plan structure: ${teaching_preferences?.lessonStructure}.`
+    : '';
+
+  // Generate the teacher section
+  const teachingPreferencesSection = teaching_preferences
+    ? `The teacher's teaching preferences are: ${teachingStrategies}, ${lessonDetailLevel}, ${teachingTools}, ${lessonStructure}.`
+    : '';
 
   // If level is "Buds", "Sprouts", or "Oaks" change it to "Pre-K (Buds)", "K-2 (Sprouts)", or "3-5 (Oaks)
   const gradeLevel =
@@ -170,11 +232,16 @@ The lesson's length is ${length_in_min} minutes.
 The students (children) are:
 ${studentsSection}
 
+The teacher is ${name} and their role is ${role}.
+${teachingPreferencesSection}
+
 ${additionalRequestsSection}
+
+---
 
 Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson.
 
-Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Important!
+Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Make the output semantically proper. Important!
 
 Return the lesson plan in clean markdown format.
     `.trim();
