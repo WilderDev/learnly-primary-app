@@ -116,6 +116,14 @@ export function UserProvider({ children }: PropsWithChildren) {
       birthday: student.birthday!,
       avatarUrl: student.avatar_url!,
       learningStyles: student.learning_styles!,
+      favoriteSubjects: student.subject_preferences!,
+      interests: student.interests!,
+      goals: student.goals!,
+      learningEnvironments: student.learning_environment_preferences!,
+      learningResources: student.learning_resources_preferences!,
+      specialNeeds: student.special_needs!,
+      // Strenths
+      // Weaknesses
       // . . .
     }));
 

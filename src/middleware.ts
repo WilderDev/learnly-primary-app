@@ -43,6 +43,7 @@ export async function middleware(req: NextRequest) {
 // See "Matching Paths" below to learn more
 export const config = {
   matcher: [
+    '/schedule-builder',
     '/profile/:path*',
     '/account/:path*',
     '/lesson-creator/:path*',

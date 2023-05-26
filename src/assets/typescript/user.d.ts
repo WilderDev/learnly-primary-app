@@ -7,6 +7,12 @@ export type TLessonDetailLevel =
 export type TTeachingTool = Database['public']['Enums']['teaching_tool'];
 export type TLessonStructure = Database['public']['Enums']['lesson_structure'];
 export type TLearningStyle = Database['public']['Enums']['learning_style'];
+export type TGoal = Database['public']['Enums']['student_goals'];
+export type TLearningEnvironment =
+  Database['public']['Enums']['environment_preferences'];
+export type TLearningResource =
+  Database['public']['Enums']['resource_preferences'];
+export type TSpecialNeed = Database['public']['Enums']['learning_disabilities'];
 
 export interface IUserSubscription {
   isAuthorized: boolean;
@@ -39,4 +45,10 @@ export interface UserStudent {
   avatarUrl: string;
   birthday: string;
   learningStyles: TLearningStyle[];
+  favoriteSubjects: string[];
+  interests: string[];
+  goals: TGoal[];
+  learningEnvironments: TLearningEnvironment[];
+  learningResources: TLearningResource[];
+  specialNeeds: TSpecialNeed[];
 }

@@ -26,6 +26,8 @@ export function formatExactDateString(
     day: 'numeric',
   },
 ): string {
+  if (!dateStr) return ''; // Return empty string if dateStr is empty
+
   const [year, month, day] = dateStr.split('-').map((str) => Number(str));
   const dateObj = new Date(year, month - 1, day); // JavaScript months are 0-indexed
 

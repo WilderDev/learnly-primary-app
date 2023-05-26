@@ -8,7 +8,7 @@ export default function AccountProfileTab() {
   return (
     <section className="flex flex-col 2xl:flex-row 2xl:justify-between gap-y-12 2xl:gap-y-0 2xl:gap-x-12">
       {/* Profile Details */}
-      <DashPanel className="w-full 2xl:w-1/2" colNum={1}>
+      <DashPanel className="w-full 2xl:w-8/12" colNum={1}>
         {/* Header */}
         <DashPanelHeader title="Update Your Profile Details" />
 
@@ -17,7 +17,7 @@ export default function AccountProfileTab() {
       </DashPanel>
 
       {/* Teaching Preferences */}
-      <DashPanel className="w-full 2xl:w-1/2" colNum={2}>
+      <DashPanel className="w-full 2xl:w-4/12" colNum={2}>
         {/* Header */}
         <DashPanelHeader title="Update Your Teaching Preferences" />
 

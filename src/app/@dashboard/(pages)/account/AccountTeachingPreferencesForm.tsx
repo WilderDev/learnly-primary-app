@@ -178,7 +178,7 @@ export default function AccountTeachingPreferencesForm() {
 
       {/* Submit */}
       <Button
-        className="col-span-4"
+        className="col-span-4 mt-2.5"
         type="submit"
         loading={isLoading}
         disabled={isLoading || !lessonDetailLevel}

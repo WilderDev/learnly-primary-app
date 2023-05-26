@@ -1,9 +1,13 @@
 'use server';
 
-import { Database } from '@/assets/typescript/db';
 import {
+  TGoal,
+  TLearningEnvironment,
+  TLearningResource,
+  TLearningStyle,
   TLessonDetailLevel,
   TLessonStructure,
+  TSpecialNeed,
   TTeachingStrategy,
   TTeachingTool,
 } from '@/assets/typescript/user';
@@ -152,3 +156,69 @@ const addStudentAction = async (input: z.infer<typeof addStudentSchema>) => {
 };
 
 export const addStudent = createRequest(addStudentAction, addStudentSchema);
+
+// * Edit Student Preferences
+const editStudentSchema = z.object({
+  studentId: z.string().uuid(),
+  name: z.string(),
+  birthday: z.string(),
+  avatarUrl: z.string(),
+  learningStyles: z.array(z.string()),
+  // subjects: z.array(z.string()), // TSK
+  // interests: z.array(z.string()), // TSK
+  goals: z.array(z.string()),
+  learningEnvironments: z.array(z.string()),
+  learningResources: z.array(z.string()),
+  specialNeeds: z.array(z.string()),
+});
+
+const editStudentAction = async (input: z.infer<typeof editStudentSchema>) => {
+  console.log('input:', input);
+  try {
+    const supabase = supabaseServer();
+
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    const first_name = input.name.split(' ')[0] || '';
+    const last_name = input.name.split(' ').slice(1).join(' ') || '';
+
+    const { error: studentProfileError } = await supabase
+      .from('student_profiles')
+      .update({
+        first_name,
+        last_name,
+        birthday: input.birthday,
+        avatar_url: input.avatarUrl,
+      })
+      .eq('id', input.studentId);
+
+    const { error: studentPrefError } = await supabase
+      .from('student_preferences')
+      .update({
+        learning_styles: input.learningStyles as TLearningStyle[],
+        // subject_preferences: input.subjects as TSubject[], // TSK
+        // interests: input.interests as TInterest[], // TSK
+        goals: input.goals as TGoal[],
+        learning_environment_preferences:
+          input.learningEnvironments as TLearningEnvironment[],
+        learning_resources_preferences:
+          input.learningResources as TLearningResource[],
+        special_needs: input.specialNeeds as TSpecialNeed[],
+      })
+      .eq('id', input.studentId);
+
+    if (studentProfileError || studentPrefError)
+      return responseContract('Woops! Something went wrong!', false);
+
+    revalidatePath('/account'); // ✅
+    revalidatePath('/lesson-creator'); // ✅
+
+    return responseContract('Success!', true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
+};
+
+export const editStudent = createRequest(editStudentAction, editStudentSchema);
