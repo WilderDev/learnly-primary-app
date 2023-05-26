@@ -1,11 +1,12 @@
 import { Database } from './db';
 
-export type ITeachingStrategy =
+export type TTeachingStrategy =
   Database['public']['Enums']['teaching_strategy'];
-export type ILessonDetailLevel =
+export type TLessonDetailLevel =
   Database['public']['Enums']['lesson_detail_level'];
-export type ITeachingTool = Database['public']['Enums']['teaching_tool'];
-export type ILessonStructure = Database['public']['Enums']['lesson_structure'];
+export type TTeachingTool = Database['public']['Enums']['teaching_tool'];
+export type TLessonStructure = Database['public']['Enums']['lesson_structure'];
+export type TLearningStyle = Database['public']['Enums']['learning_style'];
 
 export interface IUserSubscription {
   isAuthorized: boolean;
@@ -24,10 +25,10 @@ export interface Me {
   type: Database['public']['Enums']['profile_type'];
   role: Database['public']['Enums']['user_role'];
   teachingPreferences: {
-    teachingStrategies: ITeachingStrategy[];
-    lessonDetailLevel: ILessonDetailLevel;
-    teachingTools: ITeachingTool[];
-    lessonStructure: ILessonStructure | null;
+    teachingStrategies: TTeachingStrategy[];
+    lessonDetailLevel: TLessonDetailLevel;
+    teachingTools: TTeachingTool[];
+    lessonStructure: TLessonStructure | null;
   };
 }
 
@@ -37,5 +38,5 @@ export interface UserStudent {
   lastName: string;
   avatarUrl: string;
   birthday: string;
-  learningStyles: Database['public']['Enums']['learning_style'][];
+  learningStyles: TLearningStyle[];
 }

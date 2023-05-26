@@ -1,6 +1,15 @@
 'use server';
 
-import { Database } from '@/assets/typescript/db';
+import {
+  TDifficulty,
+  TFormat,
+  TMaterial,
+  TObjective,
+  TPace,
+  TPhilosophy,
+  TStandard,
+} from '@/assets/typescript/lesson-plan';
+import { TLearningStyle, TTeachingStrategy } from '@/assets/typescript/user';
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
@@ -87,22 +96,15 @@ const saveLessonPlanTemplateAction = async (
       tags,
       image_path: 'https://source.unsplash.com/random/800x600',
       length_in_min: lengthInMin,
-      difficulty:
-        (difficulty as Database['public']['Enums']['difficulty']) || null,
-      pace: (pace as Database['public']['Enums']['pace']) || null,
-      philosophy:
-        (philosophy as Database['public']['Enums']['philosophy']) || null,
-      format: (format as Database['public']['Enums']['format']) || null,
-      learning_styles:
-        (learningStyles as Database['public']['Enums']['learning_style'][]) ||
-        [],
-      teaching_strategy:
-        (teachingStrategy as Database['public']['Enums']['teaching_strategy']) ||
-        null,
-      materials: (materials as Database['public']['Enums']['material'][]) || [],
-      standards: (standards as Database['public']['Enums']['standard'][]) || [],
-      objectives:
-        (objectives as Database['public']['Enums']['objective'][]) || [],
+      difficulty: (difficulty as TDifficulty) || null,
+      pace: (pace as TPace) || null,
+      philosophy: (philosophy as TPhilosophy) || null,
+      format: (format as TFormat) || null,
+      learning_styles: (learningStyles as TLearningStyle[]) || [],
+      teaching_strategy: (teachingStrategy as TTeachingStrategy) || null,
+      materials: (materials as TMaterial[]) || [],
+      standards: (standards as TStandard[]) || [],
+      objectives: (objectives as TObjective[]) || [],
       // is_public: true,
       special_considerations: specialConsiderations || '',
     };

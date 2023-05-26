@@ -2,10 +2,10 @@
 
 import { Database } from '@/assets/typescript/db';
 import {
-  ILessonDetailLevel,
-  ILessonStructure,
-  ITeachingStrategy,
-  ITeachingTool,
+  TLessonDetailLevel,
+  TLessonStructure,
+  TTeachingStrategy,
+  TTeachingTool,
 } from '@/assets/typescript/user';
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
@@ -87,12 +87,12 @@ const updateTeachingPreferencesAction = async (
       .from('teaching_preferences')
       .update({
         preferred_teaching_strategies:
-          input.teachingStrategies as ITeachingStrategy[],
+          input.teachingStrategies as TTeachingStrategy[],
         preferred_lesson_detail_level:
-          input.lessonDetailLevel as ILessonDetailLevel,
-        preferred_teaching_tools: input.teachingTools as ITeachingTool[],
+          input.lessonDetailLevel as TLessonDetailLevel,
+        preferred_teaching_tools: input.teachingTools as TTeachingTool[],
         preferred_lesson_structure:
-          input.lessonStructure as ILessonStructure | null,
+          input.lessonStructure as TLessonStructure | null,
       })
       .eq('id', session?.user?.id);
 

@@ -1,9 +1,7 @@
-import DashMainCol from '../../(layout)/DashMainCol';
 import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
 import { AccountProvider } from './AccountCtx';
 import AccountNav from './AccountNav';
-import AccountPanelContainer from './AccountPanelContainer';
 
 export default function AccountPage() {
   return (

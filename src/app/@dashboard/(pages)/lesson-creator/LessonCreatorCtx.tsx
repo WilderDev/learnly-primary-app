@@ -17,6 +17,13 @@ import {
   ILessonPlanPromptReq,
   IStudentPromptReq,
   ITeacherPromptReq,
+  TDifficulty,
+  TFormat,
+  TMaterial,
+  TObjective,
+  TPace,
+  TPhilosophy,
+  TStandard,
 } from '@/assets/typescript/lesson-plan';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
@@ -24,6 +31,7 @@ import { v4 } from 'uuid';
 import { Database } from '@/assets/typescript/db';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { TLearningStyle, TTeachingStrategy } from '@/assets/typescript/user';
 
 // * Context
 // Interface
@@ -33,23 +41,23 @@ interface ILessonCreatorCtx {
   subject: TSelection;
   level: TSelection;
   topic: TSelection;
-  objectives: Database['public']['Enums']['objective'][];
+  objectives: TObjective[];
   /// Goals - Extra
-  difficulty: Database['public']['Enums']['difficulty'] | null;
-  standards: Database['public']['Enums']['standard'][];
+  difficulty: TDifficulty | null;
+  standards: TStandard[];
   /// Structure - Core
-  philosophy: Database['public']['Enums']['philosophy'] | null;
-  teachingStrategy: Database['public']['Enums']['teaching_strategy'] | null;
+  philosophy: TPhilosophy | null;
+  teachingStrategy: TTeachingStrategy | null;
   lengthInMin: number;
   /// Structure - Extra
-  pace: Database['public']['Enums']['pace'] | null;
-  format: Database['public']['Enums']['format'] | null;
+  pace: TPace | null;
+  format: TFormat | null;
   /// Context -Core
   students: IStudentPromptReq['students'];
-  materials: Database['public']['Enums']['material'][];
+  materials: TMaterial[];
   specialConsiderations: string | null;
   /// Context - Extra
-  learningStyles: Database['public']['Enums']['learning_style'][];
+  learningStyles: TLearningStyle[];
   // Output
   lessonContent: string;
   // UI
@@ -68,34 +76,18 @@ interface ILessonCreatorCtx {
   setSubject: Dispatch<SetStateAction<TSelection>>;
   setLevel: Dispatch<SetStateAction<TSelection>>;
   setTopic: Dispatch<SetStateAction<TSelection>>;
-  setObjectives: Dispatch<
-    SetStateAction<Database['public']['Enums']['objective'][]>
-  >;
-  setDifficulty: Dispatch<
-    SetStateAction<Database['public']['Enums']['difficulty'] | null>
-  >;
-  setStandards: Dispatch<
-    SetStateAction<Database['public']['Enums']['standard'][]>
-  >;
-  setTeachingStrategy: Dispatch<
-    SetStateAction<Database['public']['Enums']['teaching_strategy'] | null>
-  >;
-  setPhilosophy: Dispatch<
-    SetStateAction<Database['public']['Enums']['philosophy'] | null>
-  >;
+  setObjectives: Dispatch<SetStateAction<TObjective[]>>;
+  setDifficulty: Dispatch<SetStateAction<TDifficulty | null>>;
+  setStandards: Dispatch<SetStateAction<TStandard[]>>;
+  setTeachingStrategy: Dispatch<SetStateAction<TTeachingStrategy | null>>;
+  setPhilosophy: Dispatch<SetStateAction<TPhilosophy | null>>;
   setLengthInMin: Dispatch<SetStateAction<number>>;
-  setPace: Dispatch<SetStateAction<Database['public']['Enums']['pace'] | null>>;
-  setFormat: Dispatch<
-    SetStateAction<Database['public']['Enums']['format'] | null>
-  >;
+  setPace: Dispatch<SetStateAction<TPace | null>>;
+  setFormat: Dispatch<SetStateAction<TFormat | null>>;
   setStudents: Dispatch<SetStateAction<IStudentPromptReq['students']>>;
-  setMaterials: Dispatch<
-    SetStateAction<Database['public']['Enums']['material'][]>
-  >;
+  setMaterials: Dispatch<SetStateAction<TMaterial[]>>;
   setSpecialConsiderations: Dispatch<SetStateAction<string>>;
-  setLearningStyles: Dispatch<
-    SetStateAction<Database['public']['Enums']['learning_style'][]>
-  >;
+  setLearningStyles: Dispatch<SetStateAction<TLearningStyle[]>>;
   setComplete: Dispatch<SetStateAction<boolean>>;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
   // Extra
@@ -186,42 +178,27 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
   const [subject, setSubject] = useState<TSelection>(null);
   const [level, setLevel] = useState<TSelection>(null);
   const [topic, setTopic] = useState<TSelection>(null);
-  const [objectives, setObjectives] = useState<
-    Database['public']['Enums']['objective'][]
-  >([]);
+  const [objectives, setObjectives] = useState<TObjective[]>([]);
   /// Goals - Extra
-  const [difficulty, setDifficulty] = useState<
-    Database['public']['Enums']['difficulty'] | null
-  >('MODERATE');
-  const [standards, setStandards] = useState<
-    Database['public']['Enums']['standard'][]
-  >([]);
+  const [difficulty, setDifficulty] = useState<TDifficulty | null>('MODERATE');
+  const [standards, setStandards] = useState<TStandard[]>([]);
   /// Structure - Core
-  const [philosophy, setPhilosophy] = useState<
-    Database['public']['Enums']['philosophy'] | null
-  >('Eclectic/Relaxed');
-  const [teachingStrategy, setTeachingStrategy] = useState<
-    Database['public']['Enums']['teaching_strategy'] | null
-  >('Direct Instruction');
+  const [philosophy, setPhilosophy] = useState<TPhilosophy | null>(
+    'Eclectic/Relaxed',
+  );
+  const [teachingStrategy, setTeachingStrategy] =
+    useState<TTeachingStrategy | null>('Direct Instruction');
   const [lengthInMin, setLengthInMin] = useState<number>(60);
   /// Structure - Extra
-  const [pace, setPace] = useState<Database['public']['Enums']['pace'] | null>(
-    'MEDIUM',
-  );
-  const [format, setFormat] = useState<
-    Database['public']['Enums']['format'] | null
-  >(null);
+  const [pace, setPace] = useState<TPace | null>('MEDIUM');
+  const [format, setFormat] = useState<TFormat | null>(null);
   /// Context - Core
   const [students, setStudents] = useState<IStudentPromptReq['students']>([]);
-  const [materials, setMaterials] = useState<
-    Database['public']['Enums']['material'][]
-  >([]);
+  const [materials, setMaterials] = useState<TMaterial[]>([]);
   const [specialConsiderations, setSpecialConsiderations] =
     useState<string>('');
   /// Context - Extra
-  const [learningStyles, setLearningStyles] = useState<
-    Database['public']['Enums']['learning_style'][]
-  >([]);
+  const [learningStyles, setLearningStyles] = useState<TLearningStyle[]>([]);
   // Output
   const [lessonContent, setLessonContent] = useState('');
   const [complete, setComplete] = useState(false);
@@ -264,7 +241,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     const teacher: ITeacherPromptReq = {
       name: user?.firstName + ' ' + user?.lastName,
       role: user?.type!,
-      teaching_preferences: {}, // TSK
+      teaching_preferences: user?.teachingPreferences,
     };
 
     // Generate Lesson Plan Request
@@ -346,6 +323,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
     user?.type,
     user?.firstName,
     user?.lastName,
+    user?.teachingPreferences,
     router,
   ]);
 

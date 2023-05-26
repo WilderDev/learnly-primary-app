@@ -22,7 +22,11 @@ import {
   ICurriculumLessonPlanStudent,
   ICurriculumLessonPromptReq,
 } from '@/assets/typescript/curriculum-roadmaps';
-import { ITeacherPromptReq } from '@/assets/typescript/lesson-plan';
+import {
+  ITeacherPromptReq,
+  TDifficulty,
+  TPhilosophy,
+} from '@/assets/typescript/lesson-plan';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
 import Modal from '@/lib/components/popouts/Modal';
@@ -50,11 +54,9 @@ export default function CurriculumLessonForm({ lesson, students }: IProps) {
 
   // * State
   const [lessonOutput, setLessonOutput] = useState('');
-  const [philosophy, setPhilosophy] =
-    useState<Database['public']['Enums']['philosophy']>('Eclectic/Relaxed');
+  const [philosophy, setPhilosophy] = useState<TPhilosophy>('Eclectic/Relaxed');
   const [lengthInMin, setLengthInMin] = useState(60);
-  const [difficulty, setDifficulty] =
-    useState<Database['public']['Enums']['difficulty']>('MODERATE');
+  const [difficulty, setDifficulty] = useState<TDifficulty>('MODERATE');
   const [additionalRequests, setAdditionalRequests] = useState('');
   const [loading, setLoading] = useState(false);
   const [lessonId, setLessonId] = useState('');
@@ -82,7 +84,7 @@ export default function CurriculumLessonForm({ lesson, students }: IProps) {
     const teacherBody: ITeacherPromptReq = {
       name: user?.firstName!,
       role: user?.type!,
-      teaching_preferences: {},
+      teaching_preferences: user?.teachingPreferences,
     };
 
     // 3. Send Request to API

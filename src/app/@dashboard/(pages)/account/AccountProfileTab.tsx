@@ -27,5 +27,3 @@ export default function AccountProfileTab() {
     </section>
   );
 }
-
-// TSK: Teaching Preferences Form

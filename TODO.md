@@ -26,3 +26,4 @@
 26. DMARC & SPF Records
 27. [Stripe Elements to add credit card inside dashboard](https://stripe.com/docs/payments/payment-element)
 28. We really need to test the stripe flow and make sure it works... when a user signs up it's one subscription, when they don't pay it sends them invoices and sets their status in stripe and supabase and when they don't pay it downgrades them and sends them an email and sets their status in stripe and supabase having the modal pop up and not allow them to move forward.
+29. Curriculum Topic search page with tags and by filters

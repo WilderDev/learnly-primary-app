@@ -16,7 +16,6 @@ import {
 import { Dispatch, SetStateAction, useState } from 'react';
 import { toast } from 'sonner';
 import { addEvent } from './_actions';
-import { Database } from '@/assets/typescript/db';
 import Button from '@/lib/components/ui/Button';
 import DatePicker from '@/lib/components/form/DatePicker';
 import Select from '@/lib/components/form/Select';
@@ -24,6 +23,7 @@ import Image from 'next/image';
 import cn from '@/lib/common/cn';
 import { useSchedule } from './ScheduleCtx';
 import { revalidatePath } from 'next/cache';
+import { TEvent } from '@/assets/typescript/schedule';
 
 // * Props
 interface IProps {
@@ -40,7 +40,7 @@ export default function AddEventModal({ isOpen, close }: IProps) {
   // * State
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [type, setType] = useState<Database['public']['Enums']['event']>();
+  const [type, setType] = useState<TEvent>();
   const [datetime, setDatetime] = useState<Date | null>(null);
   const [lengthInMin, setLengthInMin] = useState(60);
   const [location, setLocation] = useState('');

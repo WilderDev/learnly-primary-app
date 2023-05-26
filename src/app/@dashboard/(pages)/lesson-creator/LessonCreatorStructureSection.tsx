@@ -13,10 +13,12 @@ import {
   ClockIcon,
   BoltIcon,
 } from '@heroicons/react/24/outline';
+import { TFormat, TPace, TPhilosophy } from '@/assets/typescript/lesson-plan';
+import { TTeachingStrategy } from '@/assets/typescript/user';
 
 // * Data
 // Philosophy
-export const philosophyOptions: Database['public']['Enums']['philosophy'][] = [
+export const philosophyOptions: TPhilosophy[] = [
   'Eclectic/Relaxed',
   'Traditional',
   'Montessori',
@@ -30,32 +32,23 @@ export const philosophyOptions: Database['public']['Enums']['philosophy'][] = [
   'Other',
 ];
 // Teaching Strategy
-const teachingStrategyOptions: Database['public']['Enums']['teaching_strategy'][] =
-  [
-    'Direct Instruction',
-    'Cooperative Learning',
-    'Inquiry-Based Learning',
-    'Differentiated Instruction',
-    'Expeditionary Learning',
-    'Personalized Learning',
-    'Blended Learning',
-    'Project-Based Learning',
-    'Problem-Based Learning',
-    'Socratic Learning',
-    'Other',
-  ];
+const teachingStrategyOptions: TTeachingStrategy[] = [
+  'Direct Instruction',
+  'Cooperative Learning',
+  'Inquiry-Based Learning',
+  'Differentiated Instruction',
+  'Expeditionary Learning',
+  'Personalized Learning',
+  'Blended Learning',
+  'Project-Based Learning',
+  'Problem-Based Learning',
+  'Socratic Learning',
+  'Other',
+];
 // Pace
-export const paceOptions: Database['public']['Enums']['pace'][] = [
-  'SLOW',
-  'MEDIUM',
-  'FAST',
-];
+export const paceOptions: TPace[] = ['SLOW', 'MEDIUM', 'FAST'];
 // Format
-const formatOptions: Database['public']['Enums']['format'][] = [
-  'Whole Group',
-  'Small Group',
-  'Individual',
-];
+const formatOptions: TFormat[] = ['Whole Group', 'Small Group', 'Individual'];
 
 // * Component
 export default function LessonCreatorStructureSection() {

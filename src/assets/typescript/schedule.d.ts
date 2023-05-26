@@ -10,7 +10,7 @@ export type TScheduleView =
   | 'monthly'
   | 'yearly';
 
-//
+export type TEvent = Database['public']['Enums']['event'];
 
 // * Interfaces
 // Schedule Tab Item
@@ -35,7 +35,7 @@ export interface ICalendarEvent {
   description: string;
   imagePath: string;
   url: string;
-  type: Database['public']['Enums']['event'];
+  type: TEvent;
   datetime: string;
   location: string;
   lengthInMin: number;
