@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   # Student Information
   Name: __________
   Date: __________
-  
+
   # Lesson Content
   ${lessonPlanContent}
   
@@ -38,8 +38,6 @@ export async function POST(request: Request) {
   ${additionalComments && 'Additional guidelines: ' + additionalComments}.
 
   After generating the worksheet, create an answer key that provides the correct answers to the questions.
-  
-  **Begin generation here:**
   `.trim();
 
   const payload = {

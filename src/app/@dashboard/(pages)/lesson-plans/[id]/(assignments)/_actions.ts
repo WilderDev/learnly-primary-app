@@ -43,6 +43,7 @@ const saveAssignmentAction = async (
     if (error) return responseContract(error.message, false);
 
     revalidatePath('/');
+    revalidatePath('/lesson-plans/' + lesson_plan_id);
 
     return responseContract('Success!', true);
   } catch (error) {
@@ -147,12 +148,13 @@ export const editAssignment = createRequest(
 
 const deleteAssignmentSchema = z.object({
   id: z.string().uuid(),
+  lesson_plan_id: z.string().uuid(),
 });
 
 const deleteAssignmentAction = async (
   input: z.infer<typeof deleteAssignmentSchema>
 ) => {
-  const { id } = input;
+  const { id, lesson_plan_id } = input;
 
   try {
     const supabase = supabaseServer();
@@ -162,6 +164,7 @@ const deleteAssignmentAction = async (
     if (error) return responseContract(error.message, false);
 
     revalidatePath('/');
+    revalidatePath('/lesson-plans/' + lesson_plan_id);
 
     return responseContract('Success!', true);
   } catch (error) {

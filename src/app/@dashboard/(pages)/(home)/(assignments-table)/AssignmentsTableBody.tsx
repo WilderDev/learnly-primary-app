@@ -1,13 +1,8 @@
 'use client';
 
 import { Table } from '@/lib/components/ui/Table';
-import {
-  CalculatorIcon,
-  CalendarDaysIcon,
-  PencilSquareIcon,
-} from '@heroicons/react/24/outline';
+import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { useState, useTransition } from 'react';
-import AssignmentEditModal from './AssignmentEditModalForm';
 import Modal from '@/lib/components/popouts/Modal';
 import { useRequest } from '@/lib/hooks/useRequest';
 import { changeAssignmentStatus } from '../../lesson-plans/[id]/(assignments)/_actions';
@@ -15,7 +10,6 @@ import { toast } from 'sonner';
 import AssignmentEditModalForm from './AssignmentEditModalForm';
 import LoadingDots from '@/lib/components/loading/LoadingDots';
 import cn from '@/lib/common/cn';
-import Tag from '@/lib/components/ui/Tag';
 import {
   getStatusColor,
   getStudentCreds,
@@ -39,9 +33,9 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
   const { mutate, error, isLoading } = useRequest(changeAssignmentStatus);
   let [isChanging, startTransition] = useTransition();
 
-  if (error) {
-    toast.error('Failed updating status');
-  }
+  // if (error) {
+  //   toast.error('Failed updating status');
+  // }
 
   return (
     <>
@@ -55,7 +49,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             )}
           >
             {/* Student */}
-            <Table.Cell className="flex items-center px-1">
+            <Table.Cell className="flex items-center px-1 flex-shrink-0">
               {getStudentCreds(
                 assignment.user_lesson_plan.students,
                 usersStudents
@@ -76,7 +70,9 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             </Table.Cell>
 
             {/* Title */}
-            <Table.Cell className="font-medium">{assignment.title}</Table.Cell>
+            <Table.Cell className="font-medium text-sm">
+              {assignment.title}
+            </Table.Cell>
 
             {/* Status */}
             <Table.Cell className="font-medium">
@@ -95,7 +91,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
                   <div className="flex items-center space-x-2 text-sm font-medium">
                     <span
                       className={cn(
-                        'h-2 w-2 rounded-full',
+                        'h-2 w-2 rounded-full px-1',
                         getStatusColor(assignment.status).bg
                       )}
                     />
@@ -113,23 +109,21 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             </Table.Cell>
 
             {/* Subject */}
-            <Table.Cell className="font-medium">
+            <Table.Cell className="font-medium text-center">
               {assignment.lesson_plan.subject.name}
             </Table.Cell>
 
             {/* Assignment Date */}
-            <Table.Cell className="font-medium">
+            <Table.Cell className="font-medium text-center">
               {new Date(assignment.assigned_on).toLocaleDateString('en-US', {
-                weekday: 'long',
                 month: 'long',
                 day: 'numeric',
               })}
             </Table.Cell>
 
             {/* Due Date */}
-            <Table.Cell className="font-medium">
+            <Table.Cell className="font-medium text-center">
               {new Date(assignment.due_date).toLocaleDateString('en-US', {
-                weekday: 'long',
                 month: 'long',
                 day: 'numeric',
               })}

@@ -5,7 +5,6 @@ import AssignmentCreatorForm from '../../lesson-plans/[id]/(assignments)/Assignm
 import { fetchUserLessonPlans } from '../../lesson-plans/[id]/(assignments)/_actions';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 
 export default function AssignmentCreatorModal() {
   const [userLessonPlans, setUserLessonPlans] = useState([] as any);
@@ -23,21 +22,16 @@ export default function AssignmentCreatorModal() {
 
   return (
     <>
-      {assignmentContent ? (
-        <LessonPlanMarkdown content={assignmentContent} />
-      ) : (
-        <>
-          <Modal.Header title="Create an Assignment" />
-          <Modal.Body>
-            <AssignmentCreatorForm
-              isModal={true}
-              userLessonPlans={userLessonPlans}
-              assignmentContent={assignmentContent}
-              setAssignmentContent={setAssignmentContent}
-            />
-          </Modal.Body>
-        </>
-      )}
+      <Modal.Header title="Create an Assignment" />
+      <Modal.Body>
+        <AssignmentCreatorForm
+          isModal={true}
+          setUserLessonPlans={setUserLessonPlans}
+          userLessonPlans={userLessonPlans}
+          assignmentContent={assignmentContent}
+          setAssignmentContent={setAssignmentContent}
+        />
+      </Modal.Body>
     </>
   );
 }

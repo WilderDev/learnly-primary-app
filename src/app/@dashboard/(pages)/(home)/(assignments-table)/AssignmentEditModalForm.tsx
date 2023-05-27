@@ -23,8 +23,7 @@ import { useUser } from '@/lib/components/providers/UserProvider';
 import React from 'react';
 import Image from 'next/image';
 import { UserStudent } from '@/assets/typescript/user';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import PDFFile from '@/lib/components/print/PDFFile';
+import { downloadPdf } from '@/lib/common/downloadPdf';
 
 interface IProps {
   assignment: any;
@@ -36,6 +35,8 @@ export default function AssignmentEditModalForm({
   setAssignmentsEditModal,
   usersStudents,
 }: IProps) {
+  console.log(assignment);
+
   const [title, setTitle] = useState(assignment.title);
   const [assignedOn, setAssignedOn] = useState(assignment.assigned_on);
   const [dueDate, setDueDate] = useState(assignment.due_date);
@@ -69,6 +70,7 @@ export default function AssignmentEditModalForm({
   const handleDelete = async () => {
     const { ok } = await deleteAssignment({
       id: assignment.id,
+      lesson_plan_id: assignment.lesson_plan_id,
     });
 
     if (ok) {
@@ -77,6 +79,26 @@ export default function AssignmentEditModalForm({
     } else {
       toast.error('Failed to Delete Assignment');
     }
+  };
+
+  const handlePrint = async () => {
+    const requestBody = {
+      markdown: assignment.content,
+    };
+    const res = await fetch('/api/print', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    });
+
+    if (!res.ok) return toast.error('Error Printing Assignment');
+
+    downloadPdf(
+      res,
+      `${assignment.title.toLowerCase().split(' ').join('_')}_worksheet`
+    );
   };
 
   return (
@@ -229,15 +251,12 @@ export default function AssignmentEditModalForm({
                     </span>
                   </div>
                   <div className="ml-4 flex-shrink-0">
-                    {/* <button className="font-medium text-slate-600 hover:text-navy-500">
-                      Download
-                    </button> */}
-                    <PDFDownloadLink
-                      document={<PDFFile content={assignment.content} />}
-                      fileName="FORM"
+                    <button
+                      className="font-medium text-slate-600 hover:text-navy-500"
+                      onClick={handlePrint}
                     >
-                      {({ loading }) => (loading ? 'Loading... ' : 'Download')}
-                    </PDFDownloadLink>
+                      Download
+                    </button>
                   </div>
                 </li>
               </ul>
@@ -247,7 +266,9 @@ export default function AssignmentEditModalForm({
           <div className="flex items-center justify-between gap-6 sm:col-span-2 flex-col sm:flex-row">
             <Button
               onClick={handleDelete}
-              className="w-full bg-red-700 dark:bg-red-700 hocus:bg-red-800 dark:hocus:bg-red-800"
+              className="w-full hocus:text-white"
+              variant="dark"
+              fill="outline"
             >
               Delete
             </Button>

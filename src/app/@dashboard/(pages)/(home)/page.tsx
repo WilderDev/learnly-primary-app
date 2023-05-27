@@ -6,12 +6,7 @@ import UpcomingLessonsCards from './UpcomingLessonsCards';
 import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccordions';
 import MiniCalendar from '../schedule-builder/MiniCalendar';
 import AssignmentsTable from './AssignmentsTable';
-import { supabaseServer } from '@/lib/auth/supabaseServer';
-import AssignmentForm from './AssignmentForm';
-import AssignmentCreatorForm from '../lesson-plans/[id]/(assignments)/AssignmentCreatorForm';
-import Modal from '@/lib/components/popouts/Modal';
 import AssignmentCreatorModal from './(assignments-table)/AssignmentCreatorModal';
-import Assignment from '../lesson-plans/[id]/(assignments)/Assignment';
 import { fetchAssignments } from '../lesson-plans/[id]/(assignments)/_actions';
 
 export default async function ParentDashboardHomePage() {
