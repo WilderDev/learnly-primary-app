@@ -1,6 +1,5 @@
 'use client';
 
-import { Database } from '@/assets/typescript/db';
 import Form from '@/lib/components/form/Form';
 import Button from '@/lib/components/ui/Button';
 import { Dispatch, SetStateAction, useState } from 'react';
@@ -19,10 +18,10 @@ import { philosophyOptions } from '@/app/@dashboard/(pages)/lesson-creator/Lesso
 import TextArea from '@/lib/components/form/TextArea';
 import {
   ICurriculumFormData,
-  ICurriculumLessonPlanStudent,
   ICurriculumLessonPromptReq,
 } from '@/assets/typescript/curriculum-roadmaps';
 import {
+  IStudentPromptReq,
   ITeacherPromptReq,
   TDifficulty,
   TPhilosophy,
@@ -36,19 +35,20 @@ import CurriculumLessonDock from './CurriculumLessonDock';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import cn from '@/lib/common/cn';
+import { getAgeFromBirthday } from '@/lib/common/date.helpers';
 
 // * Props
 interface IProps {
   lesson: ICurriculumFormData;
-  students: ICurriculumLessonPlanStudent[];
+  studentIds: string[];
 }
 
 // * Data
 
 // * Component
-export default function CurriculumLessonForm({ lesson, students }: IProps) {
+export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
   // * Hooks / Context
-  const { user } = useUser();
+  const { user, students: userStudents } = useUser();
   const { supabase } = useAuth();
   const router = useRouter();
 
@@ -86,6 +86,24 @@ export default function CurriculumLessonForm({ lesson, students }: IProps) {
       role: user?.type!,
       teaching_preferences: user?.teachingPreferences,
     };
+    const studentsBody: IStudentPromptReq['students'] = studentIds.map(
+      (studentId) => {
+        const student = userStudents.find((s) => s.id === studentId)!;
+
+        return {
+          id: studentId,
+          name: student.firstName + ' ' + student.lastName,
+          age: getAgeFromBirthday(student.birthday),
+          learningStyles: student.learningStyles,
+          favoriteSubjects: student.favoriteSubjects,
+          interests: student.interests,
+          goals: student.goals,
+          learningEnvironments: student.learningEnvironments,
+          learningResources: student.learningResources,
+          specialNeeds: student.specialNeeds,
+        };
+      },
+    );
 
     // 3. Send Request to API
     try {
@@ -98,12 +116,7 @@ export default function CurriculumLessonForm({ lesson, students }: IProps) {
         body: JSON.stringify({
           lessonBody,
           teacherBody,
-          studentsBody: students.map((s) => ({
-            id: s.id,
-            name: `${s.first_name} ${s.last_name}`,
-            age: s.age,
-            learning_styles: s.learning_styles,
-          })),
+          studentsBody,
         }),
       });
 
@@ -230,7 +243,7 @@ export default function CurriculumLessonForm({ lesson, students }: IProps) {
           className="md:col-start-2 lg:col-start-3"
           type="submit"
           loading={loading}
-          disabled={loading || students.length === 0}
+          disabled={loading || studentIds.length === 0}
         >
           Create Lesson Plan
         </Button>
@@ -248,7 +261,7 @@ export default function CurriculumLessonForm({ lesson, students }: IProps) {
       {lessonId && (
         <CurriculumLessonDock
           lessonId={lessonId}
-          studentIds={students.map((s) => s.id)}
+          studentIds={studentIds}
           shareUrl={`/lesson-plans/${lessonId}`}
         />
       )}

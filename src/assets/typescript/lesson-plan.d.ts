@@ -1,5 +1,12 @@
 import { Database } from './db';
-import { TLearningStyle, TTeachingStrategy } from './user';
+import {
+  TGoal,
+  TLearningEnvironment,
+  TLearningResource,
+  TLearningStyle,
+  TSpecialNeed,
+  TTeachingStrategy,
+} from './user';
 import { Me } from './user';
 
 export type TObjective = Database['public']['Enums']['objective'];
@@ -62,13 +69,12 @@ export interface IStudentPromptReq {
     id: string;
     name: string;
     age: number;
-    learning_styles: TLearningStyle[];
-    // interests?
-    // strengths?
-    // weaknesses?
-    // goals?
-    // special_needs?
-    // learning_environment_preferences?
-    // learning_resources_preferences?
+    learningStyles: TLearningStyle[];
+    favoriteSubjects: string[];
+    interests: string[];
+    goals: TGoal[];
+    learningEnvironments: TLearningEnvironment[];
+    learningResources: TLearningResource[];
+    specialNeeds: TSpecialNeed[];
   }[];
 }

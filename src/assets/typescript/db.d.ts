@@ -1164,7 +1164,7 @@ export interface Database {
           lesson_plan: Json | null
           level_id: string | null
           level_name: Database["public"]["Enums"]["level"] | null
-          students: Json[] | null
+          student_ids: Json[] | null
           subject_id: string | null
           subject_name: string | null
           topic_id: string | null

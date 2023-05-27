@@ -9,6 +9,7 @@ import {
 } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import { useAccount } from './AccountCtx';
+import LoadingShapes from '@/lib/components/loading/LoadingShapes';
 
 // * Component
 export default function AccountStudentsList() {
@@ -18,7 +19,7 @@ export default function AccountStudentsList() {
     useAccount();
 
   // * Render
-  return (
+  return students ? (
     <ul
       role="list"
       className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
@@ -99,5 +100,7 @@ export default function AccountStudentsList() {
         </button>
       </li>
     </ul>
+  ) : (
+    <LoadingShapes />
   );
 }

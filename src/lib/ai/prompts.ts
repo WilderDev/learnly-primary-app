@@ -24,6 +24,8 @@ export function generateLessonPlanPrompt({
     learning_styles,
   } = lesson;
 
+  console.log('students:', students);
+
   const { name, role, teaching_preferences } = teacher; // teaching_preferences: { teachingStrategies, lessonDetailLevel, teachingTools, lessonStructure }
 
   // Teaching Strategies
@@ -60,7 +62,11 @@ export function generateLessonPlanPrompt({
     students
       ?.map(
         (student, index) =>
-          `- Student ${index + 1}: ${student.name}, Age: ${student.age}`,
+          `- Student ${index + 1}: ${student.name}, Age: ${
+            student.age
+          }, Goals: ${student.goals.join(
+            ',',
+          )}, Special Needs: ${student.specialNeeds.join(',')}.`,
       )
       ?.join('\n') || '';
 
@@ -74,7 +80,7 @@ export function generateLessonPlanPrompt({
     learning_styles?.length && learning_styles.length > 0
       ? learning_styles
       : students.length > 0
-      ? students?.flatMap((student) => student.learning_styles)
+      ? students?.flatMap((student) => student.learningStyles)
       : ['Any'];
 
   // Conditionally include standards, format, teaching strategy, and materials
@@ -132,9 +138,9 @@ export function generateLessonPlanPrompt({
 
   Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson.
 
-  Provide them step by step instructions with time allocations for each activity and everything they need to know and have to teach the lesson.
+  Provide them step by step instructions with time allocations for each activity and everything they need to know and have to teach the lesson. Use bullet points as much as possible.
 
-  Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Make the output semantically proper. Important!
+  Do NOT include an H1 (#) tag, start with an H2 (##) for each section. <li> elements should NOT have a paragraph inside them. All Headings should have their own line. Make the output semantically proper. Important!
 
   Return the lesson plan in clean markdown format.
   `;
@@ -208,8 +214,9 @@ export function generateCurriculumLessonPlanPrompt({
         (student, index) =>
           `- Student ${index + 1}: ${student.name}, Age: ${
             student.age
-          }, Learning Styles: ${student?.learning_styles?.join(', ')}
-            `,
+          }, Goals: ${student.goals.join(
+            ',',
+          )}, Special Needs: ${student.specialNeeds.join(',')}.`,
       )
       ?.join('\n') || '';
 
@@ -245,9 +252,9 @@ ${additionalRequestsSection}
 
 Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson.
 
-Provide them step by step instructions with time allocations for each activity and everything they need to know and have to teach the lesson.
+Provide them step by step instructions with time allocations for each activity and everything they need to know and have to teach the lesson. Use bullet points as much as possible.
 
-Do NOT include an H1 (#) tag, start with an H2 (##) for each section. Make the output semantically proper. Important!
+Do NOT include an H1 (#) tag, start with an H2 (##) for each section. <li> elements should NOT have a paragraph inside them. All Headings should have their own line. Make the output semantically proper. Important!
 
 Return the lesson plan in clean markdown format.
     `.trim();

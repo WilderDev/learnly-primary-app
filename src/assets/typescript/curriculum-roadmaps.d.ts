@@ -77,12 +77,3 @@ export interface ICurriculumLessonPlan {
     completion_date: string | null;
   } | null;
 }
-
-export interface ICurriculumLessonPlanStudent {
-  id: string;
-  first_name: string;
-  last_name: string;
-  avatar_url: string;
-  age: number;
-  learning_styles: TLearningStyle[];
-}

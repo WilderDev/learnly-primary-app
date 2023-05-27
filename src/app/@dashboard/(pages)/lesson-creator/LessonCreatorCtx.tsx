@@ -15,7 +15,6 @@ import { useCallback } from 'react';
 import { TSelection } from '@/assets/typescript/form';
 import {
   ILessonPlanPromptReq,
-  IStudentPromptReq,
   ITeacherPromptReq,
   TDifficulty,
   TFormat,
@@ -31,6 +30,7 @@ import { v4 } from 'uuid';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { TLearningStyle, TTeachingStrategy } from '@/assets/typescript/user';
+import { IStudentPromptReq } from '../../../../assets/typescript/lesson-plan';
 
 // * Context
 // Interface
@@ -242,6 +242,8 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       role: user?.type!,
       teaching_preferences: user?.teachingPreferences,
     };
+
+    console.log('students:', students);
 
     // Generate Lesson Plan Request
     const res = await fetch('/api/ai/lesson-plans', {

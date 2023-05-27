@@ -28,8 +28,8 @@ export default function AccountStudentsDetailsModal() {
         <div className="flex items-center">
           <Image
             className="w-12 h-12 rounded-full"
-            src={student?.avatarUrl || ''}
-            alt={student?.firstName || ''}
+            src={student?.avatarUrl || '/static/icons/avatars/bear.png'}
+            alt={student?.firstName || '/static/icons/avatars/bear.png'}
             width={48}
             height={48}
           />

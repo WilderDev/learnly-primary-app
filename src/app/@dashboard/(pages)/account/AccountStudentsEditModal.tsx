@@ -10,7 +10,14 @@ import RadioImages from '@/lib/components/form/RadioImages';
 import { avatarImages } from '@/app/@marketing/(pages)/onboarding/avatarImages';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Input from '@/lib/components/form/Input';
-import { AcademicCapIcon, UserIcon } from '@heroicons/react/24/solid';
+import {
+  AcademicCapIcon,
+  CalculatorIcon,
+  CubeIcon,
+  HandRaisedIcon,
+  StarIcon,
+  UserIcon,
+} from '@heroicons/react/24/solid';
 import MultiSelect from '@/lib/components/form/MultiSelect';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import {
@@ -171,7 +178,6 @@ export default function AccountStudentsEditModal() {
   // * Render
   return (
     <Modal
-      className="overflow-visible"
       isVisible={!!studentEditId}
       close={() => setStudentEditId(null)}
       noCloseOnOutsideClick={true}
@@ -183,8 +189,8 @@ export default function AccountStudentsEditModal() {
         <div className="flex items-center">
           <Image
             className="w-12 h-12 rounded-full cursor-pointer hocus:scale-105 transition-all transform-gpu duration-300 hocus:shadow-lg"
-            src={student?.avatarUrl || ''}
-            alt={student?.firstName || ''}
+            src={student?.avatarUrl || '/static/icons/avatars/bear.png'}
+            alt={student?.firstName || '/static/icons/avatars/bear.png'}
             width={48}
             height={48}
             onClick={() => setShowAvatarPicker(!showAvatarPicker)}
@@ -279,7 +285,7 @@ export default function AccountStudentsEditModal() {
           values={learningStyles}
           setValues={setLearningStyles as Dispatch<SetStateAction<string[]>>}
           cols={4}
-          icon={AcademicCapIcon} // TSK
+          icon={StarIcon}
         />
 
         {/* Subject Preferences (Input Chips) */}
@@ -295,7 +301,7 @@ export default function AccountStudentsEditModal() {
           values={goals}
           setValues={setGoals as Dispatch<SetStateAction<string[]>>}
           cols={4}
-          icon={AcademicCapIcon} // TSK
+          icon={AcademicCapIcon}
         />
 
         {/* Learning Environment Preferences (Multi) */}
@@ -307,7 +313,7 @@ export default function AccountStudentsEditModal() {
             setLearningEnvironments as Dispatch<SetStateAction<string[]>>
           }
           cols={4}
-          icon={AcademicCapIcon} // TSK
+          icon={CubeIcon}
         />
 
         {/* Learning Resources Preferences (Multi) */}
@@ -317,7 +323,7 @@ export default function AccountStudentsEditModal() {
           values={learningResources}
           setValues={setLearningResources as Dispatch<SetStateAction<string[]>>}
           cols={4}
-          icon={AcademicCapIcon} // TSK
+          icon={CalculatorIcon}
         />
 
         {/* Special Needs (Multi) */}
@@ -327,11 +333,16 @@ export default function AccountStudentsEditModal() {
           values={specialNeeds}
           setValues={setSpecialNeeds as Dispatch<SetStateAction<string[]>>}
           cols={4}
-          icon={AcademicCapIcon} // TSK
+          icon={HandRaisedIcon}
         />
 
         {/* Submit */}
-        <Button className="col-span-4 mt-4" type="submit">
+        <Button
+          className="col-span-4 mt-8"
+          type="submit"
+          loading={isLoading}
+          disabled={!name || !avatarUrl || !birthday}
+        >
           Save Changes
         </Button>
       </Form>

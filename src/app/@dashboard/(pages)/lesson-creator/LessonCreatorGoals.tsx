@@ -88,13 +88,10 @@ export default function LessonCreatorGoalsSection() {
         setValues={(ids) => {
           const lessonStudents: IStudentPromptReq['students'] = usersStudents
             .filter((s) => ids.includes(s.id))
-            .map((s) => ({
-              id: s.id,
-              name: s.firstName,
-              age: getAgeFromBirthday(s.birthday),
-              avatarUrl: s.avatarUrl,
-              learning_styles: s.learningStyles,
-              // . . .
+            .map((st) => ({
+              name: `${st.firstName} ${st.lastName}`,
+              age: getAgeFromBirthday(st.birthday),
+              ...st,
             }));
 
           setStudents(lessonStudents);
