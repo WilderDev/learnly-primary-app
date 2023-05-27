@@ -15801,7 +15801,7 @@ SELECT create_complete_curriculum(
   }
 ]'::json
 );
----- English
+---- English ✅
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
   'ed78d635-3be9-41b0-a97e-7dc65e25240f'::uuid,
@@ -19703,7 +19703,7 @@ SELECT create_complete_curriculum(
   }
 ]'::json
 );
----- Social Studies
+---- Social Studies ✅
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
   'cdc09ea6-6e30-4550-9d1d-4b7a30d376d5'::uuid,
@@ -22741,28 +22741,7 @@ SELECT create_complete_curriculum(
   }
 ]'::json
 );
-
--- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
--- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
--- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first topic and ALL the lessons for that topic for Kindergarten Physical Development.
--- the output will look like:
--- {
---        "name": "Team Sports",
---        "description": "Fostering teamwork and coordination through simple team sports and games.",
---        "image_path": "https://source.unsplash.com/500x500/?team-sports",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Introduction to Soccer",
---                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
---                "image_path": "https://source.unsplash.com/500x500/?soccer",
---                "type": "CORE"
---            },
---           // . . .
---        ]
--- }
----- Physical Development (Health/PE)
+---- Physical Development (Health/PE) ✅
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
   'ed34e97c-5758-4414-933b-f61370a4e7af'::uuid,
@@ -24099,367 +24078,1332 @@ SELECT create_complete_curriculum(
     },
     {
       "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Fundamentals of Gymnastics",
+            "description": "Exploring the world of gymnastics to enhance balance, strength, and flexibility in a fun and safe environment.",
+            "image_path": "https://source.unsplash.com/500x500/?gymnastics",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Gymnastics",
+                    "description": "Learn about gymnastics: its history, types, and the skills needed to be a gymnast.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-kids",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basic Gymnastics Positions",
+                    "description": "Get acquainted with essential gymnastics positions such as the tuck, pike, straddle, and more.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-positions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Strength Training for Gymnastics",
+                    "description": "Explore exercises and techniques that improve muscle strength for better gymnastics performance.",
+                    "image_path": "https://source.unsplash.com/500x500/?strength-training",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Flexibility and Balance in Gymnastics",
+                    "description": "Practice drills and exercises designed to enhance flexibility and balance, critical components of gymnastics.",
+                    "image_path": "https://source.unsplash.com/500x500/?balance-exercises",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Safety in Gymnastics",
+                    "description": "Understand the importance of safety measures, precautions, and equipment in gymnastics to prevent injuries.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Floor Exercises for Beginners",
+                    "description": "Learn basic floor exercises, an essential part of gymnastics, that improve strength and flexibility.",
+                    "image_path": "https://source.unsplash.com/500x500/?floor-exercises",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Introduction to Gymnastics Apparatus",
+                    "description": "Get to know the various gymnastics apparatus like the balance beam, uneven bars, and the vault.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-apparatus",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Understanding Nutrition and Hydration",
+            "description": "Delving into the basics of nutrition and hydration, essential elements for maintaining a healthy, active body.",
+            "image_path": "https://source.unsplash.com/500x500/?nutrition",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "The Importance of Balanced Diet",
+                    "description": "Uncovering the importance of a balanced diet and how it contributes to overall physical health and fitness.",
+                    "image_path": "https://source.unsplash.com/500x500/?balanced-diet",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Food Groups and Their Benefits",
+                    "description": "Exploring the different food groups, their nutrients, and how they contribute to our bodies‘ functioning.",
+                    "image_path": "https://source.unsplash.com/500x500/?food-groups",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Hydration",
+                    "description": "Learning about the role of hydration in maintaining our health and improving physical performance.",
+                    "image_path": "https://source.unsplash.com/500x500/?hydration",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Effects of Sugar and Junk Food",
+                    "description": "Exploring the impacts of excessive sugar and junk food consumption on our bodies and physical development.",
+                    "image_path": "https://source.unsplash.com/500x500/?junk-food",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Healthy Eating Habits",
+                    "description": "Cultivating healthy eating habits, meal planning, and understanding portion sizes for a balanced lifestyle.",
+                    "image_path": "https://source.unsplash.com/500x500/?healthy-eating",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Hydration and Physical Activity",
+                    "description": "Learning about the significance of hydration during physical activities and sports, and how to stay adequately hydrated.",
+                    "image_path": "https://source.unsplash.com/500x500/?drinking-water",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Cooking a Healthy Meal",
+                    "description": "Experience the joy of cooking by preparing a simple, nutritious meal. Understand the connection between cooking and nutrition.",
+                    "image_path": "https://source.unsplash.com/500x500/?kids-cooking",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Outdoor Exploration",
+            "description": "An adventurous journey into the outdoors, fostering a spirit of exploration and physical fitness through nature-oriented activities.",
+            "image_path": "https://source.unsplash.com/500x500/?outdoor-adventure",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Outdoor Activities",
+                    "description": "Exploring a variety of outdoor activities and understanding their benefits for physical and mental health.",
+                    "image_path": "https://source.unsplash.com/500x500/?outdoor-activities",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basics of Hiking",
+                    "description": "Learn about the basics of hiking: safety measures, essential gear, and benefits of this rewarding outdoor activity.",
+                    "image_path": "https://source.unsplash.com/500x500/?hiking",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Outdoor Games and Sports",
+                    "description": "Introducing a variety of fun, physical games and sports that can be played outdoors.",
+                    "image_path": "https://source.unsplash.com/500x500/?outdoor-games",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Nature Awareness and Appreciation",
+                    "description": "Developing a deeper connection and appreciation for nature and the benefits of spending time outdoors.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-appreciation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Outdoor Safety and First Aid Basics",
+                    "description": "Learning the basics of outdoor safety and first aid to ensure safe and enjoyable outdoor experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?first-aid",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Camping",
+                    "description": "Exploring the basics of camping, an activity that encourages self-reliance, problem-solving skills, and physical endurance.",
+                    "image_path": "https://source.unsplash.com/500x500/?camping",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Backyard Exploration",
+                    "description": "Discovering the wonders of nature in our own backyards, encouraging curiosity and physical activity close to home.",
+                    "image_path": "https://source.unsplash.com/500x500/?backyard",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Introduction to Dance",
+            "description": "Dive into the rhythmic world of dance, enhancing coordination, flexibility, and self-expression through movement.",
+            "image_path": "https://source.unsplash.com/500x500/?kids-dance",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "The World of Dance",
+                    "description": "Explore the world of dance: its diversity, cultural significance, and physical benefits.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-dance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basic Dance Moves",
+                    "description": "Learn some basic dance moves that form the foundation of many dance styles.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-moves",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rhythm and Timing in Dance",
+                    "description": "Understand the importance of rhythm and timing in dance, and practice keeping the beat.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-rhythm",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dance for Fitness",
+                    "description": "Experience how dance can be a fun way to improve physical fitness, flexibility, and coordination.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-fitness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Safety and Etiquette in Dance",
+                    "description": "Learning about safety measures, appropriate attire, and etiquette in dance classes and performances.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Ballet",
+                    "description": "Discover the elegance and discipline of ballet, one of the foundational styles of dance.",
+                    "image_path": "https://source.unsplash.com/500x500/?ballet",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Hip-Hop Dance Basics",
+                    "description": "Get introduced to the dynamic world of hip-hop dance, its movements, and its culture.",
+                    "image_path": "https://source.unsplash.com/500x500/?hiphop-dance",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Aquatic Adventures",
+            "description": "Dive into the exhilarating world of water-based activities, promoting swimming skills, water safety, and aquatic fitness.",
+            "image_path": "https://source.unsplash.com/500x500/?kids-swimming",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Swimming",
+                    "description": "Learning the basics of swimming, an essential life skill that promotes fitness and enjoyment in the water.",
+                    "image_path": "https://source.unsplash.com/500x500/?swimming",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Water Safety Rules",
+                    "description": "Understand the critical rules of water safety, both in swimming pools and open water environments.",
+                    "image_path": "https://source.unsplash.com/500x500/?water-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basic Swim Strokes",
+                    "description": "Practice the fundamental swimming strokes: freestyle, breaststroke, backstroke, and butterfly.",
+                    "image_path": "https://source.unsplash.com/500x500/?swim-strokes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Aquatic Fitness Activities",
+                    "description": "Explore various water-based exercises and games that promote fitness and are fun too.",
+                    "image_path": "https://source.unsplash.com/500x500/?aquatic-exercises",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Breathing Techniques in Swimming",
+                    "description": "Learn about the importance of proper breathing techniques in swimming for efficiency and safety.",
+                    "image_path": "https://source.unsplash.com/500x500/?swimming-breathing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Water Polo",
+                    "description": "Discover the exciting sport of water polo, improving swimming skills and teamwork.",
+                    "image_path": "https://source.unsplash.com/500x500/?water-polo",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Snorkeling Basics",
+                    "description": "Get introduced to snorkeling, a fun water activity that fosters curiosity about the underwater world.",
+                    "image_path": "https://source.unsplash.com/500x500/?snorkeling",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Introduction to Gymnastics",
+            "description": "Step into the world of gymnastics, enhancing balance, strength, flexibility, and discipline through guided movements.",
+            "image_path": "https://source.unsplash.com/500x500/?kids-gymnastics",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Gymnastics: An Overview",
+                    "description": "Understand the fundamentals of gymnastics, its various disciplines, and its benefits to physical development.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-overview",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basic Gymnastics Moves",
+                    "description": "Learn the basic gymnastics moves that form the foundation of various routines and disciplines.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-moves",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Strength and Flexibility in Gymnastics",
+                    "description": "Explore the importance of strength and flexibility in gymnastics and exercises to improve them.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-strength-flexibility",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Safety in Gymnastics",
+                    "description": "Learn about safety precautions, equipment, and the proper form in gymnastics to prevent injuries.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Gymnastics for Fitness",
+                    "description": "Discover how gymnastics can be an exciting way to improve physical fitness and motor skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?gymnastics-fitness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Tumbling",
+                    "description": "Get introduced to the dynamic world of tumbling, a gymnastics discipline that focuses on flips, rolls, and jumps.",
+                    "image_path": "https://source.unsplash.com/500x500/?tumbling",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Rhythmic Gymnastics Basics",
+                    "description": "Discover the graceful combination of dance and gymnastics in the world of rhythmic gymnastics.",
+                    "image_path": "https://source.unsplash.com/500x500/?rhythmic-gymnastics",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Health & Wellness",
+            "description": "An exploration into personal health and wellness, emphasizing the role of physical activity, nutrition, and mindfulness in overall well-being.",
+            "image_path": "https://source.unsplash.com/500x500/?kids-health-wellness",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "The Importance of Physical Activity",
+                    "description": "Understand the critical role of regular physical activity in maintaining health and wellbeing.",
+                    "image_path": "https://source.unsplash.com/500x500/?physical-activity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basic Nutrition for Kids",
+                    "description": "Learn about essential nutrients, balanced diet, and their role in supporting physical growth and health.",
+                    "image_path": "https://source.unsplash.com/500x500/?kids-nutrition",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mindfulness and Relaxation Techniques",
+                    "description": "Explore simple mindfulness and relaxation techniques that promote mental wellbeing and stress management.",
+                    "image_path": "https://source.unsplash.com/500x500/?mindfulness-kids",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Hygiene and Personal Care",
+                    "description": "Understand the importance of personal hygiene and daily routines in maintaining health and wellbeing.",
+                    "image_path": "https://source.unsplash.com/500x500/?personal-hygiene",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Healthy Habits and Lifestyle",
+                    "description": "Learn about various healthy habits, including adequate sleep, regular exercise, and healthy eating habits.",
+                    "image_path": "https://source.unsplash.com/500x500/?healthy-habits",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Yoga for Kids",
+                    "description": "Introduction to simple yoga poses and practices that promote flexibility, strength, and calmness.",
+                    "image_path": "https://source.unsplash.com/500x500/?kids-yoga",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Cooking for Kids",
+                    "description": "Introduction to simple, nutritious recipes that kids can safely prepare and enjoy.",
+                    "image_path": "https://source.unsplash.com/500x500/?kids-cooking",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Outdoor Adventures",
+            "description": "Experience the joy of outdoor activities, fostering a connection with nature, enhancing physical skills, and promoting adventure safety.",
+            "image_path": "https://source.unsplash.com/500x500/?kids-outdoor-adventures",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Nature Hikes",
+                    "description": "Discover the joy and benefits of hiking, including navigation basics and safety guidelines.",
+                    "image_path": "https://source.unsplash.com/500x500/?kids-hiking",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basic Camping Skills",
+                    "description": "Learn basic camping skills, from setting up a tent to understanding outdoor safety.",
+                    "image_path": "https://source.unsplash.com/500x500/?kids-camping",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Outdoor Games",
+                    "description": "Engage in a variety of fun outdoor games that promote fitness and teamwork.",
+                    "image_path": "https://source.unsplash.com/500x500/?outdoor-games",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Bird Watching",
+                    "description": "Get introduced to the rewarding hobby of bird watching, fostering observation skills and love for nature.",
+                    "image_path": "https://source.unsplash.com/500x500/?bird-watching",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Kite Making and Flying",
+                    "description": "Experience the joy of making and flying a kite, a fun outdoor activity that promotes creativity and physical skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?kite-flying",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Intro to Frisbee Golf",
+                    "description": "Learn the basics of Frisbee golf, a fun outdoor game that combines precision, physical activity, and strategic thinking.",
+                    "image_path": "https://source.unsplash.com/500x500/?frisbee-golf",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Dance and Movement",
+            "description": "Discover the joy of movement through dance, improving rhythm, flexibility, coordination, and self-expression.",
+            "image_path": "https://source.unsplash.com/500x500/?kids-dance",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Dance",
+                    "description": "Get an overview of dance as a form of physical activity and self-expression, exploring various styles and benefits.",
+                    "image_path": "https://source.unsplash.com/500x500/?intro-dance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basic Dance Moves",
+                    "description": "Learn basic dance moves that form the foundation of various dance styles.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-moves",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dance for Fitness",
+                    "description": "Explore how dance can be a fun and effective way to stay fit and healthy.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-fitness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Ballet",
+                    "description": "Discover the graceful world of ballet, learning basic poses, steps, and terminology.",
+                    "image_path": "https://source.unsplash.com/500x500/?kids-ballet",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Hip Hop Basics",
+                    "description": "Experience the energy and creativity of hip hop dance, learning basic steps and movements.",
+                    "image_path": "https://source.unsplash.com/500x500/?hip-hop-dance",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Creating a Dance Routine",
+                    "description": "Combine learned dance moves into a simple routine, fostering creativity and performance skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-routine",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
       "topics_data": [
-{
-    "name": "Elements of Fitness",
-    "description": "Exploring the building blocks of physical fitness to empower healthful habits and lifelong physical well-being.",
-    "image_path": "https://source.unsplash.com/500x500/?fitness",
-    "type": "CORE",
-    "lessons_data": [
         {
-            "name": "Cardiovascular Endurance",
-            "description": "Discover the importance of a healthy heart through fun and engaging aerobic activities.",
-            "image_path": "https://source.unsplash.com/500x500/?cardio",
-            "type": "CORE"
+            "name": "Elements of Fitness",
+            "description": "Exploring the building blocks of physical fitness to empower healthful habits and lifelong physical well-being.",
+            "image_path": "https://source.unsplash.com/500x500/?fitness",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Cardiovascular Endurance",
+                    "description": "Discover the importance of a healthy heart through fun and engaging aerobic activities.",
+                    "image_path": "https://source.unsplash.com/500x500/?cardio",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Muscular Strength and Endurance",
+                    "description": "Learn about the role of muscular strength and endurance in maintaining a healthy body through interactive physical exercises.",
+                    "image_path": "https://source.unsplash.com/500x500/?strength-training",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Flexibility",
+                    "description": "Dive into the world of flexibility and learn how it contributes to overall body health and injury prevention.",
+                    "image_path": "https://source.unsplash.com/500x500/?flexibility",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Body Composition",
+                    "description": "Discover how different body compositions affect health and fitness, encouraging a positive body image.",
+                    "image_path": "https://source.unsplash.com/500x500/?body-composition",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Balancing Exercise and Rest",
+                    "description": "Learn about the importance of balancing physical activities with sufficient rest to maximize health benefits.",
+                    "image_path": "https://source.unsplash.com/500x500/?balance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Fitness Games",
+                    "description": "Get moving and have fun with a series of fitness games designed to challenge and boost your physical development.",
+                    "image_path": "https://source.unsplash.com/500x500/?fitness-games",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Adaptive Fitness",
+                    "description": "Explore the different ways people with varying abilities engage in fitness activities, promoting inclusivity in physical education.",
+                    "image_path": "https://source.unsplash.com/500x500/?adaptive-fitness",
+                    "type": "ELECTIVE"
+                }
+            ]
         },
         {
-            "name": "Muscular Strength and Endurance",
-            "description": "Learn about the role of muscular strength and endurance in maintaining a healthy body through interactive physical exercises.",
-            "image_path": "https://source.unsplash.com/500x500/?strength-training",
-            "type": "CORE"
+            "name": "Sportsmanship and Fair Play",
+            "description": "Cultivating the principles of respect, fairness, and camaraderie in the context of physical games and sports.",
+            "image_path": "https://source.unsplash.com/500x500/?sportsmanship",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Respect in Sports",
+                    "description": "Learn the value of respect in sports, recognizing everyone‘s contributions and appreciating different abilities.",
+                    "image_path": "https://source.unsplash.com/500x500/?respect",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Fairness",
+                    "description": "Delve into the concept of fairness in games, developing a sense of justice and equity.",
+                    "image_path": "https://source.unsplash.com/500x500/?fair-play",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Power of Teamwork",
+                    "description": "Explore the importance of teamwork in sports and how it translates to everyday life situations.",
+                    "image_path": "https://source.unsplash.com/500x500/?teamwork",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Handling Defeat Gracefully",
+                    "description": "Understand how to handle losses in sports constructively, fostering resilience and emotional maturity.",
+                    "image_path": "https://source.unsplash.com/500x500/?resilience",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Celebrating Victories Humbly",
+                    "description": "Discover how to celebrate victories with humility, valuing effort over outcome.",
+                    "image_path": "https://source.unsplash.com/500x500/?victory-celebration",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Role Models in Sports",
+                    "description": "Study inspiring sports figures who exemplify good sportsmanship and fair play.",
+                    "image_path": "https://source.unsplash.com/500x500/?sports-role-model",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Creating a Fair Play Charter",
+                    "description": "Work collaboratively to create a class charter for fair play in sports and games.",
+                    "image_path": "https://source.unsplash.com/500x500/?charter",
+                    "type": "ELECTIVE"
+                }
+            ]
         },
         {
-            "name": "Flexibility",
-            "description": "Dive into the world of flexibility and learn how it contributes to overall body health and injury prevention.",
-            "image_path": "https://source.unsplash.com/500x500/?flexibility",
-            "type": "CORE"
+            "name": "Introduction to Athletics",
+            "description": "Exploring the world of athletics to enhance agility, speed, and precision while fostering the spirit of competition.",
+            "image_path": "https://source.unsplash.com/500x500/?athletics",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Track and Field Basics",
+                    "description": "Discover the fundamentals of track and field events, building agility, speed, and endurance.",
+                    "image_path": "https://source.unsplash.com/500x500/?track-and-field",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Jumping Events",
+                    "description": "Leap into the world of jumping events, from long jump to high jump, enhancing coordination and agility.",
+                    "image_path": "https://source.unsplash.com/500x500/?jumping",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Throwing Events",
+                    "description": "Master the art of throwing, from discus to javelin, to improve precision and arm strength.",
+                    "image_path": "https://source.unsplash.com/500x500/?throwing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Relay Races",
+                    "description": "Experience the thrill of relay races, encouraging teamwork and quick decision-making.",
+                    "image_path": "https://source.unsplash.com/500x500/?relay-race",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Spirit of Competition",
+                    "description": "Foster a healthy competitive spirit, understanding its role in athletics and personal growth.",
+                    "image_path": "https://source.unsplash.com/500x500/?competition",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Famous Athletes and Their Achievements",
+                    "description": "Learn about renowned athletes, their journeys, and contributions to athletics.",
+                    "image_path": "https://source.unsplash.com/500x500/?famous-athletes",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Planning and Organizing a Mini Athletic Event",
+                    "description": "Put your athletic knowledge to use by planning a fun, inclusive mini athletic event for the class.",
+                    "image_path": "https://source.unsplash.com/500x500/?event-planning",
+                    "type": "ELECTIVE"
+                }
+            ]
         },
         {
-            "name": "Body Composition",
-            "description": "Discover how different body compositions affect health and fitness, encouraging a positive body image.",
-            "image_path": "https://source.unsplash.com/500x500/?body-composition",
-            "type": "CORE"
+            "name": "Outdoor Adventures",
+            "description": "Introducing the joy and benefits of outdoor activities, fostering a love for nature, and promoting exploration and adventure.",
+            "image_path": "https://source.unsplash.com/500x500/?outdoor-adventures",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Hiking Basics",
+                    "description": "Uncover the joy of hiking, learn basic safety measures, and enjoy the benefits of being in nature.",
+                    "image_path": "https://source.unsplash.com/500x500/?hiking",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Camping Skills",
+                    "description": "Explore the basics of camping, from setting up tents to outdoor cooking, fostering independence and resourcefulness.",
+                    "image_path": "https://source.unsplash.com/500x500/?camping",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Navigating with Maps and Compasses",
+                    "description": "Learn to use maps and compasses for navigation, enhancing spatial awareness and problem-solving skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?navigation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Outdoor Games",
+                    "description": "Discover and play a variety of outdoor games, encouraging physical activity, teamwork, and strategic thinking.",
+                    "image_path": "https://source.unsplash.com/500x500/?outdoor-games",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Nature Awareness",
+                    "description": "Develop a deeper understanding and respect for nature and its inhabitants through guided outdoor explorations.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basic Survival Skills",
+                    "description": "Learn basic survival skills, including what to do when lost, which instills confidence and preparedness.",
+                    "image_path": "https://source.unsplash.com/500x500/?survival",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Creating an Outdoor Adventure Story",
+                    "description": "Draw on your outdoor experiences to create and share an engaging adventure story with the class.",
+                    "image_path": "https://source.unsplash.com/500x500/?storytelling",
+                    "type": "ELECTIVE"
+                }
+            ]
         },
         {
-            "name": "Balancing Exercise and Rest",
-            "description": "Learn about the importance of balancing physical activities with sufficient rest to maximize health benefits.",
-            "image_path": "https://source.unsplash.com/500x500/?balance",
-            "type": "CORE"
+            "name": "Aquatic Skills and Safety",
+            "description": "Introducing water-based activities for fun and fitness, while emphasizing the importance of safety when in and around water.",
+            "image_path": "https://source.unsplash.com/500x500/?swimming",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Swimming",
+                    "description": "Learn the fundamentals of swimming, from basic strokes to breath control, fostering confidence in the water.",
+                    "image_path": "https://source.unsplash.com/500x500/?swimming-lessons",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Water Safety Rules",
+                    "description": "Understand crucial water safety rules, empowering safe behavior in and around water environments.",
+                    "image_path": "https://source.unsplash.com/500x500/?water-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Intro to Water Sports",
+                    "description": "Explore a variety of water sports such as water polo and synchronized swimming, enhancing agility, coordination, and teamwork.",
+                    "image_path": "https://source.unsplash.com/500x500/?water-sports",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Pool Games",
+                    "description": "Discover fun and engaging pool games that promote physical fitness and cooperative play.",
+                    "image_path": "https://source.unsplash.com/500x500/?pool-games",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Benefits of Aquatic Exercises",
+                    "description": "Understand the health and fitness benefits of water-based exercises and how to incorporate them into your routine.",
+                    "image_path": "https://source.unsplash.com/500x500/?aquatic-exercise",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Intro to Lifeguard Skills",
+                    "description": "Learn basic lifeguard skills and understand the role of lifeguards in maintaining water safety.",
+                    "image_path": "https://source.unsplash.com/500x500/?lifeguard",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Aquatic Art Projects",
+                    "description": "Combine creativity and water awareness in a series of aquatic-themed art projects.",
+                    "image_path": "https://source.unsplash.com/500x500/?art-projects",
+                    "type": "ELECTIVE"
+                }
+            ]
         },
         {
-            "name": "Fitness Games",
-            "description": "Get moving and have fun with a series of fitness games designed to challenge and boost your physical development.",
-            "image_path": "https://source.unsplash.com/500x500/?fitness-games",
-            "type": "ELECTIVE"
+            "name": "Dance and Rhythmic Movement",
+            "description": "Exploring the vibrant world of dance, promoting self-expression, creativity, and fitness through rhythmic movement.",
+            "image_path": "https://source.unsplash.com/500x500/?dance",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Dance",
+                    "description": "Discover the joy and fundamentals of dance, from basic steps to expressing yourself through movement.",
+                    "image_path": "https://source.unsplash.com/500x500/?intro-dance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dance Styles Around the World",
+                    "description": "Explore a variety of dance styles from around the world, appreciating cultural diversity and history.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-dance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rhythmic Games",
+                    "description": "Engage in fun rhythmic games that improve coordination, timing, and teamwork.",
+                    "image_path": "https://source.unsplash.com/500x500/?rhythmic-games",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Dance Routines",
+                    "description": "Learn to create your own dance routines, fostering creativity, planning, and physical fitness.",
+                    "image_path": "https://source.unsplash.com/500x500/?choreography",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Physical Benefits of Dance",
+                    "description": "Understand the physical benefits of dance, from improved coordination to cardiovascular health.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-fitness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Famous Dancers and Performances",
+                    "description": "Study renowned dancers and iconic dance performances, inspiring passion and respect for the art form.",
+                    "image_path": "https://source.unsplash.com/500x500/?famous-dancers",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Dance as Storytelling",
+                    "description": "Explore how dance can be used as a powerful medium for storytelling and self-expression.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-storytelling",
+                    "type": "ELECTIVE"
+                }
+            ]
         },
         {
-            "name": "Adaptive Fitness",
-            "description": "Explore the different ways people with varying abilities engage in fitness activities, promoting inclusivity in physical education.",
-            "image_path": "https://source.unsplash.com/500x500/?adaptive-fitness",
-            "type": "ELECTIVE"
+            "name": "Healthy Habits and Fitness",
+            "description": "Promoting health-conscious choices, regular physical activity, and understanding of how these decisions impact overall well-being.",
+            "image_path": "https://source.unsplash.com/500x500/?healthy-habits",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Physical Fitness",
+                    "description": "Learn what physical fitness is, its components, and why it‘s crucial for a healthy lifestyle.",
+                    "image_path": "https://source.unsplash.com/500x500/?physical-fitness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exercise Routines for Kids",
+                    "description": "Explore fun and effective exercise routines suitable for your age and fitness level.",
+                    "image_path": "https://source.unsplash.com/500x500/?kids-exercise",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Importance of Hydration",
+                    "description": "Understand the importance of staying hydrated, especially during physical activities.",
+                    "image_path": "https://source.unsplash.com/500x500/?hydration",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Nutrition and Physical Activity",
+                    "description": "Learn about the connection between nutrition and physical activity, promoting healthy eating habits for energy and growth.",
+                    "image_path": "https://source.unsplash.com/500x500/?nutrition",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rest and Recovery",
+                    "description": "Appreciate the importance of rest and recovery after exercise to prevent injuries and promote muscle growth.",
+                    "image_path": "https://source.unsplash.com/500x500/?rest-recovery",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Setting Personal Fitness Goals",
+                    "description": "Learn how to set and work towards personal fitness goals, fostering discipline and a sense of achievement.",
+                    "image_path": "https://source.unsplash.com/500x500/?fitness-goals",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Yoga for Kids",
+                    "description": "Introduce the basics of yoga, improving flexibility, focus, and stress management.",
+                    "image_path": "https://source.unsplash.com/500x500/?yoga-kids",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Introduction to Martial Arts",
+            "description": "Exploring various martial arts forms as a way of improving discipline, self-defense skills, and physical fitness.",
+            "image_path": "https://source.unsplash.com/500x500/?martial-arts",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Martial Arts Basics",
+                    "description": "Learn the basic elements of martial arts, understanding its principles of discipline, respect, and self-defense.",
+                    "image_path": "https://source.unsplash.com/500x500/?martial-arts-basics",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Karate for Beginners",
+                    "description": "Get introduced to the basics of Karate, a traditional martial art focusing on striking techniques.",
+                    "image_path": "https://source.unsplash.com/500x500/?karate",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Intro to Taekwondo",
+                    "description": "Explore Taekwondo, a Korean martial art known for its high and fast kicks.",
+                    "image_path": "https://source.unsplash.com/500x500/?taekwondo",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Philosophy of Martial Arts",
+                    "description": "Understand the underlying philosophies of martial arts, such as respect, discipline, and mindfulness.",
+                    "image_path": "https://source.unsplash.com/500x500/?martial-arts-philosophy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Capoeira: Dance and Martial Art",
+                    "description": "Learn about Capoeira, a Brazilian martial art that combines elements of dance, acrobatics, and music.",
+                    "image_path": "https://source.unsplash.com/500x500/?capoeira",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Martial Arts in Pop Culture",
+                    "description": "Discover how martial arts is represented in movies, TV shows, and comics, discussing its impact on pop culture.",
+                    "image_path": "https://source.unsplash.com/500x500/?pop-culture",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Exploring Circus Arts",
+            "description": "Introducing the exciting world of circus arts, promoting creativity, balance, coordination, and self-expression.",
+            "image_path": "https://source.unsplash.com/500x500/?circus",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Circus Arts",
+                    "description": "Explore the basics of circus arts, from juggling to acrobatics, and how they promote physical fitness and creativity.",
+                    "image_path": "https://source.unsplash.com/500x500/?circus-arts",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Juggling Basics",
+                    "description": "Learn the fun skill of juggling, enhancing your coordination, timing, and focus.",
+                    "image_path": "https://source.unsplash.com/500x500/?juggling",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Balancing Acts",
+                    "description": "Master simple balancing acts to improve your stability, focus, and concentration.",
+                    "image_path": "https://source.unsplash.com/500x500/?balance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Intro to Acrobatics",
+                    "description": "Get an introduction to basic acrobatics, promoting flexibility, strength, and body awareness.",
+                    "image_path": "https://source.unsplash.com/500x500/?acrobatics",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mime and Physical Storytelling",
+                    "description": "Learn the art of mime and how to tell stories through physical expression, fostering creativity and non-verbal communication skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?mime",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Circus Arts in History",
+                    "description": "Discover the rich history of circus arts and their influence on modern entertainment.",
+                    "image_path": "https://source.unsplash.com/500x500/?circus-history",
+                    "type": "ELECTIVE"
+                }
+            ]
         }
-    ]
-},
-{
-    "name": "Sportsmanship and Fair Play",
-    "description": "Cultivating the principles of respect, fairness, and camaraderie in the context of physical games and sports.",
-    "image_path": "https://source.unsplash.com/500x500/?sportsmanship",
-    "type": "CORE",
-    "lessons_data": [
-        {
-            "name": "Respect in Sports",
-            "description": "Learn the value of respect in sports, recognizing everyone‘s contributions and appreciating different abilities.",
-            "image_path": "https://source.unsplash.com/500x500/?respect",
-            "type": "CORE"
-        },
-        {
-            "name": "Understanding Fairness",
-            "description": "Delve into the concept of fairness in games, developing a sense of justice and equity.",
-            "image_path": "https://source.unsplash.com/500x500/?fair-play",
-            "type": "CORE"
-        },
-        {
-            "name": "The Power of Teamwork",
-            "description": "Explore the importance of teamwork in sports and how it translates to everyday life situations.",
-            "image_path": "https://source.unsplash.com/500x500/?teamwork",
-            "type": "CORE"
-        },
-        {
-            "name": "Handling Defeat Gracefully",
-            "description": "Understand how to handle losses in sports constructively, fostering resilience and emotional maturity.",
-            "image_path": "https://source.unsplash.com/500x500/?resilience",
-            "type": "CORE"
-        },
-        {
-            "name": "Celebrating Victories Humbly",
-            "description": "Discover how to celebrate victories with humility, valuing effort over outcome.",
-            "image_path": "https://source.unsplash.com/500x500/?victory-celebration",
-            "type": "CORE"
-        },
-        {
-            "name": "Role Models in Sports",
-            "description": "Study inspiring sports figures who exemplify good sportsmanship and fair play.",
-            "image_path": "https://source.unsplash.com/500x500/?sports-role-model",
-            "type": "ELECTIVE"
-        },
-        {
-            "name": "Creating a Fair Play Charter",
-            "description": "Work collaboratively to create a class charter for fair play in sports and games.",
-            "image_path": "https://source.unsplash.com/500x500/?charter",
-            "type": "ELECTIVE"
-        }
-    ]
-},
-{
-    "name": "Introduction to Athletics",
-    "description": "Exploring the world of athletics to enhance agility, speed, and precision while fostering the spirit of competition.",
-    "image_path": "https://source.unsplash.com/500x500/?athletics",
-    "type": "CORE",
-    "lessons_data": [
-        {
-            "name": "Track and Field Basics",
-            "description": "Discover the fundamentals of track and field events, building agility, speed, and endurance.",
-            "image_path": "https://source.unsplash.com/500x500/?track-and-field",
-            "type": "CORE"
-        },
-        {
-            "name": "Jumping Events",
-            "description": "Leap into the world of jumping events, from long jump to high jump, enhancing coordination and agility.",
-            "image_path": "https://source.unsplash.com/500x500/?jumping",
-            "type": "CORE"
-        },
-        {
-            "name": "Throwing Events",
-            "description": "Master the art of throwing, from discus to javelin, to improve precision and arm strength.",
-            "image_path": "https://source.unsplash.com/500x500/?throwing",
-            "type": "CORE"
-        },
-        {
-            "name": "Relay Races",
-            "description": "Experience the thrill of relay races, encouraging teamwork and quick decision-making.",
-            "image_path": "https://source.unsplash.com/500x500/?relay-race",
-            "type": "CORE"
-        },
-        {
-            "name": "The Spirit of Competition",
-            "description": "Foster a healthy competitive spirit, understanding its role in athletics and personal growth.",
-            "image_path": "https://source.unsplash.com/500x500/?competition",
-            "type": "CORE"
-        },
-        {
-            "name": "Famous Athletes and Their Achievements",
-            "description": "Learn about renowned athletes, their journeys, and contributions to athletics.",
-            "image_path": "https://source.unsplash.com/500x500/?famous-athletes",
-            "type": "ELECTIVE"
-        },
-        {
-            "name": "Planning and Organizing a Mini Athletic Event",
-            "description": "Put your athletic knowledge to use by planning a fun, inclusive mini athletic event for the class.",
-            "image_path": "https://source.unsplash.com/500x500/?event-planning",
-            "type": "ELECTIVE"
-        }
-    ]
-},
-{
-    "name": "Outdoor Adventures",
-    "description": "Introducing the joy and benefits of outdoor activities, fostering a love for nature, and promoting exploration and adventure.",
-    "image_path": "https://source.unsplash.com/500x500/?outdoor-adventures",
-    "type": "CORE",
-    "lessons_data": [
-        {
-            "name": "Hiking Basics",
-            "description": "Uncover the joy of hiking, learn basic safety measures, and enjoy the benefits of being in nature.",
-            "image_path": "https://source.unsplash.com/500x500/?hiking",
-            "type": "CORE"
-        },
-        {
-            "name": "Camping Skills",
-            "description": "Explore the basics of camping, from setting up tents to outdoor cooking, fostering independence and resourcefulness.",
-            "image_path": "https://source.unsplash.com/500x500/?camping",
-            "type": "CORE"
-        },
-        {
-            "name": "Navigating with Maps and Compasses",
-            "description": "Learn to use maps and compasses for navigation, enhancing spatial awareness and problem-solving skills.",
-            "image_path": "https://source.unsplash.com/500x500/?navigation",
-            "type": "CORE"
-        },
-        {
-            "name": "Outdoor Games",
-            "description": "Discover and play a variety of outdoor games, encouraging physical activity, teamwork, and strategic thinking.",
-            "image_path": "https://source.unsplash.com/500x500/?outdoor-games",
-            "type": "CORE"
-        },
-        {
-            "name": "Nature Awareness",
-            "description": "Develop a deeper understanding and respect for nature and its inhabitants through guided outdoor explorations.",
-            "image_path": "https://source.unsplash.com/500x500/?nature",
-            "type": "CORE"
-        },
-        {
-            "name": "Basic Survival Skills",
-            "description": "Learn basic survival skills, including what to do when lost, which instills confidence and preparedness.",
-            "image_path": "https://source.unsplash.com/500x500/?survival",
-            "type": "ELECTIVE"
-        },
-        {
-            "name": "Creating an Outdoor Adventure Story",
-            "description": "Draw on your outdoor experiences to create and share an engaging adventure story with the class.",
-            "image_path": "https://source.unsplash.com/500x500/?storytelling",
-            "type": "ELECTIVE"
-        }
-    ]
-},
-{
-    "name": "Aquatic Skills and Safety",
-    "description": "Introducing water-based activities for fun and fitness, while emphasizing the importance of safety when in and around water.",
-    "image_path": "https://source.unsplash.com/500x500/?swimming",
-    "type": "CORE",
-    "lessons_data": [
-        {
-            "name": "Introduction to Swimming",
-            "description": "Learn the fundamentals of swimming, from basic strokes to breath control, fostering confidence in the water.",
-            "image_path": "https://source.unsplash.com/500x500/?swimming-lessons",
-            "type": "CORE"
-        },
-        {
-            "name": "Water Safety Rules",
-            "description": "Understand crucial water safety rules, empowering safe behavior in and around water environments.",
-            "image_path": "https://source.unsplash.com/500x500/?water-safety",
-            "type": "CORE"
-        },
-        {
-            "name": "Intro to Water Sports",
-            "description": "Explore a variety of water sports such as water polo and synchronized swimming, enhancing agility, coordination, and teamwork.",
-            "image_path": "https://source.unsplash.com/500x500/?water-sports",
-            "type": "CORE"
-        },
-        {
-            "name": "Pool Games",
-            "description": "Discover fun and engaging pool games that promote physical fitness and cooperative play.",
-            "image_path": "https://source.unsplash.com/500x500/?pool-games",
-            "type": "CORE"
-        },
-        {
-            "name": "Benefits of Aquatic Exercises",
-            "description": "Understand the health and fitness benefits of water-based exercises and how to incorporate them into your routine.",
-            "image_path": "https://source.unsplash.com/500x500/?aquatic-exercise",
-            "type": "CORE"
-        },
-        {
-            "name": "Intro to Lifeguard Skills",
-            "description": "Learn basic lifeguard skills and understand the role of lifeguards in maintaining water safety.",
-            "image_path": "https://source.unsplash.com/500x500/?lifeguard",
-            "type": "ELECTIVE"
-        },
-        {
-            "name": "Aquatic Art Projects",
-            "description": "Combine creativity and water awareness in a series of aquatic-themed art projects.",
-            "image_path": "https://source.unsplash.com/500x500/?art-projects",
-            "type": "ELECTIVE"
-        }
-    ]
-},
-{
-    "name": "Dance and Rhythmic Movement",
-    "description": "Exploring the vibrant world of dance, promoting self-expression, creativity, and fitness through rhythmic movement.",
-    "image_path": "https://source.unsplash.com/500x500/?dance",
-    "type": "CORE",
-    "lessons_data": [
-        {
-            "name": "Introduction to Dance",
-            "description": "Discover the joy and fundamentals of dance, from basic steps to expressing yourself through movement.",
-            "image_path": "https://source.unsplash.com/500x500/?intro-dance",
-            "type": "CORE"
-        },
-        {
-            "name": "Dance Styles Around the World",
-            "description": "Explore a variety of dance styles from around the world, appreciating cultural diversity and history.",
-            "image_path": "https://source.unsplash.com/500x500/?world-dance",
-            "type": "CORE"
-        },
-        {
-            "name": "Rhythmic Games",
-            "description": "Engage in fun rhythmic games that improve coordination, timing, and teamwork.",
-            "image_path": "https://source.unsplash.com/500x500/?rhythmic-games",
-            "type": "CORE"
-        },
-        {
-            "name": "Creating Dance Routines",
-            "description": "Learn to create your own dance routines, fostering creativity, planning, and physical fitness.",
-            "image_path": "https://source.unsplash.com/500x500/?choreography",
-            "type": "CORE"
-        },
-        {
-            "name": "Physical Benefits of Dance",
-            "description": "Understand the physical benefits of dance, from improved coordination to cardiovascular health.",
-            "image_path": "https://source.unsplash.com/500x500/?dance-fitness",
-            "type": "CORE"
-        },
-        {
-            "name": "Famous Dancers and Performances",
-            "description": "Study renowned dancers and iconic dance performances, inspiring passion and respect for the art form.",
-            "image_path": "https://source.unsplash.com/500x500/?famous-dancers",
-            "type": "ELECTIVE"
-        },
-        {
-            "name": "Dance as Storytelling",
-            "description": "Explore how dance can be used as a powerful medium for storytelling and self-expression.",
-            "image_path": "https://source.unsplash.com/500x500/?dance-storytelling",
-            "type": "ELECTIVE"
-        }
-    ]
-},
-{
-    "name": "Healthy Habits and Fitness",
-    "description": "Promoting health-conscious choices, regular physical activity, and understanding of how these decisions impact overall well-being.",
-    "image_path": "https://source.unsplash.com/500x500/?healthy-habits",
-    "type": "CORE",
-    "lessons_data": [
-        {
-            "name": "Understanding Physical Fitness",
-            "description": "Learn what physical fitness is, its components, and why it‘s crucial for a healthy lifestyle.",
-            "image_path": "https://source.unsplash.com/500x500/?physical-fitness",
-            "type": "CORE"
-        },
-        {
-            "name": "Exercise Routines for Kids",
-            "description": "Explore fun and effective exercise routines suitable for your age and fitness level.",
-            "image_path": "https://source.unsplash.com/500x500/?kids-exercise",
-            "type": "CORE"
-        },
-        {
-            "name": "Importance of Hydration",
-            "description": "Understand the importance of staying hydrated, especially during physical activities.",
-            "image_path": "https://source.unsplash.com/500x500/?hydration",
-            "type": "CORE"
-        },
-        {
-            "name": "Nutrition and Physical Activity",
-            "description": "Learn about the connection between nutrition and physical activity, promoting healthy eating habits for energy and growth.",
-            "image_path": "https://source.unsplash.com/500x500/?nutrition",
-            "type": "CORE"
-        },
-        {
-            "name": "Rest and Recovery",
-            "description": "Appreciate the importance of rest and recovery after exercise to prevent injuries and promote muscle growth.",
-            "image_path": "https://source.unsplash.com/500x500/?rest-recovery",
-            "type": "CORE"
-        },
-        {
-            "name": "Setting Personal Fitness Goals",
-            "description": "Learn how to set and work towards personal fitness goals, fostering discipline and a sense of achievement.",
-            "image_path": "https://source.unsplash.com/500x500/?fitness-goals",
-            "type": "ELECTIVE"
-        },
-        {
-            "name": "Yoga for Kids",
-            "description": "Introduce the basics of yoga, improving flexibility, focus, and stress management.",
-            "image_path": "https://source.unsplash.com/500x500/?yoga-kids",
-            "type": "ELECTIVE"
-        }
-    ]
-},
-
       ]
     },
     {
       "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",
-      "topics_data": []
+      "topics_data": [
+        {
+          "name": "Endurance Training",
+          "description": "Exploring the benefits of long-term physical activities for increasing stamina, improving health, and fostering discipline.",
+          "image_path": "https://source.unsplash.com/500x500/?endurance",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Running Fundamentals",
+                  "description": "Understanding the basics of running, focusing on techniques and safety measures to increase stamina and avoid injuries.",
+                  "image_path": "https://source.unsplash.com/500x500/?running",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Swimming for Stamina",
+                  "description": "Building endurance through swimming, with a focus on different swimming styles and safety practices.",
+                  "image_path": "https://source.unsplash.com/500x500/?swimming",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Long-Distance Cycling",
+                  "description": "Engaging in the fun and challenging sport of long-distance cycling, promoting both physical fitness and outdoor exploration.",
+                  "image_path": "https://source.unsplash.com/500x500/?cycling",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Hiking Adventures",
+                  "description": "Learning about the essentials of hiking, from choosing trails to understanding the environment, fostering a love for nature and physical activity.",
+                  "image_path": "https://source.unsplash.com/500x500/?hiking",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Rowing Basics",
+                  "description": "Discovering the powerful and rhythmic sport of rowing, enhancing strength, stamina, and team spirit.",
+                  "image_path": "https://source.unsplash.com/500x500/?rowing",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Cross-Country Skiing",
+                  "description": "Embarking on an exciting journey with cross-country skiing, a fantastic full-body workout and a fun winter sport.",
+                  "image_path": "https://source.unsplash.com/500x500/?skiing",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Marathon Training",
+                  "description": "Preparing for a marathon, an exploration of long-distance running that fosters perseverance and commitment.",
+                  "image_path": "https://source.unsplash.com/500x500/?marathon",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Flexibility and Balance",
+          "description": "Mastering the art of flexibility and balance to enhance physical coordination, stability and agility.",
+          "image_path": "https://source.unsplash.com/500x500/?balance",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Yoga Basics",
+                  "description": "Introduction to yoga postures, breathing techniques, and the benefits of mindfulness for body and mind balance.",
+                  "image_path": "https://source.unsplash.com/500x500/?yoga",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Gymnastics Fundamentals",
+                  "description": "Exploring basic gymnastics moves, enhancing flexibility, strength, and overall body coordination.",
+                  "image_path": "https://source.unsplash.com/500x500/?gymnastics",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Pilates Principles",
+                  "description": "Engaging in Pilates exercises, promoting improved flexibility, strength, balance, and body awareness.",
+                  "image_path": "https://source.unsplash.com/500x500/?pilates",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Ballet Basics",
+                  "description": "Discovering ballet, a beautiful blend of art and physical exercise promoting flexibility, balance, and core strength.",
+                  "image_path": "https://source.unsplash.com/500x500/?ballet",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Tai Chi Essentials",
+                  "description": "Exploring Tai Chi, a gentle physical exercise that enhances balance, reduces stress, and promotes self-awareness.",
+                  "image_path": "https://source.unsplash.com/500x500/?tai-chi",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Capoeira Introduction",
+                  "description": "Unveiling Capoeira, an Afro-Brazilian martial art that combines elements of dance, acrobatics, and music for flexibility and balance.",
+                  "image_path": "https://source.unsplash.com/500x500/?capoeira",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Aerial Silk Basics",
+                  "description": "Trying Aerial Silk, a beautiful and exciting form of acrobatics promoting strength, balance, and flexibility.",
+                  "image_path": "https://source.unsplash.com/500x500/?aerial-silk",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Strength and Conditioning",
+          "description": "Building physical strength and conditioning for improved athletic performance and overall health.",
+          "image_path": "https://source.unsplash.com/500x500/?strength-training",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Fundamentals of Weightlifting",
+                  "description": "Introduction to safe weightlifting practices, promoting strength, muscle growth, and discipline.",
+                  "image_path": "https://source.unsplash.com/500x500/?weightlifting",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Basics of Circuit Training",
+                  "description": "Engaging in circuit training exercises to improve muscle tone and cardiovascular health.",
+                  "image_path": "https://source.unsplash.com/500x500/?circuit-training",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Bodyweight Exercises",
+                  "description": "Mastering bodyweight exercises for versatile, equipment-free strength training.",
+                  "image_path": "https://source.unsplash.com/500x500/?bodyweight-exercises",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Kettlebell Workouts",
+                  "description": "Exploring kettlebell workouts for a comprehensive, full-body strength and conditioning exercise.",
+                  "image_path": "https://source.unsplash.com/500x500/?kettlebell",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Resistance Band Exercises",
+                  "description": "Utilizing resistance bands for effective, low-impact strength training.",
+                  "image_path": "https://source.unsplash.com/500x500/?resistance-band",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to CrossFit",
+                  "description": "Exploring CrossFit, a high-intensity fitness regimen, for improved strength and endurance.",
+                  "image_path": "https://source.unsplash.com/500x500/?crossfit",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Parkour Basics",
+                  "description": "Discovering parkour, a training discipline using movement for strength, agility, and freedom.",
+                  "image_path": "https://source.unsplash.com/500x500/?parkour",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Health and Wellness",
+          "description": "Promoting a healthy lifestyle through nutrition, mindfulness, and an understanding of the human body.",
+          "image_path": "https://source.unsplash.com/500x500/?health-wellness",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Nutrition Basics",
+                  "description": "Exploring the role of nutrition in maintaining health and supporting physical activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?nutrition",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Importance of Hydration",
+                  "description": "Understanding the vital role of water in our bodies and the importance of staying hydrated, especially during physical activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?hydration",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Mental Wellness and Exercise",
+                  "description": "Exploring the connection between physical exercise and mental wellness, promoting a holistic approach to health.",
+                  "image_path": "https://source.unsplash.com/500x500/?mental-wellness",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Understanding Body Changes",
+                  "description": "Learning about the physical changes that occur in the human body during adolescence and the importance of maintaining a positive body image.",
+                  "image_path": "https://source.unsplash.com/500x500/?body-image",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Rest and Recovery",
+                  "description": "Discovering the role of rest and recovery in physical health, and learning about sleep‘s impact on growth and performance.",
+                  "image_path": "https://source.unsplash.com/500x500/?sleep",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Meditation and Mindfulness",
+                  "description": "Introduction to meditation and mindfulness, techniques for managing stress and enhancing mental health.",
+                  "image_path": "https://source.unsplash.com/500x500/?meditation",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "First Aid Basics",
+                  "description": "Understanding basic first aid procedures and the importance of safety in physical activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?first-aid",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Outdoor Adventures",
+          "description": "Fostering a love for the outdoors, nature exploration, and adventurously physical activities.",
+          "image_path": "https://source.unsplash.com/500x500/?outdoor-adventures",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Nature Hiking",
+                  "description": "Promoting physical activity and a love for nature through hiking adventures in varied environments.",
+                  "image_path": "https://source.unsplash.com/500x500/?hiking",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Outdoor Survival Skills",
+                  "description": "Learning the basics of outdoor survival, promoting resourcefulness, problem-solving, and respect for nature.",
+                  "image_path": "https://source.unsplash.com/500x500/?survival",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Canoeing and Kayaking",
+                  "description": "Introducing the sports of canoeing and kayaking for water-based exploration and physical activity.",
+                  "image_path": "https://source.unsplash.com/500x500/?canoeing",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Mountain Biking Basics",
+                  "description": "Promoting physical fitness and a love for outdoor adventures through the exciting activity of mountain biking.",
+                  "image_path": "https://source.unsplash.com/500x500/?mountain-biking",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Wildlife Observation",
+                  "description": "Learning about the wildlife in different habitats, promoting understanding, curiosity, and respect for animals in nature.",
+                  "image_path": "https://source.unsplash.com/500x500/?wildlife",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Rock Climbing Introduction",
+                  "description": "Discovering the thrilling sport of rock climbing, which promotes strength, problem-solving, and confidence.",
+                  "image_path": "https://source.unsplash.com/500x500/?rock-climbing",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Introduction to Fishing",
+                  "description": "Learning the basics of fishing, an outdoor activity promoting patience, relaxation, and respect for marine life.",
+                  "image_path": "https://source.unsplash.com/500x500/?fishing",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Dance and Rhythm",
+          "description": "Promoting self-expression, coordination, and cultural appreciation through diverse dance styles and rhythmic movements.",
+          "image_path": "https://source.unsplash.com/500x500/?dance",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Hip-Hop Dance Basics",
+                  "description": "Exploring the world of hip-hop dance, a dynamic form that promotes self-expression, creativity, and physical fitness.",
+                  "image_path": "https://source.unsplash.com/500x500/?hip-hop-dance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Ballet",
+                  "description": "Learning the basics of ballet, a classical dance form that requires grace, precision, and discipline.",
+                  "image_path": "https://source.unsplash.com/500x500/?ballet",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Latin Dance Styles",
+                  "description": "Exploring Latin dance styles, such as Salsa and Merengue, promoting rhythm, coordination, and cultural appreciation.",
+                  "image_path": "https://source.unsplash.com/500x500/?latin-dance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Modern Dance and Expression",
+                  "description": "Understanding modern dance as a form of self-expression and a celebration of individuality and creativity.",
+                  "image_path": "https://source.unsplash.com/500x500/?modern-dance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Tap Dance",
+                  "description": "Discovering tap dance, a rhythmic style that combines elements of music and dance.",
+                  "image_path": "https://source.unsplash.com/500x500/?tap-dance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "African Dance Styles",
+                  "description": "Learning about African dance styles, promoting cultural appreciation, rhythm, and whole-body movement.",
+                  "image_path": "https://source.unsplash.com/500x500/?african-dance",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Introduction to Bollywood Dance",
+                  "description": "Exploring Bollywood dance, a lively style that combines Indian traditional dances with the influence of Western dance elements.",
+                  "image_path": "https://source.unsplash.com/500x500/?bollywood-dance",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Flexibility and Balance",
+          "description": "Developing flexibility and balance through exercises and activities for overall fitness and well-being.",
+          "image_path": "https://source.unsplash.com/500x500/?flexibility-balance",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Yoga Basics",
+                  "description": "Learning the basics of yoga, promoting flexibility, balance, relaxation, and a sense of inner calm.",
+                  "image_path": "https://source.unsplash.com/500x500/?yoga",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Pilates Introduction",
+                  "description": "Introduction to Pilates, a method that enhances core strength, flexibility, and mindful movement.",
+                  "image_path": "https://source.unsplash.com/500x500/?pilates",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Gymnastics Basics",
+                  "description": "Learning the basics of gymnastics, an activity that develops strength, flexibility, and balance.",
+                  "image_path": "https://source.unsplash.com/500x500/?gymnastics",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Tai Chi Fundamentals",
+                  "description": "Understanding the fundamentals of Tai Chi, a gentle form of exercise that promotes balance and peaceful movement.",
+                  "image_path": "https://source.unsplash.com/500x500/?tai-chi",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Basic Acrobatics",
+                  "description": "Introduction to acrobatics, a dynamic activity that combines elements of gymnastics, dance, and performance.",
+                  "image_path": "https://source.unsplash.com/500x500/?acrobatics",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Aerial Silks and Hoops",
+                  "description": "Exploring aerial silks and hoops, activities that promote strength, flexibility, coordination, and artistic expression.",
+                  "image_path": "https://source.unsplash.com/500x500/?aerial-silks",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Capoeira Basics",
+                  "description": "Discovering capoeira, a Brazilian martial art that combines elements of dance, acrobatics, and music, promoting coordination and rhythm.",
+                  "image_path": "https://source.unsplash.com/500x500/?capoeira",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Alternative Sports",
+          "description": "Exploring unconventional sports that challenge coordination, strategy, and teamwork in unique ways.",
+          "image_path": "https://source.unsplash.com/500x500/?alternative-sports",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Frisbee Golf",
+                  "description": "Combining precision, strategy, and physical activity with the introduction to the fun and unique game of Frisbee golf.",
+                  "image_path": "https://source.unsplash.com/500x500/?frisbee-golf",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Skateboarding Basics",
+                  "description": "Promoting balance, coordination, and self-expression through the introduction to the sport and art of skateboarding.",
+                  "image_path": "https://source.unsplash.com/500x500/?skateboarding",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Parkour Fundamentals",
+                  "description": "Discovering Parkour, a sport of movement and agility that uses the urban environment as a playground.",
+                  "image_path": "https://source.unsplash.com/500x500/?parkour",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Basic Orienteering",
+                  "description": "Learning about orienteering, an exciting activity that combines map reading, navigation, and physical fitness.",
+                  "image_path": "https://source.unsplash.com/500x500/?orienteering",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Bouldering",
+                  "description": "Learning about bouldering, a form of rock climbing that challenges strength, strategy, and fearlessness.",
+                  "image_path": "https://source.unsplash.com/500x500/?bouldering",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Archery Basics",
+                  "description": "Introducing the sport of archery, which fosters focus, precision, and discipline.",
+                  "image_path": "https://source.unsplash.com/500x500/?archery",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Mindful Movement",
+          "description": "Exploring mindful movements that promote a sense of inner peace, balance, and body awareness.",
+          "image_path": "https://source.unsplash.com/500x500/?mindful-movement",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Qigong Basics",
+                  "description": "Introduction to Qigong, a practice that harmonizes body movement, mental concentration, and breath to promote health and mindfulness.",
+                  "image_path": "https://source.unsplash.com/500x500/?qigong",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Guided Meditative Movement",
+                  "description": "Guided sessions that combine meditation with gentle movements to foster mindfulness, relaxation, and body awareness.",
+                  "image_path": "https://source.unsplash.com/500x500/?meditative-movement",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Feldenkrais",
+                  "description": "Learning about the Feldenkrais method, a practice that enhances movement, flexibility, and body awareness through gentle exploratory exercises.",
+                  "image_path": "https://source.unsplash.com/500x500/?feldenkrais",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Tai Chi for Mindfulness",
+                  "description": "Applying Tai Chi principles for mindfulness, promoting a sense of calm and balance through slow, deliberate movements.",
+                  "image_path": "https://source.unsplash.com/500x500/?tai-chi-mindfulness",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Breathing Exercises for Relaxation",
+                  "description": "Exploring different breathing techniques that aid relaxation, improve concentration, and promote a sense of inner peace.",
+                  "image_path": "https://source.unsplash.com/500x500/?breathing-exercises",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Body Scan Meditation",
+                  "description": "Practicing body scan meditation, a mindful technique that promotes deep relaxation and body awareness.",
+                  "image_path": "https://source.unsplash.com/500x500/?body-scan-meditation",
+                  "type": "ELECTIVE"
+              }
+          ]
+        }
+      ]
     }
   ]'::json
 );
