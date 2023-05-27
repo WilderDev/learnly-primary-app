@@ -69,6 +69,7 @@ export default function AssignmentCreatorForm({
   });
 
   const handleAssignmentFormSubmit = async () => {
+    setPrintOptions(false);
     setIsLoadingAssignment(true);
     setAdditionalCommentsModal(false);
     setAssignmentActions(false);
@@ -76,16 +77,25 @@ export default function AssignmentCreatorForm({
     const lessonPlanGrade = lessonPlan
       ? lessonPlan.level.name
       : getLessonWithId(userLessonOption).lesson_plan.level.name;
+
     const lessonPlanContent = lessonPlan
       ? lessonPlan.content
       : getLessonWithId(userLessonOption).lesson_plan.content;
+
     const _assignmentTitle =
       assignmentTitle !== ''
         ? assignmentTitle
         : getLessonWithId(userLessonOption).lesson_plan.title + ' Assignment';
+
     const lessonPlanId = lessonPlan
       ? lessonPlan.id
       : getLessonWithId(userLessonOption).lesson_plan_id;
+
+    if (!isModal && !lessonPlan.user_lesson_plan) {
+      toast.error('You must save the lesson to create an assignment!');
+      setIsLoadingAssignment(false);
+      return;
+    }
 
     const userLessonPlanId = lessonPlan
       ? lessonPlan.user_lesson_plan.id

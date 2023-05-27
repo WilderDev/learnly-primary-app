@@ -42,8 +42,9 @@ const saveAssignmentAction = async (
 
     if (error) return responseContract(error.message, false);
 
-    revalidatePath('/');
     revalidatePath('/lesson-plans/' + lesson_plan_id);
+    revalidatePath('/assignments');
+    revalidatePath('/');
 
     return responseContract('Success!', true);
   } catch (error) {
@@ -163,8 +164,9 @@ const deleteAssignmentAction = async (
 
     if (error) return responseContract(error.message, false);
 
-    revalidatePath('/');
     revalidatePath('/lesson-plans/' + lesson_plan_id);
+    revalidatePath('/assignments');
+    revalidatePath('/');
 
     return responseContract('Success!', true);
   } catch (error) {
@@ -221,7 +223,7 @@ export async function fetchAssignments(): Promise<IAssignment[]> {
         '*, user_lesson_plan:user_lesson_plans(students), lesson_plan:lesson_plans(subject:subjects(name))'
       )
       .eq('creator_id', user?.id)
-      .limit(10);
+      .limit(5);
 
     if (error) {
       throw new Error(error.message);
