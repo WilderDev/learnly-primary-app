@@ -39,12 +39,12 @@ const tabs = [
     icon: CreditCardIcon,
     component: AccountSubscriptionTab,
   },
-  {
-    id: 'notifications',
-    title: 'Notifications',
-    icon: BellIcon,
-    component: AccountNotificationsTab,
-  },
+  // {
+  //   id: 'notifications',
+  //   title: 'Notifications',
+  //   icon: BellIcon,
+  //   component: AccountNotificationsTab,
+  // },
   {
     id: 'students',
     title: 'Students',

@@ -19,6 +19,11 @@ export async function POST(request: Request) {
   const { name, email, avatarUrl, children } =
     (await request.json()) as ICreateAccountReq;
 
+  console.log('name:', name);
+  console.log('email:', email);
+  console.log('avatarUrl:', avatarUrl);
+  console.log('children:', children);
+
   // 2. Check if the required fields are present.
   if (!name || !email || !avatarUrl || children.length === 0) {
     return new Response('Missing required fields', { status: 400 });

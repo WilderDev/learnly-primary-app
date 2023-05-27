@@ -171,9 +171,11 @@ SELECT
   teaching_preferences.preferred_lesson_detail_level AS lesson_detail_level,
   teaching_preferences.preferred_teaching_tools AS teaching_tools,
   teaching_preferences.preferred_lesson_structure AS lesson_structure,
+  subscriptions.id AS subscription_id,
   subscriptions.status AS subscription_status,
   subscriptions.trial_end AS subscription_trial_end,
   subscriptions.cancel_at_period_end AS subscription_cancel_at_period_end,
+  customers.stripe_customer_id AS stripe_customer_id,
   customers.billing_portal_session_url AS billing_portal_session_url
 FROM teacher_profiles
 JOIN teaching_preferences ON teacher_profiles.id = teaching_preferences.id

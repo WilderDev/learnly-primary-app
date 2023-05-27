@@ -14,6 +14,7 @@ import {
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
+import baseUrl from '@/lib/common/baseUrl';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
@@ -222,3 +223,41 @@ const editStudentAction = async (input: z.infer<typeof editStudentSchema>) => {
 };
 
 export const editStudent = createRequest(editStudentAction, editStudentSchema);
+
+// * Save Payment Details
+const savePaymentDetailsSchema = z.object({
+  paymentMethodId: z.string(),
+  customerId: z.string(),
+  subscriptionId: z.string(),
+});
+
+const savePaymentDetailsAction = async (
+  input: z.infer<typeof savePaymentDetailsSchema>,
+) => {
+  const { paymentMethodId, customerId, subscriptionId } = input;
+
+  try {
+    const res = await fetch(baseUrl + '/api/stripe/save-payment-details', {
+      method: 'POST',
+      body: JSON.stringify({
+        paymentMethodId,
+        customerId,
+        subscriptionId,
+      }),
+    });
+
+    if (res.status !== 200)
+      return responseContract('Woops! Something went wrong!', false);
+
+    revalidatePath('/account'); // ✅
+
+    return responseContract('Success!', true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
+};
+
+export const savePaymentDetails = createRequest(
+  savePaymentDetailsAction,
+  savePaymentDetailsSchema,
+);

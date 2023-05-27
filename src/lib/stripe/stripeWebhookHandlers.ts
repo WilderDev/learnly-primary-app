@@ -77,6 +77,7 @@ export async function handleCreateCustomer({ customer }: ICreateCustomer) {
     customer: customer.id,
     items: [{ price: process.env.STRIPE_DEFAULT_PRICE_ID as string }],
     trial_period_days: 14,
+    // payment_behavior: 'default_incomplete',
     payment_settings: {
       save_default_payment_method: 'on_subscription',
     },

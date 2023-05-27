@@ -17,8 +17,7 @@
 15. Users can create their own lessons, topics, subjects, and curriculum
 16. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 17. DMARC & SPF Records
-18. [Stripe Elements to add credit card inside dashboard](https://stripe.com/docs/payments/payment-element)
-19. Curriculum Topic search page with tags and by filters
+18. Curriculum Topic search page with tags and by filters
 
 ---
 

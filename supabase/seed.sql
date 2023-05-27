@@ -25407,29 +25407,7 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
-
-
--- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
--- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
--- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first topic and ALL the lessons for that topic for Kindergarten Creative Arts.
--- the output will look like:
--- {
---        "name": "Team Sports",
---        "description": "Fostering teamwork and coordination through simple team sports and games.",
---        "image_path": "https://source.unsplash.com/500x500/?team-sports",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Introduction to Soccer",
---                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
---                "image_path": "https://source.unsplash.com/500x500/?soccer",
---                "type": "CORE"
---            },
---           // . . .
---        ]
--- }
----- Creative Arts
+---- Creative Arts ✅
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
   '21b7556c-4d89-4ae7-b367-f0d3e47a04b3'::uuid,
@@ -25526,7 +25504,7 @@ SELECT create_complete_curriculum(
                 },
                 {
                     "name": "Shape Hunt Activity",
-                    "description": "A fun, interactive activity that encourages students to 'hunt' for shapes in their surroundings.",
+                    "description": "A fun, interactive activity that encourages students to ‘hunt‘ for shapes in their surroundings.",
                     "image_path": "https://source.unsplash.com/500x500/?shape-hunt",
                     "type": "ELECTIVE"
                 },
@@ -25726,7 +25704,7 @@ SELECT create_complete_curriculum(
                 },
                 {
                     "name": "Color Hunt",
-                    "description": "A fun interactive activity that encourages students to 'hunt' for specific colors in their environment.",
+                    "description": "A fun interactive activity that encourages students to ‘hunt‘ for specific colors in their environment.",
                     "image_path": "https://source.unsplash.com/500x500/?color-hunt",
                     "type": "ELECTIVE"
                 },
@@ -26324,284 +26302,1395 @@ SELECT create_complete_curriculum(
     {
       "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
       "topics_data": [
-{
-  "name": "Exploring Visual Arts",
-  "description": "Exploring various forms of visual arts to spark creativity, develop fine motor skills, and introduce color theory.",
-  "image_path": "https://source.unsplash.com/500x500/?painting,kids",
-  "type": "CORE",
-  "lessons_data": [
-      {
-      "name": "Introduction to Drawing",
-      "description": "Developing fundamental drawing skills using pencils and papers, focusing on shapes and lines.",
-      "image_path": "https://source.unsplash.com/500x500/?drawing,kids",
-      "type": "CORE"
-      },
-      {
-      "name": "Exploring Colors and Painting",
-      "description": "Learning about primary and secondary colors, and experimenting with mixing colors through painting activities.",
-      "image_path": "https://source.unsplash.com/500x500/?painting,colors",
-      "type": "CORE"
-      },
-      {
-      "name": "Creating Patterns and Textures",
-      "description": "Understanding and creating various patterns and textures using different art materials.",
-      "image_path": "https://source.unsplash.com/500x500/?patterns,textures",
-      "type": "CORE"
-      },
-      {
-      "name": "Introduction to Collage Art",
-      "description": "Creating simple collages using cut-out shapes, exploring composition and juxtaposition.",
-      "image_path": "https://source.unsplash.com/500x500/?collage,kids",
-      "type": "CORE"
-      },
-      {
-        "name": "Introduction to Sculpture",
-        "description": "Learning about three-dimensional art through simple clay modeling activities.",
-        "image_path": "https://source.unsplash.com/500x500/?sculpture,kids",
-        "type": "CORE"
-      },
-      {
-        "name": "Art Appreciation",
-        "description": "Developing art appreciation by looking at famous artworks and discussing them.",
-        "image_path": "https://source.unsplash.com/500x500/?artworks,kids",
-        "type": "CORE"
-      }
-    ]
-},
-{
-   "name": "Introduction to Music and Rhythm",
-   "description": "Introducing students to music, different musical instruments, and basic rhythmic patterns.",
-   "image_path": "https://source.unsplash.com/500x500/?music,kids",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Understanding Rhythm and Beat",
-           "description": "Learning the basics of rhythm and beat through clapping exercises and simple percussion instruments.",
-           "image_path": "https://source.unsplash.com/500x500/?rhythm,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Musical Instruments",
-           "description": "Exploring different types of musical instruments and their sounds, from piano to drums.",
-           "image_path": "https://source.unsplash.com/500x500/?instruments,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Exploring Melody",
-           "description": "Understanding the concept of melody using simple songs and musical games.",
-           "image_path": "https://source.unsplash.com/500x500/?melody,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Singing and Voice Exploration",
-           "description": "Developing vocal skills and confidence through group singing activities.",
-           "image_path": "https://source.unsplash.com/500x500/?singing,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Creating Simple Musical Instruments",
-           "description": "Crafting simple musical instruments using household items to learn about sound production.",
-           "image_path": "https://source.unsplash.com/500x500/?homemade,instruments",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Musical Genres",
-           "description": "Exploring different musical genres and their characteristics through active listening.",
-           "image_path": "https://source.unsplash.com/500x500/?music,genres",
-           "type": "CORE"
-       }
-   ]
-},
-{
-   "name": "Exploring Dance and Movement",
-   "description": "Introducing students to the joy of dance, developing coordination, and understanding rhythm through movement.",
-   "image_path": "https://source.unsplash.com/500x500/?dance,kids",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Understanding Rhythm Through Dance",
-           "description": "Learning the basics of rhythm through dance movements and exercises.",
-           "image_path": "https://source.unsplash.com/500x500/?rhythm,dance",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Ballet",
-           "description": "Exploring the basics of ballet, learning about the discipline and grace that characterizes this dance form.",
-           "image_path": "https://source.unsplash.com/500x500/?ballet,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Hip-Hop Dance",
-           "description": "Learning the basics of hip-hop dance, emphasizing creativity and personal expression.",
-           "image_path": "https://source.unsplash.com/500x500/?hiphop,dance",
-           "type": "CORE"
-       },
-       {
-           "name": "Creative Movement",
-           "description": "Encouraging students to express themselves freely through creative dance movements.",
-           "image_path": "https://source.unsplash.com/500x500/?creative,dance",
-           "type": "CORE"
-       },
-       {
-           "name": "Dance from Around the World",
-           "description": "Exploring traditional dances from different cultures around the world.",
-           "image_path": "https://source.unsplash.com/500x500/?world,dance",
-           "type": "CORE"
-       },
-       {
-           "name": "Choreography Basics",
-           "description": "Creating simple choreographies as a way to understand dance as a means of storytelling.",
-           "image_path": "https://source.unsplash.com/500x500/?choreography,kids",
-           "type": "CORE"
-       }
-   ]
-},
-{
-   "name": "Introduction to Theater and Drama",
-   "description": "Introducing students to the basics of theater and drama, enhancing expressiveness and confidence.",
-   "image_path": "https://source.unsplash.com/500x500/?theater,kids",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Understanding Characters",
-           "description": "Introducing the concept of characters in a story and how they can be portrayed in drama.",
-           "image_path": "https://source.unsplash.com/500x500/?characters,theater",
-           "type": "CORE"
-       },
-       {
-           "name": "Exploring Emotions Through Drama",
-           "description": "Using drama activities to express and understand different emotions.",
-           "image_path": "https://source.unsplash.com/500x500/?emotions,drama",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Storytelling",
-           "description": "Learning how to tell a story through dramatization, emphasizing sequence and plot.",
-           "image_path": "https://source.unsplash.com/500x500/?storytelling,theater",
-           "type": "CORE"
-       },
-       {
-           "name": "Creating Simple Props and Costumes",
-           "description": "Engaging in simple craft activities to create props and costumes for a theatrical play.",
-           "image_path": "https://source.unsplash.com/500x500/?props,costumes",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Mime and Body Language",
-           "description": "Understanding the role of body language in communication and expressing ideas without words through mime.",
-           "image_path": "https://source.unsplash.com/500x500/?mime,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Putting on a Mini Play",
-           "description": "Applying learned skills in a mini play production, encouraging teamwork and creativity.",
-           "image_path": "https://source.unsplash.com/500x500/?play,kids",
-           "type": "CORE"
-       }
-   ]
-},
-{
-   "name": "Exploring Crafts and DIY Projects",
-   "description": "Encouraging creativity, fine motor skills, and resourcefulness through crafts and DIY projects.",
-   "image_path": "https://source.unsplash.com/500x500/?crafts,kids",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Paper Crafting Basics",
-           "description": "Learning basic paper crafting techniques, such as folding, cutting, and gluing.",
-           "image_path": "https://source.unsplash.com/500x500/?papercraft,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Creating Handmade Greeting Cards",
-           "description": "Designing and making personalized greeting cards for various occasions.",
-           "image_path": "https://source.unsplash.com/500x500/?cards,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Origami",
-           "description": "Exploring the Japanese art of paper folding to create simple origami figures.",
-           "image_path": "https://source.unsplash.com/500x500/?origami,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Upcycling Household Items",
-           "description": "Learning about sustainability by turning household waste into useful or decorative items.",
-           "image_path": "https://source.unsplash.com/500x500/?upcycling,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Simple Sewing Projects",
-           "description": "Developing basic sewing skills through simple projects, like sewing a button or making a small pouch.",
-           "image_path": "https://source.unsplash.com/500x500/?sewing,kids",
-           "type": "CORE"
-       },
-       {
-           "name": "Creating Simple Jewelry",
-           "description": "Making simple bead bracelets and necklaces to explore design and fine motor skills.",
-           "image_path": "https://source.unsplash.com/500x500/?jewelry,kids",
-           "type": "CORE"
-       }
-   ]
-},
-{
-   "name": "Appreciation of Architecture and Design",
-   "description": "Introducing students to the basics of architecture and design, understanding shapes, symmetry, and purpose of design.",
-   "image_path": "https://source.unsplash.com/500x500/?architecture,kids",
-   "type": "CORE",
-   "lessons_data": [
-       {
-           "name": "Understanding Shapes in Architecture",
-           "description": "Learning about basic geometric shapes and how they are used in architectural design.",
-           "image_path": "https://source.unsplash.com/500x500/?shapes,architecture",
-           "type": "CORE"
-       },
-       {
-           "name": "Exploring Symmetry in Architecture",
-           "description": "Understanding the concept of symmetry through examples in architecture and hands-on activities.",
-           "image_path": "https://source.unsplash.com/500x500/?symmetry,architecture",
-           "type": "CORE"
-       },
-       {
-           "name": "Introduction to Famous Landmarks",
-           "description": "Learning about famous landmarks around the world and their architectural significance.",
-           "image_path": "https://source.unsplash.com/500x500/?landmarks,world",
-           "type": "CORE"
-       },
-       {
-           "name": "Designing a Dream House",
-           "description": "Using creativity and understanding of shapes to design a simple dream house on paper.",
-           "image_path": "https://source.unsplash.com/500x500/?dream,house",
-           "type": "CORE"
-       },
-       {
-           "name": "Exploring Interior Design",
-           "description": "Understanding the basics of interior design through the decoration of simple paper models.",
-           "image_path": "https://source.unsplash.com/500x500/?interior,design",
-           "type": "CORE"
-       },
-       {
-           "name": "Creating Models with Building Blocks",
-           "description": "Developing spatial skills and understanding of structural stability through building with blocks.",
-           "image_path": "https://source.unsplash.com/500x500/?blocks,building",
-           "type": "CORE"
-       }
-   ]
-},
-
+        {
+          "name": "Exploring Visual Arts",
+          "description": "Exploring various forms of visual arts to spark creativity, develop fine motor skills, and introduce color theory.",
+          "image_path": "https://source.unsplash.com/500x500/?painting,kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+              "name": "Introduction to Drawing",
+              "description": "Developing fundamental drawing skills using pencils and papers, focusing on shapes and lines.",
+              "image_path": "https://source.unsplash.com/500x500/?drawing,kids",
+              "type": "CORE"
+              },
+              {
+              "name": "Exploring Colors and Painting",
+              "description": "Learning about primary and secondary colors, and experimenting with mixing colors through painting activities.",
+              "image_path": "https://source.unsplash.com/500x500/?painting,colors",
+              "type": "CORE"
+              },
+              {
+              "name": "Creating Patterns and Textures",
+              "description": "Understanding and creating various patterns and textures using different art materials.",
+              "image_path": "https://source.unsplash.com/500x500/?patterns,textures",
+              "type": "CORE"
+              },
+              {
+              "name": "Introduction to Collage Art",
+              "description": "Creating simple collages using cut-out shapes, exploring composition and juxtaposition.",
+              "image_path": "https://source.unsplash.com/500x500/?collage,kids",
+              "type": "CORE"
+              },
+              {
+                "name": "Introduction to Sculpture",
+                "description": "Learning about three-dimensional art through simple clay modeling activities.",
+                "image_path": "https://source.unsplash.com/500x500/?sculpture,kids",
+                "type": "CORE"
+              },
+              {
+                "name": "Art Appreciation",
+                "description": "Developing art appreciation by looking at famous artworks and discussing them.",
+                "image_path": "https://source.unsplash.com/500x500/?artworks,kids",
+                "type": "CORE"
+              }
+            ]
+        },
+        {
+          "name": "Introduction to Music and Rhythm",
+          "description": "Introducing students to music, different musical instruments, and basic rhythmic patterns.",
+          "image_path": "https://source.unsplash.com/500x500/?music,kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Rhythm and Beat",
+                  "description": "Learning the basics of rhythm and beat through clapping exercises and simple percussion instruments.",
+                  "image_path": "https://source.unsplash.com/500x500/?rhythm,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Musical Instruments",
+                  "description": "Exploring different types of musical instruments and their sounds, from piano to drums.",
+                  "image_path": "https://source.unsplash.com/500x500/?instruments,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Exploring Melody",
+                  "description": "Understanding the concept of melody using simple songs and musical games.",
+                  "image_path": "https://source.unsplash.com/500x500/?melody,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Singing and Voice Exploration",
+                  "description": "Developing vocal skills and confidence through group singing activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?singing,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Simple Musical Instruments",
+                  "description": "Crafting simple musical instruments using household items to learn about sound production.",
+                  "image_path": "https://source.unsplash.com/500x500/?homemade,instruments",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Musical Genres",
+                  "description": "Exploring different musical genres and their characteristics through active listening.",
+                  "image_path": "https://source.unsplash.com/500x500/?music,genres",
+                  "type": "CORE"
+              }
+          ]
+        },
+        {
+          "name": "Exploring Dance and Movement",
+          "description": "Introducing students to the joy of dance, developing coordination, and understanding rhythm through movement.",
+          "image_path": "https://source.unsplash.com/500x500/?dance,kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Rhythm Through Dance",
+                  "description": "Learning the basics of rhythm through dance movements and exercises.",
+                  "image_path": "https://source.unsplash.com/500x500/?rhythm,dance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Ballet",
+                  "description": "Exploring the basics of ballet, learning about the discipline and grace that characterizes this dance form.",
+                  "image_path": "https://source.unsplash.com/500x500/?ballet,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Hip-Hop Dance",
+                  "description": "Learning the basics of hip-hop dance, emphasizing creativity and personal expression.",
+                  "image_path": "https://source.unsplash.com/500x500/?hiphop,dance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creative Movement",
+                  "description": "Encouraging students to express themselves freely through creative dance movements.",
+                  "image_path": "https://source.unsplash.com/500x500/?creative,dance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Dance from Around the World",
+                  "description": "Exploring traditional dances from different cultures around the world.",
+                  "image_path": "https://source.unsplash.com/500x500/?world,dance",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Choreography Basics",
+                  "description": "Creating simple choreographies as a way to understand dance as a means of storytelling.",
+                  "image_path": "https://source.unsplash.com/500x500/?choreography,kids",
+                  "type": "CORE"
+              }
+          ]
+        },
+        {
+          "name": "Introduction to Theater and Drama",
+          "description": "Introducing students to the basics of theater and drama, enhancing expressiveness and confidence.",
+          "image_path": "https://source.unsplash.com/500x500/?theater,kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Characters",
+                  "description": "Introducing the concept of characters in a story and how they can be portrayed in drama.",
+                  "image_path": "https://source.unsplash.com/500x500/?characters,theater",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Exploring Emotions Through Drama",
+                  "description": "Using drama activities to express and understand different emotions.",
+                  "image_path": "https://source.unsplash.com/500x500/?emotions,drama",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Storytelling",
+                  "description": "Learning how to tell a story through dramatization, emphasizing sequence and plot.",
+                  "image_path": "https://source.unsplash.com/500x500/?storytelling,theater",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Simple Props and Costumes",
+                  "description": "Engaging in simple craft activities to create props and costumes for a theatrical play.",
+                  "image_path": "https://source.unsplash.com/500x500/?props,costumes",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Mime and Body Language",
+                  "description": "Understanding the role of body language in communication and expressing ideas without words through mime.",
+                  "image_path": "https://source.unsplash.com/500x500/?mime,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Putting on a Mini Play",
+                  "description": "Applying learned skills in a mini play production, encouraging teamwork and creativity.",
+                  "image_path": "https://source.unsplash.com/500x500/?play,kids",
+                  "type": "CORE"
+              }
+          ]
+        },
+        {
+          "name": "Exploring Crafts and DIY Projects",
+          "description": "Encouraging creativity, fine motor skills, and resourcefulness through crafts and DIY projects.",
+          "image_path": "https://source.unsplash.com/500x500/?crafts,kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Paper Crafting Basics",
+                  "description": "Learning basic paper crafting techniques, such as folding, cutting, and gluing.",
+                  "image_path": "https://source.unsplash.com/500x500/?papercraft,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Handmade Greeting Cards",
+                  "description": "Designing and making personalized greeting cards for various occasions.",
+                  "image_path": "https://source.unsplash.com/500x500/?cards,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Origami",
+                  "description": "Exploring the Japanese art of paper folding to create simple origami figures.",
+                  "image_path": "https://source.unsplash.com/500x500/?origami,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Upcycling Household Items",
+                  "description": "Learning about sustainability by turning household waste into useful or decorative items.",
+                  "image_path": "https://source.unsplash.com/500x500/?upcycling,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Simple Sewing Projects",
+                  "description": "Developing basic sewing skills through simple projects, like sewing a button or making a small pouch.",
+                  "image_path": "https://source.unsplash.com/500x500/?sewing,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Simple Jewelry",
+                  "description": "Making simple bead bracelets and necklaces to explore design and fine motor skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?jewelry,kids",
+                  "type": "CORE"
+              }
+          ]
+        },
+        {
+          "name": "Appreciation of Architecture and Design",
+          "description": "Introducing students to the basics of architecture and design, understanding shapes, symmetry, and purpose of design.",
+          "image_path": "https://source.unsplash.com/500x500/?architecture,kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Shapes in Architecture",
+                  "description": "Learning about basic geometric shapes and how they are used in architectural design.",
+                  "image_path": "https://source.unsplash.com/500x500/?shapes,architecture",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Exploring Symmetry in Architecture",
+                  "description": "Understanding the concept of symmetry through examples in architecture and hands-on activities.",
+                  "image_path": "https://source.unsplash.com/500x500/?symmetry,architecture",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Famous Landmarks",
+                  "description": "Learning about famous landmarks around the world and their architectural significance.",
+                  "image_path": "https://source.unsplash.com/500x500/?landmarks,world",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Designing a Dream House",
+                  "description": "Using creativity and understanding of shapes to design a simple dream house on paper.",
+                  "image_path": "https://source.unsplash.com/500x500/?dream,house",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Exploring Interior Design",
+                  "description": "Understanding the basics of interior design through the decoration of simple paper models.",
+                  "image_path": "https://source.unsplash.com/500x500/?interior,design",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Models with Building Blocks",
+                  "description": "Developing spatial skills and understanding of structural stability through building with blocks.",
+                  "image_path": "https://source.unsplash.com/500x500/?blocks,building",
+                  "type": "CORE"
+              }
+          ]
+        },
+        {
+          "name": "Exploring Digital Art",
+          "description": "Introducing students to the concepts and tools for creating digital art, promoting creativity and digital literacy.",
+          "image_path": "https://source.unsplash.com/500x500/?digital-art,kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Pixels and Digital Images",
+                  "description": "Learning the basics of pixels and how they come together to form digital images.",
+                  "image_path": "https://source.unsplash.com/500x500/?pixels,digital-art",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Digital Painting",
+                  "description": "Exploring digital painting using simple drawing and painting apps.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-painting,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Digital Collages",
+                  "description": "Using digital tools to create collages, developing an understanding of composition and color.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-collage,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to 3D Modeling",
+                  "description": "Learning basic 3D modeling using simple software to create basic shapes and structures.",
+                  "image_path": "https://source.unsplash.com/500x500/?3d-modeling,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Exploring Digital Animation",
+                  "description": "Creating simple digital animations using beginner-friendly animation apps.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-animation,kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Digital Art Appreciation",
+                  "description": "Discussing and appreciating various forms of digital art and their impact on modern culture.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-art,appreciation",
+                  "type": "CORE"
+              }
+          ]
+        },
+        {
+          "name": "Photography Basics for Kids",
+          "description": "Introducing students to the basics of photography, promoting observation skills and creative expression.",
+          "image_path": "https://source.unsplash.com/500x500/?photography,kids",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Understanding the Camera",
+                  "description": "Learning about different parts of a camera and their functions.",
+                  "image_path": "https://source.unsplash.com/500x500/?camera,kids",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Exploring Framing and Composition",
+                  "description": "Understanding the basics of framing and composition in photography.",
+                  "image_path": "https://source.unsplash.com/500x500/?composition,photography",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Introduction to Lighting",
+                  "description": "Exploring the role of light in photography and how it affects the mood of the photo.",
+                  "image_path": "https://source.unsplash.com/500x500/?lighting,photography",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Photographing Nature",
+                  "description": "Learning to capture the beauty of nature through photography, promoting observation and appreciation of the natural world.",
+                  "image_path": "https://source.unsplash.com/500x500/?nature,photography",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Portraits and People Photography",
+                  "description": "Exploring how to photograph people and expressions, understanding the basics of portrait photography.",
+                  "image_path": "https://source.unsplash.com/500x500/?portrait,photography",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Creating a Photo Story",
+                  "description": "Telling a story through a sequence of photos, enhancing narrative skills through visual media.",
+                  "image_path": "https://source.unsplash.com/500x500/?photo-story,kids",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Introduction to Filmmaking for Kids",
+          "description": "Introducing students to the basics of filmmaking, encouraging storytelling skills and creative expression.",
+          "image_path": "https://source.unsplash.com/500x500/?filmmaking,kids",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Storyboarding",
+                  "description": "Learning the process of storyboarding to plan and visualize a story before filming.",
+                  "image_path": "https://source.unsplash.com/500x500/?storyboarding,kids",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Exploring Camera Angles",
+                  "description": "Understanding different camera angles and their effects on how the story is perceived.",
+                  "image_path": "https://source.unsplash.com/500x500/?camera-angles,kids",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Introduction to Film Editing",
+                  "description": "Learning the basics of film editing using simple software tools to create a coherent story.",
+                  "image_path": "https://source.unsplash.com/500x500/?film-editing,kids",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Creating a Short Film",
+                  "description": "Applying learned skills to create a short film about a topic of interest.",
+                  "image_path": "https://source.unsplash.com/500x500/?short-film,kids",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Exploring Sound and Music in Film",
+                  "description": "Understanding the role of sound and music in film to enhance the storytelling experience.",
+                  "image_path": "https://source.unsplash.com/500x500/?sound,music",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Film Appreciation",
+                  "description": "Discussing and appreciating various films and their storytelling techniques.",
+                  "image_path": "https://source.unsplash.com/500x500/?film,appreciation",
+                  "type": "ELECTIVE"
+              }
+          ]
+        }
       ]
     },
     {
       "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Exploring Colors",
+            "description": "Unlocking the world of colors and emotions, stimulating creativity and sensory awareness.",
+            "image_path": "https://source.unsplash.com/500x500/?color-palette",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Primary Colors",
+                    "description": "A dive into the heart of colors, understanding the basics of red, blue, and yellow.",
+                    "image_path": "https://source.unsplash.com/500x500/?primary-colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Secondary Colors",
+                    "description": "Discovering the magic of mixing primary colors to create secondary ones.",
+                    "image_path": "https://source.unsplash.com/500x500/?secondary-colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shades and Tints",
+                    "description": "An exciting journey through light and dark, exploring the vast range of shades and tints.",
+                    "image_path": "https://source.unsplash.com/500x500/?shades-colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color and Emotion",
+                    "description": "Feeling the power of colors and how they can express and influence our emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?colors-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color Harmony",
+                    "description": "Understanding how different colors work together to create harmony in art.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-harmony",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Colors in Nature",
+                    "description": "Exploring the palette of nature, appreciating the myriad colors in our surroundings.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-colors",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Colors in Cultures",
+                    "description": "Learning about the meaning and importance of colors in different cultures around the world.",
+                    "image_path": "https://source.unsplash.com/500x500/?colors-cultures",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Musical Rhythms",
+            "description": "Embracing the beat of life, exploring rhythmic patterns and their role in music.",
+            "image_path": "https://source.unsplash.com/500x500/?music-rhythm",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Rhythm",
+                    "description": "Understanding rhythm and its fundamental role in the structure of music.",
+                    "image_path": "https://source.unsplash.com/500x500/?music-rhythm",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rhythm and Beat",
+                    "description": "Distinguishing between rhythm and beat and how they work together in music.",
+                    "image_path": "https://source.unsplash.com/500x500/?rhythm-beat",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Rhythmic Patterns",
+                    "description": "Experimenting with different rhythmic patterns to create unique musical compositions.",
+                    "image_path": "https://source.unsplash.com/500x500/?rhythm-patterns",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rhythm in Different Genres",
+                    "description": "Exploring how rhythm varies across different musical genres.",
+                    "image_path": "https://source.unsplash.com/500x500/?music-genres",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rhythm and Dance",
+                    "description": "Discovering how rhythm influences dance and movement.",
+                    "image_path": "https://source.unsplash.com/500x500/?rhythm-dance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "World Rhythms",
+                    "description": "Traveling through global musical landscapes to explore the rhythmic styles of different cultures.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-music",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Rhythm in Poetry",
+                    "description": "Feeling the rhythm in words, understanding how rhythm gives life to poetry.",
+                    "image_path": "https://source.unsplash.com/500x500/?poetry",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Elements of Drama",
+            "description": "Unleashing creativity through the lens of drama, learning about characters, dialogue, and plot.",
+            "image_path": "https://source.unsplash.com/500x500/?drama-theater",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Drama",
+                    "description": "Discovering the exciting world of drama and its role in storytelling.",
+                    "image_path": "https://source.unsplash.com/500x500/?drama",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Characters",
+                    "description": "Getting to know characters, their motivations, and their development in a story.",
+                    "image_path": "https://source.unsplash.com/500x500/?characters",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dialogue and Expression",
+                    "description": "Learning the art of dialogue and how it‘s used to express thoughts and emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?dialogue",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Plot and Conflict",
+                    "description": "Understanding plot, conflict, and how they drive the story forward.",
+                    "image_path": "https://source.unsplash.com/500x500/?plot-conflict",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Drama and Emotions",
+                    "description": "Recognizing how drama can be used to evoke and express a range of emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?drama-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Drama in Daily Life",
+                    "description": "Exploring the role of drama in everyday situations and communication.",
+                    "image_path": "https://source.unsplash.com/500x500/?everyday-drama",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Famous Dramatic Works",
+                    "description": "Discovering renowned dramatic works and their impact on the world of drama.",
+                    "image_path": "https://source.unsplash.com/500x500/?famous-drama",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Crafting with Materials",
+            "description": "Unleashing imagination through the manipulation of various materials, creating unique works of art.",
+            "image_path": "https://source.unsplash.com/500x500/?craft-materials",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Exploring Art Materials",
+                    "description": "A tactile adventure through various art materials and their possibilities.",
+                    "image_path": "https://source.unsplash.com/500x500/?art-materials",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Crafting with Paper",
+                    "description": "Learning the art of paper manipulation, creating intricate designs and structures.",
+                    "image_path": "https://source.unsplash.com/500x500/?paper-craft",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Textiles and Fibers",
+                    "description": "Understanding textiles and fibers, creating art with threads and fabrics.",
+                    "image_path": "https://source.unsplash.com/500x500/?textiles-fibers",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Clay Creations",
+                    "description": "Getting hands dirty with clay, learning about sculpting and pottery.",
+                    "image_path": "https://source.unsplash.com/500x500/?clay-sculpture",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Recycled Art",
+                    "description": "Turning trash into treasure, understanding how recycling can lead to creative art.",
+                    "image_path": "https://source.unsplash.com/500x500/?recycled-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Crafting for Home",
+                    "description": "Creating beautiful crafts that can be used for home decoration.",
+                    "image_path": "https://source.unsplash.com/500x500/?home-crafts",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Crafts from Around the World",
+                    "description": "Exploring unique craft techniques from different cultures and regions.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-crafts",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "World of Illustration",
+            "description": "Discovering the magic of visual storytelling through the creation and interpretation of illustrations.",
+            "image_path": "https://source.unsplash.com/500x500/?illustration",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Illustration",
+                    "description": "Opening the door to the fascinating world of illustration and its various forms.",
+                    "image_path": "https://source.unsplash.com/500x500/?illustration",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Illustration Techniques",
+                    "description": "Mastering different techniques to create stunning and effective illustrations.",
+                    "image_path": "https://source.unsplash.com/500x500/?illustration-techniques",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Character Design",
+                    "description": "Bringing characters to life through thoughtful design and detailing.",
+                    "image_path": "https://source.unsplash.com/500x500/?character-design",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Illustrating Stories",
+                    "description": "Enhancing narratives through the power of illustration, improving storytelling skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?story-illustration",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Digital Illustration",
+                    "description": "Venturing into the world of digital art, creating illustrations using technology.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-illustration",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating a Comic Strip",
+                    "description": "Combining art and storytelling to create engaging and funny comic strips.",
+                    "image_path": "https://source.unsplash.com/500x500/?comic-strip",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Famous Illustrators and their Work",
+                    "description": "Exploring the work of renowned illustrators and learning from their art styles.",
+                    "image_path": "https://source.unsplash.com/500x500/?famous-illustrators",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Dynamics of Dance",
+            "description": "Experiencing the joy of movement, learning about different dance styles, and expressing emotions through dance.",
+            "image_path": "https://source.unsplash.com/500x500/?dance",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Dance",
+                    "description": "Discovering the vibrant world of dance and its many forms.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Dance Movements",
+                    "description": "Learning the basics of dance movements and the language of dance.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-movements",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dance Styles Around the World",
+                    "description": "Traveling the globe through dance, learning about different styles and cultures.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-dance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Choreography Basics",
+                    "description": "Creating a dance narrative through choreography, learning to express stories and emotions through movement.",
+                    "image_path": "https://source.unsplash.com/500x500/?choreography",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dance and Fitness",
+                    "description": "Recognizing dance as a form of exercise, exploring how dance contributes to physical fitness and well-being.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-fitness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Your Own Dance Routine",
+                    "description": "Crafting a personal dance routine, learning to express personal style and creativity through dance.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-routine",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Famous Dancers and Their Influence",
+                    "description": "Learning about influential dancers and their contributions to the world of dance.",
+                    "image_path": "https://source.unsplash.com/500x500/?famous-dancers",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Exploring Colors",
+            "description": "Diving into the world of colors, understanding their relationships, symbolism, and impact on art.",
+            "image_path": "https://source.unsplash.com/500x500/?colors",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Colors",
+                    "description": "Unveiling the mystery of colors, their properties, and their role in visual perception.",
+                    "image_path": "https://source.unsplash.com/500x500/?colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color Wheel and Color Relationships",
+                    "description": "Navigating the color wheel, understanding complementary, analogous, and other color relationships.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-wheel",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mixing Colors",
+                    "description": "Becoming a color scientist, exploring how primary colors can be mixed to create a spectrum of hues.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-mixing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color Symbolism",
+                    "description": "Delving into the meanings and symbolism of different colors across cultures.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-symbolism",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color in Art",
+                    "description": "Analyzing the use of color in various art forms and how it affects mood and interpretation.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating a Colorful Artwork",
+                    "description": "Applying color theory knowledge to create a vibrant, meaningful piece of art.",
+                    "image_path": "https://source.unsplash.com/500x500/?colorful-artwork",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Colors in Nature",
+                    "description": "Observing the use of colors in the natural world and drawing inspiration for artistic creation.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-colors",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Art in Technology",
+            "description": "Blending traditional art with modern technology to create innovative digital artworks.",
+            "image_path": "https://source.unsplash.com/500x500/?digital-art",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Digital Art",
+                    "description": "Discovering the dynamic world of digital art and its possibilities.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Using Digital Art Tools",
+                    "description": "Exploring various digital art tools and software to create unique art pieces.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-art-tools",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Digital Illustrations",
+                    "description": "Venturing into the world of digital illustration, transforming ideas into digital masterpieces.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-illustration",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Animation Basics",
+                    "description": "Learning the fundamentals of animation, bringing digital creations to life.",
+                    "image_path": "https://source.unsplash.com/500x500/?animation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Design a Digital Poster",
+                    "description": "Applying design principles to create a captivating digital poster for a chosen theme.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-poster",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Digital Art and Society",
+                    "description": "Exploring the impact of digital art on society and culture.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-art-society",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Art from Different Cultures",
+            "description": "Embarking on a global journey through art, exploring diverse cultures and their unique artistic expressions.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-art",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Cultural Art",
+                    "description": "Delving into the diverse world of cultural art and its various forms around the globe.",
+                    "image_path": "https://source.unsplash.com/500x500/?cultural-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "African Art Traditions",
+                    "description": "Exploring the rich and vibrant art traditions of Africa, with a focus on symbolism and storytelling.",
+                    "image_path": "https://source.unsplash.com/500x500/?african-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Art of the East: China and Japan",
+                    "description": "Discovering the unique art forms of China and Japan, understanding their aesthetics and philosophy.",
+                    "image_path": "https://source.unsplash.com/500x500/?east-asian-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Native American Art",
+                    "description": "Learning about the diverse art traditions of Native American cultures, with a focus on the use of natural materials.",
+                    "image_path": "https://source.unsplash.com/500x500/?native-american-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Art and Mythology",
+                    "description": "Exploring how art is used in various cultures to depict myths, legends, and stories.",
+                    "image_path": "https://source.unsplash.com/500x500/?mythology-art",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Creating a Cultural Art Piece",
+                    "description": "Drawing inspiration from studied cultures to create a unique piece of art that reflects cultural influences.",
+                    "image_path": "https://source.unsplash.com/500x500/?cultural-art-piece",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Exploring Art Mediums",
+            "description": "Unleashing creativity and imagination through an exploration of various art mediums.",
+            "image_path": "https://source.unsplash.com/500x500/?art-mediums",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Watercolor Painting",
+                    "description": "Discover the fluid and vibrant world of watercolor painting, from basic techniques to color theory.",
+                    "image_path": "https://source.unsplash.com/500x500/?watercolor",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Magic of Acrylics",
+                    "description": "Learn to create vivid, textured artwork with the versatile medium of acrylic paint.",
+                    "image_path": "https://source.unsplash.com/500x500/?acrylic-paint",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Oil Pastels",
+                    "description": "Dive into the rich, vibrant world of oil pastels, learning techniques for blending and layering colors.",
+                    "image_path": "https://source.unsplash.com/500x500/?oil-pastels",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Crafting with Collage",
+                    "description": "Turn simple paper cut-outs into stunning compositions in this introduction to collage art.",
+                    "image_path": "https://source.unsplash.com/500x500/?collage",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Pottery Basics",
+                    "description": "Experience the joy of shaping clay with your hands in our introductory pottery lesson.",
+                    "image_path": "https://source.unsplash.com/500x500/?pottery",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Charcoal Drawing Techniques",
+                    "description": "Experience the dramatic contrast and bold strokes of charcoal drawing in this elective lesson.",
+                    "image_path": "https://source.unsplash.com/500x500/?charcoal-drawing",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Printmaking Explorations",
+                    "description": "Discover the wonderful possibilities of printmaking as we explore different techniques from block to screen printing.",
+                    "image_path": "https://source.unsplash.com/500x500/?printmaking",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "The Art of Storytelling",
+            "description": "Crafting narratives and fostering imagination through the timeless art of storytelling.",
+            "image_path": "https://source.unsplash.com/500x500/?storytelling",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Creating Characters",
+                    "description": "Discover how to create compelling, memorable characters that bring your story to life.",
+                    "image_path": "https://source.unsplash.com/500x500/?character-creation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Building Worlds",
+                    "description": "Learn the art of world-building, constructing immersive settings for your stories to unfold.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-building",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Plotting Your Story",
+                    "description": "Understand the essentials of a captivating plot, from the initial setup to the thrilling climax.",
+                    "image_path": "https://source.unsplash.com/500x500/?plot",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Crafting Dialogue",
+                    "description": "Master the art of dialogue to convey character relationships and advance your story.",
+                    "image_path": "https://source.unsplash.com/500x500/?dialogue",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Themes and Messages",
+                    "description": "Identify themes and messages that give depth and meaning to your stories.",
+                    "image_path": "https://source.unsplash.com/500x500/?themes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Power of Visual Storytelling",
+                    "description": "Explore visual storytelling techniques, from comic strips to storyboards.",
+                    "image_path": "https://source.unsplash.com/500x500/?visual-storytelling",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Introduction to Script Writing",
+                    "description": "Learn the basics of script writing, creating engaging dialogue and scenes for stage or screen.",
+                    "image_path": "https://source.unsplash.com/500x500/?script-writing",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Music Appreciation",
+            "description": "Exploring the language of music, fostering an appreciation for diverse genres and styles.",
+            "image_path": "https://source.unsplash.com/500x500/?music",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Classical Music",
+                    "description": "Experience the depth and grandeur of classical music, exploring famous works and composers.",
+                    "image_path": "https://source.unsplash.com/500x500/?classical-music",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Rhythm of Jazz",
+                    "description": "Dive into the improvisational world of jazz, understanding its history and unique musical elements.",
+                    "image_path": "https://source.unsplash.com/500x500/?jazz",
+                    "type": "CORE"
+                },
+                {
+                    "name": "World Music Explorations",
+                    "description": "Discover the rich variety of music around the world, from African drumming to Latin American salsa.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-music",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Beat of Pop Music",
+                    "description": "Learn about the structure and evolution of pop music, its iconic stars and catchy melodies.",
+                    "image_path": "https://source.unsplash.com/500x500/?pop-music",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Power of Musical Theater",
+                    "description": "Experience the joy and drama of musical theater, exploring memorable performances and shows.",
+                    "image_path": "https://source.unsplash.com/500x500/?musical-theater",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Music and Film",
+                    "description": "Explore the integral role of music in film, from mood setting to character themes.",
+                    "image_path": "https://source.unsplash.com/500x500/?film-music",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "The Art of Songwriting",
+                    "description": "Learn the basics of songwriting, crafting melodies and lyrics that express your unique voice.",
+                    "image_path": "https://source.unsplash.com/500x500/?songwriting",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Understanding Art History",
+            "description": "Embark on a journey through time, exploring significant art movements and their impact on society.",
+            "image_path": "https://source.unsplash.com/500x500/?art-history",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Art of Ancient Civilizations",
+                    "description": "Explore the art of ancient civilizations, appreciating their creativity and cultural significance.",
+                    "image_path": "https://source.unsplash.com/500x500/?ancient-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Renaissance Art and Its Influence",
+                    "description": "Dive into the grandeur of Renaissance art, understanding its themes and influence on modern art.",
+                    "image_path": "https://source.unsplash.com/500x500/?renaissance-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Impressionism and Post-Impressionism",
+                    "description": "Discover the beauty of Impressionism and Post-Impressionism, recognizing their unique approach to capturing light and color.",
+                    "image_path": "https://source.unsplash.com/500x500/?impressionism",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Modern and Contemporary Art",
+                    "description": "Explore the bold, innovative world of modern and contemporary art, appreciating its diversity and social commentary.",
+                    "image_path": "https://source.unsplash.com/500x500/?contemporary-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Art of Photography",
+                    "description": "Learn about the evolution of photography, from its beginnings to its current role as a powerful medium of expression.",
+                    "image_path": "https://source.unsplash.com/500x500/?photography",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Impact of Pop Art",
+                    "description": "Uncover the world of Pop Art, learning how it challenged traditional fine art by incorporating imagery from popular culture.",
+                    "image_path": "https://source.unsplash.com/500x500/?pop-art",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Artistic Responses to Social Issues",
+                    "description": "Examine how artists use their work to comment on and draw attention to social issues.",
+                    "image_path": "https://source.unsplash.com/500x500/?social-issues-art",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Exploring Digital Art",
+            "description": "Navigate the exciting world of digital art, harnessing technology to inspire creativity and innovation.",
+            "image_path": "https://source.unsplash.com/500x500/?digital-art",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Digital Painting",
+                    "description": "Learn the basics of digital painting, from tools and techniques to color and composition.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-painting",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Digital Illustrations",
+                    "description": "Discover the art of digital illustration, bringing your imagination to life on the screen.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-illustration",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Animating Your Artwork",
+                    "description": "Delve into the basics of animation, breathing movement and vitality into your digital creations.",
+                    "image_path": "https://source.unsplash.com/500x500/?animation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring 3D Modelling",
+                    "description": "Introduce yourself to the world of 3D modelling, learning to create and texture basic models.",
+                    "image_path": "https://source.unsplash.com/500x500/?3d-modelling",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basics of Graphic Design",
+                    "description": "Learn the fundamentals of graphic design, from typography to color theory and beyond.",
+                    "image_path": "https://source.unsplash.com/500x500/?graphic-design",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Digital Comics",
+                    "description": "Discover the fun and creativity of making digital comics, from storyboarding to final design.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-comics",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Interactive Art and Design",
+                    "description": "Explore the exciting intersection of art and interactivity, creating simple designs for the digital realm.",
+                    "image_path": "https://source.unsplash.com/500x500/?interactive-design",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Performance Arts",
+            "description": "Step into the spotlight with performance arts, developing confidence, creativity, and expressive skills.",
+            "image_path": "https://source.unsplash.com/500x500/?performance-arts",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Acting",
+                    "description": "Learn the basics of acting, exploring character development, expression, and staging.",
+                    "image_path": "https://source.unsplash.com/500x500/?acting",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Magic of Puppetry",
+                    "description": "Discover the creative world of puppetry, designing and performing with your own puppet characters.",
+                    "image_path": "https://source.unsplash.com/500x500/?puppetry",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basics of Dance",
+                    "description": "Embrace movement and rhythm in the basics of dance, expressing stories and emotions through your body.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Mime and Physical Theater",
+                    "description": "Learn the art of mime and physical theater, communicating stories and emotions without words.",
+                    "image_path": "https://source.unsplash.com/500x500/?mime",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Circus Skills",
+                    "description": "Experience the fun of circus skills, from juggling to acrobatics, in a safe and supportive environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?circus",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Stage Make-up and Costumes",
+                    "description": "Delve into the world of stage make-up and costume design, bringing characters to life with visual flair.",
+                    "image_path": "https://source.unsplash.com/500x500/?stage-makeup",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Introduction to Stage Lighting and Sound",
+                    "description": "Discover the crucial role of lighting and sound in creating atmosphere and drama on stage.",
+                    "image_path": "https://source.unsplash.com/500x500/?stage-lighting",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Crafts and Hands-on Creation",
+            "description": "Embrace the joy of creating with hands-on crafts, nurturing fine motor skills, creativity, and problem-solving abilities.",
+            "image_path": "https://source.unsplash.com/500x500/?crafts",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Origami Fundamentals",
+                    "description": "Discover the art of origami, transforming a simple piece of paper into intricate designs with precise folds.",
+                    "image_path": "https://source.unsplash.com/500x500/?origami",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Pottery",
+                    "description": "Experience the satisfaction of shaping clay with your hands, learning the basics of pottery.",
+                    "image_path": "https://source.unsplash.com/500x500/?pottery",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basics of Knitting",
+                    "description": "Learn the calming, practical craft of knitting, creating simple items with loops and knots.",
+                    "image_path": "https://source.unsplash.com/500x500/?knitting",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Papier-Mâché Art",
+                    "description": "Discover the versatile, fun world of papier-mâché, crafting unique creations from paper and glue.",
+                    "image_path": "https://source.unsplash.com/500x500/?papier-mache",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Collage Art",
+                    "description": "Harness the power of collage, creating unique artworks by assembling different forms and materials.",
+                    "image_path": "https://source.unsplash.com/500x500/?collage",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Sewing",
+                    "description": "Learn basic sewing skills, creating simple items and understanding the foundation of fabric manipulation.",
+                    "image_path": "https://source.unsplash.com/500x500/?sewing",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Creating Art with Recycled Materials",
+                    "description": "Discover the art of upcycling, turning recycled materials into creative, sustainable artworks.",
+                    "image_path": "https://source.unsplash.com/500x500/?recycled-art",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "World Cultures through Art",
+            "description": "Take a global journey through art, exploring diverse cultures and traditions to broaden our artistic horizons.",
+            "image_path": "https://source.unsplash.com/500x500/?world-cultures",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Art of the African Continent",
+                    "description": "Experience the richness and diversity of African art, understanding its regional variations and cultural significance.",
+                    "image_path": "https://source.unsplash.com/500x500/?african-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Asian Art",
+                    "description": "Uncover the complexity and beauty of Asian art, from ancient sculptures to contemporary paintings.",
+                    "image_path": "https://source.unsplash.com/500x500/?asian-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Latin American Art and Its Identity",
+                    "description": "Discover the vibrant art of Latin America, appreciating its unique blend of indigenous, European, and African influences.",
+                    "image_path": "https://source.unsplash.com/500x500/?latin-american-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Native American Art Traditions",
+                    "description": "Learn about the diverse art traditions of Native American cultures, from pottery to beadwork and beyond.",
+                    "image_path": "https://source.unsplash.com/500x500/?native-american-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Artistic Traditions of the Arctic",
+                    "description": "Explore the unique art traditions of the Arctic, understanding the deep connection between the art and the environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?arctic-art",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Oceania‘s Art: Islands and Diversity",
+                    "description": "Uncover the diverse artistic traditions of Oceania, from Polynesian tattooing to Australian Aboriginal dot paintings.",
+                    "image_path": "https://source.unsplash.com/500x500/?oceania-art",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "The Intersection of Art and Technology",
+            "description": "Discover how art and technology intersect, exploring new media and innovative techniques to express creativity.",
+            "image_path": "https://source.unsplash.com/500x500/?art-technology",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Coding Art",
+                    "description": "Learn the basics of coding art, using programming as a tool for creative expression.",
+                    "image_path": "https://source.unsplash.com/500x500/?coding-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Augmented Reality Art",
+                    "description": "Explore the world of augmented reality (AR) art, creating interactive, immersive experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?augmented-reality",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Virtual Reality Art",
+                    "description": "Discover the creative potential of virtual reality (VR), designing and exploring your own VR spaces.",
+                    "image_path": "https://source.unsplash.com/500x500/?virtual-reality",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Generative Art",
+                    "description": "Learn about generative art, where the artwork is created by a system following a set of rules or algorithms.",
+                    "image_path": "https://source.unsplash.com/500x500/?generative-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Sound Design and Technology",
+                    "description": "Experiment with sound design, understanding how technology can create and manipulate audio experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?sound-design",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Art and Artificial Intelligence",
+                    "description": "Explore how artificial intelligence (AI) is shaping art and creativity, from machine learning to neural networks.",
+                    "image_path": "https://source.unsplash.com/500x500/?artificial-intelligence",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",
-      "topics_data": []
+      "topics_data": [
+{
+       "name": "Exploring Art Styles",
+       "description": "Venture into the captivating world of art, exploring diverse styles and techniques that artists have adopted throughout history.",
+       "image_path": "https://source.unsplash.com/500x500/?art-styles",
+       "type": "CORE",
+       "lessons_data": [
+           {
+               "name": "Dive into Impressionism",
+               "description": "Discover the Impressionist art movement‘s techniques, colors, and bold strokes that changed the world of painting.",
+               "image_path": "https://source.unsplash.com/500x500/?impressionism",
+               "type": "CORE"
+           },
+           {
+               "name": "Exploring Cubism",
+               "description": "Learn about Cubism and its groundbreaking approach to portraying reality in a new, abstract light.",
+               "image_path": "https://source.unsplash.com/500x500/?cubism",
+               "type": "CORE"
+           },
+           {
+               "name": "Surrealism: Dreams and Symbolism",
+               "description": "Dive into the dreamlike world of Surrealism, where the impossible becomes real.",
+               "image_path": "https://source.unsplash.com/500x500/?surrealism",
+               "type": "CORE"
+           },
+           {
+               "name": "The Magic of Pop Art",
+               "description": "Experience the vibrant, lively world of Pop Art, exploring its impact on modern culture.",
+               "image_path": "https://source.unsplash.com/500x500/?pop-art",
+               "type": "CORE"
+           },
+           {
+               "name": "Expressionism: Art and Emotion",
+               "description": "Learn about Expressionism, a style that seeks to express the deepest emotions and subjective experiences.",
+               "image_path": "https://source.unsplash.com/500x500/?expressionism",
+               "type": "CORE"
+           },
+           {
+               "name": "The Power of Street Art",
+               "description": "Unveil the compelling messages and societal impact behind the world of street art.",
+               "image_path": "https://source.unsplash.com/500x500/?street-art",
+               "type": "ELECTIVE"
+           },
+           {
+               "name": "Art Nouveau: Nature and Beauty",
+               "description": "Discover Art Nouveau, a style that combines natural forms and structures with an aesthetic beauty.",
+               "image_path": "https://source.unsplash.com/500x500/?art-nouveau",
+               "type": "ELECTIVE"
+           }
+       ]
+},
+{
+       "name": "Musical Genres Exploration",
+       "description": "Embark on a melodious journey through the history and diversity of music, exploring various genres from across the globe.",
+       "image_path": "https://source.unsplash.com/500x500/?music-genres",
+       "type": "CORE",
+       "lessons_data": [
+           {
+               "name": "Classical Music: The Origin of Symphonies",
+               "description": "Experience the grandeur of classical music and its powerful impact on our emotions.",
+               "image_path": "https://source.unsplash.com/500x500/?classical-music",
+               "type": "CORE"
+           },
+           {
+               "name": "The Blues: A Journey of Emotion",
+               "description": "Explore the roots and influences of blues music and how it serves as an emotional outlet.",
+               "image_path": "https://source.unsplash.com/500x500/?blues-music",
+               "type": "CORE"
+           },
+           {
+               "name": "Rock and Roll: Music that Revolutionized the World",
+               "description": "Discover the thrill of Rock and Roll, its origins, and the culture it influenced.",
+               "image_path": "https://source.unsplash.com/500x500/?rock-and-roll",
+               "type": "CORE"
+           },
+           {
+               "name": "Jazz: The Freedom of Improvisation",
+               "description": "Learn about the spontaneous and expressive nature of jazz and its profound influence on music.",
+               "image_path": "https://source.unsplash.com/500x500/?jazz-music",
+               "type": "CORE"
+           },
+           {
+               "name": "Hip-Hop: A Voice for the Voiceless",
+               "description": "Understand the origins of Hip-Hop and its role as a medium for social commentary.",
+               "image_path": "https://source.unsplash.com/500x500/?hip-hop",
+               "type": "CORE"
+           },
+           {
+               "name": "Reggae: Rhythm and Resistance",
+               "description": "Experience the rhythm of Reggae, a music genre deeply intertwined with its cultural and political roots.",
+               "image_path": "https://source.unsplash.com/500x500/?reggae",
+               "type": "ELECTIVE"
+           },
+           {
+               "name": "Pop Music: The Evolution of the Mainstream",
+               "description": "Examine the evolution of pop music, its broad appeal, and its impact on contemporary culture.",
+               "image_path": "https://source.unsplash.com/500x500/?pop-music",
+               "type": "ELECTIVE"
+           }
+       ]
+},
+
+      ]
     }
   ]'::json
 );

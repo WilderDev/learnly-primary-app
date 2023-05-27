@@ -18,8 +18,10 @@ export interface IUserSubscription {
   isAuthorized: boolean;
   isEndingSoon: boolean;
   trialEnd: string | null;
-  billing_portal_session_url: string | null;
+  billingPortalSessionUrl: string | null;
   status: Database['public']['Enums']['subscription_status'];
+  stripeSubscriptionId: string | null;
+  stripeCustomerId: string | null;
 }
 
 export interface Me {

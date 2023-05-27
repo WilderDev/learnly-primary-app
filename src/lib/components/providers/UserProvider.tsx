@@ -81,13 +81,15 @@ export function UserProvider({ children }: PropsWithChildren) {
       status: subStatus,
       isEndingSoon: subStatus === 'active' ? false : isEndingSoon,
       trialEnd: data.subscription_trial_end!,
-      billing_portal_session_url: data.billing_portal_session_url!,
+      billingPortalSessionUrl: data.billing_portal_session_url!,
+      stripeSubscriptionId: data.subscription_id!,
+      stripeCustomerId: data.stripe_customer_id!,
     };
 
     // If there was a user and they have not paid after subscription, redirect to billing portal
     if (data && !isAuthorized) {
       return window.location.replace(
-        transformedSubscription.billing_portal_session_url?.trim() || '/',
+        transformedSubscription.billingPortalSessionUrl?.trim() || '/',
       );
     }
 
@@ -188,7 +190,7 @@ export function UserProvider({ children }: PropsWithChildren) {
         <AuthSubscribeModal
           initialOpen={true}
           endDate={subscription?.trialEnd!}
-          billingUrl={subscription?.billing_portal_session_url!}
+          billingUrl={subscription?.billingPortalSessionUrl!}
         />
       )}
 

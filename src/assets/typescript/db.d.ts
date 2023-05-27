@@ -1453,7 +1453,9 @@ export interface Database {
             | null
           role: Database["public"]["Enums"]["user_role"] | null
           status: Database["public"]["Enums"]["profile_status"] | null
+          stripe_customer_id: string | null
           subscription_cancel_at_period_end: boolean | null
+          subscription_id: string | null
           subscription_status:
             | Database["public"]["Enums"]["subscription_status"]
             | null
