@@ -25437,15 +25437,1159 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "8787a66e-9e03-42c7-8870-ada6df021491",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Introduction to Colors",
+            "description": "Unveiling the vibrant world of colors that sparks creativity and invites a lifelong journey of visual exploration.",
+            "image_path": "https://source.unsplash.com/500x500/?colors",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Colors in Our World",
+                    "description": "Discovering the multitude of colors that shape and enhance our everyday experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mixing Primary Colors",
+                    "description": "A hands-on experience in creating new hues by mixing primary colors.",
+                    "image_path": "https://source.unsplash.com/500x500/?mixing-colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Art of Coloring",
+                    "description": "Developing fine motor skills and creativity through coloring activities.",
+                    "image_path": "https://source.unsplash.com/500x500/?coloring",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Colors and Emotions",
+                    "description": "Understanding the link between colors and our feelings to cultivate emotional intelligence.",
+                    "image_path": "https://source.unsplash.com/500x500/?colors-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rainbow Exploration",
+                    "description": "Exploring the magnificent rainbow and the science behind its colors.",
+                    "image_path": "https://source.unsplash.com/500x500/?rainbow",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color Wheel Craft",
+                    "description": "A fun crafting project to create a personal color wheel and reinforce color knowledge.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-wheel",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Colors in Nature",
+                    "description": "Observing and appreciating the natural colors found in our surroundings.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-colors",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Exploring Shapes",
+            "description": "Embarking on an imaginative journey into the world of shapes, sparking curiosity and laying the groundwork for mathematical thinking.",
+            "image_path": "https://source.unsplash.com/500x500/?shapes",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Identifying Basic Shapes",
+                    "description": "Learn to recognize and name the basic shapes that make up our world.",
+                    "image_path": "https://source.unsplash.com/500x500/?basic-shapes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shapes in Our Environment",
+                    "description": "Discover the presence and relevance of shapes in the environments we interact with daily.",
+                    "image_path": "https://source.unsplash.com/500x500/?environment-shapes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating with Shapes",
+                    "description": "Express creativity by combining shapes to create unique artwork.",
+                    "image_path": "https://source.unsplash.com/500x500/?creating-shapes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "3D Shapes Exploration",
+                    "description": "A playful introduction to three-dimensional shapes and their real-life applications.",
+                    "image_path": "https://source.unsplash.com/500x500/?3D-shapes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shapes and Patterns",
+                    "description": "Explore the concept of patterns using different shapes and colors.",
+                    "image_path": "https://source.unsplash.com/500x500/?shapes-patterns",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shape Hunt Activity",
+                    "description": "A fun, interactive activity that encourages students to 'hunt' for shapes in their surroundings.",
+                    "image_path": "https://source.unsplash.com/500x500/?shape-hunt",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Making Shapes with Bodies",
+                    "description": "A fun physical activity that promotes body awareness and cooperative play, while learning about shapes.",
+                    "image_path": "https://source.unsplash.com/500x500/?body-shapes",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "World of Textures",
+            "description": "An engaging exploration of textures that enhances sensory perception and encourages creative expressions.",
+            "image_path": "https://source.unsplash.com/500x500/?textures",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Textures",
+                    "description": "A foundational introduction to the concept of texture in the physical and visual world.",
+                    "image_path": "https://source.unsplash.com/500x500/?texture",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Texture Scavenger Hunt",
+                    "description": "A playful hands-on activity that encourages students to explore and find different textures in their environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?scavenger-hunt",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Texture Art",
+                    "description": "An exciting opportunity to use different materials to create unique textures in art projects.",
+                    "image_path": "https://source.unsplash.com/500x500/?texture-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Textures in Nature",
+                    "description": "Discovering and appreciating the diversity of textures present in the natural world.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-texture",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Texture and Emotions",
+                    "description": "Exploring the link between texture and emotions to develop a deeper understanding of sensory experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotions-texture",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Handmade Paper Textures",
+                    "description": "A fun hands-on activity that allows students to create their own textured paper using various materials.",
+                    "image_path": "https://source.unsplash.com/500x500/?paper-texture",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Textures in Food",
+                    "description": "Engaging in sensory exploration by noticing the variety of textures in everyday foods.",
+                    "image_path": "https://source.unsplash.com/500x500/?food-texture",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Sounds and Music",
+            "description": "A harmonious journey into the world of sounds and music, fostering creative expression and auditory skills.",
+            "image_path": "https://source.unsplash.com/500x500/?music",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Sounds",
+                    "description": "Identifying and understanding the diverse range of sounds in our environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?sounds",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Making Music with Objects",
+                    "description": "Discovering the musical potential in everyday objects to create unique sounds.",
+                    "image_path": "https://source.unsplash.com/500x500/?music-objects",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Rhythm and Beats",
+                    "description": "Understanding the concept of rhythm and beats and how they form the basis of music.",
+                    "image_path": "https://source.unsplash.com/500x500/?rhythm",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Animal Sounds",
+                    "description": "Exploring and imitating the various sounds made by animals in nature.",
+                    "image_path": "https://source.unsplash.com/500x500/?animal-sounds",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Musical Instruments",
+                    "description": "Learning about different musical instruments and the unique sounds they make.",
+                    "image_path": "https://source.unsplash.com/500x500/?musical-instruments",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Making Your Own Musical Instrument",
+                    "description": "A fun project to design and create a simple musical instrument using household items.",
+                    "image_path": "https://source.unsplash.com/500x500/?homemade-instrument",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Music and Emotions",
+                    "description": "Understanding the power of music to evoke and express emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?music-emotions",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Storytelling and Drama",
+            "description": "Embarking on imaginative journeys through stories and drama, encouraging creativity and promoting emotional intelligence.",
+            "image_path": "https://source.unsplash.com/500x500/?storytelling",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Listening to Stories",
+                    "description": "Enjoying stories from various cultures and genres to stimulate imagination and listening skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?listening-stories",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Role-Playing Characters",
+                    "description": "Exploring emotions and empathy by role-playing different characters from stories.",
+                    "image_path": "https://source.unsplash.com/500x500/?role-playing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Your Own Story",
+                    "description": "Unleashing creativity by crafting and narrating an original story.",
+                    "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Story Elements",
+                    "description": "Learning the basic elements of a story, such as characters, setting, and plot.",
+                    "image_path": "https://source.unsplash.com/500x500/?story-elements",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Puppetry in Storytelling",
+                    "description": "Using puppets as a fun and engaging tool for storytelling and expression.",
+                    "image_path": "https://source.unsplash.com/500x500/?puppets",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Storytelling with Art",
+                    "description": "Combining art and storytelling to create visually rich narratives.",
+                    "image_path": "https://source.unsplash.com/500x500/?art-storytelling",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Drama Games",
+                    "description": "Enhancing creative thinking, confidence, and teamwork through fun drama games.",
+                    "image_path": "https://source.unsplash.com/500x500/?drama-games",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Colors and Emotions",
+            "description": "Diving into the vibrant world of colors and exploring their powerful connection with our emotions.",
+            "image_path": "https://source.unsplash.com/500x500/?colors",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Discovering Colors",
+                    "description": "An introductory exploration of colors and their presence in our everyday lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?discovering-colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Colors and Feelings",
+                    "description": "Understanding how different colors can represent and evoke various feelings.",
+                    "image_path": "https://source.unsplash.com/500x500/?colors-feelings",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating with Colors",
+                    "description": "Expressing emotions and ideas through the creation of colorful art projects.",
+                    "image_path": "https://source.unsplash.com/500x500/?creating-colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color Mixing Magic",
+                    "description": "Learning about primary and secondary colors through exciting color mixing activities.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-mixing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Colors in Nature",
+                    "description": "Discovering the beautiful array of colors present in the natural world around us.",
+                    "image_path": "https://source.unsplash.com/500x500/?colors-nature",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color Hunt",
+                    "description": "A fun interactive activity that encourages students to 'hunt' for specific colors in their environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-hunt",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Rainbow Art",
+                    "description": "Creating beautiful art projects inspired by the colors of the rainbow.",
+                    "image_path": "https://source.unsplash.com/500x500/?rainbow-art",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Shapes in Art",
+            "description": "Discovering the fundamental role of shapes in artistic expression and developing spatial recognition skills.",
+            "image_path": "https://source.unsplash.com/500x500/?shapes",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Shapes",
+                    "description": "Exploring different shapes and their significance in the world around us.",
+                    "image_path": "https://source.unsplash.com/500x500/?shapes-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shapes in Nature",
+                    "description": "Identifying and appreciating the myriad shapes that can be found in nature.",
+                    "image_path": "https://source.unsplash.com/500x500/?shapes-nature",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Art with Shapes",
+                    "description": "Using various shapes to create visually interesting and unique art projects.",
+                    "image_path": "https://source.unsplash.com/500x500/?shapes-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Geometric vs Organic Shapes",
+                    "description": "Distinguishing between geometric and organic shapes to broaden visual vocabulary.",
+                    "image_path": "https://source.unsplash.com/500x500/?geometric-organic",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shapes and Patterns",
+                    "description": "Understanding how shapes can be used to create patterns and enhance artistic designs.",
+                    "image_path": "https://source.unsplash.com/500x500/?shapes-patterns",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shape Collages",
+                    "description": "Creating unique collages using a variety of shapes, promoting creativity and fine motor skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?shape-collage",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Shapes in Architecture",
+                    "description": "Observing how shapes play an integral role in architectural designs.",
+                    "image_path": "https://source.unsplash.com/500x500/?shapes-architecture",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Recycled Art",
+            "description": "Cultivating an appreciation for sustainability by creating beautiful artworks from recycled materials.",
+            "image_path": "https://source.unsplash.com/500x500/?recycled-art",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Recycled Art",
+                    "description": "Understanding the importance of recycling and how it can be incorporated into art.",
+                    "image_path": "https://source.unsplash.com/500x500/?recycled-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating with Paper and Cardboard",
+                    "description": "Discovering the potential of paper and cardboard as materials for creating art.",
+                    "image_path": "https://source.unsplash.com/500x500/?paper-cardboard-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Plastic Bottle Crafts",
+                    "description": "Transforming plastic bottles into imaginative and useful crafts.",
+                    "image_path": "https://source.unsplash.com/500x500/?plastic-bottle-crafts",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Fabric and Textile Art",
+                    "description": "Learning to repurpose old clothes or fabrics into unique textile art pieces.",
+                    "image_path": "https://source.unsplash.com/500x500/?textile-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Sustainability in Art",
+                    "description": "Discussing the concept of sustainability and its impact on the art world and our planet.",
+                    "image_path": "https://source.unsplash.com/500x500/?sustainability-art",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Recycled Art Exhibit",
+                    "description": "Creating a mini art exhibit to showcase the artworks made from recycled materials.",
+                    "image_path": "https://source.unsplash.com/500x500/?art-exhibit",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Art Around the World",
+            "description": "Embarking on a creative journey around the globe, discovering diverse cultures and their unique artistic traditions.",
+            "image_path": "https://source.unsplash.com/500x500/?world-art",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to World Art",
+                    "description": "Exploring the concept of art as a universal language and its manifestation in different cultures.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-art-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "African Art and Patterns",
+                    "description": "Exploring the rich traditions of African art and learning to create vibrant African patterns.",
+                    "image_path": "https://source.unsplash.com/500x500/?african-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Japanese Origami",
+                    "description": "Discovering the Japanese art of origami and learning to create beautiful paper creations.",
+                    "image_path": "https://source.unsplash.com/500x500/?origami",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Native American Totem Poles",
+                    "description": "Learning about the cultural significance of totem poles in Native American tribes and creating a simple totem pole design.",
+                    "image_path": "https://source.unsplash.com/500x500/?totem-poles",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Indian Rangoli",
+                    "description": "Discovering the colorful art of Rangoli from India and creating a simple Rangoli design using colored sand or rice.",
+                    "image_path": "https://source.unsplash.com/500x500/?rangoli",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Aboriginal Dot Painting",
+                    "description": "Exploring the traditional dot painting technique of Australian Aboriginal culture and trying it out in a simple art project.",
+                    "image_path": "https://source.unsplash.com/500x500/?dot-painting",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Colors and Emotions",
+            "description": "Dive into a vibrant world where colors translate into emotions and express our inner world.",
+            "image_path": "https://source.unsplash.com/500x500/?colors",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Colors",
+                    "description": "A journey through the rainbow, understanding each color and its significance.",
+                    "image_path": "https://source.unsplash.com/500x500/?rainbow",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color Mixing",
+                    "description": "Discover the magic of color mixing and create new hues.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-mixing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Colors in Nature",
+                    "description": "Explore how colors are used in the natural world, from plants to animals.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-colors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Color Emotion Guide",
+                    "description": "Learn how colors can represent different feelings and moods.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Coloring with Emotion",
+                    "description": "Use colors to express your feelings in art.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Colors Around Us",
+                    "description": "Identify and appreciate the colors in our everyday environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?colors-environment",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Storytelling with Colors",
+                    "description": "Create your own stories using colors as characters and emotions as plots.",
+                    "image_path": "https://source.unsplash.com/500x500/?color-story",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Rhythms and Beats",
+            "description": "Step into the magical world of music, understanding rhythms and beats to express creativity and enhance coordination.",
+            "image_path": "https://source.unsplash.com/500x500/?music-beats",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Exploring Rhythm",
+                    "description": "Introduce the concept of rhythm in music and how it forms the backbone of any musical piece.",
+                    "image_path": "https://source.unsplash.com/500x500/?rhythm",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Beats in Music",
+                    "description": "Discover the role of beats in music and learn how to count them in different songs.",
+                    "image_path": "https://source.unsplash.com/500x500/?music-beats",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Simple Rhythms",
+                    "description": "Try your hand at creating simple rhythms using everyday objects around you.",
+                    "image_path": "https://source.unsplash.com/500x500/?homemade-drums",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Body Percussion",
+                    "description": "Explore body percussion as a fun way to create rhythm and beats without any instruments.",
+                    "image_path": "https://source.unsplash.com/500x500/?body-percussion",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Tempo",
+                    "description": "Learn about tempo in music, distinguishing between fast and slow rhythms.",
+                    "image_path": "https://source.unsplash.com/500x500/?tempo",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Musical Patterns",
+                    "description": "Create and recognize patterns in music, building on the concepts of rhythm and beats.",
+                    "image_path": "https://source.unsplash.com/500x500/?musical-patterns",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Rhythm in Dance",
+                    "description": "Discover how rhythm underpins dance, using simple dance moves to express different beats.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Shapes in Art",
+            "description": "Discover the beauty of geometry in art, understanding and creating shapes to explore symmetry, patterns, and design.",
+            "image_path": "https://source.unsplash.com/500x500/?shapes",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Shapes",
+                    "description": "Get to know the basic shapes that form the foundation of all art and design.",
+                    "image_path": "https://source.unsplash.com/500x500/?basic-shapes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shapes in Nature",
+                    "description": "Uncover the plethora of shapes hidden in nature, from the stars above to the flowers below.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-shapes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Art with Shapes",
+                    "description": "Use basic shapes to create your own masterpiece, bringing your imagination to life.",
+                    "image_path": "https://source.unsplash.com/500x500/?shape-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Shapes and Symmetry",
+                    "description": "Explore the concept of symmetry through shapes and see how it adds balance to art.",
+                    "image_path": "https://source.unsplash.com/500x500/?symmetry",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Patterns with Shapes",
+                    "description": "Create and recognize patterns using different shapes, enhancing your design skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?shape-patterns",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Geometric Art",
+                    "description": "Experiment with geometric art, creating intricate designs using simple shapes.",
+                    "image_path": "https://source.unsplash.com/500x500/?geometric-art",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Shapes in Architecture",
+                    "description": "Appreciate the use of shapes in architecture around us and explore how they contribute to strength and aesthetics.",
+                    "image_path": "https://source.unsplash.com/500x500/?architecture",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Storytelling Through Art",
+            "description": "Embark on a creative journey of narrating stories through art, enhancing imagination, empathy, and expression.",
+            "image_path": "https://source.unsplash.com/500x500/?storytelling",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Storytelling",
+                    "description": "Explore the art of storytelling and how it captivates, informs, and inspires.",
+                    "image_path": "https://source.unsplash.com/500x500/?storytelling-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Art as Expression",
+                    "description": "Understand how art can be a powerful tool to express feelings and ideas.",
+                    "image_path": "https://source.unsplash.com/500x500/?art-expression",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Narrative Art",
+                    "description": "Learn about narrative art, where stories are told through a series of images.",
+                    "image_path": "https://source.unsplash.com/500x500/?narrative-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Your Story",
+                    "description": "Create your own unique story and bring it to life through art.",
+                    "image_path": "https://source.unsplash.com/500x500/?story-creation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Artistic Interpretation of Stories",
+                    "description": "Read a short story and express its meaning through your artwork.",
+                    "image_path": "https://source.unsplash.com/500x500/?artistic-interpretation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Storytelling through Comics",
+                    "description": "Discover the exciting world of comics, where narratives come alive through a combination of art and text.",
+                    "image_path": "https://source.unsplash.com/500x500/?comics",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Exploring Art in Children‘s Books",
+                    "description": "Delve into children‘s literature, exploring how illustrations enhance storytelling.",
+                    "image_path": "https://source.unsplash.com/500x500/?childrens-books",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Sounds in Environment",
+            "description": "Tune into the symphony of everyday life by exploring and appreciating the sounds around us.",
+            "image_path": "https://source.unsplash.com/500x500/?sounds",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Sounds",
+                    "description": "Begin a sonic journey, understanding the basic concept and sources of sound.",
+                    "image_path": "https://source.unsplash.com/500x500/?sound-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Animal Sounds",
+                    "description": "Discover the unique sounds of different animals and the purposes they serve.",
+                    "image_path": "https://source.unsplash.com/500x500/?animal-sounds",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Sounds at Home",
+                    "description": "Identify and appreciate the various sounds in our home environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?home-sounds",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Natural Sounds",
+                    "description": "Embark on an auditory exploration of nature, appreciating the calming effect of natural sounds.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-sounds",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Sound Art",
+                    "description": "Use the sounds around you to create your own unique piece of sound art.",
+                    "image_path": "https://source.unsplash.com/500x500/?sound-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Sounds in Music",
+                    "description": "Explore how everyday sounds can be incorporated into music, creating a unique blend of sonic textures.",
+                    "image_path": "https://source.unsplash.com/500x500/?music",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Soundscapes",
+                    "description": "Create soundscapes, using different sounds to evoke specific atmospheres or depict scenes.",
+                    "image_path": "https://source.unsplash.com/500x500/?soundscapes",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Crafting With Recycled Materials",
+            "description": "Unlock creativity and sustainability by transforming everyday recyclables into beautiful crafts.",
+            "image_path": "https://source.unsplash.com/500x500/?recycled-crafts",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Recycling",
+                    "description": "Discover the importance of recycling and how it can help protect our environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?recycling",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Materials around Us",
+                    "description": "Identify recyclable materials around us and discuss their potential uses in crafting.",
+                    "image_path": "https://source.unsplash.com/500x500/?recyclable-materials",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Paper Crafts",
+                    "description": "Transform recycled paper into beautiful crafts, learning basic techniques like folding, cutting, and gluing.",
+                    "image_path": "https://source.unsplash.com/500x500/?paper-crafts",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Crafting with Plastic",
+                    "description": "Learn how to reuse plastic in creative ways, crafting fun and functional items.",
+                    "image_path": "https://source.unsplash.com/500x500/?plastic-crafts",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Fabric and Textile Crafts",
+                    "description": "Give old clothes and textiles new life by turning them into unique crafts.",
+                    "image_path": "https://source.unsplash.com/500x500/?fabric-crafts",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Crafting for a Cause",
+                    "description": "Create crafts to raise awareness about environmental issues, using your creativity for good.",
+                    "image_path": "https://source.unsplash.com/500x500/?crafts-for-cause",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Building a Miniature House",
+                    "description": "Put your crafting skills to the test by building a miniature house from recycled materials.",
+                    "image_path": "https://source.unsplash.com/500x500/?miniature-house",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Introduction to Theatre",
+            "description": "Step onto the exciting stage of theatre, cultivating imagination, expression, and collaboration through play and performance.",
+            "image_path": "https://source.unsplash.com/500x500/?theatre",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "What is Theatre?",
+                    "description": "Explore the enchanting world of theatre, understanding its role in culture and storytelling.",
+                    "image_path": "https://source.unsplash.com/500x500/?theatre-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Characters and Roles",
+                    "description": "Dive into the role of a character, learning how to express different emotions and traits.",
+                    "image_path": "https://source.unsplash.com/500x500/?theatre-roles",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Art of Puppetry",
+                    "description": "Discover the creative and expressive art form of puppetry, bringing stories to life with handmade characters.",
+                    "image_path": "https://source.unsplash.com/500x500/?puppetry",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating a Scene",
+                    "description": "Work together to create a simple scene, putting together elements like characters, dialogue, and props.",
+                    "image_path": "https://source.unsplash.com/500x500/?scene-creation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Emotions",
+                    "description": "Explore how theatre can help us understand and express a wide range of emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Storytelling with Shadow Puppets",
+                    "description": "Craft and perform a shadow puppet show, telling a story through shapes and movement.",
+                    "image_path": "https://source.unsplash.com/500x500/?shadow-puppets",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Improvisation Games",
+                    "description": "Have fun with improvisation games, enhancing creativity, quick thinking, and teamwork.",
+                    "image_path": "https://source.unsplash.com/500x500/?improvisation",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Exploring Digital Art",
+            "description": "Embrace the digital age by learning to create stunning visual art using technology.",
+            "image_path": "https://source.unsplash.com/500x500/?digital-art",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Digital Art",
+                    "description": "Discover the world of digital art and how technology has revolutionized the way we create.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-art-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating with Digital Drawing Tools",
+                    "description": "Learn to use digital tools to draw, bringing your ideas to life in a whole new way.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-drawing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Digital Collages",
+                    "description": "Combine images, text, and graphics to create unique digital collages that tell a story.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-collage",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Digital Art and Animation",
+                    "description": "Step into the world of animation, learning to create simple movements in your digital art.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-animation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating a Digital Portfolio",
+                    "description": "Assemble your digital creations into a portfolio, showcasing your creativity and digital skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-portfolio",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Exploring Digital Artists",
+                    "description": "Learn about famous digital artists, getting inspired by their unique styles and techniques.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-artists",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "World Art and Cultures",
+            "description": "Embark on a colorful journey, exploring diverse art forms and cultures around the globe.",
+            "image_path": "https://source.unsplash.com/500x500/?world-art",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to World Art",
+                    "description": "Discover the vast diversity of art forms and traditions from different corners of the world.",
+                    "image_path": "https://source.unsplash.com/500x500/?world-art-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Art of Native Americans",
+                    "description": "Explore the rich art and cultural expressions of Native Americans, from pottery to textiles.",
+                    "image_path": "https://source.unsplash.com/500x500/?native-american-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "African Art and Symbols",
+                    "description": "Delve into the vibrant art of Africa, learning about symbolic motifs and their meanings.",
+                    "image_path": "https://source.unsplash.com/500x500/?african-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Japanese Origami Art",
+                    "description": "Learn the beautiful and precise art of origami, a traditional Japanese paper-folding technique.",
+                    "image_path": "https://source.unsplash.com/500x500/?origami",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mexican Folk Art",
+                    "description": "Experience the colorful and festive world of Mexican folk art, from paper mache to Day of the Dead crafts.",
+                    "image_path": "https://source.unsplash.com/500x500/?mexican-folk-art",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Aboriginal Dot Painting",
+                    "description": "Learn about the stunning dot painting technique used by Australian Aboriginal artists and try your hand at creating your own.",
+                    "image_path": "https://source.unsplash.com/500x500/?aboriginal-dot-painting",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
-      "topics_data": []
+      "topics_data": [
+{
+  "name": "Exploring Visual Arts",
+  "description": "Exploring various forms of visual arts to spark creativity, develop fine motor skills, and introduce color theory.",
+  "image_path": "https://source.unsplash.com/500x500/?painting,kids",
+  "type": "CORE",
+  "lessons_data": [
+      {
+      "name": "Introduction to Drawing",
+      "description": "Developing fundamental drawing skills using pencils and papers, focusing on shapes and lines.",
+      "image_path": "https://source.unsplash.com/500x500/?drawing,kids",
+      "type": "CORE"
+      },
+      {
+      "name": "Exploring Colors and Painting",
+      "description": "Learning about primary and secondary colors, and experimenting with mixing colors through painting activities.",
+      "image_path": "https://source.unsplash.com/500x500/?painting,colors",
+      "type": "CORE"
+      },
+      {
+      "name": "Creating Patterns and Textures",
+      "description": "Understanding and creating various patterns and textures using different art materials.",
+      "image_path": "https://source.unsplash.com/500x500/?patterns,textures",
+      "type": "CORE"
+      },
+      {
+      "name": "Introduction to Collage Art",
+      "description": "Creating simple collages using cut-out shapes, exploring composition and juxtaposition.",
+      "image_path": "https://source.unsplash.com/500x500/?collage,kids",
+      "type": "CORE"
+      },
+      {
+        "name": "Introduction to Sculpture",
+        "description": "Learning about three-dimensional art through simple clay modeling activities.",
+        "image_path": "https://source.unsplash.com/500x500/?sculpture,kids",
+        "type": "CORE"
+      },
+      {
+        "name": "Art Appreciation",
+        "description": "Developing art appreciation by looking at famous artworks and discussing them.",
+        "image_path": "https://source.unsplash.com/500x500/?artworks,kids",
+        "type": "CORE"
+      }
+    ]
+},
+{
+   "name": "Introduction to Music and Rhythm",
+   "description": "Introducing students to music, different musical instruments, and basic rhythmic patterns.",
+   "image_path": "https://source.unsplash.com/500x500/?music,kids",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Understanding Rhythm and Beat",
+           "description": "Learning the basics of rhythm and beat through clapping exercises and simple percussion instruments.",
+           "image_path": "https://source.unsplash.com/500x500/?rhythm,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Musical Instruments",
+           "description": "Exploring different types of musical instruments and their sounds, from piano to drums.",
+           "image_path": "https://source.unsplash.com/500x500/?instruments,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Melody",
+           "description": "Understanding the concept of melody using simple songs and musical games.",
+           "image_path": "https://source.unsplash.com/500x500/?melody,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Singing and Voice Exploration",
+           "description": "Developing vocal skills and confidence through group singing activities.",
+           "image_path": "https://source.unsplash.com/500x500/?singing,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Simple Musical Instruments",
+           "description": "Crafting simple musical instruments using household items to learn about sound production.",
+           "image_path": "https://source.unsplash.com/500x500/?homemade,instruments",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Musical Genres",
+           "description": "Exploring different musical genres and their characteristics through active listening.",
+           "image_path": "https://source.unsplash.com/500x500/?music,genres",
+           "type": "CORE"
+       }
+   ]
+},
+{
+   "name": "Exploring Dance and Movement",
+   "description": "Introducing students to the joy of dance, developing coordination, and understanding rhythm through movement.",
+   "image_path": "https://source.unsplash.com/500x500/?dance,kids",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Understanding Rhythm Through Dance",
+           "description": "Learning the basics of rhythm through dance movements and exercises.",
+           "image_path": "https://source.unsplash.com/500x500/?rhythm,dance",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Ballet",
+           "description": "Exploring the basics of ballet, learning about the discipline and grace that characterizes this dance form.",
+           "image_path": "https://source.unsplash.com/500x500/?ballet,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Hip-Hop Dance",
+           "description": "Learning the basics of hip-hop dance, emphasizing creativity and personal expression.",
+           "image_path": "https://source.unsplash.com/500x500/?hiphop,dance",
+           "type": "CORE"
+       },
+       {
+           "name": "Creative Movement",
+           "description": "Encouraging students to express themselves freely through creative dance movements.",
+           "image_path": "https://source.unsplash.com/500x500/?creative,dance",
+           "type": "CORE"
+       },
+       {
+           "name": "Dance from Around the World",
+           "description": "Exploring traditional dances from different cultures around the world.",
+           "image_path": "https://source.unsplash.com/500x500/?world,dance",
+           "type": "CORE"
+       },
+       {
+           "name": "Choreography Basics",
+           "description": "Creating simple choreographies as a way to understand dance as a means of storytelling.",
+           "image_path": "https://source.unsplash.com/500x500/?choreography,kids",
+           "type": "CORE"
+       }
+   ]
+},
+{
+   "name": "Introduction to Theater and Drama",
+   "description": "Introducing students to the basics of theater and drama, enhancing expressiveness and confidence.",
+   "image_path": "https://source.unsplash.com/500x500/?theater,kids",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Understanding Characters",
+           "description": "Introducing the concept of characters in a story and how they can be portrayed in drama.",
+           "image_path": "https://source.unsplash.com/500x500/?characters,theater",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Emotions Through Drama",
+           "description": "Using drama activities to express and understand different emotions.",
+           "image_path": "https://source.unsplash.com/500x500/?emotions,drama",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Storytelling",
+           "description": "Learning how to tell a story through dramatization, emphasizing sequence and plot.",
+           "image_path": "https://source.unsplash.com/500x500/?storytelling,theater",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Simple Props and Costumes",
+           "description": "Engaging in simple craft activities to create props and costumes for a theatrical play.",
+           "image_path": "https://source.unsplash.com/500x500/?props,costumes",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Mime and Body Language",
+           "description": "Understanding the role of body language in communication and expressing ideas without words through mime.",
+           "image_path": "https://source.unsplash.com/500x500/?mime,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Putting on a Mini Play",
+           "description": "Applying learned skills in a mini play production, encouraging teamwork and creativity.",
+           "image_path": "https://source.unsplash.com/500x500/?play,kids",
+           "type": "CORE"
+       }
+   ]
+},
+{
+   "name": "Exploring Crafts and DIY Projects",
+   "description": "Encouraging creativity, fine motor skills, and resourcefulness through crafts and DIY projects.",
+   "image_path": "https://source.unsplash.com/500x500/?crafts,kids",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Paper Crafting Basics",
+           "description": "Learning basic paper crafting techniques, such as folding, cutting, and gluing.",
+           "image_path": "https://source.unsplash.com/500x500/?papercraft,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Handmade Greeting Cards",
+           "description": "Designing and making personalized greeting cards for various occasions.",
+           "image_path": "https://source.unsplash.com/500x500/?cards,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Origami",
+           "description": "Exploring the Japanese art of paper folding to create simple origami figures.",
+           "image_path": "https://source.unsplash.com/500x500/?origami,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Upcycling Household Items",
+           "description": "Learning about sustainability by turning household waste into useful or decorative items.",
+           "image_path": "https://source.unsplash.com/500x500/?upcycling,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Simple Sewing Projects",
+           "description": "Developing basic sewing skills through simple projects, like sewing a button or making a small pouch.",
+           "image_path": "https://source.unsplash.com/500x500/?sewing,kids",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Simple Jewelry",
+           "description": "Making simple bead bracelets and necklaces to explore design and fine motor skills.",
+           "image_path": "https://source.unsplash.com/500x500/?jewelry,kids",
+           "type": "CORE"
+       }
+   ]
+},
+{
+   "name": "Appreciation of Architecture and Design",
+   "description": "Introducing students to the basics of architecture and design, understanding shapes, symmetry, and purpose of design.",
+   "image_path": "https://source.unsplash.com/500x500/?architecture,kids",
+   "type": "CORE",
+   "lessons_data": [
+       {
+           "name": "Understanding Shapes in Architecture",
+           "description": "Learning about basic geometric shapes and how they are used in architectural design.",
+           "image_path": "https://source.unsplash.com/500x500/?shapes,architecture",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Symmetry in Architecture",
+           "description": "Understanding the concept of symmetry through examples in architecture and hands-on activities.",
+           "image_path": "https://source.unsplash.com/500x500/?symmetry,architecture",
+           "type": "CORE"
+       },
+       {
+           "name": "Introduction to Famous Landmarks",
+           "description": "Learning about famous landmarks around the world and their architectural significance.",
+           "image_path": "https://source.unsplash.com/500x500/?landmarks,world",
+           "type": "CORE"
+       },
+       {
+           "name": "Designing a Dream House",
+           "description": "Using creativity and understanding of shapes to design a simple dream house on paper.",
+           "image_path": "https://source.unsplash.com/500x500/?dream,house",
+           "type": "CORE"
+       },
+       {
+           "name": "Exploring Interior Design",
+           "description": "Understanding the basics of interior design through the decoration of simple paper models.",
+           "image_path": "https://source.unsplash.com/500x500/?interior,design",
+           "type": "CORE"
+       },
+       {
+           "name": "Creating Models with Building Blocks",
+           "description": "Developing spatial skills and understanding of structural stability through building with blocks.",
+           "image_path": "https://source.unsplash.com/500x500/?blocks,building",
+           "type": "CORE"
+       }
+   ]
+},
+
+      ]
     },
     {
       "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
