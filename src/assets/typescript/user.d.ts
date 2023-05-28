@@ -22,6 +22,7 @@ export interface IUserSubscription {
   status: Database['public']['Enums']['subscription_status'];
   stripeSubscriptionId: string | null;
   stripeCustomerId: string | null;
+  renewalDate: string | null;
 }
 
 export interface Me {

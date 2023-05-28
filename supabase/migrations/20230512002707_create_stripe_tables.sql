@@ -175,6 +175,7 @@ SELECT
   subscriptions.status AS subscription_status,
   subscriptions.trial_end AS subscription_trial_end,
   subscriptions.cancel_at_period_end AS subscription_cancel_at_period_end,
+  subscriptions.current_period_end AS subscription_current_period_end,
   customers.stripe_customer_id AS stripe_customer_id,
   customers.billing_portal_session_url AS billing_portal_session_url
 FROM teacher_profiles

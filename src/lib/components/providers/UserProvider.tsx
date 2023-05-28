@@ -84,6 +84,7 @@ export function UserProvider({ children }: PropsWithChildren) {
       billingPortalSessionUrl: data.billing_portal_session_url!,
       stripeSubscriptionId: data.subscription_id!,
       stripeCustomerId: data.stripe_customer_id!,
+      renewalDate: data.subscription_current_period_end!,
     };
 
     // If there was a user and they have not paid after subscription, redirect to billing portal

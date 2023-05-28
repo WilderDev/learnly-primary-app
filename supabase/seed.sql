@@ -31171,270 +31171,1499 @@ SELECT create_complete_curriculum(
     {
       "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
       "topics_data": [
-{
-       "name": "Exploring Basic Algorithms",
-       "description": "Unlocking the magical world of problem-solving and logical thinking through an exciting journey into basic algorithms.",
-       "image_path": "https://source.unsplash.com/500x500/?algorithm",
-       "type": "CORE",
-       "lessons_data": [
-           {
-               "name": "What is an Algorithm?",
-               "description": "Embarking on the journey of computer science by understanding the concept of algorithms.",
-               "image_path": "https://source.unsplash.com/500x500/?algorithm-basic",
-               "type": "CORE"
-           },
-           {
-               "name": "Creating Our First Algorithm",
-               "description": "Inspiring creativity by guiding learners to construct their first simple algorithm.",
-               "image_path": "https://source.unsplash.com/500x500/?algorithm-creation",
-               "type": "CORE"
-           },
-           {
-               "name": "Understanding Sequence in Algorithms",
-               "description": "Developing critical thinking through the exploration of sequence in algorithms.",
-               "image_path": "https://source.unsplash.com/500x500/?algorithm-sequence",
-               "type": "CORE"
-           },
-           {
-               "name": "Deciphering Algorithm Patterns",
-               "description": "Cultivating pattern recognition skills by deciphering various algorithmic patterns.",
-               "image_path": "https://source.unsplash.com/500x500/?algorithm-pattern",
-               "type": "CORE"
-           },
-           {
-               "name": "Debugging Basic Algorithms",
-               "description": "Promoting resilience and problem-solving skills by introducing the concept of debugging in algorithms.",
-               "image_path": "https://source.unsplash.com/500x500/?debugging",
-               "type": "CORE"
-           },
-           {
-               "name": "Algorithms in Daily Life",
-               "description": "Encouraging curiosity by exploring the presence and significance of algorithms in daily life.",
-               "image_path": "https://source.unsplash.com/500x500/?daily-life",
-               "type": "ELECTIVE"
-           },
-           {
-               "name": "Exploring Algorithms through Games",
-               "description": "Making learning fun by investigating how algorithms function within various games.",
-               "image_path": "https://source.unsplash.com/500x500/?algorithm-games",
-               "type": "ELECTIVE"
-           }
-       ]
-},
-{
-       "name": "Introduction to Coding",
-       "description": "Opening the doors to the enchanting realm of code, sparking imagination and problem-solving skills with simple programming concepts.",
-       "image_path": "https://source.unsplash.com/500x500/?coding",
-       "type": "CORE",
-       "lessons_data": [
-           {
-               "name": "What is Coding?",
-               "description": "Setting the stage for future coders with an engaging introduction to the world of programming.",
-               "image_path": "https://source.unsplash.com/500x500/?coding-intro",
-               "type": "CORE"
-           },
-           {
-               "name": "Understanding Code Sequences",
-               "description": "Building strong logical skills by exploring the importance of sequence in coding.",
-               "image_path": "https://source.unsplash.com/500x500/?code-sequence",
-               "type": "CORE"
-           },
-           {
-               "name": "Introduction to Coding Languages",
-               "description": "Encouraging linguistic dexterity by diving into the variety of coding languages used worldwide.",
-               "image_path": "https://source.unsplash.com/500x500/?coding-languages",
-               "type": "CORE"
-           },
-           {
-               "name": "Coding a Simple Program",
-               "description": "Igniting creativity by guiding learners to create their first simple program.",
-               "image_path": "https://source.unsplash.com/500x500/?simple-program",
-               "type": "CORE"
-           },
-           {
-               "name": "Debugging in Coding",
-               "description": "Promoting resilience and critical thinking by introducing the concept of debugging in coding.",
-               "image_path": "https://source.unsplash.com/500x500/?debugging-code",
-               "type": "CORE"
-           },
-           {
-               "name": "Coding in Our Everyday Lives",
-               "description": "Reinforcing the relevance of coding by examining its applications in our daily lives.",
-               "image_path": "https://source.unsplash.com/500x500/?daily-life-coding",
-               "type": "ELECTIVE"
-           },
-           {
-               "name": "Exploring Coding through Games",
-               "description": "Making coding fun by exploring how it shapes the games we love to play.",
-               "image_path": "https://source.unsplash.com/500x500/?coding-games",
-               "type": "ELECTIVE"
-           }
-       ]
-},
-{
-       "name": "Internet Basics",
-       "description": "Navigating the vast digital seas of the internet, exploring its wonders and understanding its structure.",
-       "image_path": "https://source.unsplash.com/500x500/?internet",
-       "type": "CORE",
-       "lessons_data": [
-           {
-               "name": "What is the Internet?",
-               "description": "Laying the foundation for digital literacy with a basic understanding of the internet.",
-               "image_path": "https://source.unsplash.com/500x500/?internet-basic",
-               "type": "CORE"
-           },
-           {
-               "name": "How Does the Internet Work?",
-               "description": "Sparking curiosity with a simplified explanation of how the internet works.",
-               "image_path": "https://source.unsplash.com/500x500/?internet-function",
-               "type": "CORE"
-           },
-           {
-               "name": "Exploring Websites",
-               "description": "Building familiarity with websites, the building blocks of the internet.",
-               "image_path": "https://source.unsplash.com/500x500/?websites",
-               "type": "CORE"
-           },
-           {
-               "name": "Introduction to Email",
-               "description": "Diving into the world of electronic communication with a basic introduction to email.",
-               "image_path": "https://source.unsplash.com/500x500/?email",
-               "type": "CORE"
-           },
-           {
-               "name": "Online Safety Basics",
-               "description": "Promoting safe online practices by introducing basic online safety principles.",
-               "image_path": "https://source.unsplash.com/500x500/?online-safety",
-               "type": "CORE"
-           },
-           {
-               "name": "The Internet and the Environment",
-               "description": "Creating environmentally conscious digital citizens by discussing the internet‘s impact on our planet.",
-               "image_path": "https://source.unsplash.com/500x500/?internet-environment",
-               "type": "ELECTIVE"
-           },
-           {
-               "name": "Fun with Online Games",
-               "description": "Promoting balanced digital recreation by exploring fun and safe online games.",
-               "image_path": "https://source.unsplash.com/500x500/?online-games",
-               "type": "ELECTIVE"
-           }
-       ]
-},
-{
-       "name": "Fun with Digital Art",
-       "description": "Exploring the intersection of creativity and technology, fostering digital art skills and stimulating imagination.",
-       "image_path": "https://source.unsplash.com/500x500/?digital-art",
-       "type": "CORE",
-       "lessons_data": [
-           {
-               "name": "What is Digital Art?",
-               "description": "Setting the stage for creative discovery with an engaging introduction to digital art.",
-               "image_path": "https://source.unsplash.com/500x500/?digital-art-intro",
-               "type": "CORE"
-           },
-           {
-               "name": "Exploring Digital Art Tools",
-               "description": "Inviting experimentation with a variety of fun and user-friendly digital art tools.",
-               "image_path": "https://source.unsplash.com/500x500/?digital-art-tools",
-               "type": "CORE"
-           },
-           {
-               "name": "Creating Your First Digital Artwork",
-               "description": "Igniting the spark of creativity by guiding learners to create their first piece of digital art.",
-               "image_path": "https://source.unsplash.com/500x500/?first-digital-art",
-               "type": "CORE"
-           },
-           {
-               "name": "Sharing and Saving Digital Art",
-               "description": "Promoting digital literacy by teaching students how to save and share their digital art creations.",
-               "image_path": "https://source.unsplash.com/500x500/?share-digital-art",
-               "type": "CORE"
-           },
-           {
-               "name": "Digital Art and Online Safety",
-               "description": "Emphasizing the importance of online safety when creating and sharing digital art.",
-               "image_path": "https://source.unsplash.com/500x500/?online-safety-art",
-               "type": "CORE"
-           },
-           {
-               "name": "Exploring Digital Animation",
-               "description": "Bringing artwork to life by introducing the basics of digital animation.",
-               "image_path": "https://source.unsplash.com/500x500/?digital-animation",
-               "type": "ELECTIVE"
-           },
-           {
-               "name": "Digital Art in Video Games",
-               "description": "Linking creativity and play by exploring the role of digital art in video games.",
-               "image_path": "https://source.unsplash.com/500x500/?digital-art-games",
-               "type": "ELECTIVE"
-           }
-       ]
-},
-{
-       "name": "Understanding Hardware",
-       "description": "Diving into the tangible components of technology, fostering a deeper understanding and appreciation of our digital devices.",
-       "image_path": "https://source.unsplash.com/500x500/?computer-hardware",
-       "type": "CORE",
-       "lessons_data": [
-           {
-               "name": "What is Computer Hardware?",
-               "description": "Opening the door to the physical world of computing with an introduction to computer hardware.",
-               "image_path": "https://source.unsplash.com/500x500/?hardware-intro",
-               "type": "CORE"
-           },
-           {
-               "name": "Exploring Different Hardware Components",
-               "description": "Cultivating curiosity by examining the various components that make up a computer.",
-               "image_path": "https://source.unsplash.com/500x500/?hardware-components",
-               "type": "CORE"
-           },
-           {
-               "name": "How Does Hardware Work Together?",
-               "description": "Promoting critical thinking by exploring how different hardware components work together in a computer.",
-               "image_path": "https://source.unsplash.com/500x500/?hardware-together",
-               "type": "CORE"
-           },
-           {
-               "name": "The Role of Hardware in Programming",
-               "description": "Strengthening understanding of programming by discussing the role of hardware.",
-               "image_path": "https://source.unsplash.com/500x500/?hardware-programming",
-               "type": "CORE"
-           },
-           {
-               "name": "Caring for Your Hardware",
-               "description": "Promoting responsible tech usage by teaching proper care and maintenance of computer hardware.",
-               "image_path": "https://source.unsplash.com/500x500/?hardware-care",
-               "type": "CORE"
-           },
-           {
-               "name": "Hardware in Our Daily Lives",
-               "description": "Connecting tech education to daily life by highlighting the importance of hardware in everyday devices.",
-               "image_path": "https://source.unsplash.com/500x500/?hardware-daily",
-               "type": "ELECTIVE"
-           },
-           {
-               "name": "Innovations in Hardware",
-               "description": "Inspiring innovation by discussing recent advancements and trends in computer hardware.",
-               "image_path": "https://source.unsplash.com/500x500/?hardware-innovation",
-               "type": "ELECTIVE"
-           }
-       ]
-},
-
+        {
+              "name": "Exploring Basic Algorithms",
+              "description": "Unlocking the magical world of problem-solving and logical thinking through an exciting journey into basic algorithms.",
+              "image_path": "https://source.unsplash.com/500x500/?algorithm",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "What is an Algorithm?",
+                      "description": "Embarking on the journey of computer science by understanding the concept of algorithms.",
+                      "image_path": "https://source.unsplash.com/500x500/?algorithm-basic",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Creating Our First Algorithm",
+                      "description": "Inspiring creativity by guiding learners to construct their first simple algorithm.",
+                      "image_path": "https://source.unsplash.com/500x500/?algorithm-creation",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Understanding Sequence in Algorithms",
+                      "description": "Developing critical thinking through the exploration of sequence in algorithms.",
+                      "image_path": "https://source.unsplash.com/500x500/?algorithm-sequence",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Deciphering Algorithm Patterns",
+                      "description": "Cultivating pattern recognition skills by deciphering various algorithmic patterns.",
+                      "image_path": "https://source.unsplash.com/500x500/?algorithm-pattern",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Debugging Basic Algorithms",
+                      "description": "Promoting resilience and problem-solving skills by introducing the concept of debugging in algorithms.",
+                      "image_path": "https://source.unsplash.com/500x500/?debugging",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Algorithms in Daily Life",
+                      "description": "Encouraging curiosity by exploring the presence and significance of algorithms in daily life.",
+                      "image_path": "https://source.unsplash.com/500x500/?daily-life",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "Exploring Algorithms through Games",
+                      "description": "Making learning fun by investigating how algorithms function within various games.",
+                      "image_path": "https://source.unsplash.com/500x500/?algorithm-games",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        },
+        {
+              "name": "Introduction to Coding",
+              "description": "Opening the doors to the enchanting realm of code, sparking imagination and problem-solving skills with simple programming concepts.",
+              "image_path": "https://source.unsplash.com/500x500/?coding",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "What is Coding?",
+                      "description": "Setting the stage for future coders with an engaging introduction to the world of programming.",
+                      "image_path": "https://source.unsplash.com/500x500/?coding-intro",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Understanding Code Sequences",
+                      "description": "Building strong logical skills by exploring the importance of sequence in coding.",
+                      "image_path": "https://source.unsplash.com/500x500/?code-sequence",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Introduction to Coding Languages",
+                      "description": "Encouraging linguistic dexterity by diving into the variety of coding languages used worldwide.",
+                      "image_path": "https://source.unsplash.com/500x500/?coding-languages",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Coding a Simple Program",
+                      "description": "Igniting creativity by guiding learners to create their first simple program.",
+                      "image_path": "https://source.unsplash.com/500x500/?simple-program",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Debugging in Coding",
+                      "description": "Promoting resilience and critical thinking by introducing the concept of debugging in coding.",
+                      "image_path": "https://source.unsplash.com/500x500/?debugging-code",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Coding in Our Everyday Lives",
+                      "description": "Reinforcing the relevance of coding by examining its applications in our daily lives.",
+                      "image_path": "https://source.unsplash.com/500x500/?daily-life-coding",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "Exploring Coding through Games",
+                      "description": "Making coding fun by exploring how it shapes the games we love to play.",
+                      "image_path": "https://source.unsplash.com/500x500/?coding-games",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        },
+        {
+              "name": "Internet Basics",
+              "description": "Navigating the vast digital seas of the internet, exploring its wonders and understanding its structure.",
+              "image_path": "https://source.unsplash.com/500x500/?internet",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "What is the Internet?",
+                      "description": "Laying the foundation for digital literacy with a basic understanding of the internet.",
+                      "image_path": "https://source.unsplash.com/500x500/?internet-basic",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "How Does the Internet Work?",
+                      "description": "Sparking curiosity with a simplified explanation of how the internet works.",
+                      "image_path": "https://source.unsplash.com/500x500/?internet-function",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Exploring Websites",
+                      "description": "Building familiarity with websites, the building blocks of the internet.",
+                      "image_path": "https://source.unsplash.com/500x500/?websites",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Introduction to Email",
+                      "description": "Diving into the world of electronic communication with a basic introduction to email.",
+                      "image_path": "https://source.unsplash.com/500x500/?email",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Online Safety Basics",
+                      "description": "Promoting safe online practices by introducing basic online safety principles.",
+                      "image_path": "https://source.unsplash.com/500x500/?online-safety",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "The Internet and the Environment",
+                      "description": "Creating environmentally conscious digital citizens by discussing the internet‘s impact on our planet.",
+                      "image_path": "https://source.unsplash.com/500x500/?internet-environment",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "Fun with Online Games",
+                      "description": "Promoting balanced digital recreation by exploring fun and safe online games.",
+                      "image_path": "https://source.unsplash.com/500x500/?online-games",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        },
+        {
+              "name": "Fun with Digital Art",
+              "description": "Exploring the intersection of creativity and technology, fostering digital art skills and stimulating imagination.",
+              "image_path": "https://source.unsplash.com/500x500/?digital-art",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "What is Digital Art?",
+                      "description": "Setting the stage for creative discovery with an engaging introduction to digital art.",
+                      "image_path": "https://source.unsplash.com/500x500/?digital-art-intro",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Exploring Digital Art Tools",
+                      "description": "Inviting experimentation with a variety of fun and user-friendly digital art tools.",
+                      "image_path": "https://source.unsplash.com/500x500/?digital-art-tools",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Creating Your First Digital Artwork",
+                      "description": "Igniting the spark of creativity by guiding learners to create their first piece of digital art.",
+                      "image_path": "https://source.unsplash.com/500x500/?first-digital-art",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Sharing and Saving Digital Art",
+                      "description": "Promoting digital literacy by teaching students how to save and share their digital art creations.",
+                      "image_path": "https://source.unsplash.com/500x500/?share-digital-art",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Digital Art and Online Safety",
+                      "description": "Emphasizing the importance of online safety when creating and sharing digital art.",
+                      "image_path": "https://source.unsplash.com/500x500/?online-safety-art",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Exploring Digital Animation",
+                      "description": "Bringing artwork to life by introducing the basics of digital animation.",
+                      "image_path": "https://source.unsplash.com/500x500/?digital-animation",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "Digital Art in Video Games",
+                      "description": "Linking creativity and play by exploring the role of digital art in video games.",
+                      "image_path": "https://source.unsplash.com/500x500/?digital-art-games",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        },
+        {
+              "name": "Understanding Hardware",
+              "description": "Diving into the tangible components of technology, fostering a deeper understanding and appreciation of our digital devices.",
+              "image_path": "https://source.unsplash.com/500x500/?computer-hardware",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "What is Computer Hardware?",
+                      "description": "Opening the door to the physical world of computing with an introduction to computer hardware.",
+                      "image_path": "https://source.unsplash.com/500x500/?hardware-intro",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Exploring Different Hardware Components",
+                      "description": "Cultivating curiosity by examining the various components that make up a computer.",
+                      "image_path": "https://source.unsplash.com/500x500/?hardware-components",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "How Does Hardware Work Together?",
+                      "description": "Promoting critical thinking by exploring how different hardware components work together in a computer.",
+                      "image_path": "https://source.unsplash.com/500x500/?hardware-together",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "The Role of Hardware in Programming",
+                      "description": "Strengthening understanding of programming by discussing the role of hardware.",
+                      "image_path": "https://source.unsplash.com/500x500/?hardware-programming",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Caring for Your Hardware",
+                      "description": "Promoting responsible tech usage by teaching proper care and maintenance of computer hardware.",
+                      "image_path": "https://source.unsplash.com/500x500/?hardware-care",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Hardware in Our Daily Lives",
+                      "description": "Connecting tech education to daily life by highlighting the importance of hardware in everyday devices.",
+                      "image_path": "https://source.unsplash.com/500x500/?hardware-daily",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "Innovations in Hardware",
+                      "description": "Inspiring innovation by discussing recent advancements and trends in computer hardware.",
+                      "image_path": "https://source.unsplash.com/500x500/?hardware-innovation",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        },
+        {
+              "name": "Journey into Data",
+              "description": "Embarking on a captivating journey into the world of data, stimulating curiosity, critical thinking, and basic understanding of data representation.",
+              "image_path": "https://source.unsplash.com/500x500/?data",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "What is Data?",
+                      "description": "Setting the foundation for data literacy with an engaging introduction to what data is.",
+                      "image_path": "https://source.unsplash.com/500x500/?data-intro",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Data in our Daily Life",
+                      "description": "Making data relatable by exploring its presence and significance in our everyday lives.",
+                      "image_path": "https://source.unsplash.com/500x500/?daily-life-data",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Understanding Data Representation",
+                      "description": "Fostering analytical thinking by learning about different ways data can be represented.",
+                      "image_path": "https://source.unsplash.com/500x500/?data-representation",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Creating Simple Data Charts",
+                      "description": "Applying creativity to data interpretation by creating simple data charts.",
+                      "image_path": "https://source.unsplash.com/500x500/?data-charts",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Data and Online Safety",
+                      "description": "Promoting responsible digital citizenship by discussing the importance of data privacy and safety online.",
+                      "image_path": "https://source.unsplash.com/500x500/?data-safety",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Data in Nature",
+                      "description": "Connecting data literacy with natural curiosity by exploring how data is used in understanding nature.",
+                      "image_path": "https://source.unsplash.com/500x500/?nature-data",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "Fun with Data Puzzles",
+                      "description": "Making data fun by creating and solving simple data-related puzzles.",
+                      "image_path": "https://source.unsplash.com/500x500/?data-puzzles",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        },
+        {
+              "name": "The Magic of Algorithms",
+              "description": "Unraveling the magic behind our digital world by diving into the fascinating world of algorithms, sparking problem-solving skills and logical thinking.",
+              "image_path": "https://source.unsplash.com/500x500/?algorithms",
+              "type": "CORE",
+              "lessons_data": [
+                  {
+                      "name": "What is an Algorithm?",
+                      "description": "Peeling back the layers of the digital world with an engaging introduction to algorithms.",
+                      "image_path": "https://source.unsplash.com/500x500/?algorithm-intro",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Algorithms in our Daily Life",
+                      "description": "Making algorithms relatable by exploring their presence and significance in our everyday lives.",
+                      "image_path": "https://source.unsplash.com/500x500/?daily-life-algorithm",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Understanding Simple Algorithms",
+                      "description": "Nurturing analytical thinking by learning about different types of simple algorithms.",
+                      "image_path": "https://source.unsplash.com/500x500/?simple-algorithm",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Creating Your First Algorithm",
+                      "description": "Fostering creativity and problem-solving by guiding students to create their first simple algorithm.",
+                      "image_path": "https://source.unsplash.com/500x500/?create-algorithm",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "The Role of Algorithms in Programming",
+                      "description": "Building a stronger understanding of programming by discussing the pivotal role of algorithms.",
+                      "image_path": "https://source.unsplash.com/500x500/?algorithm-programming",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Exploring Algorithms through Games",
+                      "description": "Creating fun learning experiences by exploring how algorithms are used in games.",
+                      "image_path": "https://source.unsplash.com/500x500/?algorithm-games",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "The Magic of Sorting Algorithms",
+                      "description": "Inspiring awe and understanding by exploring the magic of sorting algorithms.",
+                      "image_path": "https://source.unsplash.com/500x500/?sorting-algorithm",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        },
+        {
+              "name": "The Exciting World of Robotics",
+              "description": "Exploring the future of technology with an exciting foray into the world of robotics, sparking imagination and scientific curiosity.",
+              "image_path": "https://source.unsplash.com/500x500/?robotics",
+              "type": "ELECTIVE",
+              "lessons_data": [
+                  {
+                      "name": "What is a Robot?",
+                      "description": "Firing the imagination with a dynamic introduction to robots and their role in our world.",
+                      "image_path": "https://source.unsplash.com/500x500/?robot-intro",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Different Types of Robots",
+                      "description": "Broadening horizons by exploring the different types of robots and their applications.",
+                      "image_path": "https://source.unsplash.com/500x500/?types-robots",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "How Do Robots Work?",
+                      "description": "Building foundational knowledge by delving into the basic mechanisms of how robots work.",
+                      "image_path": "https://source.unsplash.com/500x500/?robots-work",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Robots and Coding",
+                      "description": "Creating connections between coding and robotics, illuminating the role of programming in robotics.",
+                      "image_path": "https://source.unsplash.com/500x500/?robots-coding",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Robots in Daily Life",
+                      "description": "Strengthening the connection between tech education and daily life by discussing the presence of robots in everyday scenarios.",
+                      "image_path": "https://source.unsplash.com/500x500/?robots-daily-life",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Create a Concept for Your Own Robot",
+                      "description": "Fostering creativity and design thinking by guiding students to conceptualize their own robot.",
+                      "image_path": "https://source.unsplash.com/500x500/?create-robot",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "The Future of Robotics",
+                      "description": "Inspiring a sense of wonder and anticipation by discussing the potential future of robotics.",
+                      "image_path": "https://source.unsplash.com/500x500/?future-robotics",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        },
+        {
+              "name": "Adventures in Virtual Reality",
+              "description": "Taking a leap into the future of interactive technology with a thrilling introduction to virtual reality, sparking imagination and technical intrigue.",
+              "image_path": "https://source.unsplash.com/500x500/?virtual-reality",
+              "type": "ELECTIVE",
+              "lessons_data": [
+                  {
+                      "name": "What is Virtual Reality?",
+                      "description": "Igniting curiosity with a stimulating introduction to the exciting world of virtual reality.",
+                      "image_path": "https://source.unsplash.com/500x500/?vr-intro",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Exploring Virtual Reality Devices",
+                      "description": "Building tech literacy by examining different virtual reality devices and their uses.",
+                      "image_path": "https://source.unsplash.com/500x500/?vr-devices",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "The Magic of Virtual Worlds",
+                      "description": "Stoking the fires of imagination by exploring the magic and potential of virtual worlds.",
+                      "image_path": "https://source.unsplash.com/500x500/?virtual-worlds",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Virtual Reality and Coding",
+                      "description": "Creating a bridge between virtual reality and coding, highlighting the importance of programming in VR.",
+                      "image_path": "https://source.unsplash.com/500x500/?vr-coding",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "VR Safety and Etiquette",
+                      "description": "Promoting safe and respectful tech use by discussing safety and etiquette in VR.",
+                      "image_path": "https://source.unsplash.com/500x500/?vr-safety",
+                      "type": "CORE"
+                  },
+                  {
+                      "name": "Create a Concept for a VR Experience",
+                      "description": "Cultivating creativity and design thinking by guiding students to create a concept for their own VR experience.",
+                      "image_path": "https://source.unsplash.com/500x500/?create-vr-experience",
+                      "type": "ELECTIVE"
+                  },
+                  {
+                      "name": "The Future of Virtual Reality",
+                      "description": "Sparking anticipation and forward-thinking by discussing the potential future of virtual reality technology.",
+                      "image_path": "https://source.unsplash.com/500x500/?future-vr",
+                      "type": "ELECTIVE"
+                  }
+              ]
+        }
       ]
     },
     {
       "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Exploring Basic Programming Concepts",
+            "description": "Unveiling the magic of code by introducing fundamental programming principles in a fun and engaging manner.",
+            "image_path": "https://source.unsplash.com/500x500/?programming-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Algorithms",
+                    "description": "Demystifying algorithms, the recipes of programming, through fun activities and puzzles.",
+                    "image_path": "https://source.unsplash.com/500x500/?algorithm-kids",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Fun with Loops",
+                    "description": "Discovering how loops can simplify coding tasks and create repeating patterns with fun exercises.",
+                    "image_path": "https://source.unsplash.com/500x500/?loops-coding",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Variables: The Building Blocks",
+                    "description": "Learning the concept of variables, the essential storage units in programming, through interactive examples.",
+                    "image_path": "https://source.unsplash.com/500x500/?variables-coding",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Conditionals: Making Decisions",
+                    "description": "Exploring conditionals, the decision-making tools in coding, with intriguing exercises.",
+                    "image_path": "https://source.unsplash.com/500x500/?conditionals-coding",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Simple Programs",
+                    "description": "Applying what we‘ve learned to create our first simple programs and experience the joy of coding.",
+                    "image_path": "https://source.unsplash.com/500x500/?programming",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Debugging: The Art of Problem Solving",
+                    "description": "Learning the critical skill of debugging - fixing and learning from mistakes in our code.",
+                    "image_path": "https://source.unsplash.com/500x500/?debugging",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Programming with Scratch",
+                    "description": "Exploring Scratch, a fun platform to create interactive stories and games, while reinforcing programming concepts.",
+                    "image_path": "https://source.unsplash.com/500x500/?scratch-programming",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Diving into Digital Literacy",
+            "description": "Building a solid foundation in the digital world by exploring the basics of digital literacy and online safety.",
+            "image_path": "https://source.unsplash.com/500x500/?digital-literacy-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Digital Devices",
+                    "description": "Uncovering the exciting world of digital devices and how they make our lives easier.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-devices",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Navigating the Internet",
+                    "description": "Discovering the vast universe of the internet and learning how to navigate it wisely.",
+                    "image_path": "https://source.unsplash.com/500x500/?internet-navigation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basics of Search Engines",
+                    "description": "Learning about search engines, the friendly guides of the internet, and their basic functionality.",
+                    "image_path": "https://source.unsplash.com/500x500/?search-engines",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Online Communication and Etiquette",
+                    "description": "Exploring the art of online communication, emphasizing respect, empathy, and proper etiquette.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-communication",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Online Safety",
+                    "description": "Understanding the importance of online safety, privacy, and ways to stay safe online.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Recognizing Online Information",
+                    "description": "Learning to differentiate between reliable and unreliable information online, fostering critical thinking.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-information",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Creativity in the Digital World",
+                    "description": "Exploring creative expression in the digital world through a variety of online tools and platforms.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-creativity",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Demystifying Data and Information",
+            "description": "Immersing into the exciting world of data, exploring how information is stored, retrieved and interpreted digitally.",
+            "image_path": "https://source.unsplash.com/500x500/?data-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Data",
+                    "description": "Introducing the concept of data and its importance in our digital world through relatable examples.",
+                    "image_path": "https://source.unsplash.com/500x500/?data",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Data Representation",
+                    "description": "Exploring how data is represented digitally using binary code, with fun hands-on activities.",
+                    "image_path": "https://source.unsplash.com/500x500/?binary-code",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Data Storage and Retrieval",
+                    "description": "Learning about data storage devices and how information is stored and retrieved in computers.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-storage",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Interpreting Information",
+                    "description": "Understanding how to interpret and use data in a meaningful way with simple data visualization tools.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-visualization",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Databases",
+                    "description": "Exploring databases, the libraries of the digital world, and understanding their basic functionality.",
+                    "image_path": "https://source.unsplash.com/500x500/?database",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Data Security and Privacy",
+                    "description": "Understanding the importance of data security and privacy, and learning the basics of keeping data safe.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-security",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Data in Daily Life",
+                    "description": "Appreciating the role of data in our daily lives and how it influences decision making.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-daily-life",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Exploring Multimedia and Graphics",
+            "description": "Venturing into the vibrant world of multimedia and graphics, learning how digital content comes to life.",
+            "image_path": "https://source.unsplash.com/500x500/?multimedia-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "What is Multimedia?",
+                    "description": "Introduction to multimedia, exploring the various forms of digital content and their applications.",
+                    "image_path": "https://source.unsplash.com/500x500/?multimedia",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Graphic Design",
+                    "description": "Discovering the basics of graphic design, learning how visuals communicate messages and evoke emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?graphic-design",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Animation",
+                    "description": "Unveiling the magic of animation, learning the process of creating moving images from still ones.",
+                    "image_path": "https://source.unsplash.com/500x500/?animation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Sound in Multimedia",
+                    "description": "Exploring the role of sound in multimedia, understanding how it enhances our digital experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?sound-digital",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Multimedia Presentations",
+                    "description": "Applying what we‘ve learned to create dynamic multimedia presentations, telling stories digitally.",
+                    "image_path": "https://source.unsplash.com/500x500/?multimedia-presentation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring 3D Graphics",
+                    "description": "Introducing the world of 3D graphics, learning how three-dimensional digital models are created and used.",
+                    "image_path": "https://source.unsplash.com/500x500/?3d-graphics",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Multimedia and The Web",
+                    "description": "Understanding how multimedia content enhances our web experiences and learning the basics of web design.",
+                    "image_path": "https://source.unsplash.com/500x500/?web-design",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Unleashing Creativity with Coding",
+            "description": "Fueling creativity and problem-solving skills by crafting fun projects and games with code.",
+            "image_path": "https://source.unsplash.com/500x500/?coding-creativity-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Crafting Stories with Code",
+                    "description": "Learning to use coding to tell interactive stories, promoting creativity and narrative skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?coding-stories",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Art with Code",
+                    "description": "Exploring how to use code to create dynamic and colorful art pieces.",
+                    "image_path": "https://source.unsplash.com/500x500/?coding-art",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Building Games with Code",
+                    "description": "Applying programming concepts to design and build simple games, enhancing problem-solving abilities.",
+                    "image_path": "https://source.unsplash.com/500x500/?coding-games",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Coding Music and Sounds",
+                    "description": "Discovering how to use code to compose music and sounds, fostering creativity and appreciation for music.",
+                    "image_path": "https://source.unsplash.com/500x500/?coding-music",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Project: Design Your Own App",
+                    "description": "Using our coding knowledge to brainstorm, design and build a basic app, integrating creativity with technology.",
+                    "image_path": "https://source.unsplash.com/500x500/?coding-app",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Advanced Scratch Projects",
+                    "description": "Taking our Scratch skills to the next level by undertaking more complex and fun projects.",
+                    "image_path": "https://source.unsplash.com/500x500/?scratch-advanced",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Integrating Coding with Robotics",
+                    "description": "Exploring the intersection of coding and robotics, understanding how code commands robots.",
+                    "image_path": "https://source.unsplash.com/500x500/?coding-robotics",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Robotics: Bridging Physical and Digital Worlds",
+            "description": "Stepping into the captivating world of robotics, discovering how it bridges the physical and digital realms.",
+            "image_path": "https://source.unsplash.com/500x500/?robotics-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Robotics",
+                    "description": "Venturing into the world of robotics and understanding its role in our daily lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?robotics-introduction",
+                    "type": "CORE"
+                },
+                {
+                    "name": "How Robots Work",
+                    "description": "Diving into the mechanics of robots, understanding the components that bring them to life.",
+                    "image_path": "https://source.unsplash.com/500x500/?robotics-mechanics",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Programming Robots",
+                    "description": "Exploring how robots are programmed to perform tasks, connecting coding with real-world applications.",
+                    "image_path": "https://source.unsplash.com/500x500/?robotics-programming",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Robots and Artificial Intelligence",
+                    "description": "Understanding the relationship between robots and AI, exploring the concept of machine learning.",
+                    "image_path": "https://source.unsplash.com/500x500/?robotics-AI",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Building a Simple Robot",
+                    "description": "Applying knowledge to build a simple robot, fostering creativity and critical thinking.",
+                    "image_path": "https://source.unsplash.com/500x500/?robotics-building",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Advanced Robotics",
+                    "description": "Discovering the advancements in robotics technology and its potential for the future.",
+                    "image_path": "https://source.unsplash.com/500x500/?robotics-advanced",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Robotics in Space Exploration",
+                    "description": "Learning about the role of robotics in space exploration, sparking curiosity about the universe.",
+                    "image_path": "https://source.unsplash.com/500x500/?space-robotics",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Internet and Cyber Safety",
+            "description": "Navigating the vast digital ocean safely and responsibly, understanding the importance of online etiquette and privacy.",
+            "image_path": "https://source.unsplash.com/500x500/?internet-safety-kids",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding the Internet",
+                    "description": "Exploring the basics of the Internet, learning how it connects people and devices globally.",
+                    "image_path": "https://source.unsplash.com/500x500/?internet",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Cyber Safety",
+                    "description": "Learning the basics of online safety, understanding the do's and don'ts of digital interactions.",
+                    "image_path": "https://source.unsplash.com/500x500/?cyber-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Online Etiquette and Cyberbullying",
+                    "description": "Discussing the importance of respect in digital communication, and tackling the issue of cyberbullying.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-etiquette",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Securing Personal Information",
+                    "description": "Understanding the importance of privacy, learning how to protect personal information online.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-privacy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Smart and Responsible Browsing",
+                    "description": "Promoting smart browsing habits, discussing the role of critical thinking when accessing online content.",
+                    "image_path": "https://source.unsplash.com/500x500/?smart-browsing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Role of Social Media",
+                    "description": "Exploring the benefits and pitfalls of social media, understanding its influence on our daily lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?social-media-kids",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Handling Digital Dilemmas",
+                    "description": "Discussing various digital dilemmas and exploring ethical decision-making in the online world.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-dilemmas",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Exploring Virtual and Augmented Reality",
+            "description": "Embarking on a fascinating journey through virtual and augmented reality, understanding how technology can redefine our perception of the world.",
+            "image_path": "https://source.unsplash.com/500x500/?virtual-reality-kids",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Virtual Reality (VR)",
+                    "description": "Diving into the world of VR, understanding its concept and uses in various fields.",
+                    "image_path": "https://source.unsplash.com/500x500/?virtual-reality",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Augmented Reality (AR)",
+                    "description": "Exploring AR, learning how it superimposes digital elements onto our physical environment.",
+                    "image_path": "https://source.unsplash.com/500x500/?augmented-reality",
+                    "type": "CORE"
+                },
+                {
+                    "name": "VR and AR in Gaming",
+                    "description": "Discovering the application of VR and AR in gaming, experiencing immersive gameplay.",
+                    "image_path": "https://source.unsplash.com/500x500/?vr-ar-gaming",
+                    "type": "CORE"
+                },
+                {
+                    "name": "VR and AR in Education",
+                    "description": "Understanding how VR and AR can transform education, making learning more interactive and engaging.",
+                    "image_path": "https://source.unsplash.com/500x500/?vr-ar-education",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating a Simple AR Experience",
+                    "description": "Applying knowledge to create a basic AR experience, fostering creativity and technical skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?ar-creation",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Advanced VR and AR Technologies",
+                    "description": "Exploring the latest trends and advancements in VR and AR technologies, peering into the future of digital experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?vr-ar-advanced",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Data Science: The Power of Information",
+            "description": "Demystifying the world of data, recognizing its significance, and understanding its powerful role in decision-making.",
+            "image_path": "https://source.unsplash.com/500x500/?data-kids",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "What is Data?",
+                    "description": "Defining data, its types, and understanding why it is one of the most valuable resources today.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-definition",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Data Collection and Organization",
+                    "description": "Exploring how data is collected and organized, learning about databases and their uses.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-collection",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Data Visualization",
+                    "description": "Understanding how data can be visually represented for better comprehension and decision-making.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-visualization",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Statistics",
+                    "description": "Learning basic statistical concepts to analyze and interpret data.",
+                    "image_path": "https://source.unsplash.com/500x500/?statistics-kids",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Project: Conducting a Mini Survey",
+                    "description": "Applying knowledge to conduct a mini survey, collect data, and present findings in a visual format.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-project",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "The Role of Data in AI",
+                    "description": "Exploring the crucial role of data in artificial intelligence and machine learning.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-ai",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Intro to Programming",
+            "description": "Unlocking the magic of coding, cultivating logical thinking, and empowering students to create and innovate in the digital world.",
+            "image_path": "https://source.unsplash.com/500x500/?coding",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Fundamentals of Coding",
+                    "description": "An engaging dive into the world of coding, introducing basic concepts and terminologies.",
+                    "image_path": "https://source.unsplash.com/500x500/?coding-fundamentals",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Intro to Scratch Programming",
+                    "description": "Exploring Scratch, a block-based programming platform, to encourage creative thinking and interactive learning.",
+                    "image_path": "https://source.unsplash.com/500x500/?scratch-programming",
+                    "type": "CORE"
+                },
+                {
+                    "name": "First Steps in Python",
+                    "description": "A gentle introduction to Python programming language, fostering computational thinking and problem-solving skills.",
+                    "image_path": "https://source.unsplash.com/500x500/?python-programming",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Logic and Flowcharts",
+                    "description": "Understanding programming logic through flowcharts, enhancing clarity and precision in thinking.",
+                    "image_path": "https://source.unsplash.com/500x500/?flowcharts",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Algorithms",
+                    "description": "A beginner‘s guide to algorithms, the backbone of coding, and the art of problem-solving.",
+                    "image_path": "https://source.unsplash.com/500x500/?algorithms",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating Interactive Stories with Scratch",
+                    "description": "Merging creativity with technology, students will create interactive stories using Scratch, improving their coding skills in a fun way.",
+                    "image_path": "https://source.unsplash.com/500x500/?scratch-stories",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Coding Fun: Making a Simple Game in Python",
+                    "description": "Applying Python fundamentals, students will create a simple game, enhancing their understanding of the coding process.",
+                    "image_path": "https://source.unsplash.com/500x500/?python-game",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Understanding Hardware",
+            "description": "Exploring the tangible components of computers, fostering appreciation for the physical elements of digital technology.",
+            "image_path": "https://source.unsplash.com/500x500/?computer-hardware",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Computer Components",
+                    "description": "Discovering the key parts of a computer, from processors to hard drives, laying the foundation for understanding how computers work.",
+                    "image_path": "https://source.unsplash.com/500x500/?computer-components",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Processors",
+                    "description": "Diving into the world of microprocessors, the 'brain' of the computer, and understanding their function in computer operations.",
+                    "image_path": "https://source.unsplash.com/500x500/?processors",
+                    "type": "CORE"
+                },
+                {
+                    "name": "All about Memory and Storage",
+                    "description": "Learning about the role and importance of memory and storage in computers and their differences.",
+                    "image_path": "https://source.unsplash.com/500x500/?memory-storage",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Role of Peripherals",
+                    "description": "Understanding the role of peripheral devices in computing, and how they interact with the computer system.",
+                    "image_path": "https://source.unsplash.com/500x500/?peripherals",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Networks and Connectivity",
+                    "description": "Understanding how computers connect to each other and the internet, laying the groundwork for future exploration of networks.",
+                    "image_path": "https://source.unsplash.com/500x500/?network-connectivity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Build Your Own Computer",
+                    "description": "A practical exercise where students assemble a simple computer system, reinforcing their knowledge of computer components.",
+                    "image_path": "https://source.unsplash.com/500x500/?build-computer",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Adventures in Troubleshooting",
+                    "description": "A fun and practical guide to common hardware issues and troubleshooting steps, empowering students to solve real-world problems.",
+                    "image_path": "https://source.unsplash.com/500x500/?troubleshooting",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Web Design Basics",
+            "description": "Diving into the creative world of web design, fostering digital creativity, and empowering students to create their own virtual spaces.",
+            "image_path": "https://source.unsplash.com/500x500/?web-design",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to HTML",
+                    "description": "Learning the basic language of web design, HTML, and how it shapes the structure of web pages.",
+                    "image_path": "https://source.unsplash.com/500x500/?html",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Getting Creative with CSS",
+                    "description": "Unleashing the potential of CSS, exploring how it beautifies the web and brings HTML structures to life.",
+                    "image_path": "https://source.unsplash.com/500x500/?css",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Basics of JavaScript",
+                    "description": "Getting a first taste of JavaScript, learning how it adds interactivity and dynamic content to websites.",
+                    "image_path": "https://source.unsplash.com/500x500/?javascript",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Responsive Web Design",
+                    "description": "Understanding the principles of responsive design, ensuring websites look great on all devices.",
+                    "image_path": "https://source.unsplash.com/500x500/?responsive-web-design",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating a Webpage from Scratch",
+                    "description": "Putting it all together: students will use HTML, CSS, and JavaScript to create their first webpage.",
+                    "image_path": "https://source.unsplash.com/500x500/?create-webpage",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Designing for User Experience (UX)",
+                    "description": "Exploring the principles of UX design, understanding how to create websites that are not only beautiful but also user-friendly.",
+                    "image_path": "https://source.unsplash.com/500x500/?ux-design",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Website Design Review",
+                    "description": "Critiquing and learning from professional websites to understand what makes a great web design.",
+                    "image_path": "https://source.unsplash.com/500x500/?website-review",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Digital Safety and Etiquette",
+            "description": "Navigating the digital world safely and respectfully, fostering responsible online behavior and internet citizenship.",
+            "image_path": "https://source.unsplash.com/500x500/?digital-safety",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Digital Safety",
+                    "description": "Understanding the importance of staying safe online and the basics of secure internet practices.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Cyberbullying",
+                    "description": "Discussing cyberbullying, its effects, and how to respond and prevent such situations.",
+                    "image_path": "https://source.unsplash.com/500x500/?cyberbullying",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Online Privacy Essentials",
+                    "description": "Learning about the value of online privacy, ways personal data is used, and strategies for protecting information.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-privacy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Digital Footprint and Reputation",
+                    "description": "Exploring the concept of digital footprints and the long-term impact of online activities on personal reputation.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-footprint",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Internet Etiquette and Behavior",
+                    "description": "Discussing proper internet etiquette, respect for others, and responsible behavior in online environments.",
+                    "image_path": "https://source.unsplash.com/500x500/?internet-etiquette",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Social Media and Communication",
+                    "description": "Exploring social media‘s role in communication, its benefits, potential risks, and responsible usage.",
+                    "image_path": "https://source.unsplash.com/500x500/?social-media",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Being a Good Digital Citizen",
+                    "description": "Understanding the rights and responsibilities of being part of online communities and how to be a positive digital citizen.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-citizen",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Exploring Data and Information",
+            "description": "Unraveling the world of data, fostering critical thinking, and empowering students to make sense of information in the digital age.",
+            "image_path": "https://source.unsplash.com/500x500/?data-information",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Data",
+                    "description": "Discovering what data is, how it‘s collected, and understanding its role in decision making.",
+                    "image_path": "https://source.unsplash.com/500x500/?introduction-data",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Types of Data",
+                    "description": "Exploring different types of data, such as qualitative and quantitative, and their use in various contexts.",
+                    "image_path": "https://source.unsplash.com/500x500/?types-data",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Data Representation",
+                    "description": "Understanding how data is represented visually through charts, graphs, and tables.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-representation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basics of Data Analysis",
+                    "description": "Learning the basics of analyzing data, identifying patterns, and drawing conclusions.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-analysis",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Information",
+                    "description": "Differentiating between data and information, and understanding the transformation from data to information.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-information",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Data in Real Life",
+                    "description": "Exploring how data is used in real-world scenarios, such as weather forecasting or sports analytics.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-real-life",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Data Privacy and Security",
+                    "description": "Understanding the importance of data privacy and security, and ways to protect personal data.",
+                    "image_path": "https://source.unsplash.com/500x500/?data-privacy",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Introduction to Artificial Intelligence",
+            "description": "Demystifying the world of artificial intelligence, fostering curiosity, and sparking interest in this transformative technology.",
+            "image_path": "https://source.unsplash.com/500x500/?artificial-intelligence",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "What is AI?",
+                    "description": "An engaging introduction to artificial intelligence, its concepts, and how it impacts our daily lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?ai",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Types of AI",
+                    "description": "Exploring the different types of AI, such as machine learning and deep learning, and their applications.",
+                    "image_path": "https://source.unsplash.com/500x500/?types-ai",
+                    "type": "CORE"
+                },
+                {
+                    "name": "AI in Everyday Life",
+                    "description": "Discovering the role of AI in various fields, from smartphones and games to healthcare and transportation.",
+                    "image_path": "https://source.unsplash.com/500x500/?ai-everyday",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Ethics in AI",
+                    "description": "Discussing ethical considerations in AI, such as privacy, bias, and the role of AI in decision making.",
+                    "image_path": "https://source.unsplash.com/500x500/?ethics-ai",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Future of AI",
+                    "description": "Speculating about the future of AI, its potential developments, and the skills needed to thrive in an AI-driven world.",
+                    "image_path": "https://source.unsplash.com/500x500/?future-ai",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Building a Simple AI Model",
+                    "description": "A practical introduction to building a simple AI model, encouraging students to understand and apply AI concepts.",
+                    "image_path": "https://source.unsplash.com/500x500/?build-ai",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Careers in AI",
+                    "description": "Exploring various career paths in the field of AI, inspiring students to envision potential future roles.",
+                    "image_path": "https://source.unsplash.com/500x500/?careers-ai",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Game Design and Development",
+            "description": "Embarking on a creative journey through the world of game design, fostering creativity, critical thinking, and coding skills.",
+            "image_path": "https://source.unsplash.com/500x500/?game-design",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "What is Game Design?",
+                    "description": "Introducing the concept of game design, the role of a game designer, and the process of developing a game.",
+                    "image_path": "https://source.unsplash.com/500x500/?game-design",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Game Design Elements",
+                    "description": "Exploring key game design elements, such as gameplay, mechanics, story, and aesthetics.",
+                    "image_path": "https://source.unsplash.com/500x500/?game-elements",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Introduction to Game Development",
+                    "description": "Learning the basics of game development, the tools used, and the stages involved in bringing a game to life.",
+                    "image_path": "https://source.unsplash.com/500x500/?game-development",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Game Programming Basics",
+                    "description": "Getting a first taste of game programming, learning how code can create interactivity and dynamics in games.",
+                    "image_path": "https://source.unsplash.com/500x500/?game-programming",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating a Simple Game",
+                    "description": "Putting it all together: students will design and develop their first simple game.",
+                    "image_path": "https://source.unsplash.com/500x500/?create-game",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Game Design and Storytelling",
+                    "description": "Exploring the role of storytelling in games, creating immersive and engaging experiences for players.",
+                    "image_path": "https://source.unsplash.com/500x500/?game-storytelling",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Game Review and Critique",
+                    "description": "Analysing and critiquing professional games to understand what makes a great game design.",
+                    "image_path": "https://source.unsplash.com/500x500/?game-review",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Virtual Reality and 3D Modeling",
+            "description": "Venturing into the immersive world of Virtual Reality (VR) and the creativity of 3D modeling, expanding students‘ digital horizons.",
+            "image_path": "https://source.unsplash.com/500x500/?virtual-reality",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Virtual Reality",
+                    "description": "Understanding the basics of VR, its applications, and its potential for transforming digital experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?introduction-vr",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring VR Devices",
+                    "description": "Discovering different VR devices and platforms, and their various capabilities and requirements.",
+                    "image_path": "https://source.unsplash.com/500x500/?vr-devices",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basics of 3D Modeling",
+                    "description": "Entering the world of 3D modeling, learning the tools and techniques for creating 3D objects.",
+                    "image_path": "https://source.unsplash.com/500x500/?3d-modeling",
+                    "type": "CORE"
+                },
+                {
+                    "name": "3D Modeling for VR",
+                    "description": "Applying 3D modeling skills to create objects and environments for virtual reality experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?3d-vr",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creating a Simple VR Experience",
+                    "description": "Bringing it all together: students will create their own simple virtual reality experience.",
+                    "image_path": "https://source.unsplash.com/500x500/?create-vr",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "The Future of VR",
+                    "description": "Exploring potential future developments in VR and its potential impact on society and technology.",
+                    "image_path": "https://source.unsplash.com/500x500/?future-vr",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Robotics and Automation",
+            "description": "Diving into the fascinating world of robotics, fostering critical thinking, creativity, and problem-solving skills.",
+            "image_path": "https://source.unsplash.com/500x500/?robotics",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Robotics",
+                    "description": "Understanding the basics of robotics, its applications, and its role in the modern world.",
+                    "image_path": "https://source.unsplash.com/500x500/?introduction-robotics",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Types of Robots",
+                    "description": "Exploring the different types of robots and their uses, from industrial robots to autonomous vehicles.",
+                    "image_path": "https://source.unsplash.com/500x500/?types-robots",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Basics of Automation",
+                    "description": "Learning about automation, how it works, and its implications on society and the workforce.",
+                    "image_path": "https://source.unsplash.com/500x500/?basics-automation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Robot Programming Basics",
+                    "description": "Getting a first taste of robot programming, understanding how code controls a robot‘s actions.",
+                    "image_path": "https://source.unsplash.com/500x500/?robot-programming",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Building a Simple Robot",
+                    "description": "Bringing it all together: students will design and build their first simple robot.",
+                    "image_path": "https://source.unsplash.com/500x500/?build-robot",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "The Future of Robotics",
+                    "description": "Exploring the future of robotics, predicting future developments, and discussing the ethics of automation.",
+                    "image_path": "https://source.unsplash.com/500x500/?future-robotics",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
-      "topics_data": []
+      "topics_data": [
+{
+    "name": "Introduction to Programming Concepts",
+    "description": "Demystifying the world of coding by introducing key programming concepts in a fun, engaging way.",
+    "image_path": "https://source.unsplash.com/500x500/?programming",
+    "type": "CORE",
+    "lessons_data": [
+        {
+            "name": "Understanding Algorithms",
+            "description": "Decoding the essence of algorithms and their importance in solving complex problems.",
+            "image_path": "https://source.unsplash.com/500x500/?algorithm",
+            "type": "CORE"
+        },
+        {
+            "name": "Concept of Loops",
+            "description": "Learning the power of repetitive actions and how loops make programming efficient.",
+            "image_path": "https://source.unsplash.com/500x500/?loops",
+            "type": "CORE"
+        },
+        {
+            "name": "Introduction to Variables",
+            "description": "Discovering how variables store information, making data handling easier in programming.",
+            "image_path": "https://source.unsplash.com/500x500/?variables",
+            "type": "CORE"
+        },
+        {
+            "name": "Conditional Statements",
+            "description": "Understanding conditional statements to control the flow of programs based on conditions.",
+            "image_path": "https://source.unsplash.com/500x500/?conditional-statements",
+            "type": "CORE"
+        },
+        {
+            "name": "Functions and Procedures",
+            "description": "Exploring how functions and procedures help in creating reusable pieces of code.",
+            "image_path": "https://source.unsplash.com/500x500/?functions-procedures",
+            "type": "CORE"
+        },
+        {
+            "name": "Introduction to Debugging",
+            "description": "Learning how to find and fix errors in code, an essential skill for any programmer.",
+            "image_path": "https://source.unsplash.com/500x500/?debugging",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "Building a Simple Game",
+            "description": "Applying learned concepts to create a simple interactive game, reinforcing programming fundamentals.",
+            "image_path": "https://source.unsplash.com/500x500/?game-programming",
+            "type": "ELECTIVE"
+        }
+    ]
+},
+{
+    "name": "Exploring Computer Hardware",
+    "description": "An exciting journey into the tangible aspects of computers, exploring the world of hardware and its vital role in computing.",
+    "image_path": "https://source.unsplash.com/500x500/?computer-hardware",
+    "type": "CORE",
+    "lessons_data": [
+        {
+            "name": "Understanding Computer Components",
+            "description": "Diving into the building blocks of computers and how they work together to execute tasks.",
+            "image_path": "https://source.unsplash.com/500x500/?computer-components",
+            "type": "CORE"
+        },
+        {
+            "name": "Intro to Central Processing Unit (CPU)",
+            "description": "Unveiling the brain of a computer - the CPU, and understanding its role in processing instructions.",
+            "image_path": "https://source.unsplash.com/500x500/?cpu",
+            "type": "CORE"
+        },
+        {
+            "name": "Memory and Storage",
+            "description": "Exploring the purpose and function of different types of memory and storage in a computer.",
+            "image_path": "https://source.unsplash.com/500x500/?memory-storage",
+            "type": "CORE"
+        },
+        {
+            "name": "Computer Peripherals",
+            "description": "Investigating various peripheral devices and how they expand the functionality of a computer.",
+            "image_path": "https://source.unsplash.com/500x500/?computer-peripherals",
+            "type": "CORE"
+        },
+        {
+            "name": "The Role of an Operating System",
+            "description": "Understanding what an operating system is and its essential role in managing computer hardware and software.",
+            "image_path": "https://source.unsplash.com/500x500/?operating-system",
+            "type": "CORE"
+        },
+        {
+            "name": "Assembling a PC",
+            "description": "Hands-on lesson guiding the students to assemble a personal computer, understanding the interaction of components.",
+            "image_path": "https://source.unsplash.com/500x500/?assembling-pc",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "Intro to Internet and Networking",
+            "description": "Exploring the basics of internet and networking, connecting the world of computers together.",
+            "image_path": "https://source.unsplash.com/500x500/?internet-networking",
+            "type": "ELECTIVE"
+        }
+    ]
+},
+{
+    "name": "Web Development Fundamentals",
+    "description": "Stepping into the magical world of the web, understanding how websites are built, and starting to create our own.",
+    "image_path": "https://source.unsplash.com/500x500/?web-development",
+    "type": "CORE",
+    "lessons_data": [
+        {
+            "name": "Introduction to HTML",
+            "description": "Learning HTML, the standard markup language for creating web pages.",
+            "image_path": "https://source.unsplash.com/500x500/?html",
+            "type": "CORE"
+        },
+        {
+            "name": "Styling with CSS",
+            "description": "Discovering how CSS adds style and personality to our HTML content.",
+            "image_path": "https://source.unsplash.com/500x500/?css",
+            "type": "CORE"
+        },
+        {
+            "name": "Interactive Elements with JavaScript",
+            "description": "Understanding JavaScript, the scripting language that adds interactivity to our websites.",
+            "image_path": "https://source.unsplash.com/500x500/?javascript",
+            "type": "CORE"
+        },
+        {
+            "name": "Web Page Layouts",
+            "description": "Mastering the art of arranging elements on a webpage using HTML and CSS.",
+            "image_path": "https://source.unsplash.com/500x500/?web-layout",
+            "type": "CORE"
+        },
+        {
+            "name": "Building a Simple Web Page",
+            "description": "Applying what we‘ve learned to build and customize a simple web page.",
+            "image_path": "https://source.unsplash.com/500x500/?website",
+            "type": "CORE"
+        },
+        {
+            "name": "Introduction to Responsive Design",
+            "description": "Learning about responsive design to ensure our websites look great on any device.",
+            "image_path": "https://source.unsplash.com/500x500/?responsive-design",
+            "type": "ELECTIVE"
+        },
+        {
+            "name": "Creating a Personal Website",
+            "description": "Using our skills to create a personal website, showcasing creativity and individuality.",
+            "image_path": "https://source.unsplash.com/500x500/?personal-website",
+            "type": "ELECTIVE"
+        }
+    ]
+},
+
+      ]
     },
     {
       "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",

@@ -112,7 +112,7 @@ export default function AccountSubscriptionStripeForm() {
           : We can&apos;t promise this deal will be around forever.{' '}
           <a
             className="font-light hocus:text-slate-800 transition-colors duration-200"
-            href="tsk"
+            href={process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PLAN_URL}
             target="_blank"
           >
             See Monthly →

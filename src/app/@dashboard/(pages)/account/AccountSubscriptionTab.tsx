@@ -1,7 +1,7 @@
 'use client';
 
 import { useUser } from '@/lib/components/providers/UserProvider';
-import { DashPanel } from '../../(layout)/DashPanel';
+import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import AccountSubscriptionStripeForm from './AccountSubscriptionStripeForm';
 import { StripeElementsProvider } from './StripeElementsCtx';
 import AccountSubscriptionManagement from './AccountSubscriptionManagement';
@@ -12,17 +12,25 @@ export default function AccountSubscriptionTab() {
   const { subscription } = useUser();
 
   // * Render
-  return (
-    <DashPanel className="w-full 2xl:w-9/12" colNum={1}>
-      {/* Active Subscription Management */}
-      {subscription?.status === 'active' && <AccountSubscriptionManagement />}
+  return subscription?.status === 'active' ? (
+    <section className="flex flex-col 2xl:flex-row 2xl:justify-between gap-y-12 2xl:gap-y-0 2xl:gap-x-12">
+      {/* Plan Details / Management */}
+      <DashPanel className="w-full 2xl:w-7/12" colNum={1}>
+        <AccountSubscriptionManagement />
+      </DashPanel>
 
-      {/* Trial Subscription Form */}
-      {subscription?.status === 'trialing' && (
-        <StripeElementsProvider>
-          <AccountSubscriptionStripeForm />
-        </StripeElementsProvider>
-      )}
+      {/* Refer a Friend */}
+      <DashPanel className="w-full 2xl:w-5/12" colNum={2}>
+        <DashPanelHeader title="Refer a Friend" />
+        {/* TSK */}
+        <p>Coming soon...</p>
+      </DashPanel>
+    </section>
+  ) : (
+    <DashPanel className="w-full 2xl:w-9/12" colNum={1}>
+      <StripeElementsProvider>
+        <AccountSubscriptionStripeForm />
+      </StripeElementsProvider>
     </DashPanel>
   );
 }
