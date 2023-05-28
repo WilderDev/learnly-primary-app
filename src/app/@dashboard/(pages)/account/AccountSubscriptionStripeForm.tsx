@@ -12,6 +12,7 @@ import Button from '@/lib/components/ui/Button';
 import { useRequest } from '@/lib/hooks/useRequest';
 import { savePaymentDetails } from './_actions';
 import { revalidatePath } from 'next/cache';
+import { getDatestringFromTimestamp } from '@/lib/common/date.helpers';
 
 export default function AccountSubscriptionStripeForm() {
   // * Hooks / Context
@@ -49,43 +50,75 @@ export default function AccountSubscriptionStripeForm() {
           {/* Update Payment Method */}
         </>
       ) : (
-        <Form
-          id="payment-form"
-          action={async () => {
-            elements!.submit();
+        <>
+          {/* Header */}
+          <header className="mb-6 border-b pb-4 border-slate-300 dark:border-navy-500">
+            <h2 className="font-bold text-center text-2xl md:text-3xl text-slate-900 dark:text-navy-50">
+              Get 3 Months Free{' '}
+              <span className="text-green-600 leading-9 dark:text-green-500 italics">
+                (And Save Over $100+)
+              </span>{' '}
+              When You Pay Before{' '}
+              {getDatestringFromTimestamp(subscription?.trialEnd!)}!
+            </h2>
 
-            const { paymentMethod, error } =
-              await stripeClient!.createPaymentMethod({
-                elements: elements!,
+            <p className="mt-3 text-base text-slate-700 dark:text-navy-100">
+              You will be charged{' '}
+              <span className="font-medium text-slate-600 dark:text-navy-200">
+                $297 USD
+              </span>
+              , for a whole year of Learnly (ALL ACCESS), and your subscription
+              will begin immediately.
+            </p>
+          </header>
+
+          {/* Form */}
+          <Form
+            id="payment-form"
+            action={async () => {
+              elements!.submit();
+
+              const { paymentMethod, error } =
+                await stripeClient!.createPaymentMethod({
+                  elements: elements!,
+                });
+
+              savePaymentDetailsMutation({
+                paymentMethodId: paymentMethod?.id!,
+                customerId: subscription?.stripeCustomerId!,
+                subscriptionId: subscription?.stripeSubscriptionId!,
               });
-
-            savePaymentDetailsMutation({
-              paymentMethodId: paymentMethod?.id!,
-              customerId: subscription?.stripeCustomerId!,
-              subscriptionId: subscription?.stripeSubscriptionId!,
-            });
-          }}
-        >
-          {/* Card Details */}
-          <PaymentElement
-            className="col-span-4"
-            id="payment-element"
-            options={{
-              layout: 'tabs',
             }}
-          />
-
-          {/* Submit */}
-          <Button
-            className="col-span-4"
-            id="submit"
-            type="submit"
-            disabled={isLoading}
-            loading={isLoading}
           >
-            Get 3 Months Free!
-          </Button>
-        </Form>
+            {/* Card Details */}
+            <PaymentElement
+              className="col-span-4"
+              id="payment-element"
+              options={{
+                layout: 'tabs',
+              }}
+            />
+
+            {/* Submit */}
+            <Button
+              className="col-span-4"
+              id="submit"
+              type="submit"
+              disabled={isLoading}
+              loading={isLoading}
+            >
+              Claim my 3 Free Months!
+            </Button>
+
+            <span className="block text-center col-span-4 text-xs text-slate-600 -mt-3">
+              *
+              <span className="font-medium text-slate-700">
+                Limited Time Offer
+              </span>
+              : We can&apos;t promise this deal will be around forever.
+            </span>
+          </Form>
+        </>
       )}
     </>
   );

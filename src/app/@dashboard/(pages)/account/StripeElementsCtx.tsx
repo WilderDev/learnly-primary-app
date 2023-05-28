@@ -1,6 +1,7 @@
 'use client';
 
 import { useUser } from '@/lib/components/providers/UserProvider';
+import { useTheme } from '@/lib/theme/ThemeCtx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
@@ -22,6 +23,7 @@ const StripeElementsCtx = createContext(initialState); // Create Context Object
 export function StripeElementsProvider({ children }: PropsWithChildren) {
   // * Hooks / Context
   const { subscription } = useUser(); // TSK: If they are subscribed, we need to show them their subscription details
+  const { theme } = useTheme();
 
   // * State
   const [selectedOption, setSelectedOption] = useState('annual');
@@ -41,13 +43,10 @@ export function StripeElementsProvider({ children }: PropsWithChildren) {
           customer: subscription?.stripeCustomerId!,
           ephemeralKey: 'ephkey_1234',
         },
+        paymentMethodTypes: ['card'],
         appearance: {
-          theme: 'stripe',
-          variables: {
-            // TSK
-          },
+          theme: theme === 'dark' ? 'night' : 'stripe',
         },
-        fonts: [], // TSK
         mode: 'subscription',
         currency: 'usd',
         amount: 999,

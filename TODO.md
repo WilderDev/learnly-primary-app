@@ -1,23 +1,28 @@
 ## Coding
 
-1. Signing up with an email that has numbers fails
+### Joe
+
 2. Fix Print on lesson plan [id] page and curriclum [lessonId] pages and modal -> Maybe change the modal to download as PDF
-3. Onboarding Generate Lesson Flow and Show Them Around the App
-4. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
-5. Bottom Right Chat Bubble (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
-6. When you hover over the <Avatar /> component, it should have a tooltip pop up that says their name
-7. [Open Graph for Lesson Plans and Curriculum](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
-8. Take OG Image Screenshots and add to [default metatdata](src/lib/meta/defaultMetadata.ts) (1200x630)
-9. [global-error.tsx](src/app/global-error.tsx)
-10. [not-found.tsx](src/app/not-found.tsx)
-11. Social Login's?
-12. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
-13. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
-14. User's can change the title and image of a lesson plan they have created
-15. Users can create their own lessons, topics, subjects, and curriculum
-16. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
-17. DMARC & SPF Records
-18. Curriculum Topic search page with tags and by filters
+3. When you hover over the <Avatar /> component, it should have a tooltip pop up that says their name
+4. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
+5. User's can change the title and image of a lesson plan they have created
+6. Curriculum Topic search page with tags and by filters
+7. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+8. Bottom Right Chat Bubble (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
+
+### Will
+
+1. Onboarding Generate Lesson Flow and Show Them Around the App
+2. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
+3. [Open Graph for Lesson Plans and Curriculum](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
+4. Take OG Image Screenshots and add to [default metatdata](src/lib/meta/defaultMetadata.ts) (1200x630)
+5. [global-error.tsx](src/app/global-error.tsx)
+6. [not-found.tsx](src/app/not-found.tsx)
+7. Social Login's?
+8. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
+9. Users can create their own lessons, topics, subjects, and curriculum
+10. DMARC & SPF Records
+11. Fix /onboarding testimonials scrollers jump
 
 ---
 
