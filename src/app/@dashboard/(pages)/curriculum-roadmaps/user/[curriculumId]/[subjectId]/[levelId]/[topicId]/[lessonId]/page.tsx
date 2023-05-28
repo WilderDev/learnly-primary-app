@@ -10,7 +10,6 @@ import CurriculumLessonForm from './CurriculumLessonForm';
 import {
   ICurriculumFormData,
   ICurriculumLessonPlan,
-  ICurriculumLessonPlanStudent,
 } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumLessonPlanContainer from './CurriculumLessonPlanContainer';
 
@@ -30,13 +29,14 @@ export default async function CurriculumRoadmapLessonPage({
   params: { curriculumId, subjectId, levelId, topicId, lessonId },
 }: IParams) {
   // * Data
-  const { lessonForm, lessonPlan, students } = await getCurriculumRoadmapLesson(
-    curriculumId,
-    subjectId,
-    levelId,
-    topicId,
-    lessonId,
-  );
+  const { lessonForm, lessonPlan, studentIds } =
+    await getCurriculumRoadmapLesson(
+      curriculumId,
+      subjectId,
+      levelId,
+      topicId,
+      lessonId,
+    );
 
   // * Render
   return (
@@ -48,14 +48,17 @@ export default async function CurriculumRoadmapLessonPage({
           {lessonPlan ? (
             <CurriculumLessonPlanContainer
               lessonPlan={lessonPlan}
-              studentIds={students?.map((s) => s.id) || []}
+              studentIds={studentIds}
             />
           ) : (
             <>
               <DashPanelHeader
                 title={`Create "${lessonForm.lesson.name}" Lesson`}
               />
-              <CurriculumLessonForm lesson={lessonForm} students={students!} />
+              <CurriculumLessonForm
+                lesson={lessonForm}
+                studentIds={studentIds}
+              />
             </>
           )}
         </DashPanel>
@@ -96,9 +99,6 @@ async function getCurriculumRoadmapLesson(
       `/curriculum-roadmaps/user/${curriculumId}/${subjectId}/${levelId}/${topicId}`,
     );
 
-  // Create lesson plan form data
-  const students = data.students! as unknown as ICurriculumLessonPlanStudent[];
-
   const lessonFormData: ICurriculumFormData = {
     curriculum: {
       id: curriculumId,
@@ -132,7 +132,7 @@ async function getCurriculumRoadmapLesson(
     lessonForm: lessonFormData,
     lessonPlan:
       data.lesson_plan as unknown as ICurriculumLessonPlan['lesson_plan'],
-    students,
+    studentIds: (data.student_ids as any).map((s: any) => s.id),
   };
 }
 

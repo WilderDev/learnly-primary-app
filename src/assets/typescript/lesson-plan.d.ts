@@ -1,4 +1,21 @@
 import { Database } from './db';
+import {
+  TGoal,
+  TLearningEnvironment,
+  TLearningResource,
+  TLearningStyle,
+  TSpecialNeed,
+  TTeachingStrategy,
+} from './user';
+import { Me } from './user';
+
+export type TObjective = Database['public']['Enums']['objective'];
+export type TStandard = Database['public']['Enums']['standard'];
+export type TFormat = Database['public']['Enums']['format'];
+export type TDifficulty = Database['public']['Enums']['difficulty'];
+export type TPhilosophy = Database['public']['Enums']['philosophy'];
+export type TMaterial = Database['public']['Enums']['material'];
+export type TPace = Database['public']['Enums']['pace'];
 
 // Lesson Plan Output
 export interface ILessonPlan {
@@ -26,24 +43,24 @@ export interface ILessonPlanPromptReq {
   subject: string;
   level: string;
   topic: string;
-  objectives: Database['public']['Enums']['objective'][];
-  difficulty: Database['public']['Enums']['difficulty'] | null;
-  standards: Database['public']['Enums']['standard'][];
-  format: Database['public']['Enums']['format'] | null;
-  teaching_strategy: Database['public']['Enums']['teaching_strategy'] | null;
-  philosophy: Database['public']['Enums']['philosophy'] | null;
+  objectives: TObjective[];
+  difficulty: TDifficulty | null;
+  standards: TStandard[];
+  format: TFormat | null;
+  teaching_strategy: TTeachingStrategy | null;
+  philosophy: TPhilosophy | null;
   length_in_min: number;
-  pace: Database['public']['Enums']['pace'] | null;
-  materials: Database['public']['Enums']['material'][];
+  pace: TPace | null;
+  materials: TMaterial[];
   special_considerations: string;
-  learning_styles?: Database['public']['Enums']['learning_style'][];
+  learning_styles?: TLearningStyle[];
 }
 
 // Lesson Plan Prompt Input (Teacher Object)
 export interface ITeacherPromptReq {
   name: string;
   role: Database['public']['Enums']['profile_type'];
-  teaching_preferences?: {}; // TSK
+  teaching_preferences?: Me['teachingPreferences'];
 }
 
 // Lesson Plan Prompt Input (Students Object)
@@ -52,13 +69,12 @@ export interface IStudentPromptReq {
     id: string;
     name: string;
     age: number;
-    learning_styles: Database['public']['Enums']['learning_style'][];
-    // interests?
-    // strengths?
-    // weaknesses?
-    // goals?
-    // special_needs?
-    // learning_environment_preferences?
-    // learning_resources_preferences?
+    learningStyles: TLearningStyle[];
+    favoriteSubjects: string[];
+    interests: string[];
+    goals: TGoal[];
+    learningEnvironments: TLearningEnvironment[];
+    learningResources: TLearningResource[];
+    specialNeeds: TSpecialNeed[];
   }[];
 }

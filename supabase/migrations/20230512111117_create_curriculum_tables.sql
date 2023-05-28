@@ -496,19 +496,14 @@ SELECT
   ARRAY(
     SELECT
       json_build_object(
-        'id', student_profiles.id,
-        'first_name', student_profiles.first_name,
-        'last_name', student_profiles.last_name,
-        'avatar_url', student_profiles.avatar_url,
-        'age', EXTRACT(YEAR FROM AGE(student_profiles.birthday)),
-        'learning_styles', student_preferences.learning_styles
+        'id', student_profiles.id
       )
     FROM
       student_profiles
       INNER JOIN student_preferences ON student_profiles.id = student_preferences.id
     WHERE
       student_profiles.id = ANY(uc.student_ids)
-  ) AS students,
+  ) AS student_ids,
   (SELECT
       json_build_object(
         'id', lesson_plans.id,

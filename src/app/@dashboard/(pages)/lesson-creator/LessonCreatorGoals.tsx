@@ -13,13 +13,18 @@ import {
   RocketLaunchIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
-import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
+import {
+  IStudentPromptReq,
+  TDifficulty,
+  TObjective,
+  TStandard,
+} from '@/assets/typescript/lesson-plan';
 import { getAgeFromBirthday } from '@/lib/common/date.helpers';
 import { useUser } from '@/lib/components/providers/UserProvider';
 
 // * Data
 // Objectives
-const objectiveOptions: Database['public']['Enums']['objective'][] = [
+const objectiveOptions: TObjective[] = [
   'Analysis',
   'Application',
   'Comprehension',
@@ -28,13 +33,13 @@ const objectiveOptions: Database['public']['Enums']['objective'][] = [
   'Synthesis',
 ];
 // Difficulties
-export const difficultyOptions: Database['public']['Enums']['difficulty'][] = [
+export const difficultyOptions: TDifficulty[] = [
   'EASY',
   'MODERATE',
   'CHALLENGING',
 ];
 // Standards
-const standardOptions: Database['public']['Enums']['standard'][] = [
+const standardOptions: TStandard[] = [
   'Common Core',
   'Next Generation Science Standards',
   'Other',
@@ -83,13 +88,10 @@ export default function LessonCreatorGoalsSection() {
         setValues={(ids) => {
           const lessonStudents: IStudentPromptReq['students'] = usersStudents
             .filter((s) => ids.includes(s.id))
-            .map((s) => ({
-              id: s.id,
-              name: s.firstName,
-              age: getAgeFromBirthday(s.birthday),
-              avatarUrl: s.avatarUrl,
-              learning_styles: s.learningStyles,
-              // . . .
+            .map((st) => ({
+              name: `${st.firstName} ${st.lastName}`,
+              age: getAgeFromBirthday(st.birthday),
+              ...st,
             }));
 
           setStudents(lessonStudents);

@@ -45,4 +45,4 @@ export const metadata = {
   description: 'Create a lesson plan for your child.',
 };
 
-export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355
+export const dynamic = 'force-dynamic';

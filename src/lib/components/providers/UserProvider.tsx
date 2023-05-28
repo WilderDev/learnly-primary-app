@@ -55,19 +55,22 @@ export function UserProvider({ children }: PropsWithChildren) {
 
     const transformedUser: Me = {
       id: data.id!,
-      //   email: data.email!,
       firstName: data.first_name!,
       lastName: data.last_name!,
       avatarUrl: data.avatar_url!,
       status: data.status!,
       type: data.type!,
       role: data.role!,
+      teachingPreferences: {
+        teachingStrategies: data.teaching_strategies!,
+        lessonDetailLevel: data.lesson_detail_level!,
+        teachingTools: data.teaching_tools!,
+        lessonStructure: data.lesson_structure!,
+      },
     };
 
     const subStatus = data?.subscription_status!;
     const isAuthorized = subStatus === 'active' || subStatus === 'trialing';
-
-    console.log('subStatus:', subStatus);
 
     const trialEnd = data.subscription_trial_end!; // 2023-05-25 00:10:38.459876+00;
     const isEndingSoon =
@@ -78,13 +81,16 @@ export function UserProvider({ children }: PropsWithChildren) {
       status: subStatus,
       isEndingSoon: subStatus === 'active' ? false : isEndingSoon,
       trialEnd: data.subscription_trial_end!,
-      billing_portal_session_url: data.billing_portal_session_url!,
+      billingPortalSessionUrl: data.billing_portal_session_url!,
+      stripeSubscriptionId: data.subscription_id!,
+      stripeCustomerId: data.stripe_customer_id!,
+      renewalDate: data.subscription_current_period_end!,
     };
 
     // If there was a user and they have not paid after subscription, redirect to billing portal
     if (data && !isAuthorized) {
       return window.location.replace(
-        transformedSubscription.billing_portal_session_url?.trim() || '/',
+        transformedSubscription.billingPortalSessionUrl?.trim() || '/',
       );
     }
 
@@ -113,6 +119,14 @@ export function UserProvider({ children }: PropsWithChildren) {
       birthday: student.birthday!,
       avatarUrl: student.avatar_url!,
       learningStyles: student.learning_styles!,
+      favoriteSubjects: student.subject_preferences!,
+      interests: student.interests!,
+      goals: student.goals!,
+      learningEnvironments: student.learning_environment_preferences!,
+      learningResources: student.learning_resources_preferences!,
+      specialNeeds: student.special_needs!,
+      // Strenths
+      // Weaknesses
       // . . .
     }));
 
@@ -177,7 +191,7 @@ export function UserProvider({ children }: PropsWithChildren) {
         <AuthSubscribeModal
           initialOpen={true}
           endDate={subscription?.trialEnd!}
-          billingUrl={subscription?.billing_portal_session_url!}
+          billingUrl={subscription?.billingPortalSessionUrl!}
         />
       )}
 

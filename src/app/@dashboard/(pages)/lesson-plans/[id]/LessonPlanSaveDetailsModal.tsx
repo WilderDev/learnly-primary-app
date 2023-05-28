@@ -14,8 +14,6 @@ import {
   CheckIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid';
-import { useParams } from 'next/navigation';
-import { saveCurriculumLessonPlan } from '../../curriculum-roadmaps/_actions';
 import { saveLessonPlan } from './_actions';
 import { revalidatePath } from 'next/cache';
 

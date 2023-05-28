@@ -27,3 +27,4 @@ export default function OnboardingLayout({ children }: PropsWithChildren) {
     </>
   );
 }
+export const dynamic = 'force-dynamic';

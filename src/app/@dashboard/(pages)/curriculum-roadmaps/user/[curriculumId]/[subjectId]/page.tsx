@@ -85,8 +85,8 @@ export async function generateMetadata({
       images: [
         {
           url: metadata.imagePath,
-          width: 4800, // TSK
-          height: 3200, // TSK
+          width: 4800,
+          height: 3200,
           alt: metadata.name,
         },
       ],
