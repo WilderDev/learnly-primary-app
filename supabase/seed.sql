@@ -28031,29 +28031,7 @@ SELECT create_complete_curriculum(
     }
   ]'::json
 );
-
-
--- Our goal is to create 7 "CORE" topics and 2 "ELECTIVE" topic for every subject in the curriculum. And for every "CORE" topic create 5 "CORE" lessons and 2 "ELECTIVE" lessons. For every "ELECTIVE" topic, create 4 "CORE" lessons and 2 "ELECTIVE" lessons.
--- Every Topic and Lesson should have an inspiration one sentence descriptions like "A playful wonderland of learning that ignites curiosity, nurtures creativity, and lays the foundations for a lifelong love of exploration."
--- We are doing a curriculum called Comprehensive K-5 split into 6 levels (Kindergarten, 1, 2, 3, 4, 5)
--- Right Now, your job is to create the first topic and ALL the lessons for that topic for Kindergarten Social Emotional Learning.
--- the output will look like:
--- {
---        "name": "Team Sports",
---        "description": "Fostering teamwork and coordination through simple team sports and games.",
---        "image_path": "https://source.unsplash.com/500x500/?team-sports",
---        "type": "CORE",
---        "lessons_data": [
---            {
---                "name": "Introduction to Soccer",
---                "description": "Learning the basics of soccer to develop teamwork, coordination, and physical fitness.",
---                "image_path": "https://source.unsplash.com/500x500/?soccer",
---                "type": "CORE"
---            },
---           // . . .
---        ]
--- }
----- Social Emotional Learning
+---- Social Emotional Learning ✅
 SELECT create_complete_curriculum(
   'Comprehensive K-5',
   '38525bb6-a2fb-4e0a-b0af-47af9efedce2'::uuid,
@@ -28947,19 +28925,1775 @@ SELECT create_complete_curriculum(
     },
     {
       "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Understanding Emotions",
+            "description": "A dynamic journey through the world of feelings, helping children navigate their emotions and build empathy.",
+            "image_path": "https://source.unsplash.com/500x500/?emotions",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Identifying Emotions",
+                    "description": "Explore a range of feelings and learn to recognize them in ourselves and others.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotions,identify",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Expressing Feelings",
+                    "description": "Learn safe and healthy ways to express our feelings and respect the emotions of others.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotions,express",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dealing with Negative Emotions",
+                    "description": "Uncover strategies for managing and coping with difficult emotions such as anger, sadness, and fear.",
+                    "image_path": "https://source.unsplash.com/500x500/?negative,emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Empathy",
+                    "description": "Delve into the power of empathy, understanding others‘ emotions, and forming deeper connections.",
+                    "image_path": "https://source.unsplash.com/500x500/?empathy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Cultivating Happiness",
+                    "description": "Discover ways to foster joy and positivity in our everyday lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?happiness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Art of Emotion",
+                    "description": "Express feelings creatively through various forms of art, promoting emotional awareness and healing.",
+                    "image_path": "https://source.unsplash.com/500x500/?art,emotions",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Emotions in Literature",
+                    "description": "Understand and explore emotions presented in children‘s literature, enhancing emotional literacy.",
+                    "image_path": "https://source.unsplash.com/500x500/?books,emotions",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Building Relationships",
+            "description": "A nurturing space that fosters friendship, respect, and connection with others, creating a sense of belonging.",
+            "image_path": "https://source.unsplash.com/500x500/?friendship",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Friendship",
+                    "description": "Learn the values of friendship, and how to recognize and foster healthy relationships.",
+                    "image_path": "https://source.unsplash.com/500x500/?friendship",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Communicating Effectively",
+                    "description": "Develop essential communication skills to express oneself and understand others better.",
+                    "image_path": "https://source.unsplash.com/500x500/?communication",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Conflict Resolution",
+                    "description": "Acquire strategies to resolve disagreements and conflicts in a respectful and peaceful manner.",
+                    "image_path": "https://source.unsplash.com/500x500/?conflict,resolution",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Respecting Differences",
+                    "description": "Discover the beauty of diversity and learn to respect and appreciate individual differences.",
+                    "image_path": "https://source.unsplash.com/500x500/?diversity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Teamwork and Collaboration",
+                    "description": "Understand the power of working together towards common goals and fostering a spirit of cooperation.",
+                    "image_path": "https://source.unsplash.com/500x500/?teamwork",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Relationships in Literature",
+                    "description": "Explore friendships and relationships as depicted in children‘s literature, enhancing interpersonal understanding.",
+                    "image_path": "https://source.unsplash.com/500x500/?books,friendship",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Building Global Connections",
+                    "description": "Learn about different cultures and build connections with people from around the world.",
+                    "image_path": "https://source.unsplash.com/500x500/?global,connections",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Self-Confidence and Growth Mindset",
+            "description": "A voyage of self-discovery and personal growth, instilling confidence and fostering a mindset that embraces challenges.",
+            "image_path": "https://source.unsplash.com/500x500/?self-confidence",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Building Self-Esteem",
+                    "description": "Learn about the importance of self-esteem and discover ways to boost your confidence.",
+                    "image_path": "https://source.unsplash.com/500x500/?self-esteem",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Growth Mindset",
+                    "description": "Explore the concept of a growth mindset, learning to see challenges as opportunities to grow.",
+                    "image_path": "https://source.unsplash.com/500x500/?growth-mindset",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Resilience and Perseverance",
+                    "description": "Cultivate resilience and the ability to persevere through setbacks and disappointments.",
+                    "image_path": "https://source.unsplash.com/500x500/?resilience",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Self-Awareness",
+                    "description": "Enhance understanding of one‘s own feelings, motivations, and goals through introspection and reflection.",
+                    "image_path": "https://source.unsplash.com/500x500/?self-awareness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Positive Affirmations",
+                    "description": "Discover the power of positive thinking and learn to use affirmations to boost self-esteem.",
+                    "image_path": "https://source.unsplash.com/500x500/?positive-affirmations",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creative Expression",
+                    "description": "Use art, music, and drama as avenues for self-expression, building confidence and creativity.",
+                    "image_path": "https://source.unsplash.com/500x500/?creative-expression",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Inspirational Role Models",
+                    "description": "Learn about inspiring individuals who overcame challenges, fostering a spirit of resilience and determination.",
+                    "image_path": "https://source.unsplash.com/500x500/?role-models",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Decision Making and Problem Solving",
+            "description": "A journey of discovery, empowering children to make wise choices and solve problems effectively.",
+            "image_path": "https://source.unsplash.com/500x500/?decision-making",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Choices",
+                    "description": "Dive into the process of making decisions and learn about the impact of our choices.",
+                    "image_path": "https://source.unsplash.com/500x500/?choices",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Problem Solving Strategies",
+                    "description": "Discover various strategies to solve problems in a creative and effective way.",
+                    "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Thinking Critically",
+                    "description": "Develop critical thinking skills to analyze situations and make informed decisions.",
+                    "image_path": "https://source.unsplash.com/500x500/?critical-thinking",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Responsibility and Consequences",
+                    "description": "Learn about taking responsibility for our actions and understanding the consequences of our decisions.",
+                    "image_path": "https://source.unsplash.com/500x500/?responsibility",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Setting and Achieving Goals",
+                    "description": "Discover the power of setting goals and the steps needed to achieve them.",
+                    "image_path": "https://source.unsplash.com/500x500/?goals",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Decision Making in Literature",
+                    "description": "Explore decision-making processes in stories and how characters face and overcome challenges.",
+                    "image_path": "https://source.unsplash.com/500x500/?books,decision-making",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Ethical Decision Making",
+                    "description": "Discuss ethics and morality, and how they influence our decisions and actions.",
+                    "image_path": "https://source.unsplash.com/500x500/?ethics",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Mindfulness and Well-being",
+            "description": "Embark on a journey to inner peace and well-being, fostering mindfulness, and self-care practices.",
+            "image_path": "https://source.unsplash.com/500x500/?mindfulness",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Mindfulness",
+                    "description": "Learn the basics of mindfulness and how it can help us stay present and calm.",
+                    "image_path": "https://source.unsplash.com/500x500/?mindfulness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mindful Breathing",
+                    "description": "Discover the calming power of mindful breathing and learn different breathing exercises.",
+                    "image_path": "https://source.unsplash.com/500x500/?mindful,breathing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Stress Management",
+                    "description": "Understand stress and learn effective techniques to manage and reduce it.",
+                    "image_path": "https://source.unsplash.com/500x500/?stress,management",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Self-Care and Wellness",
+                    "description": "Discover the importance of self-care and learn how to maintain physical, mental, and emotional health.",
+                    "image_path": "https://source.unsplash.com/500x500/?self-care",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mindful Movements",
+                    "description": "Explore mindful movements and gentle exercises to enhance body awareness and promote relaxation.",
+                    "image_path": "https://source.unsplash.com/500x500/?mindful,movements",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mindfulness Through Art",
+                    "description": "Express feelings and enhance mindfulness through creative activities like painting and sculpture.",
+                    "image_path": "https://source.unsplash.com/500x500/?art,mindfulness",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Nature and Mindfulness",
+                    "description": "Connect with nature to enhance mindfulness, appreciation, and well-being.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature,mindfulness",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Emotional Intelligence",
+            "description": "A journey to understand and manage emotions, fostering empathy, self-regulation, and emotional awareness.",
+            "image_path": "https://source.unsplash.com/500x500/?emotional-intelligence",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Emotions",
+                    "description": "Learn about different emotions, their causes, and their impact on our behavior.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Emotional Regulation",
+                    "description": "Explore strategies for managing emotions and maintaining balance in various situations.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotional-regulation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Empathy and Compassion",
+                    "description": "Understand the importance of empathy and compassion, and learn how to express these feelings.",
+                    "image_path": "https://source.unsplash.com/500x500/?empathy,compassion",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Expressing Feelings",
+                    "description": "Learn healthy ways to express feelings and understand the value of sharing our emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?expressing-feelings",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Social Cues and Body Language",
+                    "description": "Recognize social cues and body language to better understand others‘ feelings and reactions.",
+                    "image_path": "https://source.unsplash.com/500x500/?social-cues,body-language",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Emotions in Art and Literature",
+                    "description": "Explore the expression of emotions in art and literature, enhancing emotional understanding.",
+                    "image_path": "https://source.unsplash.com/500x500/?art,literature,emotions",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Mindful Emotion Tracking",
+                    "description": "Learn to track your emotions mindfully, understanding their ebb and flow throughout the day.",
+                    "image_path": "https://source.unsplash.com/500x500/?mindfulness,emotions",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Diversity and Inclusion",
+            "description": "A celebration of differences, promoting understanding, acceptance, and respect for all.",
+            "image_path": "https://source.unsplash.com/500x500/?diversity,inclusion",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Diversity",
+                    "description": "Learn about the concept of diversity and its importance in our communities and societies.",
+                    "image_path": "https://source.unsplash.com/500x500/?diversity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Respecting Differences",
+                    "description": "Understand the importance of respecting differences and fostering a culture of acceptance.",
+                    "image_path": "https://source.unsplash.com/500x500/?respect,differences",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Inclusion and Fairness",
+                    "description": "Explore the principles of inclusion and fairness in various social settings.",
+                    "image_path": "https://source.unsplash.com/500x500/?inclusion,fairness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Cultural Appreciation",
+                    "description": "Discover various cultures and learn to appreciate the beauty of cultural diversity.",
+                    "image_path": "https://source.unsplash.com/500x500/?cultural,appreciation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Combating Stereotypes",
+                    "description": "Understand stereotypes and how to challenge and overcome them.",
+                    "image_path": "https://source.unsplash.com/500x500/?stereotypes",
+                    "type": "CORE"
+                },
+                {
+                    "name": "World Traditions and Festivals",
+                    "description": "Explore different traditions and festivals from around the world, appreciating global diversity.",
+                    "image_path": "https://source.unsplash.com/500x500/?traditions,festivals",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Inclusive Storytelling",
+                    "description": "Discover the power of stories in promoting inclusivity and understanding diverse perspectives.",
+                    "image_path": "https://source.unsplash.com/500x500/?storytelling,inclusion",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Animal-Assisted Learning",
+            "description": "Exploring the magical bond between humans and animals to promote empathy, responsibility, and compassion.",
+            "image_path": "https://source.unsplash.com/500x500/?animal,learning",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Animal-Assisted Learning",
+                    "description": "Discover how animals can be wonderful companions and teachers in our learning journey.",
+                    "image_path": "https://source.unsplash.com/500x500/?animal,learning",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Understanding Animal Behavior",
+                    "description": "Learn about animal behavior and what it can teach us about communication and empathy.",
+                    "image_path": "https://source.unsplash.com/500x500/?animal,behavior",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Animals and Emotional Support",
+                    "description": "Explore the role of animals as emotional support and their impact on mental health.",
+                    "image_path": "https://source.unsplash.com/500x500/?animals,support",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Caring for Animals",
+                    "description": "Understand the responsibilities involved in caring for animals and how it can teach us empathy and respect.",
+                    "image_path": "https://source.unsplash.com/500x500/?animal,care",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Animals in Literature",
+                    "description": "Discover the portrayal of animals in literature and how it reflects human emotions and experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?animals,literature",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Creating Art Inspired by Animals",
+                    "description": "Express your creativity and appreciation for animals through various art forms.",
+                    "image_path": "https://source.unsplash.com/500x500/?art,animals",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Digital Citizenship",
+            "description": "Navigating the digital world with responsibility, safety, and respect for the online community.",
+            "image_path": "https://source.unsplash.com/500x500/?digital,citizenship",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Digital Citizenship",
+                    "description": "Learn the basics of digital citizenship and the importance of being a responsible digital citizen.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital,citizenship",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Online Safety",
+                    "description": "Explore the key aspects of online safety and how to protect personal information on the internet.",
+                    "image_path": "https://source.unsplash.com/500x500/?online,safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Netiquette",
+                    "description": "Understand netiquette, the rules of good behavior on the internet, and how to apply them.",
+                    "image_path": "https://source.unsplash.com/500x500/?netiquette",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Digital Footprint",
+                    "description": "Learn about digital footprints and how our actions online can have lasting impacts.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital,footprint",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Cyberbullying Awareness",
+                    "description": "Understand the implications of cyberbullying and how to respond and prevent it.",
+                    "image_path": "https://source.unsplash.com/500x500/?cyberbullying",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Online Community Building",
+                    "description": "Learn how to create and contribute to positive and respectful online communities.",
+                    "image_path": "https://source.unsplash.com/500x500/?online,community",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "0679cb12-dd80-4fea-9d01-64c141cba349",
-      "topics_data": []
+      "topics_data": [
+        {
+          "name": "Understanding Emotions",
+          "description": "A journey into the world of feelings, designed to equip students with the ability to identify, understand, and express emotions healthily and effectively.",
+          "image_path": "https://source.unsplash.com/500x500/?emotions",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Emotions",
+                  "description": "A foundational exploration of the wide range of human emotions, why we experience them, and how they impact our lives.",
+                  "image_path": "https://source.unsplash.com/500x500/?happy-sad",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Expressing Emotions",
+                  "description": "Fostering emotional intelligence by teaching children how to express their feelings appropriately and respectfully.",
+                  "image_path": "https://source.unsplash.com/500x500/?expression",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Managing Strong Emotions",
+                  "description": "Guiding students to identify strong emotions like anger and frustration, and equipping them with tools to manage these emotions effectively.",
+                  "image_path": "https://source.unsplash.com/500x500/?anger-management",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Empathy and Understanding",
+                  "description": "Cultivating a sense of empathy by teaching students to understand and respect the feelings of others.",
+                  "image_path": "https://source.unsplash.com/500x500/?empathy",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Emotions and Decision Making",
+                  "description": "Exploring how emotions can influence our choices, and how we can make good decisions even when we‘re feeling emotional.",
+                  "image_path": "https://source.unsplash.com/500x500/?decision-making",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Art and Emotions",
+                  "description": "Harnessing the power of art to express and explore emotions in a creative, therapeutic way.",
+                  "image_path": "https://source.unsplash.com/500x500/?art-emotion",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Music and Feelings",
+                  "description": "Learning how music can express and evoke emotions, and using music as a tool for emotional exploration.",
+                  "image_path": "https://source.unsplash.com/500x500/?music-emotion",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Building Relationships",
+          "description": "Creating bridges of understanding, fostering healthy interactions, and learning the importance of strong relationships in our lives.",
+          "image_path": "https://source.unsplash.com/500x500/?friendship",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Relationships",
+                  "description": "An introduction to the concept of relationships, their types, and the roles we play in them.",
+                  "image_path": "https://source.unsplash.com/500x500/?relationship",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Qualities of a Good Friend",
+                  "description": "Examining the characteristics of a good friend and how to be one.",
+                  "image_path": "https://source.unsplash.com/500x500/?best-friend",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Communication in Relationships",
+                  "description": "Understanding the importance of communication in maintaining healthy relationships and practical ways to communicate effectively.",
+                  "image_path": "https://source.unsplash.com/500x500/?communication",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Conflict Resolution",
+                  "description": "Learning how to handle disagreements and conflicts in a respectful and constructive manner.",
+                  "image_path": "https://source.unsplash.com/500x500/?conflict-resolution",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Teamwork and Cooperation",
+                  "description": "Discovering the power of collaboration and the essential skills needed for effective teamwork.",
+                  "image_path": "https://source.unsplash.com/500x500/?teamwork",
+                  "type": "CORE"
+              },
+              {
+                  "name": "The Role of Family",
+                  "description": "Exploring the significance of family relationships and their impact on our personal growth.",
+                  "image_path": "https://source.unsplash.com/500x500/?family",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Internet Friends and Safety",
+                  "description": "Discussing online friendships, the benefits and risks involved, and how to stay safe online.",
+                  "image_path": "https://source.unsplash.com/500x500/?online-safety",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Self-Awareness and Self-Esteem",
+          "description": "Embarking on a journey of self-discovery, fostering a positive self-image, and encouraging a resilient spirit.",
+          "image_path": "https://source.unsplash.com/500x500/?self-awareness",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "What is Self-Awareness?",
+                  "description": "An exploration into understanding oneself, recognizing individual strengths and weaknesses, and the importance of self-reflection.",
+                  "image_path": "https://source.unsplash.com/500x500/?self-reflection",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Building Self-Esteem",
+                  "description": "Nurturing positive self-perception and the importance of self-acceptance.",
+                  "image_path": "https://source.unsplash.com/500x500/?self-esteem",
+                  "type": "CORE"
+              },
+              {
+                  "name": "The Power of Positive Thinking",
+                  "description": "Embracing optimism and understanding how positive thinking can influence personal success and happiness.",
+                  "image_path": "https://source.unsplash.com/500x500/?positive-thinking",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Resilience and Coping",
+                  "description": "Learning how to bounce back from adversity, cope with challenges, and develop a resilient spirit.",
+                  "image_path": "https://source.unsplash.com/500x500/?resilience",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Celebrating Individuality",
+                  "description": "Understanding and appreciating individual differences and unique qualities.",
+                  "image_path": "https://source.unsplash.com/500x500/?individuality",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Personal Goals and Dreams",
+                  "description": "Inspiring students to dream, set personal goals, and strive for achievement.",
+                  "image_path": "https://source.unsplash.com/500x500/?goals-dreams",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Mindfulness and Meditation",
+                  "description": "Introduction to mindfulness and meditation as tools for self-awareness and stress management.",
+                  "image_path": "https://source.unsplash.com/500x500/?mindfulness",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Responsibility and Decision-Making",
+          "description": "Nurturing responsible citizens by teaching the importance of personal responsibility, ethics, and effective decision-making.",
+          "image_path": "https://source.unsplash.com/500x500/?responsibility",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Responsibility",
+                  "description": "Exploring the concept of responsibility and its importance in personal and social contexts.",
+                  "image_path": "https://source.unsplash.com/500x500/?responsibility",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Making Good Decisions",
+                  "description": "Learning how to make thoughtful, well-informed decisions and understand their consequences.",
+                  "image_path": "https://source.unsplash.com/500x500/?decision-making",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Ethics and Morality",
+                  "description": "Discussing basic ethics and moral values that guide our decisions and actions.",
+                  "image_path": "https://source.unsplash.com/500x500/?ethics",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Responsibility in Relationships",
+                  "description": "Understanding our responsibilities in different relationships and the importance of trust and reliability.",
+                  "image_path": "https://source.unsplash.com/500x500/?trust",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Environmental Responsibility",
+                  "description": "Promoting awareness and responsibility towards the environment and sustainable living.",
+                  "image_path": "https://source.unsplash.com/500x500/?environment",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Digital Citizenship",
+                  "description": "Exploring responsible and respectful behavior in the digital world.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-citizenship",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Financial Responsibility",
+                  "description": "An introduction to managing money responsibly, savings, and the concept of philanthropy.",
+                  "image_path": "https://source.unsplash.com/500x500/?financial-literacy",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Healthy Living and Self-Care",
+          "description": "Fostering a lifelong commitment to health and well-being through understanding the importance of self-care and balanced living.",
+          "image_path": "https://source.unsplash.com/500x500/?self-care",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Healthy Living",
+                  "description": "Exploring what it means to live healthily, the components of a balanced lifestyle, and the effects on overall well-being.",
+                  "image_path": "https://source.unsplash.com/500x500/?healthy-living",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Exercise and Physical Activity",
+                  "description": "Understanding the importance of regular physical activity, its benefits, and exploring fun ways to stay active.",
+                  "image_path": "https://source.unsplash.com/500x500/?exercise",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Nutrition and Balanced Diet",
+                  "description": "Discovering the basics of nutrition, the importance of a balanced diet, and how to make healthy food choices.",
+                  "image_path": "https://source.unsplash.com/500x500/?nutrition",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Mental Health Matters",
+                  "description": "Recognizing the importance of mental health, basic self-care practices, and seeking help when needed.",
+                  "image_path": "https://source.unsplash.com/500x500/?mental-health",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Rest and Sleep",
+                  "description": "Learning the significance of rest, the role of sleep in our well-being, and developing good sleep habits.",
+                  "image_path": "https://source.unsplash.com/500x500/?sleep",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Hygiene Habits",
+                  "description": "Understanding the importance of personal hygiene and its role in maintaining good health.",
+                  "image_path": "https://source.unsplash.com/500x500/?hygiene",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Mindfulness for Stress Relief",
+                  "description": "Exploring mindfulness techniques as tools for managing stress and promoting mental health.",
+                  "image_path": "https://source.unsplash.com/500x500/?mindfulness",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Cultural Awareness and Diversity",
+          "description": "Broadening horizons through understanding and appreciation of different cultures, fostering respect and inclusion.",
+          "image_path": "https://source.unsplash.com/500x500/?diversity",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Culture",
+                  "description": "Exploring the concept of culture, its elements, and its significance in shaping societies and individuals.",
+                  "image_path": "https://source.unsplash.com/500x500/?culture",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Appreciating Diversity",
+                  "description": "Learning about the diverse world we live in, appreciating differences, and the importance of inclusivity.",
+                  "image_path": "https://source.unsplash.com/500x500/?diversity",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Cultures Around the World",
+                  "description": "A journey around the world to understand and appreciate different cultures and their unique traditions.",
+                  "image_path": "https://source.unsplash.com/500x500/?world-culture",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Respect for All",
+                  "description": "Learning the importance of respect in a diverse society, understanding bias, and promoting equality.",
+                  "image_path": "https://source.unsplash.com/500x500/?respect",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Embracing Differences",
+                  "description": "Understanding and celebrating differences as strengths that enrich our community.",
+                  "image_path": "https://source.unsplash.com/500x500/?celebrating-differences",
+                  "type": "CORE"
+              },
+              {
+                  "name": "International Festivals",
+                  "description": "Exploring various international festivals, their significance, and the customs associated with them.",
+                  "image_path": "https://source.unsplash.com/500x500/?festivals",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Cultural Etiquette and Manners",
+                  "description": "Learning about the etiquette and manners in different cultures and their importance in showing respect and understanding.",
+                  "image_path": "https://source.unsplash.com/500x500/?etiquette",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Problem-Solving and Conflict Resolution",
+          "description": "Equipping learners with the skills to face challenges, solve problems creatively, and navigate social conflicts with grace and respect.",
+          "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "Understanding Problems",
+                  "description": "Discussing what problems are, different types of problems, and how they are part of life.",
+                  "image_path": "https://source.unsplash.com/500x500/?problem",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creative Problem-Solving",
+                  "description": "Exploring different strategies for problem-solving and the importance of creativity and critical thinking.",
+                  "image_path": "https://source.unsplash.com/500x500/?creative-thinking",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Conflict",
+                  "description": "Understanding what conflict is, why it occurs, and how it affects relationships.",
+                  "image_path": "https://source.unsplash.com/500x500/?conflict",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Conflict Resolution Strategies",
+                  "description": "Learning practical strategies for resolving conflicts in a peaceful and respectful manner.",
+                  "image_path": "https://source.unsplash.com/500x500/?conflict-resolution",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Communication in Conflict",
+                  "description": "Discussing the role of effective communication in conflict resolution and understanding the importance of empathy and active listening.",
+                  "image_path": "https://source.unsplash.com/500x500/?communication",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Handling Peer Pressure",
+                  "description": "Understanding peer pressure, its effects, and learning how to handle it assertively.",
+                  "image_path": "https://source.unsplash.com/500x500/?peer-pressure",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Cyberbullying and Online Conflicts",
+                  "description": "Discussing online conflicts and cyberbullying, their effects, and how to handle and report them.",
+                  "image_path": "https://source.unsplash.com/500x500/?cyberbullying",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Digital Literacy and Online Safety",
+          "description": "Cultivating safe and responsible digital citizens by understanding the digital world, its opportunities, and challenges.",
+          "image_path": "https://source.unsplash.com/500x500/?digital-literacy",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Understanding the Digital World",
+                  "description": "Exploring the digital world, its components, and how it impacts our lives.",
+                  "image_path": "https://source.unsplash.com/500x500/?internet",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Online Etiquette and Behavior",
+                  "description": "Learning about appropriate behavior in the digital world and how to communicate respectfully.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-etiquette",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Online Safety Basics",
+                  "description": "Understanding potential online risks and learning key strategies to stay safe online.",
+                  "image_path": "https://source.unsplash.com/500x500/?online-safety",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Privacy and Personal Information",
+                  "description": "Discussing the importance of privacy online, what personal information is, and how to protect it.",
+                  "image_path": "https://source.unsplash.com/500x500/?privacy",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Responsible Social Media Use",
+                  "description": "Exploring what social media is, its impact, and how to use it responsibly and safely.",
+                  "image_path": "https://source.unsplash.com/500x500/?social-media",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Identifying and Reporting Cyberbullying",
+                  "description": "Understanding cyberbullying, its effects, and how to identify, prevent, and report it.",
+                  "image_path": "https://source.unsplash.com/500x500/?cyberbullying",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Artistic Expression and Creativity",
+          "description": "Unleashing the power of imagination and self-expression through a variety of artistic mediums.",
+          "image_path": "https://source.unsplash.com/500x500/?creativity",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Artistic Expression",
+                  "description": "Exploring the concept of artistic expression and its role in communicating ideas and emotions.",
+                  "image_path": "https://source.unsplash.com/500x500/?artistic-expression",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Visual Arts",
+                  "description": "Learning about visual arts, exploring different mediums, and creating personal art pieces.",
+                  "image_path": "https://source.unsplash.com/500x500/?visual-arts",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Drama and Theater",
+                  "description": "Exploring the world of drama and theater as means of storytelling and self-expression.",
+                  "image_path": "https://source.unsplash.com/500x500/?theater",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Music and Rhythm",
+                  "description": "Discovering the joy of music and rhythm, and understanding their role in self-expression and culture.",
+                  "image_path": "https://source.unsplash.com/500x500/?music",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creative Writing",
+                  "description": "Exploring creative writing as a tool for self-expression, storytelling, and imagination.",
+                  "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Dance and Movement",
+                  "description": "Understanding dance as an artistic and cultural expression, and exploring basic dance movements.",
+                  "image_path": "https://source.unsplash.com/500x500/?dance",
+                  "type": "ELECTIVE"
+              }
+          ]
+        }
+      ]
     },
     {
       "level_id": "4af5ff40-a612-4114-b4fc-01ad0cd8fbf4",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Understanding Emotions",
+            "description": "A deep dive into understanding and managing emotions for self-awareness and healthier relationships.",
+            "image_path": "https://source.unsplash.com/500x500/?emotions",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Identifying Emotions",
+                    "description": "A fun introduction to recognizing and naming different emotions in ourselves and others.",
+                    "image_path": "https://source.unsplash.com/500x500/?identifying-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Exploring Feelings",
+                    "description": "A journey through various feelings and the effects they have on us physically and mentally.",
+                    "image_path": "https://source.unsplash.com/500x500/?feelings",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Expressing Emotions",
+                    "description": "A guide to expressing our emotions in a safe, positive, and healthy manner.",
+                    "image_path": "https://source.unsplash.com/500x500/?expressing-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Emotions and Relationships",
+                    "description": "Understanding how our emotions influence our interactions and relationships with others.",
+                    "image_path": "https://source.unsplash.com/500x500/?relationships",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Managing Negative Emotions",
+                    "description": "Learning strategies to cope with negative emotions, promoting resilience and mental wellbeing.",
+                    "image_path": "https://source.unsplash.com/500x500/?managing-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mindfulness and Emotions",
+                    "description": "An exploration of mindfulness as a tool to understand and control our emotional responses.",
+                    "image_path": "https://source.unsplash.com/500x500/?mindfulness",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Emotions in Art and Media",
+                    "description": "Exploring how emotions are represented and elicited through various forms of art and media.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotions-art",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Conflict Resolution",
+            "description": "Learning to navigate disagreements effectively and build stronger relationships through constructive conflict resolution.",
+            "image_path": "https://source.unsplash.com/500x500/?conflict-resolution",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Conflict",
+                    "description": "An engaging exploration of what conflict is, its causes, and how it affects our relationships.",
+                    "image_path": "https://source.unsplash.com/500x500/?understanding-conflict",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Active Listening",
+                    "description": "Mastering the art of active listening to better understand others‘ perspectives during conflicts.",
+                    "image_path": "https://source.unsplash.com/500x500/?active-listening",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Communicating Effectively",
+                    "description": "Learning to express ourselves clearly and respectfully to minimize misunderstandings and resolve disagreements.",
+                    "image_path": "https://source.unsplash.com/500x500/?effective-communication",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Finding Solutions",
+                    "description": "Developing problem-solving skills to find win-win solutions in conflict situations.",
+                    "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Preventing Conflict",
+                    "description": "Understanding how to prevent unnecessary conflict through empathy, respect, and clear communication.",
+                    "image_path": "https://source.unsplash.com/500x500/?prevent-conflict",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Role of Apology",
+                    "description": "Appreciating the power of a sincere apology in mending relationships and resolving conflicts.",
+                    "image_path": "https://source.unsplash.com/500x500/?apology",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Conflict and Leadership",
+                    "description": "Exploring how effective conflict resolution can enhance leadership skills and team dynamics.",
+                    "image_path": "https://source.unsplash.com/500x500/?leadership",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Building Relationships",
+            "description": "Discovering the beauty of meaningful connections by learning the skills needed to build and maintain healthy relationships.",
+            "image_path": "https://source.unsplash.com/500x500/?building-relationships",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Qualities of a Good Friend",
+                    "description": "Exploring the important characteristics and behaviors that make a good friend.",
+                    "image_path": "https://source.unsplash.com/500x500/?good-friend",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Communication in Relationships",
+                    "description": "Understanding the importance of effective communication in maintaining strong relationships.",
+                    "image_path": "https://source.unsplash.com/500x500/?communication",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Empathy and Understanding",
+                    "description": "Delving into the role of empathy and understanding in creating deeper connections.",
+                    "image_path": "https://source.unsplash.com/500x500/?empathy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Setting Boundaries",
+                    "description": "Learning to set healthy boundaries to ensure mutual respect and care in relationships.",
+                    "image_path": "https://source.unsplash.com/500x500/?boundaries",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Problem-Solving in Relationships",
+                    "description": "Developing strategies for resolving issues that may arise in relationships in a respectful and caring way.",
+                    "image_path": "https://source.unsplash.com/500x500/?relationship-problem-solving",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Navigating Different Types of Relationships",
+                    "description": "Exploring how relationships can vary with family, friends, teachers, and others, and how to navigate these differences.",
+                    "image_path": "https://source.unsplash.com/500x500/?different-relationships",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Cultural Diversity in Relationships",
+                    "description": "Understanding how cultural differences can enrich our relationships and learning to appreciate these differences.",
+                    "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Self Esteem and Confidence",
+            "description": "Nurturing a positive self-image and a strong sense of self-worth through a series of confidence-building activities.",
+            "image_path": "https://source.unsplash.com/500x500/?self-esteem",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Self-Esteem",
+                    "description": "An introductory lesson to understand the concept of self-esteem and its importance in our lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?self-esteem-concept",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Positive Self-Talk",
+                    "description": "Learning the power of positive self-talk and how it can boost our self-esteem and confidence.",
+                    "image_path": "https://source.unsplash.com/500x500/?positive-self-talk",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Overcoming Self-Doubt",
+                    "description": "Tools and techniques to manage and overcome self-doubt for better confidence and self-esteem.",
+                    "image_path": "https://source.unsplash.com/500x500/?overcoming-self-doubt",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Celebrating Individuality",
+                    "description": "Recognizing and appreciating our unique qualities and strengths that make us who we are.",
+                    "image_path": "https://source.unsplash.com/500x500/?individuality",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Resilience and Confidence",
+                    "description": "Understanding how resilience builds confidence and helps us handle challenges more effectively.",
+                    "image_path": "https://source.unsplash.com/500x500/?resilience",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Body Image and Self-Esteem",
+                    "description": "Exploring the relationship between body image and self-esteem, promoting a healthy body image.",
+                    "image_path": "https://source.unsplash.com/500x500/?body-image",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Role Models and Confidence",
+                    "description": "Learning how positive role models can inspire us and boost our confidence and self-esteem.",
+                    "image_path": "https://source.unsplash.com/500x500/?role-models",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Mindfulness and Relaxation",
+            "description": "Embarking on a journey of inner peace and focus through mindfulness exercises and relaxation techniques.",
+            "image_path": "https://source.unsplash.com/500x500/?mindfulness",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Introduction to Mindfulness",
+                    "description": "A beginner‘s guide to mindfulness, understanding its importance and how it benefits our mental and emotional well-being.",
+                    "image_path": "https://source.unsplash.com/500x500/?introduction-mindfulness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Breathing Exercises",
+                    "description": "Learning simple yet powerful breathing exercises that promote relaxation and reduce stress.",
+                    "image_path": "https://source.unsplash.com/500x500/?breathing-exercises",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mindful Eating",
+                    "description": "Discovering the practice of mindful eating to enhance our senses and develop a healthier relationship with food.",
+                    "image_path": "https://source.unsplash.com/500x500/?mindful-eating",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Yoga for Relaxation",
+                    "description": "Introduction to simple yoga postures that help promote physical and mental relaxation.",
+                    "image_path": "https://source.unsplash.com/500x500/?yoga",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mindfulness and Emotions",
+                    "description": "Exploring how mindfulness can help us understand and manage our emotions more effectively.",
+                    "image_path": "https://source.unsplash.com/500x500/?mindfulness-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Guided Imagery for Relaxation",
+                    "description": "Learning the technique of guided imagery as a tool for promoting deep relaxation and reducing stress.",
+                    "image_path": "https://source.unsplash.com/500x500/?guided-imagery",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Nature and Mindfulness",
+                    "description": "Exploring the benefits of nature on our mindfulness practices, encouraging outdoor activities and appreciation for the natural world.",
+                    "image_path": "https://source.unsplash.com/500x500/?nature-mindfulness",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Goal Setting and Perseverance",
+            "description": "Learning to set achievable goals and cultivate the determination to overcome obstacles and achieve these goals.",
+            "image_path": "https://source.unsplash.com/500x500/?goal-setting",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Goals",
+                    "description": "Exploring what goals are, their importance, and the satisfaction that comes from achieving them.",
+                    "image_path": "https://source.unsplash.com/500x500/?understanding-goals",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Setting SMART Goals",
+                    "description": "Learning to set Specific, Measurable, Attainable, Relevant, and Time-bound (SMART) goals.",
+                    "image_path": "https://source.unsplash.com/500x500/?smart-goals",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Perseverance and Grit",
+                    "description": "Developing perseverance and grit to continue striving towards our goals, even when challenges arise.",
+                    "image_path": "https://source.unsplash.com/500x500/?perseverance",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Action Planning",
+                    "description": "Creating effective action plans to provide a clear path towards achieving our goals.",
+                    "image_path": "https://source.unsplash.com/500x500/?action-planning",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Celebrating Achievements",
+                    "description": "Learning to celebrate our achievements, no matter how small, as milestones on our goal-setting journey.",
+                    "image_path": "https://source.unsplash.com/500x500/?celebrating-achievements",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Setting Personal Goals",
+                    "description": "Guidance on setting personal goals that align with our values and aspirations.",
+                    "image_path": "https://source.unsplash.com/500x500/?personal-goals",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Dealing with Failure",
+                    "description": "Understanding that failure is a part of the journey, and learning to deal with it constructively.",
+                    "image_path": "https://source.unsplash.com/500x500/?dealing-with-failure",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Digital Citizenship",
+            "description": "Navigating the digital world responsibly, understanding the benefits, risks, and the importance of online safety.",
+            "image_path": "https://source.unsplash.com/500x500/?digital-citizenship",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Digital Citizenship",
+                    "description": "Introduction to the concept of digital citizenship and its significance in today‘s digital age.",
+                    "image_path": "https://source.unsplash.com/500x500/?understanding-digital-citizenship",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Online Safety",
+                    "description": "Learning about the precautions we can take to stay safe when using the internet.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Cyberbullying and How to Respond",
+                    "description": "Understanding cyberbullying, its effects, and learning how to respond if it happens.",
+                    "image_path": "https://source.unsplash.com/500x500/?cyberbullying",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Privacy and Security",
+                    "description": "Exploring the importance of protecting personal information and maintaining privacy when online.",
+                    "image_path": "https://source.unsplash.com/500x500/?online-privacy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Digital Etiquette",
+                    "description": "Learning how to conduct ourselves respectfully and responsibly in the digital world.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-etiquette",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Screen Time and Health",
+                    "description": "Understanding the impact of screen time on physical and mental health, and learning to balance it.",
+                    "image_path": "https://source.unsplash.com/500x500/?screen-time",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Fact Checking Online Information",
+                    "description": "Learning how to discern reliable information from misinformation in the digital world.",
+                    "image_path": "https://source.unsplash.com/500x500/?fact-checking",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Creative Expression and Arts",
+            "description": "Exploring emotional self-expression and mental well-being through the beauty and power of the arts.",
+            "image_path": "https://source.unsplash.com/500x500/?creative-expression",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Art as Self-Expression",
+                    "description": "Learning how art can be a medium for expressing our thoughts, feelings, and experiences.",
+                    "image_path": "https://source.unsplash.com/500x500/?art-self-expression",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Drama and Emotions",
+                    "description": "Exploring how drama and role play can help us understand and express emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?drama-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Music and Mood",
+                    "description": "Understanding the link between music and mood, and how music can influence our emotions.",
+                    "image_path": "https://source.unsplash.com/500x500/?music-mood",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Creative Writing for Reflection",
+                    "description": "Learning to use creative writing as a tool for reflection and self-understanding.",
+                    "image_path": "https://source.unsplash.com/500x500/?creative-writing",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dance and Expression",
+                    "description": "Embracing dance as a form of self-expression and emotional release.",
+                    "image_path": "https://source.unsplash.com/500x500/?dance-expression",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Photography and Perspective",
+                    "description": "Using photography as a tool to observe our environment from different perspectives and express our unique viewpoints.",
+                    "image_path": "https://source.unsplash.com/500x500/?photography-perspective",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Caring for the Environment",
+            "description": "Developing an understanding of our relationship with the environment and the importance of sustainable living for future generations.",
+            "image_path": "https://source.unsplash.com/500x500/?caring-for-environment",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Our Environment",
+                    "description": "An introduction to our natural world, highlighting its diversity and the important role it plays in our lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?our-environment",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Climate Change Basics",
+                    "description": "Exploring the concept of climate change, its causes, and its impact on our planet.",
+                    "image_path": "https://source.unsplash.com/500x500/?climate-change",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Reduce, Reuse, Recycle",
+                    "description": "Learning about the 3 R‘s - Reduce, Reuse, and Recycle, and their significance in waste management.",
+                    "image_path": "https://source.unsplash.com/500x500/?reduce-reuse-recycle",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Conservation and Biodiversity",
+                    "description": "Understanding the importance of conserving biodiversity and the ways we can contribute.",
+                    "image_path": "https://source.unsplash.com/500x500/?conservation-biodiversity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Sustainable Living",
+                    "description": "Exploring sustainable living practices that can help protect our environment for future generations.",
+                    "image_path": "https://source.unsplash.com/500x500/?sustainable-living",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Local Environmental Initiatives",
+                    "description": "Learning about environmental initiatives in our local community and how we can get involved.",
+                    "image_path": "https://source.unsplash.com/500x500/?local-environmental-initiatives",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     },
     {
       "level_id": "0dde57ef-c3ed-4d50-b3c1-82ceeaa0d5aa",
-      "topics_data": []
+      "topics_data": [
+        {
+            "name": "Emotional Intelligence",
+            "description": "Cultivating awareness and understanding of one‘s emotions to foster empathy, compassion, and effective communication.",
+            "image_path": "https://source.unsplash.com/500x500/?emotions",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Emotions",
+                    "description": "Delving into the diverse spectrum of human emotions and understanding their roots and effects.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotion",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Emotions and Decision Making",
+                    "description": "Exploring how our emotions can influence our decisions, and learning to make balanced choices.",
+                    "image_path": "https://source.unsplash.com/500x500/?decision",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Managing Stress and Anxiety",
+                    "description": "Learning coping strategies to manage stress and anxiety, helping us remain calm and effective in demanding situations.",
+                    "image_path": "https://source.unsplash.com/500x500/?stress",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Empathy and Understanding Others",
+                    "description": "Developing empathy by understanding others‘ emotions and perspectives, to improve interpersonal relationships.",
+                    "image_path": "https://source.unsplash.com/500x500/?empathy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Self-awareness and Self-regulation",
+                    "description": "Exploring the importance of self-awareness in recognizing our emotions, and learning to regulate them effectively.",
+                    "image_path": "https://source.unsplash.com/500x500/?self-awareness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "The Power of Positivity",
+                    "description": "Understanding the benefits of a positive outlook and learning strategies to nurture optimism.",
+                    "image_path": "https://source.unsplash.com/500x500/?positivity",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Coping with Negative Emotions",
+                    "description": "Learning effective methods to cope with negative emotions and transform them into positive actions.",
+                    "image_path": "https://source.unsplash.com/500x500/?coping",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Conflict Resolution",
+            "description": "Building skills to manage, resolve, and prevent conflict in a positive, effective way.",
+            "image_path": "https://source.unsplash.com/500x500/?conflict",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Conflict",
+                    "description": "Exploring the nature and types of conflict, its causes, and its impact on relationships.",
+                    "image_path": "https://source.unsplash.com/500x500/?conflict",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Conflict Styles and Strategies",
+                    "description": "Understanding different styles of approaching conflict and learning to choose appropriate strategies.",
+                    "image_path": "https://source.unsplash.com/500x500/?strategy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Effective Communication",
+                    "description": "Mastering the art of clear and respectful communication to prevent misunderstandings and disputes.",
+                    "image_path": "https://source.unsplash.com/500x500/?communication",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Negotiation and Compromise",
+                    "description": "Learning the importance of negotiation and compromise in achieving a fair resolution to conflict.",
+                    "image_path": "https://source.unsplash.com/500x500/?negotiation",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Restorative Practices",
+                    "description": "Discovering how restorative practices can rebuild relationships and community after a conflict.",
+                    "image_path": "https://source.unsplash.com/500x500/?restorative",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Peer Mediation",
+                    "description": "Learning how peer mediation can be used as a tool to help resolve conflicts among classmates.",
+                    "image_path": "https://source.unsplash.com/500x500/?mediation",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Conflict and Culture",
+                    "description": "Exploring how cultural backgrounds can influence conflict and its resolution.",
+                    "image_path": "https://source.unsplash.com/500x500/?culture",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Building Resilience",
+            "description": "Fostering the ability to bounce back from adversity, adapt to change, and keep going in the face of adversity.",
+            "image_path": "https://source.unsplash.com/500x500/?resilience",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Resilience",
+                    "description": "Exploring the concept of resilience, its importance, and how it influences our lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?understanding-resilience",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Coping Skills",
+                    "description": "Learning effective strategies and skills to cope with life‘s challenges and setbacks.",
+                    "image_path": "https://source.unsplash.com/500x500/?coping-skills",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Mindset and Resilience",
+                    "description": "Understanding the role of mindset in resilience and how to cultivate a growth mindset.",
+                    "image_path": "https://source.unsplash.com/500x500/?growth-mindset",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Overcoming Obstacles",
+                    "description": "Learning strategies to overcome obstacles, adapt to changes, and turn failures into opportunities.",
+                    "image_path": "https://source.unsplash.com/500x500/?overcoming-obstacles",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Support Systems",
+                    "description": "Understanding the importance of support systems in building resilience and how to foster them.",
+                    "image_path": "https://source.unsplash.com/500x500/?support-systems",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Resilience through Creativity",
+                    "description": "Exploring how creative activities can help in stress management and resilience building.",
+                    "image_path": "https://source.unsplash.com/500x500/?creativity",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Resilience and Culture",
+                    "description": "Exploring how cultural backgrounds can influence our ability to be resilient and handle adversity.",
+                    "image_path": "https://source.unsplash.com/500x500/?culture-resilience",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Building Healthy Relationships",
+            "description": "Developing skills to establish and maintain positive relationships based on respect and understanding.",
+            "image_path": "https://source.unsplash.com/500x500/?relationships",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Types of Relationships",
+                    "description": "Exploring different types of relationships, their characteristics, and the role they play in our lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?types-of-relationships",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Effective Communication",
+                    "description": "Learning how effective communication strengthens relationships and understanding the tools to communicate respectfully and effectively.",
+                    "image_path": "https://source.unsplash.com/500x500/?effective-communication",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Empathy in Relationships",
+                    "description": "Understanding the role of empathy in relationships and developing skills to empathize with others.",
+                    "image_path": "https://source.unsplash.com/500x500/?empathy",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Boundaries and Respect",
+                    "description": "Learning about personal boundaries, how to respect them, and why they‘re important in healthy relationships.",
+                    "image_path": "https://source.unsplash.com/500x500/?boundaries",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Conflict Resolution in Relationships",
+                    "description": "Mastering techniques to handle conflict in relationships in a positive and constructive manner.",
+                    "image_path": "https://source.unsplash.com/500x500/?conflict-resolution",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Peer Pressure and Relationships",
+                    "description": "Understanding peer pressure, its impact on relationships, and strategies to cope with it.",
+                    "image_path": "https://source.unsplash.com/500x500/?peer-pressure",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Digital Citizenship and Online Relationships",
+                    "description": "Exploring online relationships and understanding the responsibilities of a good digital citizen.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-citizenship",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Self-Esteem and Confidence",
+            "description": "Fostering a positive self-image and confidence to believe in one‘s own abilities and qualities.",
+            "image_path": "https://source.unsplash.com/500x500/?self-esteem",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Self-Esteem",
+                    "description": "Exploring the concept of self-esteem, its importance, and factors that influence it.",
+                    "image_path": "https://source.unsplash.com/500x500/?understanding-self-esteem",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Building Self-Confidence",
+                    "description": "Learning strategies to build self-confidence and foster a strong belief in one‘s abilities.",
+                    "image_path": "https://source.unsplash.com/500x500/?self-confidence",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Positive Self-Talk",
+                    "description": "Understanding the power of positive self-talk in enhancing self-esteem and confidence.",
+                    "image_path": "https://source.unsplash.com/500x500/?positive-self-talk",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Overcoming Self-Doubt",
+                    "description": "Learning to overcome self-doubt and fear of failure that can hinder personal growth.",
+                    "image_path": "https://source.unsplash.com/500x500/?overcoming-self-doubt",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Assertiveness Skills",
+                    "description": "Developing assertiveness skills to express oneself confidently and respectfully.",
+                    "image_path": "https://source.unsplash.com/500x500/?assertiveness",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Body Image and Self-Esteem",
+                    "description": "Exploring the relationship between body image and self-esteem, and promoting body positivity.",
+                    "image_path": "https://source.unsplash.com/500x500/?body-image",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Role Models and Self-Esteem",
+                    "description": "Understanding how positive role models can influence self-esteem and personal development.",
+                    "image_path": "https://source.unsplash.com/500x500/?role-models",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Responsibility and Accountability",
+            "description": "Encouraging the development of responsible behavior and accountability for one‘s actions and commitments.",
+            "image_path": "https://source.unsplash.com/500x500/?responsibility",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Responsibility",
+                    "description": "Exploring the concept of responsibility, its importance, and how it impacts our lives.",
+                    "image_path": "https://source.unsplash.com/500x500/?understanding-responsibility",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Taking Accountability",
+                    "description": "Learning about accountability, its role in personal growth, and taking ownership of one‘s actions.",
+                    "image_path": "https://source.unsplash.com/500x500/?accountability",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Responsibility at Home",
+                    "description": "Understanding the importance of contributing to household responsibilities and chores.",
+                    "image_path": "https://source.unsplash.com/500x500/?home-chores",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Responsibility in School",
+                    "description": "Discussing the importance of responsibility in school context including academic responsibilities and respect for school rules.",
+                    "image_path": "https://source.unsplash.com/500x500/?school",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Responsible Decision Making",
+                    "description": "Exploring how to make responsible decisions and understanding the consequences of our actions.",
+                    "image_path": "https://source.unsplash.com/500x500/?decision-making",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Digital Responsibility",
+                    "description": "Learning about responsible behavior in the digital world, including privacy, safety, and respect for others.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-responsibility",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Environmental Responsibility",
+                    "description": "Promoting responsibility towards the environment and understanding our role in its conservation.",
+                    "image_path": "https://source.unsplash.com/500x500/?environment",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Emotion Management",
+            "description": "Learning to understand, express, and manage emotions in a healthy and constructive way.",
+            "image_path": "https://source.unsplash.com/500x500/?emotions",
+            "type": "CORE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Emotions",
+                    "description": "Exploring the wide range of human emotions, their causes, and their impact on behavior.",
+                    "image_path": "https://source.unsplash.com/500x500/?understanding-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Expressing Emotions",
+                    "description": "Learning about appropriate ways to express emotions and communicate feelings to others.",
+                    "image_path": "https://source.unsplash.com/500x500/?expressing-emotions",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Managing Stress",
+                    "description": "Discovering healthy strategies for managing stress and maintaining emotional well-being.",
+                    "image_path": "https://source.unsplash.com/500x500/?managing-stress",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Coping with Anxiety",
+                    "description": "Understanding anxiety and learning techniques to manage it effectively.",
+                    "image_path": "https://source.unsplash.com/500x500/?coping-anxiety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Dealing with Anger",
+                    "description": "Learning how to recognize and deal with anger in a healthy and constructive manner.",
+                    "image_path": "https://source.unsplash.com/500x500/?dealing-anger",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Emotion Regulation Techniques",
+                    "description": "Exploring various techniques to regulate emotions and maintain emotional balance.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotion-regulation",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Emotions and Relationships",
+                    "description": "Understanding how our emotions impact our relationships and how to navigate emotional situations.",
+                    "image_path": "https://source.unsplash.com/500x500/?emotions-relationships",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Cultural Awareness and Diversity",
+            "description": "Exploring various cultures, understanding diversity, and fostering an inclusive mindset.",
+            "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Cultural Diversity",
+                    "description": "Exploring the concept of cultural diversity, its benefits, and its importance in society.",
+                    "image_path": "https://source.unsplash.com/500x500/?cultural-diversity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Respect for Diversity",
+                    "description": "Learning how to respect, appreciate, and celebrate the differences among individuals.",
+                    "image_path": "https://source.unsplash.com/500x500/?respect-diversity",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Cultural Exchange",
+                    "description": "Exploring the concept of cultural exchange and how it enhances understanding and harmony.",
+                    "image_path": "https://source.unsplash.com/500x500/?cultural-exchange",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Inclusion and Belonging",
+                    "description": "Understanding the importance of inclusion and creating environments where everyone feels they belong.",
+                    "image_path": "https://source.unsplash.com/500x500/?inclusion",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Diversity and Global Citizenship",
+                    "description": "Exploring how understanding diversity contributes to global citizenship and a peaceful world.",
+                    "image_path": "https://source.unsplash.com/500x500/?global-citizenship",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Unconscious Bias and Stereotypes",
+                    "description": "Understanding unconscious bias, stereotypes, and how to challenge and overcome them.",
+                    "image_path": "https://source.unsplash.com/500x500/?unconscious-bias",
+                    "type": "ELECTIVE"
+                }
+            ]
+        },
+        {
+            "name": "Digital Citizenship",
+            "description": "Exploring the principles of responsible and respectful behavior in the digital world.",
+            "image_path": "https://source.unsplash.com/500x500/?digital-citizenship",
+            "type": "ELECTIVE",
+            "lessons_data": [
+                {
+                    "name": "Understanding Digital Citizenship",
+                    "description": "Introducing the concept of digital citizenship and its importance in today‘s tech-savvy world.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-citizenship",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Internet Safety",
+                    "description": "Learning about the importance of internet safety, privacy, and strategies to stay safe online.",
+                    "image_path": "https://source.unsplash.com/500x500/?internet-safety",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Cyberbullying and Online Harassment",
+                    "description": "Discussing cyberbullying, its effects, and how to deal with online harassment.",
+                    "image_path": "https://source.unsplash.com/500x500/?cyberbullying",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Responsible Social Media Use",
+                    "description": "Exploring the do‘s and don‘ts of social media and the importance of responsible usage.",
+                    "image_path": "https://source.unsplash.com/500x500/?social-media",
+                    "type": "CORE"
+                },
+                {
+                    "name": "Digital Footprint and Privacy",
+                    "description": "Understanding the concept of digital footprint, its implications, and how to protect one‘s privacy online.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-footprint",
+                    "type": "ELECTIVE"
+                },
+                {
+                    "name": "Ethics in the Digital World",
+                    "description": "Exploring ethical behavior in the digital world, including respect for copyright, intellectual property, and online etiquette.",
+                    "image_path": "https://source.unsplash.com/500x500/?digital-ethics",
+                    "type": "ELECTIVE"
+                }
+            ]
+        }
+      ]
     }
   ]'::json
 );
@@ -28993,11 +30727,702 @@ SELECT create_complete_curriculum(
   '[
     {
       "level_id": "8787a66e-9e03-42c7-8870-ada6df021491",
-      "topics_data": []
+      "topics_data": [
+        {
+          "name": "Exploring the Computer",
+          "description": "A delightful journey into the digital world, fostering familiarity with computers and nurturing the seeds of technological curiosity.",
+          "image_path": "https://source.unsplash.com/500x500/?computer-kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "What is a Computer?",
+                  "description": "A playful introduction to computers, understanding their basic functions and role in our daily lives.",
+                  "image_path": "https://source.unsplash.com/500x500/?computer",
+                  "type": "CORE"
+              },
+              {
+                  "name": "The Parts of a Computer",
+                  "description": "Discovering the various components of a computer and their functions in a simple, engaging manner.",
+                  "image_path": "https://source.unsplash.com/500x500/?computer-parts",
+                  "type": "CORE"
+              },
+              {
+                  "name": "How to Use a Mouse and Keyboard",
+                  "description": "Learning to interact with computers by mastering the use of mouse and keyboard, the primary tools for digital navigation.",
+                  "image_path": "https://source.unsplash.com/500x500/?keyboard-mouse",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Software",
+                  "description": "A fun dive into software, understanding its role in making computers work for us.",
+                  "image_path": "https://source.unsplash.com/500x500/?software",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Staying Safe Online",
+                  "description": "An engaging lesson on digital safety, teaching kids to navigate the internet responsibly and securely.",
+                  "image_path": "https://source.unsplash.com/500x500/?online-safety",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Understanding Digital Art",
+                  "description": "Unleashing creativity with digital tools, an exploration of simple graphic design concepts using kid-friendly software.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-art",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Introduction to Coding with Blocks",
+                  "description": "A gentle introduction to coding, using block-based programming to spark interest and creativity in the world of algorithms.",
+                  "image_path": "https://source.unsplash.com/500x500/?block-coding",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Journey into Coding",
+          "description": "An enchanting first step into the universe of programming, making coding approachable, exciting and fun.",
+          "image_path": "https://source.unsplash.com/500x500/?coding-kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "What is Coding?",
+                  "description": "A captivating introduction to coding, breaking down the concept in a way that sparks curiosity and invites exploration.",
+                  "image_path": "https://source.unsplash.com/500x500/?coding",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Sequences in Coding",
+                  "description": "Understanding the fundamental concept of sequences in coding, teaching kids to think logically and sequentially.",
+                  "image_path": "https://source.unsplash.com/500x500/?sequence",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Coding with Simple Games",
+                  "description": "Dive into the world of coding with fun, interactive games that teach kids basic programming concepts.",
+                  "image_path": "https://source.unsplash.com/500x500/?coding-games",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Loops and Patterns",
+                  "description": "Discover the magic of loops in programming and learn how to spot patterns, an essential skill in coding.",
+                  "image_path": "https://source.unsplash.com/500x500/?loops",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Problem-Solving in Coding",
+                  "description": "Fostering problem-solving skills through coding, encouraging kids to think creatively and strategically.",
+                  "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Storytelling with Coding",
+                  "description": "Weave enchanting tales with code, combining the power of storytelling with programming to create interactive stories.",
+                  "image_path": "https://source.unsplash.com/500x500/?storytelling-coding",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Creating Art with Code",
+                  "description": "Mix creativity and technology to create unique digital art, an introduction to the beautiful world of coding and art.",
+                  "image_path": "https://source.unsplash.com/500x500/?coding-art",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Discovering Digital Art",
+          "description": "A colorful exploration of art in the digital world, encouraging creativity and expression through technology.",
+          "image_path": "https://source.unsplash.com/500x500/?digital-art-kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "What is Digital Art?",
+                  "description": "An engaging introduction to the vibrant world of digital art, exploring how technology can inspire creativity.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-art",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Fun with Digital Drawing",
+                  "description": "Venturing into the realm of digital drawing, kids will learn to express their creativity using simple digital tools.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-drawing",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Digital Collages",
+                  "description": "A fun activity to understand and create digital collages, promoting creativity and the use of digital tools.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-collage",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Exploring Digital Animation",
+                  "description": "Dive into the exciting world of animation, creating simple digital animations using kid-friendly software.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-animation",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Digital Art and Colors",
+                  "description": "An exploration of color in digital art, learning about color palettes and their application in creating digital masterpieces.",
+                  "image_path": "https://source.unsplash.com/500x500/?colors",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Art History in the Digital World",
+                  "description": "An intriguing blend of art history and technology, discovering famous artworks in a digital format.",
+                  "image_path": "https://source.unsplash.com/500x500/?art-history",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Creating Your Own Digital Comic",
+                  "description": "Unleashing creativity by making a simple digital comic, introducing kids to the world of sequential art.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-comic",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Adventures in Digital Storytelling",
+          "description": "A whimsical dive into the digital narrative world, combining creative writing, art, and technology to bring stories to life.",
+          "image_path": "https://source.unsplash.com/500x500/?digital-storytelling",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "What is Digital Storytelling?",
+                  "description": "An engaging introduction to digital storytelling, understanding its role in sharing ideas and expressing creativity.",
+                  "image_path": "https://source.unsplash.com/500x500/?storytelling",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Characters Digitally",
+                  "description": "A fun exploration into character creation, using digital tools to design and describe captivating characters.",
+                  "image_path": "https://source.unsplash.com/500x500/?characters",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Building a Digital Storyboard",
+                  "description": "Discover the magic of storyboarding, using it to plan and visualize the sequence of a digital story.",
+                  "image_path": "https://source.unsplash.com/500x500/?storyboard",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Designing Digital Settings",
+                  "description": "Learning to create digital settings, enhancing narrative through vivid and imaginative backdrops.",
+                  "image_path": "https://source.unsplash.com/500x500/?settings",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Animating Your Story",
+                  "description": "Bringing stories to life with simple digital animation, igniting imagination and creative storytelling.",
+                  "image_path": "https://source.unsplash.com/500x500/?animation",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Digital Puppetry",
+                  "description": "A fascinating introduction to digital puppetry, creating and manipulating digital puppets to tell engaging stories.",
+                  "image_path": "https://source.unsplash.com/500x500/?puppetry",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Exploring Interactive Stories",
+                  "description": "Journey into the world of interactive stories, where the audience becomes a part of the narrative.",
+                  "image_path": "https://source.unsplash.com/500x500/?interactive-story",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Understanding Algorithms",
+          "description": "A playful introduction to the world of algorithms, breaking down complex concepts into fun, engaging activities.",
+          "image_path": "https://source.unsplash.com/500x500/?algorithms-kids",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "What are Algorithms?",
+                  "description": "A simple, engaging explanation of algorithms, illustrating how they are sets of instructions that help solve problems or complete tasks.",
+                  "image_path": "https://source.unsplash.com/500x500/?algorithms",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Sequences in Algorithms",
+                  "description": "An activity-based lesson to grasp the concept of sequences in algorithms, promoting logical thinking.",
+                  "image_path": "https://source.unsplash.com/500x500/?sequence",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Following and Creating Simple Algorithms",
+                  "description": "Practical exercises in following and creating simple algorithms, using kid-friendly everyday examples.",
+                  "image_path": "https://source.unsplash.com/500x500/?creating-algorithms",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Algorithms in Games",
+                  "description": "Discover how algorithms are used in games, bringing the abstract concept to life in a familiar context.",
+                  "image_path": "https://source.unsplash.com/500x500/?games",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Problem Solving with Algorithms",
+                  "description": "Fun activities to demonstrate how algorithms can help solve problems, cultivating analytical thinking.",
+                  "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Storytelling with Algorithms",
+                  "description": "A creative blend of storytelling and algorithms, using sequences of events in a story to illustrate the concept of algorithms.",
+                  "image_path": "https://source.unsplash.com/500x500/?storytelling",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Creating Art with Algorithms",
+                  "description": "Exploring the beautiful intersection of art and algorithms, using patterns and sequences to create digital art.",
+                  "image_path": "https://source.unsplash.com/500x500/?algorithmic-art",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Navigating the Internet",
+          "description": "An engaging introduction to the internet, nurturing digital citizenship while ensuring a safe and positive online experience.",
+          "image_path": "https://source.unsplash.com/500x500/?kids-internet",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "What is the Internet?",
+                  "description": "An exciting dive into what the internet is, breaking down complex ideas into fun, understandable concepts.",
+                  "image_path": "https://source.unsplash.com/500x500/?internet",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Exploring Websites",
+                  "description": "A guided tour of child-friendly websites, understanding what they are and how to navigate them safely.",
+                  "image_path": "https://source.unsplash.com/500x500/?websites",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Email and Communication Online",
+                  "description": "A fun and safe introduction to email and online communication, fostering positive digital interactions.",
+                  "image_path": "https://source.unsplash.com/500x500/?email",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Online Safety Basics",
+                  "description": "Essential lessons in online safety, ensuring kids have a positive and secure online experience.",
+                  "image_path": "https://source.unsplash.com/500x500/?online-safety",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Understanding Search Engines",
+                  "description": "A kid-friendly introduction to search engines, and how they help us find information on the internet.",
+                  "image_path": "https://source.unsplash.com/500x500/?search-engines",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Fun with Educational Apps",
+                  "description": "Exploring the world of educational apps, cultivating a love for learning through technology.",
+                  "image_path": "https://source.unsplash.com/500x500/?educational-apps",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Creating a Digital Scrapbook",
+                  "description": "Combining creativity and digital skills to create a digital scrapbook, capturing memories and experiences.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-scrapbook",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Introduction to Coding",
+          "description": "A playful dive into the world of coding, nurturing problem-solving skills and creative thinking through engaging activities.",
+          "image_path": "https://source.unsplash.com/500x500/?kids-coding",
+          "type": "CORE",
+          "lessons_data": [
+              {
+                  "name": "What is Coding?",
+                  "description": "A fun, engaging introduction to coding, explaining how it‘s like a language computers understand.",
+                  "image_path": "https://source.unsplash.com/500x500/?coding",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Coding with Blocks",
+                  "description": "A hands-on lesson using block coding, making the abstract concept of coding tangible and fun.",
+                  "image_path": "https://source.unsplash.com/500x500/?block-coding",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Problem Solving through Coding",
+                  "description": "Practical exercises that illustrate how coding can help solve problems, fostering logical thinking and creativity.",
+                  "image_path": "https://source.unsplash.com/500x500/?problem-solving",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Simple Games",
+                  "description": "Bringing coding to life by creating simple games, sparking imagination and computational thinking.",
+                  "image_path": "https://source.unsplash.com/500x500/?coding-games",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Introduction to Robots and Coding",
+                  "description": "Exploring the world of robotics, understanding how coding can control and instruct robots.",
+                  "image_path": "https://source.unsplash.com/500x500/?robots-kids",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Storytelling and Coding",
+                  "description": "A unique blend of storytelling and coding, using sequences and actions in a story to illustrate coding concepts.",
+                  "image_path": "https://source.unsplash.com/500x500/?storytelling",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Art and Coding",
+                  "description": "Combining art and coding, kids will learn to create simple digital artwork using code.",
+                  "image_path": "https://source.unsplash.com/500x500/?coding-art",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Digital Music and Sound",
+          "description": "A harmonious blend of technology and music, exploring the fascinating world of digital sound creation and manipulation.",
+          "image_path": "https://source.unsplash.com/500x500/?kids-music",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "Introduction to Digital Music",
+                  "description": "Discover the exciting world of digital music and how technology can create and alter sounds.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-music",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Simple Sound Effects",
+                  "description": "Hands-on exploration of creating simple digital sound effects, bringing stories and games to life.",
+                  "image_path": "https://source.unsplash.com/500x500/?sound-effects",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Building a Digital Music Box",
+                  "description": "A fun project-based lesson where kids will build their own digital music box, exploring sound sequences and coding.",
+                  "image_path": "https://source.unsplash.com/500x500/?music-box",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Understanding Audio Waveforms",
+                  "description": "An engaging lesson explaining the basics of audio waveforms, fostering an understanding of how sound works in the digital world.",
+                  "image_path": "https://source.unsplash.com/500x500/?waveforms",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating a Digital Song",
+                  "description": "Experimenting with digital sound to create a simple song, fostering creativity and an appreciation for music.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-song",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Exploring Music and Coding",
+                  "description": "An intriguing blend of music and coding, understanding how programming can be used to compose and manipulate music.",
+                  "image_path": "https://source.unsplash.com/500x500/?coding-music",
+                  "type": "ELECTIVE"
+              }
+          ]
+        },
+        {
+          "name": "Digital Storytelling",
+          "description": "A magical journey into the world of digital storytelling, nurturing creativity and communication skills while integrating technology.",
+          "image_path": "https://source.unsplash.com/500x500/?kids-storytelling",
+          "type": "ELECTIVE",
+          "lessons_data": [
+              {
+                  "name": "What is Digital Storytelling?",
+                  "description": "An exciting introduction to digital storytelling, where technology and imagination come together to create interactive stories.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-storytelling",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Creating Characters and Settings",
+                  "description": "A fun, creative lesson on creating digital characters and settings for a story, using simple design tools.",
+                  "image_path": "https://source.unsplash.com/500x500/?digital-art",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Plot Development and Coding",
+                  "description": "A unique combination of storytelling and coding, where kids learn to code the sequence of events in their digital story.",
+                  "image_path": "https://source.unsplash.com/500x500/?plot-development",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Narration and Sound Effects",
+                  "description": "Exploring how to add narration and sound effects to a digital story, enhancing the storytelling experience.",
+                  "image_path": "https://source.unsplash.com/500x500/?narration",
+                  "type": "CORE"
+              },
+              {
+                  "name": "Animating Your Story",
+                  "description": "A hands-on lesson on bringing a digital story to life with animation, promoting both artistic and technical skills.",
+                  "image_path": "https://source.unsplash.com/500x500/?animation",
+                  "type": "ELECTIVE"
+              },
+              {
+                  "name": "Sharing Your Digital Story",
+                  "description": "A joyful experience of sharing the created digital story with peers, fostering communication skills and digital literacy.",
+                  "image_path": "https://source.unsplash.com/500x500/?story-sharing",
+                  "type": "ELECTIVE"
+              }
+          ]
+        }
+      ]
     },
     {
       "level_id": "ca0b37a7-47c4-4abb-81a3-64e84f803abd",
-      "topics_data": []
+      "topics_data": [
+{
+       "name": "Exploring Basic Algorithms",
+       "description": "Unlocking the magical world of problem-solving and logical thinking through an exciting journey into basic algorithms.",
+       "image_path": "https://source.unsplash.com/500x500/?algorithm",
+       "type": "CORE",
+       "lessons_data": [
+           {
+               "name": "What is an Algorithm?",
+               "description": "Embarking on the journey of computer science by understanding the concept of algorithms.",
+               "image_path": "https://source.unsplash.com/500x500/?algorithm-basic",
+               "type": "CORE"
+           },
+           {
+               "name": "Creating Our First Algorithm",
+               "description": "Inspiring creativity by guiding learners to construct their first simple algorithm.",
+               "image_path": "https://source.unsplash.com/500x500/?algorithm-creation",
+               "type": "CORE"
+           },
+           {
+               "name": "Understanding Sequence in Algorithms",
+               "description": "Developing critical thinking through the exploration of sequence in algorithms.",
+               "image_path": "https://source.unsplash.com/500x500/?algorithm-sequence",
+               "type": "CORE"
+           },
+           {
+               "name": "Deciphering Algorithm Patterns",
+               "description": "Cultivating pattern recognition skills by deciphering various algorithmic patterns.",
+               "image_path": "https://source.unsplash.com/500x500/?algorithm-pattern",
+               "type": "CORE"
+           },
+           {
+               "name": "Debugging Basic Algorithms",
+               "description": "Promoting resilience and problem-solving skills by introducing the concept of debugging in algorithms.",
+               "image_path": "https://source.unsplash.com/500x500/?debugging",
+               "type": "CORE"
+           },
+           {
+               "name": "Algorithms in Daily Life",
+               "description": "Encouraging curiosity by exploring the presence and significance of algorithms in daily life.",
+               "image_path": "https://source.unsplash.com/500x500/?daily-life",
+               "type": "ELECTIVE"
+           },
+           {
+               "name": "Exploring Algorithms through Games",
+               "description": "Making learning fun by investigating how algorithms function within various games.",
+               "image_path": "https://source.unsplash.com/500x500/?algorithm-games",
+               "type": "ELECTIVE"
+           }
+       ]
+},
+{
+       "name": "Introduction to Coding",
+       "description": "Opening the doors to the enchanting realm of code, sparking imagination and problem-solving skills with simple programming concepts.",
+       "image_path": "https://source.unsplash.com/500x500/?coding",
+       "type": "CORE",
+       "lessons_data": [
+           {
+               "name": "What is Coding?",
+               "description": "Setting the stage for future coders with an engaging introduction to the world of programming.",
+               "image_path": "https://source.unsplash.com/500x500/?coding-intro",
+               "type": "CORE"
+           },
+           {
+               "name": "Understanding Code Sequences",
+               "description": "Building strong logical skills by exploring the importance of sequence in coding.",
+               "image_path": "https://source.unsplash.com/500x500/?code-sequence",
+               "type": "CORE"
+           },
+           {
+               "name": "Introduction to Coding Languages",
+               "description": "Encouraging linguistic dexterity by diving into the variety of coding languages used worldwide.",
+               "image_path": "https://source.unsplash.com/500x500/?coding-languages",
+               "type": "CORE"
+           },
+           {
+               "name": "Coding a Simple Program",
+               "description": "Igniting creativity by guiding learners to create their first simple program.",
+               "image_path": "https://source.unsplash.com/500x500/?simple-program",
+               "type": "CORE"
+           },
+           {
+               "name": "Debugging in Coding",
+               "description": "Promoting resilience and critical thinking by introducing the concept of debugging in coding.",
+               "image_path": "https://source.unsplash.com/500x500/?debugging-code",
+               "type": "CORE"
+           },
+           {
+               "name": "Coding in Our Everyday Lives",
+               "description": "Reinforcing the relevance of coding by examining its applications in our daily lives.",
+               "image_path": "https://source.unsplash.com/500x500/?daily-life-coding",
+               "type": "ELECTIVE"
+           },
+           {
+               "name": "Exploring Coding through Games",
+               "description": "Making coding fun by exploring how it shapes the games we love to play.",
+               "image_path": "https://source.unsplash.com/500x500/?coding-games",
+               "type": "ELECTIVE"
+           }
+       ]
+},
+{
+       "name": "Internet Basics",
+       "description": "Navigating the vast digital seas of the internet, exploring its wonders and understanding its structure.",
+       "image_path": "https://source.unsplash.com/500x500/?internet",
+       "type": "CORE",
+       "lessons_data": [
+           {
+               "name": "What is the Internet?",
+               "description": "Laying the foundation for digital literacy with a basic understanding of the internet.",
+               "image_path": "https://source.unsplash.com/500x500/?internet-basic",
+               "type": "CORE"
+           },
+           {
+               "name": "How Does the Internet Work?",
+               "description": "Sparking curiosity with a simplified explanation of how the internet works.",
+               "image_path": "https://source.unsplash.com/500x500/?internet-function",
+               "type": "CORE"
+           },
+           {
+               "name": "Exploring Websites",
+               "description": "Building familiarity with websites, the building blocks of the internet.",
+               "image_path": "https://source.unsplash.com/500x500/?websites",
+               "type": "CORE"
+           },
+           {
+               "name": "Introduction to Email",
+               "description": "Diving into the world of electronic communication with a basic introduction to email.",
+               "image_path": "https://source.unsplash.com/500x500/?email",
+               "type": "CORE"
+           },
+           {
+               "name": "Online Safety Basics",
+               "description": "Promoting safe online practices by introducing basic online safety principles.",
+               "image_path": "https://source.unsplash.com/500x500/?online-safety",
+               "type": "CORE"
+           },
+           {
+               "name": "The Internet and the Environment",
+               "description": "Creating environmentally conscious digital citizens by discussing the internet‘s impact on our planet.",
+               "image_path": "https://source.unsplash.com/500x500/?internet-environment",
+               "type": "ELECTIVE"
+           },
+           {
+               "name": "Fun with Online Games",
+               "description": "Promoting balanced digital recreation by exploring fun and safe online games.",
+               "image_path": "https://source.unsplash.com/500x500/?online-games",
+               "type": "ELECTIVE"
+           }
+       ]
+},
+{
+       "name": "Fun with Digital Art",
+       "description": "Exploring the intersection of creativity and technology, fostering digital art skills and stimulating imagination.",
+       "image_path": "https://source.unsplash.com/500x500/?digital-art",
+       "type": "CORE",
+       "lessons_data": [
+           {
+               "name": "What is Digital Art?",
+               "description": "Setting the stage for creative discovery with an engaging introduction to digital art.",
+               "image_path": "https://source.unsplash.com/500x500/?digital-art-intro",
+               "type": "CORE"
+           },
+           {
+               "name": "Exploring Digital Art Tools",
+               "description": "Inviting experimentation with a variety of fun and user-friendly digital art tools.",
+               "image_path": "https://source.unsplash.com/500x500/?digital-art-tools",
+               "type": "CORE"
+           },
+           {
+               "name": "Creating Your First Digital Artwork",
+               "description": "Igniting the spark of creativity by guiding learners to create their first piece of digital art.",
+               "image_path": "https://source.unsplash.com/500x500/?first-digital-art",
+               "type": "CORE"
+           },
+           {
+               "name": "Sharing and Saving Digital Art",
+               "description": "Promoting digital literacy by teaching students how to save and share their digital art creations.",
+               "image_path": "https://source.unsplash.com/500x500/?share-digital-art",
+               "type": "CORE"
+           },
+           {
+               "name": "Digital Art and Online Safety",
+               "description": "Emphasizing the importance of online safety when creating and sharing digital art.",
+               "image_path": "https://source.unsplash.com/500x500/?online-safety-art",
+               "type": "CORE"
+           },
+           {
+               "name": "Exploring Digital Animation",
+               "description": "Bringing artwork to life by introducing the basics of digital animation.",
+               "image_path": "https://source.unsplash.com/500x500/?digital-animation",
+               "type": "ELECTIVE"
+           },
+           {
+               "name": "Digital Art in Video Games",
+               "description": "Linking creativity and play by exploring the role of digital art in video games.",
+               "image_path": "https://source.unsplash.com/500x500/?digital-art-games",
+               "type": "ELECTIVE"
+           }
+       ]
+},
+{
+       "name": "Understanding Hardware",
+       "description": "Diving into the tangible components of technology, fostering a deeper understanding and appreciation of our digital devices.",
+       "image_path": "https://source.unsplash.com/500x500/?computer-hardware",
+       "type": "CORE",
+       "lessons_data": [
+           {
+               "name": "What is Computer Hardware?",
+               "description": "Opening the door to the physical world of computing with an introduction to computer hardware.",
+               "image_path": "https://source.unsplash.com/500x500/?hardware-intro",
+               "type": "CORE"
+           },
+           {
+               "name": "Exploring Different Hardware Components",
+               "description": "Cultivating curiosity by examining the various components that make up a computer.",
+               "image_path": "https://source.unsplash.com/500x500/?hardware-components",
+               "type": "CORE"
+           },
+           {
+               "name": "How Does Hardware Work Together?",
+               "description": "Promoting critical thinking by exploring how different hardware components work together in a computer.",
+               "image_path": "https://source.unsplash.com/500x500/?hardware-together",
+               "type": "CORE"
+           },
+           {
+               "name": "The Role of Hardware in Programming",
+               "description": "Strengthening understanding of programming by discussing the role of hardware.",
+               "image_path": "https://source.unsplash.com/500x500/?hardware-programming",
+               "type": "CORE"
+           },
+           {
+               "name": "Caring for Your Hardware",
+               "description": "Promoting responsible tech usage by teaching proper care and maintenance of computer hardware.",
+               "image_path": "https://source.unsplash.com/500x500/?hardware-care",
+               "type": "CORE"
+           },
+           {
+               "name": "Hardware in Our Daily Lives",
+               "description": "Connecting tech education to daily life by highlighting the importance of hardware in everyday devices.",
+               "image_path": "https://source.unsplash.com/500x500/?hardware-daily",
+               "type": "ELECTIVE"
+           },
+           {
+               "name": "Innovations in Hardware",
+               "description": "Inspiring innovation by discussing recent advancements and trends in computer hardware.",
+               "image_path": "https://source.unsplash.com/500x500/?hardware-innovation",
+               "type": "ELECTIVE"
+           }
+       ]
+},
+
+      ]
     },
     {
       "level_id": "485fe542-3c7c-453b-9e18-7baf3c773004",
