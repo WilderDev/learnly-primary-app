@@ -69,12 +69,6 @@ export default function AccountStudentsDetailsModal() {
           list={student?.learningStyles || []}
         />
 
-        {/* Subjects */}
-        {/* TSK */}
-
-        {/* Interests */}
-        {/* TSK */}
-
         {/* Goals */}
         <DetailsItem name="Goals" list={student?.goals || []} />
 

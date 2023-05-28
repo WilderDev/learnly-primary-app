@@ -22,17 +22,8 @@ const StripeElementsCtx = createContext(initialState); // Create Context Object
 // * Provider
 export function StripeElementsProvider({ children }: PropsWithChildren) {
   // * Hooks / Context
-  const { subscription } = useUser(); // TSK: If they are subscribed, we need to show them their subscription details
+  const { subscription } = useUser();
   const { theme } = useTheme();
-
-  // * State
-  const [selectedOption, setSelectedOption] = useState('annual');
-
-  // * Handlers
-
-  // * Effects
-
-  // * Value
 
   // * Render
   return (

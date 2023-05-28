@@ -288,12 +288,6 @@ export default function AccountStudentsEditModal() {
           icon={StarIcon}
         />
 
-        {/* Subject Preferences (Input Chips) */}
-        {/* TSK */}
-
-        {/* Interests (Input Chips) */}
-        {/* TSK */}
-
         {/* Goals (Multi) */}
         <MultiSelect
           label="Goals"

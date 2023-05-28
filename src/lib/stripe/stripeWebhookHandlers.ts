@@ -154,8 +154,6 @@ export async function handleTrialWillEnd({ subscription }: ITrialWillEnd) {
     type: 'card',
   });
 
-  // TSK: Probably check if they already paid the trial????
-
   // 2. Get the customer supabaseId
   const { data: customer } = await supabaseAdmin()
     .from('customers')

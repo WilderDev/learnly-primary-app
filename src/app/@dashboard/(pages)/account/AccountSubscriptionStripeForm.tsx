@@ -81,6 +81,7 @@ export default function AccountSubscriptionStripeForm() {
             paymentMethodId: paymentMethod?.id!,
             customerId: subscription?.stripeCustomerId!,
             subscriptionId: subscription?.stripeSubscriptionId!,
+            isEarlyPurchase: true,
           });
         }}
       >

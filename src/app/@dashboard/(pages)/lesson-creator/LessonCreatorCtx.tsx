@@ -243,8 +243,6 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
       teaching_preferences: user?.teachingPreferences,
     };
 
-    console.log('students:', students);
-
     // Generate Lesson Plan Request
     const res = await fetch('/api/ai/lesson-plans', {
       method: 'POST',

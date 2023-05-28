@@ -291,9 +291,9 @@ BEGIN
   INSERT into public.teaching_preferences (id)
   VALUES (new.id);
 
-  -- Second Operation (Insert Welcome Notification) TSK
-  -- INSERT into public.notifications (id, recipient_id, type, title, body, action_text, action_url)
-  -- VALUES (uuid_generate_v4(), new.id, 'SUCCESS', 'Welcome to Learnly 🤗', 'We are so exited to have you with us! If you have any questions at all, you can email us at', 'support@learnly.ai', 'mailto:support@learnly.ai');
+  -- Second Operation (Insert Welcome Notification) TSK (need to put elsewhere)
+  -- INSERT into public.notifications (recipient_id, type, title, body, action_text, action_url)
+  -- VALUES (new.id, 'SUCCESS', 'Welcome to Learnly 🤗', 'We are so exited to have you with us! If you have any questions at all, you can email us at', 'support@learnly.ai', 'mailto:support@learnly.ai');
 
   -- Return the new user
   return new;

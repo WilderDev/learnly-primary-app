@@ -24,8 +24,6 @@ export function generateLessonPlanPrompt({
     learning_styles,
   } = lesson;
 
-  console.log('students:', students);
-
   const { name, role, teaching_preferences } = teacher; // teaching_preferences: { teachingStrategies, lessonDetailLevel, teachingTools, lessonStructure }
 
   // Teaching Strategies

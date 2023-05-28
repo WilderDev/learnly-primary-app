@@ -13,9 +13,6 @@ export default function AccountPage() {
           <DashPanelHeader title="Account" />
           <AccountNav />
         </DashPanel>
-
-        {/* Add Credit Card for 50% off if on trial */}
-        {/* TSK */}
       </DashSideCol>
     </AccountProvider>
   );
@@ -27,4 +24,4 @@ export const metadata = {
     'Homeschool parents Learnly dashboard account page. Account settings for homeschool parents.',
 };
 
-export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355
+export const dynamic = 'force-dynamic';

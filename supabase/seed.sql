@@ -83,7 +83,7 @@ WHERE
 INSERT INTO customers
 (id, stripe_customer_id)
 VALUES
-('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NxDFsBVSEuDFLB'); -- TSK. Chnage customer id
+('185f2f83-d63a-4c9b-b4a0-7e4a885799e3', 'cus_NxDFsBVSEuDFLB');
 
 -- Subscriptions (1)
 INSERT INTO subscriptions

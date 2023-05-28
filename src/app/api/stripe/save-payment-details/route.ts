@@ -1,12 +1,17 @@
 import { stripe } from '@/lib/stripe/stripe';
 
 export async function POST(request: Request) {
-  const { paymentMethodId, customerId, subscriptionId } =
-    (await request.json()) as {
-      paymentMethodId: string;
-      customerId: string;
-      subscriptionId: string;
-    };
+  const {
+    paymentMethodId,
+    customerId,
+    subscriptionId,
+    isEarlyPurchase = false,
+  } = (await request.json()) as {
+    paymentMethodId: string;
+    customerId: string;
+    subscriptionId: string;
+    isEarlyPurchase?: boolean;
+  };
 
   const paymentMethod = await stripe.paymentMethods.attach(paymentMethodId, {
     customer: customerId,
@@ -32,7 +37,7 @@ export async function POST(request: Request) {
 
   const subscriptionUpdate = await stripe.subscriptions.update(subscriptionId, {
     trial_end: 'now',
-    coupon: process.env.EARLY_PURCHASE_COUPON_ID!, // TSK: Add to prod and don't give to everyone (base off )
+    coupon: isEarlyPurchase ? process.env.EARLY_PURCHASE_COUPON_ID! : undefined,
   });
 
   if (!subscriptionUpdate || subscriptionUpdate.status !== 'active') {

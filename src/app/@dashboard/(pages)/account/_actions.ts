@@ -143,7 +143,7 @@ const addStudentAction = async (input: z.infer<typeof addStudentSchema>) => {
       teacher_id: session?.user?.id!,
     });
 
-    // TSK: Student Preferences
+    // POST_MVP: Student Preferences
 
     if (error) return responseContract(error.message, false);
 
@@ -165,8 +165,6 @@ const editStudentSchema = z.object({
   birthday: z.string(),
   avatarUrl: z.string(),
   learningStyles: z.array(z.string()),
-  // subjects: z.array(z.string()), // TSK
-  // interests: z.array(z.string()), // TSK
   goals: z.array(z.string()),
   learningEnvironments: z.array(z.string()),
   learningResources: z.array(z.string()),
@@ -174,7 +172,6 @@ const editStudentSchema = z.object({
 });
 
 const editStudentAction = async (input: z.infer<typeof editStudentSchema>) => {
-  console.log('input:', input);
   try {
     const supabase = supabaseServer();
 
@@ -199,8 +196,6 @@ const editStudentAction = async (input: z.infer<typeof editStudentSchema>) => {
       .from('student_preferences')
       .update({
         learning_styles: input.learningStyles as TLearningStyle[],
-        // subject_preferences: input.subjects as TSubject[], // TSK
-        // interests: input.interests as TInterest[], // TSK
         goals: input.goals as TGoal[],
         learning_environment_preferences:
           input.learningEnvironments as TLearningEnvironment[],
@@ -229,12 +224,18 @@ const savePaymentDetailsSchema = z.object({
   paymentMethodId: z.string(),
   customerId: z.string(),
   subscriptionId: z.string(),
+  isEarlyPurchase: z.boolean().optional(),
 });
 
 const savePaymentDetailsAction = async (
   input: z.infer<typeof savePaymentDetailsSchema>,
 ) => {
-  const { paymentMethodId, customerId, subscriptionId } = input;
+  const {
+    paymentMethodId,
+    customerId,
+    subscriptionId,
+    isEarlyPurchase = false,
+  } = input;
 
   try {
     const res = await fetch(baseUrl + '/api/stripe/save-payment-details', {
@@ -243,6 +244,7 @@ const savePaymentDetailsAction = async (
         paymentMethodId,
         customerId,
         subscriptionId,
+        isEarlyPurchase,
       }),
     });
 
