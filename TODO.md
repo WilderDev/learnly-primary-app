@@ -16,13 +16,12 @@
 2. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
 3. [Open Graph for Lesson Plans and Curriculum](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
 4. Take OG Image Screenshots and add to [default metatdata](src/lib/meta/defaultMetadata.ts) (1200x630)
-5. [global-error.tsx](src/app/global-error.tsx)
-6. [not-found.tsx](src/app/not-found.tsx)
-7. Social Login's?
-8. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
-9. Users can create their own lessons, topics, subjects, and curriculum
-10. DMARC & SPF Records
-11. Fix /onboarding testimonials scrollers jump
+5. Social Login's?
+6. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
+7. Users can create their own lessons, topics, subjects, and curriculum
+8. DMARC & SPF Records
+9. Fix /onboarding testimonials scrollers jump
+10. Push everything to production
 
 ---
 
