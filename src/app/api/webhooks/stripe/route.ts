@@ -14,7 +14,6 @@ import {
   handleDeleteCustomer,
   handleTrialWillEnd,
   handleUpdateSubscription,
-  handleDeleteSubscription,
 } from '@/lib/stripe/stripeWebhookHandlers';
 
 // * CONSTANTS
