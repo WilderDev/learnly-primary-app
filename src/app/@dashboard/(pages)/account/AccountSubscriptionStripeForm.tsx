@@ -11,8 +11,8 @@ import { useUser } from '@/lib/components/providers/UserProvider';
 import Button from '@/lib/components/ui/Button';
 import { useRequest } from '@/lib/hooks/useRequest';
 import { savePaymentDetails } from './_actions';
-import { revalidatePath } from 'next/cache';
 import { getDatestringFromTimestamp } from '@/lib/common/date.helpers';
+import { revalidatePath } from 'next/cache';
 
 export default function AccountSubscriptionStripeForm() {
   // * Hooks / Context
@@ -27,11 +27,7 @@ export default function AccountSubscriptionStripeForm() {
       onSuccess: (data) => {
         if (data.ok) {
           toast.success('Your payment was successful!');
-          revalidatePath('/account'); // ✅
-        } else {
-          toast.error(
-            'Something went wrong! Please contact support if this continues.',
-          );
+          revalidatePath('/account');
         }
       },
     },

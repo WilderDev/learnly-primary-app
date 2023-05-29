@@ -310,12 +310,9 @@ export async function handleCreatePrice({ price }: ICreatePrice) {
       type: price.type,
       active: price.active,
       currency: price.currency,
-      unit_amount: price.unit_amount,
-      interval: price.recurring?.interval,
-      interval_count: price.recurring?.interval_count,
-      trial_period_days: price.recurring?.trial_period_days,
+      recurring_interval: price.recurring?.interval,
       metadata: price.metadata,
-      product_id:
+      stripe_product_id:
         typeof price.product === 'string' ? price.product : price.product.id,
     });
 
@@ -339,14 +336,14 @@ export async function handleUpdatePrice({ price }: IUpdatePrice) {
       type: price.type,
       active: price.active,
       currency: price.currency,
-      unit_amount: price.unit_amount,
-      interval: price.recurring?.interval,
-      interval_count: price.recurring?.interval_count,
-      trial_period_days: price.recurring?.trial_period_days,
+      recurring_interval: price.recurring?.interval,
       metadata: price.metadata,
-      product_id:
+      stripe_product_id:
         typeof price.product === 'string' ? price.product : price.product.id,
-    });
+    })
+    .eq('id', price.id);
+
+  console.log('priceError:', priceError);
 
   // 2. Check if there was an error updating the price
   if (priceError) throw new Error(priceError.message);

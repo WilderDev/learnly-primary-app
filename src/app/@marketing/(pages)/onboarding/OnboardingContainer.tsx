@@ -18,11 +18,11 @@ export default function OnboardingContainer() {
   return (
     <>
       {/* Testimonials Left */}
-      <VerticleScrollingGrid
+      {/* <VerticleScrollingGrid
         className="h-full max-h-screen w-full left-0 xl:w-4/12 2xl:w-3/12 absolute 2xl:relative opacity-20"
         colsAndColItems={[{ list: testimonials, msPerPixel: 15 }]}
         component={OnboardingTestimonialBox}
-      />
+      /> */}
 
       {/* Content */}
       <Container className="space-y-6 z-30 flex w-full h-full max-w-3xl items-center flex-col justify-center mb-8 sm:mb-0">
@@ -34,11 +34,11 @@ export default function OnboardingContainer() {
       </Container>
 
       {/* Testimonials Right */}
-      <VerticleScrollingGrid
+      {/* <VerticleScrollingGrid
         className="h-full max-h-screen absolute right-0 hidden xl:block xl:w-4/12 2xl:w-3/12 2xl:relative opacity-20"
         colsAndColItems={[{ list: testimonials.reverse(), msPerPixel: 15 }]}
         component={OnboardingTestimonialBox}
-      />
+      /> */}
     </>
   );
 }

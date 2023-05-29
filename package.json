@@ -14,7 +14,7 @@
     "db:push": "supabase db push",
     "db:studio": "open http://localhost:54323/project/default",
     "db:types": "supabase gen types typescript --local > src/assets/typescript/db.d.ts",
-    "stripe:webhook": "stripe listen --forward-to localhost:3000/api/webhooks/stripe"
+    "stripe:webhook": "stripe listen --forward-to localhost:3000/api/stripe/webhooks"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",

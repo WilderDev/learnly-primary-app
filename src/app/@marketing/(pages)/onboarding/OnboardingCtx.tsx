@@ -8,6 +8,7 @@ import {
   useContext,
   useMemo,
   useState,
+  useTransition,
 } from 'react';
 import { createContext } from 'react';
 import baseUrl from '@/lib/common/baseUrl';
@@ -18,6 +19,8 @@ import OnboardingChildren from './OnboardingChildren';
 import { IOnboardingChild } from '@/assets/typescript/onboarding';
 import { avatarImages } from './avatarImages';
 import MarketingNavAuthSuccessModal from '../../(navigation)/MarketingNavAuthSuccessModal';
+import { useRequest } from '@/lib/hooks/useRequest';
+import { createUser } from './_actions';
 
 // * Context
 // Interface
@@ -82,6 +85,20 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
   const [children, setChildren] = useState<IOnboardingChild[]>([]);
   const [loading, setLoading] = useState(false);
   const [showEmailConfirmation, setShowEmailConfirmation] = useState(false);
+  let [isPending, startTransition] = useTransition();
+
+  // * Handlers / Mutations
+  const { mutate: createUserMutation, isLoading } = useRequest(createUser, {
+    onSuccess: (data) => {
+      if (data.ok) {
+        setLoading(false); // Stop Loading
+        toast.success('Welcome to Learnly! 🎉❤️🎓');
+        setShowEmailConfirmation(true);
+      } else {
+        toast.error('Error creating user! Please try again.');
+      }
+    },
+  });
 
   // * Functions
   const handleNextStep = useCallback(async () => {
@@ -97,35 +114,20 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
         return toast.error('Email already in use'); // Show Error
       }
     } else if (step === steps.length) {
-      // Save User to Database
-      const res = await fetch('/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      // Create User
+      return startTransition(() =>
+        createUserMutation({
           name,
           email,
           avatarUrl,
           children,
         }),
-      });
-
-      // If Error, show error and return
-      if (!res.ok) {
-        setLoading(false); // Stop Loading
-        return toast.error('Error creating user'); // Show Error
-      }
-
-      // If Success, show success toast and open email confirmation modal
-      toast.success('Welcome to Learnly! 🎉❤️🎓'); // Show Success Toast
-      setLoading(false); // Stop Loading
-
-      // Open Email Confirmation Modal
-      setShowEmailConfirmation(true);
+      );
     }
 
     setLoading(false);
     setStep((prev) => prev + 1);
-  }, [step, email, name, avatarUrl, children]);
+  }, [step, email, name, avatarUrl, children, createUserMutation]);
 
   // * Effects
 
@@ -144,9 +146,19 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
       setAvatarUrl,
       children,
       setChildren,
-      loading,
+      loading: loading || isLoading || isPending,
     }),
-    [step, name, email, avatarUrl, children, loading, handleNextStep],
+    [
+      step,
+      name,
+      email,
+      avatarUrl,
+      children,
+      loading,
+      isLoading,
+      isPending,
+      handleNextStep,
+    ],
   );
 
   // * Render

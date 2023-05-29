@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import middlewareRedirect from './lib/auth/middlewareRedirect';
 import { Database } from './assets/typescript/db';
 
-const authorizedStatuses = ['active', 'trialing'];
-const authorizedRoles = ['ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT']; // Authorized Roles
+// const authorizedStatuses = ['active', 'trialing'];
+// const authorizedRoles = ['ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT']; // Authorized Roles
 const publicPaths = ['/onboarding']; // Public Paths [only ones we want to do something with if user isn't authed]
 
 const isPublicPath = (path: string) => publicPaths.includes(path); // Check if path is public
@@ -20,8 +20,10 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession(); // Get Session
 
-  const isAuthorized =
-    session && authorizedRoles.includes(session.user.app_metadata.role); // Check if user is authorized
+  console.log('session:', session);
+
+  const isAuthorized = session;
+  // && authorizedRoles.includes(session.user.app_metadata.role); // Check if user is authorized
   const allowedAccess =
     isAuthorized || (!isAuthorized && isPublicPath(req.nextUrl.pathname)); // Check if user is allowed access
 
