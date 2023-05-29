@@ -17,11 +17,8 @@
 3. [Open Graph for Lesson Plans and Curriculum](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
 4. Take OG Image Screenshots and add to [default metatdata](src/lib/meta/defaultMetadata.ts) (1200x630)
 5. Social Login's?
-6. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
-7. Users can create their own lessons, topics, subjects, and curriculum
-8. DMARC & SPF Records
-9. Fix /onboarding testimonials scrollers jump
-10. Push everything to production
+6. Fix /onboarding testimonials scrollers jump
+7. Push everything to production
 
 ---
 
@@ -34,3 +31,4 @@
 3. All the features they will miss out on if they don't upgrade, discount if they put their credit card in before trial ends, how to upgrade (link) [7 days before trial ends]
 4. Last reminder email the day of trial ending [day of trial ending]
 5. 1 week after trial ends, ask them to try our monthly plan or ask for feedback [1 week after trial ends]
+6. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)

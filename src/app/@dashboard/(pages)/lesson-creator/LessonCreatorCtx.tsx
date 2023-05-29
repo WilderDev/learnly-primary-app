@@ -269,7 +269,7 @@ export function LessonCreatorProvider({ children }: PropsWithChildren) {
         content,
         creator_id: session?.user.id!,
         title: `${topic.name} for ${level.name} (${subject.name})`,
-        image_path: 'https://source.unsplash.com/random/800x600',
+        image_path: `https://source.unsplash.com/1600x900/?${subject.name},${level.name},${topic.name}`,
         length_in_min: lengthInMin,
         is_public: true,
         tags: [

@@ -94,7 +94,7 @@ const saveLessonPlanTemplateAction = async (
       level: level?.id,
       topic: topic?.id,
       tags,
-      image_path: 'https://source.unsplash.com/random/800x600',
+      image_path: `https://source.unsplash.com/1600x900/?${subject?.name},${level?.name},${topic?.name}`,
       length_in_min: lengthInMin,
       difficulty: (difficulty as TDifficulty) || null,
       pace: (pace as TPace) || null,

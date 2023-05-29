@@ -99,8 +99,8 @@ export async function generateMetadata({ params: { id } }: IParams) {
       images: [
         {
           url: image_path,
-          width: 800,
-          height: 600,
+          width: 1600,
+          height: 900,
           alt: title,
         },
       ],

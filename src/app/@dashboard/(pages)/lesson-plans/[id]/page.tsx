@@ -11,7 +11,7 @@ import { redirect } from 'next/navigation';
 import LessonPlanContainerSkeleton from './LessonPlanContainerSkeleton';
 
 // * Params
-interface IParams {
+export interface IParams {
   params: {
     id: string;
   };
@@ -62,7 +62,7 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
 }
 
 // * Fetcher
-async function getLessonPlan(id: string) {
+export async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
@@ -78,7 +78,7 @@ async function getLessonPlan(id: string) {
 
 // * Metadata
 export async function generateMetadata({ params: { id } }: IParams) {
-  const { title, image_path, subject, level, topic, tags } =
+  const { title, image_path, subject_name, level_name, topic_name, tags } =
     await getLessonPlan(id);
 
   return {
@@ -86,15 +86,15 @@ export async function generateMetadata({ params: { id } }: IParams) {
     title,
     image: image_path,
     keywords: ['Homeschool Lesson Plan', title, tags],
-    description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
+    description: `Homeschool lesson plan for ${topic_name} in ${subject_name} for ${level_name} grade`,
     openGraph: {
       title: title,
-      description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
+      description: `Homeschool lesson plan for ${topic_name} in ${subject_name} for ${level_name} grade`,
       images: [
         {
           url: image_path,
-          width: 800,
-          height: 600,
+          width: 1600,
+          height: 900,
           alt: title,
         },
       ],

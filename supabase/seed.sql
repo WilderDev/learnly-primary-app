@@ -167,84 +167,84 @@ VALUES
 SELECT create_topic(
   'Numbers',
   'Counting, comparing, and ordering numbers.',
-  'https://source.unsplash.com/random/?math,numbers',
+  'https://source.unsplash.com/1600x900/?math,numbers',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Shapes',
   'Identifying and understanding basic shapes.',
-  'https://source.unsplash.com/random/?math,shapes',
+  'https://source.unsplash.com/1600x900/?math,shapes',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Patterns',
   'Recognizing and creating simple patterns.',
-  'https://source.unsplash.com/random/?math,patterns',
+  'https://source.unsplash.com/1600x900/?math,patterns',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Measurement',
   'Understanding basic concepts of measurement.',
-  'https://source.unsplash.com/random/?math,measurement',
+  'https://source.unsplash.com/1600x900/?math,measurement',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Sorting',
   'Sorting objects based on attributes.',
-  'https://source.unsplash.com/random/?math,sorting',
+  'https://source.unsplash.com/1600x900/?math,sorting',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Position and Direction',
   'Understanding concepts of position and direction.',
-  'https://source.unsplash.com/random/?math,position,direction',
+  'https://source.unsplash.com/1600x900/?math,position,direction',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Time',
   'Basic understanding of time and sequence of events.',
-  'https://source.unsplash.com/random/?math,time',
+  'https://source.unsplash.com/1600x900/?math,time',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Addition',
   'Introduction to basic addition concepts.',
-  'https://source.unsplash.com/random/?math,addition',
+  'https://source.unsplash.com/1600x900/?math,addition',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Subtraction',
   'Introduction to basic subtraction concepts.',
-  'https://source.unsplash.com/random/?math,subtraction',
+  'https://source.unsplash.com/1600x900/?math,subtraction',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Data and Graphing',
   'Basic understanding of data collection and graphing.',
-  'https://source.unsplash.com/random/?math,data,graphing',
+  'https://source.unsplash.com/1600x900/?math,data,graphing',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Money',
   'Introduction to basic money concepts.',
-  'https://source.unsplash.com/random/?math,money',
+  'https://source.unsplash.com/1600x900/?math,money',
   'Pre-K',
   'MATH'
 );
 SELECT create_topic(
   'Fractions',
   'Understanding basic concepts of fractions.',
-  'https://source.unsplash.com/random/?math,fractions',
+  'https://source.unsplash.com/1600x900/?math,fractions',
   'Pre-K',
   'MATH'
 );
@@ -252,84 +252,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Counting and Cardinality',
   'Understanding numbers, counting order, and number names.',
-  'https://source.unsplash.com/random/?math,counting',
+  'https://source.unsplash.com/1600x900/?math,counting',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Comparing Numbers',
   'Identifying whether the number of objects in one group is greater than, less than, or equal to the number of objects in another group.',
-  'https://source.unsplash.com/random/?math,comparingnumbers',
+  'https://source.unsplash.com/1600x900/?math,comparingnumbers',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Basic Addition and Subtraction',
   'Understanding addition as putting together and subtraction as taking apart.',
-  'https://source.unsplash.com/random/?math,addition,subtraction',
+  'https://source.unsplash.com/1600x900/?math,addition,subtraction',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Shapes and Space',
   'Identifying and describing shapes (squares, circles, triangles, rectangles, hexagons, cubes, cones, cylinders, and spheres).',
-  'https://source.unsplash.com/random/?math,shapes,space',
+  'https://source.unsplash.com/1600x900/?math,shapes,space',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Measurement',
   'Comparing objects by length and weight.',
-  'https://source.unsplash.com/random/?math,measurement',
+  'https://source.unsplash.com/1600x900/?math,measurement',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Sorting and Classifying',
   'Sorting objects into categories and understanding those categories.',
-  'https://source.unsplash.com/random/?math,sorting,classifying',
+  'https://source.unsplash.com/1600x900/?math,sorting,classifying',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Patterns',
   'Recognizing and creating simple patterns.',
-  'https://source.unsplash.com/random/?math,patterns',
+  'https://source.unsplash.com/1600x900/?math,patterns',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Time',
   'Understanding the concept of time and sequences of events.',
-  'https://source.unsplash.com/random/?math,time',
+  'https://source.unsplash.com/1600x900/?math,time',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Data',
   'Understanding simple graphs and data representation.',
-  'https://source.unsplash.com/random/?math,data',
+  'https://source.unsplash.com/1600x900/?math,data',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Position and Direction',
   'Understanding the concepts of position and direction.',
-  'https://source.unsplash.com/random/?math,position,direction',
+  'https://source.unsplash.com/1600x900/?math,position,direction',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Size and Quantity',
   'Comparing and identifying sizes and quantities.',
-  'https://source.unsplash.com/random/?math,size,quantity',
+  'https://source.unsplash.com/1600x900/?math,size,quantity',
   'K',
   'MATH'
 );
 SELECT create_topic(
   'Problem Solving',
   'Applying math skills to solve simple problems.',
-  'https://source.unsplash.com/random/?math,problemsolving',
+  'https://source.unsplash.com/1600x900/?math,problemsolving',
   'K',
   'MATH'
 );
@@ -337,84 +337,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Place Value',
   'Understanding the value of digits in a number.',
-  'https://source.unsplash.com/random/?math,placevalue',
+  'https://source.unsplash.com/1600x900/?math,placevalue',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Addition and Subtraction',
   'Mastering basic addition and subtraction.',
-  'https://source.unsplash.com/random/?math,addition,subtraction',
+  'https://source.unsplash.com/1600x900/?math,addition,subtraction',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Shapes and Solids',
   'Identifying shapes and solid figures.',
-  'https://source.unsplash.com/random/?math,shapes,solids',
+  'https://source.unsplash.com/1600x900/?math,shapes,solids',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Measurement and Data',
   'Understanding length measurement and data organization.',
-  'https://source.unsplash.com/random/?math,measurement,data',
+  'https://source.unsplash.com/1600x900/?math,measurement,data',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Time and Money',
   'Telling time and counting money.',
-  'https://source.unsplash.com/random/?math,time,money',
+  'https://source.unsplash.com/1600x900/?math,time,money',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Equal Parts and Wholes',
   'Understanding fractions as equal parts of a whole.',
-  'https://source.unsplash.com/random/?math,fractions,whole',
+  'https://source.unsplash.com/1600x900/?math,fractions,whole',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Word Problems',
   'Solving word problems involving addition and subtraction.',
-  'https://source.unsplash.com/random/?math,wordproblems',
+  'https://source.unsplash.com/1600x900/?math,wordproblems',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Comparing Numbers',
   'Comparing two-digit numbers.',
-  'https://source.unsplash.com/random/?math,comparingnumbers',
+  'https://source.unsplash.com/1600x900/?math,comparingnumbers',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Skip Counting',
   'Skip counting by 2s, 5s, and 10s.',
-  'https://source.unsplash.com/random/?math,skipcounting',
+  'https://source.unsplash.com/1600x900/?math,skipcounting',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Understanding Graphs',
   'Reading and creating simple graphs.',
-  'https://source.unsplash.com/random/?math,graphs',
+  'https://source.unsplash.com/1600x900/?math,graphs',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Geometry',
   'Recognizing and drawing shapes with certain attributes.',
-  'https://source.unsplash.com/random/?math,geometry',
+  'https://source.unsplash.com/1600x900/?math,geometry',
   '1',
   'MATH'
 );
 SELECT create_topic(
   'Algebraic Thinking',
   'Understanding basic concepts of equal sign, and determining if equations involving addition and subtraction are true or false.',
-  'https://source.unsplash.com/random/?math,algebra',
+  'https://source.unsplash.com/1600x900/?math,algebra',
   '1',
   'MATH'
 );
@@ -422,84 +422,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Place Value',
   'Understanding the value of each digit in a number.',
-  'https://source.unsplash.com/random/?math,placevalue',
+  'https://source.unsplash.com/1600x900/?math,placevalue',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Addition and Subtraction',
   'Mastering addition and subtraction within 1000.',
-  'https://source.unsplash.com/random/?math,addition,subtraction',
+  'https://source.unsplash.com/1600x900/?math,addition,subtraction',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Time',
   'Telling and writing time to the nearest five minutes.',
-  'https://source.unsplash.com/random/?math,time',
+  'https://source.unsplash.com/1600x900/?math,time',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Money',
   'Counting and calculating with coins and bills.',
-  'https://source.unsplash.com/random/?math,money',
+  'https://source.unsplash.com/1600x900/?math,money',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Measurement',
   'Measuring and estimating lengths in standard units.',
-  'https://source.unsplash.com/random/?math,measurement',
+  'https://source.unsplash.com/1600x900/?math,measurement',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Data',
   'Generating and interpreting data in various types of graphs.',
-  'https://source.unsplash.com/random/?math,data',
+  'https://source.unsplash.com/1600x900/?math,data',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Geometry',
   'Recognizing and drawing shapes with specific attributes.',
-  'https://source.unsplash.com/random/?math,geometry',
+  'https://source.unsplash.com/1600x900/?math,geometry',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Mental Math',
   'Using mental strategies to add and subtract within 20.',
-  'https://source.unsplash.com/random/?math,mentalmath',
+  'https://source.unsplash.com/1600x900/?math,mentalmath',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Fractions',
   'Understanding fractions as parts of a whole.',
-  'https://source.unsplash.com/random/?math,fractions',
+  'https://source.unsplash.com/1600x900/?math,fractions',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Multiplication and Division',
   'Introduction to basic multiplication and division concepts.',
-  'https://source.unsplash.com/random/?math,multiplication,division',
+  'https://source.unsplash.com/1600x900/?math,multiplication,division',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Problem Solving',
   'Using mathematical concepts to solve word problems.',
-  'https://source.unsplash.com/random/?math,problemsolving',
+  'https://source.unsplash.com/1600x900/?math,problemsolving',
   '2',
   'MATH'
 );
 SELECT create_topic(
   'Logic and Reasoning',
   'Applying reasoning skills to solve mathematical problems.',
-  'https://source.unsplash.com/random/?math,logic,reasoning',
+  'https://source.unsplash.com/1600x900/?math,logic,reasoning',
   '2',
   'MATH'
 );
@@ -507,84 +507,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Multiplication and Division',
   'Multiplying and dividing within 100.',
-  'https://source.unsplash.com/random/?math,multiplication,division',
+  'https://source.unsplash.com/1600x900/?math,multiplication,division',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Fractions',
   'Understanding fractions as numbers on the number line.',
-  'https://source.unsplash.com/random/?math,fractions',
+  'https://source.unsplash.com/1600x900/?math,fractions',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Area',
   'Relating area to the operations of multiplication and addition.',
-  'https://source.unsplash.com/random/?math,area',
+  'https://source.unsplash.com/1600x900/?math,area',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Place Value',
   'Using place value understanding and properties of operations to perform multi-digit arithmetic.',
-  'https://source.unsplash.com/random/?math,placevalue',
+  'https://source.unsplash.com/1600x900/?math,placevalue',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Measurement and Data',
   'Solving problems involving measurement and estimation of intervals of time, liquid volumes, and masses of objects.',
-  'https://source.unsplash.com/random/?math,measurement,data',
+  'https://source.unsplash.com/1600x900/?math,measurement,data',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Geometry',
   'Understanding that shapes in different categories may share attributes.',
-  'https://source.unsplash.com/random/?math,geometry',
+  'https://source.unsplash.com/1600x900/?math,geometry',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Time',
   'Telling and writing time to the nearest minute.',
-  'https://source.unsplash.com/random/?math,time',
+  'https://source.unsplash.com/1600x900/?math,time',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Money',
   'Solving problems involving money.',
-  'https://source.unsplash.com/random/?math,money',
+  'https://source.unsplash.com/1600x900/?math,money',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Problem Solving',
   'Using mathematical concepts to solve word problems.',
-  'https://source.unsplash.com/random/?math,problemsolving',
+  'https://source.unsplash.com/1600x900/?math,problemsolving',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Logic and Reasoning',
   'Applying reasoning skills to solve mathematical problems.',
-  'https://source.unsplash.com/random/?math,logic,reasoning',
+  'https://source.unsplash.com/1600x900/?math,logic,reasoning',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Patterns',
   'Understanding number patterns.',
-  'https://source.unsplash.com/random/?math,patterns',
+  'https://source.unsplash.com/1600x900/?math,patterns',
   '3',
   'MATH'
 );
 SELECT create_topic(
   'Data Representation',
   'Representing and interpreting data.',
-  'https://source.unsplash.com/random/?math,data',
+  'https://source.unsplash.com/1600x900/?math,data',
   '3',
   'MATH'
 );
@@ -592,84 +592,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Multi-Digit Multiplication',
   'Understanding and applying multi-digit multiplication.',
-  'https://source.unsplash.com/random/?math,multiplication',
+  'https://source.unsplash.com/1600x900/?math,multiplication',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Long Division',
   'Understanding and applying long division.',
-  'https://source.unsplash.com/random/?math,division',
+  'https://source.unsplash.com/1600x900/?math,division',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Fractions and Decimals',
   'Understanding and applying concepts of fractions and decimals.',
-  'https://source.unsplash.com/random/?math,fractions,decimals',
+  'https://source.unsplash.com/1600x900/?math,fractions,decimals',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Geometry',
   'Drawing and identifying lines and angles, and classifying shapes by properties of their lines and angles.',
-  'https://source.unsplash.com/random/?math,geometry',
+  'https://source.unsplash.com/1600x900/?math,geometry',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Measurement',
   'Solving problems involving measurement and conversion of measurements.',
-  'https://source.unsplash.com/random/?math,measurement',
+  'https://source.unsplash.com/1600x900/?math,measurement',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Place Value',
   'Understanding place value system.',
-  'https://source.unsplash.com/random/?math,placevalue',
+  'https://source.unsplash.com/1600x900/?math,placevalue',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Problem Solving',
   'Using mathematical concepts to solve word problems.',
-  'https://source.unsplash.com/random/?math,problemsolving',
+  'https://source.unsplash.com/1600x900/?math,problemsolving',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Patterns',
   'Understanding number patterns.',
-  'https://source.unsplash.com/random/?math,patterns',
+  'https://source.unsplash.com/1600x900/?math,patterns',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Data Representation',
   'Representing and interpreting data.',
-  'https://source.unsplash.com/random/?math,data',
+  'https://source.unsplash.com/1600x900/?math,data',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Algebraic Thinking',
   'Generating and analyzing patterns.',
-  'https://source.unsplash.com/random/?math,algebra',
+  'https://source.unsplash.com/1600x900/?math,algebra',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Area and Perimeter',
   'Understanding concepts of area and relate area to multiplication and addition.',
-  'https://source.unsplash.com/random/?math,area,perimeter',
+  'https://source.unsplash.com/1600x900/?math,area,perimeter',
   '4',
   'MATH'
 );
 SELECT create_topic(
   'Logic and Reasoning',
   'Applying reasoning skills to solve mathematical problems.',
-  'https://source.unsplash.com/random/?math,logic,reasoning',
+  'https://source.unsplash.com/1600x900/?math,logic,reasoning',
   '4',
   'MATH'
 );
@@ -677,84 +677,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Addition and Subtraction of Fractions',
   'Adding and subtracting fractions with unlike denominators (including mixed numbers).',
-  'https://source.unsplash.com/random/?math,fractions',
+  'https://source.unsplash.com/1600x900/?math,fractions',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Multiplication and Division of Fractions',
   'Multiplying and dividing fractions and mixed numbers.',
-  'https://source.unsplash.com/random/?math,fractions,multiplication,division',
+  'https://source.unsplash.com/1600x900/?math,fractions,multiplication,division',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Place Value and Decimal Fractions',
   'Understanding the place value system, perform operations with multi-digit whole numbers and with decimals to hundredths.',
-  'https://source.unsplash.com/random/?math,placevalue,decimals',
+  'https://source.unsplash.com/1600x900/?math,placevalue,decimals',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Volume',
   'Measuring volumes by counting unit cubes, using cubic cm, cubic in, cubic ft, and improvised units.',
-  'https://source.unsplash.com/random/?math,volume',
+  'https://source.unsplash.com/1600x900/?math,volume',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Two-Dimensional Figures',
   'Graphing points on the coordinate plane to solve real-world and mathematical problems.',
-  'https://source.unsplash.com/random/?math,graph,figures',
+  'https://source.unsplash.com/1600x900/?math,graph,figures',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Whole Number and Decimal Operations',
   'Fluently multiply multi-digit whole numbers using the standard algorithm.',
-  'https://source.unsplash.com/random/?math,operations',
+  'https://source.unsplash.com/1600x900/?math,operations',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Patterns and Graphing',
   'Analyzing patterns and relationships.',
-  'https://source.unsplash.com/random/?math,patterns,graphing',
+  'https://source.unsplash.com/1600x900/?math,patterns,graphing',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Measurement',
   'Converting like measurement units within a given measurement system.',
-  'https://source.unsplash.com/random/?math,measurement',
+  'https://source.unsplash.com/1600x900/?math,measurement',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Algebraic Expressions',
   'Writing and interpreting numerical expressions.',
-  'https://source.unsplash.com/random/?math,algebra',
+  'https://source.unsplash.com/1600x900/?math,algebra',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Problem Solving',
   'Solving real world problems involving multiplication of fractions and mixed numbers.',
-  'https://source.unsplash.com/random/?math,problemsolving',
+  'https://source.unsplash.com/1600x900/?math,problemsolving',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Geometry',
   'Classifying two-dimensional figures into categories based on their properties.',
-  'https://source.unsplash.com/random/?math,geometry',
+  'https://source.unsplash.com/1600x900/?math,geometry',
   '5',
   'MATH'
 );
 SELECT create_topic(
   'Data Analysis',
   'Making a line plot to display a data set of measurements in fractions of a unit.',
-  'https://source.unsplash.com/random/?math,data,analysis',
+  'https://source.unsplash.com/1600x900/?math,data,analysis',
   '5',
   'MATH'
 );
@@ -763,84 +763,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Living vs Nonliving',
   'Understanding the difference between living and nonliving things.',
-  'https://source.unsplash.com/random/?science,living,nonliving',
+  'https://source.unsplash.com/1600x900/?science,living,nonliving',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Animals',
   'Identifying different types of animals and their characteristics.',
-  'https://source.unsplash.com/random/?science,animals',
+  'https://source.unsplash.com/1600x900/?science,animals',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Plants',
   'Identifying different types of plants and their parts.',
-  'https://source.unsplash.com/random/?science,plants',
+  'https://source.unsplash.com/1600x900/?science,plants',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Weather and Seasons',
   'Understanding the different types of weather and seasons.',
-  'https://source.unsplash.com/random/?science,weather,seasons',
+  'https://source.unsplash.com/1600x900/?science,weather,seasons',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Earth and Sky',
   'Exploring the concepts of day and night, sun, moon, and stars.',
-  'https://source.unsplash.com/random/?science,earth,sky',
+  'https://source.unsplash.com/1600x900/?science,earth,sky',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Water',
   'Understanding the properties of water and its uses.',
-  'https://source.unsplash.com/random/?science,water',
+  'https://source.unsplash.com/1600x900/?science,water',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Materials and Their Properties',
   'Identifying different materials and their properties like hard, soft, heavy, light, etc.',
-  'https://source.unsplash.com/random/?science,materials',
+  'https://source.unsplash.com/1600x900/?science,materials',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Five Senses',
   'Understanding our five senses and their functions.',
-  'https://source.unsplash.com/random/?science,senses',
+  'https://source.unsplash.com/1600x900/?science,senses',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Magnets',
   'Exploring the properties of magnets and magnetic materials.',
-  'https://source.unsplash.com/random/?science,magnets',
+  'https://source.unsplash.com/1600x900/?science,magnets',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Shadows',
   'Understanding what shadows are and how they are formed.',
-  'https://source.unsplash.com/random/?science,shadows',
+  'https://source.unsplash.com/1600x900/?science,shadows',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Heat, Light and Sound',
   'Exploring the sources and properties of heat, light and sound.',
-  'https://source.unsplash.com/random/?science,heat,light,sound',
+  'https://source.unsplash.com/1600x900/?science,heat,light,sound',
   'Pre-K',
   'SCI'
 );
 SELECT create_topic(
   'Health and Safety',
   'Learning about personal hygiene, healthy habits, and safety rules.',
-  'https://source.unsplash.com/random/?science,health,safety',
+  'https://source.unsplash.com/1600x900/?science,health,safety',
   'Pre-K',
   'SCI'
 );
@@ -848,84 +848,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Human Body Parts',
   'Identifying and understanding the function of basic human body parts.',
-  'https://source.unsplash.com/random/?science,human,body',
+  'https://source.unsplash.com/1600x900/?science,human,body',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Animal Habitats',
   'Learning about different types of animal habitats like forests, oceans, deserts, etc.',
-  'https://source.unsplash.com/random/?science,animal,habitats',
+  'https://source.unsplash.com/1600x900/?science,animal,habitats',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Plant Life Cycle',
   'Understanding the life cycle of a plant from seed to adult plant.',
-  'https://source.unsplash.com/random/?science,plant,lifecycle',
+  'https://source.unsplash.com/1600x900/?science,plant,lifecycle',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Weather Patterns',
   'Observing and describing weather patterns across different seasons.',
-  'https://source.unsplash.com/random/?science,weather,patterns',
+  'https://source.unsplash.com/1600x900/?science,weather,patterns',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Earth’s Resources',
   'Exploring Earth’s natural resources like water, air, rocks, soil, etc.',
-  'https://source.unsplash.com/random/?science,earth,resources',
+  'https://source.unsplash.com/1600x900/?science,earth,resources',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'States of Matter',
   'Understanding the basic states of matter: solid, liquid and gas.',
-  'https://source.unsplash.com/random/?science,states,of,matter',
+  'https://source.unsplash.com/1600x900/?science,states,of,matter',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Force and Motion',
   'Exploring the concepts of push, pull, motion, and gravity.',
-  'https://source.unsplash.com/random/?science,force,motion',
+  'https://source.unsplash.com/1600x900/?science,force,motion',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Sound and Light',
   'Understanding how sound is produced and how light is necessary to see things.',
-  'https://source.unsplash.com/random/?science,sound,light',
+  'https://source.unsplash.com/1600x900/?science,sound,light',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Nutrition and Healthy Habits',
   'Learning about healthy eating habits and the importance of physical activity.',
-  'https://source.unsplash.com/random/?science,nutrition',
+  'https://source.unsplash.com/1600x900/?science,nutrition',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Recycling and Conservation',
   'Introduction to the concepts of recycling and conservation of resources.',
-  'https://source.unsplash.com/random/?science,recycling,conservation',
+  'https://source.unsplash.com/1600x900/?science,recycling,conservation',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Simple Machines',
   'Introduction to simple machines like lever, pulley, wheel and axle, etc.',
-  'https://source.unsplash.com/random/?science,simple,machines',
+  'https://source.unsplash.com/1600x900/?science,simple,machines',
   'K',
   'SCI'
 );
 SELECT create_topic(
   'Astronomy',
   'Introduction to basic astronomy: stars, planets, moon phases.',
-  'https://source.unsplash.com/random/?science,astronomy',
+  'https://source.unsplash.com/1600x900/?science,astronomy',
   'K',
   'SCI'
 );
@@ -933,84 +933,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Animal Classification',
   'Understanding the basic classification of animals: mammals, birds, fish, reptiles, and amphibians.',
-  'https://source.unsplash.com/random/?science,animal,classification',
+  'https://source.unsplash.com/1600x900/?science,animal,classification',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Plant Parts and Functions',
   'Identifying parts of a plant and understanding their functions.',
-  'https://source.unsplash.com/random/?science,plant,parts',
+  'https://source.unsplash.com/1600x900/?science,plant,parts',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Seasonal Changes',
   'Observing and describing changes in weather and daylight across seasons.',
-  'https://source.unsplash.com/random/?science,seasons',
+  'https://source.unsplash.com/1600x900/?science,seasons',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Properties of Matter',
   'Understanding properties of matter: color, shape, texture, size, weight, etc.',
-  'https://source.unsplash.com/random/?science,properties,of,matter',
+  'https://source.unsplash.com/1600x900/?science,properties,of,matter',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Earth’s Land and Water',
   'Exploring different types of landforms and bodies of water on Earth.',
-  'https://source.unsplash.com/random/?science,earth,landforms',
+  'https://source.unsplash.com/1600x900/?science,earth,landforms',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Living and Nonliving Things',
   'Distinguishing between living and nonliving things.',
-  'https://source.unsplash.com/random/?science,living,nonliving',
+  'https://source.unsplash.com/1600x900/?science,living,nonliving',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Heat Energy',
   'Understanding the concept of heat energy and its sources.',
-  'https://source.unsplash.com/random/?science,heat,energy',
+  'https://source.unsplash.com/1600x900/?science,heat,energy',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Light and Shadows',
   'Exploring how light travels and how shadows are formed.',
-  'https://source.unsplash.com/random/?science,light,shadows',
+  'https://source.unsplash.com/1600x900/?science,light,shadows',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Food and Nutrition',
   'Understanding the importance of a balanced diet and identifying different food groups.',
-  'https://source.unsplash.com/random/?science,food,nutrition',
+  'https://source.unsplash.com/1600x900/?science,food,nutrition',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Environmental Awareness',
   'Understanding the importance of protecting the environment and ways to do so.',
-  'https://source.unsplash.com/random/?science,environment,awareness',
+  'https://source.unsplash.com/1600x900/?science,environment,awareness',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'The Solar System',
   'Introduction to the solar system: sun, earth, moon, and stars.',
-  'https://source.unsplash.com/random/?science,solar,system',
+  'https://source.unsplash.com/1600x900/?science,solar,system',
   '1',
   'SCI'
 );
 SELECT create_topic(
   'Simple Physical Experiments',
   'Performing simple physical science experiments.',
-  'https://source.unsplash.com/random/?science,experiments',
+  'https://source.unsplash.com/1600x900/?science,experiments',
   '1',
   'SCI'
 );
@@ -1018,84 +1018,84 @@ SELECT create_topic(
 SELECT create_topic(
   'States of Matter',
   'Understanding the basic states of matter: solid, liquid, and gas.',
-  'https://source.unsplash.com/random/?science,states,of,matter',
+  'https://source.unsplash.com/1600x900/?science,states,of,matter',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Life Cycle of Plants',
   'Exploring the life cycle of a plant from seed to mature plant.',
-  'https://source.unsplash.com/random/?science,life,cycle,plants',
+  'https://source.unsplash.com/1600x900/?science,life,cycle,plants',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Weather Patterns',
   'Studying different types of weather and identifying patterns.',
-  'https://source.unsplash.com/random/?science,weather,patterns',
+  'https://source.unsplash.com/1600x900/?science,weather,patterns',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Simple Machines',
   'Introduction to simple machines and their functions.',
-  'https://source.unsplash.com/random/?science,simple,machines',
+  'https://source.unsplash.com/1600x900/?science,simple,machines',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Habitats and Ecosystems',
   'Understanding different types of habitats and ecosystems and the organisms that live in them.',
-  'https://source.unsplash.com/random/?science,habitats,ecosystems',
+  'https://source.unsplash.com/1600x900/?science,habitats,ecosystems',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Life Cycle of Animals',
   'Exploring the life cycle of different types of animals.',
-  'https://source.unsplash.com/random/?science,life,cycle,animals',
+  'https://source.unsplash.com/1600x900/?science,life,cycle,animals',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Forces and Motion',
   'Introduction to the concepts of force and motion.',
-  'https://source.unsplash.com/random/?science,forces,motion',
+  'https://source.unsplash.com/1600x900/?science,forces,motion',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Sound and Vibrations',
   'Exploring how sound is made and how it travels.',
-  'https://source.unsplash.com/random/?science,sound,vibrations',
+  'https://source.unsplash.com/1600x900/?science,sound,vibrations',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'The Water Cycle',
   'Understanding the stages of the water cycle: evaporation, condensation, precipitation, and collection.',
-  'https://source.unsplash.com/random/?science,water,cycle',
+  'https://source.unsplash.com/1600x900/?science,water,cycle',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Rocks and Minerals',
   'Identifying different types of rocks and minerals and understanding their properties.',
-  'https://source.unsplash.com/random/?science,rocks,minerals',
+  'https://source.unsplash.com/1600x900/?science,rocks,minerals',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Fossils and Extinct Animals',
   'Learning about fossils and the concept of extinct animals.',
-  'https://source.unsplash.com/random/?science,fossils,extinct,animals',
+  'https://source.unsplash.com/1600x900/?science,fossils,extinct,animals',
   '2',
   'SCI'
 );
 SELECT create_topic(
   'Conservation and Recycling',
   'Understanding the importance of conservation and recycling for the environment.',
-  'https://source.unsplash.com/random/?science,conservation,recycling',
+  'https://source.unsplash.com/1600x900/?science,conservation,recycling',
   '2',
   'SCI'
 );
@@ -1103,84 +1103,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Plant Anatomy and Physiology',
   'Understanding the structure and functions of different parts of a plant.',
-  'https://source.unsplash.com/random/?science,plant,anatomy',
+  'https://source.unsplash.com/1600x900/?science,plant,anatomy',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Animal Anatomy and Life Cycles',
   'Studying the anatomy of different types of animals and their life cycles.',
-  'https://source.unsplash.com/random/?science,animal,anatomy',
+  'https://source.unsplash.com/1600x900/?science,animal,anatomy',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Magnets and Magnetism',
   'Understanding the properties of magnets and the concept of magnetism.',
-  'https://source.unsplash.com/random/?science,magnets',
+  'https://source.unsplash.com/1600x900/?science,magnets',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Human Body Systems',
   'Introduction to human body systems such as the circulatory, respiratory, and digestive systems.',
-  'https://source.unsplash.com/random/?science,human,body',
+  'https://source.unsplash.com/1600x900/?science,human,body',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Solar System and Planets',
   'Exploring the solar system and understanding the characteristics of different planets.',
-  'https://source.unsplash.com/random/?science,solar,system',
+  'https://source.unsplash.com/1600x900/?science,solar,system',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Heat and Temperature',
   'Understanding the concepts of heat and temperature and how they are related.',
-  'https://source.unsplash.com/random/?science,heat,temperature',
+  'https://source.unsplash.com/1600x900/?science,heat,temperature',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Rocks, Soil, and Minerals',
   'Identifying different types of rocks, soil, and minerals and understanding their properties.',
-  'https://source.unsplash.com/random/?science,rocks,soil',
+  'https://source.unsplash.com/1600x900/?science,rocks,soil',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Ecology and Environment',
   'Understanding the basics of ecology and the importance of a balanced environment.',
-  'https://source.unsplash.com/random/?science,ecology',
+  'https://source.unsplash.com/1600x900/?science,ecology',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Light and Shadows',
   'Understanding the properties of light and how shadows are formed.',
-  'https://source.unsplash.com/random/?science,light,shadows',
+  'https://source.unsplash.com/1600x900/?science,light,shadows',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Water and Water Cycle',
   'Understanding the properties of water and the stages of the water cycle.',
-  'https://source.unsplash.com/random/?science,water,cycle',
+  'https://source.unsplash.com/1600x900/?science,water,cycle',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Weather and Climate',
   'Understanding the difference between weather and climate and studying different types of weather patterns.',
-  'https://source.unsplash.com/random/?science,weather,climate',
+  'https://source.unsplash.com/1600x900/?science,weather,climate',
   '3',
   'SCI'
 );
 SELECT create_topic(
   'Energy: Forms and Changes',
   'Introduction to different forms of energy and how energy changes from one form to another.',
-  'https://source.unsplash.com/random/?science,energy',
+  'https://source.unsplash.com/1600x900/?science,energy',
   '3',
   'SCI'
 );
@@ -1188,84 +1188,84 @@ SELECT create_topic(
 SELECT create_topic(
   'The Periodic Table',
   'Introduction to the periodic table and understanding the basics of elements.',
-  'https://source.unsplash.com/random/?science,periodic,table',
+  'https://source.unsplash.com/1600x900/?science,periodic,table',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Ecosystems and Habitats',
   'Understanding the structure and function of different ecosystems and habitats.',
-  'https://source.unsplash.com/random/?science,ecosystems',
+  'https://source.unsplash.com/1600x900/?science,ecosystems',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Electricity and Circuits',
   'Understanding the basics of electricity and simple circuits.',
-  'https://source.unsplash.com/random/?science,electricity',
+  'https://source.unsplash.com/1600x900/?science,electricity',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'States of Matter',
   'Exploring the different states of matter and their properties.',
-  'https://source.unsplash.com/random/?science,states,of,matter',
+  'https://source.unsplash.com/1600x900/?science,states,of,matter',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Sound and Vibrations',
   'Understanding the properties of sound and how it is produced by vibrations.',
-  'https://source.unsplash.com/random/?science,sound',
+  'https://source.unsplash.com/1600x900/?science,sound',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Force and Motion',
   'Understanding the relationship between force and motion, and the effects of friction and gravity.',
-  'https://source.unsplash.com/random/?science,force',
+  'https://source.unsplash.com/1600x900/?science,force',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Energy Sources and Transformation',
   'Learning about different sources of energy and how energy transforms from one form to another.',
-  'https://source.unsplash.com/random/?science,energy',
+  'https://source.unsplash.com/1600x900/?science,energy',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Geology and Earth’s Structure',
   'Introduction to geology and understanding the structure of Earth.',
-  'https://source.unsplash.com/random/?science,geology',
+  'https://source.unsplash.com/1600x900/?science,geology',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Weather, Climate, and Meteorology',
   'Understanding the factors that influence weather and climate, and introduction to meteorology.',
-  'https://source.unsplash.com/random/?science,weather',
+  'https://source.unsplash.com/1600x900/?science,weather',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Light and Optics',
   'Exploring the properties of light and understanding the basics of optics.',
-  'https://source.unsplash.com/random/?science,optics',
+  'https://source.unsplash.com/1600x900/?science,optics',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Human Anatomy: Muscular and Skeletal Systems',
   'Studying the human muscular and skeletal systems and their functions.',
-  'https://source.unsplash.com/random/?science,human,body',
+  'https://source.unsplash.com/1600x900/?science,human,body',
   '4',
   'SCI'
 );
 SELECT create_topic(
   'Plants and Photosynthesis',
   'Understanding the process of photosynthesis and the life cycle of plants.',
-  'https://source.unsplash.com/random/?science,photosynthesis',
+  'https://source.unsplash.com/1600x900/?science,photosynthesis',
   '4',
   'SCI'
 );
@@ -1273,84 +1273,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Cells and Systems',
   'Understanding the structure and function of cells and human body systems.',
-  'https://source.unsplash.com/random/?science,cells',
+  'https://source.unsplash.com/1600x900/?science,cells',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Chemical Reactions',
   'Introduction to chemical reactions and understanding the conservation of mass.',
-  'https://source.unsplash.com/random/?science,chemical,reactions',
+  'https://source.unsplash.com/1600x900/?science,chemical,reactions',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Water Cycle and Weather Systems',
   'Understanding the water cycle and how it influences weather systems.',
-  'https://source.unsplash.com/random/?science,water,cycle',
+  'https://source.unsplash.com/1600x900/?science,water,cycle',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Space and Solar System',
   'Exploring the solar system and understanding celestial movements.',
-  'https://source.unsplash.com/random/?science,space',
+  'https://source.unsplash.com/1600x900/?science,space',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Forces and Machines',
   'Understanding different types of forces and the function of simple machines.',
-  'https://source.unsplash.com/random/?science,forces',
+  'https://source.unsplash.com/1600x900/?science,forces',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Ecosystems and Biodiversity',
   'Exploring different ecosystems and the importance of biodiversity.',
-  'https://source.unsplash.com/random/?science,ecosystems',
+  'https://source.unsplash.com/1600x900/?science,ecosystems',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Energy Forms and Changes',
   'Understanding different forms of energy and energy transformations.',
-  'https://source.unsplash.com/random/?science,energy',
+  'https://source.unsplash.com/1600x900/?science,energy',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Rocks, Minerals and Soil',
   'Learning about different types of rocks, minerals and the formation of soil.',
-  'https://source.unsplash.com/random/?science,rocks',
+  'https://source.unsplash.com/1600x900/?science,rocks',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Human Anatomy: Digestive and Excretory Systems',
   'Understanding the digestive and excretory systems in the human body.',
-  'https://source.unsplash.com/random/?science,human,body',
+  'https://source.unsplash.com/1600x900/?science,human,body',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Light and Shadows',
   'Understanding the properties of light and the formation of shadows.',
-  'https://source.unsplash.com/random/?science,light',
+  'https://source.unsplash.com/1600x900/?science,light',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Heat and Temperature',
   'Understanding the concept of heat transfer and the measurement of temperature.',
-  'https://source.unsplash.com/random/?science,heat',
+  'https://source.unsplash.com/1600x900/?science,heat',
   '5',
   'SCI'
 );
 SELECT create_topic(
   'Plant Reproduction and Growth',
   'Learning about the process of plant reproduction and growth.',
-  'https://source.unsplash.com/random/?science,plants',
+  'https://source.unsplash.com/1600x900/?science,plants',
   '5',
   'SCI'
 );
@@ -1359,84 +1359,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Alphabet Recognition',
   'Introduction to the alphabet and recognizing all the letters.',
-  'https://source.unsplash.com/random/?english,alphabet',
+  'https://source.unsplash.com/1600x900/?english,alphabet',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Phonemic Awareness',
   'Developing the ability to hear and identify individual sounds in spoken words.',
-  'https://source.unsplash.com/random/?english,phonics',
+  'https://source.unsplash.com/1600x900/?english,phonics',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Beginning Reading',
   'Starting to identify words and read simple sentences.',
-  'https://source.unsplash.com/random/?english,reading',
+  'https://source.unsplash.com/1600x900/?english,reading',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Print Awareness',
   'Understanding the basics of words, sentences and how books work.',
-  'https://source.unsplash.com/random/?english,print',
+  'https://source.unsplash.com/1600x900/?english,print',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Listening and Understanding',
   'Enhancing listening skills and comprehension.',
-  'https://source.unsplash.com/random/?english,listening',
+  'https://source.unsplash.com/1600x900/?english,listening',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Speaking and Expressing',
   'Learning to express thoughts, feelings, and ideas clearly.',
-  'https://source.unsplash.com/random/?english,speaking',
+  'https://source.unsplash.com/1600x900/?english,speaking',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Vocabulary',
   'Building a foundation of basic vocabulary.',
-  'https://source.unsplash.com/random/?english,vocabulary',
+  'https://source.unsplash.com/1600x900/?english,vocabulary',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Writing Skills',
   'Introduction to writing and creating simple sentences.',
-  'https://source.unsplash.com/random/?english,writing',
+  'https://source.unsplash.com/1600x900/?english,writing',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Storytelling',
   'Learning to tell a story and understanding narrative structure.',
-  'https://source.unsplash.com/random/?english,storytelling',
+  'https://source.unsplash.com/1600x900/?english,storytelling',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Rhyming Words',
   'Identifying rhyming words and understanding their usage in poetry and music.',
-  'https://source.unsplash.com/random/?english,rhyming',
+  'https://source.unsplash.com/1600x900/?english,rhyming',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Punctuation',
   'Introduction to basic punctuation marks and their usage.',
-  'https://source.unsplash.com/random/?english,punctuation',
+  'https://source.unsplash.com/1600x900/?english,punctuation',
   'Pre-K',
   'ENG'
 );
 SELECT create_topic(
   'Sight Words',
   'Introduction to common words that children are encouraged to recognize without sounding out the letters.',
-  'https://source.unsplash.com/random/?english,sight,words',
+  'https://source.unsplash.com/1600x900/?english,sight,words',
   'Pre-K',
   'ENG'
 );
@@ -1444,84 +1444,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Alphabet Recognition',
   'Recognizing and identifying all the letters in the alphabet.',
-  'https://source.unsplash.com/random/?english,alphabet',
+  'https://source.unsplash.com/1600x900/?english,alphabet',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Phonics Basics',
   'Understanding the sounds that letters and letter combinations make.',
-  'https://source.unsplash.com/random/?english,phonics',
+  'https://source.unsplash.com/1600x900/?english,phonics',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Beginning Reading',
   'Starting to read simple words and sentences.',
-  'https://source.unsplash.com/random/?english,reading',
+  'https://source.unsplash.com/1600x900/?english,reading',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Writing Letters',
   'Learning to write each letter of the alphabet.',
-  'https://source.unsplash.com/random/?english,writing,letters',
+  'https://source.unsplash.com/1600x900/?english,writing,letters',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Listening Comprehension',
   'Developing the ability to understand spoken language and stories.',
-  'https://source.unsplash.com/random/?english,listening,comprehension',
+  'https://source.unsplash.com/1600x900/?english,listening,comprehension',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Introduction to Spelling',
   'Starting to learn how to spell simple words.',
-  'https://source.unsplash.com/random/?english,spelling',
+  'https://source.unsplash.com/1600x900/?english,spelling',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Basic Vocabulary',
   'Building a vocabulary of common words.',
-  'https://source.unsplash.com/random/?english,vocabulary',
+  'https://source.unsplash.com/1600x900/?english,vocabulary',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Sentence Structure',
   'Understanding how to form simple sentences.',
-  'https://source.unsplash.com/random/?english,sentence,structure',
+  'https://source.unsplash.com/1600x900/?english,sentence,structure',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Sight Words Introduction',
   'Learning to recognize common words by sight.',
-  'https://source.unsplash.com/random/?english,sight,words',
+  'https://source.unsplash.com/1600x900/?english,sight,words',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Story Elements',
   'Identifying basic elements of a story like characters and setting.',
-  'https://source.unsplash.com/random/?english,story,elements',
+  'https://source.unsplash.com/1600x900/?english,story,elements',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Reading Aloud',
   'Developing the ability to read simple texts aloud with fluency.',
-  'https://source.unsplash.com/random/?english,reading,aloud',
+  'https://source.unsplash.com/1600x900/?english,reading,aloud',
   'K',
   'ENG'
 );
 SELECT create_topic(
   'Print Concepts',
   'Understanding basic print concepts like reading from left to right.',
-  'https://source.unsplash.com/random/?english,print,concepts',
+  'https://source.unsplash.com/1600x900/?english,print,concepts',
   'K',
   'ENG'
 );
@@ -1529,84 +1529,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Phonics',
   'Continuing to develop phonics skills for more complex words.',
-  'https://source.unsplash.com/random/?english,phonics',
+  'https://source.unsplash.com/1600x900/?english,phonics',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Reading Fluency',
   'Developing the ability to read with speed, accuracy, and proper expression.',
-  'https://source.unsplash.com/random/?english,reading,fluency',
+  'https://source.unsplash.com/1600x900/?english,reading,fluency',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Spelling',
   'Learning basic spelling rules and patterns.',
-  'https://source.unsplash.com/random/?english,spelling',
+  'https://source.unsplash.com/1600x900/?english,spelling',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Grammar Basics',
   'Introduction to parts of speech and basic sentence structure.',
-  'https://source.unsplash.com/random/?english,grammar',
+  'https://source.unsplash.com/1600x900/?english,grammar',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Writing Sentences',
   'Learning to write coherent and grammatically correct sentences.',
-  'https://source.unsplash.com/random/?english,writing,sentences',
+  'https://source.unsplash.com/1600x900/?english,writing,sentences',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Reading Comprehension',
   'Developing skills to understand and interpret what is being read.',
-  'https://source.unsplash.com/random/?english,reading,comprehension',
+  'https://source.unsplash.com/1600x900/?english,reading,comprehension',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Expanded Vocabulary',
   'Building a larger vocabulary with more complex words.',
-  'https://source.unsplash.com/random/?english,vocabulary',
+  'https://source.unsplash.com/1600x900/?english,vocabulary',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Public Speaking',
   'Starting to develop skills for speaking in front of others.',
-  'https://source.unsplash.com/random/?english,public,speaking',
+  'https://source.unsplash.com/1600x900/?english,public,speaking',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Story Writing',
   'Beginning to write simple stories with a clear beginning, middle, and end.',
-  'https://source.unsplash.com/random/?english,story,writing',
+  'https://source.unsplash.com/1600x900/?english,story,writing',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Informational Texts',
   'Reading and understanding informational texts and articles.',
-  'https://source.unsplash.com/random/?english,informational,texts',
+  'https://source.unsplash.com/1600x900/?english,informational,texts',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Punctuation and Capitalization',
   'Understanding the rules of punctuation and capitalization in writing.',
-  'https://source.unsplash.com/random/?english,punctuation,capitalization',
+  'https://source.unsplash.com/1600x900/?english,punctuation,capitalization',
   '1',
   'ENG'
 );
 SELECT create_topic(
   'Sight Words Expansion',
   'Increasing the number of sight words recognized for quick reading.',
-  'https://source.unsplash.com/random/?english,sight,words',
+  'https://source.unsplash.com/1600x900/?english,sight,words',
   '1',
   'ENG'
 );
@@ -1614,84 +1614,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Vocabulary Expansion',
   'Increasing vocabulary and understanding of word meanings.',
-  'https://source.unsplash.com/random/?english,vocabulary',
+  'https://source.unsplash.com/1600x900/?english,vocabulary',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Reading Comprehension',
   'Understanding and interpreting stories and texts.',
-  'https://source.unsplash.com/random/?english,reading,comprehension',
+  'https://source.unsplash.com/1600x900/?english,reading,comprehension',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Spelling and Punctuation',
   'Learning correct spelling of words and use of punctuation marks.',
-  'https://source.unsplash.com/random/?english,spelling,punctuation',
+  'https://source.unsplash.com/1600x900/?english,spelling,punctuation',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Writing Sentences',
   'Forming complete sentences and writing them correctly.',
-  'https://source.unsplash.com/random/?english,writing,sentences',
+  'https://source.unsplash.com/1600x900/?english,writing,sentences',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Grammar Basics',
   'Introduction to parts of speech and their usage in sentences.',
-  'https://source.unsplash.com/random/?english,grammar',
+  'https://source.unsplash.com/1600x900/?english,grammar',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Story Writing',
   'Creating and writing simple stories.',
-  'https://source.unsplash.com/random/?english,story,writing',
+  'https://source.unsplash.com/1600x900/?english,story,writing',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Reading Fluency',
   'Developing reading fluency and expression.',
-  'https://source.unsplash.com/random/?english,reading,fluency',
+  'https://source.unsplash.com/1600x900/?english,reading,fluency',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Listening and Speaking Skills',
   'Enhancing listening comprehension and oral expression.',
-  'https://source.unsplash.com/random/?english,listening,speaking',
+  'https://source.unsplash.com/1600x900/?english,listening,speaking',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Informational Text',
   'Reading and understanding informational texts.',
-  'https://source.unsplash.com/random/?english,informational,text',
+  'https://source.unsplash.com/1600x900/?english,informational,text',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Fiction and Nonfiction',
   'Understanding the difference between fiction and nonfiction texts.',
-  'https://source.unsplash.com/random/?english,fiction,nonfiction',
+  'https://source.unsplash.com/1600x900/?english,fiction,nonfiction',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Poetry Introduction',
   'Introduction to reading and understanding simple poems.',
-  'https://source.unsplash.com/random/?english,poetry',
+  'https://source.unsplash.com/1600x900/?english,poetry',
   '2',
   'ENG'
 );
 SELECT create_topic(
   'Cursive Writing',
   'Introduction to cursive writing.',
-  'https://source.unsplash.com/random/?english,cursive,writing',
+  'https://source.unsplash.com/1600x900/?english,cursive,writing',
   '2',
   'ENG'
 );
@@ -1699,84 +1699,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Grammar',
   'Building on grammar basics to include more complex rules and concepts.',
-  'https://source.unsplash.com/random/?english,grammar',
+  'https://source.unsplash.com/1600x900/?english,grammar',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Paragraph Writing',
   'Learning to write coherent and well-structured paragraphs.',
-  'https://source.unsplash.com/random/?english,paragraph,writing',
+  'https://source.unsplash.com/1600x900/?english,paragraph,writing',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Reading Comprehension',
   'Increasing reading comprehension with more complex texts.',
-  'https://source.unsplash.com/random/?english,reading,comprehension',
+  'https://source.unsplash.com/1600x900/?english,reading,comprehension',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Spelling Patterns and Rules',
   'Learning common spelling patterns and rules.',
-  'https://source.unsplash.com/random/?english,spelling',
+  'https://source.unsplash.com/1600x900/?english,spelling',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Vocabulary Development',
   'Developing a larger vocabulary and understanding of word usage.',
-  'https://source.unsplash.com/random/?english,vocabulary',
+  'https://source.unsplash.com/1600x900/?english,vocabulary',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Cursive Writing',
   'Further practice in cursive writing.',
-  'https://source.unsplash.com/random/?english,cursive,writing',
+  'https://source.unsplash.com/1600x900/?english,cursive,writing',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Story Elements',
   'Understanding story elements such as characters, setting, and plot.',
-  'https://source.unsplash.com/random/?english,story,elements',
+  'https://source.unsplash.com/1600x900/?english,story,elements',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Poetry',
   'Reading and understanding a variety of poems, and beginning to write simple poems.',
-  'https://source.unsplash.com/random/?english,poetry',
+  'https://source.unsplash.com/1600x900/?english,poetry',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Informational Texts',
   'Reading and understanding more complex informational texts.',
-  'https://source.unsplash.com/random/?english,informational,text',
+  'https://source.unsplash.com/1600x900/?english,informational,text',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Public Speaking',
   'Building confidence in public speaking and presentation.',
-  'https://source.unsplash.com/random/?english,public,speaking',
+  'https://source.unsplash.com/1600x900/?english,public,speaking',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Fiction vs Nonfiction',
   'Understanding the differences between fiction and nonfiction, and the different elements of each.',
-  'https://source.unsplash.com/random/?english,fiction,nonfiction',
+  'https://source.unsplash.com/1600x900/?english,fiction,nonfiction',
   '3',
   'ENG'
 );
 SELECT create_topic(
   'Research Skills',
   'Introduction to basic research skills using a variety of resources.',
-  'https://source.unsplash.com/random/?english,research,skills',
+  'https://source.unsplash.com/1600x900/?english,research,skills',
   '3',
   'ENG'
 );
@@ -1784,84 +1784,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Compound Sentences',
   'Learning to write compound sentences using coordinating conjunctions.',
-  'https://source.unsplash.com/random/?english,compound,sentences',
+  'https://source.unsplash.com/1600x900/?english,compound,sentences',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Reading Comprehension',
   'Improving reading comprehension with a focus on inference and prediction.',
-  'https://source.unsplash.com/random/?english,reading,comprehension',
+  'https://source.unsplash.com/1600x900/?english,reading,comprehension',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Creative Writing',
   'Exploring creative writing techniques and beginning to write short stories.',
-  'https://source.unsplash.com/random/?english,creative,writing',
+  'https://source.unsplash.com/1600x900/?english,creative,writing',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Spelling and Vocabulary',
   'Continuing to expand vocabulary and improve spelling.',
-  'https://source.unsplash.com/random/?english,spelling,vocabulary',
+  'https://source.unsplash.com/1600x900/?english,spelling,vocabulary',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Advanced Grammar',
   'Understanding more complex grammar concepts.',
-  'https://source.unsplash.com/random/?english,grammar',
+  'https://source.unsplash.com/1600x900/?english,grammar',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Report Writing',
   'Learning to write detailed and structured reports.',
-  'https://source.unsplash.com/random/?english,report,writing',
+  'https://source.unsplash.com/1600x900/?english,report,writing',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Book Reports',
   'Writing book reports to demonstrate comprehension and critical thinking.',
-  'https://source.unsplash.com/random/?english,book,reports',
+  'https://source.unsplash.com/1600x900/?english,book,reports',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Speech Writing and Delivery',
   'Developing skills for writing and delivering effective speeches.',
-  'https://source.unsplash.com/random/?english,speech,writing',
+  'https://source.unsplash.com/1600x900/?english,speech,writing',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Poetry and Figurative Language',
   'Understanding and using figurative language in poetry.',
-  'https://source.unsplash.com/random/?english,poetry,figurative,language',
+  'https://source.unsplash.com/1600x900/?english,poetry,figurative,language',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Debating Skills',
   'Introduction to basic debating skills.',
-  'https://source.unsplash.com/random/?english,debating,skills',
+  'https://source.unsplash.com/1600x900/?english,debating,skills',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Research Skills',
   'Improving research skills for project-based learning.',
-  'https://source.unsplash.com/random/?english,research,skills',
+  'https://source.unsplash.com/1600x900/?english,research,skills',
   '4',
   'ENG'
 );
 SELECT create_topic(
   'Persuasive Writing',
   'Learning techniques for persuasive writing.',
-  'https://source.unsplash.com/random/?english,persuasive,writing',
+  'https://source.unsplash.com/1600x900/?english,persuasive,writing',
   '4',
   'ENG'
 );
@@ -1869,84 +1869,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Reading Comprehension',
   'Developing advanced reading comprehension skills, with a focus on critical analysis of texts.',
-  'https://source.unsplash.com/random/?english,reading,comprehension',
+  'https://source.unsplash.com/1600x900/?english,reading,comprehension',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Complex Sentences',
   'Understanding and creating complex sentences using subordinating conjunctions.',
-  'https://source.unsplash.com/random/?english,complex,sentences',
+  'https://source.unsplash.com/1600x900/?english,complex,sentences',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Essay Writing',
   'Introduction to essay writing, focusing on structure and clarity.',
-  'https://source.unsplash.com/random/?english,essay,writing',
+  'https://source.unsplash.com/1600x900/?english,essay,writing',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Vocabulary Expansion',
   'Continuing to expand vocabulary and improve spelling.',
-  'https://source.unsplash.com/random/?english,vocabulary,expansion',
+  'https://source.unsplash.com/1600x900/?english,vocabulary,expansion',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Advanced Grammar and Punctuation',
   'Understanding and applying advanced grammar and punctuation rules.',
-  'https://source.unsplash.com/random/?english,grammar,punctuation',
+  'https://source.unsplash.com/1600x900/?english,grammar,punctuation',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Public Speaking',
   'Developing public speaking skills and confidence.',
-  'https://source.unsplash.com/random/?english,public,speaking',
+  'https://source.unsplash.com/1600x900/?english,public,speaking',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Analyzing Literature',
   'Introduction to analyzing literature, focusing on theme, plot, and character development.',
-  'https://source.unsplash.com/random/?english,analyzing,literature',
+  'https://source.unsplash.com/1600x900/?english,analyzing,literature',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Poetry Analysis',
   'Understanding and analyzing various forms of poetry.',
-  'https://source.unsplash.com/random/?english,poetry,analysis',
+  'https://source.unsplash.com/1600x900/?english,poetry,analysis',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Research and Report Writing',
   'Developing research skills and learning to write detailed reports.',
-  'https://source.unsplash.com/random/?english,research,report,writing',
+  'https://source.unsplash.com/1600x900/?english,research,report,writing',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Debate and Persuasion',
   'Enhancing debating skills and understanding the art of persuasion in writing and speaking.',
-  'https://source.unsplash.com/random/?english,debate,persuasion',
+  'https://source.unsplash.com/1600x900/?english,debate,persuasion',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Creative Writing - Storytelling',
   'Exploring advanced creative writing techniques, focusing on storytelling.',
-  'https://source.unsplash.com/random/?english,creative,writing,storytelling',
+  'https://source.unsplash.com/1600x900/?english,creative,writing,storytelling',
   '5',
   'ENG'
 );
 SELECT create_topic(
   'Understanding Genres',
   'Introduction to various genres in literature.',
-  'https://source.unsplash.com/random/?english,genres',
+  'https://source.unsplash.com/1600x900/?english,genres',
   '5',
   'ENG'
 );
@@ -1955,84 +1955,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Self and Others',
   'Understanding the concept of self and others and recognizing differences and similarities.',
-  'https://source.unsplash.com/random/?social,studies,self,others',
+  'https://source.unsplash.com/1600x900/?social,studies,self,others',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Family and Friends',
   'Understanding roles and relationships within the family and friends.',
-  'https://source.unsplash.com/random/?social,studies,family,friends',
+  'https://source.unsplash.com/1600x900/?social,studies,family,friends',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Community Helpers',
   'Recognizing community helpers and their roles.',
-  'https://source.unsplash.com/random/?social,studies,community,helpers',
+  'https://source.unsplash.com/1600x900/?social,studies,community,helpers',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Symbols and Holidays',
   'Introduction to national symbols and holidays.',
-  'https://source.unsplash.com/random/?social,studies,symbols,holidays',
+  'https://source.unsplash.com/1600x900/?social,studies,symbols,holidays',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Seasons and Weather',
   'Understanding the change of seasons and weather.',
-  'https://source.unsplash.com/random/?social,studies,seasons,weather',
+  'https://source.unsplash.com/1600x900/?social,studies,seasons,weather',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Basic Geography',
   'Introduction to basic geography concepts like land, water, and simple map skills.',
-  'https://source.unsplash.com/random/?social,studies,geography',
+  'https://source.unsplash.com/1600x900/?social,studies,geography',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Caring for the Environment',
   'Understanding the importance of caring for the environment.',
-  'https://source.unsplash.com/random/?social,studies,environment',
+  'https://source.unsplash.com/1600x900/?social,studies,environment',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Cultural Awareness',
   'Introduction to cultural awareness and diversity.',
-  'https://source.unsplash.com/random/?social,studies,cultural,awareness',
+  'https://source.unsplash.com/1600x900/?social,studies,cultural,awareness',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Basic Economics',
   'Understanding the concept of needs and wants.',
-  'https://source.unsplash.com/random/?social,studies,economics',
+  'https://source.unsplash.com/1600x900/?social,studies,economics',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Time Concepts',
   'Understanding the basic concepts of time such as day and night, today, yesterday, and tomorrow.',
-  'https://source.unsplash.com/random/?social,studies,time',
+  'https://source.unsplash.com/1600x900/?social,studies,time',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Respect and Responsibility',
   'Learning about respect for others and responsibility.',
-  'https://source.unsplash.com/random/?social,studies,respect,responsibility',
+  'https://source.unsplash.com/1600x900/?social,studies,respect,responsibility',
   'Pre-K',
   'SS'
 );
 SELECT create_topic(
   'Storytelling and History',
   'Introduction to storytelling as a way to learn about history.',
-  'https://source.unsplash.com/random/?social,studies,storytelling,history',
+  'https://source.unsplash.com/1600x900/?social,studies,storytelling,history',
   'Pre-K',
   'SS'
 );
@@ -2040,84 +2040,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Individuals and Society',
   'Understanding the roles of individuals within society and how they contribute to communities.',
-  'https://source.unsplash.com/random/?social,studies,individuals,society',
+  'https://source.unsplash.com/1600x900/?social,studies,individuals,society',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Civics and Government',
   'Introduction to basic concepts of civics and government including rules and laws.',
-  'https://source.unsplash.com/random/?social,studies,civics,government',
+  'https://source.unsplash.com/1600x900/?social,studies,civics,government',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Maps and Globes',
   'Understanding basic map and globe skills, including directions and symbols.',
-  'https://source.unsplash.com/random/?social,studies,maps,globes',
+  'https://source.unsplash.com/1600x900/?social,studies,maps,globes',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Cultural Diversity',
   'Exploring cultural diversity and understanding that different people may do things differently.',
-  'https://source.unsplash.com/random/?social,studies,cultural,diversity',
+  'https://source.unsplash.com/1600x900/?social,studies,cultural,diversity',
   'K',
   'SS'
 );
 SELECT create_topic(
   'National Holidays and Symbols',
   'Learning about national holidays and symbols, and understanding their significance.',
-  'https://source.unsplash.com/random/?social,studies,national,holidays,symbols',
+  'https://source.unsplash.com/1600x900/?social,studies,national,holidays,symbols',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Local Community and Helpers',
   'Understanding the local community and recognizing the roles of various community helpers.',
-  'https://source.unsplash.com/random/?social,studies,community,helpers',
+  'https://source.unsplash.com/1600x900/?social,studies,community,helpers',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Understanding Time',
   'Learning about past, present, and future in the context of their lives.',
-  'https://source.unsplash.com/random/?social,studies,time',
+  'https://source.unsplash.com/1600x900/?social,studies,time',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Introduction to Economics',
   'Understanding the concept of goods, services, and making choices.',
-  'https://source.unsplash.com/random/?social,studies,economics',
+  'https://source.unsplash.com/1600x900/?social,studies,economics',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Geographical Features',
   'Identifying basic geographical features like mountains, rivers, and oceans.',
-  'https://source.unsplash.com/random/?social,studies,geography',
+  'https://source.unsplash.com/1600x900/?social,studies,geography',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Citizenship and Responsibility',
   'Learning about being a good citizen and taking responsibility.',
-  'https://source.unsplash.com/random/?social,studies,citizenship',
+  'https://source.unsplash.com/1600x900/?social,studies,citizenship',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Family Traditions and History',
   'Understanding family traditions and history, and how they contribute to one’s identity.',
-  'https://source.unsplash.com/random/?social,studies,family,traditions',
+  'https://source.unsplash.com/1600x900/?social,studies,family,traditions',
   'K',
   'SS'
 );
 SELECT create_topic(
   'Environmental Awareness',
   'Learning about the environment and the importance of taking care of it.',
-  'https://source.unsplash.com/random/?social,studies,environment',
+  'https://source.unsplash.com/1600x900/?social,studies,environment',
   'K',
   'SS'
 );
@@ -2125,84 +2125,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Community Roles and Responsibilities',
   'Understanding the different roles and responsibilities within a community.',
-  'https://source.unsplash.com/random/?social,studies,community,roles',
+  'https://source.unsplash.com/1600x900/?social,studies,community,roles',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Understanding Government',
   'Introduction to the role and structure of government, including leaders and public offices.',
-  'https://source.unsplash.com/random/?social,studies,government',
+  'https://source.unsplash.com/1600x900/?social,studies,government',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Basic Map Skills',
   'Development of basic map skills including reading a map and understanding symbols.',
-  'https://source.unsplash.com/random/?social,studies,map,skills',
+  'https://source.unsplash.com/1600x900/?social,studies,map,skills',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Cultural Appreciation',
   'Further exploration of cultural diversity and the value of appreciating different cultures.',
-  'https://source.unsplash.com/random/?social,studies,culture,appreciation',
+  'https://source.unsplash.com/1600x900/?social,studies,culture,appreciation',
   '1',
   'SS'
 );
 SELECT create_topic(
   'U.S. Symbols and Holidays',
   'Learning about U.S. symbols and holidays, and understanding their significance.',
-  'https://source.unsplash.com/random/?social,studies,us,symbols,holidays',
+  'https://source.unsplash.com/1600x900/?social,studies,us,symbols,holidays',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Local and National Community',
   'Comparison of local and national community and understanding the difference between the two.',
-  'https://source.unsplash.com/random/?social,studies,local,national,community',
+  'https://source.unsplash.com/1600x900/?social,studies,local,national,community',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Past, Present, and Future',
   'Understanding the concept of past, present, and future in the context of history and personal experiences.',
-  'https://source.unsplash.com/random/?social,studies,time',
+  'https://source.unsplash.com/1600x900/?social,studies,time',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Introduction to Trade',
   'Understanding the concept of trade, goods and services, needs and wants.',
-  'https://source.unsplash.com/random/?social,studies,trade',
+  'https://source.unsplash.com/1600x900/?social,studies,trade',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Geographical Features and Regions',
   'Identifying geographical features and understanding the concept of regions.',
-  'https://source.unsplash.com/random/?social,studies,geography,regions',
+  'https://source.unsplash.com/1600x900/?social,studies,geography,regions',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Citizenship and Rights',
   'Learning about citizenship, rights, and the importance of making good choices.',
-  'https://source.unsplash.com/random/?social,studies,citizenship,rights',
+  'https://source.unsplash.com/1600x900/?social,studies,citizenship,rights',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Family and Cultural Traditions',
   'Understanding family and cultural traditions and how they shape communities and societies.',
-  'https://source.unsplash.com/random/?social,studies,family,cultural,traditions',
+  'https://source.unsplash.com/1600x900/?social,studies,family,cultural,traditions',
   '1',
   'SS'
 );
 SELECT create_topic(
   'Environmental Stewardship',
   'Learning about environmental stewardship and the importance of taking care of the environment.',
-  'https://source.unsplash.com/random/?social,studies,environment,stewardship',
+  'https://source.unsplash.com/1600x900/?social,studies,environment,stewardship',
   '1',
   'SS'
 );
@@ -2210,84 +2210,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Exploring the Local Community',
   'Deep dive into understanding the structure and functioning of the local community.',
-  'https://source.unsplash.com/random/?social,studies,community',
+  'https://source.unsplash.com/1600x900/?social,studies,community',
   '2',
   'SS'
 );
 SELECT create_topic(
   'US Constitution Basics',
   'Introduction to the United States Constitution and its importance.',
-  'https://source.unsplash.com/random/?social,studies,constitution',
+  'https://source.unsplash.com/1600x900/?social,studies,constitution',
   '2',
   'SS'
 );
 SELECT create_topic(
   'Understanding Geography',
   'Further development of map skills and understanding geographical concepts.',
-  'https://source.unsplash.com/random/?social,studies,geography',
+  'https://source.unsplash.com/1600x900/?social,studies,geography',
   '2',
   'SS'
 );
 SELECT create_topic(
   'Respecting Diversity',
   'Learning to respect and appreciate diversity in cultures and communities.',
-  'https://source.unsplash.com/random/?social,studies,diversity',
+  'https://source.unsplash.com/1600x900/?social,studies,diversity',
   '2',
   'SS'
 );
 SELECT create_topic(
   'US History and Heroes',
   'Introduction to US history, focusing on significant events and individuals.',
-  'https://source.unsplash.com/random/?social,studies,us,history',
+  'https://source.unsplash.com/1600x900/?social,studies,us,history',
   '2',
   'SS'
 );
 SELECT create_topic(
   'Global Community',
   'Understanding the concept of global community and the importance of global citizenship.',
-  'https://source.unsplash.com/random/?social,studies,global,community',
+  'https://source.unsplash.com/1600x900/?social,studies,global,community',
   '2',
   'SS'
 );
 SELECT create_topic(
   'Time and Chronology',
   'Understanding the concepts of time and chronology in historical contexts.',
-  'https://source.unsplash.com/random/?social,studies,time,chronology',
+  'https://source.unsplash.com/1600x900/?social,studies,time,chronology',
   '2',
   'SS'
 );
 SELECT create_topic(
   'Economic Basics',
   'Learning basic economic concepts like supply, demand, and the importance of resources.',
-  'https://source.unsplash.com/random/?social,studies,economics',
+  'https://source.unsplash.com/1600x900/?social,studies,economics',
   '2',
   'SS'
 );
 SELECT create_topic(
   'State and National Identity',
   'Understanding state and national identity, symbols, and important landmarks.',
-  'https://source.unsplash.com/random/?social,studies,state,national,identity',
+  'https://source.unsplash.com/1600x900/?social,studies,state,national,identity',
   '2',
   'SS'
 );
 SELECT create_topic(
   'Rights and Responsibilities',
   'Further learning about citizenship, rights, responsibilities, and the democratic process.',
-  'https://source.unsplash.com/random/?social,studies,citizenship',
+  'https://source.unsplash.com/1600x900/?social,studies,citizenship',
   '2',
   'SS'
 );
 SELECT create_topic(
   'Cultural Heritage',
   'Exploring different cultural heritages and understanding their contributions to society.',
-  'https://source.unsplash.com/random/?social,studies,culture,heritage',
+  'https://source.unsplash.com/1600x900/?social,studies,culture,heritage',
   '2',
   'SS'
 );
 SELECT create_topic(
   'Environmental Conservation',
   'Learning about environmental conservation and the role of individuals and communities.',
-  'https://source.unsplash.com/random/?social,studies,environment,conservation',
+  'https://source.unsplash.com/1600x900/?social,studies,environment,conservation',
   '2',
   'SS'
 );
@@ -2295,84 +2295,84 @@ SELECT create_topic(
 SELECT create_topic(
   'Understanding Democracy',
   'Introduction to the concept of democracy, its principles and values.',
-  'https://source.unsplash.com/random/?social,studies,democracy',
+  'https://source.unsplash.com/1600x900/?social,studies,democracy',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Historical Events',
   'Study of significant events in history and their impact on present times.',
-  'https://source.unsplash.com/random/?social,studies,historical',
+  'https://source.unsplash.com/1600x900/?social,studies,historical',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Global Cultures',
   'In-depth study of various global cultures, traditions, and practices.',
-  'https://source.unsplash.com/random/?social,studies,global,cultures',
+  'https://source.unsplash.com/1600x900/?social,studies,global,cultures',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Economic Systems',
   'Understanding different economic systems and their impact on society.',
-  'https://source.unsplash.com/random/?social,studies,economics',
+  'https://source.unsplash.com/1600x900/?social,studies,economics',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Geographical Features and Climate',
   'Exploring the relationship between geographical features and climate conditions.',
-  'https://source.unsplash.com/random/?social,studies,geography,climate',
+  'https://source.unsplash.com/1600x900/?social,studies,geography,climate',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Importance of Laws',
   'Understanding the importance of laws, rights, and responsibilities.',
-  'https://source.unsplash.com/random/?social,studies,laws',
+  'https://source.unsplash.com/1600x900/?social,studies,laws',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Local and National Landmarks',
   'In-depth study of significant local and national landmarks.',
-  'https://source.unsplash.com/random/?social,studies,landmarks',
+  'https://source.unsplash.com/1600x900/?social,studies,landmarks',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Understanding Government',
   'Learning about the structure and functions of the government.',
-  'https://source.unsplash.com/random/?social,studies,government',
+  'https://source.unsplash.com/1600x900/?social,studies,government',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Cultural Contributions',
   'Understanding how different cultures contribute to society.',
-  'https://source.unsplash.com/random/?social,studies,culture,contributions',
+  'https://source.unsplash.com/1600x900/?social,studies,culture,contributions',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Environmental Impact',
   'Exploring the impact of human activities on the environment.',
-  'https://source.unsplash.com/random/?social,studies,environment',
+  'https://source.unsplash.com/1600x900/?social,studies,environment',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Understanding Communities',
   'Understanding the functioning of local, national, and global communities.',
-  'https://source.unsplash.com/random/?social,studies,communities',
+  'https://source.unsplash.com/1600x900/?social,studies,communities',
   '3',
   'SS'
 );
 SELECT create_topic(
   'Historical Figures',
   'Study of influential historical figures and their contributions.',
-  'https://source.unsplash.com/random/?social,studies,historical,figures',
+  'https://source.unsplash.com/1600x900/?social,studies,historical,figures',
   '3',
   'SS'
 );
@@ -2380,84 +2380,84 @@ SELECT create_topic(
 SELECT create_topic(
   'State Government',
   'Study of the structure and function of state government.',
-  'https://source.unsplash.com/random/?social,studies,state,government',
+  'https://source.unsplash.com/1600x900/?social,studies,state,government',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Colonial History',
   'Exploration of the colonial history of the United States.',
-  'https://source.unsplash.com/random/?social,studies,colonial,history',
+  'https://source.unsplash.com/1600x900/?social,studies,colonial,history',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Cultural Diversity',
   'Understanding and appreciating cultural diversity in the nation and the world.',
-  'https://source.unsplash.com/random/?social,studies,cultural,diversity',
+  'https://source.unsplash.com/1600x900/?social,studies,cultural,diversity',
   '4',
   'SS'
 );
 SELECT create_topic(
   'National Symbols',
   'Study of national symbols and their significance.',
-  'https://source.unsplash.com/random/?social,studies,national,symbols',
+  'https://source.unsplash.com/1600x900/?social,studies,national,symbols',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Geography and Map Skills',
   'Enhancing skills in geography and map interpretation.',
-  'https://source.unsplash.com/random/?social,studies,geography,map,skills',
+  'https://source.unsplash.com/1600x900/?social,studies,geography,map,skills',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Immigration and Migration',
   'Exploration of the history and impact of immigration and migration.',
-  'https://source.unsplash.com/random/?social,studies,immigration,migration',
+  'https://source.unsplash.com/1600x900/?social,studies,immigration,migration',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Federal Government',
   'Understanding the structure and function of the federal government.',
-  'https://source.unsplash.com/random/?social,studies,federal,government',
+  'https://source.unsplash.com/1600x900/?social,studies,federal,government',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Civil Rights',
   'Study of the civil rights movement and its implications.',
-  'https://source.unsplash.com/random/?social,studies,civil,rights',
+  'https://source.unsplash.com/1600x900/?social,studies,civil,rights',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Global Awareness',
   'Fostering global awareness and understanding global issues.',
-  'https://source.unsplash.com/random/?social,studies,global,awareness',
+  'https://source.unsplash.com/1600x900/?social,studies,global,awareness',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Economic Principles',
   'Introduction to basic economic principles and financial literacy.',
-  'https://source.unsplash.com/random/?social,studies,economics',
+  'https://source.unsplash.com/1600x900/?social,studies,economics',
   '4',
   'SS'
 );
 SELECT create_topic(
   'Indigenous Peoples of America',
   'Study of the history and culture of indigenous peoples of America.',
-  'https://source.unsplash.com/random/?social,studies,indigenous,peoples',
+  'https://source.unsplash.com/1600x900/?social,studies,indigenous,peoples',
   '4',
   'SS'
 );
 SELECT create_topic(
   'World History',
   'Overview of important events in world history.',
-  'https://source.unsplash.com/random/?social,studies,world,history',
+  'https://source.unsplash.com/1600x900/?social,studies,world,history',
   '4',
   'SS'
 );
@@ -2465,84 +2465,84 @@ SELECT create_topic(
 SELECT create_topic(
   'U.S. Constitution and Bill of Rights',
   'Detailed study of the U.S. Constitution and Bill of Rights.',
-  'https://source.unsplash.com/random/?social,studies,constitution',
+  'https://source.unsplash.com/1600x900/?social,studies,constitution',
   '5',
   'SS'
 );
 SELECT create_topic(
   'World Geography',
   'In-depth study of world geography and its impact on culture and history.',
-  'https://source.unsplash.com/random/?social,studies,world,geography',
+  'https://source.unsplash.com/1600x900/?social,studies,world,geography',
   '5',
   'SS'
 );
 SELECT create_topic(
   'Economic Systems',
   'Exploration of different economic systems in the world.',
-  'https://source.unsplash.com/random/?social,studies,economic,systems',
+  'https://source.unsplash.com/1600x900/?social,studies,economic,systems',
   '5',
   'SS'
 );
 SELECT create_topic(
   'American Revolution',
   'Detailed study of the American Revolution and its impact.',
-  'https://source.unsplash.com/random/?social,studies,american,revolution',
+  'https://source.unsplash.com/1600x900/?social,studies,american,revolution',
   '5',
   'SS'
 );
 SELECT create_topic(
   'Civil War and Reconstruction',
   'Understanding the Civil War and its aftermath, including Reconstruction.',
-  'https://source.unsplash.com/random/?social,studies,civil,war',
+  'https://source.unsplash.com/1600x900/?social,studies,civil,war',
   '5',
   'SS'
 );
 SELECT create_topic(
   'World Religions',
   'Study of major world religions and their impact on history and culture.',
-  'https://source.unsplash.com/random/?social,studies,religions',
+  'https://source.unsplash.com/1600x900/?social,studies,religions',
   '5',
   'SS'
 );
 SELECT create_topic(
   'Citizenship and Civic Duties',
   'Understanding the rights and responsibilities of citizenship.',
-  'https://source.unsplash.com/random/?social,studies,citizenship',
+  'https://source.unsplash.com/1600x900/?social,studies,citizenship',
   '5',
   'SS'
 );
 SELECT create_topic(
   'Immigration History and Policy',
   'Study of the history of immigration in the U.S. and its current policy.',
-  'https://source.unsplash.com/random/?social,studies,immigration',
+  'https://source.unsplash.com/1600x900/?social,studies,immigration',
   '5',
   'SS'
 );
 SELECT create_topic(
   'Geopolitical Structures',
   'Understanding geopolitical structures and international relations.',
-  'https://source.unsplash.com/random/?social,studies,geopolitics',
+  'https://source.unsplash.com/1600x900/?social,studies,geopolitics',
   '5',
   'SS'
 );
 SELECT create_topic(
   'Environmental Science and Policy',
   'Introduction to environmental science and related policy issues.',
-  'https://source.unsplash.com/random/?social,studies,environmental',
+  'https://source.unsplash.com/1600x900/?social,studies,environmental',
   '5',
   'SS'
 );
 SELECT create_topic(
   'The Great Depression and New Deal',
   'Study of the Great Depression and the New Deal policies.',
-  'https://source.unsplash.com/random/?social,studies,great,depression',
+  'https://source.unsplash.com/1600x900/?social,studies,great,depression',
   '5',
   'SS'
 );
 SELECT create_topic(
   'Global Conflicts and Resolutions',
   'Exploration of major global conflicts and their resolutions.',
-  'https://source.unsplash.com/random/?social,studies,global,conflicts',
+  'https://source.unsplash.com/1600x900/?social,studies,global,conflicts',
   '5',
   'SS'
 );
@@ -2551,35 +2551,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Exploring Colors',
   'Introduction to basic colors and how they can be mixed to create new ones.',
-  'https://source.unsplash.com/random/?art,colors',
+  'https://source.unsplash.com/1600x900/?art,colors',
   'Pre-K',
   'ART'
 );
 SELECT create_topic(
   'Shapes and Patterns',
   'Understanding different shapes and patterns, and how they can be used in art.',
-  'https://source.unsplash.com/random/?art,shapes',
+  'https://source.unsplash.com/1600x900/?art,shapes',
   'Pre-K',
   'ART'
 );
 SELECT create_topic(
   'Texture in Art',
   'Exploring different textures by using various materials.',
-  'https://source.unsplash.com/random/?art,texture',
+  'https://source.unsplash.com/1600x900/?art,texture',
   'Pre-K',
   'ART'
 );
 SELECT create_topic(
   'Crafting with Paper',
   'Creating simple art projects using different types of paper.',
-  'https://source.unsplash.com/random/?art,paper',
+  'https://source.unsplash.com/1600x900/?art,paper',
   'Pre-K',
   'ART'
 );
 SELECT create_topic(
   'Introduction to Clay',
   'Basic hands-on experience with clay, learning to mold and shape it.',
-  'https://source.unsplash.com/random/?art,clay',
+  'https://source.unsplash.com/1600x900/?art,clay',
   'Pre-K',
   'ART'
 );
@@ -2587,35 +2587,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Drawing Basic Shapes',
   'Learning to draw basic shapes and how they can be combined to make complex figures.',
-  'https://source.unsplash.com/random/?art,shapes',
+  'https://source.unsplash.com/1600x900/?art,shapes',
   'K',
   'ART'
 );
 SELECT create_topic(
   'Painting Techniques',
   'Introduction to basic painting techniques using watercolors.',
-  'https://source.unsplash.com/random/?art,painting',
+  'https://source.unsplash.com/1600x900/?art,painting',
   'K',
   'ART'
 );
 SELECT create_topic(
   'Making Collages',
   'Creating collages using different materials to understand composition.',
-  'https://source.unsplash.com/random/?art,collage',
+  'https://source.unsplash.com/1600x900/?art,collage',
   'K',
   'ART'
 );
 SELECT create_topic(
   'Introduction to Printmaking',
   'Exploring the process of printmaking using simple tools and methods.',
-  'https://source.unsplash.com/random/?art,printmaking',
+  'https://source.unsplash.com/1600x900/?art,printmaking',
   'K',
   'ART'
 );
 SELECT create_topic(
   'Art from Around the World',
   'Exposure to art from different cultures around the world.',
-  'https://source.unsplash.com/random/?art,world',
+  'https://source.unsplash.com/1600x900/?art,world',
   'K',
   'ART'
 );
@@ -2623,35 +2623,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Drawing from Observation',
   'Learning to draw objects from observation to improve accuracy.',
-  'https://source.unsplash.com/random/?art,observation',
+  'https://source.unsplash.com/1600x900/?art,observation',
   '1',
   'ART'
 );
 SELECT create_topic(
   'Introduction to Sculpture',
   'Understanding the basics of 3D design and creating simple sculptures.',
-  'https://source.unsplash.com/random/?art,sculpture',
+  'https://source.unsplash.com/1600x900/?art,sculpture',
   '1',
   'ART'
 );
 SELECT create_topic(
   'Learning about Artists',
   'Exploring the works of famous artists and their styles.',
-  'https://source.unsplash.com/random/?art,artists',
+  'https://source.unsplash.com/1600x900/?art,artists',
   '1',
   'ART'
 );
 SELECT create_topic(
   'Color Theory',
   'Introduction to the color wheel and basic color theory.',
-  'https://source.unsplash.com/random/?art,color-theory',
+  'https://source.unsplash.com/1600x900/?art,color-theory',
   '1',
   'ART'
 );
 SELECT create_topic(
   'Art and Storytelling',
   'Using art to tell a story or express an idea.',
-  'https://source.unsplash.com/random/?art,storytelling',
+  'https://source.unsplash.com/1600x900/?art,storytelling',
   '1',
   'ART'
 );
@@ -2659,35 +2659,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Drawing Techniques',
   'Exploring more advanced techniques to improve drawing skills.',
-  'https://source.unsplash.com/random/?art,drawing',
+  'https://source.unsplash.com/1600x900/?art,drawing',
   '2',
   'ART'
 );
 SELECT create_topic(
   'Exploring Mediums',
   'Experimenting with different artistic mediums such as pastels, charcoal, and acrylic paints.',
-  'https://source.unsplash.com/random/?art,mediums',
+  'https://source.unsplash.com/1600x900/?art,mediums',
   '2',
   'ART'
 );
 SELECT create_topic(
   'Art History',
   'Learning about different art movements and their impact on society.',
-  'https://source.unsplash.com/random/?art,history',
+  'https://source.unsplash.com/1600x900/?art,history',
   '2',
   'ART'
 );
 SELECT create_topic(
   'Creating a Portfolio',
   'Guidance on creating a portfolio of artworks and critiquing skills.',
-  'https://source.unsplash.com/random/?art,portfolio',
+  'https://source.unsplash.com/1600x900/?art,portfolio',
   '2',
   'ART'
 );
 SELECT create_topic(
   'Public Art',
   'Understanding the role and significance of public art in communities.',
-  'https://source.unsplash.com/random/?art,public-art',
+  'https://source.unsplash.com/1600x900/?art,public-art',
   '2',
   'ART'
 );
@@ -2695,35 +2695,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Perspective Drawing',
   'Learning the principles of perspective to create depth in drawings.',
-  'https://source.unsplash.com/random/?art,perspective',
+  'https://source.unsplash.com/1600x900/?art,perspective',
   '3',
   'ART'
 );
 SELECT create_topic(
   'Exploring Styles and Genres',
   'Understanding different styles and genres of art.',
-  'https://source.unsplash.com/random/?art,genres',
+  'https://source.unsplash.com/1600x900/?art,genres',
   '3',
   'ART'
 );
 SELECT create_topic(
   'Advanced Color Theory',
   'Expanding knowledge on color theory, including the use of complementary and analogous colors.',
-  'https://source.unsplash.com/random/?art,color-theory',
+  'https://source.unsplash.com/1600x900/?art,color-theory',
   '3',
   'ART'
 );
 SELECT create_topic(
   'Digital Art Introduction',
   'Introduction to creating art with digital tools.',
-  'https://source.unsplash.com/random/?art,digital',
+  'https://source.unsplash.com/1600x900/?art,digital',
   '3',
   'ART'
 );
 SELECT create_topic(
   'Art Critique',
   'Learning to critique art, including their own, in constructive ways.',
-  'https://source.unsplash.com/random/?art,critique',
+  'https://source.unsplash.com/1600x900/?art,critique',
   '3',
   'ART'
 );
@@ -2731,35 +2731,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Digital Art',
   'Exploring more advanced techniques and tools in digital art creation.',
-  'https://source.unsplash.com/random/?art,digital-art',
+  'https://source.unsplash.com/1600x900/?art,digital-art',
   '4',
   'ART'
 );
 SELECT create_topic(
   'Mixed Media Art',
   'Experimenting with combining different artistic mediums in one piece.',
-  'https://source.unsplash.com/random/?art,mixed-media',
+  'https://source.unsplash.com/1600x900/?art,mixed-media',
   '4',
   'ART'
 );
 SELECT create_topic(
   'Art and Society',
   'Understanding how art reflects and influences society and culture.',
-  'https://source.unsplash.com/random/?art,society',
+  'https://source.unsplash.com/1600x900/?art,society',
   '4',
   'ART'
 );
 SELECT create_topic(
   'Personal Style Development',
   'Guidance on developing a personal artistic style.',
-  'https://source.unsplash.com/random/?art,style',
+  'https://source.unsplash.com/1600x900/?art,style',
   '4',
   'ART'
 );
 SELECT create_topic(
   'Art Exhibition Preparation',
   'Learning how to prepare and present an art exhibition.',
-  'https://source.unsplash.com/random/?art,exhibition',
+  'https://source.unsplash.com/1600x900/?art,exhibition',
   '4',
   'ART'
 );
@@ -2767,35 +2767,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Composition Techniques',
   'Mastering the use of compositional techniques in creating artworks.',
-  'https://source.unsplash.com/random/?art,composition',
+  'https://source.unsplash.com/1600x900/?art,composition',
   '5',
   'ART'
 );
 SELECT create_topic(
   'Portfolio Creation',
   'Learning how to create a cohesive and impressive art portfolio.',
-  'https://source.unsplash.com/random/?art,portfolio',
+  'https://source.unsplash.com/1600x900/?art,portfolio',
   '5',
   'ART'
 );
 SELECT create_topic(
   'Art Career Paths',
   'Exploring different career paths in the field of art.',
-  'https://source.unsplash.com/random/?art,career',
+  'https://source.unsplash.com/1600x900/?art,career',
   '5',
   'ART'
 );
 SELECT create_topic(
   'Independent Art Projects',
   'Developing skills to create independent art projects.',
-  'https://source.unsplash.com/random/?art,projects',
+  'https://source.unsplash.com/1600x900/?art,projects',
   '5',
   'ART'
 );
 SELECT create_topic(
   'Art History',
   'Understanding key historical periods and movements in art.',
-  'https://source.unsplash.com/random/?art,history',
+  'https://source.unsplash.com/1600x900/?art,history',
   '5',
   'ART'
 );
@@ -2804,35 +2804,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Introduction to Rhythm',
   'Introducing the concept of rhythm and beat in music.',
-  'https://source.unsplash.com/random/?music,rhythm',
+  'https://source.unsplash.com/1600x900/?music,rhythm',
   'Pre-K',
   'MUS'
 );
 SELECT create_topic(
   'Exploring Sounds',
   'Exploring different sounds from various musical instruments.',
-  'https://source.unsplash.com/random/?music,instruments',
+  'https://source.unsplash.com/1600x900/?music,instruments',
   'Pre-K',
   'MUS'
 );
 SELECT create_topic(
   'Singing Simple Songs',
   'Learning and singing simple songs.',
-  'https://source.unsplash.com/random/?music,singing',
+  'https://source.unsplash.com/1600x900/?music,singing',
   'Pre-K',
   'MUS'
 );
 SELECT create_topic(
   'Movement to Music',
   'Understanding how to move and dance to the beat of the music.',
-  'https://source.unsplash.com/random/?music,dance',
+  'https://source.unsplash.com/1600x900/?music,dance',
   'Pre-K',
   'MUS'
 );
 SELECT create_topic(
   'Musical Storytelling',
   'Listening to and understanding stories told through music.',
-  'https://source.unsplash.com/random/?music,storytelling',
+  'https://source.unsplash.com/1600x900/?music,storytelling',
   'Pre-K',
   'MUS'
 );
@@ -2840,35 +2840,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Recognizing Musical Patterns',
   'Learning to recognize and repeat simple musical patterns.',
-  'https://source.unsplash.com/random/?music,patterns',
+  'https://source.unsplash.com/1600x900/?music,patterns',
   'K',
   'MUS'
 );
 SELECT create_topic(
   'Introduction to Musical Instruments',
   'Getting familiar with different types of musical instruments.',
-  'https://source.unsplash.com/random/?music,instruments',
+  'https://source.unsplash.com/1600x900/?music,instruments',
   'K',
   'MUS'
 );
 SELECT create_topic(
   'Singing in a Group',
   'Practicing singing songs together as a group.',
-  'https://source.unsplash.com/random/?music,singing',
+  'https://source.unsplash.com/1600x900/?music,singing',
   'K',
   'MUS'
 );
 SELECT create_topic(
   'Moving to the Beat',
   'Enhancing ability to move and dance to the rhythm of the music.',
-  'https://source.unsplash.com/random/?music,dance',
+  'https://source.unsplash.com/1600x900/?music,dance',
   'K',
   'MUS'
 );
 SELECT create_topic(
   'Making Music with Simple Instruments',
   'Creating music using simple instruments like drums, shakers, and xylophones.',
-  'https://source.unsplash.com/random/?music,simple-instruments',
+  'https://source.unsplash.com/1600x900/?music,simple-instruments',
   'K',
   'MUS'
 );
@@ -2876,35 +2876,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Reading Basic Music Notation',
   'Introduction to reading and understanding basic music notation.',
-  'https://source.unsplash.com/random/?music,notation',
+  'https://source.unsplash.com/1600x900/?music,notation',
   '1',
   'MUS'
 );
 SELECT create_topic(
   'Playing Simple Melodies',
   'Learning to play simple melodies on a musical instrument.',
-  'https://source.unsplash.com/random/?music,melodies',
+  'https://source.unsplash.com/1600x900/?music,melodies',
   '1',
   'MUS'
 );
 SELECT create_topic(
   'Exploring Different Musical Styles',
   'Introduction to different styles of music from around the world.',
-  'https://source.unsplash.com/random/?music,styles',
+  'https://source.unsplash.com/1600x900/?music,styles',
   '1',
   'MUS'
 );
 SELECT create_topic(
   'Singing Solo',
   'Practicing singing solo and developing vocal skills.',
-  'https://source.unsplash.com/random/?music,solo-singing',
+  'https://source.unsplash.com/1600x900/?music,solo-singing',
   '1',
   'MUS'
 );
 SELECT create_topic(
   'Creating Simple Musical Compositions',
   'Introduction to creating simple musical compositions.',
-  'https://source.unsplash.com/random/?music,compositions',
+  'https://source.unsplash.com/1600x900/?music,compositions',
   '1',
   'MUS'
 );
@@ -2912,35 +2912,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Intermediate Music Notation',
   'Deepening understanding of music notation and learning more complex symbols.',
-  'https://source.unsplash.com/random/?music,notation',
+  'https://source.unsplash.com/1600x900/?music,notation',
   '2',
   'MUS'
 );
 SELECT create_topic(
   'Playing Melodies with Chords',
   'Learning to play melodies accompanied by simple chords on a musical instrument.',
-  'https://source.unsplash.com/random/?music,chords',
+  'https://source.unsplash.com/1600x900/?music,chords',
   '2',
   'MUS'
 );
 SELECT create_topic(
   'Introduction to Composing',
   'Starting to compose simple pieces of music.',
-  'https://source.unsplash.com/random/?music,composing',
+  'https://source.unsplash.com/1600x900/?music,composing',
   '2',
   'MUS'
 );
 SELECT create_topic(
   'Singing in Harmony',
   'Learning to sing in harmony with others.',
-  'https://source.unsplash.com/random/?music,harmony',
+  'https://source.unsplash.com/1600x900/?music,harmony',
   '2',
   'MUS'
 );
 SELECT create_topic(
   'Exploring Music from Different Cultures',
   'Learning about the music of different cultures from around the world.',
-  'https://source.unsplash.com/random/?music,culture',
+  'https://source.unsplash.com/1600x900/?music,culture',
   '2',
   'MUS'
 );
@@ -2948,35 +2948,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Music Notation',
   'Learning more advanced music notation and symbols.',
-  'https://source.unsplash.com/random/?music,notation',
+  'https://source.unsplash.com/1600x900/?music,notation',
   '3',
   'MUS'
 );
 SELECT create_topic(
   'Playing Complex Melodies and Chords',
   'Progressing to play more complex melodies and chords on a musical instrument.',
-  'https://source.unsplash.com/random/?music,melodies,chords',
+  'https://source.unsplash.com/1600x900/?music,melodies,chords',
   '3',
   'MUS'
 );
 SELECT create_topic(
   'Composing and Arranging Music',
   'Creating original compositions and learning to arrange music for different instruments.',
-  'https://source.unsplash.com/random/?music,composing,arranging',
+  'https://source.unsplash.com/1600x900/?music,composing,arranging',
   '3',
   'MUS'
 );
 SELECT create_topic(
   'Performing Solo and in Ensemble',
   'Developing performance skills, both solo and as part of an ensemble.',
-  'https://source.unsplash.com/random/?music,performance',
+  'https://source.unsplash.com/1600x900/?music,performance',
   '3',
   'MUS'
 );
 SELECT create_topic(
   'Analyzing Music',
   'Learning to listen to and analyze music of various styles and genres.',
-  'https://source.unsplash.com/random/?music,analyzing',
+  'https://source.unsplash.com/1600x900/?music,analyzing',
   '3',
   'MUS'
 );
@@ -2984,35 +2984,35 @@ SELECT create_topic(
 SELECT create_topic(
   'In-Depth Music Theory',
   'Deepening understanding of music theory and its application.',
-  'https://source.unsplash.com/random/?music,theory',
+  'https://source.unsplash.com/1600x900/?music,theory',
   '4',
   'MUS'
 );
 SELECT create_topic(
   'Complex Compositions',
   'Learning to create and understand complex musical compositions.',
-  'https://source.unsplash.com/random/?music,compositions',
+  'https://source.unsplash.com/1600x900/?music,compositions',
   '4',
   'MUS'
 );
 SELECT create_topic(
   'Music Interpretation',
   'Understanding and applying techniques of music interpretation in performance.',
-  'https://source.unsplash.com/random/?music,interpretation',
+  'https://source.unsplash.com/1600x900/?music,interpretation',
   '4',
   'MUS'
 );
 SELECT create_topic(
   'Improvisation Techniques',
   'Learning and practicing techniques for improvising in music.',
-  'https://source.unsplash.com/random/?music,improvisation',
+  'https://source.unsplash.com/1600x900/?music,improvisation',
   '4',
   'MUS'
 );
 SELECT create_topic(
   'Music History and Styles',
   'Studying the history of music and the characteristics of different musical styles.',
-  'https://source.unsplash.com/random/?music,history',
+  'https://source.unsplash.com/1600x900/?music,history',
   '4',
   'MUS'
 );
@@ -3020,35 +3020,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Music Analysis',
   'Understanding and applying advanced techniques for analyzing music.',
-  'https://source.unsplash.com/random/?music,analysis',
+  'https://source.unsplash.com/1600x900/?music,analysis',
   '5',
   'MUS'
 );
 SELECT create_topic(
   'Performance Techniques',
   'Learning advanced performance techniques for solo and ensemble playing.',
-  'https://source.unsplash.com/random/?music,performance',
+  'https://source.unsplash.com/1600x900/?music,performance',
   '5',
   'MUS'
 );
 SELECT create_topic(
   'Composition and Arrangement',
   'Creating complex compositions and learning to arrange for different ensembles.',
-  'https://source.unsplash.com/random/?music,composition,arrangement',
+  'https://source.unsplash.com/1600x900/?music,composition,arrangement',
   '5',
   'MUS'
 );
 SELECT create_topic(
   'Music Criticism',
   'Learning to critique and discuss music with understanding and insight.',
-  'https://source.unsplash.com/random/?music,criticism',
+  'https://source.unsplash.com/1600x900/?music,criticism',
   '5',
   'MUS'
 );
 SELECT create_topic(
   'Music and Culture',
   'Exploring the role of music in various cultures and historical periods.',
-  'https://source.unsplash.com/random/?music,culture',
+  'https://source.unsplash.com/1600x900/?music,culture',
   '5',
   'MUS'
 );
@@ -3057,35 +3057,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Gross Motor Skills',
   'Developing large muscle movements such as walking, running, and jumping.',
-  'https://source.unsplash.com/random/?kids,running',
+  'https://source.unsplash.com/1600x900/?kids,running',
   'Pre-K',
   'PE'
 );
 SELECT create_topic(
   'Fundamental Movement Patterns',
   'Learning the basic movement patterns like walking, running, hopping, skipping, jumping, galloping, and sliding.',
-  'https://source.unsplash.com/random/?kids,playing',
+  'https://source.unsplash.com/1600x900/?kids,playing',
   'Pre-K',
   'PE'
 );
 SELECT create_topic(
   'Spatial Awareness',
   'Understanding personal space and how to move in relation to other people and objects.',
-  'https://source.unsplash.com/random/?kids,spatial-awareness',
+  'https://source.unsplash.com/1600x900/?kids,spatial-awareness',
   'Pre-K',
   'PE'
 );
 SELECT create_topic(
   'Balance and Coordination',
   'Improving balance and coordination through games and activities.',
-  'https://source.unsplash.com/random/?kids,balance',
+  'https://source.unsplash.com/1600x900/?kids,balance',
   'Pre-K',
   'PE'
 );
 SELECT create_topic(
   'Healthy Habits',
   'Introduction to basic concepts of nutrition and the importance of physical activity.',
-  'https://source.unsplash.com/random/?kids,healthy-habits',
+  'https://source.unsplash.com/1600x900/?kids,healthy-habits',
   'Pre-K',
   'PE'
 );
@@ -3093,35 +3093,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Developing Motor Skills',
   'Further development of motor skills and learning to control movements more precisely.',
-  'https://source.unsplash.com/random/?kids,motor-skills',
+  'https://source.unsplash.com/1600x900/?kids,motor-skills',
   'K',
   'PE'
 );
 SELECT create_topic(
   'Teamwork and Cooperation',
   'Learning to work together and cooperate with others in group activities and games.',
-  'https://source.unsplash.com/random/?kids,teamwork',
+  'https://source.unsplash.com/1600x900/?kids,teamwork',
   'K',
   'PE'
 );
 SELECT create_topic(
   'Introduction to Sports',
   'Introduction to simple sports and games, focusing on enjoyment and participation.',
-  'https://source.unsplash.com/random/?kids,sports',
+  'https://source.unsplash.com/1600x900/?kids,sports',
   'K',
   'PE'
 );
 SELECT create_topic(
   'Safety Rules',
   'Understanding basic safety rules for physical activities and games.',
-  'https://source.unsplash.com/random/?kids,safety',
+  'https://source.unsplash.com/1600x900/?kids,safety',
   'K',
   'PE'
 );
 SELECT create_topic(
   'Importance of Exercise',
   'Learning about the importance of regular physical exercise for health.',
-  'https://source.unsplash.com/random/?kids,exercise',
+  'https://source.unsplash.com/1600x900/?kids,exercise',
   'K',
   'PE'
 );
@@ -3129,35 +3129,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Basic Sport Skills',
   'Introduction to basic skills in a variety of sports such as throwing, catching, and kicking.',
-  'https://source.unsplash.com/random/?kids,sport-skills',
+  'https://source.unsplash.com/1600x900/?kids,sport-skills',
   '1',
   'PE'
 );
 SELECT create_topic(
   'Game Rules and Strategy',
   'Learning basic rules and strategies of simple games.',
-  'https://source.unsplash.com/random/?kids,game-rules',
+  'https://source.unsplash.com/1600x900/?kids,game-rules',
   '1',
   'PE'
 );
 SELECT create_topic(
   'Fitness Testing',
   'Introduction to basic fitness testing to assess physical capabilities.',
-  'https://source.unsplash.com/random/?kids,fitness-testing',
+  'https://source.unsplash.com/1600x900/?kids,fitness-testing',
   '1',
   'PE'
 );
 SELECT create_topic(
   'Personal and Social Responsibility',
   'Learning about responsibility, respect, and sportsmanship in physical activities.',
-  'https://source.unsplash.com/random/?kids,responsibility',
+  'https://source.unsplash.com/1600x900/?kids,responsibility',
   '1',
   'PE'
 );
 SELECT create_topic(
   'Health-Related Fitness',
   'Understanding the components of health-related fitness such as cardiovascular endurance, muscular strength, and flexibility.',
-  'https://source.unsplash.com/random/?kids,fitness',
+  'https://source.unsplash.com/1600x900/?kids,fitness',
   '1',
   'PE'
 );
@@ -3165,35 +3165,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Motor Skills',
   'Development of more advanced motor skills and coordination.',
-  'https://source.unsplash.com/random/?kids,advanced-motor-skills',
+  'https://source.unsplash.com/1600x900/?kids,advanced-motor-skills',
   '2',
   'PE'
 );
 SELECT create_topic(
   'Team Sports',
   'Introduction to team sports and the skills and strategies involved.',
-  'https://source.unsplash.com/random/?kids,team-sports',
+  'https://source.unsplash.com/1600x900/?kids,team-sports',
   '2',
   'PE'
 );
 SELECT create_topic(
   'Individual and Dual Sports',
   'Exploration of individual and dual sports such as tennis and gymnastics.',
-  'https://source.unsplash.com/random/?kids,individual-sports',
+  'https://source.unsplash.com/1600x900/?kids,individual-sports',
   '2',
   'PE'
 );
 SELECT create_topic(
   'Physical Fitness Plan',
   'Introduction to creating a personal physical fitness plan.',
-  'https://source.unsplash.com/random/?kids,fitness-plan',
+  'https://source.unsplash.com/1600x900/?kids,fitness-plan',
   '2',
   'PE'
 );
 SELECT create_topic(
   'Lifelong Physical Activities',
   'Learning about physical activities that can be enjoyed throughout life, such as biking and swimming.',
-  'https://source.unsplash.com/random/?kids,lifelong-activities',
+  'https://source.unsplash.com/1600x900/?kids,lifelong-activities',
   '2',
   'PE'
 );
@@ -3201,35 +3201,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Movement Concepts',
   'Exploring concepts related to movement, such as space awareness, effort, and relationships.',
-  'https://source.unsplash.com/random/?kids,movement-concepts',
+  'https://source.unsplash.com/1600x900/?kids,movement-concepts',
   '3',
   'PE'
 );
 SELECT create_topic(
   'Health Maintenance',
   'Understanding how physical activity contributes to health maintenance and disease prevention.',
-  'https://source.unsplash.com/random/?kids,health-maintenance',
+  'https://source.unsplash.com/1600x900/?kids,health-maintenance',
   '3',
   'PE'
 );
 SELECT create_topic(
   'Personal Fitness Goals',
   'Setting and working towards personal fitness goals.',
-  'https://source.unsplash.com/random/?kids,fitness-goals',
+  'https://source.unsplash.com/1600x900/?kids,fitness-goals',
   '3',
   'PE'
 );
 SELECT create_topic(
   'Outdoor Activities',
   'Exploring a variety of outdoor activities and understanding their benefits.',
-  'https://source.unsplash.com/random/?kids,outdoor-activities',
+  'https://source.unsplash.com/1600x900/?kids,outdoor-activities',
   '3',
   'PE'
 );
 SELECT create_topic(
   'Nutrition and Physical Activity',
   'Understanding the relationship between nutrition and physical activity.',
-  'https://source.unsplash.com/random/?kids,nutrition',
+  'https://source.unsplash.com/1600x900/?kids,nutrition',
   '3',
   'PE'
 );
@@ -3237,35 +3237,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Skill-Related Fitness',
   'Understanding the components of skill-related fitness such as agility, balance, and coordination.',
-  'https://source.unsplash.com/random/?kids,skill-related-fitness',
+  'https://source.unsplash.com/1600x900/?kids,skill-related-fitness',
   '4',
   'PE'
 );
 SELECT create_topic(
   'Advanced Team Sports',
   'Deepening knowledge and skills related to team sports.',
-  'https://source.unsplash.com/random/?kids,advanced-team-sports',
+  'https://source.unsplash.com/1600x900/?kids,advanced-team-sports',
   '4',
   'PE'
 );
 SELECT create_topic(
   'Advanced Individual and Dual Sports',
   'Deepening skills and strategies related to individual and dual sports.',
-  'https://source.unsplash.com/random/?kids,advanced-individual-sports',
+  'https://source.unsplash.com/1600x900/?kids,advanced-individual-sports',
   '4',
   'PE'
 );
 SELECT create_topic(
   'Safety and Injury Prevention',
   'Understanding safety principles and strategies to prevent injury during physical activity.',
-  'https://source.unsplash.com/random/?kids,safety',
+  'https://source.unsplash.com/1600x900/?kids,safety',
   '4',
   'PE'
 );
 SELECT create_topic(
   'Lifestyle and Career Opportunities',
   'Exploring how physical activity contributes to lifestyle and career opportunities.',
-  'https://source.unsplash.com/random/?kids,physical-education-careers',
+  'https://source.unsplash.com/1600x900/?kids,physical-education-careers',
   '4',
   'PE'
 );
@@ -3273,35 +3273,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Fitness Assessment and Goal Setting',
   'Understanding fitness assessments and setting personal fitness goals.',
-  'https://source.unsplash.com/random/?kids,fitness-assessment',
+  'https://source.unsplash.com/1600x900/?kids,fitness-assessment',
   '5',
   'PE'
 );
 SELECT create_topic(
   'Advanced Sports Skills',
   'Mastering advanced sports skills and strategies.',
-  'https://source.unsplash.com/random/?kids,advanced-sports-skills',
+  'https://source.unsplash.com/1600x900/?kids,advanced-sports-skills',
   '5',
   'PE'
 );
 SELECT create_topic(
   'Outdoor and Adventure Activities',
   'Exploring outdoor and adventure activities for physical fitness.',
-  'https://source.unsplash.com/random/?kids,outdoor-adventure',
+  'https://source.unsplash.com/1600x900/?kids,outdoor-adventure',
   '5',
   'PE'
 );
 SELECT create_topic(
   'Leadership and Teamwork',
   'Developing leadership skills and understanding the importance of teamwork in physical activities.',
-  'https://source.unsplash.com/random/?kids,leadership',
+  'https://source.unsplash.com/1600x900/?kids,leadership',
   '5',
   'PE'
 );
 SELECT create_topic(
   'Health and Wellness',
   'Understanding the importance of physical activity for lifelong health and wellness.',
-  'https://source.unsplash.com/random/?kids,health-wellness',
+  'https://source.unsplash.com/1600x900/?kids,health-wellness',
   '5',
   'PE'
 );
@@ -3310,35 +3310,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Healthy Habits',
   'Learning about basic healthy habits, such as hand washing and covering mouth when coughing.',
-  'https://source.unsplash.com/random/?kids,healthy-habits',
+  'https://source.unsplash.com/1600x900/?kids,healthy-habits',
   'Pre-K',
   'HTH'
 );
 SELECT create_topic(
   'Food Groups',
   'Introduction to different food groups and the importance of a balanced diet.',
-  'https://source.unsplash.com/random/?kids,food-groups',
+  'https://source.unsplash.com/1600x900/?kids,food-groups',
   'Pre-K',
   'HTH'
 );
 SELECT create_topic(
   'Physical Activity',
   'Understanding the importance of physical activity and different ways to be active.',
-  'https://source.unsplash.com/random/?kids,physical-activity',
+  'https://source.unsplash.com/1600x900/?kids,physical-activity',
   'Pre-K',
   'HTH'
 );
 SELECT create_topic(
   'Safety Rules',
   'Learning basic safety rules at home, school, and during activities.',
-  'https://source.unsplash.com/random/?kids,safety-rules',
+  'https://source.unsplash.com/1600x900/?kids,safety-rules',
   'Pre-K',
   'HTH'
 );
 SELECT create_topic(
   'Feelings and Emotions',
   'Introduction to recognizing and expressing different feelings and emotions.',
-  'https://source.unsplash.com/random/?kids,feelings',
+  'https://source.unsplash.com/1600x900/?kids,feelings',
   'Pre-K',
   'HTH'
 );
@@ -3346,35 +3346,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Personal Hygiene',
   'Understanding the importance of personal hygiene and self-care habits.',
-  'https://source.unsplash.com/random/?kids,personal-hygiene',
+  'https://source.unsplash.com/1600x900/?kids,personal-hygiene',
   'K',
   'HTH'
 );
 SELECT create_topic(
   'Healthy Eating',
   'Learning about healthy food choices and the benefits of eating well.',
-  'https://source.unsplash.com/random/?kids,healthy-eating',
+  'https://source.unsplash.com/1600x900/?kids,healthy-eating',
   'K',
   'HTH'
 );
 SELECT create_topic(
   'Safety at Home and School',
   'Understanding safety rules and practices at home and school.',
-  'https://source.unsplash.com/random/?kids,safety-rules',
+  'https://source.unsplash.com/1600x900/?kids,safety-rules',
   'K',
   'HTH'
 );
 SELECT create_topic(
   'Understanding Emotions',
   'Learning to recognize, understand, and express a range of emotions.',
-  'https://source.unsplash.com/random/?kids,emotions',
+  'https://source.unsplash.com/1600x900/?kids,emotions',
   'K',
   'HTH'
 );
 SELECT create_topic(
   'Physical Activity and Rest',
   'Understanding the importance of balance between physical activity and rest.',
-  'https://source.unsplash.com/random/?kids,physical-activity',
+  'https://source.unsplash.com/1600x900/?kids,physical-activity',
   'K',
   'HTH'
 );
@@ -3382,35 +3382,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Nutrition and Food Choices',
   'Exploring nutrition, food choices, and the food pyramid.',
-  'https://source.unsplash.com/random/?kids,nutrition',
+  'https://source.unsplash.com/1600x900/?kids,nutrition',
   '1',
   'HTH'
 );
 SELECT create_topic(
   'Safety and First Aid',
   'Learning about basic safety rules and introduction to first aid.',
-  'https://source.unsplash.com/random/?kids,first-aid',
+  'https://source.unsplash.com/1600x900/?kids,first-aid',
   '1',
   'HTH'
 );
 SELECT create_topic(
   'Physical Health and Fitness',
   'Understanding physical health, fitness, and the benefits of regular exercise.',
-  'https://source.unsplash.com/random/?kids,physical-fitness',
+  'https://source.unsplash.com/1600x900/?kids,physical-fitness',
   '1',
   'HTH'
 );
 SELECT create_topic(
   'Mental and Emotional Health',
   'Exploring mental and emotional health, stress management, and coping strategies.',
-  'https://source.unsplash.com/random/?kids,mental-health',
+  'https://source.unsplash.com/1600x900/?kids,mental-health',
   '1',
   'HTH'
 );
 SELECT create_topic(
   'Personal Hygiene and Puberty',
   'Understanding personal hygiene, and introduction to changes in puberty.',
-  'https://source.unsplash.com/random/?kids,puberty',
+  'https://source.unsplash.com/1600x900/?kids,puberty',
   '1',
   'HTH'
 );
@@ -3418,35 +3418,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Healthy Lifestyles',
   'Exploring the components of a healthy lifestyle, including balanced diet, regular exercise, and sufficient sleep.',
-  'https://source.unsplash.com/random/?kids,healthy-lifestyle',
+  'https://source.unsplash.com/1600x900/?kids,healthy-lifestyle',
   '2',
   'HTH'
 );
 SELECT create_topic(
   'Disease Prevention',
   'Understanding common illnesses, their causes and prevention.',
-  'https://source.unsplash.com/random/?kids,disease-prevention',
+  'https://source.unsplash.com/1600x900/?kids,disease-prevention',
   '2',
   'HTH'
 );
 SELECT create_topic(
   'Safety Rules and Emergencies',
   'Learning about safety rules in different settings and how to respond to emergencies.',
-  'https://source.unsplash.com/random/?kids,safety-rules',
+  'https://source.unsplash.com/1600x900/?kids,safety-rules',
   '2',
   'HTH'
 );
 SELECT create_topic(
   'Emotional Well-being',
   'Learning about emotions, stress management, and developing resilience.',
-  'https://source.unsplash.com/random/?kids,emotional-wellbeing',
+  'https://source.unsplash.com/1600x900/?kids,emotional-wellbeing',
   '2',
   'HTH'
 );
 SELECT create_topic(
   'Puberty and Personal Hygiene',
   'Understanding the changes during puberty and the importance of personal hygiene.',
-  'https://source.unsplash.com/random/?kids,puberty',
+  'https://source.unsplash.com/1600x900/?kids,puberty',
   '2',
   'HTH'
 );
@@ -3454,35 +3454,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Nutrition and Exercise',
   'Deepening understanding of nutrition, balanced diet, and the role of exercise in maintaining health.',
-  'https://source.unsplash.com/random/?kids,nutrition-exercise',
+  'https://source.unsplash.com/1600x900/?kids,nutrition-exercise',
   '3',
   'HTH'
 );
 SELECT create_topic(
   'Disease Prevention and Health Promotion',
   'Learning about diseases, their prevention, and how to promote health at the individual and community level.',
-  'https://source.unsplash.com/random/?kids,disease-prevention',
+  'https://source.unsplash.com/1600x900/?kids,disease-prevention',
   '3',
   'HTH'
 );
 SELECT create_topic(
   'Mental and Emotional Health',
   'Exploring deeper into mental and emotional health, understanding mental health issues and how to seek help.',
-  'https://source.unsplash.com/random/?kids,mental-health',
+  'https://source.unsplash.com/1600x900/?kids,mental-health',
   '3',
   'HTH'
 );
 SELECT create_topic(
   'Safety and First Aid',
   'Learning about safety measures and basic first aid skills.',
-  'https://source.unsplash.com/random/?kids,safety-first-aid',
+  'https://source.unsplash.com/1600x900/?kids,safety-first-aid',
   '3',
   'HTH'
 );
 SELECT create_topic(
   'Puberty and Adolescent Health',
   'Exploring the changes during puberty and the importance of health care during adolescence.',
-  'https://source.unsplash.com/random/?kids,adolescent-health',
+  'https://source.unsplash.com/1600x900/?kids,adolescent-health',
   '3',
   'HTH'
 );
@@ -3490,35 +3490,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Nutrition and Exercise',
   'Understanding the vital role of nutrition and physical activity in maintaining good health.',
-  'https://source.unsplash.com/random/?kids,advanced-nutrition-exercise',
+  'https://source.unsplash.com/1600x900/?kids,advanced-nutrition-exercise',
   '4',
   'HTH'
 );
 SELECT create_topic(
   'Preventive Healthcare',
   'Learning about the importance of preventive healthcare including vaccinations, regular check-ups, and screenings.',
-  'https://source.unsplash.com/random/?kids,preventive-healthcare',
+  'https://source.unsplash.com/1600x900/?kids,preventive-healthcare',
   '4',
   'HTH'
 );
 SELECT create_topic(
   'Mental Health and Stress Management',
   'Deepening understanding of mental health, stress management techniques, and the importance of seeking help when needed.',
-  'https://source.unsplash.com/random/?kids,mental-health-stress',
+  'https://source.unsplash.com/1600x900/?kids,mental-health-stress',
   '4',
   'HTH'
 );
 SELECT create_topic(
   'First Aid and Emergency Responses',
   'Understanding how to respond to emergencies and provide basic first aid.',
-  'https://source.unsplash.com/random/?kids,first-aid',
+  'https://source.unsplash.com/1600x900/?kids,first-aid',
   '4',
   'HTH'
 );
 SELECT create_topic(
   'Adolescent Health and Sex Education',
   'Learning about the changes during adolescence, personal hygiene, and basics of sex education.',
-  'https://source.unsplash.com/random/?kids,adolescent-health',
+  'https://source.unsplash.com/1600x900/?kids,adolescent-health',
   '4',
   'HTH'
 );
@@ -3526,35 +3526,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Healthy Lifestyle Choices',
   'Understanding the long-term impact of lifestyle choices on health, and learning to make informed decisions.',
-  'https://source.unsplash.com/random/?kids,healthy-lifestyle',
+  'https://source.unsplash.com/1600x900/?kids,healthy-lifestyle',
   '5',
   'HTH'
 );
 SELECT create_topic(
   'Healthcare Systems and Services',
   'Learning about healthcare systems, medical professions, and services available for maintaining health.',
-  'https://source.unsplash.com/random/?kids,healthcare-systems',
+  'https://source.unsplash.com/1600x900/?kids,healthcare-systems',
   '5',
   'HTH'
 );
 SELECT create_topic(
   'Advanced Mental Health',
   'Exploring mental health issues at a deeper level, understanding symptoms, and knowing how and when to seek help.',
-  'https://source.unsplash.com/random/?kids,advanced-mental-health',
+  'https://source.unsplash.com/1600x900/?kids,advanced-mental-health',
   '5',
   'HTH'
 );
 SELECT create_topic(
   'Emergency Preparedness',
   'Understanding the importance of being prepared for emergencies, learning about emergency response plans and procedures.',
-  'https://source.unsplash.com/random/?kids,emergency-preparedness',
+  'https://source.unsplash.com/1600x900/?kids,emergency-preparedness',
   '5',
   'HTH'
 );
 SELECT create_topic(
   'Comprehensive Sex Education',
   'Learning about sexual and reproductive health, understanding consent, and making informed decisions.',
-  'https://source.unsplash.com/random/?kids,sex-education',
+  'https://source.unsplash.com/1600x900/?kids,sex-education',
   '5',
   'HTH'
 );
@@ -3563,35 +3563,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Exploring Devices',
   'Understanding what a computer is and exploring different types of technological devices.',
-  'https://source.unsplash.com/random/?kids,devices',
+  'https://source.unsplash.com/1600x900/?kids,devices',
   'Pre-K',
   'COMPSCI'
 );
 SELECT create_topic(
   'Introduction to Mouse and Keyboard',
   'Learning how to use a mouse and keyboard.',
-  'https://source.unsplash.com/random/?kids,mouse-keyboard',
+  'https://source.unsplash.com/1600x900/?kids,mouse-keyboard',
   'Pre-K',
   'COMPSCI'
 );
 SELECT create_topic(
   'Basics of Using a Computer',
   'Understanding how to turn on a computer and open applications.',
-  'https://source.unsplash.com/random/?kids,computer-basics',
+  'https://source.unsplash.com/1600x900/?kids,computer-basics',
   'Pre-K',
   'COMPSCI'
 );
 SELECT create_topic(
   'Introduction to Internet Safety',
   'Learning about basic rules of internet safety.',
-  'https://source.unsplash.com/random/?kids,internet-safety',
+  'https://source.unsplash.com/1600x900/?kids,internet-safety',
   'Pre-K',
   'COMPSCI'
 );
 SELECT create_topic(
   'Using Learning Games',
   'Exploring age-appropriate educational games on a computer.',
-  'https://source.unsplash.com/random/?kids,learning-games',
+  'https://source.unsplash.com/1600x900/?kids,learning-games',
   'Pre-K',
   'COMPSCI'
 );
@@ -3599,35 +3599,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Computers and Communication',
   'Understanding how computers help us communicate and learning to use simple communication tools.',
-  'https://source.unsplash.com/random/?kids,computer-communication',
+  'https://source.unsplash.com/1600x900/?kids,computer-communication',
   'K',
   'COMPSCI'
 );
 SELECT create_topic(
   'Using a Word Processor',
   'Learning to type and create simple documents using a word processor.',
-  'https://source.unsplash.com/random/?kids,word-processor',
+  'https://source.unsplash.com/1600x900/?kids,word-processor',
   'K',
   'COMPSCI'
 );
 SELECT create_topic(
   'Internet Safety and Digital Citizenship',
   'Deepening understanding of internet safety and learning about being a good digital citizen.',
-  'https://source.unsplash.com/random/?kids,digital-citizenship',
+  'https://source.unsplash.com/1600x900/?kids,digital-citizenship',
   'K',
   'COMPSCI'
 );
 SELECT create_topic(
   'Introduction to Coding',
   'Exploring the basics of coding through age-appropriate activities and games.',
-  'https://source.unsplash.com/random/?kids,coding',
+  'https://source.unsplash.com/1600x900/?kids,coding',
   'K',
   'COMPSCI'
 );
 SELECT create_topic(
   'Understanding Algorithms',
   'Learning about algorithms and how they are used in technology.',
-  'https://source.unsplash.com/random/?kids,algorithms',
+  'https://source.unsplash.com/1600x900/?kids,algorithms',
   'K',
   'COMPSCI'
 );
@@ -3635,35 +3635,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Introduction to Programming',
   'Introduction to basic programming concepts using kid-friendly coding tools.',
-  'https://source.unsplash.com/random/?kids,programming',
+  'https://source.unsplash.com/1600x900/?kids,programming',
   '1',
   'COMPSCI'
 );
 SELECT create_topic(
   'Using the Internet for Learning',
   'Understanding how to use the internet as a resource for learning, including using educational websites and apps.',
-  'https://source.unsplash.com/random/?kids,internet-learning',
+  'https://source.unsplash.com/1600x900/?kids,internet-learning',
   '1',
   'COMPSCI'
 );
 SELECT create_topic(
   'Improving Typing Skills',
   'Practicing and improving typing skills through games and exercises.',
-  'https://source.unsplash.com/random/?kids,typing',
+  'https://source.unsplash.com/1600x900/?kids,typing',
   '1',
   'COMPSCI'
 );
 SELECT create_topic(
   'Digital Art Creation',
   'Learning to use digital tools to create art, including using drawing and painting apps.',
-  'https://source.unsplash.com/random/?kids,digital-art',
+  'https://source.unsplash.com/1600x900/?kids,digital-art',
   '1',
   'COMPSCI'
 );
 SELECT create_topic(
   'Continuing Internet Safety and Digital Citizenship',
   'Deepening understanding of internet safety and digital citizenship, including understanding cyberbullying.',
-  'https://source.unsplash.com/random/?kids,internet-safety',
+  'https://source.unsplash.com/1600x900/?kids,internet-safety',
   '1',
   'COMPSCI'
 );
@@ -3671,35 +3671,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Programming Concepts',
   'Exploring more advanced programming concepts using age-appropriate coding tools.',
-  'https://source.unsplash.com/random/?kids,advanced-programming',
+  'https://source.unsplash.com/1600x900/?kids,advanced-programming',
   '2',
   'COMPSCI'
 );
 SELECT create_topic(
   'Using Spreadsheets',
   'Introduction to using spreadsheets for simple tasks, like tracking personal expenses or grades.',
-  'https://source.unsplash.com/random/?kids,spreadsheets',
+  'https://source.unsplash.com/1600x900/?kids,spreadsheets',
   '2',
   'COMPSCI'
 );
 SELECT create_topic(
   'Creating Presentations',
   'Learning to use digital tools to create presentations, including using templates and adding images and text.',
-  'https://source.unsplash.com/random/?kids,presentations',
+  'https://source.unsplash.com/1600x900/?kids,presentations',
   '2',
   'COMPSCI'
 );
 SELECT create_topic(
   'Internet Research Skills',
   'Learning how to use the internet for research, including how to evaluate the credibility of sources.',
-  'https://source.unsplash.com/random/?kids,internet-research',
+  'https://source.unsplash.com/1600x900/?kids,internet-research',
   '2',
   'COMPSCI'
 );
 SELECT create_topic(
   'Coding with Scratch',
   'Learning to code with Scratch, an introductory programming language.',
-  'https://source.unsplash.com/random/?kids,scratch-coding',
+  'https://source.unsplash.com/1600x900/?kids,scratch-coding',
   '2',
   'COMPSCI'
 );
@@ -3707,35 +3707,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Intermediate Programming Concepts',
   'Continuing to explore more advanced programming concepts with an emphasis on problem-solving.',
-  'https://source.unsplash.com/random/?kids,programming',
+  'https://source.unsplash.com/1600x900/?kids,programming',
   '3',
   'COMPSCI'
 );
 SELECT create_topic(
   'Building Simple Websites',
   'Introduction to building simple websites using HTML and CSS.',
-  'https://source.unsplash.com/random/?kids,web-development',
+  'https://source.unsplash.com/1600x900/?kids,web-development',
   '3',
   'COMPSCI'
 );
 SELECT create_topic(
   'Digital Media Creation',
   'Learning how to create digital media, including audio and video projects.',
-  'https://source.unsplash.com/random/?kids,digital-media',
+  'https://source.unsplash.com/1600x900/?kids,digital-media',
   '3',
   'COMPSCI'
 );
 SELECT create_topic(
   'Advanced Internet Research Skills',
   'Deepening internet research skills, including understanding more about digital literacy and credibility of sources.',
-  'https://source.unsplash.com/random/?kids,internet-research',
+  'https://source.unsplash.com/1600x900/?kids,internet-research',
   '3',
   'COMPSCI'
 );
 SELECT create_topic(
   'Introduction to Python',
   'Introduction to Python, a versatile and widely-used programming language.',
-  'https://source.unsplash.com/random/?kids,python',
+  'https://source.unsplash.com/1600x900/?kids,python',
   '3',
   'COMPSCI'
 );
@@ -3743,35 +3743,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Complex Programming Concepts',
   'Learning more complex programming concepts with an emphasis on logical thinking and problem-solving.',
-  'https://source.unsplash.com/random/?kids,programming',
+  'https://source.unsplash.com/1600x900/?kids,programming',
   '4',
   'COMPSCI'
 );
 SELECT create_topic(
   'Building Interactive Websites',
   'Learning to build interactive websites using HTML, CSS, and introductory JavaScript.',
-  'https://source.unsplash.com/random/?kids,web-development',
+  'https://source.unsplash.com/1600x900/?kids,web-development',
   '4',
   'COMPSCI'
 );
 SELECT create_topic(
   '3D Modeling and Printing',
   'Introduction to creating 3D models and understanding the basics of 3D printing.',
-  'https://source.unsplash.com/random/?kids,3d-printing',
+  'https://source.unsplash.com/1600x900/?kids,3d-printing',
   '4',
   'COMPSCI'
 );
 SELECT create_topic(
   'Cybersecurity Basics',
   'Understanding the basics of cybersecurity, including protecting personal information online.',
-  'https://source.unsplash.com/random/?kids,cybersecurity',
+  'https://source.unsplash.com/1600x900/?kids,cybersecurity',
   '4',
   'COMPSCI'
 );
 SELECT create_topic(
   'Intermediate Python',
   'Deepening knowledge of Python programming with a focus on building simple projects.',
-  'https://source.unsplash.com/random/?kids,python',
+  'https://source.unsplash.com/1600x900/?kids,python',
   '4',
   'COMPSCI'
 );
@@ -3779,35 +3779,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Programming Concepts',
   'Exploring advanced programming concepts with a focus on problem-solving and critical thinking.',
-  'https://source.unsplash.com/random/?kids,programming',
+  'https://source.unsplash.com/1600x900/?kids,programming',
   '5',
   'COMPSCI'
 );
 SELECT create_topic(
   'Web Development with JavaScript',
   'Learning to build dynamic websites using JavaScript in conjunction with HTML and CSS.',
-  'https://source.unsplash.com/random/?kids,web-development',
+  'https://source.unsplash.com/1600x900/?kids,web-development',
   '5',
   'COMPSCI'
 );
 SELECT create_topic(
   'Robotics and Automation',
   'Introduction to the basics of robotics and automation, including programming simple robots.',
-  'https://source.unsplash.com/random/?kids,robotics',
+  'https://source.unsplash.com/1600x900/?kids,robotics',
   '5',
   'COMPSCI'
 );
 SELECT create_topic(
   'Cybersecurity and Digital Citizenship',
   'Deepening understanding of cybersecurity and the importance of good digital citizenship.',
-  'https://source.unsplash.com/random/?kids,cybersecurity',
+  'https://source.unsplash.com/1600x900/?kids,cybersecurity',
   '5',
   'COMPSCI'
 );
 SELECT create_topic(
   'Advanced Python',
   'Furthering knowledge of Python programming with a focus on creating more complex projects.',
-  'https://source.unsplash.com/random/?kids,python',
+  'https://source.unsplash.com/1600x900/?kids,python',
   '5',
   'COMPSCI'
 );
@@ -3816,35 +3816,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Recognizing Emotions',
   'Learning to recognize and name different emotions.',
-  'https://source.unsplash.com/random/?kids,emotions',
+  'https://source.unsplash.com/1600x900/?kids,emotions',
   'Pre-K',
   'SEL'
 );
 SELECT create_topic(
   'Making Friends',
   'Understanding the basics of making and being a good friend.',
-  'https://source.unsplash.com/random/?kids,friends',
+  'https://source.unsplash.com/1600x900/?kids,friends',
   'Pre-K',
   'SEL'
 );
 SELECT create_topic(
   'Sharing and Taking Turns',
   'Learning the importance of sharing and taking turns with others.',
-  'https://source.unsplash.com/random/?kids,sharing',
+  'https://source.unsplash.com/1600x900/?kids,sharing',
   'Pre-K',
   'SEL'
 );
 SELECT create_topic(
   'Respecting Differences',
   'Introduction to the concept of diversity and the importance of respecting differences.',
-  'https://source.unsplash.com/random/?kids,respecting-differences',
+  'https://source.unsplash.com/1600x900/?kids,respecting-differences',
   'Pre-K',
   'SEL'
 );
 SELECT create_topic(
   'Self-Control and Patience',
   'Learning about self-control and the importance of patience.',
-  'https://source.unsplash.com/random/?kids,self-control',
+  'https://source.unsplash.com/1600x900/?kids,self-control',
   'Pre-K',
   'SEL'
 );
@@ -3852,35 +3852,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Understanding Feelings',
   'Learning more about feelings and how to manage them.',
-  'https://source.unsplash.com/random/?kids,feelings',
+  'https://source.unsplash.com/1600x900/?kids,feelings',
   'K',
   'SEL'
 );
 SELECT create_topic(
   'Conflict Resolution',
   'Introduction to basic conflict resolution strategies and problem-solving.',
-  'https://source.unsplash.com/random/?kids,conflict-resolution',
+  'https://source.unsplash.com/1600x900/?kids,conflict-resolution',
   'K',
   'SEL'
 );
 SELECT create_topic(
   'Empathy and Kindness',
   'Understanding the importance of empathy and kindness towards others.',
-  'https://source.unsplash.com/random/?kids,empathy',
+  'https://source.unsplash.com/1600x900/?kids,empathy',
   'K',
   'SEL'
 );
 SELECT create_topic(
   'Respecting Others',
   'Learning about the importance of respect and good manners.',
-  'https://source.unsplash.com/random/?kids,respect',
+  'https://source.unsplash.com/1600x900/?kids,respect',
   'K',
   'SEL'
 );
 SELECT create_topic(
   'Building Confidence',
   'Activities and lessons designed to build self-esteem and confidence.',
-  'https://source.unsplash.com/random/?kids,confidence',
+  'https://source.unsplash.com/1600x900/?kids,confidence',
   'K',
   'SEL'
 );
@@ -3888,35 +3888,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Identifying Strengths and Weaknesses',
   'Learning to identify personal strengths and areas for improvement.',
-  'https://source.unsplash.com/random/?kids,self-awareness',
+  'https://source.unsplash.com/1600x900/?kids,self-awareness',
   '1',
   'SEL'
 );
 SELECT create_topic(
   'Working in a Team',
   'Understanding the value of teamwork and cooperation.',
-  'https://source.unsplash.com/random/?kids,teamwork',
+  'https://source.unsplash.com/1600x900/?kids,teamwork',
   '1',
   'SEL'
 );
 SELECT create_topic(
   'Understanding Bullying',
   'Introduction to the concept of bullying and strategies to deal with it.',
-  'https://source.unsplash.com/random/?kids,bullying',
+  'https://source.unsplash.com/1600x900/?kids,bullying',
   '1',
   'SEL'
 );
 SELECT create_topic(
   'Respecting Authority',
   'Learning about the importance of respecting authority and following rules.',
-  'https://source.unsplash.com/random/?kids,respecting-authority',
+  'https://source.unsplash.com/1600x900/?kids,respecting-authority',
   '1',
   'SEL'
 );
 SELECT create_topic(
   'Setting Goals',
   'Introduction to setting personal goals and working towards them.',
-  'https://source.unsplash.com/random/?kids,goal-setting',
+  'https://source.unsplash.com/1600x900/?kids,goal-setting',
   '1',
   'SEL'
 );
@@ -3924,35 +3924,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Growth Mindset',
   'Introduction to the concept of growth mindset and its importance.',
-  'https://source.unsplash.com/random/?kids,growth-mindset',
+  'https://source.unsplash.com/1600x900/?kids,growth-mindset',
   '2',
   'SEL'
 );
 SELECT create_topic(
   'Peer Pressure',
   'Understanding peer pressure and learning strategies to handle it.',
-  'https://source.unsplash.com/random/?kids,peer-pressure',
+  'https://source.unsplash.com/1600x900/?kids,peer-pressure',
   '2',
   'SEL'
 );
 SELECT create_topic(
   'Conflict Resolution Advanced',
   'Further development of conflict resolution strategies and problem-solving.',
-  'https://source.unsplash.com/random/?kids,conflict-resolution',
+  'https://source.unsplash.com/1600x900/?kids,conflict-resolution',
   '2',
   'SEL'
 );
 SELECT create_topic(
   'Understanding Diversity',
   'Learning about diversity and the importance of inclusivity.',
-  'https://source.unsplash.com/random/?kids,diversity',
+  'https://source.unsplash.com/1600x900/?kids,diversity',
   '2',
   'SEL'
 );
 SELECT create_topic(
   'Managing Stress',
   'Introduction to stress management techniques suitable for children.',
-  'https://source.unsplash.com/random/?kids,stress-management',
+  'https://source.unsplash.com/1600x900/?kids,stress-management',
   '2',
   'SEL'
 );
@@ -3960,35 +3960,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Digital Citizenship',
   'Understanding the responsibilities and rules of online interactions.',
-  'https://source.unsplash.com/random/?kids,digital-citizenship',
+  'https://source.unsplash.com/1600x900/?kids,digital-citizenship',
   '3',
   'SEL'
 );
 SELECT create_topic(
   'Resilience',
   'Developing resilience and understanding the ability to recover from setbacks.',
-  'https://source.unsplash.com/random/?kids,resilience',
+  'https://source.unsplash.com/1600x900/?kids,resilience',
   '3',
   'SEL'
 );
 SELECT create_topic(
   'Emotional Intelligence',
   'Introduction to emotional intelligence and its importance in daily life.',
-  'https://source.unsplash.com/random/?kids,emotional-intelligence',
+  'https://source.unsplash.com/1600x900/?kids,emotional-intelligence',
   '3',
   'SEL'
 );
 SELECT create_topic(
   'Healthy Relationships',
   'Understanding the characteristics of healthy relationships and friendships.',
-  'https://source.unsplash.com/random/?kids,healthy-relationships',
+  'https://source.unsplash.com/1600x900/?kids,healthy-relationships',
   '3',
   'SEL'
 );
 SELECT create_topic(
   'Personal Responsibility',
   'Learning about personal responsibility and accountability.',
-  'https://source.unsplash.com/random/?kids,personal-responsibility',
+  'https://source.unsplash.com/1600x900/?kids,personal-responsibility',
   '3',
   'SEL'
 );
@@ -3996,35 +3996,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Emotional Intelligence',
   'Further development of emotional intelligence skills.',
-  'https://source.unsplash.com/random/?kids,emotional-intelligence',
+  'https://source.unsplash.com/1600x900/?kids,emotional-intelligence',
   '4',
   'SEL'
 );
 SELECT create_topic(
   'Goal Setting',
   'Learning about setting and working towards personal goals.',
-  'https://source.unsplash.com/random/?kids,goal-setting',
+  'https://source.unsplash.com/1600x900/?kids,goal-setting',
   '4',
   'SEL'
 );
 SELECT create_topic(
   'Advanced Healthy Relationships',
   'Further understanding of healthy relationships, including communication and boundaries.',
-  'https://source.unsplash.com/random/?kids,healthy-relationships',
+  'https://source.unsplash.com/1600x900/?kids,healthy-relationships',
   '4',
   'SEL'
 );
 SELECT create_topic(
   'Self Advocacy',
   'Introduction to self advocacy and standing up for oneself.',
-  'https://source.unsplash.com/random/?kids,self-advocacy',
+  'https://source.unsplash.com/1600x900/?kids,self-advocacy',
   '4',
   'SEL'
 );
 SELECT create_topic(
   'Advanced Personal Responsibility',
   'Further understanding of personal responsibility and accountability.',
-  'https://source.unsplash.com/random/?kids,personal-responsibility',
+  'https://source.unsplash.com/1600x900/?kids,personal-responsibility',
   '4',
   'SEL'
 );
@@ -4032,35 +4032,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Critical Thinking',
   'Introduction to critical thinking and decision making skills.',
-  'https://source.unsplash.com/random/?kids,critical-thinking',
+  'https://source.unsplash.com/1600x900/?kids,critical-thinking',
   '5',
   'SEL'
 );
 SELECT create_topic(
   'Advanced Goal Setting',
   'Further understanding of goal setting, including long-term goals and action plans.',
-  'https://source.unsplash.com/random/?kids,goal-setting',
+  'https://source.unsplash.com/1600x900/?kids,goal-setting',
   '5',
   'SEL'
 );
 SELECT create_topic(
   'Leadership Skills',
   'Introduction to leadership skills and qualities.',
-  'https://source.unsplash.com/random/?kids,leadership',
+  'https://source.unsplash.com/1600x900/?kids,leadership',
   '5',
   'SEL'
 );
 SELECT create_topic(
   'Advanced Self Advocacy',
   'Further development of self advocacy skills.',
-  'https://source.unsplash.com/random/?kids,self-advocacy',
+  'https://source.unsplash.com/1600x900/?kids,self-advocacy',
   '5',
   'SEL'
 );
 SELECT create_topic(
   'Managing Change',
   'Learning about handling and adapting to changes.',
-  'https://source.unsplash.com/random/?kids,managing-change',
+  'https://source.unsplash.com/1600x900/?kids,managing-change',
   '5',
   'SEL'
 );
@@ -4069,35 +4069,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Introduction to Mindfulness',
   'An introduction to the concept of mindfulness and being present.',
-  'https://source.unsplash.com/random/?kids,mindfulness',
+  'https://source.unsplash.com/1600x900/?kids,mindfulness',
   'Pre-K',
   'MND'
 );
 SELECT create_topic(
   'Sensory Awareness',
   'Exploring awareness of the five senses as a part of mindfulness.',
-  'https://source.unsplash.com/random/?kids,senses',
+  'https://source.unsplash.com/1600x900/?kids,senses',
   'Pre-K',
   'MND'
 );
 SELECT create_topic(
   'Mindful Breathing',
   'Introduction to the practice of mindful breathing to calm and focus the mind.',
-  'https://source.unsplash.com/random/?kids,breathing',
+  'https://source.unsplash.com/1600x900/?kids,breathing',
   'Pre-K',
   'MND'
 );
 SELECT create_topic(
   'Mindful Movement',
   'Introduction to mindful movement as a way to understand our bodies.',
-  'https://source.unsplash.com/random/?kids,movement',
+  'https://source.unsplash.com/1600x900/?kids,movement',
   'Pre-K',
   'MND'
 );
 SELECT create_topic(
   'Gratitude Practice',
   'Introduction to the practice of gratitude as a part of mindfulness.',
-  'https://source.unsplash.com/random/?kids,gratitude',
+  'https://source.unsplash.com/1600x900/?kids,gratitude',
   'Pre-K',
   'MND'
 );
@@ -4105,35 +4105,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Continued Mindfulness Practice',
   'Continuing the practice of mindfulness and being present.',
-  'https://source.unsplash.com/random/?kids,mindfulness',
+  'https://source.unsplash.com/1600x900/?kids,mindfulness',
   'K',
   'MND'
 );
 SELECT create_topic(
   'Mindful Listening',
   'Developing the skill of mindful listening.',
-  'https://source.unsplash.com/random/?kids,listening',
+  'https://source.unsplash.com/1600x900/?kids,listening',
   'K',
   'MND'
 );
 SELECT create_topic(
   'Mindful Eating',
   'Introduction to the practice of mindful eating.',
-  'https://source.unsplash.com/random/?kids,eating',
+  'https://source.unsplash.com/1600x900/?kids,eating',
   'K',
   'MND'
 );
 SELECT create_topic(
   'Body Scan Meditation',
   'Introduction to the body scan meditation as a mindfulness practice.',
-  'https://source.unsplash.com/random/?kids,meditation',
+  'https://source.unsplash.com/1600x900/?kids,meditation',
   'K',
   'MND'
 );
 SELECT create_topic(
   'Kindness Practice',
   'Cultivating kindness towards oneself and others as a part of mindfulness.',
-  'https://source.unsplash.com/random/?kids,kindness',
+  'https://source.unsplash.com/1600x900/?kids,kindness',
   'K',
   'MND'
 );
@@ -4141,35 +4141,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Deepening Mindfulness Practice',
   'Further exploration and practice of mindfulness techniques.',
-  'https://source.unsplash.com/random/?kids,mindfulness',
+  'https://source.unsplash.com/1600x900/?kids,mindfulness',
   '1',
   'MND'
 );
 SELECT create_topic(
   'Mindful Communication',
   'Introduction to mindful communication and listening.',
-  'https://source.unsplash.com/random/?kids,communication',
+  'https://source.unsplash.com/1600x900/?kids,communication',
   '1',
   'MND'
 );
 SELECT create_topic(
   'Understanding Emotions',
   'A journey into understanding and managing emotions through mindfulness.',
-  'https://source.unsplash.com/random/?kids,emotions',
+  'https://source.unsplash.com/1600x900/?kids,emotions',
   '1',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness in Nature',
   'Exploring mindfulness through observation and appreciation of nature.',
-  'https://source.unsplash.com/random/?kids,nature',
+  'https://source.unsplash.com/1600x900/?kids,nature',
   '1',
   'MND'
 );
 SELECT create_topic(
   'Mindful Art',
   'Using art as a tool for practicing mindfulness.',
-  'https://source.unsplash.com/random/?kids,art',
+  'https://source.unsplash.com/1600x900/?kids,art',
   '1',
   'MND'
 );
@@ -4177,35 +4177,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advancing Mindfulness Practice',
   'Continuing to deepen mindfulness practice and techniques.',
-  'https://source.unsplash.com/random/?kids,mindfulness',
+  'https://source.unsplash.com/1600x900/?kids,mindfulness',
   '2',
   'MND'
 );
 SELECT create_topic(
   'Mindful Problem-Solving',
   'Introduction to applying mindfulness in problem-solving.',
-  'https://source.unsplash.com/random/?kids,problem-solving',
+  'https://source.unsplash.com/1600x900/?kids,problem-solving',
   '2',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Empathy',
   'Understanding empathy and how mindfulness can help to foster it.',
-  'https://source.unsplash.com/random/?kids,empathy',
+  'https://source.unsplash.com/1600x900/?kids,empathy',
   '2',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Conflict Resolution',
   'Applying mindfulness in situations of conflict and dispute.',
-  'https://source.unsplash.com/random/?kids,conflict-resolution',
+  'https://source.unsplash.com/1600x900/?kids,conflict-resolution',
   '2',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Sleep',
   'How mindfulness can improve sleep and relaxation.',
-  'https://source.unsplash.com/random/?kids,sleep',
+  'https://source.unsplash.com/1600x900/?kids,sleep',
   '2',
   'MND'
 );
@@ -4213,35 +4213,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Mindful Leadership',
   'Exploring how mindfulness can contribute to effective leadership.',
-  'https://source.unsplash.com/random/?kids,leadership',
+  'https://source.unsplash.com/1600x900/?kids,leadership',
   '3',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Gratitude',
   'Introduction to gratitude practice in mindfulness.',
-  'https://source.unsplash.com/random/?kids,gratitude',
+  'https://source.unsplash.com/1600x900/?kids,gratitude',
   '3',
   'MND'
 );
 SELECT create_topic(
   'Mindful Eating',
   'Learning to appreciate food and eat mindfully.',
-  'https://source.unsplash.com/random/?kids,eating',
+  'https://source.unsplash.com/1600x900/?kids,eating',
   '3',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness in Action',
   'Applying mindfulness in everyday activities.',
-  'https://source.unsplash.com/random/?kids,activities',
+  'https://source.unsplash.com/1600x900/?kids,activities',
   '3',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Music',
   'Exploring how music can be a tool for mindfulness.',
-  'https://source.unsplash.com/random/?kids,music',
+  'https://source.unsplash.com/1600x900/?kids,music',
   '3',
   'MND'
 );
@@ -4249,35 +4249,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Mindfulness and Resilience',
   'Understanding resilience and how mindfulness can help to build it.',
-  'https://source.unsplash.com/random/?kids,resilience',
+  'https://source.unsplash.com/1600x900/?kids,resilience',
   '4',
   'MND'
 );
 SELECT create_topic(
   'Mindful Writing',
   'Exploring writing as a tool for mindfulness.',
-  'https://source.unsplash.com/random/?kids,writing',
+  'https://source.unsplash.com/1600x900/?kids,writing',
   '4',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Stress Management',
   'Learning how mindfulness can help manage stress.',
-  'https://source.unsplash.com/random/?kids,stress-management',
+  'https://source.unsplash.com/1600x900/?kids,stress-management',
   '4',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Nature Conservation',
   'Understanding the role of mindfulness in appreciating and conserving nature.',
-  'https://source.unsplash.com/random/?kids,nature-conservation',
+  'https://source.unsplash.com/1600x900/?kids,nature-conservation',
   '4',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Social Responsibility',
   'Exploring how mindfulness can contribute to social responsibility.',
-  'https://source.unsplash.com/random/?kids,social-responsibility',
+  'https://source.unsplash.com/1600x900/?kids,social-responsibility',
   '4',
   'MND'
 );
@@ -4285,35 +4285,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Mindfulness and Emotional Intelligence',
   'Understanding Emotional Intelligence and how mindfulness can enhance it.',
-  'https://source.unsplash.com/random/?kids,emotional-intelligence',
+  'https://source.unsplash.com/1600x900/?kids,emotional-intelligence',
   '5',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Conflict Resolution',
   'Exploring how mindfulness can contribute to conflict resolution.',
-  'https://source.unsplash.com/random/?kids,conflict-resolution',
+  'https://source.unsplash.com/1600x900/?kids,conflict-resolution',
   '5',
   'MND'
 );
 SELECT create_topic(
   'Mindful Communication',
   'Understanding the role of mindfulness in effective communication.',
-  'https://source.unsplash.com/random/?kids,communication',
+  'https://source.unsplash.com/1600x900/?kids,communication',
   '5',
   'MND'
 );
 SELECT create_topic(
   'Mindfulness and Environmental Awareness',
   'Learning about environmental awareness through the lens of mindfulness.',
-  'https://source.unsplash.com/random/?kids,environmental-awareness',
+  'https://source.unsplash.com/1600x900/?kids,environmental-awareness',
   '5',
   'MND'
 );
 SELECT create_topic(
   'Mindful Future',
   'Discussion on the importance of mindfulness in shaping the future.',
-  'https://source.unsplash.com/random/?kids,future',
+  'https://source.unsplash.com/1600x900/?kids,future',
   '5',
   'MND'
 );
@@ -4322,35 +4322,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Introduction to Entrepreneurship',
   'Basic introduction to the concept of entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,entrepreneurship',
+  'https://source.unsplash.com/1600x900/?kids,entrepreneurship',
   'Pre-K',
   'ENTP'
 );
 SELECT create_topic(
   'Being a Leader',
   'Understanding the qualities of a good leader.',
-  'https://source.unsplash.com/random/?kids,leader',
+  'https://source.unsplash.com/1600x900/?kids,leader',
   'Pre-K',
   'ENTP'
 );
 SELECT create_topic(
   'Creativity and Ideas',
   'Learning about the importance of creativity and ideas in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,creativity',
+  'https://source.unsplash.com/1600x900/?kids,creativity',
   'Pre-K',
   'ENTP'
 );
 SELECT create_topic(
   'Problem Solving',
   'Introduction to problem solving - an important skill for entrepreneurs.',
-  'https://source.unsplash.com/random/?kids,problem-solving',
+  'https://source.unsplash.com/1600x900/?kids,problem-solving',
   'Pre-K',
   'ENTP'
 );
 SELECT create_topic(
   'Working as a Team',
   'Understanding the importance of teamwork in achieving goals.',
-  'https://source.unsplash.com/random/?kids,teamwork',
+  'https://source.unsplash.com/1600x900/?kids,teamwork',
   'Pre-K',
   'ENTP'
 );
@@ -4358,35 +4358,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Understanding Business',
   'An introductory lesson on what businesses are and how they function.',
-  'https://source.unsplash.com/random/?kids,business',
+  'https://source.unsplash.com/1600x900/?kids,business',
   'K',
   'ENTP'
 );
 SELECT create_topic(
   'Making a Plan',
   'Learning about the importance of planning in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,planning',
+  'https://source.unsplash.com/1600x900/?kids,planning',
   'K',
   'ENTP'
 );
 SELECT create_topic(
   'Basics of Money',
   'Introduction to the concept of money and its role in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,money',
+  'https://source.unsplash.com/1600x900/?kids,money',
   'K',
   'ENTP'
 );
 SELECT create_topic(
   'Innovation and Ideas',
   'Exploring how new ideas can lead to new products or services.',
-  'https://source.unsplash.com/random/?kids,innovation',
+  'https://source.unsplash.com/1600x900/?kids,innovation',
   'K',
   'ENTP'
 );
 SELECT create_topic(
   'Responsibility and Hard Work',
   'Understanding the importance of responsibility and hard work in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,hardwork',
+  'https://source.unsplash.com/1600x900/?kids,hardwork',
   'K',
   'ENTP'
 );
@@ -4394,35 +4394,35 @@ SELECT create_topic(
 SELECT create_topic(
   'What is an Entrepreneur?',
   'Deepening understanding of who an entrepreneur is and what they do.',
-  'https://source.unsplash.com/random/?kids,entrepreneur',
+  'https://source.unsplash.com/1600x900/?kids,entrepreneur',
   '1',
   'ENTP'
 );
 SELECT create_topic(
   'Business and Community',
   'Exploring how businesses interact with and impact their communities.',
-  'https://source.unsplash.com/random/?kids,community',
+  'https://source.unsplash.com/1600x900/?kids,community',
   '1',
   'ENTP'
 );
 SELECT create_topic(
   'Creating a Simple Business Plan',
   'Learning the basics of creating a business plan.',
-  'https://source.unsplash.com/random/?kids,business-plan',
+  'https://source.unsplash.com/1600x900/?kids,business-plan',
   '1',
   'ENTP'
 );
 SELECT create_topic(
   'Introduction to Marketing',
   'Introduction to the concept of marketing and why it’s important for businesses.',
-  'https://source.unsplash.com/random/?kids,marketing',
+  'https://source.unsplash.com/1600x900/?kids,marketing',
   '1',
   'ENTP'
 );
 SELECT create_topic(
   'Entrepreneurship and Ethics',
   'Understanding the role of ethics in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,ethics',
+  'https://source.unsplash.com/1600x900/?kids,ethics',
   '1',
   'ENTP'
 );
@@ -4430,35 +4430,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Understanding Profit and Loss',
   'Deeper understanding of profit, loss, and the financial aspects of a business.',
-  'https://source.unsplash.com/random/?kids,profit',
+  'https://source.unsplash.com/1600x900/?kids,profit',
   '2',
   'ENTP'
 );
 SELECT create_topic(
   'Supply and Demand',
   'Exploring the concept of supply and demand, and how it impacts a business.',
-  'https://source.unsplash.com/random/?kids,supply-demand',
+  'https://source.unsplash.com/1600x900/?kids,supply-demand',
   '2',
   'ENTP'
 );
 SELECT create_topic(
   'Customer Service Basics',
   'Learning about the importance of customer service in a business.',
-  'https://source.unsplash.com/random/?kids,customer-service',
+  'https://source.unsplash.com/1600x900/?kids,customer-service',
   '2',
   'ENTP'
 );
 SELECT create_topic(
   'Exploring Different Businesses',
   'Learning about various types of businesses and how they function.',
-  'https://source.unsplash.com/random/?kids,business-types',
+  'https://source.unsplash.com/1600x900/?kids,business-types',
   '2',
   'ENTP'
 );
 SELECT create_topic(
   'Leadership in Business',
   'Understanding the role and importance of leadership in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,leadership',
+  'https://source.unsplash.com/1600x900/?kids,leadership',
   '2',
   'ENTP'
 );
@@ -4466,35 +4466,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Importance of Networking',
   'Learning about networking and its importance in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,networking',
+  'https://source.unsplash.com/1600x900/?kids,networking',
   '3',
   'ENTP'
 );
 SELECT create_topic(
   'Market Research Basics',
   'Introduction to market research and how it helps in a business.',
-  'https://source.unsplash.com/random/?kids,market-research',
+  'https://source.unsplash.com/1600x900/?kids,market-research',
   '3',
   'ENTP'
 );
 SELECT create_topic(
   'Starting a Small Business',
   'Exploring the steps and considerations in starting a small business.',
-  'https://source.unsplash.com/random/?kids,small-business',
+  'https://source.unsplash.com/1600x900/?kids,small-business',
   '3',
   'ENTP'
 );
 SELECT create_topic(
   'Branding and Promotion',
   'Learning about branding and promotion strategies in business.',
-  'https://source.unsplash.com/random/?kids,branding',
+  'https://source.unsplash.com/1600x900/?kids,branding',
   '3',
   'ENTP'
 );
 SELECT create_topic(
   'Business Ethics and Social Responsibility',
   'Deeper understanding of business ethics and the concept of social responsibility in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,ethics',
+  'https://source.unsplash.com/1600x900/?kids,ethics',
   '3',
   'ENTP'
 );
@@ -4502,35 +4502,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Entrepreneurial Finance',
   'A deeper dive into managing finances, raising capital, and funding for businesses.',
-  'https://source.unsplash.com/random/?kids,finance',
+  'https://source.unsplash.com/1600x900/?kids,finance',
   '4',
   'ENTP'
 );
 SELECT create_topic(
   'Business Growth and Strategy',
   'Exploring strategies for growth and expansion in a business.',
-  'https://source.unsplash.com/random/?kids,business-growth',
+  'https://source.unsplash.com/1600x900/?kids,business-growth',
   '4',
   'ENTP'
 );
 SELECT create_topic(
   'Innovation and Creativity in Business',
   'Understanding the role of innovation and creativity in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,innovation',
+  'https://source.unsplash.com/1600x900/?kids,innovation',
   '4',
   'ENTP'
 );
 SELECT create_topic(
   'Digital Marketing Basics',
   'Introduction to digital marketing and its relevance in modern businesses.',
-  'https://source.unsplash.com/random/?kids,digital-marketing',
+  'https://source.unsplash.com/1600x900/?kids,digital-marketing',
   '4',
   'ENTP'
 );
 SELECT create_topic(
   'Understanding Business Laws',
   'An overview of important laws that affect businesses.',
-  'https://source.unsplash.com/random/?kids,business-law',
+  'https://source.unsplash.com/1600x900/?kids,business-law',
   '4',
   'ENTP'
 );
@@ -4538,35 +4538,35 @@ SELECT create_topic(
 SELECT create_topic(
   'Advanced Business Planning',
   'Crafting detailed business plans, including financial projections and market analysis.',
-  'https://source.unsplash.com/random/?kids,business-plan',
+  'https://source.unsplash.com/1600x900/?kids,business-plan',
   '5',
   'ENTP'
 );
 SELECT create_topic(
   'Risk Management in Business',
   'Understanding risks in entrepreneurship and strategies for managing them.',
-  'https://source.unsplash.com/random/?kids,risk-management',
+  'https://source.unsplash.com/1600x900/?kids,risk-management',
   '5',
   'ENTP'
 );
 SELECT create_topic(
   'Global Entrepreneurship',
   'Exploring the global landscape of entrepreneurship and international business opportunities.',
-  'https://source.unsplash.com/random/?kids,global-business',
+  'https://source.unsplash.com/1600x900/?kids,global-business',
   '5',
   'ENTP'
 );
 SELECT create_topic(
   'Entrepreneurship and Sustainability',
   'Learning about sustainable practices in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,sustainability',
+  'https://source.unsplash.com/1600x900/?kids,sustainability',
   '5',
   'ENTP'
 );
 SELECT create_topic(
   'Entrepreneurial Leadership',
   'Advanced concepts in leadership and team building in entrepreneurship.',
-  'https://source.unsplash.com/random/?kids,leadership',
+  'https://source.unsplash.com/1600x900/?kids,leadership',
   '5',
   'ENTP'
 );

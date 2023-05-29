@@ -1352,12 +1352,15 @@ export interface Database {
           is_public: boolean | null
           length_in_min: number | null
           level: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
           scheduled_date: string | null
           students: string[] | null
           subject: string | null
+          subject_name: string | null
           tags: string[] | null
           title: string | null
           topic: string | null
+          topic_name: string | null
         }
       }
       recently_completed_lesson_plans_view: {

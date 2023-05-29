@@ -25,6 +25,7 @@ export function generateLessonPlanPrompt({
   } = lesson;
 
   const { name, role, teaching_preferences } = teacher; // teaching_preferences: { teachingStrategies, lessonDetailLevel, teachingTools, lessonStructure }
+  const relationship = role === 'PARENT' ? 'parent' : 'teacher';
 
   // Teaching Strategies
   const teachingStrategies = teaching_preferences?.teachingStrategies?.length
@@ -126,7 +127,7 @@ export function generateLessonPlanPrompt({
   The students (children) are:
   ${studentsSection}
 
-  The teacher is ${name} and their role is ${role}.
+  The teacher is ${name} and their role is ${role}. Write the lesson plan as if you are the ${relationship} of the students.
   ${teachingPreferencesSection}
 
 
@@ -165,6 +166,7 @@ export function generateCurriculumLessonPlanPrompt({
   } = lessonBody;
 
   const { name, role, teaching_preferences } = teacherBody; // teaching_preferences: { teachingStrategies, lessonDetailLevel, teachingTools, lessonStructure }
+  const relationship = role === 'PARENT' ? 'parent' : 'teacher';
 
   // Teaching Strategies
   const teachingStrategies = teaching_preferences?.teachingStrategies?.length
@@ -241,7 +243,7 @@ The lesson's length is ${length_in_min} minutes.
 The students (children) are:
 ${studentsSection}
 
-The teacher is ${name} and their role is ${role}.
+The teacher is ${name} and their role is ${role}. Write the lesson plan as if you are the ${relationship} of the students.
 ${teachingPreferencesSection}
 
 ${additionalRequestsSection}

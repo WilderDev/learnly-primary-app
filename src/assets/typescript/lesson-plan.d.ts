@@ -36,6 +36,9 @@ export interface ILessonPlan {
   students: string[] | null;
   scheduled_date: Date | null;
   completion_date: Date | null;
+  subject_name: string;
+  level_name: string;
+  topic_name: string;
 }
 
 // Lesson Plan Prompt Input (Lesson Object)

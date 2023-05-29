@@ -164,8 +164,8 @@ export async function generateMetadata({
       images: [
         {
           url: data?.lesson_image_path,
-          width: 800,
-          height: 600,
+          width: 1600,
+          height: 900,
           alt: data?.lesson_name || 'Curriculum Lesson Creator',
         },
       ],

@@ -350,6 +350,9 @@ SELECT
   tp.last_name AS creator_last_name,
   tp.avatar_url AS creator_avatar_url,
   tp.type AS creator_type,
+  s.name AS subject_name,
+  lv.name AS level_name,
+  t.name AS topic_name,
   ulp.students,
   ulp.scheduled_date,
   ulp.completion_date
