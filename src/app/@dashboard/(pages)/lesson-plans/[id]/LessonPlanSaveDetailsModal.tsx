@@ -38,10 +38,9 @@ export default function LessonPlanSaveDetailsModalForm({
     onSuccess: (data) => {
       if (data.ok) {
         toast.success('Lesson Plan Saved!');
-        revalidatePath(`/lesson-plans`); // ✅
+        close();
         revalidatePath('/schedule-builder'); // ✅
         revalidatePath('/'); // ✅
-        close();
       } else {
         toast.error(
           "Something went wrong... You might've already saved this lesson plan.",

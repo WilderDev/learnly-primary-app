@@ -139,7 +139,7 @@ export function generateLessonPlanPrompt({
 
   Provide them step by step instructions with time allocations for each activity and everything they need to know and have to teach the lesson. Use bullet points as much as possible.
 
-  Do NOT include an H1 (#) tag, start with an H2 (##) for each section. <li> elements should NOT have a paragraph inside them. All Headings should have their own line. Make the output semantically proper. Important!
+  Do NOT include an H1 (#) tag, start with an H2 (##) for each section. <li> elements should NOT have a paragraph inside them. All Headings should have their own line. Do NOT use code or <pre> blocks. Make the output semantically proper. Important!
 
   Return the lesson plan in clean markdown format.
   `;
@@ -254,7 +254,7 @@ Give quality examples of how you would teach this lesson to the students with th
 
 Provide them step by step instructions with time allocations for each activity and everything they need to know and have to teach the lesson. Use bullet points as much as possible.
 
-Do NOT include an H1 (#) tag, start with an H2 (##) for each section. <li> elements should NOT have a paragraph inside them. All Headings should have their own line. Make the output semantically proper. Important!
+Do NOT include an H1 (#) tag, start with an H2 (##) for each section. <li> elements should NOT have a paragraph inside them. All Headings should have their own line. Do NOT use code or <pre> blocks. Make the output semantically proper. Important!
 
 Return the lesson plan in clean markdown format.
     `.trim();

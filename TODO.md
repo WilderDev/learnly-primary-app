@@ -26,7 +26,6 @@
 
 ### Emails
 
-1. Personal welcome email from founder
 2. How to get the most out of learnly, connect with community, success stories, ect. [3 days after trial sign up]
 3. All the features they will miss out on if they don't upgrade, discount if they put their credit card in before trial ends, how to upgrade (link) [7 days before trial ends]
 4. Last reminder email the day of trial ending [day of trial ending]

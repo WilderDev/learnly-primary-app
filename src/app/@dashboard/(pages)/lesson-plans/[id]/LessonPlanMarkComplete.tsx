@@ -2,8 +2,9 @@
 
 import Button from '@/lib/components/ui/Button';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LessonPlanCompletionModal from './LessonPlanCompletionModal';
+import ClientWrapper from '@/lib/components/layout/ClientWrapper';
 
 // * Props
 interface IProps {

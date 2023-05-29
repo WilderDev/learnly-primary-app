@@ -1,11 +1,18 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // TSK: Get all curriculum roadmap paths
+
   return [
     {
       url: '/',
       lastModified: new Date(),
     },
+    {
+      url: '/onboarding',
+      lastModified: new Date(),
+    },
+
     // . . .
   ];
 }

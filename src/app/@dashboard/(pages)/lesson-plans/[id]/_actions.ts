@@ -34,7 +34,7 @@ const saveLessonPlanAction = async (
 
     if (error) return responseContract(error.message, false);
 
-    revalidatePath(`/lesson-plans/${lesson_plan_id}`); // ✅
+    // revalidatePath(`/lesson-plans/${lesson_plan_id}`); // ✅
     revalidatePath('/schedule-builder'); // ✅
     revalidatePath('/'); // ✅
 
@@ -78,7 +78,7 @@ const markAsCompleteAction = async (
 
     if (error) return responseContract(error.message, false);
 
-    revalidatePath(`/lesson-plans`); // ✅
+    revalidatePath(`/lesson-plans/${lesson_plan_id}`); // ✅
     revalidatePath('/'); // ✅
 
     return responseContract('Success!', true);

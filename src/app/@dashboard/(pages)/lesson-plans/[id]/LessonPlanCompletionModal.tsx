@@ -56,7 +56,7 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
     >
       <Modal.Header title="Save Lesson Plan" />
 
-      <Modal.Body>
+      <Modal.Body className="relative">
         <Form
           className="relative"
           action={() =>
@@ -77,7 +77,7 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
               minDate: 'today',
               defaultHour: new Date().getHours(),
               defaultMinute: 0,
-              position: 'above right',
+              position: 'auto',
             }}
           />
 

@@ -5,7 +5,7 @@ import { Database } from './assets/typescript/db';
 
 // const authorizedStatuses = ['active', 'trialing'];
 // const authorizedRoles = ['ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT']; // Authorized Roles
-const publicPaths = ['/onboarding']; // Public Paths [only ones we want to do something with if user isn't authed]
+const publicPaths = ['/onboarding', '/curriculum-roadmaps']; // Public Paths [only ones we want to do something with if user isn't authed]
 
 const isPublicPath = (path: string) => publicPaths.includes(path); // Check if path is public
 
@@ -51,6 +51,7 @@ export const config = {
     '/lesson-creator/:path*',
     '/help-center/:path*',
     '/schedule-builder/:path*',
+    '/curriculum-roadmaps',
     '/curriculum-roadmaps/:path/:path/:path/:path/:path/:path*',
     '/curriculum-roadmaps/user/:path*',
     '/onboarding/:path*',

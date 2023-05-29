@@ -262,7 +262,7 @@ export async function handleUpdateProduct({ product }: IUpdateProduct) {
   // 1. Update the product in the database
   const { error: productError } = await supabaseAdmin()
     .from('products')
-    .update({
+    .upsert({
       id: product.id,
       active: product.active,
       name: product.name,
@@ -331,7 +331,7 @@ export async function handleUpdatePrice({ price }: IUpdatePrice) {
   // 1. Update the price in the database
   const { error: priceError } = await supabaseAdmin()
     .from('prices')
-    .update({
+    .upsert({
       id: price.id,
       type: price.type,
       active: price.active,

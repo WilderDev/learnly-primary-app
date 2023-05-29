@@ -1,6 +1,6 @@
 'use client';
 
-import { CalendarDaysIcon, CalendarIcon } from '@heroicons/react/24/solid';
+import { CalendarIcon } from '@heroicons/react/24/solid';
 
 import 'flatpickr/dist/themes/dark.css';
 import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
@@ -15,7 +15,6 @@ import {
 } from './formItemPropStyles';
 import cn from '@/lib/common/cn';
 import { TFill, TSize, TVariant } from '@/assets/typescript/ui';
-import ClientWrapper from '../layout/ClientWrapper';
 
 interface IProps extends DateTimePickerProps {
   setValue: (value: Date | null) => void;
@@ -53,25 +52,31 @@ export default function DatePicker({
       labelHidden={false}
       className={className}
     >
-      <ClientWrapper>
-        <Flatpickr
-          value={value || undefined}
-          onChange={(date) => setValue(date[0] || null)}
-          className={cn(
-            defaultStyles,
-            areas[area],
-            variants[variant],
-            fills[fill],
-            shadows[shadow],
-            roundeds[rounded],
-            'pl-10',
-          )}
-          placeholder="Choose date..."
-          type="text"
-          required={required}
-          options={options}
-        />
-      </ClientWrapper>
+      <Flatpickr
+        value={value || undefined}
+        onChange={(date) => setValue(date[0] || null)}
+        className={cn(
+          defaultStyles,
+          areas[area],
+          variants[variant],
+          fills[fill],
+          shadows[shadow],
+          roundeds[rounded],
+          'pl-10',
+        )}
+        placeholder="Choose date..."
+        type="text"
+        required={required}
+        options={{
+          ...options,
+          closeOnSelect: true,
+          onOpen: () => {
+            document
+              ?.querySelector('.flatpickr-input')
+              ?.scrollIntoView({ behavior: 'smooth' });
+          },
+        }}
+      />
     </FormItem>
   );
 }

@@ -57,6 +57,10 @@
     color: #fff;
   }
 
+  .flatpickr-calendar.open {
+    @apply !fixed;
+  }
+
   /* Custom Scrollbar */
   .custom-scrollbar::-webkit-scrollbar {
     @apply h-1.5 w-1.5;
