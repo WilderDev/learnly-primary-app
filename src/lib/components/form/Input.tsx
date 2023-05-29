@@ -67,11 +67,13 @@ export default function Input({
         id={label}
         name={label}
         value={value}
-        onChange={(e) =>
-          props.type === 'number'
-            ? setValue(Number(e.target.value))
-            : setValue(e.target.value)
-        }
+        onChange={(e) => {
+          if (props.type === 'number') {
+            setValue(parseInt(e.target.value));
+          } else {
+            setValue(e.target.value);
+          }
+        }}
         {...props}
       />
     </FormItem>

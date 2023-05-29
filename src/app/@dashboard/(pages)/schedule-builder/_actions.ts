@@ -32,7 +32,7 @@ const addEventAction = async (input: z.infer<typeof addEventSchema>) => {
 
     if (error) return responseContract(error.message, false);
 
-    revalidatePath('/schedule-builder');
+    revalidatePath('/schedule-builder'); // ✅
 
     return responseContract('Success!', true);
   } catch (error) {

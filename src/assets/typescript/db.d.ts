@@ -255,24 +255,24 @@ export interface Database {
       }
       customers: {
         Row: {
+          billing_portal_session_url: string
           created_at: string
           id: string
           stripe_customer_id: string
-          subscriptions: Json
           updated_at: string
         }
         Insert: {
+          billing_portal_session_url?: string
           created_at?: string
           id: string
           stripe_customer_id?: string
-          subscriptions?: Json
           updated_at?: string
         }
         Update: {
+          billing_portal_session_url?: string
           created_at?: string
           id?: string
           stripe_customer_id?: string
-          subscriptions?: Json
           updated_at?: string
         }
       }
@@ -547,80 +547,6 @@ export interface Database {
           updated_at?: string
         }
       }
-      payment_and_billing_details: {
-        Row: {
-          billing_address_line1: string
-          billing_address_line2: string
-          billing_city: string
-          billing_country: string
-          billing_email: string
-          billing_name: string
-          billing_phone: string
-          billing_postal_code: string
-          billing_state: string
-          card_brand: string
-          created_at: string
-          default_method: boolean
-          exp_month: string
-          exp_year: string
-          id: string
-          last4: string
-          metadata: Json
-          payment_details: Json
-          payment_method_type: Database["public"]["Enums"]["payment_type"]
-          stripe_customer_id: string
-          stripe_payment_method_id: string
-          updated_at: string
-        }
-        Insert: {
-          billing_address_line1?: string
-          billing_address_line2?: string
-          billing_city?: string
-          billing_country?: string
-          billing_email?: string
-          billing_name?: string
-          billing_phone?: string
-          billing_postal_code?: string
-          billing_state?: string
-          card_brand?: string
-          created_at?: string
-          default_method?: boolean
-          exp_month?: string
-          exp_year?: string
-          id: string
-          last4?: string
-          metadata?: Json
-          payment_details?: Json
-          payment_method_type?: Database["public"]["Enums"]["payment_type"]
-          stripe_customer_id?: string
-          stripe_payment_method_id?: string
-          updated_at?: string
-        }
-        Update: {
-          billing_address_line1?: string
-          billing_address_line2?: string
-          billing_city?: string
-          billing_country?: string
-          billing_email?: string
-          billing_name?: string
-          billing_phone?: string
-          billing_postal_code?: string
-          billing_state?: string
-          card_brand?: string
-          created_at?: string
-          default_method?: boolean
-          exp_month?: string
-          exp_year?: string
-          id?: string
-          last4?: string
-          metadata?: Json
-          payment_details?: Json
-          payment_method_type?: Database["public"]["Enums"]["payment_type"]
-          stripe_customer_id?: string
-          stripe_payment_method_id?: string
-          updated_at?: string
-        }
-      }
       prices: {
         Row: {
           active: boolean
@@ -842,26 +768,18 @@ export interface Database {
       }
       subscriptions: {
         Row: {
-          billing_portal_url: string | null
           cancel_at: string | null
           cancel_at_period_end: boolean
           canceled_at: string | null
-          cancellation_reason: Json
-          collection_method: string
-          created: string
           created_at: string
-          currency: string
           current_period_end: string
           current_period_start: string
-          days_until_due: number
           default_payment_method_id: string
           description: string
-          discount: Json
           ended_at: string | null
           id: string
           items: Json
           metadata: Json
-          quantity: number
           status: Database["public"]["Enums"]["subscription_status"]
           stripe_customer_id: string
           stripe_price_id: string
@@ -872,26 +790,18 @@ export interface Database {
           user_id: string
         }
         Insert: {
-          billing_portal_url?: string | null
           cancel_at?: string | null
           cancel_at_period_end?: boolean
           canceled_at?: string | null
-          cancellation_reason?: Json
-          collection_method?: string
-          created?: string
           created_at?: string
-          currency?: string
           current_period_end?: string
           current_period_start?: string
-          days_until_due?: number
           default_payment_method_id?: string
           description?: string
-          discount?: Json
           ended_at?: string | null
           id: string
           items?: Json
           metadata?: Json
-          quantity?: number
           status?: Database["public"]["Enums"]["subscription_status"]
           stripe_customer_id?: string
           stripe_price_id?: string
@@ -902,26 +812,18 @@ export interface Database {
           user_id: string
         }
         Update: {
-          billing_portal_url?: string | null
           cancel_at?: string | null
           cancel_at_period_end?: boolean
           canceled_at?: string | null
-          cancellation_reason?: Json
-          collection_method?: string
-          created?: string
           created_at?: string
-          currency?: string
           current_period_end?: string
           current_period_start?: string
-          days_until_due?: number
           default_payment_method_id?: string
           description?: string
-          discount?: Json
           ended_at?: string | null
           id?: string
           items?: Json
           metadata?: Json
-          quantity?: number
           status?: Database["public"]["Enums"]["subscription_status"]
           stripe_customer_id?: string
           stripe_price_id?: string
@@ -977,16 +879,34 @@ export interface Database {
         Row: {
           created_at: string
           id: string
+          preferred_lesson_detail_level: Database["public"]["Enums"]["lesson_detail_level"]
+          preferred_lesson_structure:
+            | Database["public"]["Enums"]["lesson_structure"]
+            | null
+          preferred_teaching_strategies: Database["public"]["Enums"]["teaching_strategy"][]
+          preferred_teaching_tools: Database["public"]["Enums"]["teaching_tool"][]
           updated_at: string
         }
         Insert: {
           created_at?: string
           id: string
+          preferred_lesson_detail_level?: Database["public"]["Enums"]["lesson_detail_level"]
+          preferred_lesson_structure?:
+            | Database["public"]["Enums"]["lesson_structure"]
+            | null
+          preferred_teaching_strategies?: Database["public"]["Enums"]["teaching_strategy"][]
+          preferred_teaching_tools?: Database["public"]["Enums"]["teaching_tool"][]
           updated_at?: string
         }
         Update: {
           created_at?: string
           id?: string
+          preferred_lesson_detail_level?: Database["public"]["Enums"]["lesson_detail_level"]
+          preferred_lesson_structure?:
+            | Database["public"]["Enums"]["lesson_structure"]
+            | null
+          preferred_teaching_strategies?: Database["public"]["Enums"]["teaching_strategy"][]
+          preferred_teaching_tools?: Database["public"]["Enums"]["teaching_tool"][]
           updated_at?: string
         }
       }
@@ -1244,7 +1164,7 @@ export interface Database {
           lesson_plan: Json | null
           level_id: string | null
           level_name: Database["public"]["Enums"]["level"] | null
-          students: Json[] | null
+          student_ids: Json[] | null
           subject_id: string | null
           subject_name: string | null
           topic_id: string | null
@@ -1432,12 +1352,15 @@ export interface Database {
           is_public: boolean | null
           length_in_min: number | null
           level: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
           scheduled_date: string | null
           students: string[] | null
           subject: string | null
+          subject_name: string | null
           tags: string[] | null
           title: string | null
           topic: string | null
+          topic_name: string | null
         }
       }
       recently_completed_lesson_plans_view: {
@@ -1521,15 +1444,30 @@ export interface Database {
       teacher_me_view: {
         Row: {
           avatar_url: string | null
+          billing_portal_session_url: string | null
           first_name: string | null
           id: string | null
           last_name: string | null
+          lesson_detail_level:
+            | Database["public"]["Enums"]["lesson_detail_level"]
+            | null
+          lesson_structure:
+            | Database["public"]["Enums"]["lesson_structure"]
+            | null
           role: Database["public"]["Enums"]["user_role"] | null
           status: Database["public"]["Enums"]["profile_status"] | null
+          stripe_customer_id: string | null
+          subscription_cancel_at_period_end: boolean | null
+          subscription_current_period_end: string | null
+          subscription_id: string | null
           subscription_status:
             | Database["public"]["Enums"]["subscription_status"]
             | null
           subscription_trial_end: string | null
+          teaching_strategies:
+            | Database["public"]["Enums"]["teaching_strategy"][]
+            | null
+          teaching_tools: Database["public"]["Enums"]["teaching_tool"][] | null
           type: Database["public"]["Enums"]["profile_type"] | null
         }
       }
@@ -1857,6 +1795,19 @@ export interface Database {
         | "Verbal"
         | "Logical"
         | "Social"
+      lesson_detail_level: "Basic" | "Intermediate" | "Detailed"
+      lesson_structure:
+        | "Objective_Introduction"
+        | "Prior_Knowledge_Review"
+        | "New_Material_Presentation"
+        | "Guided_Practice"
+        | "Independent_Practice"
+        | "Discussion_or_Debate"
+        | "Student_Presentations"
+        | "Assessment"
+        | "Summary_and_Review"
+        | "Homework_Assignment"
+        | "Other"
       level:
         | "Buds"
         | "Sprouts"
@@ -2011,6 +1962,19 @@ export interface Database {
         | "Project-Based Learning"
         | "Problem-Based Learning"
         | "Socratic Learning"
+        | "Other"
+      teaching_tool:
+        | "Whiteboard"
+        | "Slide_Presentation"
+        | "Video_Aids"
+        | "Physical_Manipulatives"
+        | "Interactive_Software"
+        | "Document_Camera"
+        | "Audio_Resources"
+        | "Art_Supplies"
+        | "Reading_Materials"
+        | "Science_Lab_Equipment"
+        | "Math_Tools"
         | "Other"
       user_role: "ADMIN" | "TEACHER" | "GROUP_MANAGER" | "STUDENT" | "BANNISHED"
     }

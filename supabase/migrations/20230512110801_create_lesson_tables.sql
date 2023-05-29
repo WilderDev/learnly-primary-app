@@ -13,8 +13,6 @@ CREATE TYPE pace AS ENUM ('SLOW', 'MEDIUM', 'FAST');
 CREATE TYPE philosophy AS ENUM ('Eclectic/Relaxed', 'Traditional', 'Montessori', 'Unschooling', 'Unit Studies', 'Project-Based', 'Waldorf', 'Reggio Emilia', 'Classical', 'Charlotte Mason', 'Other');
 -- Formats
 CREATE TYPE format AS ENUM ('Whole Group', 'Small Group', 'Individual');
--- Teaching Strategies
-CREATE TYPE teaching_strategy AS ENUM ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other');
 -- Materials
 CREATE TYPE material AS ENUM ('Textbook', 'Workbook', 'Worksheet', 'Manipulatives', 'Technology', 'Other');
 -- Standards
@@ -352,6 +350,9 @@ SELECT
   tp.last_name AS creator_last_name,
   tp.avatar_url AS creator_avatar_url,
   tp.type AS creator_type,
+  s.name AS subject_name,
+  lv.name AS level_name,
+  t.name AS topic_name,
   ulp.students,
   ulp.scheduled_date,
   ulp.completion_date

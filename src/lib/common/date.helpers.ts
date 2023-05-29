@@ -17,6 +17,27 @@ export function formatDateString(
   return formattedDate;
 }
 
+// * Format a date string into a human readable format
+export function formatExactDateString(
+  dateStr: string,
+  format: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  },
+): string {
+  if (!dateStr) return ''; // Return empty string if dateStr is empty
+
+  const [year, month, day] = dateStr.split('-').map((str) => Number(str));
+  const dateObj = new Date(year, month - 1, day); // JavaScript months are 0-indexed
+
+  const formattedDate = new Intl.DateTimeFormat('en-US', format).format(
+    dateObj,
+  );
+
+  return formattedDate;
+}
+
 // * Turn a date object into a timestampz string
 export function dateToTimestampz(date: Date) {
   const dt = Date.parse(date.toISOString()); // convert to UTC

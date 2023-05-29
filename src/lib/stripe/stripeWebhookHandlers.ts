@@ -5,6 +5,7 @@ import { supabaseAdmin } from '../auth/supabaseAdmin';
 import { stripe } from './stripe';
 import { secondsToIso } from '../common/date.helpers';
 import baseUrl from '../common/baseUrl';
+import { redirect } from 'next/navigation';
 
 // * Handle Create or Retrieve Customer Event ✅
 // Interface
@@ -71,14 +72,12 @@ interface ICreateCustomer {
 
 // Handler
 export async function handleCreateCustomer({ customer }: ICreateCustomer) {
-  console.log('customer:', customer);
-  console.log('STRIPE_DEFAULT_:', process.env.STRIPE_DEFAULT_PRICE_ID);
   // 1. Create a new Stripe Trial Subscription
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
-
     items: [{ price: process.env.STRIPE_DEFAULT_PRICE_ID as string }],
     trial_period_days: 14,
+    // payment_behavior: 'default_incomplete',
     payment_settings: {
       save_default_payment_method: 'on_subscription',
     },
@@ -88,12 +87,6 @@ export async function handleCreateCustomer({ customer }: ICreateCustomer) {
       },
     },
   });
-
-  console.log('subscription:', subscription);
-  console.log(
-    'subscription.cancel_at_period_end:',
-    subscription.cancel_at_period_end,
-  );
 
   // 2. Insert the Subscription into the database
   const { error: subscriptionError } = await supabaseAdmin()
@@ -124,8 +117,6 @@ export async function handleCreateCustomer({ customer }: ICreateCustomer) {
         ? secondsToIso(subscription.cancel_at)
         : null,
     });
-
-  console.log('subscriptionError:', subscriptionError);
 
   // 3. Check if there was an error inserting the Subscription
   if (subscriptionError) throw new Error(subscriptionError.message);
@@ -163,8 +154,6 @@ export async function handleTrialWillEnd({ subscription }: ITrialWillEnd) {
     type: 'card',
   });
 
-  // TSK: Probably check if they already paid the trial????
-
   // 2. Get the customer supabaseId
   const { data: customer } = await supabaseAdmin()
     .from('customers')
@@ -179,7 +168,13 @@ export async function handleTrialWillEnd({ subscription }: ITrialWillEnd) {
       customerId: customer?.stripe_customer_id!,
     });
 
-    // 3a2. Send Notification to User
+    // 3a2. Save Billing Url to Customer
+    await supabaseAdmin()
+      .from('customers')
+      .update({ billing_portal_session_url: url })
+      .eq('id', customer?.id);
+
+    // 3a3. Send Notification to User
     await supabaseAdmin().from('notifications').insert({
       recipient_id: customer?.id!,
       title: 'Payment Method Required',
@@ -219,6 +214,12 @@ export async function handleCreateBillingPortalSession({
     return_url: baseUrl,
     flow_data: {
       type: 'payment_method_update',
+      after_completion: {
+        type: 'redirect',
+        redirect: {
+          return_url: `${baseUrl}/account`,
+        },
+      },
     },
   });
 
@@ -411,7 +412,8 @@ export async function handleUpdateSubscription({
       ended_at: ended_at ? secondsToIso(ended_at) : null,
       trial_start: trial_start ? secondsToIso(trial_start) : null,
       trial_end: trial_end ? secondsToIso(trial_end) : null,
-    });
+    })
+    .eq('id', id);
 
   // 3. Check if there was an error updating the subscription
   if (subscriptionError) throw new Error(subscriptionError.message);
@@ -454,7 +456,7 @@ export async function handleUpdateSubscription({
       action_url: url,
     });
 
-    // 5c. Set the user's role to incomplete
+    redirect(url);
   }
 
   // 6. Check if the subscription is active
@@ -474,5 +476,21 @@ interface IDeleteSubscription {
 export async function handleDeleteSubscription({
   subscriptionId,
 }: IDeleteSubscription) {
-  // TSK
+  // 1. Delete the subscription from the database
+  // const { error: subscriptionError } = await supabaseAdmin()
+  //   .from('subscriptions')
+  //   .delete()
+  //   .eq('id', subscriptionId);
+  // 2. Check if there was an error deleting the subscription
+  // if (subscriptionError) throw new Error(subscriptionError.message);
+  // 1. Pause the subscription in SB
+  const { error: subscriptionError } = await supabaseAdmin()
+    .from('subscriptions')
+    .update({
+      status: 'incomplete',
+    })
+    .eq('id', subscriptionId);
+
+  // 2. Check if there was an error updating the subscription
+  if (subscriptionError) throw new Error(subscriptionError.message);
 }

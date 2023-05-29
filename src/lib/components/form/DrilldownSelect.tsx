@@ -1,12 +1,5 @@
 // * Imports
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import FormItem from './FormItem';
 import cn from '@/lib/common/cn';
 import {
@@ -25,7 +18,7 @@ import { IOption, TSelection } from '@/assets/typescript/form';
 // * Props
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   values: TSelection[];
-  setValues: Dispatch<SetStateAction<TSelection>>[];
+  setValues: (values: TSelection[]) => void;
   options: IOption[];
   label: string;
   labelHidden?: boolean;
@@ -40,7 +33,7 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 // * Component
-export default function DrilldownSelect({
+const DrilldownSelect = memo(function DrilldownSelect({
   values,
   setValues,
   options,
@@ -162,9 +155,10 @@ IProps) {
           }));
 
           // Loop over the setValues setters and set the values
-          setValues.forEach((setValue, i) => {
-            setValue(results[i]);
-          });
+          setValues(results);
+          // setValues.forEach((setValue, i) => {
+          //   setValue(results[i]);
+          // });
 
           setInputValue(
             `${option.name} (${newPath[1]?.name} ${results[0].name})`,
@@ -176,6 +170,31 @@ IProps) {
       });
     },
     [options, path, setMenuOpen, setInputValue, setValues, windowWidth],
+  );
+
+  // Handle Option Change
+  const handleOptionChange = useCallback(
+    (option: IOption, level: number, index: number) => {
+      // Update the indices state to reflect the index of the selected option
+      setIndices((oldIndices) => {
+        let newIndices = [...oldIndices];
+        newIndices[level] = index;
+        return newIndices;
+      });
+
+      setPath((oldPath) => {
+        let newPath = [...oldPath];
+        newPath[level] = option;
+
+        // If we're going back in levels, trim off the excess
+        if (newPath.length - 1 > level) {
+          newPath = newPath.slice(0, level + 1);
+        }
+
+        return newPath;
+      });
+    },
+    [],
   );
 
   // Handle Key Down
@@ -228,34 +247,8 @@ IProps) {
           break;
       }
     },
-    [menuOpen, options, path, indices, handleItemClick],
+    [menuOpen, options, path, indices, handleItemClick, handleOptionChange],
   );
-
-  // Handle Option Change
-  const handleOptionChange = (
-    option: IOption,
-    level: number,
-    index: number,
-  ) => {
-    // Update the indices state to reflect the index of the selected option
-    setIndices((oldIndices) => {
-      let newIndices = [...oldIndices];
-      newIndices[level] = index;
-      return newIndices;
-    });
-
-    setPath((oldPath) => {
-      let newPath = [...oldPath];
-      newPath[level] = option;
-
-      // If we're going back in levels, trim off the excess
-      if (newPath.length - 1 > level) {
-        newPath = newPath.slice(0, level + 1);
-      }
-
-      return newPath;
-    });
-  };
 
   //   * Effects
   // Close menu on click outside
@@ -266,6 +259,7 @@ IProps) {
     };
   }, []);
 
+  // Handle window resize
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
@@ -275,6 +269,7 @@ IProps) {
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
 
+  // Set the initial values
   useEffect(() => {
     if (values[0] === null) {
       setPath([undefined]);
@@ -343,97 +338,97 @@ IProps) {
           )}
         </div>
 
-        {menuOpen && (
-          <>
-            <div
-              className={cn(
-                'absolute right-0 top-10 z-20 mt-1 w-full',
-                roundeds[rounded],
-                shadows[shadow],
-                variants[variant],
-              )}
-            >
-              {path.map(
-                (selectedOption, level) =>
-                  level <= currentLevel && (
-                    <ul
+        {/* Menu */}
+        <div
+          className={cn(
+            'absolute right-0 top-10 z-20 mt-1 w-full',
+            roundeds[rounded],
+            shadows[shadow],
+            variants[variant],
+            menuOpen ? 'block' : 'hidden',
+          )}
+        >
+          {path.map(
+            (selectedOption, level) =>
+              level <= currentLevel && (
+                <ul
+                  className={cn(
+                    'absolute bg-white dark:bg-navy-700 dark:border-navy-600 dark:divide-navy-600 border border-slate-200 divide-y divide-slate-200 shadow-lg w-full lg:w-64 z-10',
+                    roundeds[rounded],
+                  )}
+                  style={{
+                    left: windowWidth <= 1024 ? '0px' : `${level * 256}px`,
+                    top:
+                      windowWidth > 1024
+                        ? `${itemTopPositions[level]}px`
+                        : '0px',
+                  }}
+                  role="listbox"
+                  aria-labelledby={label}
+                  aria-activedescendant={selectedOption?.id}
+                  key={level}
+                >
+                  {windowWidth <= 1024 && level > 0 && (
+                    <li
                       className={cn(
-                        'absolute bg-white dark:bg-navy-700 dark:border-navy-600 dark:divide-navy-600 border border-slate-200 divide-y divide-slate-200 shadow-lg w-full lg:w-64 z-10',
-                        roundeds[rounded],
+                        'cursor-pointer shadow px-3 py-2 hocus:bg-slate-100 bg-slate-50 dark:bg-navy-900/70 dark:hocus:bg-navy-600 text-slate-500 dark:text-navy-300 text-xs sm:text-sm rounded-t-md border-2 border-slate-300/90',
                       )}
-                      style={{
-                        left: windowWidth <= 1024 ? '0px' : `${level * 256}px`,
-                        top:
-                          windowWidth > 1024
-                            ? `${itemTopPositions[level]}px`
-                            : '0px',
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // Navigate back up one level
+                        setPath((oldPath) => {
+                          let newPath = [...oldPath];
+                          newPath = newPath.slice(0, newPath.length - 1);
+                          setCurrentLevel(newPath.length - 1);
+                          return newPath;
+                        });
+                        setItemTopPositions((oldTopPositions) => {
+                          let newTopPositions = [...oldTopPositions];
+                          newTopPositions = newTopPositions.slice(
+                            0,
+                            newTopPositions.length - 1,
+                          );
+                          return newTopPositions;
+                        });
                       }}
-                      role="listbox"
-                      aria-labelledby={label}
-                      aria-activedescendant={selectedOption?.id}
-                      key={level}
                     >
-                      {windowWidth <= 1024 && level > 0 && (
-                        <li
-                          className={cn(
-                            'cursor-pointer shadow px-3 py-2 hocus:bg-slate-100 bg-slate-50 dark:bg-navy-900/70 dark:hocus:bg-navy-600 text-slate-500 dark:text-navy-300 text-xs sm:text-sm rounded-t-md border-2 border-slate-300/90',
-                          )}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            // Navigate back up one level
-                            setPath((oldPath) => {
-                              let newPath = [...oldPath];
-                              newPath = newPath.slice(0, newPath.length - 1);
-                              setCurrentLevel(newPath.length - 1);
-                              return newPath;
-                            });
-                            setItemTopPositions((oldTopPositions) => {
-                              let newTopPositions = [...oldTopPositions];
-                              newTopPositions = newTopPositions.slice(
-                                0,
-                                newTopPositions.length - 1,
-                              );
-                              return newTopPositions;
-                            });
-                          }}
-                        >
-                          Back
-                        </li>
-                      )}
-                      {(level === 0 ? options : path[level - 1]?.children)?.map(
-                        (option, index) => (
-                          <li
-                            key={option.id}
-                            className={cn(
-                              'cursor-pointer px-3 py-2 shadow text-sm sm:text-base font-medium text-slate-800 dark:text-navy-100',
-                              selectedOption?.id === option.id
-                                ? 'bg-green-100 dark:bg-green-700'
-                                : 'hocus:bg-slate-100 dark:hocus:bg-navy-600',
-                              // If it's the last item for this level, add rounded bottom corners
-                              level === path.length - 1 && 'rounded-b-md',
-                            )}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleItemClick(option, level, index, e as any);
-                            }}
-                          >
-                            {option.name}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  ),
-              )}
-            </div>
+                      Back
+                    </li>
+                  )}
+                  {(level === 0 ? options : path[level - 1]?.children)?.map(
+                    (option, index) => (
+                      <li
+                        key={option.id}
+                        className={cn(
+                          'cursor-pointer px-3 py-2 shadow text-sm sm:text-base font-medium text-slate-800 dark:text-navy-100',
+                          selectedOption?.id === option.id
+                            ? 'bg-green-100 dark:bg-green-700'
+                            : 'hocus:bg-slate-100 dark:hocus:bg-navy-600',
+                          // If it's the last item for this level, add rounded bottom corners
+                          level === path.length - 1 && 'rounded-b-md',
+                        )}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleItemClick(option, level, index, e as any);
+                        }}
+                      >
+                        {option.name}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              ),
+          )}
+        </div>
 
-            {/* Backdrop blur */}
-            {/* <div
+        {/* Backdrop blur */}
+        {/* <div
               className="fixed inset-0 z-10 backdrop-blur-sm"
               onClick={() => setMenuOpen(false)}
             /> */}
-          </>
-        )}
       </div>
     </FormItem>
   );
-}
+});
+
+export default DrilldownSelect;

@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 import { useLessonCreator } from './LessonCreatorCtx';
 import { useState, useTransition } from 'react';
 import Button from '@/lib/components/ui/Button';
+import { revalidatePath } from 'next/cache';
 
 // * Props
 interface IProps {
@@ -47,6 +48,7 @@ export default function LessonCreatorSaveTemplateModal({
       if (data.ok) {
         toast.success('Lesson Plan Template Saved!');
         setTemplateTitle('');
+        revalidatePath('/lesson-creator'); // ✅
       } else {
         toast.error(
           "Something went wrong... You might've already saved this lesson plan temaplate.",

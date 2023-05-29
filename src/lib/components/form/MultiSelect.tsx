@@ -158,18 +158,20 @@ export default function MultiSelect({
         <div className="block w-full cursor-pointer flex-nowrap overflow-hidden text-ellipsis whitespace-nowrap">
           <span
             className={cn(
-              values.length > 0
+              values?.length > 0
                 ? 'text-slate-900 dark:text-navy-50'
                 : 'text-slate-500/70 dark:text-navy-200/70 font-light',
             )}
           >
-            {values.length > 0
+            {values?.length > 0
               ? values
                   .map((value) => {
                     const option = options.find(
                       (option) => option.value === value,
                     );
-                    return option ? capitalize(option.label) : '';
+                    return option
+                      ? capitalize(option.label.split('_').join(' '))
+                      : '';
                   })
                   .join(', ')
               : 'Select options'}
@@ -189,7 +191,7 @@ export default function MultiSelect({
         {isMenuOpen && (
           <div
             className={cn(
-              'absolute right-0 top-10 z-20 mt-1 w-full',
+              'absolute right-0 top-10 z-50 mt-1 w-full',
               roundeds[rounded],
               shadows[shadow],
               variants[variant],
@@ -197,7 +199,7 @@ export default function MultiSelect({
           >
             <ul
               className={cn(
-                'max-h-60 overflow-auto text-base divide-y-2 border-2 border-slate-300/90 dark:border-navy-500/90 divide-slate-300 dark:divide-navy-500 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
+                'max-h-80 overflow-auto text-base divide-y-2 border-2 border-slate-300/90 dark:border-navy-500/90 divide-slate-300 dark:divide-navy-500 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
                 roundeds[rounded],
               )}
               role="listbox"
@@ -243,7 +245,7 @@ export default function MultiSelect({
                       />
                     )}
                     <span className="block truncate font-medium text-base">
-                      {capitalize(option.label)}
+                      {capitalize(option.label.split('_').join(' '))}
                     </span>
 
                     {values.includes(option.value) && (

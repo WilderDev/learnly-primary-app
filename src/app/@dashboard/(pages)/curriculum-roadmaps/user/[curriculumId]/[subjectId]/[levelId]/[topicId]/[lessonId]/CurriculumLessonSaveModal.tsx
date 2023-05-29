@@ -8,6 +8,7 @@ import Button from '@/lib/components/ui/Button';
 import { BookmarkSquareIcon } from '@heroicons/react/24/solid';
 import { saveCurriculumLessonPlan } from '@/app/@dashboard/(pages)/curriculum-roadmaps/_actions';
 import { useParams } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 interface IProps {
   lessonPlanId: string;
@@ -30,6 +31,9 @@ export default function CurriculumLessonSaveModal({
     onSuccess: (data) => {
       if (data.ok) {
         toast.success('Lesson Plan Saved!');
+        revalidatePath(`/lesson-plans/${params.lessonId}`); // ✅
+        revalidatePath('/schedule-builder'); // ✅
+        revalidatePath('/'); // ✅
         close();
       } else {
         toast.error(

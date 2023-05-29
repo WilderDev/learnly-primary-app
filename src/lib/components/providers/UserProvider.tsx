@@ -11,7 +11,7 @@ import {
 import { createContext } from 'react';
 import { IUserSubscription, Me, UserStudent } from '@/assets/typescript/user';
 import { useAuth } from './AuthProvider';
-import Modal from '../popouts/Modal';
+import AuthSubscribeModal from '@/lib/auth/AuthSubscribeModal';
 
 // * Context
 // Interface
@@ -55,28 +55,51 @@ export function UserProvider({ children }: PropsWithChildren) {
 
     const transformedUser: Me = {
       id: data.id!,
-      //   email: data.email!,
       firstName: data.first_name!,
       lastName: data.last_name!,
       avatarUrl: data.avatar_url!,
       status: data.status!,
       type: data.type!,
       role: data.role!,
+      teachingPreferences: {
+        teachingStrategies: data.teaching_strategies!,
+        lessonDetailLevel: data.lesson_detail_level!,
+        teachingTools: data.teaching_tools!,
+        lessonStructure: data.lesson_structure!,
+      },
     };
 
     const subStatus = data?.subscription_status!;
     const isAuthorized = subStatus === 'active' || subStatus === 'trialing';
 
+    const trialEnd = data.subscription_trial_end!; // 2023-05-25 00:10:38.459876+00;
+    const isEndingSoon =
+      new Date(trialEnd).getTime() - Date.now() < 86400000 * 3; // 3 day
+
     const transformedSubscription: IUserSubscription = {
-      status: subStatus,
-      trialEnd: data.subscription_trial_end!,
       isAuthorized,
+      status: subStatus,
+      isEndingSoon: subStatus === 'active' ? false : isEndingSoon,
+      trialEnd: data.subscription_trial_end!,
+      billingPortalSessionUrl: data.billing_portal_session_url!,
+      stripeSubscriptionId: data.subscription_id!,
+      stripeCustomerId: data.stripe_customer_id!,
+      renewalDate: data.subscription_current_period_end!,
     };
+
+    // If there was a user and they have not paid after subscription, redirect to billing portal
+    if (data && !isAuthorized) {
+      return window.location.replace(
+        transformedSubscription.billingPortalSessionUrl?.trim() || '/',
+      );
+    }
 
     return {
       user: transformedUser,
       subscription: transformedSubscription,
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase, session]);
 
   // Fetch Students
@@ -96,6 +119,14 @@ export function UserProvider({ children }: PropsWithChildren) {
       birthday: student.birthday!,
       avatarUrl: student.avatar_url!,
       learningStyles: student.learning_styles!,
+      favoriteSubjects: student.subject_preferences!,
+      interests: student.interests!,
+      goals: student.goals!,
+      learningEnvironments: student.learning_environment_preferences!,
+      learningResources: student.learning_resources_preferences!,
+      specialNeeds: student.special_needs!,
+      // Strenths
+      // Weaknesses
       // . . .
     }));
 
@@ -155,11 +186,14 @@ export function UserProvider({ children }: PropsWithChildren) {
   // * Render
   return (
     <UserCtx.Provider value={value}>
-      {/* If Not Authorized */}
-      {/* TSK */}
-
       {/* If Trial Ending Soon */}
-      {/* TSK */}
+      {subscription?.isAuthorized && subscription?.isEndingSoon && (
+        <AuthSubscribeModal
+          initialOpen={true}
+          endDate={subscription?.trialEnd!}
+          billingUrl={subscription?.billingPortalSessionUrl!}
+        />
+      )}
 
       {/* Children */}
       {children}
