@@ -3,7 +3,7 @@
 import Container from '@/lib/components/layout/Container';
 import LandingSectionHeader from './LandingSectionHeader';
 import { reviews } from '@/assets/reviews/reviews';
-import VerticleMarqueeGrid from '@/lib/components/containers/VerticleMarqueeGrid';
+import VerticleMarqueeGrid from '@/lib/components/ux/VerticleMarqueeGrid';
 
 // * Component
 export default function LandingVerticleTestimonialGrid() {

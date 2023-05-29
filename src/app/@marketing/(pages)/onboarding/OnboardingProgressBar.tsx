@@ -1,6 +1,6 @@
 'use client';
 
-import Box from '@/lib/components/containers/Box';
+import Box from '@/lib/components/ui/Box';
 import { useOnboarding } from './OnboardingCtx';
 
 // * Component

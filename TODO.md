@@ -14,9 +14,8 @@
 
 1. Onboarding Generate Lesson Flow and Show Them Around the App
 2. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
-3. Fix /onboarding testimonials scrollers jump
-4. All TSK Messages... (Let's get it)
-5. Push everything to production
+3. All TSK Messages... (Let's get it)
+4. Push everything to production
 
 ---
 
