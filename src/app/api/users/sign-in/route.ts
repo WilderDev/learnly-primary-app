@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: redirectUrl ? `${baseUrl}/${redirectUrl}` : baseUrl,
+      emailRedirectTo: `${baseUrl}/${redirectUrl ?? ''}`,
       shouldCreateUser: false,
     },
   });
