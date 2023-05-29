@@ -14,11 +14,10 @@
 
 1. Onboarding Generate Lesson Flow and Show Them Around the App
 2. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
-3. [Open Graph for Lesson Plans and Curriculum](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
-4. Take OG Image Screenshots and add to [default metatdata](src/lib/meta/defaultMetadata.ts) (1200x630)
-5. Social Login's?
-6. Fix /onboarding testimonials scrollers jump
-7. Push everything to production
+3. Social Login's?
+4. Fix /onboarding testimonials scrollers jump
+5. Refactor most /api routes to use \_actions.ts files and fix revalidatePath by passing in from server component to client
+6. Push everything to production
 
 ---
 
@@ -31,3 +30,7 @@
 4. Last reminder email the day of trial ending [day of trial ending]
 5. 1 week after trial ends, ask them to try our monthly plan or ask for feedback [1 week after trial ends]
 6. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
+
+### Other
+
+1. Create Video showcasing Learnly (how to use it and the core features/benefits) -> Post in FB Group -> Add to Email #3 in FB List Email Sequence
