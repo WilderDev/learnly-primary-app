@@ -14,10 +14,9 @@
 
 1. Onboarding Generate Lesson Flow and Show Them Around the App
 2. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
-3. Social Login's?
-4. Fix /onboarding testimonials scrollers jump
-5. Refactor most /api routes to use \_actions.ts files and fix revalidatePath by passing in from server component to client
-6. Push everything to production
+3. Fix /onboarding testimonials scrollers jump
+4. All TSK Messages... (Let's get it)
+5. Push everything to production
 
 ---
 
