@@ -4,13 +4,11 @@ import {
   handlePrint,
   handleShare,
 } from '@/app/@dashboard/(pages)/lesson-creator/helpers';
-import LessonPlanSaveDetailsModalForm from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanSaveDetailsModal';
 import {
   BookmarkSquareIcon,
   PrinterIcon,
   ShareIcon,
 } from '@heroicons/react/24/solid';
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import CurriculumLessonSaveModal from './CurriculumLessonSaveModal';
 

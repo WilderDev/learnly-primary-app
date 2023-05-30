@@ -59,5 +59,3 @@ async function getCurriculumRoadmapNextLessons() {
   // Return data
   return curriculum_roadmap_next_lessons as INextCurriculumLesson[];
 }
-
-// TSK: Interface
