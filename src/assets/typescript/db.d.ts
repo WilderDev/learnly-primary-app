@@ -1363,6 +1363,52 @@ export interface Database {
           topic_name: string | null
         }
       }
+      next_four_lessons_per_curriculum_vieww: {
+        Row: {
+          curriculum_id: string | null
+          lesson_description: string | null
+          lesson_id: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_number: number | null
+          progress_id: string | null
+          progress_status: Database["public"]["Enums"]["progress_status"] | null
+          teacher_id: string | null
+        }
+      }
+      next_four_lessons_per_curriculum_viewwww: {
+        Row: {
+          curriculum_id: string | null
+          lesson_description: string | null
+          lesson_id: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_number: number | null
+          progress_id: string | null
+          progress_status: Database["public"]["Enums"]["progress_status"] | null
+          teacher_id: string | null
+        }
+      }
+      next_lesson_per_subject_per_curriculum_view: {
+        Row: {
+          curriculum_id: string | null
+          curriculum_lesson_id: string | null
+          curriculum_level_id: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          curriculum_topic_id: string | null
+          lesson_description: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_number: number | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          progress_status: Database["public"]["Enums"]["progress_status"] | null
+          subject_name: string | null
+          teacher_id: string | null
+          topic_name: string | null
+          user_curriculum_id: string | null
+        }
+      }
       recently_completed_lesson_plans_view: {
         Row: {
           completion_date: string | null

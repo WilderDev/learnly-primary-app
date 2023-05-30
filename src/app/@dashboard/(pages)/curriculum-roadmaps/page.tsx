@@ -8,11 +8,12 @@ import CurriculumRoadmapCards, {
   NoCurriculumRoadmapCard,
 } from './(layout)/CurriculumRoadmapCards';
 import SaveCurriculumRoadmapModalContent from './(layout)/SaveCurriculumRoadmapModalContent';
+import CurriculumRoadmapNextLessons from './CurriculumRoadmapNextLessons';
 
 // * Page
 export default async function CurriculumRoadmapsPage() {
   // * Data
-  const { user_roadmaps, roadmaps, metadata } = await getCurriculumRoadmaps();
+  const { user_roadmaps, roadmaps } = await getCurriculumRoadmaps();
 
   // * Render
   return (
@@ -37,10 +38,13 @@ export default async function CurriculumRoadmapsPage() {
         </DashPanel>
 
         {/* Curriculum Roadmap Next Lessons */}
-        <DashPanel colNum={2}>
-          <DashPanelHeader title="Next Lessons" />
-          {/* TSK */}
-        </DashPanel>
+        {user_roadmaps.length > 0 && (
+          <DashPanel colNum={2}>
+            <DashPanelHeader title="Next Lessons" />
+            {/* @ts-expect-error Server Component */}
+            <CurriculumRoadmapNextLessons />
+          </DashPanel>
+        )}
       </DashMainCol>
 
       {/* Side Column */}
@@ -52,10 +56,12 @@ export default async function CurriculumRoadmapsPage() {
         </DashPanel>
 
         {/* Curriculum Roadmap Timeline */}
-        <DashPanel colNum={2}>
-          <DashPanelHeader title="Timeline" />
-          {/* TSK */}
-        </DashPanel>
+        {user_roadmaps.length > 0 && (
+          <DashPanel colNum={2}>
+            <DashPanelHeader title="Timeline" />
+            {/* TSK */}
+          </DashPanel>
+        )}
       </DashSideCol>
     </>
   );

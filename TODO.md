@@ -10,12 +10,6 @@
 7. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 8. Bottom Right Chat Bubble (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
 
-### Will
-
-1. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
-2. All TSK Messages... (Let's get it)
-3. Push everything to production
-
 ---
 
 ## Marketing

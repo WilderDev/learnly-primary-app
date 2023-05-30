@@ -77,3 +77,21 @@ export interface ICurriculumLessonPlan {
     completion_date: string | null;
   } | null;
 }
+
+export interface INextCurriculumLesson {
+  teacher_id: string;
+  user_curriculum_id: string;
+  curriculum_id: string;
+  curriculum_subject_id: string;
+  curriculum_level_id: string;
+  curriculum_topic_id: string;
+  curriculum_lesson_id: string;
+  curriculum_name: string;
+  subject_name: string;
+  level_name: string;
+  topic_name: string;
+  lesson_name: string;
+  lesson_description: string;
+  lesson_number: number;
+  lesson_image_path: string;
+}

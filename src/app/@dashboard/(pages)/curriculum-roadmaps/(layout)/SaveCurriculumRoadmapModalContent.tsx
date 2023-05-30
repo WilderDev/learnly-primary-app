@@ -26,7 +26,7 @@ interface IProps {
 
 export default function SaveCurriculumRoadmapModalContent({
   roadmaps,
-  close,
+  close = () => null,
 }: IProps) {
   // * Hooks / Context
   const { students } = useUser();
@@ -41,17 +41,16 @@ export default function SaveCurriculumRoadmapModalContent({
   const { mutate, isLoading } = useRequest(saveCurriculum, {
     onSuccess: (data) => {
       if (data.ok) {
+        close();
         toast.success('Curriculum Saved!');
         setSelectedCurriculum('');
         setCurriculumStudents([]);
-        revalidatePath(`/curriculum-roadmaps`); // ✅
+        // revalidatePath(`/curriculum-roadmaps`); // ✅
       } else {
         toast.error(
           "Something went wrong... You might've already saved this curriculum.",
         );
       }
-
-      close && close();
     },
     onError: (error) => toast.error(error),
   });
