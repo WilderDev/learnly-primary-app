@@ -11,7 +11,6 @@ export function getSubjectColor(subject: string) {
 
 // Subject Enum Colors
 const subjectColors = {
-  // TSK: Do dark mode and active states for each
   MATHEMATICS: {
     BG: {
       DEFAULT: 'bg-blue-500',
@@ -242,7 +241,6 @@ export function getEventColor(eventType: string) {
 
 // Event Enum Colors
 const eventColors = {
-  // TSK: Do dark mode and active states for each
   LESSON: {
     BG: {
       DEFAULT: 'bg-blue-500',
@@ -580,7 +578,6 @@ export function getIndexColors(idx: number) {
 
 // Index Enum Colors
 const indexColors = {
-  // TSK: Do dark mode and active states for each
   0: {
     BG: {
       DEFAULT: 'bg-blue-500',

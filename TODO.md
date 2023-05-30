@@ -8,7 +8,7 @@
 5. User's can change the title and image of a lesson plan they have created
 6. Curriculum Topic search page with tags and by filters
 7. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
-8. Bottom Right Chat Bubble (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
+8. [Bottom Right Chat Bubble](<src/app/@dashboard/(pages)/help-center/ChatForm.tsx>) (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
 
 ---
 

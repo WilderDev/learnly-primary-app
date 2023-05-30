@@ -20,11 +20,10 @@ export default function AccountSubscriptionTab() {
       </DashPanel>
 
       {/* Refer a Friend */}
-      <DashPanel className="w-full 2xl:w-5/12" colNum={2}>
+      {/* <DashPanel className="w-full 2xl:w-5/12" colNum={2}>
         <DashPanelHeader title="Refer a Friend" />
-        {/* TSK */}
         <p>Coming soon...</p>
-      </DashPanel>
+      </DashPanel> */}
     </section>
   ) : (
     <DashPanel className="w-full 2xl:w-9/12" colNum={1}>
