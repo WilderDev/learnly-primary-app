@@ -34,7 +34,7 @@ export default function LeftSidebarUserLinks() {
           {/* Profile Image */}
           <Image
             src={user?.avatarUrl! || '/static/icons/avatars/default.png'}
-            alt={user?.firstName!}
+            alt={user?.firstName! || 'User'}
             className="h-10 w-10 rounded-full object-cover object-center transition-transform duration-200 ease-in-out group-hover:scale-110"
             width={40}
             height={40}

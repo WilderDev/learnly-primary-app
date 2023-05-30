@@ -87,7 +87,6 @@ const createUserAction = async (input: z.infer<typeof createUserSchema>) => {
     await sb.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: baseUrl + '/lesson-creator?onboarding=true',
         shouldCreateUser: false,
       },
     });

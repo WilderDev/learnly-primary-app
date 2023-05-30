@@ -12,10 +12,9 @@
 
 ### Will
 
-1. Onboarding Generate Lesson Flow and Show Them Around the App
-2. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
-3. All TSK Messages... (Let's get it)
-4. Push everything to production
+1. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
+2. All TSK Messages... (Let's get it)
+3. Push everything to production
 
 ---
 

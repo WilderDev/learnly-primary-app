@@ -7,6 +7,14 @@ import RightSidebar from '../(navigation)/(right-sidebar)/RightSidebar';
 import { DashPanel, DashPanelHeader } from '../(layout)/DashPanel';
 import LeftSidebarMobile from '../(navigation)/(left-sidebar)/(mobile)/LeftSidebarMobile';
 import DashChatBubble from '../(layout)/DashChatBubble';
+import dynamic from 'next/dynamic';
+
+const OnboardingTourContainer = dynamic(
+  () => import('../(navigation)/(onboarding-tour)/OnboardingTourContainer'),
+  {
+    ssr: false,
+  },
+);
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
@@ -38,6 +46,9 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
 
       {/* Chat Bubble (Bottom Right) */}
       <DashChatBubble />
+
+      {/* Onboarding Tour */}
+      <OnboardingTourContainer />
     </DashProviders>
   );
 }
