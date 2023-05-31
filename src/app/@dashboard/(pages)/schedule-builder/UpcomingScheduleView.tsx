@@ -28,6 +28,7 @@ import baseUrl from '@/lib/common/baseUrl';
 import { toast } from 'sonner';
 import { useRequest } from '@/lib/hooks/useRequest';
 import { deleteEvent } from './_actions';
+import EditEventModal from './EditEventModal';
 
 // * Component
 export default function UpcomingScheduleView() {
@@ -36,6 +37,7 @@ export default function UpcomingScheduleView() {
 
   // * State
   const [isAddEventModalOpen, setAddEventModalOpen] = useState(false);
+  const [editEventModalId, setEditEventModalId] = useState('');
   const [upcomingEvents, setUpcomingEvents] = useState<ICalendarEvent[]>([]);
   const [loading, setLoading] = useState(false);
   let [isPending, startTransition] = useTransition();
@@ -255,7 +257,6 @@ export default function UpcomingScheduleView() {
                     >
                       {/* Items */}
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-navy-700 dark:ring-navy-200">
-                        {/* TSK: These buttons don't do anything right now */}
                         <div className="py-1">
                           {/* Url */}
                           {url && (
@@ -266,7 +267,7 @@ export default function UpcomingScheduleView() {
                                     active
                                       ? 'bg-slate-100 text-slate-900 dark:bg-navy-600 dark:text-navy-50'
                                       : 'text-slate-700 dark:text-navy-100',
-                                    'block px-4 py-2 text-sm',
+                                    'block px-4 py-2 text-sm w-full text-left',
                                   )}
                                   target="_blank"
                                   href={url}
@@ -278,22 +279,21 @@ export default function UpcomingScheduleView() {
                           )}
 
                           {/* Edit */}
-                          {/* <Menu.Item>
+                          <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
-                                //   TSK
+                              <button
                                 className={cn(
                                   active
                                     ? 'bg-slate-100 text-slate-900 dark:bg-navy-600 dark:text-navy-50'
                                     : 'text-slate-700 dark:text-navy-100',
-                                  'block px-4 py-2 text-sm',
+                                  'block px-4 py-2 text-sm w-full text-left',
                                 )}
+                                onClick={() => setEditEventModalId(id)}
                               >
                                 Edit
-                              </a>
+                              </button>
                             )}
-                          </Menu.Item> */}
+                          </Menu.Item>
 
                           {/* Delete */}
                           <Menu.Item>
@@ -325,11 +325,20 @@ export default function UpcomingScheduleView() {
         )}
       </div>
 
-      {/* Event Modal */}
+      {/* Add Event Modal */}
       <AddEventModal
         isOpen={isAddEventModalOpen}
         close={() => setAddEventModalOpen(false)}
       />
+
+      {/* Edit Event Modal */}
+      {!!editEventModalId && (
+        <EditEventModal
+          isOpen={!!editEventModalId}
+          close={() => setEditEventModalId('')}
+          event={upcomingEvents.find((e) => e.id === editEventModalId)!}
+        />
+      )}
     </>
   );
 }
