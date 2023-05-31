@@ -3,6 +3,7 @@
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
 import baseUrl from '@/lib/common/baseUrl';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
 const newsletterSignUpSchema = z.object({
@@ -22,7 +23,7 @@ const newsletterSignUpAction = async (
 
     if (!res.ok) return responseContract(res.statusText, false);
 
-    // revalidatePath(`/`);
+    revalidatePath(`/`); // ✅
 
     return responseContract("You're all signed up :)", true);
   } catch (error) {

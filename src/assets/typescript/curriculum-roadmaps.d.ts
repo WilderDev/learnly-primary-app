@@ -1,5 +1,6 @@
 import { Database } from './db';
-import { IStudentPromptReq } from './lesson-plan';
+import { IStudentPromptReq, TDifficulty, TPhilosophy } from './lesson-plan';
+import { TLearningStyle } from './user';
 
 export interface ICurriculumListItem {
   id: string;
@@ -28,8 +29,8 @@ export interface ICurriculumLessonPromptReq {
   topic: string;
   lessonName: string;
   lessonDescription: string;
-  philosophy: Database['public']['Enums']['philosophy'];
-  difficulty: Database['public']['Enums']['difficulty'];
+  philosophy: TPhilosophy;
+  difficulty: TDifficulty;
   length_in_min: number;
   additional_requests: string;
 }
@@ -77,11 +78,20 @@ export interface ICurriculumLessonPlan {
   } | null;
 }
 
-export interface ICurriculumLessonPlanStudent {
-  id: string;
-  first_name: string;
-  last_name: string;
-  avatar_url: string;
-  age: number;
-  learning_styles: Database['public']['Enums']['learning_style'][];
+export interface INextCurriculumLesson {
+  teacher_id: string;
+  user_curriculum_id: string;
+  curriculum_id: string;
+  curriculum_subject_id: string;
+  curriculum_level_id: string;
+  curriculum_topic_id: string;
+  curriculum_lesson_id: string;
+  curriculum_name: string;
+  subject_name: string;
+  level_name: string;
+  topic_name: string;
+  lesson_name: string;
+  lesson_description: string;
+  lesson_number: number;
+  lesson_image_path: string;
 }

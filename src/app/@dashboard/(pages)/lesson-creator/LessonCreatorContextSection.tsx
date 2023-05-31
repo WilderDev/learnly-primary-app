@@ -9,10 +9,12 @@ import { Dispatch, SetStateAction } from 'react';
 import { Database } from '@/assets/typescript/db';
 import TextArea from '@/lib/components/form/TextArea';
 import { BeakerIcon, FlagIcon } from '@heroicons/react/24/outline';
+import { TMaterial } from '@/assets/typescript/lesson-plan';
+import { TLearningStyle } from '@/assets/typescript/user';
 
 // * Data
 // Materials
-const materialOptions: Database['public']['Enums']['material'][] = [
+const materialOptions: TMaterial[] = [
   'Textbook',
   'Workbook',
   'Worksheet',
@@ -21,7 +23,7 @@ const materialOptions: Database['public']['Enums']['material'][] = [
   'Other',
 ];
 // Learning Styles
-const learningStyleOptions: Database['public']['Enums']['learning_style'][] = [
+const learningStyleOptions: TLearningStyle[] = [
   'Visual',
   'Auditory',
   'Kinesthetic',

@@ -15,7 +15,7 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
   // * Render
   return (
     <>
-      <main className="mx-auto my-3 max-w-4xl print:my-0">
+      <main className="mx-auto my-3 max-w-full print:my-0">
         {/* Info */}
         <div className="mb-6 flex flex-col print:hidden print:invisible print:mb-0">
           {/* Top */}

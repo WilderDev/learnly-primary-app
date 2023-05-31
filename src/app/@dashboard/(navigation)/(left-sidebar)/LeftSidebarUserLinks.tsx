@@ -6,6 +6,8 @@ import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import Avatar from '@/lib/components/images/Avatar';
+import { getUserStatusColor } from '@/lib/theme/enumColors';
 
 export default function LeftSidebarUserLinks() {
   const { user } = useUser();
@@ -32,18 +34,15 @@ export default function LeftSidebarUserLinks() {
           href="/account"
         >
           {/* Profile Image */}
-          <Image
+          <Avatar
+            className="transition-transform duration-200 ease-in-out group-hover:scale-110"
             src={user?.avatarUrl! || '/static/icons/avatars/default.png'}
-            alt={user?.firstName!}
-            className="h-10 w-10 rounded-full object-cover object-center transition-transform duration-200 ease-in-out group-hover:scale-110"
-            width={40}
-            height={40}
+            alt={user?.firstName! || 'User'}
+            size="lg"
+            bubbleColor={
+              getUserStatusColor(user?.status! || 'ONLINE').BG.DEFAULT
+            }
           />
-
-          {/* Online Bubble */}
-          {/* {user?.status === 'ONLINE' && ( */}
-          <span className="absolute right-0 top-0 h-3 w-3 rounded-full border-2 border-white bg-green-500 dark:border-navy-700" />
-          {/* )} */}
         </Link>
       </li>
     </motion.ul>

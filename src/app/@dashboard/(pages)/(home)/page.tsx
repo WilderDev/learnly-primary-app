@@ -26,9 +26,7 @@ export default async function ParentDashboardHomePage() {
             title="Upcoming Lessons"
             ctaText="View All Lessons"
             ctaLink="/lesson-plans"
-            hasModal={true}
             modalSize="lg"
-            modalContent={<h1>TSK. Modal to add form. Less options</h1>}
           />
           {/* @ts-expect-error Server Component */}
           <UpcomingLessonsCards />
@@ -48,6 +46,7 @@ export default async function ParentDashboardHomePage() {
           {/* <AssignmentsTable /> */}
           <AssignmentsTable assignments={assignments} />
           {/* TSK */}
+          <DashPanelHeader title="Assignments" />
         </DashPanel>
       </DashMainCol>
 

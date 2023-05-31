@@ -174,10 +174,7 @@ CREATE TABLE user_curriculums (
 
   -- Timestamps
   created_at timestamptz NOT NULL DEFAULT now(),
-  updated_at timestamptz NOT NULL DEFAULT now(),
-
-  -- Constraints
-  CONSTRAINT unique_user_curriculum UNIQUE (user_id, curriculum_id)
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
 --- User Curriculum Progress
@@ -496,19 +493,14 @@ SELECT
   ARRAY(
     SELECT
       json_build_object(
-        'id', student_profiles.id,
-        'first_name', student_profiles.first_name,
-        'last_name', student_profiles.last_name,
-        'avatar_url', student_profiles.avatar_url,
-        'age', EXTRACT(YEAR FROM AGE(student_profiles.birthday)),
-        'learning_styles', student_preferences.learning_styles
+        'id', student_profiles.id
       )
     FROM
       student_profiles
       INNER JOIN student_preferences ON student_profiles.id = student_preferences.id
     WHERE
       student_profiles.id = ANY(uc.student_ids)
-  ) AS students,
+  ) AS student_ids,
   (SELECT
       json_build_object(
         'id', lesson_plans.id,
@@ -643,6 +635,66 @@ JOIN subjects s ON cs.subject_id = s.id
 JOIN curriculums c ON cs.curriculum_id = c.id
 WHERE c.status = 'PUBLISHED' AND c.is_public = TRUE
 ORDER BY cls.type ASC;
+
+
+--- Next Lesson Per Subject Per Curriculum View
+CREATE VIEW next_lesson_per_subject_per_curriculum_view AS
+SELECT
+  uc.user_id AS teacher_id,
+  sub.user_curriculum_id,
+  sub.curriculum_id,
+  cs.subject_id AS curriculum_subject_id,
+  clv.level_id AS curriculum_level_id,
+  ct.topic_id AS curriculum_topic_id,
+  sub.lesson_id AS curriculum_lesson_id,
+  c.name AS curriculum_name,
+  s.name AS subject_name,
+  l.name AS level_name,
+  t.name AS topic_name,
+  cl.name AS lesson_name,
+  cl.description AS lesson_description,
+  cl.lesson_number,
+  cl.image_path AS lesson_image_path,
+  COALESCE(ucp.status, 'IN_PROGRESS') AS progress_status
+FROM
+  (
+    SELECT
+      uc.id AS user_curriculum_id,
+      uc.curriculum_id,
+      cs.id AS curriculum_subject_id,
+      clv.id AS curriculum_level_id,
+      ct.id AS curriculum_topic_id,
+      cl.id AS lesson_id,
+      ucp.status,
+      ROW_NUMBER() OVER (
+        PARTITION BY uc.id, cs.id
+        ORDER BY cl.lesson_number ASC
+      ) AS rn
+    FROM
+      user_curriculums uc
+      INNER JOIN curriculums c ON uc.curriculum_id = c.id
+      INNER JOIN curriculum_subjects cs ON c.id = cs.curriculum_id
+      INNER JOIN curriculum_levels clv ON cs.id = clv.curriculum_subject_id
+      INNER JOIN curriculum_topics ct ON clv.id = ct.curriculum_level_id
+      INNER JOIN curriculum_lessons cl ON ct.id = cl.curriculum_topic_id
+      LEFT JOIN user_curriculum_progress ucp ON uc.id = ucp.user_curriculum_id AND cl.id = ucp.lesson_id
+    WHERE
+      (ucp.status != 'COMPLETED' OR ucp.status IS NULL)
+      AND cs.type = 'CORE'
+      AND cl.type = 'CORE'
+  ) sub
+  INNER JOIN user_curriculums uc ON sub.user_curriculum_id = uc.id
+  INNER JOIN curriculums c ON sub.curriculum_id = c.id
+  INNER JOIN curriculum_subjects cs ON sub.curriculum_subject_id = cs.id
+  INNER JOIN subjects s ON cs.subject_id = s.id
+  INNER JOIN curriculum_levels clv ON sub.curriculum_level_id = clv.id
+  INNER JOIN levels l ON clv.level_id = l.id
+  INNER JOIN curriculum_topics ct ON sub.curriculum_topic_id = ct.id
+  INNER JOIN topics t ON ct.topic_id = t.id
+  INNER JOIN curriculum_lessons cl ON sub.lesson_id = cl.id
+  LEFT JOIN user_curriculum_progress ucp ON sub.user_curriculum_id = ucp.user_curriculum_id AND sub.lesson_id = ucp.lesson_id
+WHERE
+  sub.rn = 1;
 
 
 -- * FUNCTIONS
@@ -865,10 +917,30 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
+--- Update curriculum progress
+CREATE OR REPLACE FUNCTION update_curriculum_progress()
+RETURNS TRIGGER AS $$
+BEGIN
+  IF NEW.status = 'completed' THEN
+    UPDATE user_curriculum_progress
+    SET status = 'COMPLETED',
+        completion_date = NEW.completion_date
+    FROM curriculum_lessons
+    WHERE user_curriculum_progress.lesson_id = curriculum_lessons.id AND
+          NEW.lesson_plan_id = ANY (curriculum_lessons.lesson_plan_ids) AND
+          user_curriculum_progress.user_id = NEW.teacher_id;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- * TRIGGERS
+--- Update curriculum progress
+CREATE TRIGGER update_curriculum_progress_trigger
+AFTER UPDATE OF status ON user_lesson_plans
+FOR EACH ROW
+EXECUTE FUNCTION update_curriculum_progress();
 
 
 -- * INDEXES

@@ -13,8 +13,6 @@ CREATE TYPE pace AS ENUM ('SLOW', 'MEDIUM', 'FAST');
 CREATE TYPE philosophy AS ENUM ('Eclectic/Relaxed', 'Traditional', 'Montessori', 'Unschooling', 'Unit Studies', 'Project-Based', 'Waldorf', 'Reggio Emilia', 'Classical', 'Charlotte Mason', 'Other');
 -- Formats
 CREATE TYPE format AS ENUM ('Whole Group', 'Small Group', 'Individual');
--- Teaching Strategies
-CREATE TYPE teaching_strategy AS ENUM ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other');
 -- Materials
 CREATE TYPE material AS ENUM ('Textbook', 'Workbook', 'Worksheet', 'Manipulatives', 'Technology', 'Other');
 -- Standards
@@ -293,7 +291,7 @@ INNER JOIN
   subjects ON topics.subject_id = subjects.id;
 
 -- Get all lesson plan templates with students
-CREATE VIEW lesson_plan_with_students_view AS
+CREATE VIEW lesson_plan_templates_with_students_view AS
 SELECT
   lpt.title,
   json_build_object('id', lpt.subject, 'name', s.name) AS subject,
@@ -348,11 +346,23 @@ SELECT
   lp.content,
   lp.length_in_min,
   lp.is_public,
+  tp.id AS creator_id,
   tp.first_name AS creator_first_name,
   tp.last_name AS creator_last_name,
   tp.avatar_url AS creator_avatar_url,
   tp.type AS creator_type,
+  s.name AS subject_name,
+  lv.name AS level_name,
+  t.name AS topic_name,
   ulp.students,
+   (SELECT json_agg(
+    json_build_object(
+      'id', stu.id,
+      'first_name', stu.first_name,
+      'last_name', stu.last_name,
+      'avatar_url', stu.avatar_url)
+   )
+   FROM student_profiles stu WHERE stu.id = ANY(ulp.students)) AS students_with_details,
   ulp.scheduled_date,
   ulp.completion_date
 FROM
@@ -439,6 +449,78 @@ GROUP BY
 ORDER BY
   ulp.completion_date DESC;
 
+
+--- Similar Lessons View
+CREATE VIEW similar_lessons_view AS
+SELECT
+  lp.id,
+  lp.creator_id,
+  tp.first_name,
+  tp.last_name,
+  tp.avatar_url,
+  lp.title,
+  lp.subject,
+  lp.level,
+  lp.topic,
+  lp.content,
+  lp.tags,
+  lp.image_path,
+  lp.length_in_min,
+  lp.is_public,
+  lp.created_at,
+  lp.updated_at
+FROM (
+  (
+    SELECT
+      *,
+      ROW_NUMBER() OVER (PARTITION BY topic ORDER BY created_at DESC) as rn
+    FROM
+      lesson_plans
+  )
+  UNION
+  (
+    SELECT
+      *,
+      ROW_NUMBER() OVER (PARTITION BY level ORDER BY created_at DESC) as rn
+    FROM
+      lesson_plans
+  )
+  UNION
+  (
+    SELECT
+      *,
+      ROW_NUMBER() OVER (PARTITION BY subject ORDER BY created_at DESC) as rn
+    FROM
+      lesson_plans
+  )
+) AS lp
+JOIN teacher_profiles tp ON lp.creator_id = tp.id
+WHERE rn <= 3;
+
+--- Lesson Timeline View
+CREATE VIEW lesson_timeline_view AS
+SELECT
+  ulp.teacher_id,
+  ulp.lesson_plan_id AS lesson_id,
+  lp.title AS name,
+  lp.image_path,
+  ulp.completion_date,
+  ARRAY(
+    SELECT
+      json_build_object(
+        'first_name', sp.first_name,
+        'avatar_url', sp.avatar_url
+      )
+    FROM
+      unnest(ulp.students) student_id
+      JOIN student_profiles sp ON sp.id = student_id
+  ) AS students
+FROM
+  user_lesson_plans ulp
+  JOIN lesson_plans lp ON lp.id = ulp.lesson_plan_id
+ORDER BY
+  ulp.completion_date DESC
+LIMIT 10;
 
 
 -- * FUNCTIONS

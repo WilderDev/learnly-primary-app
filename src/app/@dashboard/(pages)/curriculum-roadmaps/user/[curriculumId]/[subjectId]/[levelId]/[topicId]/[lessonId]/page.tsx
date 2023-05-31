@@ -10,9 +10,9 @@ import CurriculumLessonForm from './CurriculumLessonForm';
 import {
   ICurriculumFormData,
   ICurriculumLessonPlan,
-  ICurriculumLessonPlanStudent,
 } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumLessonPlanContainer from './CurriculumLessonPlanContainer';
+import LessonCreatorCommunityLessons from '@/app/@dashboard/(pages)/lesson-creator/LessonCreatorCommunityLessons';
 
 // * IParams
 interface IParams {
@@ -30,13 +30,14 @@ export default async function CurriculumRoadmapLessonPage({
   params: { curriculumId, subjectId, levelId, topicId, lessonId },
 }: IParams) {
   // * Data
-  const { lessonForm, lessonPlan, students } = await getCurriculumRoadmapLesson(
-    curriculumId,
-    subjectId,
-    levelId,
-    topicId,
-    lessonId,
-  );
+  const { lessonForm, lessonPlan, studentIds } =
+    await getCurriculumRoadmapLesson(
+      curriculumId,
+      subjectId,
+      levelId,
+      topicId,
+      lessonId,
+    );
 
   // * Render
   return (
@@ -48,27 +49,30 @@ export default async function CurriculumRoadmapLessonPage({
           {lessonPlan ? (
             <CurriculumLessonPlanContainer
               lessonPlan={lessonPlan}
-              studentIds={students?.map((s) => s.id) || []}
+              studentIds={studentIds}
             />
           ) : (
             <>
               <DashPanelHeader
                 title={`Create "${lessonForm.lesson.name}" Lesson`}
               />
-              <CurriculumLessonForm lesson={lessonForm} students={students!} />
+              <CurriculumLessonForm
+                lesson={lessonForm}
+                studentIds={studentIds}
+              />
             </>
           )}
         </DashPanel>
       </DashMainCol>
 
       {/* Side Column */}
-      <DashSideCol className="2xl:col-span-4">
-        {/* Community Lessons */}
-        <DashPanel colNum={1}>
+      {/* <DashSideCol className="2xl:col-span-4"> */}
+      {/* POST_MVP: It should be lessons on this one... we will wait until more users!!! */}
+      {/* Community Lessons */}
+      {/* <DashPanel colNum={1}>
           <DashPanelHeader title="Community Creations" />
-          {/* TSK */}
-        </DashPanel>
-      </DashSideCol>
+        </DashPanel> */}
+      {/* </DashSideCol> */}
     </>
   );
 }
@@ -95,9 +99,6 @@ async function getCurriculumRoadmapLesson(
     return redirect(
       `/curriculum-roadmaps/user/${curriculumId}/${subjectId}/${levelId}/${topicId}`,
     );
-
-  // Create lesson plan form data
-  const students = data.students! as unknown as ICurriculumLessonPlanStudent[];
 
   const lessonFormData: ICurriculumFormData = {
     curriculum: {
@@ -132,7 +133,7 @@ async function getCurriculumRoadmapLesson(
     lessonForm: lessonFormData,
     lessonPlan:
       data.lesson_plan as unknown as ICurriculumLessonPlan['lesson_plan'],
-    students,
+    studentIds: (data.student_ids as any).map((s: any) => s.id),
   };
 }
 
@@ -154,7 +155,9 @@ export async function generateMetadata({
 
   return {
     slug: `/curriculum-roadmaps/user/${curriculumId}/${subjectId}/${levelId}/${topicId}/${lessonId}`,
-    title: `${data?.lesson_name} | Curriculum Lessons Creator | ${data?.curriculum_name}`,
+    title: `${data?.lesson_name || 'Learnly'} | Curriculum Lessons Creator | ${
+      data?.curriculum_name
+    }`,
     image: data?.lesson_image_path,
     keywords: ['Homeschool Curriculum Roadmap', 'Homeschool Curriculum'],
     description: data?.lesson_description,
@@ -164,8 +167,8 @@ export async function generateMetadata({
       images: [
         {
           url: data?.lesson_image_path,
-          width: 800,
-          height: 600,
+          width: 1600,
+          height: 900,
           alt: data?.lesson_name || 'Curriculum Lesson Creator',
         },
       ],

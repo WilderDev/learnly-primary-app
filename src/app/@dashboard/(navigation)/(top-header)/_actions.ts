@@ -3,6 +3,7 @@
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
 const markAsReadSchema = z.object({
@@ -21,6 +22,8 @@ const markAsReadAction = async (input: z.infer<typeof markAsReadSchema>) => {
       .eq('id', notification_id);
 
     if (error) return responseContract(error.message, false);
+
+    // revalidatePath(`/`);
 
     return responseContract('Success!', true);
   } catch (error) {

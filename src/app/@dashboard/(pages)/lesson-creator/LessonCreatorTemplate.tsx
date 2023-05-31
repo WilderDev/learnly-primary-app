@@ -7,7 +7,7 @@ import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
 
 // * Props
 interface IProps {
-  template: Database['public']['Views']['lesson_plan_with_students_view']['Row'];
+  template: Database['public']['Views']['lesson_plan_templates_with_students_view']['Row'];
 }
 
 export default function LessonCreatorTemplate({ template }: IProps) {

@@ -1,27 +1,28 @@
-2. Fix Print on lesson plan [id] page and curriclum [lessonId] pages
-3. Onboarding Generate Lesson Flow and Show Them Around the App
-4. Mark Lesson plan as complete (change status and completion_date)
-5. Ensure Stripe Payment Flow works and all webhooks are connected successfully
-6. Curriculum Roadmap Next Lesson Buttons and View/Function in DB
-7. Fix Double Print on Lesson Creator Modal
-8. Get own images for curriculum and input seed data into database (be sure to change the id of the main user)
-9. Bottom Right Chat Bubble (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
-10. Purchase Supabase $25/mo plan and configure the email and auth settings for credibility
-11. When you hover over the <Avatar /> component, it should have a tooltip pop up that says their name
-12. [Open Graph for Lesson Plans and Curriculum](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
-13. Take OG Image Screenshots and add to [default metatdata](src/lib/meta/defaultMetadata.ts) (1200x630)
-14. [global-error.tsx](src/app/global-error.tsx)
-15. [not-found.tsx](src/app/not-found.tsx)
-16. Swap domains on Vercel
-17. Payment Thank You Page or Modal or Email
-18. Social Login's?
-19. Notification/Email 3 days before trial ends about all the features they will lose when their account is downgraded. Message them again on the day of. Give them incentive that if they upgrade before the trial ends (put in credit card), they will get 50% off for the first 3 months.
-20. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
-21. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
-22. User's can change the title and image of a lesson plan they have created
-23. Page transition from lesson plan modal to lesson plan page
-24. Fix Facebook Open Graph Image on Lesson Plans and test
-25. help-center/faq page
-26. Marketing Partners page where we show all the companies we are partnered with and the deals and put in footer
-27. Users can create their own lessons, topics, subjects, and curriculum
-28. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+## Coding
+
+### Joe
+
+2. Fix Print on lesson plan [id] page and curriclum [lessonId] pages and modal -> Maybe change the modal to download as PDF
+3. When you hover over the <Avatar /> component, it should have a tooltip pop up that says their name
+4. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
+5. User's can change the title and image of a lesson plan they have created
+6. Curriculum Topic search page with tags and by filters
+7. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
+8. [Bottom Right Chat Bubble](<src/app/@dashboard/(pages)/help-center/ChatForm.tsx>) (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
+9. [Right Side Panel](<src/app/@dashboard/(pages)/layout.tsx>) (Stats)
+
+---
+
+## Marketing
+
+### Emails
+
+2. How to get the most out of learnly, connect with community, success stories, ect. [3 days after trial sign up]
+3. All the features they will miss out on if they don't upgrade, discount if they put their credit card in before trial ends, how to upgrade (link) [7 days before trial ends]
+4. Last reminder email the day of trial ending [day of trial ending]
+5. 1 week after trial ends, ask them to try our monthly plan or ask for feedback [1 week after trial ends]
+6. Write App Users Email Automation Sequence (how to get the most out of learnly, connect with community, success stories, ect.)
+
+### Other
+
+1. Create Video showcasing Learnly (how to use it and the core features/benefits) -> Post in FB Group -> Add to Email #3 in FB List Email Sequence

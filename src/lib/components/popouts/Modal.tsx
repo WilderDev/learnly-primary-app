@@ -117,7 +117,7 @@ export default function Modal({
     function keyListener(e: KeyboardEvent) {
       if (!modalRef.current || !isVisible) return;
 
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && !noCloseOnOutsideClick) {
         close();
       }
 
@@ -152,7 +152,7 @@ export default function Modal({
 
     // Remove Event Listener
     return () => document.removeEventListener('keydown', keyListener);
-  }, [close, isVisible]);
+  }, [close, isVisible, noCloseOnOutsideClick]);
 
   // * Render
   return (
@@ -178,7 +178,7 @@ export default function Modal({
             animationStyles,
             isVisible ? 'scale-100' : 'scale-90',
             className,
-            'print:shadow-none print:backdrop-none dark:print:backdrop-none print:border-none print:w-full print:h-full print:block print:max-w-4xl print:mx-auto print:my-0 print:rounded-none print:overflow-visible print:scale-100',
+            // 'print:shadow-none print:backdrop-none dark:print:backdrop-none print:border-none print:w-full print:h-full print:block print:max-w-4xl print:mx-auto print:my-0 print:rounded-none print:overflow-visible print:scale-100',
           )}
           ref={modalRef}
         >

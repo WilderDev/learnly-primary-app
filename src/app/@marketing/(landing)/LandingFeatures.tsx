@@ -79,7 +79,7 @@ export default function LandingFeatures() {
               <Image
                 className="w-full rounded-xl shadow-xl ring-1 ring-black dark:ring-navy-50 ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
                 src={learnlyLessonCreator}
-                alt=""
+                alt="Learnly Lesson Creator"
               />
             </div>
           </div>
@@ -124,7 +124,7 @@ export default function LandingFeatures() {
               <Image
                 className="w-full rounded-xl shadow-xl ring-1 ring-black dark:ring-navy-50 ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
                 src={learnlyCurriculum}
-                alt=""
+                alt="Learnly Curriculum roadmap"
               />
             </div>
           </div>

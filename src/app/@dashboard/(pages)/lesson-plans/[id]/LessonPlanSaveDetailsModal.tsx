@@ -14,9 +14,8 @@ import {
   CheckIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid';
-import { useParams } from 'next/navigation';
-import { saveCurriculumLessonPlan } from '../../curriculum-roadmaps/_actions';
 import { saveLessonPlan } from './_actions';
+import { revalidatePath } from 'next/cache';
 
 interface IProps {
   lessonPlanId: string;
@@ -40,13 +39,14 @@ export default function LessonPlanSaveDetailsModalForm({
       if (data.ok) {
         toast.success('Lesson Plan Saved!');
         close();
+        revalidatePath('/schedule-builder'); // ✅
+        revalidatePath('/'); // ✅
       } else {
         toast.error(
           "Something went wrong... You might've already saved this lesson plan.",
         );
       }
     },
-    onError: (error) => toast.error(error),
   });
 
   // * State

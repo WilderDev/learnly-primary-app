@@ -1,6 +1,6 @@
 'use client';
 
-import { CalendarDaysIcon, CalendarIcon } from '@heroicons/react/24/solid';
+import { CalendarIcon } from '@heroicons/react/24/solid';
 
 import 'flatpickr/dist/themes/dark.css';
 import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
@@ -63,12 +63,19 @@ export default function DatePicker({
           shadows[shadow],
           roundeds[rounded],
           'pl-10',
-          // !z-[10000]
         )}
         placeholder="Choose date..."
         type="text"
         required={required}
-        options={options}
+        options={{
+          ...options,
+          closeOnSelect: true,
+          onOpen: () => {
+            document
+              ?.querySelector('.flatpickr-input')
+              ?.scrollIntoView({ behavior: 'smooth' });
+          },
+        }}
       />
     </FormItem>
   );

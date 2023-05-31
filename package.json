@@ -14,12 +14,13 @@
     "db:push": "supabase db push",
     "db:studio": "open http://localhost:54323/project/default",
     "db:types": "supabase gen types typescript --local > src/assets/typescript/db.d.ts",
-    "stripe:webhook": "stripe listen --forward-to localhost:3000/api/v1/stripe/webhooks"
+    "stripe:webhook": "stripe listen --forward-to localhost:3000/api/stripe/webhooks"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
     "@sendgrid/mail": "^7.7.0",
+    "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.52.1",
     "@supabase/auth-helpers-nextjs": "^0.6.1",
     "@supabase/supabase-js": "^2.21.0",

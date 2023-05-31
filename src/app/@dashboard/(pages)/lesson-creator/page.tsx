@@ -1,6 +1,7 @@
 import DashMainCol from '../../(layout)/DashMainCol';
 import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
+import LessonCreatorCommunityLessons from './LessonCreatorCommunityLessons';
 import LessonCreatorForm from './LessonCreatorForm';
 import LessonCreatorTemplates from './LessonCreatorTemplates';
 
@@ -34,6 +35,8 @@ export default function LessonCreatorPage() {
           <DashPanelHeader title="Community Lessons" />
 
           {/* List */}
+          {/* @ts-expect-error Server Component */}
+          <LessonCreatorCommunityLessons />
         </DashPanel>
       </DashSideCol>
     </>
@@ -45,4 +48,4 @@ export const metadata = {
   description: 'Create a lesson plan for your child.',
 };
 
-export const dynamic = 'force-dynamic'; // TSK: Temp until they solve: https://github.com/vercel/next.js/issues/49355
+export const dynamic = 'force-dynamic';

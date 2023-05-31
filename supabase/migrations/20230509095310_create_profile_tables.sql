@@ -3,8 +3,6 @@
 CREATE TYPE profile_status AS ENUM ('ONLINE', 'OFFLINE', 'BUSY', 'AWAY', 'INVISIBLE');
 -- Profile Types (front-end facing)
 CREATE TYPE profile_type AS ENUM ('PARENT', 'COOP', 'TUTOR', 'SCHOOL', 'STUDENT');
--- Enum for trial status
-CREATE TYPE trial_status AS ENUM ('ACTIVE', 'CONVERTED', 'EXPIRED');
 -- Role Types (for authorization)
 CREATE TYPE user_role AS ENUM ('ADMIN', 'TEACHER', 'GROUP_MANAGER', 'STUDENT', 'BANNISHED');
 -- Learning Styles
@@ -55,6 +53,40 @@ CREATE TYPE resource_preferences AS ENUM (
 -- Learning Disabilities
 CREATE TYPE learning_disabilities AS ENUM
 ('Dyslexia', 'Dyscalculia', 'Dysgraphia', 'Attention_Deficit_Hyperactivity_Disorder', 'Auditory_Processing_Disorder', 'Nonverbal_Learning_Disability', 'Autism');
+-- Teaching Strategies
+CREATE TYPE teaching_strategy AS ENUM ('Direct Instruction', 'Cooperative Learning', 'Inquiry-Based Learning', 'Differentiated Instruction', 'Expeditionary Learning', 'Personalized Learning', 'Blended Learning', 'Project-Based Learning', 'Problem-Based Learning', 'Socratic Learning', 'Other');
+-- Lesson Detail Levels
+CREATE TYPE lesson_detail_level AS ENUM ('Basic', 'Intermediate', 'Detailed');
+-- Teaching Tools
+CREATE TYPE teaching_tool AS ENUM (
+  'Whiteboard',
+  'Slide_Presentation',
+  'Video_Aids',
+  'Physical_Manipulatives',
+  'Interactive_Software',
+  'Document_Camera',
+  'Audio_Resources',
+  'Art_Supplies',
+  'Reading_Materials',
+  'Science_Lab_Equipment',
+  'Math_Tools',
+  'Other'
+);
+-- Lesson Structures
+CREATE TYPE lesson_structure AS ENUM (
+  'Objective_Introduction',
+  'Prior_Knowledge_Review',
+  'New_Material_Presentation',
+  'Guided_Practice',
+  'Independent_Practice',
+  'Discussion_or_Debate',
+  'Student_Presentations',
+  'Assessment',
+  'Summary_and_Review',
+  'Homework_Assignment',
+  'Other'
+);
+
 
 
 -- * TABLES
@@ -64,7 +96,7 @@ CREATE TABLE teacher_profiles (
   id uuid REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL PRIMARY KEY,
 
   -- The teacher's status
-  status profile_status NOT NULL DEFAULT 'OFFLINE',
+  status profile_status NOT NULL DEFAULT 'ONLINE',
 
   -- The teacher's type
   type profile_type NOT NULL DEFAULT 'PARENT',
@@ -97,29 +129,19 @@ CREATE TABLE teaching_preferences (
   -- The teaching preferences unique identifier. (DEFERRABLE)
   id uuid REFERENCES teacher_profiles(id) ON DELETE CASCADE NOT NULL PRIMARY KEY,
 
+  -- Preferred teaching strategy
+  preferred_teaching_strategies teaching_strategy[] NOT NULL DEFAULT '{}'::teaching_strategy[],
+
+  -- Preferred level of lesson detail
+  preferred_lesson_detail_level lesson_detail_level NOT NULL DEFAULT 'Intermediate',
+
+  -- Preferred teaching tools (array of teaching_tool)
+  preferred_teaching_tools teaching_tool[] NOT NULL DEFAULT '{}'::teaching_tool[],
+
+  -- Preferred lesson structure (array of lesson_structure)
+  preferred_lesson_structure lesson_structure,
+
   -- Timestamps
-  created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
-  updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
-);
-
--- User Trials
-CREATE TABLE trials (
-  -- The trial's unique identifier.
-  id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
-
-  -- The teacher's unique identifier.
-  teacher_id uuid REFERENCES teacher_profiles(id) ON DELETE CASCADE NOT NULL,
-
-  -- The trial's status.
-  status trial_status NOT NULL DEFAULT 'ACTIVE',
-
-  -- The start date of the trial.
-  start_date date NOT NULL DEFAULT CURRENT_DATE,
-
-  -- The end date of the trial.
-  end_date date NOT NULL DEFAULT (CURRENT_DATE + INTERVAL '14 days'),
-
-  -- Timestamps.
   created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
   updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
 );
@@ -209,19 +231,6 @@ auth.users.email
 FROM auth.users;
 REVOKE all ON public.users FROM anon, authenticated;
 
--- Teacher's Me View (for a given teacher)
-CREATE VIEW teacher_me_view AS
-SELECT
-  teacher_profiles.id AS id,
-  teacher_profiles.first_name AS first_name,
-  teacher_profiles.last_name AS last_name,
-  teacher_profiles.avatar_url AS avatar_url,
-  teacher_profiles.status AS status,
-  teacher_profiles.type AS type,
-  teacher_profiles.role AS role
-FROM teacher_profiles
-WHERE teacher_profiles.id = auth.uid();
-
 
 -- Teacher's Students View (for a given teacher)
 CREATE VIEW teacher_students_profiles_view AS
@@ -278,11 +287,9 @@ BEGIN
   INSERT into public.teacher_profiles (id, first_name, last_name, avatar_url)
   VALUES (new.id, new.raw_user_meta_data->>'first_name', new.raw_user_meta_data->>'last_name', new.raw_user_meta_data->>'avatar_url');
 
-  -- Second Operation (Insert into Trials)
-  INSERT into public.trials (teacher_id, start_date, end_date)
-  VALUES (new.id, CURRENT_DATE, CURRENT_DATE + INTERVAL '14 days');
-
-  -- Third Operation (Insert Welcome Notification) TSK
+  -- Second Operation (Insert Teaching Preferences)
+  INSERT into public.teaching_preferences (id)
+  VALUES (new.id);
 
   -- Return the new user
   return new;

@@ -10,6 +10,7 @@ import { CheckBadgeIcon } from '@heroicons/react/24/outline';
 import Form from '@/lib/components/form/Form';
 import { useParams } from 'next/navigation';
 import DatePicker from '@/lib/components/form/DatePicker';
+import { revalidatePath } from 'next/cache';
 
 // * Props
 interface IProps {
@@ -27,15 +28,16 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
   const { mutate, isLoading } = useRequest(markAsComplete, {
     onSuccess: (data) => {
       if (data.ok) {
-        toast.success('Lesson Plan Completed!');
         close();
+        toast.success('Lesson Plan Completed!');
+        revalidatePath(`/lesson-plans/${lessonPlanId}`); // ✅
+        revalidatePath('/'); // ✅
       } else {
         toast.error(
           'Something went wrong... Try again or contact support if the problem persists.',
         );
       }
     },
-    onError: (error) => toast.error(error),
   });
 
   // * State
@@ -53,7 +55,7 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
     >
       <Modal.Header title="Save Lesson Plan" />
 
-      <Modal.Body>
+      <Modal.Body className="relative">
         <Form
           className="relative"
           action={() =>
@@ -74,7 +76,7 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
               minDate: 'today',
               defaultHour: new Date().getHours(),
               defaultMinute: 0,
-              position: 'above right',
+              position: 'auto',
             }}
           />
 

@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply font-sans relative overflow-x-hidden bg-slate-50 text-slate-900 antialiased transition-colors duration-500 ease-linear dark:bg-navy-900 dark:text-navy-50;
+    @apply font-sans min-h-screen h-full relative overflow-x-hidden bg-slate-50 text-slate-900 antialiased transition-colors duration-500 ease-linear dark:bg-navy-900 dark:text-navy-50;
   }
 
   /* Grayscale */
@@ -55,6 +55,10 @@
     box-shadow: 0 0 0px 1000px #313e59 inset;
     transition: background-color 5000s ease-in-out 0s;
     color: #fff;
+  }
+
+  .flatpickr-calendar.open {
+    @apply !fixed;
   }
 
   /* Custom Scrollbar */

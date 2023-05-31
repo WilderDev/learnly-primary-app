@@ -11,9 +11,10 @@ import { redirect } from 'next/navigation';
 import LessonPlanContainerSkeleton from './LessonPlanContainerSkeleton';
 import { fetchAssignmentCall } from './(assignments)/_actions';
 import Assignment from './(assignments)/Assignment';
+import LessonPlanSimilarLessons from './LessonPlanSimilarLessons';
 
 // * Params
-interface IParams {
+export interface IParams {
   params: {
     id: string;
   };
@@ -40,14 +41,16 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         </DashPanel>
 
         {/* Lesson Plan Comments */}
-        <DashPanel colNum={2}>
+        {/* <DashPanel colNum={2}>
           <DashPanelHeader title="Comments" />
-          {/* Comments */}
-          {/* TSK */}
-        </DashPanel>
+        </DashPanel> */}
 
         {/* Lesson Plan Similar Lessons */}
-        {/* TSK */}
+        <DashPanel colNum={2}>
+          <DashPanelHeader title="Similar Lessons" />
+          {/* @ts-expect-error Server Component */}
+          <LessonPlanSimilarLessons lessonId={id} />
+        </DashPanel>
       </DashMainCol>
 
       {/* Side Column */}
@@ -59,6 +62,8 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
           <Assignment assignment={assignment} lessonPlan={lessonPlan} />
 
           {/* TSK */}
+          <DashPanelHeader title="Assessments" />
+          {/* Assessments */}
         </DashPanel>
 
         {/* Get Help on Lesson Plan */}
@@ -81,7 +86,8 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
 
 //   return data as ILessonPlan;
 // }
-async function getLessonPlan(id: string) {
+
+export async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
@@ -112,7 +118,7 @@ async function getLessonPlan(id: string) {
 
 // * Metadata
 export async function generateMetadata({ params: { id } }: IParams) {
-  const { title, image_path, subject, level, topic, tags } =
+  const { title, image_path, subject_name, level_name, topic_name, tags } =
     await getLessonPlan(id);
 
   return {
@@ -120,15 +126,15 @@ export async function generateMetadata({ params: { id } }: IParams) {
     title,
     image: image_path,
     keywords: ['Homeschool Lesson Plan', title, tags],
-    description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
+    description: `Homeschool lesson plan for ${topic_name} in ${subject_name} for ${level_name} grade`,
     openGraph: {
       title: title,
-      description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
+      description: `Homeschool lesson plan for ${topic_name} in ${subject_name} for ${level_name} grade`,
       images: [
         {
           url: image_path,
-          width: 800,
-          height: 600,
+          width: 1600,
+          height: 900,
           alt: title,
         },
       ],

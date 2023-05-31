@@ -3,10 +3,19 @@
 import cn from '@/lib/common/cn';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useSchedule } from './ScheduleCtx';
+import { getEventColor } from '@/lib/theme/enumColors';
+import { ICalendarDayEvent } from '@/assets/typescript/schedule';
+import { useState } from 'react';
+import Link from 'next/link';
 
 export default function MiniCalendar() {
   // * Context / Hooks
   const { date, setDate, prevMonth, nextMonth, calendarDays } = useSchedule();
+
+  // * State
+  const [selectedDayEvents, setSelectedDayEvents] = useState<
+    ICalendarDayEvent[]
+  >(() => calendarDays.find((day) => day.isSelected)?.events || []);
 
   // * Render
   return (
@@ -52,12 +61,13 @@ export default function MiniCalendar() {
           ))}
         </div>
 
+        {/* Days */}
         <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-transparent text-sm">
           {calendarDays.map((day) => (
             <button
               className={cn(
                 // Base Styles
-                'h-6 w-6 sm:h-9 sm:w-9 items-center justify-center rounded-xl',
+                'h-6 w-6 sm:h-9 sm:w-9 items-center justify-center rounded-xl relative',
                 !day.isSelected &&
                   'hocus:bg-green-500/10 hocus:text-slate-800 dark:hocus:bg-green-400/10 dark:hocus:text-green-400', // Unselected hover/focus states
                 day.isCurrentMonth
@@ -77,22 +87,71 @@ export default function MiniCalendar() {
               onClick={(e) => {
                 e.currentTarget.blur(); // Blur
                 setDate(day.date); // Set Date
+                setSelectedDayEvents(day.events); // Set Events
               }}
               key={day.dateString}
             >
+              {/* Date */}
               <time
                 dateTime={day.dateString}
                 className="mx-auto flex h-4 w-4 sm:h-7 sm:w-7 items-center justify-center rounded-full text-xs sm:text-sm md:text-base"
               >
                 {day.dateString.split('-')[2]}
               </time>
+
+              {/* Bubble */}
+              {day.events.length > 0 && (
+                <span
+                  className={cn(
+                    'absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full',
+                    getEventColor(day.events[0].type).BG.LIGHT,
+                  )}
+                />
+              )}
             </button>
           ))}
         </div>
+
+        {/* Events of Selected Day */}
+        {selectedDayEvents.length > 0 && (
+          <div className="pt-3 space-y-2">
+            {selectedDayEvents.map((event) => (
+              <div className="flex items-center space-x-2" key={event.id}>
+                <span
+                  className={cn(
+                    'h-2.5 w-2.5 rounded-full',
+                    getEventColor(event.type).BG.LIGHT,
+                  )}
+                />
+
+                {event.url ? (
+                  event.url.startsWith('http') ? (
+                    <a
+                      href={event.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-slate-900 dark:text-navy-100"
+                    >
+                      {event.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={event.url}
+                      className="text-xs text-slate-900 dark:text-navy-100"
+                    >
+                      {event.name}
+                    </Link>
+                  )
+                ) : (
+                  <span className="text-xs text-slate-900 dark:text-navy-100">
+                    {event.name}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </article>
   );
 }
-
-// TSK: Ability to view lesson bubbles on days with lessons/events
-// TSK: Ability when you click on a day with lessons/events to view them in the side panel or below the calendar
