@@ -291,7 +291,7 @@ INNER JOIN
   subjects ON topics.subject_id = subjects.id;
 
 -- Get all lesson plan templates with students
-CREATE VIEW lesson_plan_with_students_view AS
+CREATE VIEW lesson_plan_templates_with_students_view AS
 SELECT
   lpt.title,
   json_build_object('id', lpt.subject, 'name', s.name) AS subject,
@@ -346,6 +346,7 @@ SELECT
   lp.content,
   lp.length_in_min,
   lp.is_public,
+  tp.id AS creator_id,
   tp.first_name AS creator_first_name,
   tp.last_name AS creator_last_name,
   tp.avatar_url AS creator_avatar_url,
@@ -354,6 +355,14 @@ SELECT
   lv.name AS level_name,
   t.name AS topic_name,
   ulp.students,
+   (SELECT json_agg(
+    json_build_object(
+      'id', stu.id,
+      'first_name', stu.first_name,
+      'last_name', stu.last_name,
+      'avatar_url', stu.avatar_url)
+   )
+   FROM student_profiles stu WHERE stu.id = ANY(ulp.students)) AS students_with_details,
   ulp.scheduled_date,
   ulp.completion_date
 FROM

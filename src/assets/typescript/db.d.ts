@@ -1315,7 +1315,7 @@ export interface Database {
           url?: string | null
         }
       }
-      lesson_plan_with_students_view: {
+      lesson_plan_templates_with_students_view: {
         Row: {
           difficulty: Database["public"]["Enums"]["difficulty"] | null
           format: Database["public"]["Enums"]["format"] | null
@@ -1345,6 +1345,7 @@ export interface Database {
           content: string | null
           creator_avatar_url: string | null
           creator_first_name: string | null
+          creator_id: string | null
           creator_last_name: string | null
           creator_type: Database["public"]["Enums"]["profile_type"] | null
           id: string | null
@@ -1355,6 +1356,7 @@ export interface Database {
           level_name: Database["public"]["Enums"]["level"] | null
           scheduled_date: string | null
           students: string[] | null
+          students_with_details: Json | null
           subject: string | null
           subject_name: string | null
           tags: string[] | null

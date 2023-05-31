@@ -22,7 +22,7 @@ async function getTemplates() {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
-    .from('lesson_plan_with_students_view')
+    .from('lesson_plan_templates_with_students_view')
     .select('*');
 
   if (error) return [];

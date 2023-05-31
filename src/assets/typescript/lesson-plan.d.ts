@@ -34,8 +34,9 @@ export interface ILessonPlan {
   creator_last_name: string;
   creator_type: Database['public']['Enums']['profile_type'];
   students: string[] | null;
+  students_with_details: any[];
   scheduled_date: Date | null;
-  completion_date: Date | null;
+  completion_date: string | null;
   subject_name: string;
   level_name: string;
   topic_name: string;
