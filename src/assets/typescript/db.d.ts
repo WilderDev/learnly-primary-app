@@ -1363,6 +1363,16 @@ export interface Database {
           topic_name: string | null
         }
       }
+      lesson_timeline_view: {
+        Row: {
+          completion_date: string | null
+          image_path: string | null
+          lesson_id: string | null
+          name: string | null
+          students: Json[] | null
+          teacher_id: string | null
+        }
+      }
       next_lesson_per_subject_per_curriculum_view: {
         Row: {
           curriculum_id: string | null

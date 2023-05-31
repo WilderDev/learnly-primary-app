@@ -488,6 +488,30 @@ FROM (
 JOIN teacher_profiles tp ON lp.creator_id = tp.id
 WHERE rn <= 3;
 
+--- Lesson Timeline View
+CREATE VIEW lesson_timeline_view AS
+SELECT
+  ulp.teacher_id,
+  ulp.lesson_plan_id AS lesson_id,
+  lp.title AS name,
+  lp.image_path,
+  ulp.completion_date,
+  ARRAY(
+    SELECT
+      json_build_object(
+        'first_name', sp.first_name,
+        'avatar_url', sp.avatar_url
+      )
+    FROM
+      unnest(ulp.students) student_id
+      JOIN student_profiles sp ON sp.id = student_id
+  ) AS students
+FROM
+  user_lesson_plans ulp
+  JOIN lesson_plans lp ON lp.id = ulp.lesson_plan_id
+ORDER BY
+  ulp.completion_date DESC
+LIMIT 10;
 
 
 -- * FUNCTIONS

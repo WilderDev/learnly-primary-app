@@ -84,7 +84,7 @@ export default function UpcomingScheduleView() {
       {/* Content */}
       <div className="lg:grid lg:grid-cols-12 lg:gap-x-16">
         {/* Mini Calendar */}
-        <div className="mt-4 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 xl:col-start-9">
+        <div className="mt-4 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 xl:col-start-8 2xl:col-start-9">
           <MiniCalendar />
 
           <button
@@ -100,7 +100,7 @@ export default function UpcomingScheduleView() {
         {loading ? (
           <LoadingDoubleBubble className="mt-4" />
         ) : (
-          <ol className="mt-4 divide-y divide-slate-100 text-sm leading-6 dark:divide-navy-500 lg:col-span-7 xl:col-span-8">
+          <ol className="mt-4 divide-y divide-slate-100 text-sm leading-6 dark:divide-navy-500 lg:col-span-7 xl:col-span-7 2xl:col-span-8">
             {upcomingEvents?.map(
               ({
                 id,

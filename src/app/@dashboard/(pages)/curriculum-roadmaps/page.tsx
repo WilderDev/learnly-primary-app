@@ -55,13 +55,6 @@ export default async function CurriculumRoadmapsPage() {
           <DashPanelHeader title="Popular Roadmaps" />
           <PopularCurriculumRoadmaps roadmaps={roadmaps} />
         </DashPanel>
-
-        {/* Curriculum Roadmap Timeline */}
-        {/* {user_roadmaps.length > 0 && (
-          <DashPanel colNum={2}>
-            <DashPanelHeader title="Timeline" />
-          </DashPanel>
-        )} */}
       </DashSideCol>
     </>
   );
