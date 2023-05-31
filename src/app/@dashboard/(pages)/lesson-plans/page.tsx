@@ -4,6 +4,7 @@ import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
 import UsersLessonPlansPanel from './UsersLessonPlansPanel';
 import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import UsersLessonPlanTemplatesPanel from './UsersLessonPlanTemplatesPanel';
 
 export default async function LessonCreatorPage() {
   // * Data
@@ -31,10 +32,10 @@ export default async function LessonCreatorPage() {
       {/* Side Column */}
       <DashSideCol>
         {/* Lesson Plan Templates */}
-        {lessonPlanTemplates.length > 0 && (
+        {lessonPlanTemplates?.length > 0 && (
           <DashPanel colNum={1}>
             <DashPanelHeader title="Your Lesson Plan Templates" />
-            {/* TSK */}
+            <UsersLessonPlanTemplatesPanel templates={lessonPlanTemplates} />
           </DashPanel>
         )}
       </DashSideCol>

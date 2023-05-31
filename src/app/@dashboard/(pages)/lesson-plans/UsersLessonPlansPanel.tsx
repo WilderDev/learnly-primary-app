@@ -1,11 +1,10 @@
+'use client';
+
 import { ILessonPlan } from '@/assets/typescript/lesson-plan';
-import {
-  dateToReadableString,
-  formatDateString,
-  formatExactDateString,
-} from '@/lib/common/date.helpers';
+import { formatDateString } from '@/lib/common/date.helpers';
 import Avatar from '@/lib/components/images/Avatar';
 import OverlappingImages from '@/lib/components/images/OverlappingImages';
+import ClientWrapper from '@/lib/components/layout/ClientWrapper';
 import { Card, CardContainer } from '@/lib/components/ui/Card';
 import { getIndexColors, getSubjectColor } from '@/lib/theme/enumColors';
 import Link from 'next/link';
@@ -50,28 +49,30 @@ export default function UsersLessonPlansPanel({ lessons }: IProps) {
           </Card.Tags>
 
           {/* Card Footer */}
-          <Card.Footer>
-            {/* Attending */}
-            <OverlappingImages>
-              {lesson.students_with_details?.map((s, i) => (
-                <Avatar
-                  src={s.avatar_url}
-                  alt={s.first_name}
-                  url="/account?view=students"
-                  key={i}
-                />
-              ))}
-            </OverlappingImages>
+          <ClientWrapper>
+            <Card.Footer>
+              {/* Attending */}
+              <OverlappingImages>
+                {lesson.students_with_details?.map((s, i) => (
+                  <Avatar
+                    src={s.avatar_url || ''}
+                    alt={s.first_name || 'Student'}
+                    url="/account?view=students"
+                    key={i}
+                  />
+                ))}
+              </OverlappingImages>
 
-            {/* Completion Date */}
-            <span className="text-sm text-slate-600">
-              {formatDateString(lesson.completion_date!, {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric',
-              }) ?? 'Not Completed Yet'}
-            </span>
-          </Card.Footer>
+              {/* Completion Date */}
+              <span className="text-sm text-slate-600 dark:text-navy-200">
+                {formatDateString(lesson.completion_date!, {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                }) ?? 'Not Completed Yet'}
+              </span>
+            </Card.Footer>
+          </ClientWrapper>
         </Card>
       ))}
     </CardContainer>
