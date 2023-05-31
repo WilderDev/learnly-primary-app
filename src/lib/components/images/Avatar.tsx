@@ -88,7 +88,14 @@ export default function Avatar({
       />
 
       {/* TSK */}
-      {/* {bubbleColor && <Bubble color={bubbleColor} />} */}
+      {bubbleColor && (
+        <span
+          className={cn(
+            'absolute right-0 top-0 h-3 w-3 rounded-full border-2 border-white dark:border-navy-700',
+            bubbleColor,
+          )}
+        />
+      )}
     </>
   );
 
