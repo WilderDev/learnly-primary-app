@@ -16,8 +16,6 @@ export default function OnboardingPage() {
   );
 }
 
-// TSK: Animations between steps
-
 export const dynamic = 'force-dynamic';
 
 export const metadata = {

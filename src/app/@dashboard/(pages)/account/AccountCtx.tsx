@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  BellIcon,
   CreditCardIcon,
   FaceSmileIcon,
   UserIcon,
@@ -18,7 +17,6 @@ import {
 } from 'react';
 import AccountProfileTab from './AccountProfileTab';
 import AccountSubscriptionTab from './AccountSubscriptionTab';
-import AccountNotificationsTab from './AccountNotificaitonsTab';
 import AccountStudentsTab from './AccountStudentsTab';
 import DashMainCol from '../../(layout)/DashMainCol';
 import { useUser } from '@/lib/components/providers/UserProvider';

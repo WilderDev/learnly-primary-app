@@ -31,7 +31,7 @@ const saveCurriculumAction = async (
 
     if (error) return responseContract(error.message, false);
 
-    revalidatePath(`/curriculum-roadmaps`); // ✅
+    // revalidatePath(`/curriculum-roadmaps`); // ✅
 
     return responseContract('Success!', true);
   } catch (error) {

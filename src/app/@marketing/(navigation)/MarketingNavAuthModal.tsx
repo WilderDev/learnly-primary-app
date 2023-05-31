@@ -1,3 +1,5 @@
+'use client';
+
 import Form from '@/lib/components/form/Form';
 import Input from '@/lib/components/form/Input';
 import Modal from '@/lib/components/popouts/Modal';

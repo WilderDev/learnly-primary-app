@@ -8,7 +8,7 @@ export const reviews: IReview[] = [
     rating: 5,
   },
   {
-    title: 'Great for working parents',
+    title: 'Perfect for working parents',
     body: 'As a working mom, it can be tough to find the time to plan out homeschool lessons. Learnly has made it so much easier for me to teach my kids while also working full time. The lessons are well-designed and easy to follow.',
     author: 'Samuel Kim',
     rating: 5,
@@ -20,21 +20,21 @@ export const reviews: IReview[] = [
     rating: 5,
   },
   {
-    title: 'Great for all ages',
+    title: 'Works for all ages',
     body: 'I have kids in elementary, middle, and high school, and they all love using Learnly. The platform has something for everyone, and the lessons are tailored to each age group.',
-    author: 'Michael Johnson',
+    author: 'Michelle Johnson Barnes',
     rating: 5,
   },
   {
     title: 'Easy to customize',
     body: 'I appreciate how easy it is to customize my child’s lessons on Learnly. The platform offers a variety of subjects and activities, and I can tailor them to my child’s interests and learning style.',
-    author: 'Jennifer Brown',
+    author: 'M. Brown',
     rating: 5,
   },
   {
     title: 'Engaging and fun',
     body: 'My son used to hate school, but he actually enjoys learning on Learnly. The lessons are engaging and interactive, and he loves earning badges and rewards for completing them.',
-    author: 'Daniel Rodriguez',
+    author: 'Danielle Rodriguez',
     rating: 5,
   },
   {
@@ -50,7 +50,7 @@ export const reviews: IReview[] = [
     rating: 5,
   },
   {
-    title: 'Great for special needs children',
+    title: 'Lifesaver for special needs children',
     body: 'I appreciate how Learnly offers resources and lessons that are tailored to my child’s special needs. It’s made homeschooling so much easier for us.',
     author: 'Jenny Pozen',
     rating: 5,
@@ -64,19 +64,19 @@ export const reviews: IReview[] = [
   {
     title: 'So many resources available',
     body: 'I love how many resources and activities are available on Learnly. It’s a one-stop-shop for homeschooling, and I appreciate not having to search for different materials and lessons.',
-    author: 'Emily Quinn',
+    author: 'Emily Quinn-Smith',
     rating: 5,
   },
   {
-    title: 'Great for supplementing public school education',
+    title: 'Ideal for supplementing public school education',
     body: 'My kids attend public school, but I use Learnly to supplement their education. The platform has a variety of resources and activities that keep them engaged and learning outside of school hours.',
-    author: 'Sophia Davis',
+    author: 'Sophia Davidson',
     rating: 5,
   },
   {
-    title: 'A lifesaver during the pandemic',
+    title: 'A true lifesaver during the pandemic',
     body: 'Learnly has been a lifesaver for us during the pandemic. It’s allowed us to continue homeschooling while also keeping our kids safe at home. Thank you, Learnly!',
-    author: 'David Brown',
+    author: 'Minnie Bledsoe',
     rating: 5,
   },
   {
@@ -88,11 +88,11 @@ export const reviews: IReview[] = [
   {
     title: 'Great for multiple kids',
     body: 'I have four kids, and Learnly has made homeschooling all of them so much easier. The platform is easy to navigate, and the lessons are tailored to each age group.',
-    author: 'Jacob Rodriguez',
+    author: 'Jacob Rhinehart',
     rating: 5,
   },
   {
-    title: 'Perfect for busy families',
+    title: 'Exceptional for busy families',
     body: 'Learnly has been a great solution for our busy family. The platform offers a variety of resources and activities that my kids can complete on their own time.',
     author: 'Rachel Kim',
     rating: 5,
@@ -104,33 +104,33 @@ export const reviews: IReview[] = [
     rating: 5,
   },
   {
-    title: 'Great for non-traditional learners',
+    title: 'Awesome for non-traditional learners',
     body: 'My child has always struggled in traditional classroom settings, but Learnly has been a great solution for us. The lessons are tailored to their learning style, and they enjoy being able to complete activities and quizzes at their own pace.',
-    author: 'Mariah Patel',
+    author: 'Mariah Pangelinan',
     rating: 5,
   },
   {
     title: 'Love the variety of resources',
     body: 'Learnly offers such a variety of resources and activities that my kids never get bored. It’s a great way to keep them engaged and excited about learning.',
-    author: 'Nate Thompson',
+    author: 'Nate T.',
     rating: 5,
   },
   {
     title: 'Easy to track progress',
     body: 'I appreciate how easy it is to track my child’s progress on Learnly. The platform offers detailed reports and progress tracking, which helps me keep track of their achievements and areas for improvement.',
-    author: 'Sarah Rodriguez',
+    author: 'Sarah Ortiz',
     rating: 5,
   },
   {
     title: 'Great for all learning styles',
     body: 'My kids have different learning styles, but Learnly has something for everyone. The platform offers visual, auditory, and kinesthetic activities to reinforce different learning styles.',
-    author: 'Amanda Lee',
+    author: 'Amanda Tzeng',
     rating: 5,
   },
   {
     title: 'Great for families on a budget',
     body: 'Learnly is one of the most affordable homeschool platforms out there, but it doesn’t compromise on quality. The lessons are engaging and effective, and my kids are learning so much.',
-    author: 'Mike Davis',
+    author: 'Yan Kipp',
     rating: 5,
   },
 ];

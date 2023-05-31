@@ -23,14 +23,14 @@ export default function LessonPlanCreatorInfo({ avatar_url, name }: IProps) {
 
       {/* Creator */}
       <div className="ml-4">
-        {/* TSK: <Link href={`/profiles/${id}`}> */}
+        {/* POST_MVP: <Link href={`/profiles/${id}`}> */}
         <h3 className="text-lg font-medium text-slate-900 dark:text-navy-50">
           {name}
         </h3>
         <p className="text-sm text-slate-500 dark:text-navy-300">
           Proud Parent
-          {/* TSK: Role */}
-          {/* TSK: Badges */}
+          {/* Role? */}
+          {/* Badges? */}
         </p>
       </div>
     </div>

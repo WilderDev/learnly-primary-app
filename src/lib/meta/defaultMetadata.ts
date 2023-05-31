@@ -5,23 +5,23 @@ const description =
   'Learnly is the #1 personalized lesson & curriculum software for homeschooling families.';
 const images = [
   {
-    url: '/static/images/landing-og.png',
-    width: 1200,
-    height: 630,
+    url: '/static/images/screenshots/dashboard.png',
+    width: 1918,
+    height: 1002,
     alt: 'Learnly Homeschooling Software',
   },
-  {
-    url: '/static/images/app-og-default.png',
-    width: 1200,
-    height: 630,
-    alt: 'Learnly Homeschooling Software',
-  },
-  {
-    url: '/static/images/app-og-alt.png',
-    width: 1200,
-    height: 630,
-    alt: 'Learnly Homeschooling Software (Dark Mode)',
-  },
+  // {
+  //   url: '/static/images/app-og-default.png',
+  //   width: 1200,
+  //   height: 630,
+  //   alt: 'Learnly Homeschooling Software',
+  // },
+  // {
+  //   url: '/static/images/app-og-alt.png',
+  //   width: 1200,
+  //   height: 630,
+  //   alt: 'Learnly Homeschooling Software (Dark Mode)',
+  // },
   // Take screenshots of new app and save in static/images
 ];
 

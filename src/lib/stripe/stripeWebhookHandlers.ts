@@ -455,12 +455,6 @@ export async function handleUpdateSubscription({
 
     redirect(url);
   }
-
-  // 6. Check if the subscription is active
-  if (status === 'active') {
-    // 6a. TSK
-    //
-  }
 }
 
 // * Handle Subscription Deleted Event ✅

@@ -96,7 +96,7 @@ CREATE TABLE teacher_profiles (
   id uuid REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL PRIMARY KEY,
 
   -- The teacher's status
-  status profile_status NOT NULL DEFAULT 'OFFLINE',
+  status profile_status NOT NULL DEFAULT 'ONLINE',
 
   -- The teacher's type
   type profile_type NOT NULL DEFAULT 'PARENT',
@@ -290,10 +290,6 @@ BEGIN
   -- Second Operation (Insert Teaching Preferences)
   INSERT into public.teaching_preferences (id)
   VALUES (new.id);
-
-  -- Second Operation (Insert Welcome Notification) TSK (need to put elsewhere)
-  -- INSERT into public.notifications (recipient_id, type, title, body, action_text, action_url)
-  -- VALUES (new.id, 'SUCCESS', 'Welcome to Learnly 🤗', 'We are so exited to have you with us! If you have any questions at all, you can email us at', 'support@learnly.ai', 'mailto:support@learnly.ai');
 
   -- Return the new user
   return new;

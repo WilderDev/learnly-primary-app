@@ -57,7 +57,6 @@ export default function LessonCreatorSaveTemplateModal({
 
       close();
     },
-    onError: (error) => toast.error(error),
   });
 
   // * State

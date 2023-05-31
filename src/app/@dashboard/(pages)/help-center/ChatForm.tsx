@@ -8,8 +8,9 @@ import { useUser } from '@/lib/components/providers/UserProvider';
 import Button from '@/lib/components/ui/Button';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 import { ChatCompletionRequestMessage } from 'openai';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { useHelpCenter } from './HelpCenterCtx';
 
 // * Props
 interface IProps {
@@ -30,9 +31,10 @@ export default function ChatForm({
 }: IProps) {
   // * Hooks / Context
   const { user, students } = useUser(); // Get user and students from context
+  const { templateMessage } = useHelpCenter(); // Get template message from context
 
   // * State
-  const [userMessage, setUserMessage] = useState(''); // User message Input Query
+  const [userMessage, setUserMessage] = useState(templateMessage || ''); // User message Input Query
 
   // * Handlers
   // Send Message
@@ -57,7 +59,7 @@ export default function ChatForm({
         name: `${student.firstName} ${student.lastName}`,
         age: getAgeFromBirthday(student.birthday),
       })),
-      // TSK: Add more context . . .
+      // HERE: Add more context . . .
     };
 
     // 5. Create Request Body Object
@@ -107,6 +109,12 @@ export default function ChatForm({
       },
     });
   };
+
+  // * Effects
+  // Reset Template Message
+  useEffect(() => {
+    if (templateMessage) setUserMessage(templateMessage);
+  }, [templateMessage]);
 
   // * Render
   return (

@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import CurriculumRoadmapPageCards from './(layout)/CurriculumRoadmapPageCards';
 import { IShareableCurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumRoadmapPageHeader from './(layout)/CurriculumRoadmapPageHeader';
+import LandingCTAImages from '@/app/@marketing/(landing)/LandingCTAImages';
 
 export default async function ShareableCurriculumRoadmapsPage() {
   // * Data
@@ -25,13 +26,14 @@ export default async function ShareableCurriculumRoadmapsPage() {
         {/* Body */}
         <CurriculumRoadmapPageCards items={roadmaps} />
 
-        {/* CTA */}
-        {/* TSK */}
         {/* When you sign up for
               a free account, you can save your favorite curriculums and lessons
               to your account and have each lesson plan automatically generated
               for you based on your child&apos;s age and learning style, your
               teaching style, and more. */}
+        <div className="my-12 md:mt-16">
+          <LandingCTAImages />
+        </div>
       </Container>
     </Main>
   );
