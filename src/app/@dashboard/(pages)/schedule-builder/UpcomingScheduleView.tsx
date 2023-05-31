@@ -120,7 +120,7 @@ export default function UpcomingScheduleView() {
                   <Image
                     src={imagePath}
                     alt={name}
-                    className="h-14 w-14 flex-none rounded-full"
+                    className="h-8 w-8 sm:h-10 sm:w-10 md:h-14 md:w-14 flex-none rounded-full"
                     width={56}
                     height={56}
                     priority={true}
@@ -158,7 +158,7 @@ export default function UpcomingScheduleView() {
                       {/* Type Bubble */}
                       <span
                         className={cn(
-                          'order-1 inline-flex items-center justify-center rounded-full bg-gradient-to-bl px-2.5 py-0.5 text-center text-xs font-medium sm:order-2 sm:ml-2',
+                          'order-1 max-w-[125px] inline-flex items-center justify-center rounded-full bg-gradient-to-bl px-2.5 py-0.5 text-center text-xs font-medium sm:order-2 sm:ml-2',
                           getEventColor(type).BG.GRADIENT,
                         )}
                       >

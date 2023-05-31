@@ -67,7 +67,6 @@ export default function ScheduleEventViewsHeader() {
           </button>
 
           {/* Date Navigator - Desktop */}
-          {/* TSK: this will need to be different for every view... for now it's okay */}
           <div className="relative flex items-center rounded-md bg-white shadow-sm md:items-stretch">
             <div
               className="pointer-events-none absolute inset-0 rounded-md ring-1 ring-inset ring-slate-300 dark:ring-navy-500"
