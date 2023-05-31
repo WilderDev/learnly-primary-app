@@ -12,6 +12,7 @@ import {
   ICurriculumLessonPlan,
 } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumLessonPlanContainer from './CurriculumLessonPlanContainer';
+import LessonCreatorCommunityLessons from '@/app/@dashboard/(pages)/lesson-creator/LessonCreatorCommunityLessons';
 
 // * IParams
 interface IParams {
@@ -65,13 +66,13 @@ export default async function CurriculumRoadmapLessonPage({
       </DashMainCol>
 
       {/* Side Column */}
-      <DashSideCol className="2xl:col-span-4">
-        {/* Community Lessons */}
-        <DashPanel colNum={1}>
+      {/* <DashSideCol className="2xl:col-span-4"> */}
+      {/* POST_MVP: It should be lessons on this one... we will wait until more users!!! */}
+      {/* Community Lessons */}
+      {/* <DashPanel colNum={1}>
           <DashPanelHeader title="Community Creations" />
-          {/* TSK */}
-        </DashPanel>
-      </DashSideCol>
+        </DashPanel> */}
+      {/* </DashSideCol> */}
     </>
   );
 }

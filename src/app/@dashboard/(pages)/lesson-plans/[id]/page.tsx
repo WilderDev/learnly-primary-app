@@ -36,11 +36,9 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         </DashPanel>
 
         {/* Lesson Plan Comments */}
-        <DashPanel colNum={2}>
+        {/* <DashPanel colNum={2}>
           <DashPanelHeader title="Comments" />
-          {/* Comments */}
-          {/* TSK */}
-        </DashPanel>
+        </DashPanel> */}
 
         {/* Lesson Plan Similar Lessons */}
         {/* TSK */}
@@ -52,7 +50,6 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         <DashPanel colNum={1}>
           <DashPanelHeader title="Assessments" />
           {/* Assessments */}
-          {/* TSK */}
         </DashPanel>
 
         {/* Get Help on Lesson Plan */}
