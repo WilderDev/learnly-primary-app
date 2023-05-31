@@ -155,7 +155,9 @@ export async function generateMetadata({
 
   return {
     slug: `/curriculum-roadmaps/user/${curriculumId}/${subjectId}/${levelId}/${topicId}/${lessonId}`,
-    title: `${data?.lesson_name} | Curriculum Lessons Creator | ${data?.curriculum_name}`,
+    title: `${data?.lesson_name || 'Learnly'} | Curriculum Lessons Creator | ${
+      data?.curriculum_name
+    }`,
     image: data?.lesson_image_path,
     keywords: ['Homeschool Curriculum Roadmap', 'Homeschool Curriculum'],
     description: data?.lesson_description,

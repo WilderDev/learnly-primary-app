@@ -917,10 +917,30 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
+--- Update curriculum progress
+CREATE OR REPLACE FUNCTION update_curriculum_progress()
+RETURNS TRIGGER AS $$
+BEGIN
+  IF NEW.status = 'completed' THEN
+    UPDATE user_curriculum_progress
+    SET status = 'COMPLETED',
+        completion_date = NEW.completion_date
+    FROM curriculum_lessons
+    WHERE user_curriculum_progress.lesson_id = curriculum_lessons.id AND
+          NEW.lesson_plan_id = ANY (curriculum_lessons.lesson_plan_ids) AND
+          user_curriculum_progress.user_id = NEW.teacher_id;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- * TRIGGERS
+--- Update curriculum progress
+CREATE TRIGGER update_curriculum_progress_trigger
+AFTER UPDATE OF status ON user_lesson_plans
+FOR EACH ROW
+EXECUTE FUNCTION update_curriculum_progress();
 
 
 -- * INDEXES

@@ -28,10 +28,10 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
   const { mutate, isLoading } = useRequest(markAsComplete, {
     onSuccess: (data) => {
       if (data.ok) {
+        close();
         toast.success('Lesson Plan Completed!');
         revalidatePath(`/lesson-plans/${lessonPlanId}`); // ✅
         revalidatePath('/'); // ✅
-        close();
       } else {
         toast.error(
           'Something went wrong... Try again or contact support if the problem persists.',
