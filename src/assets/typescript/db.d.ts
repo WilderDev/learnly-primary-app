@@ -1363,32 +1363,6 @@ export interface Database {
           topic_name: string | null
         }
       }
-      next_four_lessons_per_curriculum_vieww: {
-        Row: {
-          curriculum_id: string | null
-          lesson_description: string | null
-          lesson_id: string | null
-          lesson_image_path: string | null
-          lesson_name: string | null
-          lesson_number: number | null
-          progress_id: string | null
-          progress_status: Database["public"]["Enums"]["progress_status"] | null
-          teacher_id: string | null
-        }
-      }
-      next_four_lessons_per_curriculum_viewwww: {
-        Row: {
-          curriculum_id: string | null
-          lesson_description: string | null
-          lesson_id: string | null
-          lesson_image_path: string | null
-          lesson_name: string | null
-          lesson_number: number | null
-          progress_id: string | null
-          progress_status: Database["public"]["Enums"]["progress_status"] | null
-          teacher_id: string | null
-        }
-      }
       next_lesson_per_subject_per_curriculum_view: {
         Row: {
           curriculum_id: string | null
@@ -1743,6 +1717,30 @@ export interface Database {
           reaction_icon_url: string
           reaction_metadata: Json
           reactor_id: string
+        }[]
+      }
+      get_events_by_date_range: {
+        Args: {
+          start_date: string
+          end_date: string
+        }
+        Returns: {
+          date: string
+          events: Json
+        }[]
+      }
+      get_events_for_month: {
+        Args: {
+          input_year: number
+          input_month: number
+        }
+        Returns: {
+          id: string
+          name: string
+          type: Database["public"]["Enums"]["event"]
+          datetime: string
+          day_of_month: number
+          url: string
         }[]
       }
       get_upcoming_events: {

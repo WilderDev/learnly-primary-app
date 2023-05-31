@@ -9,7 +9,7 @@ import { useSchedule } from './ScheduleCtx';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import cn from '@/lib/common/cn';
 import Link from 'next/link';
-import { IUpcomingEventsGetRes } from '@/app/api/users/events/upcoming/route';
+import { IUpcomingEventsGetRes } from '@/app/api/events/upcoming/route';
 import { ICalendarEvent } from '@/assets/typescript/schedule';
 import { getTimeFromTimestamp } from '../../../../lib/common/date.helpers';
 
@@ -77,7 +77,7 @@ export default function WeeklyScheduleView() {
   useEffect(() => {
     // Fetch the events for the week.
     const fetchEvents = async () => {
-      const res = await fetch(`/api/users/events/upcoming?date=${start}`, {
+      const res = await fetch(`/api/events/upcoming?date=${start}`, {
         method: 'GET',
       });
 

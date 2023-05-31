@@ -16,7 +16,7 @@ import { useSchedule } from './ScheduleCtx';
 import Avatar from '@/lib/components/images/Avatar';
 import { ICalendarEvent } from '@/assets/typescript/schedule';
 import { getEventColor } from '@/lib/theme/enumColors';
-import { IUpcomingEventsGetRes } from '@/app/api/users/events/upcoming/route';
+import { IUpcomingEventsGetRes } from '@/app/api/events/upcoming/route';
 import { Menu, Transition } from '@headlessui/react';
 import AddEventModal from './AddEventModal';
 import {
@@ -60,7 +60,7 @@ export default function UpcomingScheduleView() {
     // Fetch the upcoming events for the date provided
     const fetchEvents = async () => {
       setLoading(true);
-      const res = await fetch(`/api/users/events/upcoming?date=${date}`, {
+      const res = await fetch(`/api/events/upcoming?date=${date}`, {
         method: 'GET',
       });
 

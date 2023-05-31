@@ -9,8 +9,13 @@ import {
   useState,
 } from 'react';
 
-import { ICalendarDay, TScheduleView } from '@/assets/typescript/schedule';
+import {
+  ICalendarDay,
+  ICalendarDayEvent,
+  TScheduleView,
+} from '@/assets/typescript/schedule';
 import { getWeekRange } from '@/lib/common/date.helpers';
+import { supabaseClient } from '@/lib/auth/supabaseClient';
 
 // * Initialization
 // Props
@@ -105,8 +110,28 @@ export function ScheduleProvider({ children }: PropsWithChildren) {
     setCurrentDate(newDate);
   };
 
+  // Fetch Events for Month
+  const fetchEventsForMonth = async (year: number, month: number) => {
+    const supabase = supabaseClient();
+
+    const { data, error } = await supabase.rpc('get_events_for_month', {
+      input_year: year,
+      input_month: month,
+    });
+
+    if (error || !data) return [];
+
+    return data;
+  };
+
   // Build calendar days
-  const buildCalendarDays = useCallback(() => {
+  const buildCalendarDays = useCallback(async () => {
+    // Fetch events for the month
+    const eventsForMonth = await fetchEventsForMonth(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+    );
+
     const firstDayOfMonth = new Date(
       currentDate.getFullYear(),
       currentDate.getMonth(),
@@ -141,6 +166,7 @@ export function ScheduleProvider({ children }: PropsWithChildren) {
         dateString: date.toISOString().split('T')[0],
         isCurrentMonth: false,
         isToday: false,
+        events: [],
       });
     }
 
@@ -151,11 +177,23 @@ export function ScheduleProvider({ children }: PropsWithChildren) {
         currentDate.getMonth(),
         i,
       );
+
+      // Find events for the day
+      const eventsForDay = eventsForMonth.filter((event: ICalendarDayEvent) => {
+        const eventDate = new Date(event.datetime);
+        return (
+          eventDate.getFullYear() === date.getFullYear() &&
+          eventDate.getMonth() === date.getMonth() &&
+          eventDate.getDate() === date.getDate()
+        );
+      });
+
       calendarDays.push({
         date,
         dateString: date.toISOString().split('T')[0],
         isCurrentMonth: true,
         isToday: false,
+        events: eventsForDay,
       });
     }
 
@@ -171,6 +209,7 @@ export function ScheduleProvider({ children }: PropsWithChildren) {
         dateString: date.toISOString().split('T')[0],
         isCurrentMonth: false,
         isToday: false,
+        events: [],
       });
     }
 

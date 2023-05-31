@@ -241,7 +241,7 @@ export function getEventColor(eventType: string) {
 
 // Event Enum Colors
 const eventColors = {
-  LESSON: {
+  ASSIGNMENT: {
     BG: {
       DEFAULT: 'bg-blue-500',
       LIGHT: 'bg-blue-300',
@@ -279,7 +279,7 @@ const eventColors = {
       SUBDUED: 'bg-purple-600/70 text-purple-50',
     },
   },
-  ASSIGNMENT: {
+  LESSON: {
     BG: {
       DEFAULT: 'bg-green-500',
       LIGHT: 'bg-green-300',

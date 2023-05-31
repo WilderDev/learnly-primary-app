@@ -26,6 +26,17 @@ export interface ICalendarDay {
   isCurrentMonth?: boolean;
   isToday?: boolean;
   isSelected?: boolean;
+  events: ICalendarDayEvent[];
+}
+
+// Calendar Day Event
+export interface ICalendarDayEvent {
+  id: string;
+  name: string;
+  type: TEvent;
+  datetime: string;
+  day_of_month: number;
+  url?: string;
 }
 
 // Calendar Event
