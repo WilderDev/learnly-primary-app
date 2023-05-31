@@ -1461,6 +1461,26 @@ export interface Database {
           topic_type: Database["public"]["Enums"]["module_type"] | null
         }
       }
+      similar_lessons_view: {
+        Row: {
+          avatar_url: string | null
+          content: string | null
+          created_at: string | null
+          creator_id: string | null
+          first_name: string | null
+          id: string | null
+          image_path: string | null
+          is_public: boolean | null
+          last_name: string | null
+          length_in_min: number | null
+          level: string | null
+          subject: string | null
+          tags: string[] | null
+          title: string | null
+          topic: string | null
+          updated_at: string | null
+        }
+      }
       teacher_me_view: {
         Row: {
           avatar_url: string | null

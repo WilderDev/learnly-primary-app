@@ -441,6 +441,54 @@ ORDER BY
   ulp.completion_date DESC;
 
 
+--- Similar Lessons View
+CREATE VIEW similar_lessons_view AS
+SELECT
+  lp.id,
+  lp.creator_id,
+  tp.first_name,
+  tp.last_name,
+  tp.avatar_url,
+  lp.title,
+  lp.subject,
+  lp.level,
+  lp.topic,
+  lp.content,
+  lp.tags,
+  lp.image_path,
+  lp.length_in_min,
+  lp.is_public,
+  lp.created_at,
+  lp.updated_at
+FROM (
+  (
+    SELECT
+      *,
+      ROW_NUMBER() OVER (PARTITION BY topic ORDER BY created_at DESC) as rn
+    FROM
+      lesson_plans
+  )
+  UNION
+  (
+    SELECT
+      *,
+      ROW_NUMBER() OVER (PARTITION BY level ORDER BY created_at DESC) as rn
+    FROM
+      lesson_plans
+  )
+  UNION
+  (
+    SELECT
+      *,
+      ROW_NUMBER() OVER (PARTITION BY subject ORDER BY created_at DESC) as rn
+    FROM
+      lesson_plans
+  )
+) AS lp
+JOIN teacher_profiles tp ON lp.creator_id = tp.id
+WHERE rn <= 3;
+
+
 
 -- * FUNCTIONS
 -- Create topic from name, description, image_path, level_name, subject_code

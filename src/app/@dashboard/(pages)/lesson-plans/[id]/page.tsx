@@ -9,6 +9,7 @@ import {
 } from '@/app/@dashboard/(layout)/DashPanel';
 import { redirect } from 'next/navigation';
 import LessonPlanContainerSkeleton from './LessonPlanContainerSkeleton';
+import LessonPlanSimilarLessons from './LessonPlanSimilarLessons';
 
 // * Params
 export interface IParams {
@@ -41,7 +42,11 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         </DashPanel> */}
 
         {/* Lesson Plan Similar Lessons */}
-        {/* TSK */}
+        <DashPanel colNum={2}>
+          <DashPanelHeader title="Similar Lessons" />
+          {/* @ts-expect-error Server Component */}
+          <LessonPlanSimilarLessons lessonId={id} />
+        </DashPanel>
       </DashMainCol>
 
       {/* Side Column */}
