@@ -37,6 +37,7 @@
     "react-dom": "18.2.0",
     "react-flatpickr": "^3.10.13",
     "react-markdown": "^8.0.7",
+    "react-to-print": "^2.14.12",
     "sharp": "^0.32.1",
     "sonner": "^0.3.5",
     "stripe": "^12.4.0",

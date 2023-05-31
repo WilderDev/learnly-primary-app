@@ -2,11 +2,12 @@
 
 import { IAssignment } from '@/assets/typescript/assignment';
 import AssignmentCreatorForm from './AssignmentCreatorForm';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Button from '@/lib/components/ui/Button';
 import { toast } from 'sonner';
 import { downloadPdf } from '@/lib/common/downloadPdf';
+import { useReactToPrint } from 'react-to-print';
 
 interface IProps {
   assignment: IAssignment;
@@ -16,31 +17,39 @@ export default function Assignment({ assignment, lessonPlan }: IProps) {
   const [_assignment, setAssignment] = useState(assignment);
   const [assignmentContent, setAssignmentContent] = useState('');
 
-  const handlePrint = async () => {
-    const requestBody = {
-      markdown: _assignment.content,
-    };
-    const res = await fetch('/api/print', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    });
+  const componentRef = useRef<HTMLDivElement | null>(null);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current!,
+  });
 
-    if (!res.ok) return toast.error('Error Printing Assignment');
+  // const handlePrint = async () => {
+  //   const requestBody = {
+  //     markdown: _assignment.content,
+  //   };
+  //   const res = await fetch('/api/print', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(requestBody),
+  //   });
 
-    downloadPdf(
-      res,
-      `${_assignment.title.toLowerCase().split(' ').join('_')}_worksheet`
-    );
-  };
+  //   if (!res.ok) return toast.error('Error Printing Assignment');
+
+  //   downloadPdf(
+  //     res,
+  //     `${_assignment.title.toLowerCase().split(' ').join('_')}_worksheet`
+  //   );
+  // };
 
   return (
     <>
       {_assignment ? (
         <>
-          <LessonPlanMarkdown content={_assignment.content} />
+          <LessonPlanMarkdown
+            ref={componentRef}
+            content={_assignment.content}
+          />
           <Button onClick={handlePrint}>Print</Button>
         </>
       ) : (

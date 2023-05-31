@@ -1,7 +1,7 @@
 'use client';
 
 import Form from '@/lib/components/form/Form';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import Input from '@/lib/components/form/Input';
 import TextArea from '@/lib/components/form/TextArea';
 import {
@@ -19,6 +19,7 @@ import Modal from '@/lib/components/popouts/Modal';
 import { BoltIcon } from '@heroicons/react/24/outline';
 import { createPdf } from '@/lib/common/createPdf';
 import { downloadPdf } from '@/lib/common/downloadPdf';
+import { useReactToPrint } from 'react-to-print';
 
 interface IProps {
   isModal: boolean;
@@ -169,31 +170,36 @@ export default function AssignmentCreatorForm({
     setNumberofQuestions(3);
   };
 
-  const handlePrint = async () => {
-    const requestBody = {
-      markdown: assignmentContent,
-    };
-    const res = await fetch('/api/print', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    });
+  const componentRef = useRef<HTMLDivElement | null>(null);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current!,
+  });
 
-    if (!res.ok) return toast.error('Error Printing Assignment');
+  // const handlePrint = async () => {
+  //   const requestBody = {
+  //     markdown: assignmentContent,
+  //   };
+  //   const res = await fetch('/api/print', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(requestBody),
+  //   });
 
-    downloadPdf(
-      res,
-      `${assignmentTitle.toLowerCase().split(' ').join('_')}_worksheet`
-    );
-  };
+  //   if (!res.ok) return toast.error('Error Printing Assignment');
+
+  //   downloadPdf(
+  //     res,
+  //     `${assignmentTitle.toLowerCase().split(' ').join('_')}_worksheet`
+  //   );
+  // };
 
   return (
     <>
       {assignmentContent ? (
         <div className="flex flex-col gap-6">
-          <LessonPlanMarkdown content={assignmentContent} />
+          <LessonPlanMarkdown ref={componentRef} content={assignmentContent} />
           {assignmentActions && (
             <div className="flex items-center gap-2">
               <div className="w-full flex gap-2">
