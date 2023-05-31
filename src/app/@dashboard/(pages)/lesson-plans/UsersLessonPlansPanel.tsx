@@ -57,7 +57,6 @@ export default function UsersLessonPlansPanel({ lessons }: IProps) {
                   <Avatar
                     src={s.avatar_url || ''}
                     alt={s.first_name || 'Student'}
-                    url="/account?view=students"
                     key={i}
                   />
                 ))}

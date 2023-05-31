@@ -80,7 +80,14 @@ const createUserAction = async (input: z.infer<typeof createUserSchema>) => {
 
     // 5. Add Contact to SendGrid (Production Only)
     if (process.env.NODE_ENV === 'production') {
-      // TSK /api/email/app-list/route.ts
+      await fetch(baseUrl + '/api/email/app-list', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          first_name: firstName,
+          last_name: lastName,
+        }),
+      });
     }
 
     // 6. Send Sign In Email
