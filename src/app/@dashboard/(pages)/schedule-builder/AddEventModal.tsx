@@ -61,7 +61,6 @@ export default function AddEventModal({ isOpen, close }: IProps) {
         );
       }
     },
-    onError: (error) => toast.error(error),
   });
 
   // * Handlers

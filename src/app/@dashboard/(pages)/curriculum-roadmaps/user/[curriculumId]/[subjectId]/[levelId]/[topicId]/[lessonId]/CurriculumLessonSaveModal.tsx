@@ -41,7 +41,6 @@ export default function CurriculumLessonSaveModal({
         );
       }
     },
-    onError: (error) => toast.error(error),
   });
 
   // * State

@@ -47,7 +47,6 @@ export default function LessonPlanSaveDetailsModalForm({
         );
       }
     },
-    onError: (error) => toast.error(error),
   });
 
   // * State

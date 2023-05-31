@@ -38,7 +38,6 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
         );
       }
     },
-    onError: (error) => toast.error(error),
   });
 
   // * State

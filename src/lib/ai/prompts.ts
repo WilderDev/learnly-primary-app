@@ -124,7 +124,7 @@ export function generateLessonPlanPrompt({
     ', ',
   )}.
 
-  The students (children) are:
+  The only students (children) are:
   ${studentsSection}
 
   The teacher is ${name} and their role is ${role}. Write the lesson plan as if you are the ${relationship} of the students.
@@ -240,7 +240,7 @@ The difficulty level is ${difficulty}.
 
 The lesson's length is ${length_in_min} minutes.
 
-The students (children) are:
+The only students (children) are:
 ${studentsSection}
 
 The teacher is ${name} and their role is ${role}. Write the lesson plan as if you are the ${relationship} of the students.
