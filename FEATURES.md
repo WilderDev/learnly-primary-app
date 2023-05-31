@@ -22,6 +22,7 @@
 20. Curriculum Lesson Dependency Graph (Prerequisites) and Visualization
 21. Learning Path Recommendation Algorithms
 22. Lesson Plan Comments (Wait until we have a good amount of users)
+23. Mobile Search Bar
 
 ## Marketing Ideas
 
