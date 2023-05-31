@@ -12,6 +12,7 @@ import {
   ICurriculumLessonPlan,
 } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumLessonPlanContainer from './CurriculumLessonPlanContainer';
+import LessonCreatorCommunityLessons from '@/app/@dashboard/(pages)/lesson-creator/LessonCreatorCommunityLessons';
 
 // * IParams
 interface IParams {
@@ -65,13 +66,13 @@ export default async function CurriculumRoadmapLessonPage({
       </DashMainCol>
 
       {/* Side Column */}
-      <DashSideCol className="2xl:col-span-4">
-        {/* Community Lessons */}
-        <DashPanel colNum={1}>
+      {/* <DashSideCol className="2xl:col-span-4"> */}
+      {/* POST_MVP: It should be lessons on this one... we will wait until more users!!! */}
+      {/* Community Lessons */}
+      {/* <DashPanel colNum={1}>
           <DashPanelHeader title="Community Creations" />
-          {/* TSK */}
-        </DashPanel>
-      </DashSideCol>
+        </DashPanel> */}
+      {/* </DashSideCol> */}
     </>
   );
 }
@@ -154,7 +155,9 @@ export async function generateMetadata({
 
   return {
     slug: `/curriculum-roadmaps/user/${curriculumId}/${subjectId}/${levelId}/${topicId}/${lessonId}`,
-    title: `${data?.lesson_name} | Curriculum Lessons Creator | ${data?.curriculum_name}`,
+    title: `${data?.lesson_name || 'Learnly'} | Curriculum Lessons Creator | ${
+      data?.curriculum_name
+    }`,
     image: data?.lesson_image_path,
     keywords: ['Homeschool Curriculum Roadmap', 'Homeschool Curriculum'],
     description: data?.lesson_description,

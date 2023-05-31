@@ -29,9 +29,10 @@ export default function LessonCreatorFormActions() {
         </Button>
 
         {/* Form Buttons */}
-        <div className="flex flex-col sm:flex-row space-x-4">
+        <div className="flex flex-col mt-4 sm:mt-0 sm:flex-row sm:space-x-4">
           {/* Reset */}
           <Button
+            className="hidden sm:inline-block"
             size="sm"
             fill="none"
             variant="dark"
@@ -44,6 +45,7 @@ export default function LessonCreatorFormActions() {
 
           {/* Generate */}
           <Button
+            className="w-full sm:w-auto"
             type="submit"
             loading={isLoading}
             disabled={isLoading || !topic || students.length === 0}

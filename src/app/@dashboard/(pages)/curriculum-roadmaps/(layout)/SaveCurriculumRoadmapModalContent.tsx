@@ -21,12 +21,14 @@ import { revalidatePath } from 'next/cache';
 // * Props
 interface IProps {
   roadmaps: ICurriculumListItem[];
+  defaultSelected?: string;
   close?: () => void;
 }
 
 export default function SaveCurriculumRoadmapModalContent({
   roadmaps,
-  close,
+  defaultSelected = 'Comprehensive K-5',
+  close = () => null,
 }: IProps) {
   // * Hooks / Context
   const { students } = useUser();
@@ -34,13 +36,17 @@ export default function SaveCurriculumRoadmapModalContent({
   // * State
   const [curriculumStudents, setCurriculumStudents] = useState<string[]>([]);
   const [selectedCurriculum, setSelectedCurriculum] = useState(
-    roadmaps[1]?.id || '',
+    () =>
+      roadmaps.find((r) => r.name === defaultSelected)?.id ||
+      roadmaps[1]?.id ||
+      '',
   );
 
   // * Requests / Mutations
   const { mutate, isLoading } = useRequest(saveCurriculum, {
     onSuccess: (data) => {
       if (data.ok) {
+        close();
         toast.success('Curriculum Saved!');
         setSelectedCurriculum('');
         setCurriculumStudents([]);
@@ -50,10 +56,7 @@ export default function SaveCurriculumRoadmapModalContent({
           "Something went wrong... You might've already saved this curriculum.",
         );
       }
-
-      close && close();
     },
-    onError: (error) => toast.error(error),
   });
 
   // * Render

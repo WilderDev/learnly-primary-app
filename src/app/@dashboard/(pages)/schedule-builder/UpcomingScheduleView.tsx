@@ -16,7 +16,7 @@ import { useSchedule } from './ScheduleCtx';
 import Avatar from '@/lib/components/images/Avatar';
 import { ICalendarEvent } from '@/assets/typescript/schedule';
 import { getEventColor } from '@/lib/theme/enumColors';
-import { IUpcomingEventsGetRes } from '@/app/api/users/events/upcoming/route';
+import { IUpcomingEventsGetRes } from '@/app/api/events/upcoming/route';
 import { Menu, Transition } from '@headlessui/react';
 import AddEventModal from './AddEventModal';
 import {
@@ -28,6 +28,7 @@ import baseUrl from '@/lib/common/baseUrl';
 import { toast } from 'sonner';
 import { useRequest } from '@/lib/hooks/useRequest';
 import { deleteEvent } from './_actions';
+import EditEventModal from './EditEventModal';
 
 // * Component
 export default function UpcomingScheduleView() {
@@ -36,6 +37,7 @@ export default function UpcomingScheduleView() {
 
   // * State
   const [isAddEventModalOpen, setAddEventModalOpen] = useState(false);
+  const [editEventModalId, setEditEventModalId] = useState('');
   const [upcomingEvents, setUpcomingEvents] = useState<ICalendarEvent[]>([]);
   const [loading, setLoading] = useState(false);
   let [isPending, startTransition] = useTransition();
@@ -60,7 +62,7 @@ export default function UpcomingScheduleView() {
     // Fetch the upcoming events for the date provided
     const fetchEvents = async () => {
       setLoading(true);
-      const res = await fetch(`/api/users/events/upcoming?date=${date}`, {
+      const res = await fetch(`/api/events/upcoming?date=${date}`, {
         method: 'GET',
       });
 
@@ -84,7 +86,7 @@ export default function UpcomingScheduleView() {
       {/* Content */}
       <div className="lg:grid lg:grid-cols-12 lg:gap-x-16">
         {/* Mini Calendar */}
-        <div className="mt-4 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 xl:col-start-9">
+        <div className="mt-4 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 xl:col-start-8 2xl:col-start-9">
           <MiniCalendar />
 
           <button
@@ -100,7 +102,7 @@ export default function UpcomingScheduleView() {
         {loading ? (
           <LoadingDoubleBubble className="mt-4" />
         ) : (
-          <ol className="mt-4 divide-y divide-slate-100 text-sm leading-6 dark:divide-navy-500 lg:col-span-7 xl:col-span-8">
+          <ol className="mt-4 divide-y divide-slate-100 text-sm leading-6 dark:divide-navy-500 lg:col-span-7 xl:col-span-7 2xl:col-span-8">
             {upcomingEvents?.map(
               ({
                 id,
@@ -118,7 +120,7 @@ export default function UpcomingScheduleView() {
                   <Image
                     src={imagePath}
                     alt={name}
-                    className="h-14 w-14 flex-none rounded-full"
+                    className="h-8 w-8 sm:h-10 sm:w-10 md:h-14 md:w-14 flex-none rounded-full"
                     width={56}
                     height={56}
                     priority={true}
@@ -156,7 +158,7 @@ export default function UpcomingScheduleView() {
                       {/* Type Bubble */}
                       <span
                         className={cn(
-                          'order-1 inline-flex items-center justify-center rounded-full bg-gradient-to-bl px-2.5 py-0.5 text-center text-xs font-medium sm:order-2 sm:ml-2',
+                          'order-1 max-w-[125px] inline-flex items-center justify-center rounded-full bg-gradient-to-bl px-2.5 py-0.5 text-center text-xs font-medium sm:order-2 sm:ml-2',
                           getEventColor(type).BG.GRADIENT,
                         )}
                       >
@@ -208,7 +210,7 @@ export default function UpcomingScheduleView() {
                         <dd>
                           <OverlappingImages className="m-0.5 ml-1">
                             {attendees?.map((attendee) => (
-                              <>
+                              <Fragment key={attendee.id}>
                                 <span className="sr-only">
                                   {attendee.firstName}
                                 </span>
@@ -219,7 +221,7 @@ export default function UpcomingScheduleView() {
                                   size="sm"
                                   key={attendee.id}
                                 />
-                              </>
+                              </Fragment>
                             ))}
                           </OverlappingImages>
                         </dd>
@@ -255,7 +257,6 @@ export default function UpcomingScheduleView() {
                     >
                       {/* Items */}
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-navy-700 dark:ring-navy-200">
-                        {/* TSK: These buttons don't do anything right now */}
                         <div className="py-1">
                           {/* Url */}
                           {url && (
@@ -266,7 +267,7 @@ export default function UpcomingScheduleView() {
                                     active
                                       ? 'bg-slate-100 text-slate-900 dark:bg-navy-600 dark:text-navy-50'
                                       : 'text-slate-700 dark:text-navy-100',
-                                    'block px-4 py-2 text-sm',
+                                    'block px-4 py-2 text-sm w-full text-left',
                                   )}
                                   target="_blank"
                                   href={url}
@@ -278,22 +279,21 @@ export default function UpcomingScheduleView() {
                           )}
 
                           {/* Edit */}
-                          {/* <Menu.Item>
+                          <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
-                                //   TSK
+                              <button
                                 className={cn(
                                   active
                                     ? 'bg-slate-100 text-slate-900 dark:bg-navy-600 dark:text-navy-50'
                                     : 'text-slate-700 dark:text-navy-100',
-                                  'block px-4 py-2 text-sm',
+                                  'block px-4 py-2 text-sm w-full text-left',
                                 )}
+                                onClick={() => setEditEventModalId(id)}
                               >
                                 Edit
-                              </a>
+                              </button>
                             )}
-                          </Menu.Item> */}
+                          </Menu.Item>
 
                           {/* Delete */}
                           <Menu.Item>
@@ -325,11 +325,20 @@ export default function UpcomingScheduleView() {
         )}
       </div>
 
-      {/* Event Modal */}
+      {/* Add Event Modal */}
       <AddEventModal
         isOpen={isAddEventModalOpen}
         close={() => setAddEventModalOpen(false)}
       />
+
+      {/* Edit Event Modal */}
+      {!!editEventModalId && (
+        <EditEventModal
+          isOpen={!!editEventModalId}
+          close={() => setEditEventModalId('')}
+          event={upcomingEvents.find((e) => e.id === editEventModalId)!}
+        />
+      )}
     </>
   );
 }

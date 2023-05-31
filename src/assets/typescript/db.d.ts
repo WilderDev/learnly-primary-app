@@ -1315,7 +1315,7 @@ export interface Database {
           url?: string | null
         }
       }
-      lesson_plan_with_students_view: {
+      lesson_plan_templates_with_students_view: {
         Row: {
           difficulty: Database["public"]["Enums"]["difficulty"] | null
           format: Database["public"]["Enums"]["format"] | null
@@ -1345,6 +1345,7 @@ export interface Database {
           content: string | null
           creator_avatar_url: string | null
           creator_first_name: string | null
+          creator_id: string | null
           creator_last_name: string | null
           creator_type: Database["public"]["Enums"]["profile_type"] | null
           id: string | null
@@ -1355,12 +1356,43 @@ export interface Database {
           level_name: Database["public"]["Enums"]["level"] | null
           scheduled_date: string | null
           students: string[] | null
+          students_with_details: Json | null
           subject: string | null
           subject_name: string | null
           tags: string[] | null
           title: string | null
           topic: string | null
           topic_name: string | null
+        }
+      }
+      lesson_timeline_view: {
+        Row: {
+          completion_date: string | null
+          image_path: string | null
+          lesson_id: string | null
+          name: string | null
+          students: Json[] | null
+          teacher_id: string | null
+        }
+      }
+      next_lesson_per_subject_per_curriculum_view: {
+        Row: {
+          curriculum_id: string | null
+          curriculum_lesson_id: string | null
+          curriculum_level_id: string | null
+          curriculum_name: string | null
+          curriculum_subject_id: string | null
+          curriculum_topic_id: string | null
+          lesson_description: string | null
+          lesson_image_path: string | null
+          lesson_name: string | null
+          lesson_number: number | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          progress_status: Database["public"]["Enums"]["progress_status"] | null
+          subject_name: string | null
+          teacher_id: string | null
+          topic_name: string | null
+          user_curriculum_id: string | null
         }
       }
       recently_completed_lesson_plans_view: {
@@ -1439,6 +1471,26 @@ export interface Database {
           topic_image_path: string | null
           topic_name: string | null
           topic_type: Database["public"]["Enums"]["module_type"] | null
+        }
+      }
+      similar_lessons_view: {
+        Row: {
+          avatar_url: string | null
+          content: string | null
+          created_at: string | null
+          creator_id: string | null
+          first_name: string | null
+          id: string | null
+          image_path: string | null
+          is_public: boolean | null
+          last_name: string | null
+          length_in_min: number | null
+          level: string | null
+          subject: string | null
+          tags: string[] | null
+          title: string | null
+          topic: string | null
+          updated_at: string | null
         }
       }
       teacher_me_view: {
@@ -1697,6 +1749,30 @@ export interface Database {
           reaction_icon_url: string
           reaction_metadata: Json
           reactor_id: string
+        }[]
+      }
+      get_events_by_date_range: {
+        Args: {
+          start_date: string
+          end_date: string
+        }
+        Returns: {
+          date: string
+          events: Json
+        }[]
+      }
+      get_events_for_month: {
+        Args: {
+          input_year: number
+          input_month: number
+        }
+        Returns: {
+          id: string
+          name: string
+          type: Database["public"]["Enums"]["event"]
+          datetime: string
+          day_of_month: number
+          url: string
         }[]
       }
       get_upcoming_events: {

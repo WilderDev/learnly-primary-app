@@ -74,8 +74,6 @@ const markAsCompleteAction = async (
       .eq('teacher_id', session?.user.id!)
       .eq('lesson_plan_id', lesson_plan_id);
 
-    // TSK: If the lesson plan is in user_curriculum_progress -> update the status to COMPLETED with completion date
-
     if (error) return responseContract(error.message, false);
 
     revalidatePath(`/lesson-plans/${lesson_plan_id}`); // ✅

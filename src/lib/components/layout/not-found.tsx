@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 import NotFoundBg from '@/assets/images/bg/not-found.avif';

@@ -11,7 +11,6 @@ import {
   useTransition,
 } from 'react';
 import { createContext } from 'react';
-import baseUrl from '@/lib/common/baseUrl';
 import { toast } from 'sonner';
 import OnboardingProfile from './OnboardingProfile';
 import OnboardingPreferences from './OnboardingPreferences';

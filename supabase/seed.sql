@@ -31918,7 +31918,7 @@ SELECT create_complete_curriculum(
                 },
                 {
                     "name": "Introduction to Cyber Safety",
-                    "description": "Learning the basics of online safety, understanding the do's and don'ts of digital interactions.",
+                    "description": "Learning the basics of online safety, understanding the do‘s and don‘ts of digital interactions.",
                     "image_path": "https://source.unsplash.com/500x500/?cyber-safety",
                     "type": "CORE"
                 },
@@ -32111,7 +32111,7 @@ SELECT create_complete_curriculum(
                 },
                 {
                     "name": "Understanding Processors",
-                    "description": "Diving into the world of microprocessors, the 'brain' of the computer, and understanding their function in computer operations.",
+                    "description": "Diving into the world of microprocessors, the ‘brain‘ of the computer, and understanding their function in computer operations.",
                     "image_path": "https://source.unsplash.com/500x500/?processors",
                     "type": "CORE"
                 },

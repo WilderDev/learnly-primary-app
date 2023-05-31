@@ -173,6 +173,66 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+--- Get Events for Date Range
+CREATE FUNCTION get_events_by_date_range(start_date date, end_date date)
+RETURNS TABLE(
+  date date,
+  events jsonb
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT
+    date(e.datetime) AS date,
+    json_agg(
+      json_build_object(
+        'id', e.id,
+        'name', e.name,
+        'type', e.type
+      )
+    )::jsonb AS events
+  FROM
+    events e
+  WHERE
+    date(e.datetime) BETWEEN start_date AND end_date
+    AND (e.host_id = auth.uid() OR auth.uid() = ANY(e.attendees))
+  GROUP BY
+    date(e.datetime)
+  ORDER BY
+    date(e.datetime) ASC;
+END;
+$$ LANGUAGE plpgsql;
+
+
+--- Get Events for Month
+CREATE FUNCTION get_events_for_month(input_year int, input_month int)
+RETURNS TABLE(
+  id uuid,
+  name text,
+  type event,
+  datetime timestamptz,
+  day_of_month int,
+  url text
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT
+    e.id,
+    e.name,
+    e.type,
+    e.datetime,
+    CAST(EXTRACT(DAY FROM e.datetime) AS INTEGER) as day_of_month,
+    e.url
+  FROM
+    events e
+  WHERE
+    EXTRACT(YEAR FROM e.datetime) = input_year
+    AND EXTRACT(MONTH FROM e.datetime) = input_month
+    AND (e.host_id = auth.uid() OR auth.uid() = ANY(e.attendees));
+END;
+$$ LANGUAGE plpgsql;
+
+
+
 -- * TRIGGERS
 
 

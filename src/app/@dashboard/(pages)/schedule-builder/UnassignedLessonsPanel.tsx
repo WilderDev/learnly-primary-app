@@ -33,7 +33,7 @@ export default async function UnassignedLessonsPanel() {
                   {title}
                 </h3>
 
-                <p className="text-xs font-medium leading-none text-slate-500 dark:text-slate-400">
+                <p className="text-xs font-medium leading-none text-slate-600 dark:text-navy-200">
                   {level} | {subject} | {topic}
                 </p>
               </div>
@@ -42,8 +42,8 @@ export default async function UnassignedLessonsPanel() {
         ))}
     </div>
   ) : (
-    <p className="text-sm font-semibold text-slate-500">
-      No recently completed lessons
+    <p className="text-sm font-semibold text-slate-600 dark:text-navy-200">
+      No unassigned lessons found :)
     </p>
   );
 }
