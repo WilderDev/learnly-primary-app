@@ -87,7 +87,6 @@ export default function Avatar({
         height={512}
       />
 
-      {/* TSK */}
       {bubbleColor && (
         <span
           className={cn(

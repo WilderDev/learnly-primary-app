@@ -39,7 +39,9 @@ export default function LeftSidebarUserLinks() {
             src={user?.avatarUrl! || '/static/icons/avatars/default.png'}
             alt={user?.firstName! || 'User'}
             size="lg"
-            bubbleColor={getUserStatusColor(user?.status!).BG.DEFAULT}
+            bubbleColor={
+              getUserStatusColor(user?.status! || 'ONLINE').BG.DEFAULT
+            }
           />
         </Link>
       </li>

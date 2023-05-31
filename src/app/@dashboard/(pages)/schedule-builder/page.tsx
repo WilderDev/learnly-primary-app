@@ -11,7 +11,7 @@ export default function ScheduleBuilderPage() {
       {/* Main Column */}
       <DashMainCol className="xl:col-span-12">
         {/* Event Views (Daily, Weekly, Monthly, Yearly) */}
-        <DashPanel colNum={1}>
+        <DashPanel colNum={1} className="px-0">
           <DashPanelHeader title="Event Views" />
           <ScheduleEventViewerPanel />
         </DashPanel>

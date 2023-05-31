@@ -208,7 +208,7 @@ export default function UpcomingScheduleView() {
                         <dd>
                           <OverlappingImages className="m-0.5 ml-1">
                             {attendees?.map((attendee) => (
-                              <>
+                              <Fragment key={attendee.id}>
                                 <span className="sr-only">
                                   {attendee.firstName}
                                 </span>
@@ -219,7 +219,7 @@ export default function UpcomingScheduleView() {
                                   size="sm"
                                   key={attendee.id}
                                 />
-                              </>
+                              </Fragment>
                             ))}
                           </OverlappingImages>
                         </dd>

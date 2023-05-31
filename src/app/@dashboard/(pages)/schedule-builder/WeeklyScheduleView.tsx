@@ -100,15 +100,15 @@ export default function WeeklyScheduleView() {
     >
       <div
         style={{ width: '165%' }}
-        className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full"
+        className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full overflow-hidden"
       >
         <div
           ref={containerNav}
           className="sticky top-0 z-30 flex-none bg-white ring-1 ring-black ring-opacity-5 dark:bg-navy-800 dark:ring-navy-400 sm:pr-8"
         >
           {/* Week Date Columns (Mobile) */}
-          <div className="grid grid-cols-7 text-xs leading-6 text-slate-500 dark:text-navy-200 sm:hidden">
-            {weekDays.map((day, i) => (
+          <div className="grid grid-cols-5 text-xs leading-6 text-slate-500 dark:text-navy-200 sm:hidden">
+            {weekDays.slice(0, 5).map((day, i) => (
               <button
                 className="flex items-center justify-center py-3"
                 onClick={() => setDate(day)}
@@ -134,11 +134,11 @@ export default function WeeklyScheduleView() {
           </div>
 
           {/* Week Date Columns (Desktop) */}
-          <div className="-mr-px hidden grid-cols-7 divide-x divide-slate-100 border-r border-slate-100 text-sm leading-6 text-slate-500 dark:divide-navy-700 dark:border-navy-700 dark:text-navy-200 sm:grid">
+          <div className="-mr-px hidden grid-cols-1 sm:grid-cols-7 divide-x divide-slate-100 border-r border-slate-100 text-sm leading-6 text-slate-500 dark:divide-navy-700 dark:border-navy-700 dark:text-navy-200 sm:grid">
             <div className="col-end-1 w-14" />
             {weekDays.map((day, i) => (
               <button
-                className="flex items-center justify-center py-3"
+                className="flex items-center justify-center py-2 sm:py-3"
                 onClick={() => setDate(day)}
                 key={i}
               >
@@ -164,8 +164,9 @@ export default function WeeklyScheduleView() {
           </div>
         </div>
 
+        {/* Main Content */}
         <div className="flex flex-auto">
-          <div className="sticky left-0 z-10 w-14 flex-none bg-white ring-1 ring-slate-100 dark:bg-navy-800 dark:ring-navy-700" />
+          <div className="sticky left-0 z-10 w-10 sm:w-14 flex-none bg-white ring-1 ring-slate-100 dark:bg-navy-800 dark:ring-navy-700" />
           <div className="grid flex-auto grid-cols-1 grid-rows-1">
             {/* Horizontal lines */}
             <div
@@ -177,9 +178,13 @@ export default function WeeklyScheduleView() {
               {Array.from({ length: 13 }).map((_, i) => (
                 <Fragment key={i}>
                   <div>
-                    <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-slate-400 dark:text-navy-200">
-                      {i + 6 > 12 ? i + 6 - 12 : i + 6}{' '}
-                      {i + 6 < 12 ? 'AM' : 'PM'}
+                    <div className="sticky left-0 z-20 -ml-10 sm:-ml-14 -mt-2.5 w-14 pr-4 sm:pr-2 text-center sm:text-right text-xs leading-5 text-slate-400 dark:text-navy-200">
+                      <span className="text-center sm:text-left">
+                        {i + 6 > 12 ? i + 6 - 12 : i + 6}
+                      </span>{' '}
+                      <span className="block sm:inline-block">
+                        {i + 6 < 12 ? 'AM' : 'PM'}
+                      </span>
                     </div>
                   </div>
                   {i !== 12 && <div />}
@@ -199,9 +204,9 @@ export default function WeeklyScheduleView() {
               <div className="col-start-8 row-span-full w-8" />
             </div>
 
-            {/* Events */}
+            {/* Events (Tablet & Desktop) */}
             <ol
-              className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8"
+              className="hidden col-start-1 col-end-2 row-start-1 sm:grid grid-cols-1 sm:grid-cols-7 sm:pr-8"
               style={{
                 gridTemplateRows: '1.75rem repeat(144, minmax(0, 1fr)) auto',
               }}
@@ -259,11 +264,72 @@ export default function WeeklyScheduleView() {
                 );
               })}
             </ol>
+
+            {/* Events (Mobile) */}
+            <ol
+              className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:hidden"
+              style={{
+                gridTemplateRows: '1.75rem repeat(144, minmax(0, 1fr)) auto',
+              }}
+            >
+              {events
+                ?.filter(({ datetime }) => isSameDay(date, new Date(datetime)))
+                .map(({ id, name, url, datetime, lengthInMin }) => {
+                  const eDate = new Date(datetime); // event date
+                  const { rowStart, rowSpan } = getRow(eDate, lengthInMin); // 60 minutes default
+                  const colStart = getCol(eDate); // 0-7
+
+                  return (
+                    <li
+                      key={id}
+                      className={cn(
+                        'relative mt-px flex',
+                        colStart === 1 && 'sm:col-start-1',
+                        colStart === 2 && 'sm:col-start-2',
+                        colStart === 3 && 'sm:col-start-3',
+                        colStart === 4 && 'sm:col-start-4',
+                        colStart === 5 && 'sm:col-start-5',
+                        colStart === 6 && 'sm:col-start-6',
+                        colStart === 7 && 'sm:col-start-7',
+                        colStart === 0 && 'hidden',
+                      )}
+                      style={{ gridRow: `${rowStart} / span ${rowSpan}` }}
+                    >
+                      {url ? (
+                        <Link
+                          className="group absolute inset-1 flex flex-col overflow-y-auto transition-all duration-300 rounded-lg bg-green-50 p-2 text-xs leading-5 hover:bg-green-100 dark:bg-green-900 dark:hover:bg-green-900/80"
+                          href={url}
+                        >
+                          <p className="order-1 font-semibold text-green-700 dark:text-green-200">
+                            {name}
+                          </p>
+                          <p className="text-green-500 group-hover:text-green-700 dark:text-green-300 transition-colors duration-300 dark:group-hover:text-green-400">
+                            <time dateTime={datetime}>
+                              {getDatestringFromTimestamp(datetime)} at{' '}
+                              {getTimeFromTimestamp(datetime)}
+                            </time>
+                          </p>
+                        </Link>
+                      ) : (
+                        <div className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg transition-all duration-300 bg-green-50 p-2 text-xs leading-5 hover:bg-green-100 dark:bg-green-900 dark:hover:bg-green-900/80">
+                          <p className="order-1 font-semibold text-green-700 dark:text-green-200">
+                            {name}
+                          </p>
+                          <p className="text-green-500 group-hover:text-green-700 dark:text-green-300 transition-colors duration-300 dark:group-hover:text-green-400">
+                            <time dateTime={datetime}>
+                              {getDatestringFromTimestamp(datetime)} at{' '}
+                              {getTimeFromTimestamp(datetime)}
+                            </time>
+                          </p>
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+            </ol>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-// TSK: Responsiveness
