@@ -3,6 +3,7 @@ import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
 import ChatContainer from './ChatContainer';
 import { HelpCenterProvider } from './HelpCenterCtx';
+import HelpCenterFAQ from './HelpCenterFAQ';
 import HelpCenterPrompts from './HelpCenterPrompts';
 
 export default function HelpCenterPage() {
@@ -10,7 +11,7 @@ export default function HelpCenterPage() {
     <>
       <HelpCenterProvider>
         {/* Main Column */}
-        <DashMainCol className="xl:col-span-7 2xl:col-span-7">
+        <DashMainCol className="2xl:col-span-8">
           {/* Help Center Chat */}
           <DashPanel colNum={1}>
             <DashPanelHeader title="Help Center Chat" />
@@ -26,11 +27,11 @@ export default function HelpCenterPage() {
       </HelpCenterProvider>
 
       {/* Side Column */}
-      <DashSideCol className="xl:col-span-5 2xl:col-span-5">
+      <DashSideCol className="2xl:col-span-4">
         {/* Help Center FAQ */}
         <DashPanel colNum={1}>
           <DashPanelHeader title="Help Center FAQ" />
-          {/* TSK */}
+          <HelpCenterFAQ />
         </DashPanel>
       </DashSideCol>
     </>
