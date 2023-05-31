@@ -21,11 +21,13 @@ import { revalidatePath } from 'next/cache';
 // * Props
 interface IProps {
   roadmaps: ICurriculumListItem[];
+  defaultSelected?: string;
   close?: () => void;
 }
 
 export default function SaveCurriculumRoadmapModalContent({
   roadmaps,
+  defaultSelected = 'Comprehensive K-5',
   close = () => null,
 }: IProps) {
   // * Hooks / Context
@@ -34,7 +36,10 @@ export default function SaveCurriculumRoadmapModalContent({
   // * State
   const [curriculumStudents, setCurriculumStudents] = useState<string[]>([]);
   const [selectedCurriculum, setSelectedCurriculum] = useState(
-    roadmaps[1]?.id || '',
+    () =>
+      roadmaps.find((r) => r.name === defaultSelected)?.id ||
+      roadmaps[1]?.id ||
+      '',
   );
 
   // * Requests / Mutations
@@ -45,14 +50,13 @@ export default function SaveCurriculumRoadmapModalContent({
         toast.success('Curriculum Saved!');
         setSelectedCurriculum('');
         setCurriculumStudents([]);
-        // revalidatePath(`/curriculum-roadmaps`); // ✅
+        revalidatePath(`/curriculum-roadmaps`); // ✅
       } else {
         toast.error(
           "Something went wrong... You might've already saved this curriculum.",
         );
       }
     },
-    onError: (error) => toast.error(error),
   });
 
   // * Render

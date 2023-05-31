@@ -36,7 +36,6 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
         <DashPanel>
           <DashPanelHeader title="Quick Report" />
           {/* Quick Report */}
-          {/* TSK */}
           Under Construction
         </DashPanel>
       </RightSidebar>

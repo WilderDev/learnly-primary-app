@@ -9,6 +9,7 @@
 6. Curriculum Topic search page with tags and by filters
 7. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
 8. [Bottom Right Chat Bubble](<src/app/@dashboard/(pages)/help-center/ChatForm.tsx>) (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
+9. [Right Side Panel](<src/app/@dashboard/(pages)/layout.tsx>) (Stats)
 
 ---
 

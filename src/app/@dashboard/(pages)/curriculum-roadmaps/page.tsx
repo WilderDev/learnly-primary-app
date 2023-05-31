@@ -9,6 +9,7 @@ import CurriculumRoadmapCards, {
 } from './(layout)/CurriculumRoadmapCards';
 import SaveCurriculumRoadmapModalContent from './(layout)/SaveCurriculumRoadmapModalContent';
 import CurriculumRoadmapNextLessons from './CurriculumRoadmapNextLessons';
+import PopularCurriculumRoadmaps from './PopularCurriculumRoadmaps';
 
 // * Page
 export default async function CurriculumRoadmapsPage() {
@@ -52,16 +53,15 @@ export default async function CurriculumRoadmapsPage() {
         {/* Popular Curriculum Roadmaps */}
         <DashPanel colNum={1}>
           <DashPanelHeader title="Popular Roadmaps" />
-          {/* TSK */}
+          <PopularCurriculumRoadmaps roadmaps={roadmaps} />
         </DashPanel>
 
         {/* Curriculum Roadmap Timeline */}
-        {user_roadmaps.length > 0 && (
+        {/* {user_roadmaps.length > 0 && (
           <DashPanel colNum={2}>
             <DashPanelHeader title="Timeline" />
-            {/* TSK */}
           </DashPanel>
-        )}
+        )} */}
       </DashSideCol>
     </>
   );
