@@ -71,7 +71,7 @@ export default async function LessonTimeline() {
       </ul>
     </div>
   ) : (
-    <p className="text-center text-slate-700 dark:text-navy-100">
+    <p className="text-sm font-semibold text-slate-600 dark:text-navy-200">
       No lessons have been scheduled yet.
     </p>
   );
