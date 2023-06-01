@@ -79,7 +79,7 @@ export default function Modal({
   useEffect(() => {
     if (isVisible && modalRef.current) {
       const focusableModalElements = modalRef.current.querySelectorAll(
-        'a[href], button, textarea, input, select',
+        'a[href], button, textarea, input, select'
       ) as NodeListOf<HTMLElement>;
 
       const firstElement = focusableModalElements[0];
@@ -124,7 +124,7 @@ export default function Modal({
       if (e.key === 'Tab') {
         // Get Focusable Elements
         const focusableModalElements = modalRef.current.querySelectorAll(
-          'a[href], button, textarea, input, select',
+          'a[href], button, textarea, input, select'
         ) as NodeListOf<HTMLElement>;
 
         const firstElement = focusableModalElements[0];
@@ -163,7 +163,7 @@ export default function Modal({
           isVisible
             ? 'visible opacity-100'
             : 'invisible opacity-0 pointer-events-none',
-          portalName === 'alt-portal' && 'print:hidden z-[10000]',
+          portalName === 'alt-portal' && 'print:hidden z-[10000]'
         )}
         role="dialog"
         aria-modal="true"
@@ -177,7 +177,7 @@ export default function Modal({
             shadowStyles[shadow],
             animationStyles,
             isVisible ? 'scale-100' : 'scale-90',
-            className,
+            className
             // 'print:shadow-none print:backdrop-none dark:print:backdrop-none print:border-none print:w-full print:h-full print:block print:max-w-4xl print:mx-auto print:my-0 print:rounded-none print:overflow-visible print:scale-100',
           )}
           ref={modalRef}
@@ -191,7 +191,7 @@ export default function Modal({
               className={cn(
                 'absolute print:hidden -top-2 p-1 rounded-full group hocus:bg-slate-100 dark:hocus:bg-navy-800 transition-colors',
                 !closeBtn && 'opacity-0 focus:opacity-100',
-                closeBtnLeft ? 'left-2' : 'right-2',
+                closeBtnLeft ? 'left-2' : 'right-2'
               )}
               onClick={close}
             >
@@ -229,7 +229,7 @@ Modal.Header = function ModalHeader({
     <header
       className={cn(
         'flex items-center justify-between border-b pb-4 border-slate-200 dark:border-navy-500',
-        className,
+        className
       )}
     >
       {/* Left - Info */}

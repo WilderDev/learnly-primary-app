@@ -5,11 +5,15 @@ import {
   PrinterIcon,
   ShareIcon,
 } from '@heroicons/react/24/solid';
-import { handlePrint, handleShare } from './helpers';
+import { handleShare } from './helpers';
 import { usePathname } from 'next/navigation';
 import { useLessonCreator } from './LessonCreatorCtx';
 import { useState } from 'react';
 import LessonPlanSaveDetailsModalForm from '../lesson-plans/[id]/LessonPlanSaveDetailsModal';
+
+interface IProps {
+  handlePrint: () => void;
+}
 
 // * Data
 const dockItems: {
@@ -40,7 +44,7 @@ const dockItems: {
   },
 ];
 
-export default function LessonCreatorDock() {
+export default function LessonCreatorDock({ handlePrint }: IProps) {
   // * Hooks / Context
   const { id, students } = useLessonCreator();
   const pathname = usePathname();

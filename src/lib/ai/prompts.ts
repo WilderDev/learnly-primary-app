@@ -30,7 +30,7 @@ export function generateLessonPlanPrompt({
   // Teaching Strategies
   const teachingStrategies = teaching_preferences?.teachingStrategies?.length
     ? `Favorite Teaching Strategies: ${teaching_preferences?.teachingStrategies?.join(
-        ', ',
+        ', '
       )}.`
     : '';
 
@@ -42,7 +42,7 @@ export function generateLessonPlanPrompt({
   // Teaching Tools
   const teachingTools = teaching_preferences?.teachingTools?.length
     ? `Favorite teaching tools: ${teaching_preferences?.teachingTools?.join(
-        ', ',
+        ', '
       )}.`
     : '';
 
@@ -64,8 +64,8 @@ export function generateLessonPlanPrompt({
           `- Student ${index + 1}: ${student.name}, Age: ${
             student.age
           }, Goals: ${student.goals.join(
-            ',',
-          )}, Special Needs: ${student.specialNeeds.join(',')}.`,
+            ','
+          )}, Special Needs: ${student.specialNeeds.join(',')}.`
       )
       ?.join('\n') || '';
 
@@ -121,7 +121,7 @@ export function generateLessonPlanPrompt({
   ${paceSection}
   ${materialsSection}
   The preferred learning styles for this lesson are ${lessonLearningStyles?.join(
-    ', ',
+    ', '
   )}.
 
   The only students (children) are:
@@ -171,7 +171,7 @@ export function generateCurriculumLessonPlanPrompt({
   // Teaching Strategies
   const teachingStrategies = teaching_preferences?.teachingStrategies?.length
     ? `Favorite Teaching Strategies: ${teaching_preferences?.teachingStrategies?.join(
-        ', ',
+        ', '
       )}.`
     : '';
 
@@ -183,7 +183,7 @@ export function generateCurriculumLessonPlanPrompt({
   // Teaching Tools
   const teachingTools = teaching_preferences?.teachingTools?.length
     ? `Favorite teaching tools: ${teaching_preferences?.teachingTools?.join(
-        ', ',
+        ', '
       )}.`
     : '';
 
@@ -215,8 +215,8 @@ export function generateCurriculumLessonPlanPrompt({
           `- Student ${index + 1}: ${student.name}, Age: ${
             student.age
           }, Goals: ${student.goals.join(
-            ',',
-          )}, Special Needs: ${student.specialNeeds.join(',')}.`,
+            ','
+          )}, Special Needs: ${student.specialNeeds.join(',')}.`
       )
       ?.join('\n') || '';
 

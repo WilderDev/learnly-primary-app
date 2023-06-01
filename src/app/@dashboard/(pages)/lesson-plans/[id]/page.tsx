@@ -9,6 +9,8 @@ import {
 } from '@/app/@dashboard/(layout)/DashPanel';
 import { redirect } from 'next/navigation';
 import LessonPlanContainerSkeleton from './LessonPlanContainerSkeleton';
+import { fetchAssignmentCall } from './(assignments)/_actions';
+import Assignment from './(assignments)/Assignment';
 import LessonPlanSimilarLessons from './LessonPlanSimilarLessons';
 
 // * Params
@@ -22,6 +24,8 @@ export interface IParams {
 export default async function LessonPlanPage({ params: { id } }: IParams) {
   // * Data
   const lessonPlan = await getLessonPlan(id);
+
+  const assignment = await fetchAssignmentCall({ lesson_plan_id: id });
 
   // * Render
   return (
@@ -42,7 +46,7 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         </DashPanel> */}
 
         {/* Lesson Plan Similar Lessons */}
-        <DashPanel colNum={2}>
+        <DashPanel colNum={2} className="print:hidden">
           <DashPanelHeader title="Similar Lessons" />
           {/* @ts-expect-error Server Component */}
           <LessonPlanSimilarLessons lessonId={id} />
@@ -53,8 +57,11 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
       <DashSideCol className="2xl:col-span-4">
         {/* Lesson Plan Assessments */}
         <DashPanel colNum={1}>
-          <DashPanelHeader title="Assessments" />
-          {/* Assessments */}
+          <DashPanelHeader title="Assignment" />
+          {/* Assessment */}
+          <Assignment assignment={assignment} lessonPlan={lessonPlan} />
+
+          {/* TSK */}
         </DashPanel>
 
         {/* Get Help on Lesson Plan */}
@@ -64,16 +71,45 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
 }
 
 // * Fetcher
+// async function getLessonPlan(id: string) {
+//   const supabase = supabaseServer();
+
+//   const { data, error } = await supabase
+//     .from('lesson_plans_with_creator_and_students_view')
+//     .select('*, level:levels(name)')
+//     .eq('id', id)
+//     .single();
+
+//   if (error) redirect('/lesson-creator');
+
+//   return data as ILessonPlan;
+// }
+
 export async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
     .from('lesson_plans_with_creator_and_students_view')
-    .select('*')
+    .select('*, level:levels(name)')
     .eq('id', id)
     .single();
 
   if (error) redirect('/lesson-creator');
+
+  // Fetch related data from the user_lesson_plans table
+  const { data: userLessonPlanData, error: userLessonPlanError } =
+    await supabase
+      .from('user_lesson_plans')
+      .select('id')
+      .eq('lesson_plan_id', id)
+      .maybeSingle();
+
+  if (userLessonPlanError) throw userLessonPlanError;
+
+  // Attach the related data to the response
+  if (data) {
+    (data as any).user_lesson_plan = userLessonPlanData;
+  }
 
   return data as ILessonPlan;
 }

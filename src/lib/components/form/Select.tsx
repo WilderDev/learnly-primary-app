@@ -37,6 +37,7 @@ interface IProps {
   shadow?: TSize;
   rounded?: TSize | 'full';
   className?: string;
+  displayLabel?: boolean;
 }
 
 // * Component
@@ -54,6 +55,7 @@ export default function Select({
   shadow = 'xs',
   rounded = 'md',
   className,
+  displayLabel = false,
 }: IProps) {
   // * Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -75,7 +77,7 @@ export default function Select({
         setMenuOpen(false);
       }
     },
-    [containerRef, setMenuOpen],
+    [containerRef, setMenuOpen]
   );
 
   // Handle Key Down
@@ -104,7 +106,7 @@ export default function Select({
         setMenuOpen(false);
       }
     },
-    [highlightedIndex, isMenuOpen, options, setValue],
+    [highlightedIndex, isMenuOpen, options, setValue]
   );
 
   // * Effects
@@ -120,6 +122,10 @@ export default function Select({
       document.removeEventListener('click', handleClickOutside);
     };
   }, [isMenuOpen, handleClickOutside]);
+
+  // What to display when an item is selected. By default it is the value of the option
+  const selectedOption = options.find((option) => option.value === value);
+  const displayText = displayLabel ? selectedOption?.label : value;
 
   // * Render
   return (
@@ -139,7 +145,7 @@ export default function Select({
           fills[fill],
           shadows[shadow],
           roundeds[rounded],
-          icon ? 'pl-10' : 'pl-3',
+          icon ? 'pl-10' : 'pl-3'
         )}
         onClick={() => setMenuOpen((prev) => !prev)}
         aria-haspopup="listbox"
@@ -155,10 +161,10 @@ export default function Select({
             className={cn(
               value
                 ? 'text-slate-900 dark:text-navy-50'
-                : 'text-slate-500/70 dark:text-navy-200/70 font-light',
+                : 'text-slate-500/70 dark:text-navy-200/70 font-light'
             )}
           >
-            {value ? capitalize(value) : 'Select an option'}
+            {displayText ? capitalize(displayText) : 'Select an option'}
           </span>
         </div>
 
@@ -178,14 +184,14 @@ export default function Select({
               'absolute left-0 top-10 z-20 mt-1 w-full',
               roundeds[rounded],
               shadows[shadow],
-              variants[variant],
+              variants[variant]
             )}
           >
             <ul
               className={cn(
                 'max-h-60 overflow-auto text-base divide-y-2 border-2 border-slate-300/90 dark:border-navy-500/90 dark:divide-navy-500 divide-slate-300 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
                 roundeds[rounded],
-                shadows[shadow],
+                shadows[shadow]
               )}
               role="listbox"
               aria-labelledby="listbox-label"
@@ -199,7 +205,7 @@ export default function Select({
                     value?.includes(option.value) &&
                       'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100',
                     highlightedIndex === index &&
-                      'bg-slate-200 dark:bg-navy-600 ring-2 focus:ring-offset-2 ring-green-500 dark:ring-green-500 ring-opacity-50',
+                      'bg-slate-200 dark:bg-navy-600 ring-2 focus:ring-offset-2 ring-green-500 dark:ring-green-500 ring-opacity-50'
                   )}
                   aria-selected={value?.includes(option.value)}
                   role="option"
