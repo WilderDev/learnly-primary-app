@@ -34,10 +34,11 @@ export default async function ParentDashboardHomePage() {
 
         {/* Home Assignments */}
         <DashPanel colNum={3}>
+          {/* TSK Need to add view add assignments */}
           <DashPanelHeader
             title="Assignments"
-            ctaText="View All Assignments"
-            ctaLink="/assignments"
+            // ctaText="View All Assignments"
+            // ctaLink="/assignments"
             hasModal={true}
             modalSize="lg"
             modalContent={<AssignmentCreatorModal />}
@@ -45,8 +46,6 @@ export default async function ParentDashboardHomePage() {
           />
           {/* <AssignmentsTable /> */}
           <AssignmentsTable assignments={assignments} />
-          {/* TSK */}
-          <DashPanelHeader title="Assignments" />
         </DashPanel>
       </DashMainCol>
 

@@ -46,7 +46,7 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         </DashPanel> */}
 
         {/* Lesson Plan Similar Lessons */}
-        <DashPanel colNum={2}>
+        <DashPanel colNum={2} className="print:hidden">
           <DashPanelHeader title="Similar Lessons" />
           {/* @ts-expect-error Server Component */}
           <LessonPlanSimilarLessons lessonId={id} />
@@ -62,8 +62,6 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
           <Assignment assignment={assignment} lessonPlan={lessonPlan} />
 
           {/* TSK */}
-          <DashPanelHeader title="Assessments" />
-          {/* Assessments */}
         </DashPanel>
 
         {/* Get Help on Lesson Plan */}

@@ -7,6 +7,7 @@ import {
   getStudentCreds,
 } from '../../lesson-plans/[id]/(assignments)/helpers';
 import {
+  IAssignmentResponse,
   changeAssignmentStatus,
   deleteAssignment,
   editAssignment,
@@ -26,7 +27,7 @@ import { UserStudent } from '@/assets/typescript/user';
 import { downloadPdf } from '@/lib/common/downloadPdf';
 
 interface IProps {
-  assignment: any;
+  assignment: IAssignmentResponse;
   setAssignmentsEditModal: Dispatch<SetStateAction<boolean>>;
   usersStudents: UserStudent[];
 }
@@ -35,11 +36,16 @@ export default function AssignmentEditModalForm({
   setAssignmentsEditModal,
   usersStudents,
 }: IProps) {
-  console.log(assignment);
-
   const [title, setTitle] = useState(assignment.title);
-  const [assignedOn, setAssignedOn] = useState(assignment.assigned_on);
-  const [dueDate, setDueDate] = useState(assignment.due_date);
+  // const [assignedOn, setAssignedOn] = useState(assignment.assigned_on);
+  // const [dueDate, setDueDate] = useState(assignment.due_date);
+
+  const [assignedOn, setAssignedOn] = useState<Date | null>(
+    new Date(assignment.assigned_on)
+  );
+  const [dueDate, setDueDate] = useState<Date | null>(
+    new Date(assignment.due_date)
+  );
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -52,11 +58,23 @@ export default function AssignmentEditModalForm({
   let [isChanging, startTransition] = useTransition();
 
   const handleSubmit = async () => {
+    const errors = [];
+    if (!title || title.trim() === '') errors.push('Title is Required');
+    if (!assignedOn) errors.push('Assigned On is Required');
+    if (!dueDate) errors.push('Due Date is Required');
+
+    if (errors.length > 0) {
+      errors.forEach((msg) => {
+        toast.error(msg);
+      });
+      return;
+    }
+
     const { ok } = await editAssignment({
       id: assignment.id,
       title,
-      dueDate: new Date(dueDate),
-      assignedOn: new Date(assignedOn),
+      dueDate: dueDate!,
+      assignedOn: assignedOn!,
     });
 
     if (ok) {
@@ -156,7 +174,14 @@ export default function AssignmentEditModalForm({
                 <button
                   onClick={() => {
                     startTransition(() =>
-                      mutate({ id: assignment.id, status: assignment.status })
+                      mutate({
+                        id: assignment.id,
+                        status: assignment.status as
+                          | 'PENDING'
+                          | 'IN_PROGRESS'
+                          | 'COMPLETED'
+                          | 'CANCELED',
+                      })
                     );
                   }}
                   disabled={isChanging}
@@ -173,7 +198,7 @@ export default function AssignmentEditModalForm({
             <dd className="mt-1 text-sm text-slate-900">
               <DatePicker
                 setValue={setAssignedOn}
-                value={assignedOn}
+                value={assignedOn!}
                 label={''}
                 options={{
                   position: 'above center',
@@ -188,7 +213,7 @@ export default function AssignmentEditModalForm({
             <dd className="mt-1 text-sm text-slate-900">
               <DatePicker
                 setValue={setDueDate}
-                value={dueDate}
+                value={dueDate!}
                 label={''}
                 options={{
                   position: 'above center',
@@ -223,7 +248,7 @@ export default function AssignmentEditModalForm({
 
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="hocus:bg-slate-100/90 dark:hocus:bg-navy-700/90  rounded-full hover:scale-105 px-2 py-1 transition-all duration-150 ease-in-out w-full"
+                className="hocus:bg-slate-100/90 dark:hocus:bg-navy-700/90  rounded-full hover:scale-105 px-2 py-1 transition-all duration-150 ease-in-out w-full dark:text-white dark:border-gray-600"
               >
                 {isExpanded ? 'Show Less' : 'Show More'}
               </button>
@@ -245,14 +270,14 @@ export default function AssignmentEditModalForm({
                       className="h-5 w-5 flex-shrink-0 text-slate-400"
                       aria-hidden="true"
                     />
-                    <span className="ml-2 w-0 flex-1 truncate">
+                    <span className="ml-2 w-0 flex-1 truncate dark:text-white">
                       {assignment.title.toLowerCase().split(' ').join('_')}
                       _worksheet.pdf
                     </span>
                   </div>
                   <div className="ml-4 flex-shrink-0">
                     <button
-                      className="font-medium text-slate-600 hover:text-navy-500"
+                      className="font-medium text-slate-600 hover:text-navy-500 dark:text-white"
                       onClick={handlePrint}
                     >
                       Download
@@ -266,7 +291,7 @@ export default function AssignmentEditModalForm({
           <div className="flex items-center justify-between gap-6 sm:col-span-2 flex-col sm:flex-row">
             <Button
               onClick={handleDelete}
-              className="w-full hocus:text-white"
+              className="w-full hocus:text-white dark:border-gray-600"
               variant="dark"
               fill="outline"
             >

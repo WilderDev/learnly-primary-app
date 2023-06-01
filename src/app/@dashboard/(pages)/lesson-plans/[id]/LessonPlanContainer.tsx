@@ -1,9 +1,13 @@
+'use client';
+
 import { ILessonPlan } from '@/assets/typescript/lesson-plan';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import LessonPlanCreatorInfo from './LessonPlanCreatorInfo';
 import LessonPlanTags from './LessonPlanTags';
 import LessonPlanActionIcons from './LessonPlanActionIcons';
 import LessonPlanMarkComplete from './LessonPlanMarkComplete';
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
 
 // * Props
 interface IProps {
@@ -13,6 +17,11 @@ interface IProps {
 // * Component
 export default function LessonPlanContainer({ lessonPlan }: IProps) {
   // * Render
+
+  const componentRef = useRef<HTMLDivElement | null>(null);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current!,
+  });
   return (
     <>
       <main className="mx-auto my-3 max-w-full print:my-0">
@@ -31,6 +40,7 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
             <LessonPlanActionIcons
               id={lessonPlan.id}
               scheduled_date={lessonPlan.scheduled_date}
+              handlePrint={handlePrint}
             />
           </div>
 
@@ -39,7 +49,10 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
         </div>
 
         {/* Content */}
-        <LessonPlanMarkdown content={lessonPlan.content} />
+
+        <div ref={componentRef} className="print:p-6">
+          <LessonPlanMarkdown content={lessonPlan.content} />
+        </div>
 
         {/* Mark Complete */}
         <LessonPlanMarkComplete

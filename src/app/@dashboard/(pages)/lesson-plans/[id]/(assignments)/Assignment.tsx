@@ -5,9 +5,8 @@ import AssignmentCreatorForm from './AssignmentCreatorForm';
 import { useRef, useState } from 'react';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Button from '@/lib/components/ui/Button';
-import { toast } from 'sonner';
-import { downloadPdf } from '@/lib/common/downloadPdf';
 import { useReactToPrint } from 'react-to-print';
+import cn from '@/lib/common/cn';
 
 interface IProps {
   assignment: IAssignment;
@@ -22,35 +21,19 @@ export default function Assignment({ assignment, lessonPlan }: IProps) {
     content: () => componentRef.current!,
   });
 
-  // const handlePrint = async () => {
-  //   const requestBody = {
-  //     markdown: _assignment.content,
-  //   };
-  //   const res = await fetch('/api/print', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(requestBody),
-  //   });
-
-  //   if (!res.ok) return toast.error('Error Printing Assignment');
-
-  //   downloadPdf(
-  //     res,
-  //     `${_assignment.title.toLowerCase().split(' ').join('_')}_worksheet`
-  //   );
-  // };
-
   return (
     <>
       {_assignment ? (
         <>
-          <LessonPlanMarkdown
-            ref={componentRef}
-            content={_assignment.content}
-          />
-          <Button onClick={handlePrint}>Print</Button>
+          <div ref={componentRef} className="print:p-6">
+            <LessonPlanMarkdown
+              content={_assignment.content}
+              className={cn('!z-[0]')}
+            />
+          </div>
+          <Button onClick={handlePrint} className="print:hidden">
+            Print
+          </Button>
         </>
       ) : (
         <AssignmentCreatorForm

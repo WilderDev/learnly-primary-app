@@ -14,18 +14,11 @@ import { useReactToPrint } from 'react-to-print';
 export default function LessonCreatorModal() {
   // * Hooks / Context
   const { id, lessonContent, complete, reset, isLoading } = useLessonCreator();
-  // const [isPrinting, setIsPrinting] = useState(false);
 
   const componentRef = useRef<HTMLDivElement | null>(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current!,
   });
-
-  // const renderContent = () => {
-  //   if (!isPrinting) {
-  //     return <LessonPlanMarkdown content={lessonContent} />;
-  //   }
-  // };
 
   // * Return
   return (
@@ -51,11 +44,12 @@ export default function LessonCreatorModal() {
           </Button>
         )}
 
-        <div className="mt-6 mb-4 pr-4">
-          <LessonPlanMarkdown ref={componentRef} content={lessonContent} />
-          {/* {renderContent()} */}
+        <div ref={componentRef} className="print:p-6">
+          {/* This is the new div */}
+          <div className="mt-6 mb-4 pr-4">
+            <LessonPlanMarkdown content={lessonContent} />
+          </div>
         </div>
-        <Button onClick={handlePrint}>Print</Button>
       </Modal>
 
       {/* Close Button */}
@@ -71,7 +65,7 @@ export default function LessonCreatorModal() {
       )}
 
       {/* Actions Dock */}
-      {complete && <LessonCreatorDock />}
+      {complete && <LessonCreatorDock handlePrint={handlePrint} />}
     </>
   );
 }

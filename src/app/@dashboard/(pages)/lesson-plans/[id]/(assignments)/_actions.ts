@@ -209,8 +209,18 @@ export const fetchAssignmentCall = async (
 };
 
 // Call to fetch assignments
+export interface IAssignmentResponse extends IAssignment {
+  user_lesson_plan: {
+    students: string[];
+  };
+  lesson_plan: {
+    subject: {
+      name: string;
+    };
+  };
+}
 
-export async function fetchAssignments(): Promise<IAssignment[]> {
+export async function fetchAssignments(): Promise<IAssignmentResponse[]> {
   try {
     const supabase = supabaseServer();
     const {
@@ -229,7 +239,7 @@ export async function fetchAssignments(): Promise<IAssignment[]> {
       throw new Error(error.message);
     }
 
-    return data as IAssignment[];
+    return data as IAssignmentResponse[];
   } catch (error) {
     throw new Error((error as Error).message);
   }

@@ -75,6 +75,22 @@ export default function AssignmentCreatorForm({
     setAdditionalCommentsModal(false);
     setAssignmentActions(false);
 
+    const errors = [];
+    if (!userLessonOption && isModal) errors.push('Must Select A Lesson');
+    if (!assignmentTitle && !isModal) errors.push('Assignment Title Required');
+    if (!assignmentDueDate) errors.push('Assignment Due Date Required');
+    if (!numberOfQuestions) errors.push('Amount Of Questions Required');
+    if (numberOfQuestions <= 0 || numberOfQuestions > 7)
+      errors.push('Only 1-7 Questions Allowed');
+
+    if (errors.length > 0) {
+      errors.forEach((msg) => {
+        toast.error(msg);
+      });
+      setIsLoadingAssignment(false);
+      return;
+    }
+
     const lessonPlanGrade = lessonPlan
       ? lessonPlan.level.name
       : getLessonWithId(userLessonOption).lesson_plan.level.name;
@@ -175,31 +191,17 @@ export default function AssignmentCreatorForm({
     content: () => componentRef.current!,
   });
 
-  // const handlePrint = async () => {
-  //   const requestBody = {
-  //     markdown: assignmentContent,
-  //   };
-  //   const res = await fetch('/api/print', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(requestBody),
-  //   });
-
-  //   if (!res.ok) return toast.error('Error Printing Assignment');
-
-  //   downloadPdf(
-  //     res,
-  //     `${assignmentTitle.toLowerCase().split(' ').join('_')}_worksheet`
-  //   );
-  // };
-
   return (
     <>
       {assignmentContent ? (
         <div className="flex flex-col gap-6">
-          <LessonPlanMarkdown ref={componentRef} content={assignmentContent} />
+          <div className="print:p-6" ref={componentRef}>
+            <LessonPlanMarkdown
+              className="!z-[0]"
+              content={assignmentContent}
+            />
+          </div>
+
           {assignmentActions && (
             <div className="flex items-center gap-2">
               <div className="w-full flex gap-2">
@@ -264,6 +266,8 @@ export default function AssignmentCreatorForm({
             label="Number Of Questions"
             type="number"
             className="w-full"
+            min={1}
+            max={7}
             value={numberOfQuestions}
             setValue={setNumberofQuestions as Dispatch<SetStateAction<number>>}
             cols={2}

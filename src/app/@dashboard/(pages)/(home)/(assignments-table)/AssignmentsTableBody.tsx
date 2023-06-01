@@ -5,7 +5,10 @@ import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { useState, useTransition } from 'react';
 import Modal from '@/lib/components/popouts/Modal';
 import { useRequest } from '@/lib/hooks/useRequest';
-import { changeAssignmentStatus } from '../../lesson-plans/[id]/(assignments)/_actions';
+import {
+  IAssignmentResponse,
+  changeAssignmentStatus,
+} from '../../lesson-plans/[id]/(assignments)/_actions';
 import { toast } from 'sonner';
 import AssignmentEditModalForm from './AssignmentEditModalForm';
 import LoadingDots from '@/lib/components/loading/LoadingDots';
@@ -18,16 +21,18 @@ import capitalize from '@/lib/common/capitalize';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import React from 'react';
 import Image from 'next/image';
+import { IAssignment } from '@/assets/typescript/assignment';
 
 interface IProps {
-  assignments: any[];
+  assignments: IAssignmentResponse[];
 }
 export default function AssignmentsTableBody({ assignments }: IProps) {
   const { students: usersStudents } = useUser();
 
   // State
   const [assignmentsEditModal, setAssignmentsEditModal] = useState(false);
-  const [selectedAssignment, setSelectedAssignment] = useState(null);
+  const [selectedAssignment, setSelectedAssignment] =
+    useState<IAssignmentResponse | null>(null);
 
   // Requests / Mutations
   const { mutate, error, isLoading } = useRequest(changeAssignmentStatus);
@@ -83,7 +88,14 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
                   className="hocus:bg-slate-100/90 dark:hocus:bg-navy-700/90  rounded-full hover:scale-105 px-2 py-1 transition-all duration-150 ease-in-out"
                   onClick={() => {
                     startTransition(() =>
-                      mutate({ id: assignment.id, status: assignment.status })
+                      mutate({
+                        id: assignment.id,
+                        status: assignment.status as
+                          | 'PENDING'
+                          | 'IN_PROGRESS'
+                          | 'COMPLETED'
+                          | 'CANCELED',
+                      })
                     );
                   }}
                   disabled={isChanging}
