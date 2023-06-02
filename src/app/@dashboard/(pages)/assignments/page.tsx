@@ -1,31 +1,45 @@
-import { IAssignment } from '@/assets/typescript/assignment';
-import { supabaseClient } from '@/lib/auth/supabaseClient';
-import Assignments from './Assignments';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
+import DashMainCol from '../../(layout)/DashMainCol';
+import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
+import DashSideCol from '../../(layout)/DashSideCol';
 
 export default async function AssignmentsPage() {
-  const assignments = await fetchAssignments();
+  const { upcomingAssignments, completedAssignments } =
+    await getAssignmentsByStatus();
 
-  return <Assignments assignments={assignments} />;
+  return (
+    <>
+      <DashMainCol>
+        <DashPanel colNum={1}>
+          <DashPanelHeader title="Upcoming Assignments" />
+          {/* TSK */}
+        </DashPanel>
+
+        <DashPanel colNum={2}>
+          <DashPanelHeader title="Completed Assignments" />
+        </DashPanel>
+
+        {/* ... */}
+      </DashMainCol>
+
+      <DashSideCol>
+        <DashPanel colNum={1}>
+          <DashPanelHeader title="TSK" />
+          {/* TSK */}
+        </DashPanel>
+      </DashSideCol>
+    </>
+  );
 }
 
-export async function fetchAssignments(): Promise<IAssignment[]> {
+// * Fetcher
+async function getAssignmentsByStatus() {
   const supabase = supabaseServer();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
 
-  if (user?.id) {
-    const { data, error } = await supabase
-      .from('assignments')
-      .select(`*`)
-      .eq('creator_id', user?.id);
+  // ... TSK (use a view to get what you want)
 
-    console.log(data);
-    if (error) {
-      throw new Error(error.message);
-    }
-
-    return data as IAssignment[];
-  } else return [];
+  return {
+    upcomingAssignments: [],
+    completedAssignments: [],
+  };
 }

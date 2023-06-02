@@ -9,6 +9,44 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      assignments: {
+        Row: {
+          assigned_on: string
+          content: string
+          created_at: string
+          creator_id: string
+          due_date: string
+          id: string
+          status: Database["public"]["Enums"]["assignment_status"]
+          title: string
+          updated_at: string
+          user_lesson_plan_id: string
+        }
+        Insert: {
+          assigned_on?: string
+          content?: string
+          created_at?: string
+          creator_id: string
+          due_date?: string
+          id?: string
+          status?: Database["public"]["Enums"]["assignment_status"]
+          title?: string
+          updated_at?: string
+          user_lesson_plan_id: string
+        }
+        Update: {
+          assigned_on?: string
+          content?: string
+          created_at?: string
+          creator_id?: string
+          due_date?: string
+          id?: string
+          status?: Database["public"]["Enums"]["assignment_status"]
+          title?: string
+          updated_at?: string
+          user_lesson_plan_id?: string
+        }
+      }
       comment_reactions: {
         Row: {
           comment_id: string
@@ -1110,6 +1148,41 @@ export interface Database {
           url?: string | null
         }
       }
+      assignment_with_details_view: {
+        Row: {
+          assigned_on: string | null
+          assignment_content: string | null
+          assignment_id: string | null
+          assignment_status:
+            | Database["public"]["Enums"]["assignment_status"]
+            | null
+          assignment_title: string | null
+          due_date: string | null
+          lesson_plan_subject: string | null
+          lesson_plan_title: string | null
+          student_avatar_url: string | null
+          student_first_name: string | null
+          student_id: string | null
+          student_last_name: string | null
+        }
+      }
+      assignments_with_details_view: {
+        Row: {
+          assigned_on: string | null
+          assignment_content: string | null
+          assignment_id: string | null
+          assignment_status:
+            | Database["public"]["Enums"]["assignment_status"]
+            | null
+          assignment_title: string | null
+          due_date: string | null
+          lesson_plan_id: string | null
+          lesson_plan_subject_name: string | null
+          lesson_plan_title: string | null
+          students: Json | null
+          teacher_id: string | null
+        }
+      }
       attending_events_view: {
         Row: {
           attendees: string[] | null
@@ -1363,6 +1436,15 @@ export interface Database {
           title: string | null
           topic: string | null
           topic_name: string | null
+          user_lesson_plan_id: string | null
+        }
+      }
+      lesson_plans_without_assignments_view: {
+        Row: {
+          lesson_plan_content: string | null
+          lesson_plan_level_name: Database["public"]["Enums"]["level"] | null
+          lesson_plan_name: string | null
+          user_lesson_plan_id: string | null
         }
       }
       lesson_timeline_view: {
@@ -1729,6 +1811,20 @@ export interface Database {
         }
         Returns: undefined
       }
+      get_assignments_by_lesson_plan_and_teacher: {
+        Args: {
+          lesson_plan_uuid: string
+          teacher_uuid: string
+        }
+        Returns: {
+          id: string
+          title: string
+          content: string
+          assigned_on: string
+          due_date: string
+          status: Database["public"]["Enums"]["assignment_status"]
+        }[]
+      }
       get_comments_and_reactions: {
         Args: {
           p_commentable_id: string
@@ -1832,6 +1928,7 @@ export interface Database {
       assessment_method: "Observation" | "Performance" | "Product" | "Other"
       assessment_tool: "Quiz" | "Test" | "Exam" | "Rubric" | "Other"
       assessment_type: "Formative" | "Summative" | "Other"
+      assignment_status: "PENDING" | "IN_PROGRESS" | "COMPLETED" | "CANCELED"
       commentable_type:
         | "LESSON_PLAN"
         | "LEARNING_PATH"

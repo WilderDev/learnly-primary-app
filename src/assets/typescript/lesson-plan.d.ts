@@ -40,6 +40,7 @@ export interface ILessonPlan {
   subject_name: string;
   level_name: string;
   topic_name: string;
+  user_lesson_plan_id: string;
 }
 
 // Lesson Plan Prompt Input (Lesson Object)

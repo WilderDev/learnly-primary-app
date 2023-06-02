@@ -70,11 +70,6 @@ export default function DatePicker({
         options={{
           ...options,
           closeOnSelect: true,
-          onOpen: () => {
-            document
-              ?.querySelector('.flatpickr-input')
-              ?.scrollIntoView({ behavior: 'smooth' });
-          },
         }}
       />
     </FormItem>

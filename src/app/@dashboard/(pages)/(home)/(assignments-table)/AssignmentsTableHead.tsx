@@ -1,9 +1,8 @@
 import { Table } from '@/lib/components/ui/Table';
 
-interface IProps {}
-
+// * Data
 const headers: string[] = [
-  'Student',
+  'Student(s)',
   'Title',
   'Status',
   'Subject',
@@ -11,7 +10,9 @@ const headers: string[] = [
   'Due Date',
 ];
 
-export default function AssignmentsTableHead({}: IProps) {
+// * Component
+export default function AssignmentsTableHead() {
+  // * Render
   return (
     <Table.Head>
       <Table.Row>

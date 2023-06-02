@@ -5,73 +5,65 @@ import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { useState, useTransition } from 'react';
 import Modal from '@/lib/components/popouts/Modal';
 import { useRequest } from '@/lib/hooks/useRequest';
-import {
-  IAssignmentResponse,
-  changeAssignmentStatus,
-} from '../../lesson-plans/[id]/(assignments)/_actions';
-import { toast } from 'sonner';
+import { changeAssignmentStatus } from '../../lesson-plans/[id]/(assignments)/_actions';
 import AssignmentEditModalForm from './AssignmentEditModalForm';
 import LoadingDots from '@/lib/components/loading/LoadingDots';
 import cn from '@/lib/common/cn';
-import {
-  getStatusColor,
-  getStudentCreds,
-} from '../../lesson-plans/[id]/(assignments)/helpers';
 import capitalize from '@/lib/common/capitalize';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import React from 'react';
-import Image from 'next/image';
-import { IAssignment } from '@/assets/typescript/assignment';
+import { getStatusColor } from '@/lib/theme/enumColors';
+import {
+  IAssignmentWithLessonPlan,
+  TAssignmentStatus,
+} from '@/assets/typescript/assignment';
+import { formatDateString } from '@/lib/common/date.helpers';
+import OverlappingImages from '@/lib/components/images/OverlappingImages';
+import Avatar from '@/lib/components/images/Avatar';
 
+// * Props
 interface IProps {
-  assignments: IAssignmentResponse[];
+  assignments: IAssignmentWithLessonPlan[];
 }
+
+// * Component
 export default function AssignmentsTableBody({ assignments }: IProps) {
+  // * Hooks / Context
   const { students: usersStudents } = useUser();
 
-  // State
-  const [assignmentsEditModal, setAssignmentsEditModal] = useState(false);
-  const [selectedAssignment, setSelectedAssignment] =
-    useState<IAssignmentResponse | null>(null);
-
-  // Requests / Mutations
-  const { mutate, error, isLoading } = useRequest(changeAssignmentStatus);
+  // * State
   let [isChanging, startTransition] = useTransition();
+  const [selectedAssignment, setSelectedAssignment] =
+    useState<IAssignmentWithLessonPlan | null>(null);
 
-  // if (error) {
-  //   toast.error('Failed updating status');
-  // }
+  // * Requests / Mutations
+  const { mutate, isLoading } = useRequest(changeAssignmentStatus);
 
+  // * Render
   return (
     <>
+      {/* Table Body */}
       <Table.Body>
         {assignments.map((assignment, i) => (
           <Table.Row
             key={assignment.id}
             className={cn(
               i != assignments.length - 1 &&
-                'border-b-slate-200 dark:border-b-navy-500'
+                'border-b-slate-200 dark:border-b-navy-500',
             )}
           >
             {/* Student */}
-            <Table.Cell className="flex items-center px-1 flex-shrink-0">
-              {getStudentCreds(
-                assignment.user_lesson_plan.students,
-                usersStudents
-              ).map((student, index) => (
-                <React.Fragment key={index}>
-                  <Image
-                    className="mr-2 h-8 w-8 rounded-full"
-                    src={student.avatarUrl}
-                    alt="Student"
-                    width={32}
-                    height={32}
+            <Table.Cell className="flex-shrink-0 px-1">
+              <OverlappingImages className="items-center justify-center">
+                {assignment.lessonPlan.students?.map((s, idx) => (
+                  <Avatar
+                    src={s.avatarUrl}
+                    alt={s.firstName}
+                    url="/account?view=students"
+                    key={idx}
                   />
-                  <span className="text-sm mr-2">
-                    {student.firstName} {student.lastName}
-                  </span>
-                </React.Fragment>
-              ))}
+                ))}
+              </OverlappingImages>
             </Table.Cell>
 
             {/* Title */}
@@ -90,12 +82,8 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
                     startTransition(() =>
                       mutate({
                         id: assignment.id,
-                        status: assignment.status as
-                          | 'PENDING'
-                          | 'IN_PROGRESS'
-                          | 'COMPLETED'
-                          | 'CANCELED',
-                      })
+                        status: assignment.status as TAssignmentStatus,
+                      }),
                     );
                   }}
                   disabled={isChanging}
@@ -104,13 +92,13 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
                     <span
                       className={cn(
                         'h-2 w-2 rounded-full px-1',
-                        getStatusColor(assignment.status).bg
+                        getStatusColor(assignment.status).bg,
                       )}
                     />
                     <span
                       className={cn(
                         'shrink-0',
-                        getStatusColor(assignment.status).text
+                        getStatusColor(assignment.status).text,
                       )}
                     >
                       {capitalize(assignment.status.split('_').join(' '))}
@@ -122,12 +110,12 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
 
             {/* Subject */}
             <Table.Cell className="font-medium text-center">
-              {assignment.lesson_plan.subject.name}
+              {assignment.lessonPlan.subject}
             </Table.Cell>
 
             {/* Assignment Date */}
             <Table.Cell className="font-medium text-center">
-              {new Date(assignment.assigned_on).toLocaleDateString('en-US', {
+              {formatDateString(assignment.assignedOn, {
                 month: 'long',
                 day: 'numeric',
               })}
@@ -135,7 +123,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
 
             {/* Due Date */}
             <Table.Cell className="font-medium text-center">
-              {new Date(assignment.due_date).toLocaleDateString('en-US', {
+              {formatDateString(assignment.dueOn, {
                 month: 'long',
                 day: 'numeric',
               })}
@@ -145,10 +133,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             <Table.Cell>
               <button
                 className="group ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors hocus:bg-slate-200/90 dark:hocus:bg-navy-700/90"
-                onClick={() => {
-                  setAssignmentsEditModal(true);
-                  setSelectedAssignment(assignment);
-                }}
+                onClick={() => setSelectedAssignment(assignment)}
               >
                 <PencilSquareIcon className="h-5 w-5 text-slate-700/90 transition-colors group-hover:text-slate-600 dark:text-navy-300/90 dark:group-hover:text-navy-200" />
               </button>
@@ -156,20 +141,19 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
           </Table.Row>
         ))}
       </Table.Body>
+
+      {/* Edit Modal */}
       <Modal
-        isVisible={assignmentsEditModal}
-        close={() => {
-          setAssignmentsEditModal(false);
-          setSelectedAssignment(null);
-        }}
+        isVisible={!!selectedAssignment}
+        close={() => setSelectedAssignment(null)}
         noCloseOnOutsideClick={true}
         closeBtn={true}
       >
         {selectedAssignment && (
           <AssignmentEditModalForm
             assignment={selectedAssignment}
-            setAssignmentsEditModal={setAssignmentsEditModal}
-            usersStudents={usersStudents}
+            students={selectedAssignment.lessonPlan.students}
+            close={() => setSelectedAssignment(null)}
           />
         )}
       </Modal>

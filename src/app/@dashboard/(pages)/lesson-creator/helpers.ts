@@ -1,5 +1,3 @@
-import baseUrl from '@/lib/common/baseUrl';
-
 // * Handle actions
 // Handle Share Lesson Plan
 export const handleShare = (pathname: string) => {

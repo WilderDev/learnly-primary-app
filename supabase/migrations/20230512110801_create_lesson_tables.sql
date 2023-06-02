@@ -354,6 +354,7 @@ SELECT
   s.name AS subject_name,
   lv.name AS level_name,
   t.name AS topic_name,
+  ulp.id AS user_lesson_plan_id,
   ulp.students,
    (SELECT json_agg(
     json_build_object(

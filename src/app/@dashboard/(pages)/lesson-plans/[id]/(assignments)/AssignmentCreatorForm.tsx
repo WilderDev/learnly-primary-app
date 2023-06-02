@@ -1,7 +1,7 @@
 'use client';
 
 import Form from '@/lib/components/form/Form';
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Input from '@/lib/components/form/Input';
 import TextArea from '@/lib/components/form/TextArea';
 import {
@@ -16,41 +16,37 @@ import { streamReader } from '@/lib/ai/stream';
 import { saveAssignment } from './_actions';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Modal from '@/lib/components/popouts/Modal';
-import { BoltIcon } from '@heroicons/react/24/outline';
-import { createPdf } from '@/lib/common/createPdf';
-import { downloadPdf } from '@/lib/common/downloadPdf';
-import { useReactToPrint } from 'react-to-print';
+import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import { createSelectOptions } from '@/lib/common/form.helpers';
+import LessonPlanSaveDetailsModalForm from '../LessonPlanSaveDetailsModal';
 
+// * Props
 interface IProps {
-  isModal: boolean;
-  userLessonPlans?: any[];
-  setUserLessonPlans?: (value: SetStateAction<any[]>) => void;
-  lessonPlan?: any;
-  assignmentContent?: string;
-  setAssignmentContent?: (value: SetStateAction<string>) => void;
+  isModal?: boolean;
+  lessonPlan?: ILessonPlan;
+  userLessonPlanId?: string;
+  lessonPlans?: {
+    user_lesson_plan_id: string;
+    lesson_plan_name: string;
+    lesson_plan_content: string;
+    lesson_plan_level_name: string;
+  }[];
 }
 
+// * Component
 export default function AssignmentCreatorForm({
-  isModal,
-  userLessonPlans,
-  setUserLessonPlans,
+  isModal = true,
   lessonPlan,
+  userLessonPlanId,
+  lessonPlans,
 }: IProps) {
-  // Helper Function
-  const getLessonWithId = (id: string) => {
-    return userLessonPlans?.filter((lessonPlan) => lessonPlan.id === id)[0];
-  };
-
-  // Data Options
+  // * State
   const [userLessonOption, setUserLessonOption] = useState('');
-
-  // Modal Hooks
-  const [additionalCommentsModal, setAdditionalCommentsModal] = useState(false);
-
-  // Assignment Hooks
+  const [additionalCommentsModal, setAdditionalCommentsModal] = useState(false); // TSK
+  const [saveDetailsModalOpen, setSaveModalOpen] = useState(false);
   const [assignmentContent, setAssignmentContent] = useState('');
   const [assignmentTitle, setAssignmentTitle] = useState(
-    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`
+    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`,
   );
   const [numberOfQuestions, setNumberofQuestions] = useState(3);
   const [assignmentDueDate, setAssignmentDueDate] = useState<Date | null>(null);
@@ -58,24 +54,27 @@ export default function AssignmentCreatorForm({
   const [isLoadingAssignment, setIsLoadingAssignment] = useState(false);
   const [assignmentActions, setAssignmentActions] = useState(false);
   const [printOptions, setPrintOptions] = useState(false);
+  const [print, setPrint] = useState(false);
 
-  // Pending Save Assignment
-  const [pendingSaveAssignment, setPendingSaveAssignment] = useState({
-    title: '',
-    due_date: new Date(),
-    content: '',
-    lesson_plan_id: '',
-    user_lesson_plan_id: '',
-    additionalComments: '',
-  });
+  // * Handlers / Helpers
+  // Get Lesson Plan
+  const getLP = lessonPlans?.find(
+    (lp) => lp.user_lesson_plan_id === userLessonOption,
+  );
 
+  // Form Submit
   const handleAssignmentFormSubmit = async () => {
+    // Set Initial States
     setPrintOptions(false);
     setIsLoadingAssignment(true);
     setAdditionalCommentsModal(false);
     setAssignmentActions(false);
+    setPrint(false);
 
+    // Validate Form
     const errors = [];
+
+    if (!lessonPlan && !isModal) errors.push('Lesson Plan Required');
     if (!userLessonOption && isModal) errors.push('Must Select A Lesson');
     if (!assignmentTitle && !isModal) errors.push('Assignment Title Required');
     if (!assignmentDueDate) errors.push('Assignment Due Date Required');
@@ -83,48 +82,45 @@ export default function AssignmentCreatorForm({
     if (numberOfQuestions <= 0 || numberOfQuestions > 7)
       errors.push('Only 1-7 Questions Allowed');
 
+    // Check for errors
     if (errors.length > 0) {
       errors.forEach((msg) => {
         toast.error(msg);
       });
+
       setIsLoadingAssignment(false);
       return;
     }
 
-    const lessonPlanGrade = lessonPlan
-      ? lessonPlan.level.name
-      : getLessonWithId(userLessonOption).lesson_plan.level.name;
-
-    const lessonPlanContent = lessonPlan
-      ? lessonPlan.content
-      : getLessonWithId(userLessonOption).lesson_plan.content;
-
-    const _assignmentTitle =
-      assignmentTitle !== ''
-        ? assignmentTitle
-        : getLessonWithId(userLessonOption).lesson_plan.title + ' Assignment';
-
-    const lessonPlanId = lessonPlan
-      ? lessonPlan.id
-      : getLessonWithId(userLessonOption).lesson_plan_id;
-
-    if (!isModal && !lessonPlan.user_lesson_plan) {
-      toast.error('You must save the lesson to create an assignment!');
+    // If the lesson plan isn't saved, save it
+    if (!userLessonPlanId && !isModal) {
       setIsLoadingAssignment(false);
-      return;
+      toast.error(
+        'You must save the lesson plan before you can create an assignment.',
+        {
+          style: {
+            background: '#0284c7',
+            border: '1px solid #a5f3fc',
+            color: '#fff',
+          },
+        },
+      );
+      return setSaveModalOpen(true);
     }
 
-    const userLessonPlanId = lessonPlan
-      ? lessonPlan.user_lesson_plan.id
-      : getLessonWithId(userLessonOption).id;
-
+    // Create Request Body
     const requestBody = {
       questions: numberOfQuestions,
-      lessonPlanContent,
-      lessonPlanGrade,
+      lessonPlanContent: isModal
+        ? getLP?.lesson_plan_content
+        : lessonPlan!.content,
+      lessonPlanGrade: isModal
+        ? getLP?.lesson_plan_level_name
+        : lessonPlan!.level_name,
       additionalComments,
     };
 
+    // Make Request
     const res = await fetch('/api/ai/assignments', {
       method: 'POST',
       headers: {
@@ -133,43 +129,39 @@ export default function AssignmentCreatorForm({
       body: JSON.stringify(requestBody),
     });
 
-    if (!res.ok) return toast.error('Error Generating Assignment');
+    if (!res.ok) return toast.error('Error Generating Assignment'); // Handle Error
 
-    setAssignmentContent(' ');
-    streamReader(res.body!, setAssignmentContent!, async (content) => {
-      // Set to pending save
-      setPendingSaveAssignment({
-        title: _assignmentTitle,
-        due_date: assignmentDueDate!,
-        content: content,
-        lesson_plan_id: lessonPlanId,
-        user_lesson_plan_id: userLessonPlanId,
-        additionalComments: additionalComments,
-      });
-      setAssignmentActions(true);
-    });
+    setAssignmentContent(''); // Reset Assignment Content
+
+    // Set Assignment Content and Actions
+    streamReader(res.body!, setAssignmentContent, async () => {});
+
+    setAssignmentActions(true);
     setIsLoadingAssignment(false);
   };
 
   const handleSaveAssignment = async () => {
     // Save to Supabase
-
-    const { ok } = await saveAssignment(pendingSaveAssignment);
+    const { ok } = await saveAssignment({
+      title: isModal
+        ? getLP?.lesson_plan_name! + ' Assignment'
+        : assignmentTitle,
+      content: assignmentContent,
+      due_date: assignmentDueDate!,
+      user_lesson_plan_id: userLessonPlanId || userLessonOption,
+    });
 
     if (ok) {
       // Display success toast
       if (isModal) {
         setAssignmentContent('');
         setUserLessonOption('');
-        const filteredLessonPlans = userLessonPlans?.filter(
-          (lesson) => lesson.id !== userLessonOption
-        );
-        setUserLessonPlans!(filteredLessonPlans!);
 
         setAssignmentActions(false);
       }
       setPrintOptions(true);
       setAssignmentActions(false);
+
       toast.success('Assignment Saved!');
     } else {
       // Display error toast
@@ -177,72 +169,54 @@ export default function AssignmentCreatorForm({
     }
   };
 
-  const handleReset = () => {
-    setPrintOptions(false);
-    setAssignmentContent('');
-    setUserLessonOption('');
-    setAdditionalComments('');
-    setAssignmentDueDate(null);
-    setNumberofQuestions(3);
-  };
-
-  const componentRef = useRef<HTMLDivElement | null>(null);
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current!,
-  });
-
+  // * Render
   return (
     <>
       {assignmentContent ? (
         <div className="flex flex-col gap-6">
-          <div className="print:p-6" ref={componentRef}>
-            <LessonPlanMarkdown
-              className="!z-[0]"
-              content={assignmentContent}
-            />
-          </div>
+          <LessonPlanMarkdown content={assignmentContent} print={print} />
 
           {assignmentActions && (
-            <div className="flex items-center gap-2">
-              <div className="w-full flex gap-2">
-                <Button
-                  className="w-full hocus:text-white"
-                  variant="dark"
-                  fill="outline"
-                  onClick={handleReset}
-                >
-                  Reset
-                </Button>
-                <Button
-                  className="w-full flex items-center"
-                  onClick={() => {
-                    setAdditionalCommentsModal(true);
-                  }}
-                >
-                  <span>Regenerate</span>
-                  {/* <BoltIcon className="h-4 w-4" /> */}
-                </Button>
-              </div>
-              <div className="w-full">
-                <Button className="w-full" onClick={handleSaveAssignment}>
-                  Save
-                </Button>
-              </div>
+            <div className="flex items-center gap-x-6">
+              <Button
+                className="w-1/3"
+                shadow="sm"
+                variant="light"
+                fill="outline"
+                onClick={() => {
+                  setAdditionalCommentsModal(true);
+                }}
+              >
+                <span>Regenerate</span>
+              </Button>
+
+              <Button
+                shadow="lg"
+                className="w-full flex-grow"
+                onClick={handleSaveAssignment}
+              >
+                Save
+              </Button>
             </div>
           )}
-          {printOptions && <Button onClick={handlePrint}>Print</Button>}
+
+          {/* Print Button */}
+          {printOptions && (
+            <Button className="mt-6" onClick={() => setPrint(true)}>
+              Print
+            </Button>
+          )}
         </div>
       ) : (
         <Form className="w-full" onSubmit={handleAssignmentFormSubmit}>
-          {isModal ? (
-            // Check if we are rendering in the dashboard or on a lesson
+          {isModal && lessonPlans ? (
             <Select
               label="Lesson Selection"
-              options={(userLessonPlans ? userLessonPlans : [])!.map(
-                (lesson: { lesson_plan: { title: any }; id: any }) => ({
-                  label: lesson.lesson_plan.title,
-                  value: lesson.id,
-                })
+              options={createSelectOptions(
+                lessonPlans.map((lp) => ({
+                  label: lp.lesson_plan_name,
+                  value: lp.user_lesson_plan_id,
+                })),
               )}
               value={userLessonOption}
               setValue={setUserLessonOption as Dispatch<SetStateAction<string>>}
@@ -310,6 +284,8 @@ export default function AssignmentCreatorForm({
           </div>
         </Form>
       )}
+
+      {/* Additional Comments Modal */}
       <Modal
         isVisible={additionalCommentsModal}
         close={() => {
@@ -340,6 +316,16 @@ export default function AssignmentCreatorForm({
           </div>
         </Form>
       </Modal>
+
+      {/* Save Modal */}
+      {lessonPlan && (
+        <LessonPlanSaveDetailsModalForm
+          lessonPlanId={lessonPlan.id}
+          defaultStudentIds={lessonPlan.students || []}
+          isVisible={saveDetailsModalOpen}
+          close={() => setSaveModalOpen(false)}
+        />
+      )}
     </>
   );
 }

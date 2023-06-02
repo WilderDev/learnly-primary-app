@@ -6,8 +6,7 @@ import LessonPlanCreatorInfo from './LessonPlanCreatorInfo';
 import LessonPlanTags from './LessonPlanTags';
 import LessonPlanActionIcons from './LessonPlanActionIcons';
 import LessonPlanMarkComplete from './LessonPlanMarkComplete';
-import { useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
+import { useState } from 'react';
 
 // * Props
 interface IProps {
@@ -16,12 +15,12 @@ interface IProps {
 
 // * Component
 export default function LessonPlanContainer({ lessonPlan }: IProps) {
-  // * Render
+  // * State
+  const [print, setPrint] = useState(false);
 
-  const componentRef = useRef<HTMLDivElement | null>(null);
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current!,
-  });
+  console.log('lessonPlan:', lessonPlan);
+
+  // * Render
   return (
     <>
       <main className="mx-auto my-3 max-w-full print:my-0">
@@ -40,7 +39,7 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
             <LessonPlanActionIcons
               id={lessonPlan.id}
               scheduled_date={lessonPlan.scheduled_date}
-              handlePrint={handlePrint}
+              handlePrint={() => setPrint(true)}
             />
           </div>
 
@@ -49,15 +48,12 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
         </div>
 
         {/* Content */}
-
-        <div ref={componentRef} className="print:p-6">
-          <LessonPlanMarkdown content={lessonPlan.content} />
-        </div>
+        <LessonPlanMarkdown content={lessonPlan.content} print={print} />
 
         {/* Mark Complete */}
-        <LessonPlanMarkComplete
-          isComplete={lessonPlan.completion_date !== null}
-        />
+        {!!lessonPlan.user_lesson_plan_id && (
+          <LessonPlanMarkComplete isComplete={!!lessonPlan.completion_date} />
+        )}
       </main>
     </>
   );

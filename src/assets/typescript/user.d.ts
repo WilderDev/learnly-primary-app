@@ -55,3 +55,10 @@ export interface UserStudent {
   learningResources: TLearningResource[];
   specialNeeds: TSpecialNeed[];
 }
+
+export interface ISimpleStudent {
+  id: string;
+  firstName: string;
+  lastName: string;
+  avatarUrl: string;
+}

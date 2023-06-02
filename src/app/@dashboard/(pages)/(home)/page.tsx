@@ -7,10 +7,12 @@ import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccord
 import MiniCalendar from '../schedule-builder/MiniCalendar';
 import AssignmentsTable from './AssignmentsTable';
 import AssignmentCreatorModal from './(assignments-table)/AssignmentCreatorModal';
-import { fetchAssignments } from '../lesson-plans/[id]/(assignments)/_actions';
+import { supabaseServer } from '@/lib/auth/supabaseServer';
 
 export default async function ParentDashboardHomePage() {
-  const assignments = await fetchAssignments();
+  // * Data
+  const lessonPlansWithoutAssignment =
+    await getUserLessonPlansWithoutAssignment();
 
   // * Render
   return (
@@ -34,18 +36,21 @@ export default async function ParentDashboardHomePage() {
 
         {/* Home Assignments */}
         <DashPanel colNum={3}>
-          {/* TSK Need to add view add assignments */}
           <DashPanelHeader
             title="Assignments"
-            // ctaText="View All Assignments"
-            // ctaLink="/assignments"
+            ctaText="View All Assignments"
+            ctaLink="/assignments"
             hasModal={true}
             modalSize="lg"
-            modalContent={<AssignmentCreatorModal />}
+            modalContent={
+              <AssignmentCreatorModal
+                lessonPlans={lessonPlansWithoutAssignment}
+              />
+            }
             noCloseOnOutsideClick={true}
           />
-          {/* <AssignmentsTable /> */}
-          <AssignmentsTable assignments={assignments} />
+          {/* @ts-expect-error Server Component */}
+          <AssignmentsTable />
         </DashPanel>
       </DashMainCol>
 
@@ -78,3 +83,20 @@ export const metadata = {
 };
 
 export const dynamic = 'force-dynamic';
+
+async function getUserLessonPlansWithoutAssignment() {
+  const supabase = supabaseServer();
+
+  const { data, error } = await supabase
+    .from('lesson_plans_without_assignments_view')
+    .select('*');
+
+  if (error) return [];
+
+  return data as {
+    user_lesson_plan_id: string;
+    lesson_plan_name: string;
+    lesson_plan_content: string;
+    lesson_plan_level_name: string;
+  }[];
+}
