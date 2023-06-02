@@ -1,27 +1,62 @@
-create table "public"."assignments" (
-    "id" uuid not null default gen_random_uuid(),
-    "creator_id" uuid not null,
-    "content" text default 'Hello'::text,
-    "user_lesson_plan_id" uuid,
-    "lesson_plan_id" uuid,
-    "title" character varying,
-    "assigned_on" timestamp with time zone not null default now(),
-    "due_date" timestamp with time zone not null default now(),
-    "status" character varying default 'PENDING'::character varying
+-- * ENUMS
+-- Assignment Statuses
+CREATE TYPE assignment_status AS ENUM ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELED');
+
+-- * TABLES
+--- Assignments
+CREATE TABLE assignments (
+    -- Assignment ID
+    id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
+
+    -- Assignment Creator ID
+    creator_id uuid NOT NULL REFERENCES teacher_profiles(id),
+
+    -- Assignment User Lesson Plan ID
+    user_lesson_plan_id uuid REFERENCES user_lesson_plans(id),
+
+    -- Assignment Content
+    content text NOT NULL DEFAULT '',
+
+    -- Assignment Title
+    title text NOT NULL DEFAULT '',
+
+    -- Assignment Assigned On
+    assigned_on timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
+
+    -- Assignment Due Date
+    due_date timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
+
+    -- Assignment Status
+    status assignment_status NOT NULL DEFAULT 'PENDING',
+
+    -- Timestamps
+    created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
+    updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
 );
 
-CREATE UNIQUE INDEX assignments_pkey ON public.assignments USING btree (id);
+-- * VIEWS
+-- N/A
 
-alter table "public"."assignments" add constraint "assignments_pkey" PRIMARY KEY using index "assignments_pkey";
+-- * FUNCTIONS
+-- N/A
 
-alter table "public"."assignments" add constraint "assignments_creator_id_fkey" FOREIGN KEY (creator_id) REFERENCES teacher_profiles(id) not valid;
+-- * TRIGGERS
+-- N/A
 
-alter table "public"."assignments" validate constraint "assignments_creator_id_fkey";
+-- * INDEXES
+-- Assignments
+CREATE INDEX assignments_creator_id_idx ON assignments(creator_id);
+CREATE INDEX assignments_user_lesson_plan_id_idx ON assignments(user_lesson_plan_id);
+CREATE INDEX assignments_status_idx ON assignments(status);
 
-alter table "public"."assignments" add constraint "assignments_lesson_plan_id_fkey" FOREIGN KEY (lesson_plan_id) REFERENCES lesson_plans(id) not valid;
 
-alter table "public"."assignments" validate constraint "assignments_lesson_plan_id_fkey";
+-- * POLICIES (ROW LEVEL SECURITY)
+-- RLS
+ALTER TABLE assignments ENABLE ROW LEVEL SECURITY;
 
-alter table "public"."assignments" add constraint "assignments_user_lesson_plan_id_fkey" FOREIGN KEY (user_lesson_plan_id) REFERENCES user_lesson_plans(id) not valid;
-
-alter table "public"."assignments" validate constraint "assignments_user_lesson_plan_id_fkey";
+-- Policies
+--- Assignments
+CREATE POLICY assignments_select ON assignments FOR SELECT USING (true);
+CREATE POLICY assignments_insert ON assignments FOR INSERT WITH CHECK (true);
+CREATE POLICY assignments_update ON assignments FOR UPDATE USING (auth.uid() = creator_id OR is_role('ADMIN')) WITH CHECK (auth.uid() = creator_id OR is_role('ADMIN'));
+CREATE POLICY assignments_delete ON assignments FOR DELETE USING (auth.uid() = creator_id OR is_role('ADMIN'));
