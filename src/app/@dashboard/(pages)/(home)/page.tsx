@@ -5,8 +5,13 @@ import HomeWelcomePanel from './HomeWelcomePanel';
 import UpcomingLessonsCards from './UpcomingLessonsCards';
 import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccordions';
 import MiniCalendar from '../schedule-builder/MiniCalendar';
+import AssignmentsTable from './AssignmentsTable';
+import AssignmentCreatorModal from './(assignments-table)/AssignmentCreatorModal';
+import { fetchAssignments } from '../lesson-plans/[id]/(assignments)/_actions';
 
-export default function ParentDashboardHomePage() {
+export default async function ParentDashboardHomePage() {
+  const assignments = await fetchAssignments();
+
   // * Render
   return (
     <>
@@ -29,7 +34,18 @@ export default function ParentDashboardHomePage() {
 
         {/* Home Assignments */}
         <DashPanel colNum={3}>
-          <DashPanelHeader title="Assignments" />
+          {/* TSK Need to add view add assignments */}
+          <DashPanelHeader
+            title="Assignments"
+            // ctaText="View All Assignments"
+            // ctaLink="/assignments"
+            hasModal={true}
+            modalSize="lg"
+            modalContent={<AssignmentCreatorModal />}
+            noCloseOnOutsideClick={true}
+          />
+          {/* <AssignmentsTable /> */}
+          <AssignmentsTable assignments={assignments} />
         </DashPanel>
       </DashMainCol>
 

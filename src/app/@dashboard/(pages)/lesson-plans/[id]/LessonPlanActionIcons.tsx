@@ -8,7 +8,7 @@ import {
 
 import cn from '@/lib/common/cn';
 import { usePathname } from 'next/navigation';
-import { handlePrint, handleShare } from '../../lesson-creator/helpers';
+import { handleShare } from '../../lesson-creator/helpers';
 import { useState } from 'react';
 import LessonPlanSaveDetailsModalForm from './LessonPlanSaveDetailsModal';
 
@@ -16,9 +16,14 @@ import LessonPlanSaveDetailsModalForm from './LessonPlanSaveDetailsModal';
 export interface IProps {
   id: string;
   scheduled_date: Date | null;
+  handlePrint: () => void;
 }
 
-export default function LessonPlanActionIcons({ id, scheduled_date }: IProps) {
+export default function LessonPlanActionIcons({
+  id,
+  scheduled_date,
+  handlePrint,
+}: IProps) {
   // * Hooks
   const pathname = usePathname();
 
@@ -40,7 +45,7 @@ export default function LessonPlanActionIcons({ id, scheduled_date }: IProps) {
           <ArrowDownOnSquareIcon
             className={cn(
               'h-6 w-6 text-green-900 transition-colors duration-300 group-hover:text-green-700 group-focus:text-green-700 dark:text-navy-200 dark:group-hover:text-emerald-300 dark:group-focus:text-emerald-300',
-              !!scheduled_date && 'text-green-700 dark:text-green-400',
+              !!scheduled_date && 'text-green-700 dark:text-green-400'
             )}
           />
 
