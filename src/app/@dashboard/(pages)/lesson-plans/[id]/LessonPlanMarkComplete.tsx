@@ -2,9 +2,8 @@
 
 import Button from '@/lib/components/ui/Button';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LessonPlanCompletionModal from './LessonPlanCompletionModal';
-import ClientWrapper from '@/lib/components/layout/ClientWrapper';
 
 // * Props
 interface IProps {
@@ -14,6 +13,8 @@ interface IProps {
 export default function LessonPlanMarkComplete({ isComplete }: IProps) {
   // * State
   const [isCompletionModalOpen, setCompletionModalOpen] = useState(false);
+
+  console.log('isComplete:', isComplete);
 
   // * Render
   return (

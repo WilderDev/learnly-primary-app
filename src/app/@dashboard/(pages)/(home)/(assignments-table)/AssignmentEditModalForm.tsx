@@ -27,18 +27,20 @@ import {
   IAssignmentWithLessonPlan,
   TAssignmentStatus,
 } from '@/assets/typescript/assignment';
+import OverlappingImages from '@/lib/components/images/OverlappingImages';
+import Avatar from '@/lib/components/images/Avatar';
 
 // * Props
 interface IProps {
   assignment: IAssignmentWithLessonPlan;
-  usersStudents: ISimpleStudent[];
+  students: ISimpleStudent[];
   close: () => void;
 }
 
 // * Component
 export default function AssignmentEditModalForm({
   assignment,
-  usersStudents,
+  students,
   close,
 }: IProps) {
   // * State
@@ -151,21 +153,16 @@ export default function AssignmentEditModalForm({
             <dt className="text-sm font-medium text-slate-500">Assigned To</dt>
             <dd className="mt-1 flex items-center">
               {/* Avatar */}
-              {usersStudents?.map((student, index) => (
-                <Fragment key={index}>
-                  <Image
-                    className="mr-2 h-8 w-8 rounded-full"
-                    src={student.avatarUrl}
-                    alt="Student"
-                    width={32}
-                    height={32}
+              <OverlappingImages className="items-center justify-center">
+                {students?.map((s, idx) => (
+                  <Avatar
+                    src={s.avatarUrl}
+                    alt={s.firstName}
+                    url="/account?view=students"
+                    key={idx}
                   />
-                  <span className="text-sm mr-2">
-                    {student.firstName} {student.lastName}
-                  </span>
-                  {/* TSK: Avatar */}
-                </Fragment>
-              ))}
+                ))}
+              </OverlappingImages>
             </dd>
           </div>
 

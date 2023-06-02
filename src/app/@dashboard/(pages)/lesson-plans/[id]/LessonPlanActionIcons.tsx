@@ -45,7 +45,7 @@ export default function LessonPlanActionIcons({
           <ArrowDownOnSquareIcon
             className={cn(
               'h-6 w-6 text-green-900 transition-colors duration-300 group-hover:text-green-700 group-focus:text-green-700 dark:text-navy-200 dark:group-hover:text-emerald-300 dark:group-focus:text-emerald-300',
-              !!scheduled_date && 'text-green-700 dark:text-green-400'
+              !!scheduled_date && 'text-green-700 dark:text-green-400',
             )}
           />
 

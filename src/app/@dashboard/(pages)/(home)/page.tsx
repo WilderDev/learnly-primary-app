@@ -7,8 +7,13 @@ import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccord
 import MiniCalendar from '../schedule-builder/MiniCalendar';
 import AssignmentsTable from './AssignmentsTable';
 import AssignmentCreatorModal from './(assignments-table)/AssignmentCreatorModal';
+import { supabaseServer } from '@/lib/auth/supabaseServer';
 
-export default function ParentDashboardHomePage() {
+export default async function ParentDashboardHomePage() {
+  // * Data
+  const lessonPlansWithoutAssignment =
+    await getUserLessonPlansWithoutAssignment();
+
   // * Render
   return (
     <>
@@ -37,7 +42,11 @@ export default function ParentDashboardHomePage() {
             ctaLink="/assignments"
             hasModal={true}
             modalSize="lg"
-            modalContent={<AssignmentCreatorModal />}
+            modalContent={
+              <AssignmentCreatorModal
+                lessonPlans={lessonPlansWithoutAssignment}
+              />
+            }
             noCloseOnOutsideClick={true}
           />
           {/* @ts-expect-error Server Component */}
@@ -74,3 +83,15 @@ export const metadata = {
 };
 
 export const dynamic = 'force-dynamic';
+
+async function getUserLessonPlansWithoutAssignment() {
+  const supabase = supabaseServer();
+
+  const { data, error } = await supabase
+    .from('lesson_plans_without_assignments_view')
+    .select('*');
+
+  if (error) return [];
+
+  return data;
+}

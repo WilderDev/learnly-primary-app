@@ -12,13 +12,14 @@ import cn from '@/lib/common/cn';
 import capitalize from '@/lib/common/capitalize';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import React from 'react';
-import Image from 'next/image';
 import { getStatusColor } from '@/lib/theme/enumColors';
 import {
   IAssignmentWithLessonPlan,
   TAssignmentStatus,
 } from '@/assets/typescript/assignment';
 import { formatDateString } from '@/lib/common/date.helpers';
+import OverlappingImages from '@/lib/components/images/OverlappingImages';
+import Avatar from '@/lib/components/images/Avatar';
 
 // * Props
 interface IProps {
@@ -52,22 +53,17 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             )}
           >
             {/* Student */}
-            <Table.Cell className="flex items-center px-1 flex-shrink-0">
-              {assignment.lessonPlan.students?.map((student, index) => (
-                <React.Fragment key={index}>
-                  <Image
-                    className="mr-2 h-8 w-8 rounded-full"
-                    src={student.avatarUrl}
-                    alt="Student"
-                    width={32}
-                    height={32}
+            <Table.Cell className="flex-shrink-0 px-1">
+              <OverlappingImages className="items-center justify-center">
+                {assignment.lessonPlan.students?.map((s, idx) => (
+                  <Avatar
+                    src={s.avatarUrl}
+                    alt={s.firstName}
+                    url="/account?view=students"
+                    key={idx}
                   />
-                  <span className="text-sm mr-2">
-                    {student.firstName} {student.lastName}
-                  </span>
-                  {/* TSK: Avatar */}
-                </React.Fragment>
-              ))}
+                ))}
+              </OverlappingImages>
             </Table.Cell>
 
             {/* Title */}
@@ -156,7 +152,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
         {selectedAssignment && (
           <AssignmentEditModalForm
             assignment={selectedAssignment}
-            usersStudents={usersStudents}
+            students={selectedAssignment.lessonPlan.students}
             close={() => setSelectedAssignment(null)}
           />
         )}

@@ -20,14 +20,19 @@ export default function LessonPlanMarkdown({
   className,
   print = false,
 }: IProps) {
+  // * Refs
   const componentRef = useRef<HTMLDivElement>(null);
 
+  // * Hooks
   const handlePrint = useReactToPrint({
     content: () => componentRef.current!,
+    // https://github.com/gregnb/react-to-print
   });
 
   useEffect(() => {
-    if (print) handlePrint();
+    if (print) {
+      handlePrint();
+    }
   }, [print, handlePrint]);
 
   return (

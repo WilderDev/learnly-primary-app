@@ -2,7 +2,7 @@ import { Table } from '@/lib/components/ui/Table';
 
 // * Data
 const headers: string[] = [
-  'Student',
+  'Student(s)',
   'Title',
   'Status',
   'Subject',

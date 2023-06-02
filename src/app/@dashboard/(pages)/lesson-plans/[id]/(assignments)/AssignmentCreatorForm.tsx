@@ -59,6 +59,7 @@ export default function AssignmentCreatorForm({
     setIsLoadingAssignment(true);
     setAdditionalCommentsModal(false);
     setAssignmentActions(false);
+    setPrint(false);
 
     // Validate Form
     const errors = [];
@@ -86,6 +87,13 @@ export default function AssignmentCreatorForm({
       setIsLoadingAssignment(false);
       toast.error(
         'You must save the lesson plan before you can create an assignment.',
+        {
+          style: {
+            background: '#0284c7',
+            border: '1px solid #a5f3fc',
+            color: '#fff',
+          },
+        },
       );
       return setSaveModalOpen(true);
     }
@@ -112,11 +120,9 @@ export default function AssignmentCreatorForm({
     setAssignmentContent(''); // Reset Assignment Content
 
     // Set Assignment Content and Actions
-    streamReader(res.body!, setAssignmentContent, async (content) => {
-      setAssignmentActions(true);
-      setAssignmentContent(content);
-    });
+    streamReader(res.body!, setAssignmentContent, async () => {});
 
+    setAssignmentActions(true);
     setIsLoadingAssignment(false);
   };
 
@@ -144,16 +150,6 @@ export default function AssignmentCreatorForm({
       // Display error toast
       toast.error('Failed to Save Assignment');
     }
-  };
-
-  // Reset Form
-  const handleReset = () => {
-    setPrintOptions(false);
-    setAssignmentContent('');
-    setUserLessonOption('');
-    setAdditionalComments('');
-    setAssignmentDueDate(null);
-    setNumberofQuestions(3);
   };
 
   // * Render

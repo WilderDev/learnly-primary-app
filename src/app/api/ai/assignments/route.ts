@@ -2,7 +2,12 @@ import { OpenAIStream } from '@/lib/ai/openai';
 
 export async function POST(request: Request) {
   const { questions, lessonPlanContent, lessonPlanGrade, additionalComments } =
-    (await request.json()) as any;
+    (await request.json()) as {
+      questions: number;
+      lessonPlanContent: string;
+      lessonPlanGrade: string;
+      additionalComments: string;
+    };
 
   function splitQuestions(totalQuestions: number) {
     const multipleChoiceQuestions = Math.floor(Math.random() * totalQuestions);
@@ -18,42 +23,44 @@ export async function POST(request: Request) {
     splitQuestions(questions);
 
   const prompt = `
-You are going to create a worksheet for a student and a separate answer key for the teacher.
+Create an assignment worksheet that a homeschool parent can use to give to their child (Grade: ${lessonPlanGrade}). The worksheet should be based on the lesson content provided below.
 
-# Instructions
-1. Create fill-in-the-blank questions with single correct answers.
-2. The worksheet should contain ${questions} questions - ${fillInTheBlankQuestions} fill-in-the-blank and ${multipleChoiceQuestions} multiple choice questions.
-3. Multiple choice questions should have four options - one correct and three incorrect.
-4. Focus on testing understanding of the key concepts in the lesson content. Avoid questions focused on the structure or materials used in the lesson.
-5. Generate the worksheet and answer key in markdown format.
-${additionalComments && '6. Additional guidelines: ' + additionalComments}.
+---
 
-# Student Information
-Name: __________
-Date: __________
-
-# Lesson Content
 ${lessonPlanContent}
 
-# Sample Worksheet
+---
 
-1. **Fill-in-the-blank example**: The capital of France is ________.
-2. **Multiple-choice example**: Which of the following is the capital of England?
+You should follow the guidelines below when creating the worksheet:
+1. The worksheet should contain ${questions} questions - ${fillInTheBlankQuestions} fill-in-the-blank and ${multipleChoiceQuestions} multiple choice questions.
+2. Multiple choice questions should have four options - one correct and three incorrect.
+3. Focus on testing understanding of the key concepts in the lesson content. Avoid questions focused on the structure or materials used in the lesson.
+4. Generate the worksheet and answer key in clean markdown format.
+5. Additional guidelines: ${additionalComments ?? 'N/A'}.
+
+Here is a sample worksheet and answer key:
+
+---
+
+Name: ___________   Date: ___________
+
+## Questions
+
+1. The capital of France is ________.
+2. Which of the following is the capital of England?
     (a) Paris
     (b) Madrid
     (c) London
     (d) Berlin
+3. The capital of Spain is ________.
 
-***********************************************************************************
+## Answers
 
-# Sample Answer Key
-
-1. **Fill-in-the-blank answer**: The capital of France is Paris.
-2. **Multiple-choice answer**: (c) London
-
-***********************************************************************************
-
-Now, based on the given lesson content, create a worksheet followed by the answer key.
+1. The capital of France is Paris.
+2. Which of the following is the capital of England?
+    (c) London
+3. The capital of Spain is Madrid.
+---
 `.trim();
 
   const payload = {
@@ -69,8 +76,6 @@ Now, based on the given lesson content, create a worksheet followed by the answe
 
   // 4. Send request to OpenAI
   const stream = await OpenAIStream(payload);
-
-  console.log(payload);
 
   if (!stream) return new Response('Error', { status: 500 });
 
