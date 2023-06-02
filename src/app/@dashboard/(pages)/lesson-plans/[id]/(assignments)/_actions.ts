@@ -16,9 +16,9 @@ const saveAssignmentSchema = z.object({
   content: z.string(),
 });
 
-const saveAssignmentAction = async (
+async function saveAssignmentAction(
   input: z.infer<typeof saveAssignmentSchema>,
-) => {
+) {
   const { user_lesson_plan_id, title, due_date, content } = input;
 
   try {
@@ -45,7 +45,7 @@ const saveAssignmentAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const saveAssignment = createRequest(
   saveAssignmentAction,
@@ -59,9 +59,9 @@ const changeAssignmentStatusSchema = z.object({
   status: z.enum(['PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELED']),
 });
 
-const changeAssignmentStatusAction = async (
+async function changeAssignmentStatusAction(
   input: z.infer<typeof changeAssignmentStatusSchema>,
-) => {
+) {
   const { id, status } = input;
 
   const statuses = ['PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELED'];
@@ -92,7 +92,7 @@ const changeAssignmentStatusAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const changeAssignmentStatus = createRequest(
   changeAssignmentStatusAction,
@@ -108,9 +108,9 @@ const editAssignmentSchema = z.object({
   assignedOn: z.date(),
 });
 
-const editAssignmentAction = async (
+async function editAssignmentAction(
   input: z.infer<typeof editAssignmentSchema>,
-) => {
+) {
   const { id, title, dueDate, assignedOn } = input;
 
   try {
@@ -133,7 +133,7 @@ const editAssignmentAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const editAssignment = createRequest(
   editAssignmentAction,
@@ -147,9 +147,9 @@ const deleteAssignmentSchema = z.object({
   lesson_plan_id: z.string().uuid(),
 });
 
-const deleteAssignmentAction = async (
+async function deleteAssignmentAction(
   input: z.infer<typeof deleteAssignmentSchema>,
-) => {
+) {
   const { id, lesson_plan_id } = input;
 
   try {
@@ -167,48 +167,9 @@ const deleteAssignmentAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const deleteAssignment = createRequest(
   deleteAssignmentAction,
   deleteAssignmentSchema,
 );
-
-// TSK
-// Call to fetch User Lesson Plans that don't already have an assignment
-export async function fetchUserLessonPlans(): Promise<any[]> {
-  const supabase = supabaseServer();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  try {
-    const { data: assignmentData, error: assignmentError } = await supabase
-      .from('assignments')
-      .select('user_lesson_plan_id');
-
-    if (assignmentError) {
-      throw new Error(assignmentError.message);
-    }
-
-    const assignedIds = assignmentData.map((a) => a.user_lesson_plan_id);
-    const assignedIdsStr = `(${assignedIds.join(',')})`;
-
-    const { data, error } = await supabase
-      .from('user_lesson_plans')
-      .select(
-        `*, lesson_plan:lesson_plans(title, subject:subjects(name), content, level:levels(name))`,
-      )
-      .not('id', 'in', assignedIdsStr)
-      .eq('teacher_id', user?.id)
-      .limit(10);
-
-    if (error) {
-      throw new Error(error.message);
-    }
-
-    return data as any[];
-  } catch (error) {
-    throw new Error((error as Error).message);
-  }
-}

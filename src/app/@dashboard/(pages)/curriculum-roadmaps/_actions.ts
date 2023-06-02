@@ -12,9 +12,9 @@ const saveCurriculumSchema = z.object({
   student_ids: z.array(z.string().uuid()),
 });
 
-const saveCurriculumAction = async (
+async function saveCurriculumAction(
   input: z.infer<typeof saveCurriculumSchema>,
-) => {
+) {
   const { curriculum_id, student_ids } = input;
 
   try {
@@ -37,7 +37,7 @@ const saveCurriculumAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const saveCurriculum = createRequest(
   saveCurriculumAction,
@@ -52,9 +52,9 @@ const saveCurriculumLessonPlanSchema = z.object({
   students: z.array(z.string().uuid()),
 });
 
-const saveCurriculumLessonPlanAction = async (
+async function saveCurriculumLessonPlanAction(
   input: z.infer<typeof saveCurriculumLessonPlanSchema>,
-) => {
+) {
   const {
     lesson_plan_id,
     curriculum_lesson_id,
@@ -95,7 +95,7 @@ const saveCurriculumLessonPlanAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const saveCurriculumLessonPlan = createRequest(
   saveCurriculumLessonPlanAction,

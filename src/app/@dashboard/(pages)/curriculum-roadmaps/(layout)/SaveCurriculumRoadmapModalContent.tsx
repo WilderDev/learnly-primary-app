@@ -46,11 +46,13 @@ export default function SaveCurriculumRoadmapModalContent({
   const { mutate, isLoading } = useRequest(saveCurriculum, {
     onSuccess: (data) => {
       if (data.ok) {
-        close();
-        toast.success('Curriculum Saved!');
+        revalidatePath(`/curriculum-roadmaps`); // ✅
         setSelectedCurriculum('');
         setCurriculumStudents([]);
-        revalidatePath(`/curriculum-roadmaps`); // ✅
+        toast.success(
+          'Curriculum Saved! You might need to refresh your page...',
+        );
+        close();
       } else {
         toast.error(
           "Something went wrong... You might've already saved this curriculum.",

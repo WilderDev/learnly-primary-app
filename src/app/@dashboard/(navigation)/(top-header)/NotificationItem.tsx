@@ -23,6 +23,7 @@ import { useRequest } from '@/lib/hooks/useRequest';
 import { markAsRead } from './_actions';
 import { getNotificationColor } from '@/lib/theme/enumColors';
 import { getDatestringFromTimestamp } from '@/lib/common/date.helpers';
+import { revalidatePath } from 'next/cache';
 
 // * Props
 interface IProps {
@@ -67,7 +68,13 @@ export default function NotificationItem({ notification }: IProps) {
   const [isModalOpen, setModalOpen] = useState(false);
 
   // * Requests / Mutations
-  const { mutate } = useRequest(markAsRead);
+  const { mutate } = useRequest(markAsRead, {
+    onSuccess: (data) => {
+      if (data.ok) {
+        revalidatePath('/'); // ✅
+      }
+    },
+  });
   let [isPending, startTransition] = useTransition();
 
   // * Render

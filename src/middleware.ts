@@ -51,6 +51,6 @@ export const config = {
     '/schedule-builder/:path*',
     // '/curriculum-roadmaps/:path/:path/:path/:path/:path/:path*',
     '/curriculum-roadmaps/user/:path*',
-    '/onboarding/:path*',
+    '/onboarding',
   ],
 };
