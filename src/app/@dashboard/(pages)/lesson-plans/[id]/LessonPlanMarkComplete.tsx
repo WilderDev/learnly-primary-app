@@ -14,8 +14,6 @@ export default function LessonPlanMarkComplete({ isComplete }: IProps) {
   // * State
   const [isCompletionModalOpen, setCompletionModalOpen] = useState(false);
 
-  console.log('isComplete:', isComplete);
-
   // * Render
   return (
     <>

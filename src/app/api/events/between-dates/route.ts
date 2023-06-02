@@ -1,4 +1,3 @@
-import { TEvent } from '@/assets/typescript/schedule';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 
 export async function GET(request: Request) {
@@ -8,10 +7,6 @@ export async function GET(request: Request) {
   const endDate = searchParams.get('end-date'); // Get the date filter param
   //   const filterDate = new Date(new Date(filterDateParam!).setHours(0, 0, 0, 0)); // Create a date object from the date filter param
   //   let filterDateISOStr = filterDate.toISOString().split('T')[0]; // Convert the date object to an ISO string
-
-  console.log('startDate:', startDate);
-  console.log('endDate:', endDate);
-  console.log('typeof startDate:', typeof startDate);
 
   if (!startDate || !endDate) return new Response('Error', { status: 400 });
 
@@ -23,9 +18,6 @@ export async function GET(request: Request) {
       start_date: startDate,
       end_date: endDate,
     });
-
-    console.log('data:', data);
-    console.log('error:', error);
 
     if (error) return new Response('Error', { status: 500 });
 

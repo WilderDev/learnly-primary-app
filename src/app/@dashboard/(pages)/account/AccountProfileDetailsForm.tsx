@@ -67,7 +67,7 @@ export default function AccountProfileDetailsForm() {
           firstName,
           lastName,
           email,
-          // phone,
+          phone,
           avatar,
         })
       }

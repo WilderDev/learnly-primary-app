@@ -1,18 +1,20 @@
 'use client';
 
 import { CheckIcon } from '@heroicons/react/24/solid';
+import { DashPanelHeader } from '../../(layout)/DashPanel';
+import { useUser } from '@/lib/components/providers/UserProvider';
+import Button from '@/lib/components/ui/Button';
+import { getDatestringFromTimestamp } from '@/lib/common/date.helpers';
 
+// * Data
 const includedFeatures = [
   'Instant lesson creation and management',
   'Science-Backed Curriculums with over 5,000 lessons',
   'Private forum access and support',
   'Member resources and thriving community',
 ];
-import { DashPanelHeader } from '../../(layout)/DashPanel';
-import { useUser } from '@/lib/components/providers/UserProvider';
-import Button from '@/lib/components/ui/Button';
-import { getDatestringFromTimestamp } from '@/lib/common/date.helpers';
 
+// * Component
 export default function AccountSubscriptionManagement() {
   // * Hooks / Context
   const { subscription } = useUser();
@@ -84,7 +86,10 @@ export default function AccountSubscriptionManagement() {
               variant="light"
               fill="outline"
               shadow="sm"
-              url={subscription?.billingPortalSessionUrl!}
+              url={
+                subscription?.billingPortalSessionUrl! ||
+                process.env.NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL_URL
+              }
             >
               Update Payment Method
             </Button>

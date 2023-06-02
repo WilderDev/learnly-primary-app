@@ -114,6 +114,16 @@ export default function AccountStudentsEditModal() {
   const { mutate: editStudentMutation, isLoading } = useRequest(editStudent, {
     onSuccess: (data) => {
       if (data.ok) {
+        // Toast success
+        toast.success('Student profile edited successfully!');
+
+        // Revalidate the paths
+        revalidatePath('/account'); // ✅
+        revalidatePath('/lesson-creator'); // ✅
+
+        // Close the modal
+        setStudentEditId(null);
+
         // Reset the form
         setName('');
         setBirthday(null);
@@ -125,16 +135,6 @@ export default function AccountStudentsEditModal() {
         setLearningEnvironments([]);
         setLearningResources([]);
         setSpecialNeeds([]);
-
-        // Revalidate the paths
-        revalidatePath('/account'); // ✅
-        revalidatePath('/lesson-creator'); // ✅
-
-        // Toast success
-        toast.success('Student profile edited successfully!');
-
-        // Close the modal
-        setStudentEditId(null);
       }
     },
   });

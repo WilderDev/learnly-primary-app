@@ -42,7 +42,7 @@ export default function AssignmentCreatorForm({
 }: IProps) {
   // * State
   const [userLessonOption, setUserLessonOption] = useState('');
-  const [additionalCommentsModal, setAdditionalCommentsModal] = useState(false); // TSK
+  const [additionalCommentsModal, setAdditionalCommentsModal] = useState(false);
   const [saveDetailsModalOpen, setSaveModalOpen] = useState(false);
   const [assignmentContent, setAssignmentContent] = useState('');
   const [assignmentTitle, setAssignmentTitle] = useState(

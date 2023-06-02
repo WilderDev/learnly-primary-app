@@ -13,12 +13,17 @@ import { useRequest } from '@/lib/hooks/useRequest';
 import { savePaymentDetails } from './_actions';
 import { getDatestringFromTimestamp } from '@/lib/common/date.helpers';
 import { revalidatePath } from 'next/cache';
+import { useState } from 'react';
 
 export default function AccountSubscriptionStripeForm() {
   // * Hooks / Context
   const { subscription } = useUser();
   const stripeClient = useStripe();
   const elements = useElements();
+  // const router = useRouter();
+
+  // * State
+  const [isEarlyPurchase, setIsEarlyPurchase] = useState(false);
 
   // * Requests / Mutations
   const { mutate: savePaymentDetailsMutation, isLoading } = useRequest(
@@ -26,15 +31,24 @@ export default function AccountSubscriptionStripeForm() {
     {
       onSuccess: (data) => {
         if (data.ok) {
+          setIsEarlyPurchase(true);
           toast.success('Your payment was successful!');
           revalidatePath('/account');
+          // router.reload();
         }
       },
     },
   );
 
   // * Render
-  return (
+  return isEarlyPurchase ? (
+    <div className="flex flex-col items-center justify-center">
+      <h2 className="font-bold text-2xl md:text-3xl text-center text-slate-900 dark:text-navy-50">
+        Thank you 🤗 We look forward to helping your family thrive :) You got
+        this!!!
+      </h2>
+    </div>
+  ) : (
     <>
       {/* Header */}
       <header className="mb-6 border-b pb-4 border-slate-300 dark:border-navy-500">

@@ -18,8 +18,6 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
   // * State
   const [print, setPrint] = useState(false);
 
-  console.log('lessonPlan:', lessonPlan);
-
   // * Render
   return (
     <>

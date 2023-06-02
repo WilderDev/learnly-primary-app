@@ -24,19 +24,19 @@ export default function AccountStudentsAddModal() {
   const { mutate: addStudentMutation, isLoading } = useRequest(addStudent, {
     onSuccess: (data) => {
       if (data.ok) {
-        // Reset the form
-        setName('');
-        setBirthday(null);
+        // Toast success
+        toast.success('Student added successfully!');
 
         // Revalidate the paths
         revalidatePath('/account'); // ✅
         revalidatePath('/lesson-creator'); // ✅
 
-        // Toast success
-        toast.success('Student added successfully!');
-
         // Close the modal
         setAddStudentModalOpen(false);
+
+        // Reset the form
+        setName('');
+        setBirthday(null);
       }
     },
   });
