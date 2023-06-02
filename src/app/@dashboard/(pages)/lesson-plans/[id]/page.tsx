@@ -9,7 +9,6 @@ import {
 } from '@/app/@dashboard/(layout)/DashPanel';
 import { redirect } from 'next/navigation';
 import LessonPlanContainerSkeleton from './LessonPlanContainerSkeleton';
-import { fetchAssignmentCall } from './(assignments)/_actions';
 import Assignment from './(assignments)/Assignment';
 import LessonPlanSimilarLessons from './LessonPlanSimilarLessons';
 
@@ -23,9 +22,8 @@ export interface IParams {
 // * Page
 export default async function LessonPlanPage({ params: { id } }: IParams) {
   // * Data
-  const lessonPlan = await getLessonPlan(id);
-
-  const assignment = await fetchAssignmentCall({ lesson_plan_id: id });
+  const lessonPlan = await getLessonPlan(id); // Get lesson plan
+  const assignment = await getAssignmentByLessonPlanId(id); // Get assignment
 
   // * Render
   return (
@@ -59,7 +57,10 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         <DashPanel colNum={1}>
           <DashPanelHeader title="Assignment" />
           {/* Assessment */}
-          <Assignment assignment={assignment} lessonPlan={lessonPlan} />
+          <Assignment
+            assignmentContent={assignment?.content}
+            lessonPlan={lessonPlan}
+          />
 
           {/* TSK */}
         </DashPanel>
@@ -71,19 +72,19 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
 }
 
 // * Fetcher
-// async function getLessonPlan(id: string) {
-//   const supabase = supabaseServer();
+async function getAssignmentByLessonPlanId(id: string) {
+  const supabase = supabaseServer();
 
-//   const { data, error } = await supabase
-//     .from('lesson_plans_with_creator_and_students_view')
-//     .select('*, level:levels(name)')
-//     .eq('id', id)
-//     .single();
+  const { data, error } = await supabase
+    .from('assignments')
+    .select('content')
+    .eq('lesson_plan_id', id)
+    .single();
 
-//   if (error) redirect('/lesson-creator');
+  if (error) return null;
 
-//   return data as ILessonPlan;
-// }
+  return data;
+}
 
 export async function getLessonPlan(id: string) {
   const supabase = supabaseServer();

@@ -1,11 +1,5 @@
-import { formatDateString } from '@/lib/common/date.helpers';
-import Form from '@/lib/components/form/Form';
 import Tag from '@/lib/components/ui/Tag';
 import { PaperClipIcon } from '@heroicons/react/24/outline';
-import {
-  getStatusColor,
-  getStudentCreds,
-} from '../../lesson-plans/[id]/(assignments)/helpers';
 import {
   IAssignmentResponse,
   changeAssignmentStatus,
@@ -18,13 +12,12 @@ import Input from '@/lib/components/form/Input';
 import DatePicker from '@/lib/components/form/DatePicker';
 import Button from '@/lib/components/ui/Button';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { toast } from 'sonner';
-import { useUser } from '@/lib/components/providers/UserProvider';
-import React from 'react';
 import Image from 'next/image';
 import { UserStudent } from '@/assets/typescript/user';
 import { downloadPdf } from '@/lib/common/downloadPdf';
+import { getStatusColor } from '@/lib/theme/enumColors';
 
 interface IProps {
   assignment: IAssignmentResponse;
@@ -41,17 +34,17 @@ export default function AssignmentEditModalForm({
   // const [dueDate, setDueDate] = useState(assignment.due_date);
 
   const [assignedOn, setAssignedOn] = useState<Date | null>(
-    new Date(assignment.assigned_on)
+    new Date(assignment.assigned_on),
   );
   const [dueDate, setDueDate] = useState<Date | null>(
-    new Date(assignment.due_date)
+    new Date(assignment.due_date),
   );
 
   const [isExpanded, setIsExpanded] = useState(false);
 
   const showLessContent = assignment.content.slice(
     0,
-    assignment.content.length * 0.1
+    assignment.content.length * 0.1,
   );
 
   const { mutate, error, isLoading } = useRequest(changeAssignmentStatus);
@@ -115,7 +108,7 @@ export default function AssignmentEditModalForm({
 
     downloadPdf(
       res,
-      `${assignment.title.toLowerCase().split(' ').join('_')}_worksheet`
+      `${assignment.title.toLowerCase().split(' ').join('_')}_worksheet`,
     );
   };
 
@@ -145,7 +138,7 @@ export default function AssignmentEditModalForm({
               {/* Avatar */}
               {getStudentCreds(
                 assignment.user_lesson_plan.students,
-                usersStudents
+                usersStudents,
               ).map((student, index) => (
                 <React.Fragment key={index}>
                   <Image
@@ -181,7 +174,7 @@ export default function AssignmentEditModalForm({
                           | 'IN_PROGRESS'
                           | 'COMPLETED'
                           | 'CANCELED',
-                      })
+                      }),
                     );
                   }}
                   disabled={isChanging}

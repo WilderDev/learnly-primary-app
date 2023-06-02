@@ -12,7 +12,10 @@ CREATE TABLE assignments (
     creator_id uuid NOT NULL REFERENCES teacher_profiles(id),
 
     -- Assignment User Lesson Plan ID
-    user_lesson_plan_id uuid REFERENCES user_lesson_plans(id),
+    user_lesson_plan_id uuid NOT NULL REFERENCES user_lesson_plans(id),
+
+    -- Assignment Lesson Plan ID
+    lesson_plan_id uuid NOT NULL REFERENCES lesson_plans(id),
 
     -- Assignment Content
     content text NOT NULL DEFAULT '',
@@ -47,6 +50,7 @@ CREATE TABLE assignments (
 -- Assignments
 CREATE INDEX assignments_creator_id_idx ON assignments(creator_id);
 CREATE INDEX assignments_user_lesson_plan_id_idx ON assignments(user_lesson_plan_id);
+CREATE INDEX assignments_lesson_plan_id_idx ON assignments(lesson_plan_id);
 CREATE INDEX assignments_status_idx ON assignments(status);
 
 

@@ -9,6 +9,47 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      assignments: {
+        Row: {
+          assigned_on: string
+          content: string
+          created_at: string
+          creator_id: string
+          due_date: string
+          id: string
+          lesson_plan_id: string
+          status: Database["public"]["Enums"]["assignment_status"]
+          title: string
+          updated_at: string
+          user_lesson_plan_id: string
+        }
+        Insert: {
+          assigned_on?: string
+          content?: string
+          created_at?: string
+          creator_id: string
+          due_date?: string
+          id?: string
+          lesson_plan_id: string
+          status?: Database["public"]["Enums"]["assignment_status"]
+          title?: string
+          updated_at?: string
+          user_lesson_plan_id: string
+        }
+        Update: {
+          assigned_on?: string
+          content?: string
+          created_at?: string
+          creator_id?: string
+          due_date?: string
+          id?: string
+          lesson_plan_id?: string
+          status?: Database["public"]["Enums"]["assignment_status"]
+          title?: string
+          updated_at?: string
+          user_lesson_plan_id?: string
+        }
+      }
       comment_reactions: {
         Row: {
           comment_id: string
@@ -1832,6 +1873,7 @@ export interface Database {
       assessment_method: "Observation" | "Performance" | "Product" | "Other"
       assessment_tool: "Quiz" | "Test" | "Exam" | "Rubric" | "Other"
       assessment_type: "Formative" | "Summative" | "Other"
+      assignment_status: "PENDING" | "IN_PROGRESS" | "COMPLETED" | "CANCELED"
       commentable_type:
         | "LESSON_PLAN"
         | "LEARNING_PATH"

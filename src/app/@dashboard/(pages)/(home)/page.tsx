@@ -7,11 +7,8 @@ import RecentlyCompletedLessonsAccordions from './RecentlyCompletedLessonsAccord
 import MiniCalendar from '../schedule-builder/MiniCalendar';
 import AssignmentsTable from './AssignmentsTable';
 import AssignmentCreatorModal from './(assignments-table)/AssignmentCreatorModal';
-import { fetchAssignments } from '../lesson-plans/[id]/(assignments)/_actions';
 
-export default async function ParentDashboardHomePage() {
-  const assignments = await fetchAssignments();
-
+export default function ParentDashboardHomePage() {
   // * Render
   return (
     <>
@@ -44,7 +41,7 @@ export default async function ParentDashboardHomePage() {
             modalContent={<AssignmentCreatorModal />}
             noCloseOnOutsideClick={true}
           />
-          {/* <AssignmentsTable /> */}
+          {/* @ts-expect-error Server Component */}
           <AssignmentsTable assignments={assignments} />
         </DashPanel>
       </DashMainCol>

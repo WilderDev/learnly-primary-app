@@ -9,55 +9,52 @@ import {
   IAssignmentResponse,
   changeAssignmentStatus,
 } from '../../lesson-plans/[id]/(assignments)/_actions';
-import { toast } from 'sonner';
 import AssignmentEditModalForm from './AssignmentEditModalForm';
 import LoadingDots from '@/lib/components/loading/LoadingDots';
 import cn from '@/lib/common/cn';
-import {
-  getStatusColor,
-  getStudentCreds,
-} from '../../lesson-plans/[id]/(assignments)/helpers';
 import capitalize from '@/lib/common/capitalize';
 import { useUser } from '@/lib/components/providers/UserProvider';
 import React from 'react';
 import Image from 'next/image';
-import { IAssignment } from '@/assets/typescript/assignment';
+import { getStatusColor } from '@/lib/theme/enumColors';
+import { TAssignmentStatus } from '@/assets/typescript/assignment';
 
+// * Props
 interface IProps {
   assignments: IAssignmentResponse[];
 }
+
+// * Component
 export default function AssignmentsTableBody({ assignments }: IProps) {
+  // * Hooks / Context
   const { students: usersStudents } = useUser();
 
-  // State
+  // * State
   const [assignmentsEditModal, setAssignmentsEditModal] = useState(false);
   const [selectedAssignment, setSelectedAssignment] =
     useState<IAssignmentResponse | null>(null);
-
-  // Requests / Mutations
-  const { mutate, error, isLoading } = useRequest(changeAssignmentStatus);
   let [isChanging, startTransition] = useTransition();
 
-  // if (error) {
-  //   toast.error('Failed updating status');
-  // }
+  // * Requests / Mutations
+  const { mutate, isLoading } = useRequest(changeAssignmentStatus);
 
   return (
     <>
+      {/* Table Body */}
       <Table.Body>
         {assignments.map((assignment, i) => (
           <Table.Row
             key={assignment.id}
             className={cn(
               i != assignments.length - 1 &&
-                'border-b-slate-200 dark:border-b-navy-500'
+                'border-b-slate-200 dark:border-b-navy-500',
             )}
           >
             {/* Student */}
             <Table.Cell className="flex items-center px-1 flex-shrink-0">
               {getStudentCreds(
                 assignment.user_lesson_plan.students,
-                usersStudents
+                usersStudents,
               ).map((student, index) => (
                 <React.Fragment key={index}>
                   <Image
@@ -90,12 +87,8 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
                     startTransition(() =>
                       mutate({
                         id: assignment.id,
-                        status: assignment.status as
-                          | 'PENDING'
-                          | 'IN_PROGRESS'
-                          | 'COMPLETED'
-                          | 'CANCELED',
-                      })
+                        status: assignment.status as TAssignmentStatus,
+                      }),
                     );
                   }}
                   disabled={isChanging}
@@ -104,13 +97,13 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
                     <span
                       className={cn(
                         'h-2 w-2 rounded-full px-1',
-                        getStatusColor(assignment.status).bg
+                        getStatusColor(assignment.status).bg,
                       )}
                     />
                     <span
                       className={cn(
                         'shrink-0',
-                        getStatusColor(assignment.status).text
+                        getStatusColor(assignment.status).text,
                       )}
                     >
                       {capitalize(assignment.status.split('_').join(' '))}
@@ -156,6 +149,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
           </Table.Row>
         ))}
       </Table.Body>
+
       <Modal
         isVisible={assignmentsEditModal}
         close={() => {

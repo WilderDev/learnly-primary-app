@@ -1,6 +1,6 @@
 'use server';
 
-import { IAssignment } from '@/assets/typescript/assignment';
+import { IAssignment, TAssignmentStatus } from '@/assets/typescript/assignment';
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
@@ -19,7 +19,7 @@ const saveAssignmentSchema = z.object({
 });
 
 const saveAssignmentAction = async (
-  input: z.infer<typeof saveAssignmentSchema>
+  input: z.infer<typeof saveAssignmentSchema>,
 ) => {
   const { user_lesson_plan_id, lesson_plan_id, title, due_date, content } =
     input;
@@ -31,7 +31,7 @@ const saveAssignmentAction = async (
     } = await supabase.auth.getSession();
 
     const { error } = await supabase.from('assignments').insert({
-      creator_id: session?.user.id,
+      creator_id: session?.user.id!,
       user_lesson_plan_id,
       lesson_plan_id,
       title,
@@ -54,7 +54,7 @@ const saveAssignmentAction = async (
 
 export const saveAssignment = createRequest(
   saveAssignmentAction,
-  saveAssignmentSchema
+  saveAssignmentSchema,
 );
 
 // Action to change assignment status
@@ -65,7 +65,7 @@ const changeAssignmentStatusSchema = z.object({
 });
 
 const changeAssignmentStatusAction = async (
-  input: z.infer<typeof changeAssignmentStatusSchema>
+  input: z.infer<typeof changeAssignmentStatusSchema>,
 ) => {
   const { id, status } = input;
 
@@ -85,7 +85,7 @@ const changeAssignmentStatusAction = async (
     const { error } = await supabase
       .from('assignments')
       .update({
-        status: newStatus,
+        status: newStatus as TAssignmentStatus,
       })
       .eq('id', id);
 
@@ -101,7 +101,7 @@ const changeAssignmentStatusAction = async (
 
 export const changeAssignmentStatus = createRequest(
   changeAssignmentStatusAction,
-  changeAssignmentStatusSchema
+  changeAssignmentStatusSchema,
 );
 
 // Action to edit an assignment
@@ -114,7 +114,7 @@ const editAssignmentSchema = z.object({
 });
 
 const editAssignmentAction = async (
-  input: z.infer<typeof editAssignmentSchema>
+  input: z.infer<typeof editAssignmentSchema>,
 ) => {
   const { id, title, dueDate, assignedOn } = input;
 
@@ -125,8 +125,8 @@ const editAssignmentAction = async (
       .from('assignments')
       .update({
         title,
-        due_date: dueDate,
-        assigned_on: assignedOn,
+        due_date: dueDate.toISOString(),
+        assigned_on: assignedOn.toISOString(),
       })
       .eq('id', id);
 
@@ -142,7 +142,7 @@ const editAssignmentAction = async (
 
 export const editAssignment = createRequest(
   editAssignmentAction,
-  editAssignmentSchema
+  editAssignmentSchema,
 );
 
 // Action to delte assignment
@@ -153,7 +153,7 @@ const deleteAssignmentSchema = z.object({
 });
 
 const deleteAssignmentAction = async (
-  input: z.infer<typeof deleteAssignmentSchema>
+  input: z.infer<typeof deleteAssignmentSchema>,
 ) => {
   const { id, lesson_plan_id } = input;
 
@@ -176,7 +176,7 @@ const deleteAssignmentAction = async (
 
 export const deleteAssignment = createRequest(
   deleteAssignmentAction,
-  deleteAssignmentSchema
+  deleteAssignmentSchema,
 );
 
 // Call to fetch a single assignment
@@ -184,29 +184,6 @@ export const deleteAssignment = createRequest(
 const fetchAssignmentSchema = z.object({
   lesson_plan_id: z.string().uuid(),
 });
-
-export const fetchAssignmentCall = async (
-  input: z.infer<typeof fetchAssignmentSchema>
-) => {
-  try {
-    const { lesson_plan_id } = input;
-    const supabase = supabaseServer();
-
-    const { data, error } = await supabase
-      .from('assignments')
-      .select('*')
-      .eq('lesson_plan_id', lesson_plan_id)
-      .maybeSingle();
-
-    if (error) {
-      throw new Error(error.message);
-    }
-
-    return data as IAssignment;
-  } catch (error) {
-    throw new Error((error as Error).message);
-  }
-};
 
 // Call to fetch assignments
 export interface IAssignmentResponse extends IAssignment {
@@ -220,33 +197,8 @@ export interface IAssignmentResponse extends IAssignment {
   };
 }
 
-export async function fetchAssignments(): Promise<IAssignmentResponse[]> {
-  try {
-    const supabase = supabaseServer();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    const { data, error } = await supabase
-      .from('assignments')
-      .select(
-        '*, user_lesson_plan:user_lesson_plans(students), lesson_plan:lesson_plans(subject:subjects(name))'
-      )
-      .eq('creator_id', user?.id)
-      .limit(5);
-
-    if (error) {
-      throw new Error(error.message);
-    }
-
-    return data as IAssignmentResponse[];
-  } catch (error) {
-    throw new Error((error as Error).message);
-  }
-}
-
+// TSK
 // Call to fetch User Lesson Plans that don't already have an assignment
-
 export async function fetchUserLessonPlans(): Promise<any[]> {
   const supabase = supabaseServer();
   const {
@@ -268,7 +220,7 @@ export async function fetchUserLessonPlans(): Promise<any[]> {
     const { data, error } = await supabase
       .from('user_lesson_plans')
       .select(
-        `*, lesson_plan:lesson_plans(title, subject:subjects(name), content, level:levels(name))`
+        `*, lesson_plan:lesson_plans(title, subject:subjects(name), content, level:levels(name))`,
       )
       .not('id', 'in', assignedIdsStr)
       .eq('teacher_id', user?.id)

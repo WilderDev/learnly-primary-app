@@ -16,31 +16,26 @@ import { streamReader } from '@/lib/ai/stream';
 import { saveAssignment } from './_actions';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Modal from '@/lib/components/popouts/Modal';
-import { BoltIcon } from '@heroicons/react/24/outline';
-import { createPdf } from '@/lib/common/createPdf';
-import { downloadPdf } from '@/lib/common/downloadPdf';
 import { useReactToPrint } from 'react-to-print';
 
+// * Props
 interface IProps {
-  isModal: boolean;
-  userLessonPlans?: any[];
+  isModal?: boolean;
+  userLessonPlans?: any[]; // TSK
   setUserLessonPlans?: (value: SetStateAction<any[]>) => void;
-  lessonPlan?: any;
+  lessonPlan?: any; // TSK
   assignmentContent?: string;
   setAssignmentContent?: (value: SetStateAction<string>) => void;
 }
 
+// * Component
 export default function AssignmentCreatorForm({
-  isModal,
+  isModal = true,
   userLessonPlans,
   setUserLessonPlans,
   lessonPlan,
 }: IProps) {
-  // Helper Function
-  const getLessonWithId = (id: string) => {
-    return userLessonPlans?.filter((lessonPlan) => lessonPlan.id === id)[0];
-  };
-
+  // * State
   // Data Options
   const [userLessonOption, setUserLessonOption] = useState('');
 
@@ -50,7 +45,7 @@ export default function AssignmentCreatorForm({
   // Assignment Hooks
   const [assignmentContent, setAssignmentContent] = useState('');
   const [assignmentTitle, setAssignmentTitle] = useState(
-    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`
+    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`,
   );
   const [numberOfQuestions, setNumberofQuestions] = useState(3);
   const [assignmentDueDate, setAssignmentDueDate] = useState<Date | null>(null);
@@ -69,12 +64,21 @@ export default function AssignmentCreatorForm({
     additionalComments: '',
   });
 
+  // * Handlers / Helpers
+  // Get Lesson By Id
+  const getLessonWithId = (id: string) => {
+    return userLessonPlans?.filter((lessonPlan) => lessonPlan.id === id)[0];
+  };
+
+  // Form Submit
   const handleAssignmentFormSubmit = async () => {
+    // Set Initial States
     setPrintOptions(false);
     setIsLoadingAssignment(true);
     setAdditionalCommentsModal(false);
     setAssignmentActions(false);
 
+    // Validate Form
     const errors = [];
     if (!userLessonOption && isModal) errors.push('Must Select A Lesson');
     if (!assignmentTitle && !isModal) errors.push('Assignment Title Required');
@@ -83,6 +87,7 @@ export default function AssignmentCreatorForm({
     if (numberOfQuestions <= 0 || numberOfQuestions > 7)
       errors.push('Only 1-7 Questions Allowed');
 
+    // Check for errors
     if (errors.length > 0) {
       errors.forEach((msg) => {
         toast.error(msg);
@@ -90,6 +95,9 @@ export default function AssignmentCreatorForm({
       setIsLoadingAssignment(false);
       return;
     }
+
+    // Get Lesson Plan
+    const lessonPlan = getLessonWithId(userLessonOption);
 
     const lessonPlanGrade = lessonPlan
       ? lessonPlan.level.name
@@ -162,7 +170,7 @@ export default function AssignmentCreatorForm({
         setAssignmentContent('');
         setUserLessonOption('');
         const filteredLessonPlans = userLessonPlans?.filter(
-          (lesson) => lesson.id !== userLessonOption
+          (lesson) => lesson.id !== userLessonOption,
         );
         setUserLessonPlans!(filteredLessonPlans!);
 
@@ -242,7 +250,7 @@ export default function AssignmentCreatorForm({
                 (lesson: { lesson_plan: { title: any }; id: any }) => ({
                   label: lesson.lesson_plan.title,
                   value: lesson.id,
-                })
+                }),
               )}
               value={userLessonOption}
               setValue={setUserLessonOption as Dispatch<SetStateAction<string>>}
