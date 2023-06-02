@@ -69,6 +69,28 @@ JOIN
 GROUP BY
     a.id, lp.title, lp.id, sb.name, ulp.teacher_id;
 
+--- Lesson Plans without Assignments View
+CREATE VIEW lesson_plans_without_assignments_view AS
+SELECT
+    ulp.id AS user_lesson_plan_id,
+    lp.title AS lesson_plan_name,
+    lp.content AS lesson_plan_content,
+    lv.name AS lesson_plan_level_name
+FROM
+    user_lesson_plans ulp
+JOIN
+    lesson_plans lp ON ulp.lesson_plan_id = lp.id
+LEFT JOIN
+    levels lv ON lp.level = lv.id
+WHERE
+    NOT EXISTS (
+        SELECT 1
+        FROM assignments a
+        WHERE a.user_lesson_plan_id = ulp.id
+    )
+    AND ulp.teacher_id = auth.uid();
+
+
 
 -- * FUNCTIONS
 -- Get Assignments by Lesson Plan and Teacher

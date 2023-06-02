@@ -1439,6 +1439,14 @@ export interface Database {
           user_lesson_plan_id: string | null
         }
       }
+      lesson_plans_without_assignments_view: {
+        Row: {
+          lesson_plan_content: string | null
+          lesson_plan_level_name: Database["public"]["Enums"]["level"] | null
+          lesson_plan_name: string | null
+          user_lesson_plan_id: string | null
+        }
+      }
       lesson_timeline_view: {
         Row: {
           completion_date: string | null

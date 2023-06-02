@@ -93,5 +93,10 @@ async function getUserLessonPlansWithoutAssignment() {
 
   if (error) return [];
 
-  return data;
+  return data as {
+    user_lesson_plan_id: string;
+    lesson_plan_name: string;
+    lesson_plan_content: string;
+    lesson_plan_level_name: string;
+  }[];
 }

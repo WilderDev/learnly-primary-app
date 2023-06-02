@@ -5,11 +5,17 @@ import AssignmentCreatorForm from '../../lesson-plans/[id]/(assignments)/Assignm
 
 // * Props
 interface IProps {
-  lessonPlans: any[]; // TSK
+  lessonPlans: {
+    user_lesson_plan_id: string;
+    lesson_plan_name: string;
+    lesson_plan_content: string;
+    lesson_plan_level_name: string;
+  }[];
 }
 
 // * Component
 export default function AssignmentCreatorModal({ lessonPlans }: IProps) {
+  console.log('lessonPlans:', lessonPlans);
   return (
     <>
       <Modal.Header title="Create an Assignment" />

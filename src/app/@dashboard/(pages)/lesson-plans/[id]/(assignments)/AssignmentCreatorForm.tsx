@@ -25,7 +25,12 @@ interface IProps {
   isModal?: boolean;
   lessonPlan?: ILessonPlan;
   userLessonPlanId?: string;
-  lessonPlans?: ILessonPlan[];
+  lessonPlans?: {
+    user_lesson_plan_id: string;
+    lesson_plan_name: string;
+    lesson_plan_content: string;
+    lesson_plan_level_name: string;
+  }[];
 }
 
 // * Component
@@ -51,7 +56,12 @@ export default function AssignmentCreatorForm({
   const [printOptions, setPrintOptions] = useState(false);
   const [print, setPrint] = useState(false);
 
-  // * Handlers
+  // * Handlers / Helpers
+  // Get Lesson Plan
+  const getLP = lessonPlans?.find(
+    (lp) => lp.user_lesson_plan_id === userLessonOption,
+  );
+
   // Form Submit
   const handleAssignmentFormSubmit = async () => {
     // Set Initial States
@@ -64,7 +74,7 @@ export default function AssignmentCreatorForm({
     // Validate Form
     const errors = [];
 
-    if (!lessonPlan) errors.push('Lesson Plan Required');
+    if (!lessonPlan && !isModal) errors.push('Lesson Plan Required');
     if (!userLessonOption && isModal) errors.push('Must Select A Lesson');
     if (!assignmentTitle && !isModal) errors.push('Assignment Title Required');
     if (!assignmentDueDate) errors.push('Assignment Due Date Required');
@@ -83,7 +93,7 @@ export default function AssignmentCreatorForm({
     }
 
     // If the lesson plan isn't saved, save it
-    if (!userLessonPlanId) {
+    if (!userLessonPlanId && !isModal) {
       setIsLoadingAssignment(false);
       toast.error(
         'You must save the lesson plan before you can create an assignment.',
@@ -101,8 +111,12 @@ export default function AssignmentCreatorForm({
     // Create Request Body
     const requestBody = {
       questions: numberOfQuestions,
-      lessonPlanContent: lessonPlan!.content,
-      lessonPlanGrade: lessonPlan!.level_name,
+      lessonPlanContent: isModal
+        ? getLP?.lesson_plan_content
+        : lessonPlan!.content,
+      lessonPlanGrade: isModal
+        ? getLP?.lesson_plan_level_name
+        : lessonPlan!.level_name,
       additionalComments,
     };
 
@@ -129,10 +143,12 @@ export default function AssignmentCreatorForm({
   const handleSaveAssignment = async () => {
     // Save to Supabase
     const { ok } = await saveAssignment({
-      title: assignmentTitle,
+      title: isModal
+        ? getLP?.lesson_plan_name! + ' Assignment'
+        : assignmentTitle,
       content: assignmentContent,
       due_date: assignmentDueDate!,
-      user_lesson_plan_id: userLessonPlanId!,
+      user_lesson_plan_id: userLessonPlanId || userLessonOption,
     });
 
     if (ok) {
@@ -145,6 +161,7 @@ export default function AssignmentCreatorForm({
       }
       setPrintOptions(true);
       setAssignmentActions(false);
+
       toast.success('Assignment Saved!');
     } else {
       // Display error toast
@@ -197,8 +214,8 @@ export default function AssignmentCreatorForm({
               label="Lesson Selection"
               options={createSelectOptions(
                 lessonPlans.map((lp) => ({
-                  label: lp.title,
-                  value: lp.id,
+                  label: lp.lesson_plan_name,
+                  value: lp.user_lesson_plan_id,
                 })),
               )}
               value={userLessonOption}
