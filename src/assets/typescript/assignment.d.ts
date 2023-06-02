@@ -12,3 +12,18 @@ export interface IAssignment {
   assigned_on: string;
   due_date: string;
 }
+
+export interface IAssignmentWithLessonPlan {
+  id: string;
+  title: string;
+  content: string;
+  status: TAssignmentStatus;
+  assignedOn: string;
+  dueOn: string;
+  lessonPlan: {
+    id: string;
+    title: string;
+    subject: string;
+    students: ISimpleStudent[];
+  };
+}

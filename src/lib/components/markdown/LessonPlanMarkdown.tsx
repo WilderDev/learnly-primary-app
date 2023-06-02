@@ -31,7 +31,7 @@ export default function LessonPlanMarkdown({
   }, [print, handlePrint]);
 
   return (
-    <div className={cn(className, 'print:p-6 z-[1000]')} ref={componentRef}>
+    <div className={cn(className, 'print:p-2')} ref={componentRef}>
       <ReactMarkdown components={lessonPlanComponents} linkTarget="_blank">
         {content}
       </ReactMarkdown>

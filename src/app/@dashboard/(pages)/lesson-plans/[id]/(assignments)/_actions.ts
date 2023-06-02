@@ -1,6 +1,6 @@
 'use server';
 
-import { IAssignment, TAssignmentStatus } from '@/assets/typescript/assignment';
+import { TAssignmentStatus } from '@/assets/typescript/assignment';
 import { createRequest } from '@/lib/api/createRequest';
 import responseContract from '@/lib/api/responseContract';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
@@ -9,10 +9,8 @@ import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
 // Action to save assignment
-
 const saveAssignmentSchema = z.object({
   user_lesson_plan_id: z.string().uuid(),
-  lesson_plan_id: z.string().uuid(),
   title: z.string(),
   due_date: z.date(),
   content: z.string(),
@@ -21,8 +19,7 @@ const saveAssignmentSchema = z.object({
 const saveAssignmentAction = async (
   input: z.infer<typeof saveAssignmentSchema>,
 ) => {
-  const { user_lesson_plan_id, lesson_plan_id, title, due_date, content } =
-    input;
+  const { user_lesson_plan_id, title, due_date, content } = input;
 
   try {
     const supabase = supabaseServer();
@@ -33,7 +30,6 @@ const saveAssignmentAction = async (
     const { error } = await supabase.from('assignments').insert({
       creator_id: session?.user.id!,
       user_lesson_plan_id,
-      lesson_plan_id,
       title,
       assigned_on: dateToTimestampz(new Date()),
       due_date: dateToTimestampz(due_date),
@@ -42,7 +38,6 @@ const saveAssignmentAction = async (
 
     if (error) return responseContract(error.message, false);
 
-    revalidatePath('/lesson-plans/' + lesson_plan_id);
     revalidatePath('/assignments');
     revalidatePath('/');
 
@@ -178,24 +173,6 @@ export const deleteAssignment = createRequest(
   deleteAssignmentAction,
   deleteAssignmentSchema,
 );
-
-// Call to fetch a single assignment
-
-const fetchAssignmentSchema = z.object({
-  lesson_plan_id: z.string().uuid(),
-});
-
-// Call to fetch assignments
-export interface IAssignmentResponse extends IAssignment {
-  user_lesson_plan: {
-    students: string[];
-  };
-  lesson_plan: {
-    subject: {
-      name: string;
-    };
-  };
-}
 
 // TSK
 // Call to fetch User Lesson Plans that don't already have an assignment

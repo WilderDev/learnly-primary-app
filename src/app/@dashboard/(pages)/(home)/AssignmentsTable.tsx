@@ -2,6 +2,8 @@ import { Table } from '@/lib/components/ui/Table';
 import AssignmentsTableHead from './(assignments-table)/AssignmentsTableHead';
 import AssignmentsTableBody from './(assignments-table)/AssignmentsTableBody';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
+import { ISimpleStudent } from '@/assets/typescript/user';
+import { IAssignmentWithLessonPlan } from '@/assets/typescript/assignment';
 
 // * Component
 export default async function AssignmentsTable() {
@@ -22,8 +24,38 @@ export default async function AssignmentsTable() {
 
 async function getAssignmentsWithLessonDetails() {
   const supabase = supabaseServer();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  // ... TSK
+  const { data, error } = await supabase
+    .from('assignments_with_details_view')
+    .select('*')
+    .eq('teacher_id', session?.user.id);
 
-  return [];
+  if (error) return [];
+
+  const transformedData: IAssignmentWithLessonPlan[] = data.map(
+    (assignment) => ({
+      id: assignment.assignment_id!,
+      title: assignment.assignment_title!,
+      content: assignment.assignment_content!,
+      status: assignment.assignment_status!,
+      assignedOn: assignment.assigned_on!,
+      dueOn: assignment.due_date!,
+      lessonPlan: {
+        id: assignment.lesson_plan_id!,
+        title: assignment.lesson_plan_title!,
+        subject: assignment.lesson_plan_subject_name!,
+        students: (assignment.students as any[])?.map((s) => ({
+          id: s.student_id!,
+          firstName: s.student_first_name!,
+          lastName: s.student_last_name!,
+          avatarUrl: s.student_avatar_url!,
+        })) as ISimpleStudent[],
+      },
+    }),
+  );
+
+  return transformedData;
 }

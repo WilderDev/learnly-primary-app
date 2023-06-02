@@ -31,18 +31,17 @@ export default function ParentDashboardHomePage() {
 
         {/* Home Assignments */}
         <DashPanel colNum={3}>
-          {/* TSK Need to add view add assignments */}
           <DashPanelHeader
             title="Assignments"
-            // ctaText="View All Assignments"
-            // ctaLink="/assignments"
+            ctaText="View All Assignments"
+            ctaLink="/assignments"
             hasModal={true}
             modalSize="lg"
             modalContent={<AssignmentCreatorModal />}
             noCloseOnOutsideClick={true}
           />
           {/* @ts-expect-error Server Component */}
-          <AssignmentsTable assignments={assignments} />
+          <AssignmentsTable />
         </DashPanel>
       </DashMainCol>
 

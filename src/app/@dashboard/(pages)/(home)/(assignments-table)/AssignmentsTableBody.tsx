@@ -5,10 +5,7 @@ import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { useState, useTransition } from 'react';
 import Modal from '@/lib/components/popouts/Modal';
 import { useRequest } from '@/lib/hooks/useRequest';
-import {
-  IAssignmentResponse,
-  changeAssignmentStatus,
-} from '../../lesson-plans/[id]/(assignments)/_actions';
+import { changeAssignmentStatus } from '../../lesson-plans/[id]/(assignments)/_actions';
 import AssignmentEditModalForm from './AssignmentEditModalForm';
 import LoadingDots from '@/lib/components/loading/LoadingDots';
 import cn from '@/lib/common/cn';
@@ -17,11 +14,15 @@ import { useUser } from '@/lib/components/providers/UserProvider';
 import React from 'react';
 import Image from 'next/image';
 import { getStatusColor } from '@/lib/theme/enumColors';
-import { TAssignmentStatus } from '@/assets/typescript/assignment';
+import {
+  IAssignmentWithLessonPlan,
+  TAssignmentStatus,
+} from '@/assets/typescript/assignment';
+import { formatDateString } from '@/lib/common/date.helpers';
 
 // * Props
 interface IProps {
-  assignments: IAssignmentResponse[];
+  assignments: IAssignmentWithLessonPlan[];
 }
 
 // * Component
@@ -30,14 +31,14 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
   const { students: usersStudents } = useUser();
 
   // * State
-  const [assignmentsEditModal, setAssignmentsEditModal] = useState(false);
-  const [selectedAssignment, setSelectedAssignment] =
-    useState<IAssignmentResponse | null>(null);
   let [isChanging, startTransition] = useTransition();
+  const [selectedAssignment, setSelectedAssignment] =
+    useState<IAssignmentWithLessonPlan | null>(null);
 
   // * Requests / Mutations
   const { mutate, isLoading } = useRequest(changeAssignmentStatus);
 
+  // * Render
   return (
     <>
       {/* Table Body */}
@@ -52,10 +53,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
           >
             {/* Student */}
             <Table.Cell className="flex items-center px-1 flex-shrink-0">
-              {getStudentCreds(
-                assignment.user_lesson_plan.students,
-                usersStudents,
-              ).map((student, index) => (
+              {assignment.lessonPlan.students?.map((student, index) => (
                 <React.Fragment key={index}>
                   <Image
                     className="mr-2 h-8 w-8 rounded-full"
@@ -67,6 +65,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
                   <span className="text-sm mr-2">
                     {student.firstName} {student.lastName}
                   </span>
+                  {/* TSK: Avatar */}
                 </React.Fragment>
               ))}
             </Table.Cell>
@@ -115,12 +114,12 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
 
             {/* Subject */}
             <Table.Cell className="font-medium text-center">
-              {assignment.lesson_plan.subject.name}
+              {assignment.lessonPlan.subject}
             </Table.Cell>
 
             {/* Assignment Date */}
             <Table.Cell className="font-medium text-center">
-              {new Date(assignment.assigned_on).toLocaleDateString('en-US', {
+              {formatDateString(assignment.assignedOn, {
                 month: 'long',
                 day: 'numeric',
               })}
@@ -128,7 +127,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
 
             {/* Due Date */}
             <Table.Cell className="font-medium text-center">
-              {new Date(assignment.due_date).toLocaleDateString('en-US', {
+              {formatDateString(assignment.dueOn, {
                 month: 'long',
                 day: 'numeric',
               })}
@@ -138,10 +137,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             <Table.Cell>
               <button
                 className="group ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors hocus:bg-slate-200/90 dark:hocus:bg-navy-700/90"
-                onClick={() => {
-                  setAssignmentsEditModal(true);
-                  setSelectedAssignment(assignment);
-                }}
+                onClick={() => setSelectedAssignment(assignment)}
               >
                 <PencilSquareIcon className="h-5 w-5 text-slate-700/90 transition-colors group-hover:text-slate-600 dark:text-navy-300/90 dark:group-hover:text-navy-200" />
               </button>
@@ -150,20 +146,18 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
         ))}
       </Table.Body>
 
+      {/* Edit Modal */}
       <Modal
-        isVisible={assignmentsEditModal}
-        close={() => {
-          setAssignmentsEditModal(false);
-          setSelectedAssignment(null);
-        }}
+        isVisible={!!selectedAssignment}
+        close={() => setSelectedAssignment(null)}
         noCloseOnOutsideClick={true}
         closeBtn={true}
       >
         {selectedAssignment && (
           <AssignmentEditModalForm
             assignment={selectedAssignment}
-            setAssignmentsEditModal={setAssignmentsEditModal}
             usersStudents={usersStudents}
+            close={() => setSelectedAssignment(null)}
           />
         )}
       </Modal>

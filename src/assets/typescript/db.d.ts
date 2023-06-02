@@ -17,7 +17,6 @@ export interface Database {
           creator_id: string
           due_date: string
           id: string
-          lesson_plan_id: string
           status: Database["public"]["Enums"]["assignment_status"]
           title: string
           updated_at: string
@@ -30,7 +29,6 @@ export interface Database {
           creator_id: string
           due_date?: string
           id?: string
-          lesson_plan_id: string
           status?: Database["public"]["Enums"]["assignment_status"]
           title?: string
           updated_at?: string
@@ -43,7 +41,6 @@ export interface Database {
           creator_id?: string
           due_date?: string
           id?: string
-          lesson_plan_id?: string
           status?: Database["public"]["Enums"]["assignment_status"]
           title?: string
           updated_at?: string
@@ -1151,6 +1148,41 @@ export interface Database {
           url?: string | null
         }
       }
+      assignment_with_details_view: {
+        Row: {
+          assigned_on: string | null
+          assignment_content: string | null
+          assignment_id: string | null
+          assignment_status:
+            | Database["public"]["Enums"]["assignment_status"]
+            | null
+          assignment_title: string | null
+          due_date: string | null
+          lesson_plan_subject: string | null
+          lesson_plan_title: string | null
+          student_avatar_url: string | null
+          student_first_name: string | null
+          student_id: string | null
+          student_last_name: string | null
+        }
+      }
+      assignments_with_details_view: {
+        Row: {
+          assigned_on: string | null
+          assignment_content: string | null
+          assignment_id: string | null
+          assignment_status:
+            | Database["public"]["Enums"]["assignment_status"]
+            | null
+          assignment_title: string | null
+          due_date: string | null
+          lesson_plan_id: string | null
+          lesson_plan_subject_name: string | null
+          lesson_plan_title: string | null
+          students: Json | null
+          teacher_id: string | null
+        }
+      }
       attending_events_view: {
         Row: {
           attendees: string[] | null
@@ -1404,6 +1436,7 @@ export interface Database {
           title: string | null
           topic: string | null
           topic_name: string | null
+          user_lesson_plan_id: string | null
         }
       }
       lesson_timeline_view: {
@@ -1769,6 +1802,20 @@ export interface Database {
           subject_code: string
         }
         Returns: undefined
+      }
+      get_assignments_by_lesson_plan_and_teacher: {
+        Args: {
+          lesson_plan_uuid: string
+          teacher_uuid: string
+        }
+        Returns: {
+          id: string
+          title: string
+          content: string
+          assigned_on: string
+          due_date: string
+          status: Database["public"]["Enums"]["assignment_status"]
+        }[]
       }
       get_comments_and_reactions: {
         Args: {

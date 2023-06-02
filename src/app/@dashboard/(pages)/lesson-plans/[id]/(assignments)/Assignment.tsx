@@ -1,15 +1,14 @@
 'use client';
 
 import AssignmentCreatorForm from './AssignmentCreatorForm';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Button from '@/lib/components/ui/Button';
-import { useReactToPrint } from 'react-to-print';
 import { ILessonPlan } from '@/assets/typescript/lesson-plan';
 
 // * Props
 interface IProps {
-  lessonPlan: ILessonPlan;
+  lessonPlan: ILessonPlan & { user_lesson_plan_id?: string };
   assignmentContent?: string;
 }
 
@@ -26,6 +25,10 @@ export default function Assignment({ lessonPlan, assignmentContent }: IProps) {
       </Button>
     </>
   ) : (
-    <AssignmentCreatorForm isModal={false} lessonPlan={lessonPlan} />
+    <AssignmentCreatorForm
+      isModal={false}
+      lessonPlan={lessonPlan}
+      userLessonPlanId={lessonPlan.user_lesson_plan_id}
+    />
   );
 }

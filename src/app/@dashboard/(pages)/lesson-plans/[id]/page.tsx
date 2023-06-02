@@ -61,8 +61,6 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
             assignmentContent={assignment?.content}
             lessonPlan={lessonPlan}
           />
-
-          {/* TSK */}
         </DashPanel>
 
         {/* Get Help on Lesson Plan */}
@@ -74,19 +72,24 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
 // * Fetcher
 async function getAssignmentByLessonPlanId(id: string) {
   const supabase = supabaseServer();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
   const { data, error } = await supabase
-    .from('assignments')
+    .rpc('get_assignments_by_lesson_plan_and_teacher', {
+      lesson_plan_uuid: id,
+      teacher_uuid: session?.user.id!,
+    })
     .select('content')
-    .eq('lesson_plan_id', id)
     .single();
 
-  if (error) return null;
+  if (error || !data.content) return null;
 
   return data;
 }
 
-export async function getLessonPlan(id: string) {
+async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
@@ -96,21 +99,6 @@ export async function getLessonPlan(id: string) {
     .single();
 
   if (error) redirect('/lesson-creator');
-
-  // Fetch related data from the user_lesson_plans table
-  const { data: userLessonPlanData, error: userLessonPlanError } =
-    await supabase
-      .from('user_lesson_plans')
-      .select('id')
-      .eq('lesson_plan_id', id)
-      .maybeSingle();
-
-  if (userLessonPlanError) throw userLessonPlanError;
-
-  // Attach the related data to the response
-  if (data) {
-    (data as any).user_lesson_plan = userLessonPlanData;
-  }
 
   return data as ILessonPlan;
 }

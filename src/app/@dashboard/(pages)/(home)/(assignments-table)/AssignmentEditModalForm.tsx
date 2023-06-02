@@ -1,13 +1,18 @@
 import Tag from '@/lib/components/ui/Tag';
 import { PaperClipIcon } from '@heroicons/react/24/outline';
 import {
-  IAssignmentResponse,
   changeAssignmentStatus,
   deleteAssignment,
   editAssignment,
 } from '../../lesson-plans/[id]/(assignments)/_actions';
 import { useRequest } from '@/lib/hooks/useRequest';
-import { Dispatch, SetStateAction, useState, useTransition } from 'react';
+import {
+  Dispatch,
+  Fragment,
+  SetStateAction,
+  useState,
+  useTransition,
+} from 'react';
 import Input from '@/lib/components/form/Input';
 import DatePicker from '@/lib/components/form/DatePicker';
 import Button from '@/lib/components/ui/Button';
@@ -15,47 +20,55 @@ import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import Image from 'next/image';
-import { UserStudent } from '@/assets/typescript/user';
+import { ISimpleStudent } from '@/assets/typescript/user';
 import { downloadPdf } from '@/lib/common/downloadPdf';
 import { getStatusColor } from '@/lib/theme/enumColors';
+import {
+  IAssignmentWithLessonPlan,
+  TAssignmentStatus,
+} from '@/assets/typescript/assignment';
 
+// * Props
 interface IProps {
-  assignment: IAssignmentResponse;
-  setAssignmentsEditModal: Dispatch<SetStateAction<boolean>>;
-  usersStudents: UserStudent[];
+  assignment: IAssignmentWithLessonPlan;
+  usersStudents: ISimpleStudent[];
+  close: () => void;
 }
+
+// * Component
 export default function AssignmentEditModalForm({
   assignment,
-  setAssignmentsEditModal,
   usersStudents,
+  close,
 }: IProps) {
-  const [title, setTitle] = useState(assignment.title);
-  // const [assignedOn, setAssignedOn] = useState(assignment.assigned_on);
-  // const [dueDate, setDueDate] = useState(assignment.due_date);
-
+  // * State
+  const [title, setTitle] = useState(assignment.title); // Assignment Title
   const [assignedOn, setAssignedOn] = useState<Date | null>(
-    new Date(assignment.assigned_on),
+    new Date(assignment.assignedOn), // Assigned On
   );
   const [dueDate, setDueDate] = useState<Date | null>(
-    new Date(assignment.due_date),
+    new Date(assignment.dueOn), // Due Date
   );
-
-  const [isExpanded, setIsExpanded] = useState(false);
-
+  const [isExpanded, setIsExpanded] = useState(false); // Is Expanded
+  let [isChanging, startTransition] = useTransition(); // Mutation Transition
   const showLessContent = assignment.content.slice(
     0,
     assignment.content.length * 0.1,
-  );
+  ); // Show Less Content
 
-  const { mutate, error, isLoading } = useRequest(changeAssignmentStatus);
-  let [isChanging, startTransition] = useTransition();
+  // * Requests / Mutations
+  const { mutate, isLoading } = useRequest(changeAssignmentStatus);
 
+  // * Handlers
+  // TSK
   const handleSubmit = async () => {
+    // Validation
     const errors = [];
     if (!title || title.trim() === '') errors.push('Title is Required');
     if (!assignedOn) errors.push('Assigned On is Required');
     if (!dueDate) errors.push('Due Date is Required');
 
+    // Return if errors
     if (errors.length > 0) {
       errors.forEach((msg) => {
         toast.error(msg);
@@ -63,6 +76,7 @@ export default function AssignmentEditModalForm({
       return;
     }
 
+    // Submit
     const { ok } = await editAssignment({
       id: assignment.id,
       title,
@@ -70,9 +84,10 @@ export default function AssignmentEditModalForm({
       assignedOn: assignedOn!,
     });
 
+    // Handle Response
     if (ok) {
       toast.success('Assignment Edit Complete!');
-      setAssignmentsEditModal(false);
+      close();
     } else {
       toast.error('Error Updating Assignment');
     }
@@ -81,12 +96,12 @@ export default function AssignmentEditModalForm({
   const handleDelete = async () => {
     const { ok } = await deleteAssignment({
       id: assignment.id,
-      lesson_plan_id: assignment.lesson_plan_id,
+      lesson_plan_id: assignment.lessonPlan.id,
     });
 
     if (ok) {
       toast.success('Assignment Deleted!');
-      setAssignmentsEditModal(false);
+      close();
     } else {
       toast.error('Failed to Delete Assignment');
     }
@@ -136,11 +151,8 @@ export default function AssignmentEditModalForm({
             <dt className="text-sm font-medium text-slate-500">Assigned To</dt>
             <dd className="mt-1 flex items-center">
               {/* Avatar */}
-              {getStudentCreds(
-                assignment.user_lesson_plan.students,
-                usersStudents,
-              ).map((student, index) => (
-                <React.Fragment key={index}>
+              {usersStudents?.map((student, index) => (
+                <Fragment key={index}>
                   <Image
                     className="mr-2 h-8 w-8 rounded-full"
                     src={student.avatarUrl}
@@ -151,7 +163,8 @@ export default function AssignmentEditModalForm({
                   <span className="text-sm mr-2">
                     {student.firstName} {student.lastName}
                   </span>
-                </React.Fragment>
+                  {/* TSK: Avatar */}
+                </Fragment>
               ))}
             </dd>
           </div>
@@ -169,11 +182,7 @@ export default function AssignmentEditModalForm({
                     startTransition(() =>
                       mutate({
                         id: assignment.id,
-                        status: assignment.status as
-                          | 'PENDING'
-                          | 'IN_PROGRESS'
-                          | 'COMPLETED'
-                          | 'CANCELED',
+                        status: assignment.status as TAssignmentStatus,
                       }),
                     );
                   }}
