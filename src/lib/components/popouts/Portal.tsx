@@ -22,6 +22,7 @@ export default function Portal({
 
   // * Render
   return ready
-    ? createPortal(children, document.getElementById(portalName) as HTMLElement)
+    ? // @ts-ignore
+      createPortal(children, document.getElementById(portalName) as HTMLElement)
     : null;
 }

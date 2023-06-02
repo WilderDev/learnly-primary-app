@@ -16,6 +16,7 @@ export default async function TopHeaderItems() {
     <ul className="flex items-center space-x-4">
       {/* Theme Toggler */}
       <li>
+        {/* @ts-ignore */}
         <ThemeTogglerButton />
       </li>
 
