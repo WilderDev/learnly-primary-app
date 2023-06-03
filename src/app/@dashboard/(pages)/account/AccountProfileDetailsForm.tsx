@@ -31,7 +31,9 @@ export default function AccountProfileDetailsForm() {
     {
       onSuccess: (data) => {
         if (data.ok) {
-          toast.success('Profile Updated Successfully');
+          toast.success(
+            'Profile Updated Successfully! Email or phone Updated? Check your inbox for a verification email. You will need to sign out and sign back in to continue.',
+          );
           revalidatePath('/account'); // ✅
         } else {
           toast.error('Something went wrong');
@@ -50,6 +52,8 @@ export default function AccountProfileDetailsForm() {
   // * Effects
   // Set Initial State from Context
   useEffect(() => {
+    console.log('session:', session);
+    console.log('user:', user);
     if (user && session) {
       setFirstName(user.firstName);
       setLastName(user.lastName);

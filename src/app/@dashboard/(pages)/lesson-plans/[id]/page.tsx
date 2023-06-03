@@ -191,3 +191,6 @@ export async function generateStaticParams() {
 
   return dynamicRoutes;
 }
+
+export const revalidate = 0;
+export const dynamicParams = true;
