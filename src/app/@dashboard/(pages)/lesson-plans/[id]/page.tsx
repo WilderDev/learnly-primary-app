@@ -64,7 +64,6 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         <DashPanel colNum={1}>
           <DashPanelHeader title="Assignment" />
           {/* Assessment */}
-          {/* TSK TSK TSK */}
           <Assignment
             assignmentContent={assignment?.content}
             lessonPlan={lessonPlan}
@@ -102,8 +101,8 @@ async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
-    .from('lesson_plans') // TSK: create a view for this
-    .select('*, level:levels(name)')
+    .from('lesson_plan_with_creator_view')
+    .select('*')
     .eq('id', id)
     .single();
 
@@ -115,14 +114,14 @@ async function getLessonPlan(id: string) {
     image_path: data.image_path!,
     content: data.content!,
     tags: data.tags!,
-    subject_name: 'tsk',
-    level_name: (data.level as unknown as { name: string }).name,
-    topic_name: 'tsk',
+    subject_name: data.subject_name!,
+    level_name: data.level_name!,
+    topic_name: data.topic_name!,
     creator: {
-      id: 'tsk',
-      firstName: 'tsk',
-      lastName: 'tsk',
-      avatarUrl: '/static/icons/avatars/bear.png',
+      id: data.creator_id!,
+      firstName: data.creator_first_name!,
+      lastName: data.creator_last_name!,
+      avatarUrl: data.creator_avatar_url!,
     },
   };
 
@@ -136,7 +135,7 @@ async function getUserLessonPlan(id: string) {
   } = await supabase.auth.getSession();
 
   const { data, error } = await supabase
-    .from('user_lesson_plans') // TSK: Create view that gets all the students, not just the string[]
+    .from('user_lesson_plans')
     .select('*')
     .eq('lesson_plan_id', id)
     .eq('teacher_id', session?.user.id!)

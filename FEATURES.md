@@ -15,6 +15,7 @@
 1. [Marketing Emails](https://vscode.dev/github/WilderDev/learnly-primary-app/blob/staging/TODO.md#L15)
 2. Create an internal analytics dashboard to see all sign ups and their activity | _EASY/MEDIUM_
 3. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
+4. POST*MVP messages (use search in VSCode) | \_EASY*
 
 ---
 

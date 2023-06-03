@@ -453,6 +453,17 @@ ORDER BY
 
 --- Similar Lessons View
 CREATE VIEW similar_lessons_view AS
+WITH duplicate_lesson_plans AS (
+  SELECT
+    lesson_plan_id
+  FROM
+    user_lesson_plans
+  GROUP BY
+    lesson_plan_id
+  HAVING
+    COUNT(DISTINCT teacher_id) > 1
+)
+
 SELECT
   lp.id,
   lp.creator_id,
@@ -477,6 +488,7 @@ FROM (
       ROW_NUMBER() OVER (PARTITION BY topic ORDER BY created_at DESC) as rn
     FROM
       lesson_plans
+    WHERE id NOT IN (SELECT lesson_plan_id FROM duplicate_lesson_plans)
   )
   UNION
   (
@@ -485,6 +497,7 @@ FROM (
       ROW_NUMBER() OVER (PARTITION BY level ORDER BY created_at DESC) as rn
     FROM
       lesson_plans
+    WHERE id NOT IN (SELECT lesson_plan_id FROM duplicate_lesson_plans)
   )
   UNION
   (
@@ -493,6 +506,7 @@ FROM (
       ROW_NUMBER() OVER (PARTITION BY subject ORDER BY created_at DESC) as rn
     FROM
       lesson_plans
+    WHERE id NOT IN (SELECT lesson_plan_id FROM duplicate_lesson_plans)
   )
 ) AS lp
 JOIN teacher_profiles tp ON lp.creator_id = tp.id
@@ -522,6 +536,32 @@ FROM
 ORDER BY
   ulp.completion_date DESC
 LIMIT 10;
+
+--- Lesson Plan with Creator
+CREATE VIEW lesson_plan_with_creator_view AS
+SELECT
+  lp.id,
+  lp.title,
+  lp.image_path,
+  lp.content,
+  lp.tags,
+  s.name AS subject_name,
+  lv.name AS level_name,
+  t.name AS topic_name,
+  tp.id AS creator_id,
+  tp.first_name AS creator_first_name,
+  tp.last_name AS creator_last_name,
+  tp.avatar_url AS creator_avatar_url
+FROM
+  lesson_plans lp
+JOIN
+  teacher_profiles tp ON lp.creator_id = tp.id
+JOIN
+  subjects s ON lp.subject = s.id
+JOIN
+  levels lv ON lp.level = lv.id
+JOIN
+  topics t ON lp.topic = t.id;
 
 
 -- * FUNCTIONS

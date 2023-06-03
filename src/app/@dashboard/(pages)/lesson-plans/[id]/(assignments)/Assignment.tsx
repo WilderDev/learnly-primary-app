@@ -5,7 +5,6 @@ import { useState } from 'react';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Button from '@/lib/components/ui/Button';
 import {
-  ILessonPlan,
   ILessonPlanWithCreator,
   IUserLessonPlanBasic,
 } from '@/assets/typescript/lesson-plan';

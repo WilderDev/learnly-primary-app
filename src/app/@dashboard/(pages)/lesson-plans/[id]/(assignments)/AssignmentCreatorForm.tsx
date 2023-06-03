@@ -103,8 +103,9 @@ export default function AssignmentCreatorForm({
         {
           style: {
             background: '#0284c7',
-            border: '1px solid #a5f3fc',
-            color: '#fff',
+            border: '0px solid #a5f3fc',
+            color: '#f1f1f1',
+            fontWeight: 'semibold',
           },
         },
       );
@@ -213,20 +214,29 @@ export default function AssignmentCreatorForm({
       ) : (
         <Form className="w-full" onSubmit={handleAssignmentFormSubmit}>
           {isModal && lessonPlans ? (
-            <Select
-              label="Lesson Selection"
-              options={createSelectOptions(
-                lessonPlans.map((lp) => ({
-                  label: lp.lesson_plan_name,
-                  value: lp.user_lesson_plan_id,
-                })),
-              )}
-              value={userLessonOption}
-              setValue={setUserLessonOption as Dispatch<SetStateAction<string>>}
-              cols={4}
-              icon={BookmarkSquareIcon}
-              displayLabel={true}
-            />
+            lessonPlans.length > 0 ? (
+              <Select
+                label="Lesson Selection"
+                options={createSelectOptions(
+                  lessonPlans.map((lp) => ({
+                    label: lp.lesson_plan_name,
+                    value: lp.user_lesson_plan_id,
+                  })),
+                )}
+                value={userLessonOption}
+                setValue={
+                  setUserLessonOption as Dispatch<SetStateAction<string>>
+                }
+                cols={4}
+                icon={BookmarkSquareIcon}
+                displayLabel={true}
+              />
+            ) : (
+              <p className="col-span-4 font-semibold underline text-center text-slate-600 dark:text-navy-200">
+                You will have to save a lesson plan first to create an
+                assignment!
+              </p>
+            )
           ) : (
             <Input
               label="Title"

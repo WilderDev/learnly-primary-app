@@ -1394,6 +1394,22 @@ export interface Database {
           topic: Json | null
         }
       }
+      lesson_plan_with_creator_view: {
+        Row: {
+          content: string | null
+          creator_avatar_url: string | null
+          creator_first_name: string | null
+          creator_id: string | null
+          creator_last_name: string | null
+          id: string | null
+          image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          subject_name: string | null
+          tags: string[] | null
+          title: string | null
+          topic_name: string | null
+        }
+      }
       lesson_plans_with_creator_and_students_view: {
         Row: {
           completion_date: string | null

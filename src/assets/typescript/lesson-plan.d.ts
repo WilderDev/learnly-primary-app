@@ -35,7 +35,7 @@ export interface ILessonPlanWithCreator {
 }
 
 // Lesson Plan Output
-export interface ILessonPlan {
+export interface ILessonPlanWithDetails {
   id: string;
   title: string;
   content: string;

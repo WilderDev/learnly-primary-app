@@ -3,7 +3,6 @@ import {
   DashPanel,
   DashPanelHeader,
 } from '@/app/@dashboard/(layout)/DashPanel';
-import DashSideCol from '@/app/@dashboard/(layout)/DashSideCol';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { redirect } from 'next/navigation';
 import CurriculumLessonForm from './CurriculumLessonForm';
@@ -12,7 +11,6 @@ import {
   ICurriculumLessonPlan,
 } from '@/assets/typescript/curriculum-roadmaps';
 import CurriculumLessonPlanContainer from './CurriculumLessonPlanContainer';
-import LessonCreatorCommunityLessons from '@/app/@dashboard/(pages)/lesson-creator/LessonCreatorCommunityLessons';
 
 // * IParams
 interface IParams {
