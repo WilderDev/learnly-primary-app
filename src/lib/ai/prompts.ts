@@ -1,3 +1,4 @@
+import { IAIAssignmentPostReq } from '@/app/api/ai/assignments/route';
 import { IAICurriculumLessonPlanPostReq } from '@/app/api/ai/lesson-plans/curriculum/route';
 import { IAILessonPlanPostReq } from '@/app/api/ai/lesson-plans/route';
 
@@ -30,7 +31,7 @@ export function generateLessonPlanPrompt({
   // Teaching Strategies
   const teachingStrategies = teaching_preferences?.teachingStrategies?.length
     ? `Favorite Teaching Strategies: ${teaching_preferences?.teachingStrategies?.join(
-        ', ',
+        ', '
       )}.`
     : '';
 
@@ -42,7 +43,7 @@ export function generateLessonPlanPrompt({
   // Teaching Tools
   const teachingTools = teaching_preferences?.teachingTools?.length
     ? `Favorite teaching tools: ${teaching_preferences?.teachingTools?.join(
-        ', ',
+        ', '
       )}.`
     : '';
 
@@ -64,8 +65,8 @@ export function generateLessonPlanPrompt({
           `- Student ${index + 1}: ${student.name}, Age: ${
             student.age
           }, Goals: ${student.goals.join(
-            ',',
-          )}, Special Needs: ${student.specialNeeds.join(',')}.`,
+            ','
+          )}, Special Needs: ${student.specialNeeds.join(',')}.`
       )
       ?.join('\n') || '';
 
@@ -121,7 +122,7 @@ export function generateLessonPlanPrompt({
   ${paceSection}
   ${materialsSection}
   The preferred learning styles for this lesson are ${lessonLearningStyles?.join(
-    ', ',
+    ', '
   )}.
 
   The only students (children) are:
@@ -171,7 +172,7 @@ export function generateCurriculumLessonPlanPrompt({
   // Teaching Strategies
   const teachingStrategies = teaching_preferences?.teachingStrategies?.length
     ? `Favorite Teaching Strategies: ${teaching_preferences?.teachingStrategies?.join(
-        ', ',
+        ', '
       )}.`
     : '';
 
@@ -183,7 +184,7 @@ export function generateCurriculumLessonPlanPrompt({
   // Teaching Tools
   const teachingTools = teaching_preferences?.teachingTools?.length
     ? `Favorite teaching tools: ${teaching_preferences?.teachingTools?.join(
-        ', ',
+        ', '
       )}.`
     : '';
 
@@ -215,8 +216,8 @@ export function generateCurriculumLessonPlanPrompt({
           `- Student ${index + 1}: ${student.name}, Age: ${
             student.age
           }, Goals: ${student.goals.join(
-            ',',
-          )}, Special Needs: ${student.specialNeeds.join(',')}.`,
+            ','
+          )}, Special Needs: ${student.specialNeeds.join(',')}.`
       )
       ?.join('\n') || '';
 
@@ -258,6 +259,66 @@ Do NOT include an H1 (#) tag, start with an H2 (##) for each section. <li> eleme
 
 Return the lesson plan in clean markdown format.
     `.trim();
+
+  return prompt;
+}
+
+export function generateAssignmentPrompt({
+  questions,
+  lessonPlanContent,
+  lessonPlanGrade,
+  additionalComments,
+}: IAIAssignmentPostReq) {
+  function splitQuestions(totalQuestions: number) {
+    const multipleChoiceQuestions = Math.floor(Math.random() * totalQuestions);
+    const fillInTheBlankQuestions = totalQuestions - multipleChoiceQuestions;
+
+    return {
+      multipleChoiceQuestions,
+      fillInTheBlankQuestions,
+    };
+  }
+
+  const { multipleChoiceQuestions, fillInTheBlankQuestions } =
+    splitQuestions(questions);
+
+  const prompt = `
+Create an assignment worksheet that a homeschool parent can use to give to their child (Grade: ${lessonPlanGrade}). The worksheet should be based on the lesson content provided below.
+
+***LESSON CONTENT***
+${lessonPlanContent}
+***
+
+Follow the guidelines below when creating the worksheet:
+1. The worksheet should contain ${questions} questions - ${fillInTheBlankQuestions} fill-in-the-blank and ${multipleChoiceQuestions} multiple choice questions.
+2. Multiple choice questions should have four options - one correct and three incorrect.
+3. Focus on testing understanding of the key concepts in the lesson content. Avoid questions focused on the structure or materials used in the lesson.
+4. Return in clean markdown format with a space for name and date at the top. Put all questions first then answers at the end. <li> elements should NOT have a paragraph inside them.
+5. Additional guidelines: ${additionalComments ?? 'N/A'}.
+
+Follow the example below when creating the worksheet:
+
+***SAMPLE WORKSHEET***
+
+Name: ___________   Date: ___________
+
+## Questions
+
+1. Which of the following is the capital of England?
+- (a) Paris
+- (b) Madrid
+- (c) London
+- (d) Berlin
+
+2. What ...
+
+## Answers
+
+1. London (c)
+2. ...
+
+***
+`.trim();
 
   return prompt;
 }

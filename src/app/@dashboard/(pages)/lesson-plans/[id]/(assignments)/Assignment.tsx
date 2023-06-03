@@ -8,6 +8,7 @@ import {
   ILessonPlanWithCreator,
   IUserLessonPlanBasic,
 } from '@/assets/typescript/lesson-plan';
+import { usePrint } from '@/lib/common/usePrint';
 
 // * Props
 interface IProps {
@@ -22,13 +23,16 @@ export default function Assignment({
   userLessonPlan,
   assignmentContent,
 }: IProps) {
-  const [printAssignment, setPrintAssignment] = useState(false);
+  // * Hooks
+  const { componentRef, handlePrint } = usePrint();
 
   return assignmentContent ? (
     <>
-      <LessonPlanMarkdown content={assignmentContent} print={printAssignment} />
+      <div ref={componentRef}>
+        <LessonPlanMarkdown content={assignmentContent} />
+      </div>
 
-      <Button onClick={() => setPrintAssignment(true)} className="print:hidden">
+      <Button onClick={handlePrint} className="print:hidden">
         Print
       </Button>
     </>

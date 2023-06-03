@@ -9,7 +9,7 @@ import LessonPlanCreatorInfo from './LessonPlanCreatorInfo';
 import LessonPlanTags from './LessonPlanTags';
 import LessonPlanActionIcons from './LessonPlanActionIcons';
 import LessonPlanMarkComplete from './LessonPlanMarkComplete';
-import { useState } from 'react';
+import { usePrint } from '@/lib/common/usePrint';
 
 // * Props
 interface IProps {
@@ -22,8 +22,8 @@ export default function LessonPlanContainer({
   lessonPlan,
   userLessonPlan,
 }: IProps) {
-  // * State
-  const [print, setPrint] = useState(false);
+  // * Hooks
+  const { componentRef, handlePrint } = usePrint(lessonPlan.title);
 
   // * Render
   return (
@@ -44,7 +44,7 @@ export default function LessonPlanContainer({
             <LessonPlanActionIcons
               id={lessonPlan.id}
               hasScheduledDate={!!userLessonPlan?.scheduledDate}
-              handlePrint={() => setPrint(true)}
+              handlePrint={handlePrint}
             />
           </div>
 
@@ -53,7 +53,9 @@ export default function LessonPlanContainer({
         </div>
 
         {/* Content */}
-        <LessonPlanMarkdown content={lessonPlan.content} print={print} />
+        <div ref={componentRef}>
+          <LessonPlanMarkdown content={lessonPlan.content} />
+        </div>
 
         {/* Mark Complete */}
         {!!userLessonPlan && (

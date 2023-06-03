@@ -7,18 +7,13 @@ import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import LessonCreatorDock from './LessonCreatorDock';
 import cn from '@/lib/common/cn';
-import { useRef, useState } from 'react';
-import { useReactToPrint } from 'react-to-print';
+import { usePrint } from '@/lib/common/usePrint';
 
 // * Component
 export default function LessonCreatorModal() {
   // * Hooks / Context
   const { id, lessonContent, complete, reset, isLoading } = useLessonCreator();
-
-  const componentRef = useRef<HTMLDivElement | null>(null);
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current!,
-  });
+  const { componentRef, handlePrint } = usePrint();
 
   // * Return
   return (
