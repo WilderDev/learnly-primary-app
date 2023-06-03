@@ -38,6 +38,8 @@ async function updateProfileAction(input: z.infer<typeof updateProfileSchema>) {
       data: { session },
     } = await supabase.auth.getSession();
 
+    console.log('input:', input);
+
     const { error } = await supabase
       .from('teacher_profiles')
       .update({
@@ -51,6 +53,8 @@ async function updateProfileAction(input: z.infer<typeof updateProfileSchema>) {
       email: input.email,
       phone: input.phone,
     });
+
+    console.log('error2:', error2);
 
     if (error || error2)
       return responseContract('Something went wrong!', false);

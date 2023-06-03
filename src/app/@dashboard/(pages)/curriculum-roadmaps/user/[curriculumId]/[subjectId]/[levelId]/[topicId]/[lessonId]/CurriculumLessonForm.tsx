@@ -60,6 +60,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
   const [additionalRequests, setAdditionalRequests] = useState('');
   const [loading, setLoading] = useState(false);
   const [lessonId, setLessonId] = useState('');
+  const [print, setPrint] = useState(false);
 
   // * Handlers
   // Create Lesson Plan (Modal)
@@ -252,17 +253,19 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
       {/* Lesson Plan Modal */}
       <Modal
         isVisible={lessonOutput !== ''}
-        close={() => {}}
+        close={() => window.location.reload()}
         noCloseOnOutsideClick={true}
         size="lg"
       >
-        <LessonPlanMarkdown content={lessonOutput} />
+        <LessonPlanMarkdown content={lessonOutput} print={print} />
       </Modal>
+
       {lessonId && (
         <CurriculumLessonDock
           lessonId={lessonId}
           studentIds={studentIds}
           shareUrl={`/lesson-plans/${lessonId}`}
+          print={() => setPrint(true)}
         />
       )}
 
@@ -272,11 +275,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
           className={cn(
             'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors',
           )}
-          onClick={() =>
-            router.push(
-              `/curriculum-roadmaps/user/${lesson.curriculum.id}/${lesson.subject.id}/${lesson.level.id}/${lesson.topic.id}/${lesson.lesson.id}`,
-            )
-          }
+          onClick={() => window.location.reload()}
         >
           <XMarkIcon className="w-6 h-6 text-slate-300 group:text-slate-100 dark:text-navy-200 dark:focus:text-navy-100" />
         </button>

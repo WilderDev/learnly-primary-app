@@ -138,10 +138,10 @@ export default function AssignmentCreatorForm({
     setAssignmentContent(''); // Reset Assignment Content
 
     // Set Assignment Content and Actions
-    streamReader(res.body!, setAssignmentContent, async () => {});
-
-    setAssignmentActions(true);
-    setIsLoadingAssignment(false);
+    streamReader(res.body!, setAssignmentContent, async () => {
+      setAssignmentActions(true);
+      setIsLoadingAssignment(false);
+    });
   };
 
   const handleSaveAssignment = async () => {

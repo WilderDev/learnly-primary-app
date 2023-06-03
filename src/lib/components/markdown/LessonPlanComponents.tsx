@@ -77,6 +77,10 @@ const DIV = ({ ...props }) => (
   <div className="space-y-2 text-slate-700 dark:text-navy-200" {...props} />
 );
 
+const SPAN = ({ ...props }) => (
+  <span className="text-slate-700 dark:text-navy-200" {...props} />
+);
+
 export const lessonPlanComponents = {
   h1: H1,
   h2: H2,
@@ -91,4 +95,6 @@ export const lessonPlanComponents = {
   li: LI,
   blockquote: Blockquote,
   div: DIV,
+  pre: P,
+  code: SPAN,
 };
