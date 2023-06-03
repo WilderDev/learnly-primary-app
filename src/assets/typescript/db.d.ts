@@ -1148,24 +1148,6 @@ export interface Database {
           url?: string | null
         }
       }
-      assignment_with_details_view: {
-        Row: {
-          assigned_on: string | null
-          assignment_content: string | null
-          assignment_id: string | null
-          assignment_status:
-            | Database["public"]["Enums"]["assignment_status"]
-            | null
-          assignment_title: string | null
-          due_date: string | null
-          lesson_plan_subject: string | null
-          lesson_plan_title: string | null
-          student_avatar_url: string | null
-          student_first_name: string | null
-          student_id: string | null
-          student_last_name: string | null
-        }
-      }
       assignments_with_details_view: {
         Row: {
           assigned_on: string | null
@@ -1412,6 +1394,22 @@ export interface Database {
           topic: Json | null
         }
       }
+      lesson_plan_with_creator_view: {
+        Row: {
+          content: string | null
+          creator_avatar_url: string | null
+          creator_first_name: string | null
+          creator_id: string | null
+          creator_last_name: string | null
+          id: string | null
+          image_path: string | null
+          level_name: Database["public"]["Enums"]["level"] | null
+          subject_name: string | null
+          tags: string[] | null
+          title: string | null
+          topic_name: string | null
+        }
+      }
       lesson_plans_with_creator_and_students_view: {
         Row: {
           completion_date: string | null
@@ -1475,6 +1473,53 @@ export interface Database {
           teacher_id: string | null
           topic_name: string | null
           user_curriculum_id: string | null
+        }
+      }
+      recent_unsaved_lessons_view: {
+        Row: {
+          content: string | null
+          created_at: string | null
+          creator_id: string | null
+          id: string | null
+          image_path: string | null
+          is_public: boolean | null
+          length_in_min: number | null
+          level: string | null
+          subject: string | null
+          tags: string[] | null
+          title: string | null
+          topic: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string | null
+          creator_id?: string | null
+          id?: string | null
+          image_path?: string | null
+          is_public?: boolean | null
+          length_in_min?: number | null
+          level?: string | null
+          subject?: string | null
+          tags?: string[] | null
+          title?: string | null
+          topic?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string | null
+          created_at?: string | null
+          creator_id?: string | null
+          id?: string | null
+          image_path?: string | null
+          is_public?: boolean | null
+          length_in_min?: number | null
+          level?: string | null
+          subject?: string | null
+          tags?: string[] | null
+          title?: string | null
+          topic?: string | null
+          updated_at?: string | null
         }
       }
       recently_completed_lesson_plans_view: {
@@ -1900,6 +1945,50 @@ export interface Database {
           user_id: string
         }
         Returns: undefined
+      }
+      recent_unsaved_lessons: {
+        Args: {
+          user_id: string
+        }
+        Returns: {
+          id: string
+          creator_id: string
+          title: string
+          subject: string
+          level: string
+          topic: string
+          content: string
+          tags: string[]
+          image_path: string
+          length_in_min: number
+          is_public: boolean
+          created_at: string
+          updated_at: string
+        }[]
+      }
+      similar_lessons: {
+        Args: {
+          lesson_id: string
+          user_id: string
+        }
+        Returns: {
+          id: string
+          creator_id: string
+          first_name: string
+          last_name: string
+          avatar_url: string
+          title: string
+          subject: string
+          level: string
+          topic: string
+          content: string
+          tags: string[]
+          image_path: string
+          length_in_min: number
+          is_public: boolean
+          created_at: string
+          updated_at: string
+        }[]
       }
     }
     Enums: {

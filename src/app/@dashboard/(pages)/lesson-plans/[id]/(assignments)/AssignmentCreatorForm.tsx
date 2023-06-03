@@ -16,15 +16,18 @@ import { streamReader } from '@/lib/ai/stream';
 import { saveAssignment } from './_actions';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Modal from '@/lib/components/popouts/Modal';
-import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import {
+  ILessonPlanWithCreator,
+  IUserLessonPlanBasic,
+} from '@/assets/typescript/lesson-plan';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import LessonPlanSaveDetailsModalForm from '../LessonPlanSaveDetailsModal';
 
 // * Props
 interface IProps {
   isModal?: boolean;
-  lessonPlan?: ILessonPlan;
-  userLessonPlanId?: string;
+  lessonPlan?: ILessonPlanWithCreator;
+  userLessonPlan?: IUserLessonPlanBasic;
   lessonPlans?: {
     user_lesson_plan_id: string;
     lesson_plan_name: string;
@@ -37,7 +40,7 @@ interface IProps {
 export default function AssignmentCreatorForm({
   isModal = true,
   lessonPlan,
-  userLessonPlanId,
+  userLessonPlan,
   lessonPlans,
 }: IProps) {
   // * State
@@ -93,15 +96,16 @@ export default function AssignmentCreatorForm({
     }
 
     // If the lesson plan isn't saved, save it
-    if (!userLessonPlanId && !isModal) {
+    if (!userLessonPlan && !isModal) {
       setIsLoadingAssignment(false);
       toast.error(
         'You must save the lesson plan before you can create an assignment.',
         {
           style: {
             background: '#0284c7',
-            border: '1px solid #a5f3fc',
-            color: '#fff',
+            border: '0px solid #a5f3fc',
+            color: '#f1f1f1',
+            fontWeight: 'semibold',
           },
         },
       );
@@ -148,7 +152,7 @@ export default function AssignmentCreatorForm({
         : assignmentTitle,
       content: assignmentContent,
       due_date: assignmentDueDate!,
-      user_lesson_plan_id: userLessonPlanId || userLessonOption,
+      user_lesson_plan_id: userLessonPlan?.id ?? userLessonOption,
     });
 
     if (ok) {
@@ -210,20 +214,29 @@ export default function AssignmentCreatorForm({
       ) : (
         <Form className="w-full" onSubmit={handleAssignmentFormSubmit}>
           {isModal && lessonPlans ? (
-            <Select
-              label="Lesson Selection"
-              options={createSelectOptions(
-                lessonPlans.map((lp) => ({
-                  label: lp.lesson_plan_name,
-                  value: lp.user_lesson_plan_id,
-                })),
-              )}
-              value={userLessonOption}
-              setValue={setUserLessonOption as Dispatch<SetStateAction<string>>}
-              cols={4}
-              icon={BookmarkSquareIcon}
-              displayLabel={true}
-            />
+            lessonPlans.length > 0 ? (
+              <Select
+                label="Lesson Selection"
+                options={createSelectOptions(
+                  lessonPlans.map((lp) => ({
+                    label: lp.lesson_plan_name,
+                    value: lp.user_lesson_plan_id,
+                  })),
+                )}
+                value={userLessonOption}
+                setValue={
+                  setUserLessonOption as Dispatch<SetStateAction<string>>
+                }
+                cols={4}
+                icon={BookmarkSquareIcon}
+                displayLabel={true}
+              />
+            ) : (
+              <p className="col-span-4 font-semibold underline text-center text-slate-600 dark:text-navy-200">
+                You will have to save a lesson plan first to create an
+                assignment!
+              </p>
+            )
           ) : (
             <Input
               label="Title"
@@ -321,7 +334,7 @@ export default function AssignmentCreatorForm({
       {lessonPlan && (
         <LessonPlanSaveDetailsModalForm
           lessonPlanId={lessonPlan.id}
-          defaultStudentIds={lessonPlan.students || []}
+          defaultStudentIds={userLessonPlan?.studentIds ?? []}
           isVisible={saveDetailsModalOpen}
           close={() => setSaveModalOpen(false)}
         />

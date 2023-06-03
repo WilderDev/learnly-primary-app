@@ -59,7 +59,6 @@ export default function PopularCurriculumRoadmaps({ roadmaps }: IProps) {
           <SaveCurriculumRoadmapModalContent
             roadmaps={roadmaps}
             defaultSelected={selectedOption}
-            close={() => setSelectedOption('')}
           />
         )}
       </Modal>

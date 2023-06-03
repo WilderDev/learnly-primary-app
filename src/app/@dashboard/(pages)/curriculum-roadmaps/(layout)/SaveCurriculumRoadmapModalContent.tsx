@@ -16,19 +16,16 @@ import Modal from '@/lib/components/popouts/Modal';
 import Form from '@/lib/components/form/Form';
 import cn from '@/lib/common/cn';
 import { ICurriculumListItem } from '@/assets/typescript/curriculum-roadmaps';
-import { revalidatePath } from 'next/cache';
 
 // * Props
 interface IProps {
   roadmaps: ICurriculumListItem[];
   defaultSelected?: string;
-  close?: () => void;
 }
 
 export default function SaveCurriculumRoadmapModalContent({
   roadmaps,
   defaultSelected = 'Comprehensive K-5',
-  close = () => null,
 }: IProps) {
   // * Hooks / Context
   const { students } = useUser();
@@ -46,13 +43,13 @@ export default function SaveCurriculumRoadmapModalContent({
   const { mutate, isLoading } = useRequest(saveCurriculum, {
     onSuccess: (data) => {
       if (data.ok) {
-        revalidatePath(`/curriculum-roadmaps`); // ✅
-        setSelectedCurriculum('');
-        setCurriculumStudents([]);
         toast.success(
           'Curriculum Saved! You might need to refresh your page...',
         );
-        close();
+        setSelectedCurriculum('');
+        setCurriculumStudents([]);
+        window.location.reload();
+        // revalidatePath('/curriculum-roadmaps'); // ✅
       } else {
         toast.error(
           "Something went wrong... You might've already saved this curriculum.",

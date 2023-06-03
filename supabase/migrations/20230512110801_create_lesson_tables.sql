@@ -451,53 +451,6 @@ ORDER BY
   ulp.completion_date DESC;
 
 
---- Similar Lessons View
-CREATE VIEW similar_lessons_view AS
-SELECT
-  lp.id,
-  lp.creator_id,
-  tp.first_name,
-  tp.last_name,
-  tp.avatar_url,
-  lp.title,
-  lp.subject,
-  lp.level,
-  lp.topic,
-  lp.content,
-  lp.tags,
-  lp.image_path,
-  lp.length_in_min,
-  lp.is_public,
-  lp.created_at,
-  lp.updated_at
-FROM (
-  (
-    SELECT
-      *,
-      ROW_NUMBER() OVER (PARTITION BY topic ORDER BY created_at DESC) as rn
-    FROM
-      lesson_plans
-  )
-  UNION
-  (
-    SELECT
-      *,
-      ROW_NUMBER() OVER (PARTITION BY level ORDER BY created_at DESC) as rn
-    FROM
-      lesson_plans
-  )
-  UNION
-  (
-    SELECT
-      *,
-      ROW_NUMBER() OVER (PARTITION BY subject ORDER BY created_at DESC) as rn
-    FROM
-      lesson_plans
-  )
-) AS lp
-JOIN teacher_profiles tp ON lp.creator_id = tp.id
-WHERE rn <= 3;
-
 --- Lesson Timeline View
 CREATE VIEW lesson_timeline_view AS
 SELECT
@@ -522,6 +475,32 @@ FROM
 ORDER BY
   ulp.completion_date DESC
 LIMIT 10;
+
+--- Lesson Plan with Creator
+CREATE VIEW lesson_plan_with_creator_view AS
+SELECT
+  lp.id,
+  lp.title,
+  lp.image_path,
+  lp.content,
+  lp.tags,
+  s.name AS subject_name,
+  lv.name AS level_name,
+  t.name AS topic_name,
+  tp.id AS creator_id,
+  tp.first_name AS creator_first_name,
+  tp.last_name AS creator_last_name,
+  tp.avatar_url AS creator_avatar_url
+FROM
+  lesson_plans lp
+JOIN
+  teacher_profiles tp ON lp.creator_id = tp.id
+JOIN
+  subjects s ON lp.subject = s.id
+JOIN
+  levels lv ON lp.level = lv.id
+JOIN
+  topics t ON lp.topic = t.id;
 
 
 -- * FUNCTIONS
@@ -604,6 +583,118 @@ BEGIN
   return new;
 END;
 $$ language plpgsql security definer;
+
+
+--- Similar Lessons
+CREATE FUNCTION similar_lessons(lesson_id UUID, user_id UUID)
+RETURNS TABLE(
+  id UUID,
+  creator_id UUID,
+  first_name TEXT,
+  last_name TEXT,
+  avatar_url TEXT,
+  title TEXT,
+  subject UUID,
+  level UUID,
+  topic UUID,
+  content TEXT,
+  tags TEXT[],
+  image_path TEXT,
+  length_in_min INTEGER,
+  is_public BOOLEAN,
+  created_at TIMESTAMPTZ,
+  updated_at TIMESTAMPTZ
+) AS $$
+DECLARE
+  lp_subject UUID;
+  lp_level UUID;
+BEGIN
+  -- Retrieve the subject and level of the current lesson plan
+  SELECT subject, level INTO lp_subject, lp_level
+  FROM lesson_plans
+  WHERE id = lesson_id;
+
+  -- Return similar lesson plans based on subject and level, excluding the current lesson plan and lessons created by the current user
+  RETURN QUERY
+  SELECT
+    lp.id,
+    lp.creator_id,
+    tp.first_name,
+    tp.last_name,
+    tp.avatar_url,
+    lp.title,
+    lp.subject,
+    lp.level,
+    lp.topic,
+    lp.content,
+    lp.tags,
+    lp.image_path,
+    lp.length_in_min,
+    lp.is_public,
+    lp.created_at,
+    lp.updated_at
+  FROM lesson_plans AS lp
+  JOIN teacher_profiles tp ON lp.creator_id = tp.id
+  WHERE
+    lp.subject = lp_subject
+    AND lp.level = lp_level
+    AND lp.id != lesson_id
+    AND lp.creator_id != user_id
+  ORDER BY lp.created_at DESC
+  LIMIT 3;
+END;
+$$ LANGUAGE plpgsql;
+
+--- Recently Unsaved Lesson Plans for User
+CREATE OR REPLACE FUNCTION recent_unsaved_lessons(user_id UUID)
+RETURNS TABLE (
+  id UUID,
+  creator_id UUID,
+  title TEXT,
+  subject UUID,
+  level UUID,
+  topic UUID,
+  content TEXT,
+  tags TEXT[],
+  image_path TEXT,
+  length_in_min INT,
+  is_public BOOLEAN,
+  created_at TIMESTAMPTZ,
+  updated_at TIMESTAMPTZ
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT
+    lp.id,
+    lp.creator_id,
+    lp.title,
+    lp.subject,
+    lp.level,
+    lp.topic,
+    lp.content,
+    lp.tags,
+    lp.image_path,
+    lp.length_in_min,
+    lp.is_public,
+    lp.created_at,
+    lp.updated_at
+  FROM
+    lesson_plans lp
+  WHERE
+    lp.id NOT IN (
+      SELECT ulp.lesson_plan_id
+      FROM user_lesson_plans ulp
+      WHERE ulp.teacher_id = user_id
+    )
+  AND
+    lp.creator_id = user_id
+  AND
+    lp.created_at > NOW() - INTERVAL '14 days';
+END;
+$$ LANGUAGE plpgsql;
+
+
+
 
 
 -- * TRIGGERS

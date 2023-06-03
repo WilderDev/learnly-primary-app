@@ -17,8 +17,25 @@ export type TPhilosophy = Database['public']['Enums']['philosophy'];
 export type TMaterial = Database['public']['Enums']['material'];
 export type TPace = Database['public']['Enums']['pace'];
 
+export interface ILessonPlanWithCreator {
+  id: string;
+  title: string;
+  image_path: string;
+  content: string;
+  subject_name: string;
+  level_name: string;
+  topic_name: string;
+  tags: string[];
+  creator: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    avatarUrl: string;
+  };
+}
+
 // Lesson Plan Output
-export interface ILessonPlan {
+export interface ILessonPlanWithDetails {
   id: string;
   title: string;
   content: string;
@@ -82,4 +99,11 @@ export interface IStudentPromptReq {
     learningResources: TLearningResource[];
     specialNeeds: TSpecialNeed[];
   }[];
+}
+
+export interface IUserLessonPlanBasic {
+  id: string;
+  completionDate: string | null;
+  scheduledDate: string | null;
+  studentIds: string[];
 }

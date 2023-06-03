@@ -1,6 +1,6 @@
 'use client';
 
-import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import { ILessonPlanWithDetails } from '@/assets/typescript/lesson-plan';
 import { formatDateString } from '@/lib/common/date.helpers';
 import Avatar from '@/lib/components/images/Avatar';
 import OverlappingImages from '@/lib/components/images/OverlappingImages';
@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 // * Props
 interface IProps {
-  lessons: ILessonPlan[];
+  lessons: ILessonPlanWithDetails[];
 }
 
 // * Component

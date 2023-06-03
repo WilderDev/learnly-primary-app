@@ -1,3 +1,5 @@
+import { supabaseServer } from '@/lib/auth/supabaseServer';
+import { getDatestringFromTimestamp } from '@/lib/common/date.helpers';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,16 +13,16 @@ export default async function UnassignedLessonsPanel() {
     <div className="flex flex-col space-y-4">
       {unassignedLessons
         ?.slice(0, 5)
-        .map(({ id, title, subject, level, topic, image_path }) => (
+        .map(({ id, title, imagePath, createdAt }) => (
           <Link
             className="block rounded-md bg-white p-3 shadow transition-colors hocus:bg-slate-50 hocus:shadow-md dark:bg-navy-800 dark:hocus:bg-navy-700 sm:p-4"
             href={`/lesson-plans/${id}`}
             key={id}
           >
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-4">
               {/* Image */}
               <Image
-                src={image_path}
+                src={imagePath}
                 alt={title}
                 width={32}
                 height={32}
@@ -34,7 +36,7 @@ export default async function UnassignedLessonsPanel() {
                 </h3>
 
                 <p className="text-xs font-medium leading-none text-slate-600 dark:text-navy-200">
-                  {level} | {subject} | {topic}
+                  Created: {getDatestringFromTimestamp(createdAt)}
                 </p>
               </div>
             </div>
@@ -50,5 +52,27 @@ export default async function UnassignedLessonsPanel() {
 
 // * Fetcher
 async function getUnassignedLessons() {
-  return [];
+  const supabase = supabaseServer();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const { data, error } = await supabase
+    .rpc('recent_unsaved_lessons', {
+      user_id: session?.user.id!,
+    })
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(5);
+
+  if (error || !data) return [];
+
+  const transformedData = data.map((l) => ({
+    id: l.id!,
+    title: l.title!,
+    imagePath: l.image_path!,
+    createdAt: l.created_at!,
+  }));
+
+  return transformedData;
 }

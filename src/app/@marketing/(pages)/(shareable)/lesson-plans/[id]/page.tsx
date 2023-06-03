@@ -1,6 +1,6 @@
 import LessonPlanCreatorInfo from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanCreatorInfo';
 import LessonPlanTags from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanTags';
-import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import { ILessonPlanWithCreator } from '@/assets/typescript/lesson-plan';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import Logo from '@/lib/components/brand/Logo';
 import Container from '@/lib/components/layout/Container';
@@ -36,8 +36,8 @@ export default async function PublicLessonPlanPage({
             <div className="flex items-center justify-between">
               {/* Creator */}
               <LessonPlanCreatorInfo
-                name={`${lessonPlan.creator_first_name} ${lessonPlan.creator_last_name}`}
-                avatar_url={lessonPlan.creator_avatar_url}
+                name={`${lessonPlan.creator.firstName} ${lessonPlan.creator.lastName}`}
+                avatar_url={lessonPlan.creator.avatarUrl}
                 // role={lessonPlan.creator.}
               />
             </div>
@@ -72,19 +72,36 @@ async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
-    .from('lesson_plans_with_creator_and_students_view')
+    .from('lesson_plan_with_creator_view')
     .select('*')
     .eq('id', id)
     .single();
 
   if (error) redirect('/');
 
-  return data as ILessonPlan;
+  const transformedData: ILessonPlanWithCreator = {
+    id: data.id!,
+    title: data.title!,
+    image_path: data.image_path!,
+    content: data.content!,
+    tags: data.tags!,
+    subject_name: data.subject_name!,
+    level_name: data.level_name!,
+    topic_name: data.topic_name!,
+    creator: {
+      id: data.creator_id!,
+      firstName: data.creator_first_name!,
+      lastName: data.creator_last_name!,
+      avatarUrl: data.creator_avatar_url!,
+    },
+  };
+
+  return transformedData;
 }
 
 // * Metadata
 export async function generateMetadata({ params: { id } }: IParams) {
-  const { title, image_path, subject, level, topic, tags } =
+  const { title, image_path, subject_name, level_name, topic_name, tags } =
     await getLessonPlan(id);
 
   return {
@@ -92,10 +109,10 @@ export async function generateMetadata({ params: { id } }: IParams) {
     title,
     image: image_path,
     keywords: ['Homeschool Lesson Plan', title, tags],
-    description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
+    description: `Homeschool lesson plan for ${topic_name} in ${subject_name} for ${level_name} grade`,
     openGraph: {
       title: title,
-      description: `Homeschool lesson plan for ${topic} in ${subject} for ${level} grade`,
+      description: `Homeschool lesson plan for ${topic_name} in ${subject_name} for ${level_name} grade`,
       images: [
         {
           url: image_path,

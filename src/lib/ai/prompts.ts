@@ -30,7 +30,7 @@ export function generateLessonPlanPrompt({
   // Teaching Strategies
   const teachingStrategies = teaching_preferences?.teachingStrategies?.length
     ? `Favorite Teaching Strategies: ${teaching_preferences?.teachingStrategies?.join(
-        ', '
+        ', ',
       )}.`
     : '';
 
@@ -42,7 +42,7 @@ export function generateLessonPlanPrompt({
   // Teaching Tools
   const teachingTools = teaching_preferences?.teachingTools?.length
     ? `Favorite teaching tools: ${teaching_preferences?.teachingTools?.join(
-        ', '
+        ', ',
       )}.`
     : '';
 
@@ -64,8 +64,8 @@ export function generateLessonPlanPrompt({
           `- Student ${index + 1}: ${student.name}, Age: ${
             student.age
           }, Goals: ${student.goals.join(
-            ','
-          )}, Special Needs: ${student.specialNeeds.join(',')}.`
+            ',',
+          )}, Special Needs: ${student.specialNeeds.join(',')}.`,
       )
       ?.join('\n') || '';
 
@@ -108,7 +108,7 @@ export function generateLessonPlanPrompt({
   const prompt = `
   You are a lesson plan generator for homeschool parents.
 
-  Create a detailed and well-structured lesson plan that includes time allocation for each activity.
+  Create a detailed and well-structured lesson plan that includes time allocation for each activity. This is the CONTEXT for the lesson plan (it doesn't need to be included in the output).
   The class is for subject: ${subject} (Grade Level: ${level}).
   The topic is ${topic}.
   ${objectivesSection}
@@ -121,7 +121,7 @@ export function generateLessonPlanPrompt({
   ${paceSection}
   ${materialsSection}
   The preferred learning styles for this lesson are ${lessonLearningStyles?.join(
-    ', '
+    ', ',
   )}.
 
   The only students (children) are:
@@ -135,7 +135,7 @@ export function generateLessonPlanPrompt({
 
   ---
 
-  Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson.
+  Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson. Focus on the instructions and activities and use the context to make the lesson plan.
 
   Provide them step by step instructions with time allocations for each activity and everything they need to know and have to teach the lesson. Use bullet points as much as possible.
 
@@ -171,7 +171,7 @@ export function generateCurriculumLessonPlanPrompt({
   // Teaching Strategies
   const teachingStrategies = teaching_preferences?.teachingStrategies?.length
     ? `Favorite Teaching Strategies: ${teaching_preferences?.teachingStrategies?.join(
-        ', '
+        ', ',
       )}.`
     : '';
 
@@ -183,7 +183,7 @@ export function generateCurriculumLessonPlanPrompt({
   // Teaching Tools
   const teachingTools = teaching_preferences?.teachingTools?.length
     ? `Favorite teaching tools: ${teaching_preferences?.teachingTools?.join(
-        ', '
+        ', ',
       )}.`
     : '';
 
@@ -215,8 +215,8 @@ export function generateCurriculumLessonPlanPrompt({
           `- Student ${index + 1}: ${student.name}, Age: ${
             student.age
           }, Goals: ${student.goals.join(
-            ','
-          )}, Special Needs: ${student.specialNeeds.join(',')}.`
+            ',',
+          )}, Special Needs: ${student.specialNeeds.join(',')}.`,
       )
       ?.join('\n') || '';
 
@@ -228,7 +228,7 @@ export function generateCurriculumLessonPlanPrompt({
   const prompt = `
 You are a lesson plan generator for homeschool parents.
 
-Create a detailed and well-structured lesson plan that includes time allocation for each activity.
+Create a detailed and well-structured lesson plan that includes time allocation for each activity. This is the CONTEXT for the lesson plan (it doesn't need to be included in the output).
 
 The class is for curriculum: ${curriculum}, subject: ${subject}, topic: ${topic}, (Grade Level: ${gradeLevel}).
 
@@ -250,7 +250,7 @@ ${additionalRequestsSection}
 
 ---
 
-Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson.
+Give quality examples of how you would teach this lesson to the students with the provided information. Create engaging activities and ideas for the lesson. Let them know what materials they will need to complete the lesson. Focus on the instructions and activities and use the context to make the lesson plan.
 
 Provide them step by step instructions with time allocations for each activity and everything they need to know and have to teach the lesson. Use bullet points as much as possible.
 

@@ -1,6 +1,9 @@
 'use client';
 
-import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import {
+  ILessonPlanWithCreator,
+  IUserLessonPlanBasic,
+} from '@/assets/typescript/lesson-plan';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import LessonPlanCreatorInfo from './LessonPlanCreatorInfo';
 import LessonPlanTags from './LessonPlanTags';
@@ -10,11 +13,15 @@ import { useState } from 'react';
 
 // * Props
 interface IProps {
-  lessonPlan: ILessonPlan;
+  lessonPlan: ILessonPlanWithCreator;
+  userLessonPlan: IUserLessonPlanBasic | null;
 }
 
 // * Component
-export default function LessonPlanContainer({ lessonPlan }: IProps) {
+export default function LessonPlanContainer({
+  lessonPlan,
+  userLessonPlan,
+}: IProps) {
   // * State
   const [print, setPrint] = useState(false);
 
@@ -28,15 +35,15 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
           <div className="flex items-center justify-between">
             {/* Creator */}
             <LessonPlanCreatorInfo
-              name={`${lessonPlan.creator_first_name} ${lessonPlan.creator_last_name}`}
-              avatar_url={lessonPlan.creator_avatar_url}
+              name={`${lessonPlan.creator.firstName} ${lessonPlan.creator.lastName}`}
+              avatar_url={lessonPlan.creator.avatarUrl}
               // role={lessonPlan.creator.}
             />
 
             {/* Actions */}
             <LessonPlanActionIcons
               id={lessonPlan.id}
-              scheduled_date={lessonPlan.scheduled_date}
+              hasScheduledDate={!!userLessonPlan?.scheduledDate}
               handlePrint={() => setPrint(true)}
             />
           </div>
@@ -49,8 +56,10 @@ export default function LessonPlanContainer({ lessonPlan }: IProps) {
         <LessonPlanMarkdown content={lessonPlan.content} print={print} />
 
         {/* Mark Complete */}
-        {!!lessonPlan.user_lesson_plan_id && (
-          <LessonPlanMarkComplete isComplete={!!lessonPlan.completion_date} />
+        {!!userLessonPlan && (
+          <LessonPlanMarkComplete
+            isComplete={!!userLessonPlan.completionDate}
+          />
         )}
       </main>
     </>

@@ -4,16 +4,24 @@ import AssignmentCreatorForm from './AssignmentCreatorForm';
 import { useState } from 'react';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Button from '@/lib/components/ui/Button';
-import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import {
+  ILessonPlanWithCreator,
+  IUserLessonPlanBasic,
+} from '@/assets/typescript/lesson-plan';
 
 // * Props
 interface IProps {
-  lessonPlan: ILessonPlan & { user_lesson_plan_id?: string };
+  lessonPlan: ILessonPlanWithCreator;
+  userLessonPlan?: IUserLessonPlanBasic;
   assignmentContent?: string;
 }
 
 // * Component
-export default function Assignment({ lessonPlan, assignmentContent }: IProps) {
+export default function Assignment({
+  lessonPlan,
+  userLessonPlan,
+  assignmentContent,
+}: IProps) {
   const [printAssignment, setPrintAssignment] = useState(false);
 
   return assignmentContent ? (
@@ -28,7 +36,7 @@ export default function Assignment({ lessonPlan, assignmentContent }: IProps) {
     <AssignmentCreatorForm
       isModal={false}
       lessonPlan={lessonPlan}
-      userLessonPlanId={lessonPlan.user_lesson_plan_id}
+      userLessonPlan={userLessonPlan}
     />
   );
 }
