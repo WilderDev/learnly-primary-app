@@ -17,7 +17,7 @@ const saveAssignmentSchema = z.object({
 });
 
 async function saveAssignmentAction(
-  input: z.infer<typeof saveAssignmentSchema>,
+  input: z.infer<typeof saveAssignmentSchema>
 ) {
   const { user_lesson_plan_id, title, due_date, content } = input;
 
@@ -49,7 +49,7 @@ async function saveAssignmentAction(
 
 export const saveAssignment = createRequest(
   saveAssignmentAction,
-  saveAssignmentSchema,
+  saveAssignmentSchema
 );
 
 // Action to change assignment status
@@ -60,7 +60,7 @@ const changeAssignmentStatusSchema = z.object({
 });
 
 async function changeAssignmentStatusAction(
-  input: z.infer<typeof changeAssignmentStatusSchema>,
+  input: z.infer<typeof changeAssignmentStatusSchema>
 ) {
   const { id, status } = input;
 
@@ -87,6 +87,7 @@ async function changeAssignmentStatusAction(
     if (error) return responseContract(error.message, false);
 
     revalidatePath('/');
+    revalidatePath('/assignments');
 
     return responseContract('Success!', true);
   } catch (error) {
@@ -96,7 +97,7 @@ async function changeAssignmentStatusAction(
 
 export const changeAssignmentStatus = createRequest(
   changeAssignmentStatusAction,
-  changeAssignmentStatusSchema,
+  changeAssignmentStatusSchema
 );
 
 // Action to edit an assignment
@@ -109,7 +110,7 @@ const editAssignmentSchema = z.object({
 });
 
 async function editAssignmentAction(
-  input: z.infer<typeof editAssignmentSchema>,
+  input: z.infer<typeof editAssignmentSchema>
 ) {
   const { id, title, dueDate, assignedOn } = input;
 
@@ -128,6 +129,7 @@ async function editAssignmentAction(
     if (error) return responseContract(error.message, false);
 
     revalidatePath('/');
+    revalidatePath('/assignments');
 
     return responseContract('Success!', true);
   } catch (error) {
@@ -137,7 +139,7 @@ async function editAssignmentAction(
 
 export const editAssignment = createRequest(
   editAssignmentAction,
-  editAssignmentSchema,
+  editAssignmentSchema
 );
 
 // Action to delte assignment
@@ -148,7 +150,7 @@ const deleteAssignmentSchema = z.object({
 });
 
 async function deleteAssignmentAction(
-  input: z.infer<typeof deleteAssignmentSchema>,
+  input: z.infer<typeof deleteAssignmentSchema>
 ) {
   const { id, lesson_plan_id } = input;
 
@@ -171,5 +173,5 @@ async function deleteAssignmentAction(
 
 export const deleteAssignment = createRequest(
   deleteAssignmentAction,
-  deleteAssignmentSchema,
+  deleteAssignmentSchema
 );

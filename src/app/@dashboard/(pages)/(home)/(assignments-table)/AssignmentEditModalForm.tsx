@@ -299,7 +299,7 @@ export default function AssignmentEditModalForm({
             <div className="flex items-center justify-between gap-6 sm:col-span-2 flex-col sm:flex-row">
               <Button
                 onClick={handleDelete}
-                className="w-full hocus:text-white dark:border-gray-600"
+                className="w-full dark:hocus:text-white dark:border-gray-600 hover:bg-gray-400"
                 variant="dark"
                 fill="outline"
               >
