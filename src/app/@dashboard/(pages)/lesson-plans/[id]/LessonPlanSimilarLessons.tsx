@@ -1,7 +1,6 @@
 import { Card, CardContainer } from '@/lib/components/ui/Card';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import Image from 'next/image';
-import { getIndexColors, getSubjectColor } from '@/lib/theme/enumColors';
 
 // * Props
 interface IProps {
@@ -20,14 +19,14 @@ export default async function LessonPlanSimilarLessons({ lessonId }: IProps) {
     <CardContainer>
       {similarLessons.map((lesson) => (
         <Card
-          className="w-full md:w-1/2 lg:w-1/3 xl:w-full flex flex-col justify-center space-y-4"
+          className="w-full md:w-1/2 lg:w-1/3 xl:w-full flex flex-col justify-between space-y-4"
           url={`/lesson-plans/${lesson.id}`}
           key={lesson.id}
         >
-          <div className="flex items-center space-x-4 w-10/12">
+          <div className="flex items-center space-x-4 w-full">
             {/* Image */}
             <Image
-              className="rounded-full w-10 h-10"
+              className="rounded-full w-8 h-8"
               src={lesson.image_path || ''}
               alt={lesson.title || 'lesson image'}
               width={1600}
@@ -35,7 +34,7 @@ export default async function LessonPlanSimilarLessons({ lessonId }: IProps) {
             />
 
             {/* Title */}
-            <h3 className="font-semibold">{lesson.title}</h3>
+            <h3 className="text-sm font-semibold">{lesson.title}</h3>
           </div>
 
           {/* Length in Min */}
@@ -72,11 +71,10 @@ async function getSimilarLessons(lessonId: string) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const { data, error } = await supabase
-    .from('similar_lessons_view')
-    .select('*')
-    .eq('id', lessonId)
-    .neq('creator_id', session?.user.id);
+  const { data, error } = await supabase.rpc('similar_lessons', {
+    lesson_id: lessonId,
+    user_id: session?.user.id!,
+  });
 
   if (error) return [];
 
