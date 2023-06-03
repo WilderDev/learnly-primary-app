@@ -3,6 +3,7 @@ import LessonPlanTags from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPla
 import { ICurriculumLessonPlan } from '@/assets/typescript/curriculum-roadmaps';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import CurriculumLessonActionItems from './CurriculumLessonActionItems';
+import LessonPlanMarkComplete from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanMarkComplete';
 
 // * Props
 interface IProps {
@@ -43,6 +44,9 @@ export default function CurriculumLessonPlanContainer({
 
         {/* Content */}
         <LessonPlanMarkdown content={lessonPlan?.content!} />
+
+        {/* Mark Complete */}
+        <LessonPlanMarkComplete isComplete={!!lessonPlan?.completion_date} />
       </main>
     </>
   );

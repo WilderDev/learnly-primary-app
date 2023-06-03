@@ -125,15 +125,5 @@ export async function generateMetadata({ params: { id } }: IParams) {
   };
 }
 
-// * Static Params
-export async function generateStaticParams() {
-  const supabase = supabaseServer();
-
-  const { data: lessonPlans } = await supabase
-    .from('lesson_plans')
-    .select('id');
-
-  const dynamicRoutes = lessonPlans?.map((lp) => ({ id: lp.id }));
-
-  return dynamicRoutes;
-}
+export const revalidate = 0;
+export const dynamicParams = true;
