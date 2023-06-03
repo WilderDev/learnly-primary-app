@@ -16,15 +16,18 @@ import { streamReader } from '@/lib/ai/stream';
 import { saveAssignment } from './_actions';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import Modal from '@/lib/components/popouts/Modal';
-import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import {
+  ILessonPlanWithCreator,
+  IUserLessonPlanBasic,
+} from '@/assets/typescript/lesson-plan';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import LessonPlanSaveDetailsModalForm from '../LessonPlanSaveDetailsModal';
 
 // * Props
 interface IProps {
   isModal?: boolean;
-  lessonPlan?: ILessonPlan;
-  userLessonPlanId?: string;
+  lessonPlan?: ILessonPlanWithCreator;
+  userLessonPlan?: IUserLessonPlanBasic;
   lessonPlans?: {
     user_lesson_plan_id: string;
     lesson_plan_name: string;
@@ -37,7 +40,7 @@ interface IProps {
 export default function AssignmentCreatorForm({
   isModal = true,
   lessonPlan,
-  userLessonPlanId,
+  userLessonPlan,
   lessonPlans,
 }: IProps) {
   // * State
@@ -93,7 +96,7 @@ export default function AssignmentCreatorForm({
     }
 
     // If the lesson plan isn't saved, save it
-    if (!userLessonPlanId && !isModal) {
+    if (!userLessonPlan && !isModal) {
       setIsLoadingAssignment(false);
       toast.error(
         'You must save the lesson plan before you can create an assignment.',
@@ -148,7 +151,7 @@ export default function AssignmentCreatorForm({
         : assignmentTitle,
       content: assignmentContent,
       due_date: assignmentDueDate!,
-      user_lesson_plan_id: userLessonPlanId || userLessonOption,
+      user_lesson_plan_id: userLessonPlan?.id ?? userLessonOption,
     });
 
     if (ok) {
@@ -321,7 +324,7 @@ export default function AssignmentCreatorForm({
       {lessonPlan && (
         <LessonPlanSaveDetailsModalForm
           lessonPlanId={lessonPlan.id}
-          defaultStudentIds={lessonPlan.students || []}
+          defaultStudentIds={userLessonPlan?.studentIds ?? []}
           isVisible={saveDetailsModalOpen}
           close={() => setSaveModalOpen(false)}
         />

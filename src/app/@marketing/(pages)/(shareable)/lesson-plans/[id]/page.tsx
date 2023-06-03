@@ -71,6 +71,7 @@ export default async function PublicLessonPlanPage({
 async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
+  // TSK TSK TSK
   const { data, error } = await supabase
     .from('lesson_plans_with_creator_and_students_view')
     .select('*')

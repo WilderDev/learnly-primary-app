@@ -1,6 +1,9 @@
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import LessonPlanContainer from './LessonPlanContainer';
-import { ILessonPlan } from '@/assets/typescript/lesson-plan';
+import {
+  ILessonPlanWithCreator,
+  IUserLessonPlanBasic,
+} from '@/assets/typescript/lesson-plan';
 import DashMainCol from '@/app/@dashboard/(layout)/DashMainCol';
 import DashSideCol from '@/app/@dashboard/(layout)/DashSideCol';
 import {
@@ -23,6 +26,7 @@ export interface IParams {
 export default async function LessonPlanPage({ params: { id } }: IParams) {
   // * Data
   const lessonPlan = await getLessonPlan(id); // Get lesson plan
+  const userLessonPlan = await getUserLessonPlan(id); // Get user lesson plan (if exists)
   const assignment = await getAssignmentByLessonPlanId(id); // Get assignment
 
   // * Render
@@ -35,7 +39,10 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
           colNum={1}
           suspenseFallback={<LessonPlanContainerSkeleton />}
         >
-          <LessonPlanContainer lessonPlan={lessonPlan} />
+          <LessonPlanContainer
+            lessonPlan={lessonPlan}
+            userLessonPlan={userLessonPlan}
+          />
         </DashPanel>
 
         {/* Lesson Plan Comments */}
@@ -57,9 +64,11 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         <DashPanel colNum={1}>
           <DashPanelHeader title="Assignment" />
           {/* Assessment */}
+          {/* TSK TSK TSK */}
           <Assignment
             assignmentContent={assignment?.content}
             lessonPlan={lessonPlan}
+            userLessonPlan={userLessonPlan || undefined}
           />
         </DashPanel>
 
@@ -93,14 +102,56 @@ async function getLessonPlan(id: string) {
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
-    .from('lesson_plans_with_creator_and_students_view')
+    .from('lesson_plans') // TSK: create a view for this
     .select('*, level:levels(name)')
     .eq('id', id)
     .single();
 
   if (error) redirect('/lesson-creator');
 
-  return data as ILessonPlan;
+  const transformedData: ILessonPlanWithCreator = {
+    id: data.id!,
+    title: data.title!,
+    image_path: data.image_path!,
+    content: data.content!,
+    tags: data.tags!,
+    subject_name: 'tsk',
+    level_name: (data.level as unknown as { name: string }).name,
+    topic_name: 'tsk',
+    creator: {
+      id: 'tsk',
+      firstName: 'tsk',
+      lastName: 'tsk',
+      avatarUrl: '/static/icons/avatars/bear.png',
+    },
+  };
+
+  return transformedData;
+}
+
+async function getUserLessonPlan(id: string) {
+  const supabase = supabaseServer();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const { data, error } = await supabase
+    .from('user_lesson_plans') // TSK: Create view that gets all the students, not just the string[]
+    .select('*')
+    .eq('lesson_plan_id', id)
+    .eq('teacher_id', session?.user.id!)
+    .maybeSingle();
+
+  if (error || !data) return null;
+
+  const transformedData: IUserLessonPlanBasic = {
+    id: data.id!,
+    completionDate: data.completion_date!,
+    scheduledDate: data.scheduled_date!,
+    studentIds: data.students!,
+  };
+
+  return transformedData;
 }
 
 // * Metadata
