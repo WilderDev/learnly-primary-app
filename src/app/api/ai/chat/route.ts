@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 	`
   }
 
-	Answer as concisely as possible. If you don't know the answer, say so. If you need more information, ask for it.
+	Answer as concisely as possible. Very short answers. If you don't know the answer, say so. If you need more information, ask for it.
 
 	Only answer questions related to homeschooling. If a question is not related to homeschooling, education, or parenting, say so in a polite manner.
 	`.trim(),
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     user: context.id,
     temperature: 0.4,
     n: 1,
-    max_tokens: 3000,
+    max_tokens: 2000,
     presence_penalty: 1.0,
     frequency_penalty: 1.0,
   };
@@ -81,3 +81,5 @@ export async function POST(request: NextRequest) {
     return new Response('Internal Server Error', { status: 500 });
   }
 }
+
+export const runtime = 'edge'; // Closer to user's location (faster)
