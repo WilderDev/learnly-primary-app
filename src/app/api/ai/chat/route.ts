@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     user: context.id,
     temperature: 0.4,
     n: 1,
-    max_tokens: 1500,
+    max_tokens: 2000,
     presence_penalty: 1.0,
     frequency_penalty: 1.0,
   };
