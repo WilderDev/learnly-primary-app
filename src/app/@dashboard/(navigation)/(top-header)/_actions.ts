@@ -10,7 +10,7 @@ const markAsReadSchema = z.object({
   notification_id: z.string().uuid(),
 });
 
-const markAsReadAction = async (input: z.infer<typeof markAsReadSchema>) => {
+async function markAsReadAction(input: z.infer<typeof markAsReadSchema>) {
   const { notification_id } = input;
 
   try {
@@ -23,12 +23,12 @@ const markAsReadAction = async (input: z.infer<typeof markAsReadSchema>) => {
 
     if (error) return responseContract(error.message, false);
 
-    // revalidatePath(`/`);
+    revalidatePath(`/`);
 
     return responseContract('Success!', true);
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const markAsRead = createRequest(markAsReadAction, markAsReadSchema);

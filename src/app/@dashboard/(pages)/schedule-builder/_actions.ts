@@ -19,7 +19,7 @@ const addEventSchema = z.object({
   attendees: z.array(z.string().uuid()).optional(),
 });
 
-const addEventAction = async (input: z.infer<typeof addEventSchema>) => {
+async function addEventAction(input: z.infer<typeof addEventSchema>) {
   try {
     const supabase = supabaseServer();
     const {
@@ -39,7 +39,7 @@ const addEventAction = async (input: z.infer<typeof addEventSchema>) => {
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const addEvent = createRequest(addEventAction, addEventSchema);
 
@@ -57,7 +57,7 @@ const editEventSchema = z.object({
   attendees: z.array(z.string().uuid()).optional(),
 });
 
-const editEventAction = async (input: z.infer<typeof editEventSchema>) => {
+async function editEventAction(input: z.infer<typeof editEventSchema>) {
   try {
     const supabase = supabaseServer();
 
@@ -76,7 +76,7 @@ const editEventAction = async (input: z.infer<typeof editEventSchema>) => {
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const editEvent = createRequest(editEventAction, editEventSchema);
 
@@ -85,7 +85,7 @@ const deleteEventSchema = z.object({
   id: z.string().uuid(),
 });
 
-const deleteEventAction = async (input: z.infer<typeof deleteEventSchema>) => {
+async function deleteEventAction(input: z.infer<typeof deleteEventSchema>) {
   try {
     const supabase = supabaseServer();
 
@@ -102,6 +102,6 @@ const deleteEventAction = async (input: z.infer<typeof deleteEventSchema>) => {
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const deleteEvent = createRequest(deleteEventAction, deleteEventSchema);

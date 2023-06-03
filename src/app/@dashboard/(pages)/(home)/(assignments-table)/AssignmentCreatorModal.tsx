@@ -15,7 +15,6 @@ interface IProps {
 
 // * Component
 export default function AssignmentCreatorModal({ lessonPlans }: IProps) {
-  console.log('lessonPlans:', lessonPlans);
   return (
     <>
       <Modal.Header title="Create an Assignment" />

@@ -343,8 +343,6 @@ export async function handleUpdatePrice({ price }: IUpdatePrice) {
     })
     .eq('id', price.id);
 
-  console.log('priceError:', priceError);
-
   // 2. Check if there was an error updating the price
   if (priceError) throw new Error(priceError.message);
 }

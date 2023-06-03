@@ -30,9 +30,7 @@ const updateProfileSchema = z.object({
   avatar: z.string(),
 });
 
-const updateProfileAction = async (
-  input: z.infer<typeof updateProfileSchema>,
-) => {
+async function updateProfileAction(input: z.infer<typeof updateProfileSchema>) {
   try {
     const supabase = supabaseServer();
 
@@ -63,7 +61,7 @@ const updateProfileAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const updateProfile = createRequest(
   updateProfileAction,
@@ -78,9 +76,9 @@ const updateTeachingPreferencesSchema = z.object({
   lessonStructure: z.string().nullable(),
 });
 
-const updateTeachingPreferencesAction = async (
+async function updateTeachingPreferencesAction(
   input: z.infer<typeof updateTeachingPreferencesSchema>,
-) => {
+) {
   try {
     const supabase = supabaseServer();
 
@@ -110,7 +108,7 @@ const updateTeachingPreferencesAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const updateTeachingPreferences = createRequest(
   updateTeachingPreferencesAction,
@@ -124,7 +122,7 @@ const addStudentSchema = z.object({
   avatarUrl: z.string(),
 });
 
-const addStudentAction = async (input: z.infer<typeof addStudentSchema>) => {
+async function addStudentAction(input: z.infer<typeof addStudentSchema>) {
   try {
     const supabase = supabaseServer();
 
@@ -154,7 +152,7 @@ const addStudentAction = async (input: z.infer<typeof addStudentSchema>) => {
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const addStudent = createRequest(addStudentAction, addStudentSchema);
 
@@ -171,7 +169,7 @@ const editStudentSchema = z.object({
   specialNeeds: z.array(z.string()),
 });
 
-const editStudentAction = async (input: z.infer<typeof editStudentSchema>) => {
+async function editStudentAction(input: z.infer<typeof editStudentSchema>) {
   try {
     const supabase = supabaseServer();
 
@@ -215,7 +213,7 @@ const editStudentAction = async (input: z.infer<typeof editStudentSchema>) => {
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const editStudent = createRequest(editStudentAction, editStudentSchema);
 
@@ -227,9 +225,9 @@ const savePaymentDetailsSchema = z.object({
   isEarlyPurchase: z.boolean().optional(),
 });
 
-const savePaymentDetailsAction = async (
+async function savePaymentDetailsAction(
   input: z.infer<typeof savePaymentDetailsSchema>,
-) => {
+) {
   const {
     paymentMethodId,
     customerId,
@@ -257,7 +255,7 @@ const savePaymentDetailsAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const savePaymentDetails = createRequest(
   savePaymentDetailsAction,

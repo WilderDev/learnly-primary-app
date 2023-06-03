@@ -43,9 +43,9 @@ const saveLessonPlanTemplateSchema = z.object({
   students: z.any(), // array of uuids
 });
 
-const saveLessonPlanTemplateAction = async (
+async function saveLessonPlanTemplateAction(
   input: z.infer<typeof saveLessonPlanTemplateSchema>,
-) => {
+) {
   const {
     title,
     information: {
@@ -136,7 +136,7 @@ const saveLessonPlanTemplateAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const saveLessonPlanTemplate = createRequest(
   saveLessonPlanTemplateAction,

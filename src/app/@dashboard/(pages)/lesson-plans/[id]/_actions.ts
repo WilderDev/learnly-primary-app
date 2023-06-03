@@ -13,9 +13,9 @@ const saveLessonPlanSchema = z.object({
   students: z.array(z.string().uuid()),
 });
 
-const saveLessonPlanAction = async (
+async function saveLessonPlanAction(
   input: z.infer<typeof saveLessonPlanSchema>,
-) => {
+) {
   const { lesson_plan_id, scheduled_date, students } = input;
 
   try {
@@ -42,7 +42,7 @@ const saveLessonPlanAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const saveLessonPlan = createRequest(
   saveLessonPlanAction,
@@ -54,9 +54,9 @@ const markAsCompleteSchema = z.object({
   completion_date: z.date(),
 });
 
-const markAsCompleteAction = async (
+async function markAsCompleteAction(
   input: z.infer<typeof markAsCompleteSchema>,
-) => {
+) {
   const { lesson_plan_id, completion_date } = input;
 
   try {
@@ -83,7 +83,7 @@ const markAsCompleteAction = async (
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
-};
+}
 
 export const markAsComplete = createRequest(
   markAsCompleteAction,

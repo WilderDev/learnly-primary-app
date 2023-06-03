@@ -14,7 +14,7 @@ export default async function LessonTimeline() {
   return timeline?.length > 0 ? (
     <div className="flow-root">
       <ul role="list" className="-mb-8">
-        {timeline.map((event, eventIdx) => (
+        {timeline?.map((event, eventIdx) => (
           <li key={event.id}>
             <div className="relative pb-8">
               {eventIdx !== timeline.length - 1 ? (
@@ -51,18 +51,21 @@ export default async function LessonTimeline() {
                       {event.title}
                     </Link>
                   </div>
-                  <div className="whitespace-nowrap text-right text-sm text-slate-600 dark:text-navy-200">
-                    <time dateTime={event.completion_date}>
-                      {formatExactDateString(
-                        event.completion_date.split('T')[0],
-                        {
-                          day: 'numeric',
-                          month: 'short',
-                          year: 'numeric',
-                        },
-                      )}
-                    </time>
-                  </div>
+
+                  {event.completion_date && (
+                    <div className="whitespace-nowrap text-right text-sm text-slate-600 dark:text-navy-200">
+                      <time dateTime={event.completion_date}>
+                        {formatExactDateString(
+                          event.completion_date.split('T')[0],
+                          {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric',
+                          },
+                        )}
+                      </time>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
