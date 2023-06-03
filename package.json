@@ -50,7 +50,6 @@
     "@tailwindcss/typography": "^0.5.9",
     "@types/marked": "^5.0.0",
     "@types/node": "20.1.0",
-    "@types/puppeteer": "^7.0.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "@types/react-flatpickr": "^3.8.8",

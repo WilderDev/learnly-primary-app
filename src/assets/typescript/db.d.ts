@@ -1148,24 +1148,6 @@ export interface Database {
           url?: string | null
         }
       }
-      assignment_with_details_view: {
-        Row: {
-          assigned_on: string | null
-          assignment_content: string | null
-          assignment_id: string | null
-          assignment_status:
-            | Database["public"]["Enums"]["assignment_status"]
-            | null
-          assignment_title: string | null
-          due_date: string | null
-          lesson_plan_subject: string | null
-          lesson_plan_title: string | null
-          student_avatar_url: string | null
-          student_first_name: string | null
-          student_id: string | null
-          student_last_name: string | null
-        }
-      }
       assignments_with_details_view: {
         Row: {
           assigned_on: string | null

@@ -57,3 +57,5 @@ export default async function RootLayout({ dashboard, marketing }: IProps) {
 }
 
 export const metadata = defaultMetadata;
+
+export const revalidate = 0;
