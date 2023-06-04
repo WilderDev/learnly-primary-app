@@ -1,5 +1,6 @@
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import LessonCreatorTemplate from './LessonCreatorTemplate';
+import { ILessonPlanTemplate } from '@/assets/typescript/lesson-plan';
 
 // * Component
 export default async function LessonCreatorTemplates() {
@@ -27,5 +28,21 @@ async function getTemplates() {
 
   if (error) return [];
 
-  return data;
+  const formattedData = data?.map((template) => ({
+    ...template,
+    students: (template.students as any[])?.map((s) => ({
+      id: s.id,
+      name: s.name,
+      age: s.age,
+      learningStyles: s.learning_styles,
+      favoriteSubjects: s.favorite_subjects,
+      interests: s.interests,
+      goals: s.goals,
+      learningEnvironments: s.learning_environments,
+      learningResources: s.learning_resources,
+      specialNeeds: s.special_needs,
+    })),
+  }));
+
+  return formattedData as ILessonPlanTemplate[];
 }
