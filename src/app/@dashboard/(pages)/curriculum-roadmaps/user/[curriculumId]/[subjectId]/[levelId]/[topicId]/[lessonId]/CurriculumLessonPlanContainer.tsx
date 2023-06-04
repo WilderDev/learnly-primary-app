@@ -1,7 +1,7 @@
 import LessonPlanCreatorInfo from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanCreatorInfo';
 import LessonPlanTags from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanTags';
 import { ICurriculumLessonPlan } from '@/assets/typescript/curriculum-roadmaps';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import CurriculumLessonActionItems from './CurriculumLessonActionItems';
 import LessonPlanMarkComplete from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanMarkComplete';
 
@@ -43,7 +43,7 @@ export default function CurriculumLessonPlanContainer({
         </div>
 
         {/* Content */}
-        <LessonPlanMarkdown content={lessonPlan?.content!} />
+        <PrintableMarkdownContainer content={lessonPlan?.content!} />
 
         {/* Mark Complete */}
         <LessonPlanMarkComplete isComplete={!!lessonPlan?.completion_date} />

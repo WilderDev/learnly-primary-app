@@ -107,3 +107,33 @@ export interface IUserLessonPlanBasic {
   scheduledDate: string | null;
   studentIds: string[];
 }
+
+export interface ILessonPlanTemplate {
+  title: string | null;
+  subject: string | null;
+  level: string | null;
+  topic: string | null;
+  length_in_min: number | null;
+  difficulty: TDifficulty | null;
+  pace: TPace | null;
+  philosophy: TPhilosophy | null;
+  format: TFormat | null;
+  teaching_strategy: TTeachingStrategy | null;
+  learning_styles: TLearningStyle[];
+  standards: TStandard[];
+  materials: TMaterial[];
+  objectives: TObjective[];
+  special_considerations: string;
+  students: {
+    id: string;
+    name: string;
+    age: number;
+    learningStyles: TLearningStyle[];
+    favoriteSubjects: string[];
+    interests: string[];
+    goals: TGoal[];
+    learningEnvironments: TLearningEnvironment[];
+    learningResources: TLearningResource[];
+    specialNeeds: TSpecialNeed[];
+  }[];
+}

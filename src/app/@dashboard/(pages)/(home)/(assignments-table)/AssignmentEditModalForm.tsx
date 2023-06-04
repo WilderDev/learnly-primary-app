@@ -10,7 +10,7 @@ import { useState, useTransition } from 'react';
 import Input from '@/lib/components/form/Input';
 import DatePicker from '@/lib/components/form/DatePicker';
 import Button from '@/lib/components/ui/Button';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { ISimpleStudent } from '@/assets/typescript/user';
@@ -217,7 +217,7 @@ export default function AssignmentEditModalForm({
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <LessonPlanMarkdown content={assignment.content} />
+                    <PrintableMarkdownContainer content={assignment.content} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -226,7 +226,7 @@ export default function AssignmentEditModalForm({
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <LessonPlanMarkdown content={showLessContent} />
+                    <PrintableMarkdownContainer content={showLessContent} />
                   </motion.div>
                 )}
 
@@ -317,7 +317,7 @@ export default function AssignmentEditModalForm({
       {/* Lesson Content For Printing */}
       <div className="hidden">
         <div ref={componentRef}>
-          <LessonPlanMarkdown content={assignment.content} />
+          <PrintableMarkdownContainer content={assignment.content} />
         </div>
       </div>
     </>
