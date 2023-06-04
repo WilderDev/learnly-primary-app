@@ -1,13 +1,15 @@
 'use client';
 
-import { Database } from '@/assets/typescript/db';
 import { useLessonCreator } from './LessonCreatorCtx';
 import { TSelection } from '@/assets/typescript/form';
-import { IStudentPromptReq } from '@/assets/typescript/lesson-plan';
+import {
+  ILessonPlanTemplate,
+  IStudentPromptReq,
+} from '@/assets/typescript/lesson-plan';
 
 // * Props
 interface IProps {
-  template: Database['public']['Views']['lesson_plan_templates_with_students_view']['Row'];
+  template: ILessonPlanTemplate;
 }
 
 export default function LessonCreatorTemplate({ template }: IProps) {
@@ -53,7 +55,8 @@ export default function LessonCreatorTemplate({ template }: IProps) {
     setPace(template.pace);
     setFormat(template.format);
 
-    const templateStudents = template.students as IStudentPromptReq['students'];
+    const templateStudents: IStudentPromptReq['students'] =
+      template.students || [];
     if (templateStudents.length > 0 && templateStudents[0].id !== null) {
       setStudents(templateStudents);
     }

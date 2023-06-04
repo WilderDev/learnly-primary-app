@@ -312,7 +312,13 @@ SELECT
     'id', sp.id,
     'name', sp.first_name || ' ' || sp.last_name,
     'age', EXTRACT(YEAR FROM AGE(sp.birthday)),
-    'learning_styles', spp.learning_styles
+    'learning_styles', spp.learning_styles,
+    'favorite_subjects', spp.subject_preferences,
+    'interests', spp.interests,
+    'goals', spp.goals,
+    'learning_environments', spp.learning_environment_preferences,
+    'learning_resources', spp.learning_resources_preferences,
+    'special_needs', spp.special_needs
   )) AS students
 FROM
   lesson_plan_templates lpt

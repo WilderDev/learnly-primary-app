@@ -46,11 +46,11 @@ export default function Modal({
 
   // Modal Size Styles
   const sizeStyles: { [key in TSize]: string } = {
-    xs: 'max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg p-5',
-    sm: 'max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl p-6',
-    md: 'max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-6 py-7',
-    lg: 'max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl px-8 py-9',
-    xl: 'max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl px-10 py-11',
+    xs: 'max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg md:p-5',
+    sm: 'max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl md:p-6',
+    md: 'max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl md:px-6 md:py-7',
+    lg: 'max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl md:px-8 md:py-9',
+    xl: 'max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl md:px-10 md:py-11',
   };
 
   // Modal Rounded Styles
@@ -79,7 +79,7 @@ export default function Modal({
   useEffect(() => {
     if (isVisible && modalRef.current) {
       const focusableModalElements = modalRef.current.querySelectorAll(
-        'a[href], button, textarea, input, select'
+        'a[href], button, textarea, input, select',
       ) as NodeListOf<HTMLElement>;
 
       const firstElement = focusableModalElements[0];
@@ -124,7 +124,7 @@ export default function Modal({
       if (e.key === 'Tab') {
         // Get Focusable Elements
         const focusableModalElements = modalRef.current.querySelectorAll(
-          'a[href], button, textarea, input, select'
+          'a[href], button, textarea, input, select',
         ) as NodeListOf<HTMLElement>;
 
         const firstElement = focusableModalElements[0];
@@ -163,7 +163,7 @@ export default function Modal({
           isVisible
             ? 'visible opacity-100'
             : 'invisible opacity-0 pointer-events-none',
-          portalName === 'alt-portal' && 'print:hidden z-[10000]'
+          portalName === 'alt-portal' && 'print:hidden z-[10000]',
         )}
         role="dialog"
         aria-modal="true"
@@ -171,13 +171,13 @@ export default function Modal({
         {/* Content */}
         <div
           className={cn(
-            'z-50 w-full mx-auto my-12 space-y-4 bg-white dark:bg-navy-700 max-h-[90vh] overflow-y-auto relative border border-slate-600/50 dark:border-navy-300/50',
+            'z-50 w-full p-3 mx-auto my-12 space-y-4 bg-white dark:bg-navy-700 max-h-[90vh] overflow-y-auto relative border border-slate-600/50 dark:border-navy-300/50',
             sizeStyles[size],
             roundedStyles[rounded],
             shadowStyles[shadow],
             animationStyles,
             isVisible ? 'scale-100' : 'scale-90',
-            className
+            className,
             // 'print:shadow-none print:backdrop-none dark:print:backdrop-none print:border-none print:w-full print:h-full print:block print:max-w-4xl print:mx-auto print:my-0 print:rounded-none print:overflow-visible print:scale-100',
           )}
           ref={modalRef}
@@ -191,7 +191,7 @@ export default function Modal({
               className={cn(
                 'absolute print:hidden -top-2 p-1 rounded-full group hocus:bg-slate-100 dark:hocus:bg-navy-800 transition-colors',
                 !closeBtn && 'opacity-0 focus:opacity-100',
-                closeBtnLeft ? 'left-2' : 'right-2'
+                closeBtnLeft ? 'left-2' : 'right-2',
               )}
               onClick={close}
             >
@@ -229,7 +229,7 @@ Modal.Header = function ModalHeader({
     <header
       className={cn(
         'flex items-center justify-between border-b pb-4 border-slate-200 dark:border-navy-500',
-        className
+        className,
       )}
     >
       {/* Left - Info */}

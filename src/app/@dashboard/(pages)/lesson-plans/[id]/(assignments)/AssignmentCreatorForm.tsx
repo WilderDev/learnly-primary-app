@@ -14,7 +14,7 @@ import Select from '@/lib/components/form/Select';
 import { toast } from 'sonner';
 import { streamReader } from '@/lib/ai/stream';
 import { saveAssignment } from './_actions';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import Modal from '@/lib/components/popouts/Modal';
 import {
   ILessonPlanWithCreator,
@@ -181,7 +181,7 @@ export default function AssignmentCreatorForm({
       {assignmentContent ? (
         <div className="flex flex-col gap-6">
           <div ref={componentRef}>
-            <LessonPlanMarkdown content={assignmentContent} />
+            <PrintableMarkdownContainer content={assignmentContent} />
           </div>
 
           {assignmentActions && (

@@ -29,7 +29,7 @@ import {
 import { useUser } from '@/lib/components/providers/UserProvider';
 import { streamReader } from '@/lib/ai/stream';
 import Modal from '@/lib/components/popouts/Modal';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import { useAuth } from '@/lib/components/providers/AuthProvider';
 import CurriculumLessonDock from './CurriculumLessonDock';
 import { toast } from 'sonner';
@@ -257,7 +257,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
         noCloseOnOutsideClick={true}
         size="lg"
       >
-        <LessonPlanMarkdown content={lessonOutput} />
+        <PrintableMarkdownContainer content={lessonOutput} />
       </Modal>
 
       {lessonId && (

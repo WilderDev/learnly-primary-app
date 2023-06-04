@@ -4,7 +4,7 @@ import {
   ILessonPlanWithCreator,
   IUserLessonPlanBasic,
 } from '@/assets/typescript/lesson-plan';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import LessonPlanCreatorInfo from './LessonPlanCreatorInfo';
 import LessonPlanTags from './LessonPlanTags';
 import LessonPlanActionIcons from './LessonPlanActionIcons';
@@ -54,7 +54,7 @@ export default function LessonPlanContainer({
 
         {/* Content */}
         <div ref={componentRef}>
-          <LessonPlanMarkdown content={lessonPlan.content} />
+          <PrintableMarkdownContainer content={lessonPlan.content} />
         </div>
 
         {/* Mark Complete */}

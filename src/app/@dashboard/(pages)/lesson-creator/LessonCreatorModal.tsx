@@ -4,7 +4,7 @@ import Modal from '@/lib/components/popouts/Modal';
 import { useLessonCreator } from './LessonCreatorCtx';
 import Button from '@/lib/components/ui/Button';
 import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/solid';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import LessonCreatorDock from './LessonCreatorDock';
 import cn from '@/lib/common/cn';
 import { usePrint } from '@/lib/hooks/usePrint';
@@ -40,10 +40,7 @@ export default function LessonCreatorModal() {
         )}
 
         <div ref={componentRef} className="print:p-6">
-          {/* This is the new div */}
-          <div className="mt-6 mb-4 pr-4">
-            <LessonPlanMarkdown content={lessonContent} />
-          </div>
+          <PrintableMarkdownContainer content={lessonContent} />
         </div>
       </Modal>
 

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { Database } from '@/assets/typescript/db';
+import capitalize from '@/lib/common/capitalize';
 
 interface IProps {
   avatar_url: string;
@@ -8,7 +9,11 @@ interface IProps {
   role?: Database['public']['Enums']['profile_type'];
 }
 
-export default function LessonPlanCreatorInfo({ avatar_url, name }: IProps) {
+export default function LessonPlanCreatorInfo({
+  avatar_url,
+  name,
+  role,
+}: IProps) {
   return (
     <div className="flex items-center">
       {/* Image */}
@@ -28,9 +33,7 @@ export default function LessonPlanCreatorInfo({ avatar_url, name }: IProps) {
           {name}
         </h3>
         <p className="text-sm text-slate-500 dark:text-navy-300">
-          Proud Parent
-          {/* Role? */}
-          {/* Badges? */}
+          Learnly {role ? capitalize(role) : 'Educator'}
         </p>
       </div>
     </div>
