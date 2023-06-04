@@ -4,11 +4,10 @@
 
 3. When you hover over the <Avatar /> component, it should have a tooltip pop up that says their name
 4. Lesson Creator Info Bubbles for Philosphy, Standards, and Objectives, etc.
-5. [Bottom Right Chat Bubble](<src/app/@dashboard/(pages)/help-center/ChatForm.tsx>) (Almost everything is there already) -> If we are on a lesson page, change the lesson context.
-6. [Right Side Panel](<src/app/@dashboard/(pages)/layout.tsx>) (Stats)
-7. User's can change the title and image of a lesson plan they have created
-8. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
-9. Curriculum Topic search page with tags and by filters
+5. [Right Side Panel](<src/app/@dashboard/(pages)/layout.tsx>) (Stats)
+6. User's can change the title and image of a lesson plan they have created
+7. Search bar in the header should fuzzy load any lesson_plan or curriculum that matches the search query. If there is only one result, take them to that page. If there are multiple results, take them to the search page with the results.
+8. Curriculum Topic search page with tags and by filters
 
 ---
 

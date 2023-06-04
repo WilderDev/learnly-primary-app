@@ -11,6 +11,7 @@ import { ChatCompletionRequestMessage } from 'openai';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { useHelpCenter } from './HelpCenterCtx';
+import baseUrl from '@/lib/common/baseUrl';
 
 // * Props
 interface IProps {
@@ -19,6 +20,7 @@ interface IProps {
   resetChat: () => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  lessonContext?: IChatContext['lesson'];
 }
 
 // * Component
@@ -28,6 +30,7 @@ export default function ChatForm({
   resetChat,
   loading,
   setLoading,
+  lessonContext,
 }: IProps) {
   // * Hooks / Context
   const { user, students } = useUser(); // Get user and students from context
@@ -59,14 +62,16 @@ export default function ChatForm({
         name: `${student.firstName} ${student.lastName}`,
         age: getAgeFromBirthday(student.birthday),
       })),
-      // HERE: Add more context . . .
+      // If we have lessonContext, add it to the context
+      ...(lessonContext && { lesson: lessonContext }),
     };
 
-    // 5. Create Request Body Object
+    // 5. Create Request Body Object and source
     const body: IChatRequest = {
       messages: [...messages, message].slice(-7), // Only send last 7 messages
       context, // Add context
     };
+    const source = lessonContext ? 'lesson-plan' : 'help-center'; // If we have lessonContext, set source to lesson-plan, else set to help-center
 
     // 6. Add Message to Chat and Clear Input
     addMessages([message]); // This get's removed when we get a response from OpenAI
@@ -75,7 +80,7 @@ export default function ChatForm({
     // 7. Send Request to OpenAI
     try {
       // Hit API Endpoint to create chat completion request
-      const res = await fetch('/api/ai/chat?source=help-center', {
+      const res = await fetch(baseUrl + `/api/ai/chat?source=${source}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

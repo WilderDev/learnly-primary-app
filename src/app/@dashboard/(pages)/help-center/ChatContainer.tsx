@@ -2,16 +2,18 @@
 
 import { useRouter } from 'next/navigation';
 import { ChatCompletionRequestMessage } from 'openai';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ChatMessages from './ChatMessages';
 import ChatForm from './ChatForm';
 import Button from '@/lib/components/ui/Button';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import ClientWrapper from '@/lib/components/layout/ClientWrapper';
+import { IChatContext } from '@/assets/typescript/ai';
 
 // * Props
 interface IProps {
   initialMessage?: ChatCompletionRequestMessage;
+  lessonContext?: IChatContext['lesson'];
 }
 
 // * Component
@@ -20,6 +22,7 @@ export default function ChatContainer({
     role: 'assistant',
     content: `What can I help you with today?`,
   },
+  lessonContext,
 }: IProps) {
   // * Hooks / Context
   const router = useRouter(); // Next router for refreshing on reset
@@ -30,10 +33,20 @@ export default function ChatContainer({
 
   // * Handlers
   // Reset Chat
-  const resetChat = () => {
+  const resetChat = useCallback(() => {
     setMessages([initialMessage]);
     router.refresh();
-  };
+  }, [initialMessage, router]);
+
+  // * Effects
+  // If lesson plan, reset the chat from the start
+  useEffect(() => {
+    if (messages[0].role !== initialMessage.role) {
+      setMessages([initialMessage]);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialMessage]);
 
   // * Render
   return (
@@ -51,6 +64,7 @@ export default function ChatContainer({
           resetChat={resetChat}
           loading={loading}
           setLoading={setLoading}
+          lessonContext={lessonContext}
         />
 
         {/* Chat Reset Button */}

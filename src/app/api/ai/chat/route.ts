@@ -22,10 +22,10 @@ export async function POST(request: NextRequest) {
   const systemMessage: ChatCompletionRequestMessage = {
     role: 'system',
     content:
-      `You are a chat help center bot for homeschool parents/teachers using a new online learning platform that generates lesson plans and curriculum for children/students.
+      `You are a chat help center bot for homeschool parents/teachers using an online learning platform that generates lesson plans and curriculum for children/students.
 
 	**Parent:** ${context.name}
-	- Number of children/students: ${context.students.length}
+	- Number of children/students: ${context.students.length || 0}
 
 	**Children/Students:**
 	${context.students
@@ -33,15 +33,15 @@ export async function POST(request: NextRequest) {
     .join('\n')}
 
 	${
-    source === 'lesson-plan' &&
-    context.lesson &&
-    `
+    source === 'lesson-plan' && context.lesson
+      ? `
 	**Lesson Plan:**
 	- Title: ${context.lesson.title}
 	- Subject: ${context.lesson.subject}
 	- Level: ${context.lesson.level}
 	- Topic: ${context.lesson.topic}
 	`
+      : ''
   }
 
 	Answer as concisely as possible. Very short answers. If you don't know the answer, say so. If you need more information, ask for it.
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     user: context.id,
     temperature: 0.4,
     n: 1,
-    max_tokens: 3500,
+    max_tokens: 3000,
     presence_penalty: 1.0,
     frequency_penalty: 1.0,
   };
@@ -81,5 +81,3 @@ export async function POST(request: NextRequest) {
     return new Response('Internal Server Error', { status: 500 });
   }
 }
-
-export const runtime = 'edge'; // Closer to user's location (faster)
