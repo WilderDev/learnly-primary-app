@@ -7,18 +7,13 @@ import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import LessonCreatorDock from './LessonCreatorDock';
 import cn from '@/lib/common/cn';
-import { useRef, useState } from 'react';
-import { useReactToPrint } from 'react-to-print';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Component
 export default function LessonCreatorModal() {
   // * Hooks / Context
   const { id, lessonContent, complete, reset, isLoading } = useLessonCreator();
-
-  const componentRef = useRef<HTMLDivElement | null>(null);
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current!,
-  });
+  const { componentRef, handlePrint } = usePrint();
 
   // * Return
   return (
@@ -56,7 +51,7 @@ export default function LessonCreatorModal() {
       {complete && (
         <button
           className={cn(
-            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors'
+            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors',
           )}
           onClick={() => reset(false)}
         >

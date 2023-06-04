@@ -257,7 +257,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
         noCloseOnOutsideClick={true}
         size="lg"
       >
-        <LessonPlanMarkdown content={lessonOutput} print={print} />
+        <LessonPlanMarkdown content={lessonOutput} />
       </Modal>
 
       {lessonId && (
