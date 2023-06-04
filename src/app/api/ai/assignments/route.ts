@@ -1,64 +1,31 @@
 import { OpenAIStream } from '@/lib/ai/openai';
+import { generateAssignmentPrompt } from '@/lib/ai/prompts';
 
+// * Props
+export interface IAIAssignmentPostReq {
+  questions: number;
+  lessonPlanContent: string;
+  lessonPlanGrade: string;
+  additionalComments: string;
+}
+
+// * API Route Handler (POST)
 export async function POST(request: Request) {
+  // 1. Get request body
   const { questions, lessonPlanContent, lessonPlanGrade, additionalComments } =
-    (await request.json()) as {
-      questions: number;
-      lessonPlanContent: string;
-      lessonPlanGrade: string;
-      additionalComments: string;
-    };
+    (await request.json()) as IAIAssignmentPostReq;
 
-  function splitQuestions(totalQuestions: number) {
-    const multipleChoiceQuestions = Math.floor(Math.random() * totalQuestions);
-    const fillInTheBlankQuestions = totalQuestions - multipleChoiceQuestions;
+  // 2. Validate request body
+  if (!questions || !lessonPlanContent || !lessonPlanGrade)
+    return new Response('Invalid request', { status: 400 });
 
-    return {
-      multipleChoiceQuestions,
-      fillInTheBlankQuestions,
-    };
-  }
-
-  const { multipleChoiceQuestions, fillInTheBlankQuestions } =
-    splitQuestions(questions);
-
-  const prompt = `
-Create an assignment worksheet that a homeschool parent can use to give to their child (Grade: ${lessonPlanGrade}). The worksheet should be based on the lesson content provided below.
-
-***LESSON CONTENT***
-${lessonPlanContent}
-***
-
-Follow the guidelines below when creating the worksheet:
-1. The worksheet should contain ${questions} questions - ${fillInTheBlankQuestions} fill-in-the-blank and ${multipleChoiceQuestions} multiple choice questions.
-2. Multiple choice questions should have four options - one correct and three incorrect.
-3. Focus on testing understanding of the key concepts in the lesson content. Avoid questions focused on the structure or materials used in the lesson.
-4. Return in clean markdown format with a space for name and date at the top. Put all questions first then answers at the end. <li> elements should NOT have a paragraph inside them.
-5. Additional guidelines: ${additionalComments ?? 'N/A'}.
-
-Follow the example below when creating the worksheet:
-
-***SAMPLE WORKSHEET***
-
-Name: ___________   Date: ___________
-
-## Questions
-
-1. Which of the following is the capital of England?
-- (a) Paris
-- (b) Madrid
-- (c) London
-- (d) Berlin
-
-2. What ...
-
-## Answers
-
-1. London (c)
-2. ...
-
-***
-`.trim();
+  // 3. Generate assignment prompt and Payload
+  const prompt = generateAssignmentPrompt({
+    questions,
+    lessonPlanContent,
+    lessonPlanGrade,
+    additionalComments,
+  });
 
   const payload = {
     model: 'text-davinci-003',

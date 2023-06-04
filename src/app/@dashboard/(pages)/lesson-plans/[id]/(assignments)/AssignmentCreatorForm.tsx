@@ -22,6 +22,7 @@ import {
 } from '@/assets/typescript/lesson-plan';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import LessonPlanSaveDetailsModalForm from '../LessonPlanSaveDetailsModal';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Props
 interface IProps {
@@ -43,6 +44,9 @@ export default function AssignmentCreatorForm({
   userLessonPlan,
   lessonPlans,
 }: IProps) {
+  // * Hooks
+  const { componentRef, handlePrint } = usePrint();
+
   // * State
   const [userLessonOption, setUserLessonOption] = useState('');
   const [additionalCommentsModal, setAdditionalCommentsModal] = useState(false);
@@ -57,7 +61,6 @@ export default function AssignmentCreatorForm({
   const [isLoadingAssignment, setIsLoadingAssignment] = useState(false);
   const [assignmentActions, setAssignmentActions] = useState(false);
   const [printOptions, setPrintOptions] = useState(false);
-  const [print, setPrint] = useState(false);
 
   // * Handlers / Helpers
   // Get Lesson Plan
@@ -72,7 +75,6 @@ export default function AssignmentCreatorForm({
     setIsLoadingAssignment(true);
     setAdditionalCommentsModal(false);
     setAssignmentActions(false);
-    setPrint(false);
 
     // Validate Form
     const errors = [];
@@ -178,7 +180,9 @@ export default function AssignmentCreatorForm({
     <>
       {assignmentContent ? (
         <div className="flex flex-col gap-6">
-          <LessonPlanMarkdown content={assignmentContent} print={print} />
+          <div ref={componentRef}>
+            <LessonPlanMarkdown content={assignmentContent} />
+          </div>
 
           {assignmentActions && (
             <div className="flex items-center gap-x-6">
@@ -206,7 +210,7 @@ export default function AssignmentCreatorForm({
 
           {/* Print Button */}
           {printOptions && (
-            <Button className="mt-6" onClick={() => setPrint(true)}>
+            <Button className="mt-6" onClick={handlePrint}>
               Print
             </Button>
           )}
