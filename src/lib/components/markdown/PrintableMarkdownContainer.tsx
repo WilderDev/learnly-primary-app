@@ -12,9 +12,12 @@ interface IProps {
 }
 
 // * Component
-export default function LessonPlanMarkdown({ content, className }: IProps) {
+export default function PrintableMarkdownContainer({
+  content,
+  className,
+}: IProps) {
   return (
-    <div className={cn(className, 'print:p-2')}>
+    <div className={cn(className, 'print:py-3 print:px-6')}>
       {/* Markdown */}
       <ReactMarkdown components={lessonPlanComponents} linkTarget="_blank">
         {content}

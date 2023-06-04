@@ -5,7 +5,7 @@ import { supabaseServer } from '@/lib/auth/supabaseServer';
 import Logo from '@/lib/components/brand/Logo';
 import Container from '@/lib/components/layout/Container';
 import Main from '@/lib/components/layout/Main';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import { redirect } from 'next/navigation';
 import ShareButton from './ShareButton';
 import TryLearnlyCTA from '@/lib/components/brand/TryLearnlyCTA';
@@ -52,7 +52,7 @@ export default async function PublicLessonPlanPage({
           </h1>
 
           {/* Content */}
-          <LessonPlanMarkdown content={lessonPlan.content} />
+          <PrintableMarkdownContainer content={lessonPlan.content} />
 
           {/* Branding */}
           <Logo className="absolute top-0 right-0 m-4" />

@@ -76,7 +76,7 @@ export function NoCurriculumRoadmapCard({
       <div className="flex h-full flex-col items-center justify-center">
         <ExclamationCircleIcon className="h-12 w-12 text-slate-500 dark:text-navy-300" />
 
-        <h3 className="mt-4 text-2xl font-bold text-slate-700 dark:text-navy-100">
+        <h3 className="mt-4 text-2xl text-center sm:text-left font-bold text-slate-700 dark:text-navy-100">
           You don&apos;t have any curriculums yet
         </h3>
 

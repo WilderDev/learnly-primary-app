@@ -2,7 +2,7 @@
 
 import AssignmentCreatorForm from './AssignmentCreatorForm';
 import { useState } from 'react';
-import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
+import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import Button from '@/lib/components/ui/Button';
 import {
   ILessonPlanWithCreator,
@@ -29,7 +29,7 @@ export default function Assignment({
   return assignmentContent ? (
     <>
       <div ref={componentRef}>
-        <LessonPlanMarkdown content={assignmentContent} />
+        <PrintableMarkdownContainer content={assignmentContent} />
       </div>
 
       <Button onClick={handlePrint} className="print:hidden">

@@ -38,8 +38,6 @@ async function updateProfileAction(input: z.infer<typeof updateProfileSchema>) {
       data: { session },
     } = await supabase.auth.getSession();
 
-    console.log('input:', input);
-
     const { error } = await supabase
       .from('teacher_profiles')
       .update({
@@ -54,14 +52,16 @@ async function updateProfileAction(input: z.infer<typeof updateProfileSchema>) {
       phone: input.phone,
     });
 
-    console.log('error2:', error2);
-
     if (error || error2)
       return responseContract('Something went wrong!', false);
 
+    await supabase.auth.refreshSession({
+      refresh_token: session?.refresh_token!,
+    });
+    await supabase.auth.reauthenticate;
     revalidatePath('/account'); // ✅
 
-    return responseContract('Success!', true);
+    return responseContract(input.phone || '', true);
   } catch (error) {
     return responseContract((error as Error).message, false);
   }
