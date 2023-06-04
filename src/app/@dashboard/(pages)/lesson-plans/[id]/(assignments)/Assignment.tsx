@@ -8,7 +8,7 @@ import {
   ILessonPlanWithCreator,
   IUserLessonPlanBasic,
 } from '@/assets/typescript/lesson-plan';
-import { usePrint } from '@/lib/common/usePrint';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Props
 interface IProps {

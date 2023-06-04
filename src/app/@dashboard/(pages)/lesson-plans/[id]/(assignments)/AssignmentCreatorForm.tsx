@@ -22,7 +22,7 @@ import {
 } from '@/assets/typescript/lesson-plan';
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import LessonPlanSaveDetailsModalForm from '../LessonPlanSaveDetailsModal';
-import { usePrint } from '@/lib/common/usePrint';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Props
 interface IProps {
@@ -53,7 +53,7 @@ export default function AssignmentCreatorForm({
   const [saveDetailsModalOpen, setSaveModalOpen] = useState(false);
   const [assignmentContent, setAssignmentContent] = useState('');
   const [assignmentTitle, setAssignmentTitle] = useState(
-    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`
+    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`,
   );
   const [numberOfQuestions, setNumberofQuestions] = useState(3);
   const [assignmentDueDate, setAssignmentDueDate] = useState<Date | null>(null);
@@ -65,7 +65,7 @@ export default function AssignmentCreatorForm({
   // * Handlers / Helpers
   // Get Lesson Plan
   const getLP = lessonPlans?.find(
-    (lp) => lp.user_lesson_plan_id === userLessonOption
+    (lp) => lp.user_lesson_plan_id === userLessonOption,
   );
 
   // Form Submit
@@ -109,7 +109,7 @@ export default function AssignmentCreatorForm({
             color: '#f1f1f1',
             fontWeight: 'semibold',
           },
-        }
+        },
       );
       return setSaveModalOpen(true);
     }
@@ -225,7 +225,7 @@ export default function AssignmentCreatorForm({
                   lessonPlans.map((lp) => ({
                     label: lp.lesson_plan_name,
                     value: lp.user_lesson_plan_id,
-                  }))
+                  })),
                 )}
                 value={userLessonOption}
                 setValue={

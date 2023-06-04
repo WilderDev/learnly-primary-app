@@ -21,7 +21,7 @@ import {
 } from '@/assets/typescript/assignment';
 import OverlappingImages from '@/lib/components/images/OverlappingImages';
 import Avatar from '@/lib/components/images/Avatar';
-import { usePrint } from '@/lib/common/usePrint';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Props
 interface IProps {
@@ -36,19 +36,22 @@ export default function AssignmentEditModalForm({
   students,
   close,
 }: IProps) {
+  // * Hooks / Context
+  const { componentRef, handlePrint } = usePrint(assignment.title);
+
   // * State
   const [title, setTitle] = useState(assignment.title); // Assignment Title
   const [assignedOn, setAssignedOn] = useState<Date | null>(
-    new Date(assignment.assignedOn) // Assigned On
+    new Date(assignment.assignedOn), // Assigned On
   );
   const [dueDate, setDueDate] = useState<Date | null>(
-    new Date(assignment.dueOn) // Due Date
+    new Date(assignment.dueOn), // Due Date
   );
   const [isExpanded, setIsExpanded] = useState(false); // Is Expanded
   let [isChanging, startTransition] = useTransition(); // Mutation Transition
   const showLessContent = assignment.content.slice(
     0,
-    assignment.content.length * 0.1
+    assignment.content.length * 0.1,
   ); // Show Less Content
 
   // * Requests / Mutations
@@ -101,8 +104,6 @@ export default function AssignmentEditModalForm({
       toast.error('Failed to Delete Assignment');
     }
   };
-
-  const { componentRef, handlePrint } = usePrint(assignment.title);
 
   return (
     <>
@@ -162,7 +163,7 @@ export default function AssignmentEditModalForm({
                         mutate({
                           id: assignment.id,
                           status: assignment.status as TAssignmentStatus,
-                        })
+                        }),
                       );
                     }}
                     disabled={isChanging}

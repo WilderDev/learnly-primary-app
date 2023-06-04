@@ -9,7 +9,7 @@ import LessonPlanCreatorInfo from './LessonPlanCreatorInfo';
 import LessonPlanTags from './LessonPlanTags';
 import LessonPlanActionIcons from './LessonPlanActionIcons';
 import LessonPlanMarkComplete from './LessonPlanMarkComplete';
-import { usePrint } from '@/lib/common/usePrint';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Props
 interface IProps {

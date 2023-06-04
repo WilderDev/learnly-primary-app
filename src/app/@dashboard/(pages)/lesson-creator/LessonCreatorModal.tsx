@@ -7,7 +7,7 @@ import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import LessonPlanMarkdown from '@/lib/components/markdown/LessonPlanMarkdown';
 import LessonCreatorDock from './LessonCreatorDock';
 import cn from '@/lib/common/cn';
-import { usePrint } from '@/lib/common/usePrint';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Component
 export default function LessonCreatorModal() {
@@ -51,7 +51,7 @@ export default function LessonCreatorModal() {
       {complete && (
         <button
           className={cn(
-            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors'
+            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors',
           )}
           onClick={() => reset(false)}
         >
