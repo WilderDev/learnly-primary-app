@@ -6,28 +6,25 @@ import AssignmentCreatorForm from '../lesson-plans/[id]/(assignments)/Assignment
 import { Card } from '@/lib/components/ui/Card';
 import Button from '@/lib/components/ui/Button';
 import { PlusIcon } from '@heroicons/react/24/solid';
+import { ILessonPlanWithoutAssignments } from '@/assets/typescript/assignment';
 
-export interface LessonPlanWithoutAssignments {
-  user_lesson_plan_id: string;
-  lesson_plan_name: string;
-  lesson_plan_content: string;
-  lesson_plan_level_name: string;
-}
-
+// * Props
 interface IProps {
-  lessonPlansWithoutAssignments: LessonPlanWithoutAssignments[];
+  lessonPlansWithoutAssignments: ILessonPlanWithoutAssignments[];
 }
 
+// * Component
 export default function AssignmentsAdd({
   lessonPlansWithoutAssignments,
 }: IProps) {
   // * State
   const [selectedLessonPlan, setSelectedLessonPlan] =
-    useState<LessonPlanWithoutAssignments | null>(null);
+    useState<ILessonPlanWithoutAssignments | null>(null);
 
+  // * Render
   return (
     <>
-      {lessonPlansWithoutAssignments.length > 0 ? (
+      {lessonPlansWithoutAssignments?.length > 0 ? (
         <section className="flex flex-col gap-6">
           {lessonPlansWithoutAssignments.map((lessonPlan, i) => (
             <Card className="w-full flex items-center" key={i}>

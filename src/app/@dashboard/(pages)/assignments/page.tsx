@@ -10,8 +10,10 @@ import AssignmentsTableHead from '../(home)/(assignments-table)/AssignmentsTable
 import MobileAssignmentsTable from '../(home)/(assignments-table)/MobileAssignmentsTable';
 import AssignmentsAdd from './AssignmentsAdd';
 
+// * Page
 export default async function AssignmentsPage() {
-  // Data
+  // * Data
+  // Fetch Data
   const {
     upcomingAssignments,
     inProgessAssignments,
@@ -48,7 +50,7 @@ export default async function AssignmentsPage() {
   return (
     <>
       <DashMainCol>
-        {assignemtPanels.map((panel, i) => (
+        {assignemtPanels?.map((panel, i) => (
           <DashPanel colNum={1} key={i}>
             <DashPanelHeader title={panel.title} />
 
@@ -129,21 +131,21 @@ async function getAssignmentsWithLessonDetails() {
           avatarUrl: s.avatar_url!,
         })) as ISimpleStudent[],
       },
-    })
+    }),
   );
 
   // Sort assignments
   const upcomingAssignments = transformedData.filter(
-    (assignment) => assignment.status === 'PENDING'
+    (assignment) => assignment.status === 'PENDING',
   );
   const inProgessAssignments = transformedData.filter(
-    (assignment) => assignment.status === 'IN_PROGRESS'
+    (assignment) => assignment.status === 'IN_PROGRESS',
   );
   const completedAssignments = transformedData.filter(
-    (assignment) => assignment.status === 'COMPLETED'
+    (assignment) => assignment.status === 'COMPLETED',
   );
   const canceledAssignments = transformedData.filter(
-    (assignment) => assignment.status === 'CANCELED'
+    (assignment) => assignment.status === 'CANCELED',
   );
 
   return {

@@ -23,7 +23,7 @@ import {
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import LessonPlanSaveDetailsModalForm from '../LessonPlanSaveDetailsModal';
 import { usePrint } from '@/lib/hooks/usePrint';
-import { LessonPlanWithoutAssignments } from '../../../assignments/AssignmentsAdd';
+import { ILessonPlanWithoutAssignments } from '@/assets/typescript/assignment';
 
 // * Props
 interface IProps {
@@ -43,7 +43,7 @@ interface IProps {
     lesson_plan_level_name: string;
   };
   setSelectedLessonPlan?: (
-    lessonPlan: LessonPlanWithoutAssignments | null
+    lessonPlan: ILessonPlanWithoutAssignments | null,
   ) => void;
 }
 
@@ -65,7 +65,7 @@ export default function AssignmentCreatorForm({
   const [saveDetailsModalOpen, setSaveModalOpen] = useState(false);
   const [assignmentContent, setAssignmentContent] = useState('');
   const [assignmentTitle, setAssignmentTitle] = useState(
-    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`
+    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`,
   );
   const [numberOfQuestions, setNumberofQuestions] = useState(3);
   const [assignmentDueDate, setAssignmentDueDate] = useState<Date | null>(null);
@@ -76,7 +76,6 @@ export default function AssignmentCreatorForm({
 
   // * Handlers / Helpers
   // Get Lesson Plan
-
   const getLP = selectedLessonPlan
     ? selectedLessonPlan
     : lessonPlans?.find((lp) => lp.user_lesson_plan_id === userLessonOption);
@@ -123,7 +122,7 @@ export default function AssignmentCreatorForm({
             color: '#f1f1f1',
             fontWeight: 'semibold',
           },
-        }
+        },
       );
       return setSaveModalOpen(true);
     }
@@ -249,7 +248,7 @@ export default function AssignmentCreatorForm({
                   lessonPlans.map((lp) => ({
                     label: lp.lesson_plan_name,
                     value: lp.user_lesson_plan_id,
-                  }))
+                  })),
                 )}
                 value={userLessonOption}
                 setValue={
