@@ -7,7 +7,6 @@ export interface IAdminUser {
   role: Database['public']['Enums']['user_role'];
   lastActivity: string;
   subscriptionStatus: Database['public']['Enums']['subscription_status'];
-  totalActivity: number;
   expirationDate: string;
 }
 

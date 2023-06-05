@@ -952,3 +952,189 @@ const userStatusColors = {
     },
   },
 };
+
+// * Subscription Status Colors
+// Subscription Status Helper Function
+export function getSubscriptionStatusColors(subscriptionStatus: string) {
+  const status = subscriptionStatus
+    ?.toUpperCase()
+    ?.split(' ')
+    ?.join('_') as keyof typeof subscriptionStatusColors;
+
+  return subscriptionStatusColors[status] || subscriptionStatusColors.DEFAULT;
+}
+
+// Subscription Status Enum Colors
+const subscriptionStatusColors = {
+  ACTIVE: {
+    BG: {
+      DEFAULT: 'bg-green-500',
+      LIGHT: 'bg-green-300',
+      DARK: 'bg-green-700',
+      GRADIENT: 'from-green-500 via-emerald-600 to-green-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-green-500',
+      LIGHT: 'text-green-300',
+      DARK: 'text-green-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-green-700 text-green-100',
+      LIGHT: 'bg-green-500 text-green-100',
+      DARK: 'bg-green-900 text-green-100',
+      SUBDUED: 'bg-green-600/70 text-green-50',
+    },
+  },
+  TRIALING: {
+    BG: {
+      DEFAULT: 'bg-purple-500',
+      LIGHT: 'bg-purple-300',
+      DARK: 'bg-purple-700',
+      GRADIENT: 'from-purple-500 via-violet-600 to-purple-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-purple-500',
+      LIGHT: 'text-purple-300',
+      DARK: 'text-purple-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-purple-700 text-purple-100',
+      LIGHT: 'bg-purple-500 text-purple-100',
+      DARK: 'bg-purple-900 text-purple-100',
+      SUBDUED: 'bg-purple-600/70 text-purple-50',
+    },
+  },
+  PAUSED: {
+    BG: {
+      DEFAULT: 'bg-blue-500',
+      LIGHT: 'bg-blue-300',
+      DARK: 'bg-blue-700',
+      GRADIENT: 'from-blue-500 via-sky-600 to-blue-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-blue-500',
+      LIGHT: 'text-blue-300',
+      DARK: 'text-blue-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-blue-700 text-blue-100',
+      LIGHT: 'bg-blue-500 text-blue-100',
+      DARK: 'bg-blue-900 text-blue-100',
+      SUBDUED: 'bg-blue-600/70 text-blue-50',
+    },
+  },
+  INCOMPLETE: {
+    BG: {
+      DEFAULT: 'bg-yellow-500',
+      LIGHT: 'bg-yellow-300',
+      DARK: 'bg-yellow-700',
+      GRADIENT: 'from-yellow-500 via-orange-600 to-yellow-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-yellow-500',
+      LIGHT: 'text-yellow-300',
+      DARK: 'text-yellow-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-yellow-700 text-yellow-100',
+      LIGHT: 'bg-yellow-500 text-yellow-100',
+      DARK: 'bg-yellow-900 text-yellow-100',
+      SUBDUED: 'bg-yellow-600/70 text-yellow-50',
+    },
+  },
+  INCOMPLETE_EXPIRED: {
+    BG: {
+      DEFAULT: 'bg-orange-500',
+      LIGHT: 'bg-orange-300',
+      DARK: 'bg-orange-700',
+      GRADIENT: 'from-orange-500 via-amber-600 to-orange-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-orange-500',
+      LIGHT: 'text-orange-300',
+      DARK: 'text-orange-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-orange-700 text-orange-100',
+      LIGHT: 'bg-orange-500 text-orange-100',
+      DARK: 'bg-orange-900 text-orange-100',
+      SUBDUED: 'bg-orange-600/70 text-orange-50',
+    },
+  },
+  CANCELED: {
+    BG: {
+      DEFAULT: 'bg-red-500',
+      LIGHT: 'bg-red-300',
+      DARK: 'bg-red-700',
+      GRADIENT: 'from-red-500 via-rose-600 to-red-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-red-500',
+      LIGHT: 'text-red-300',
+      DARK: 'text-red-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-red-700 text-red-100',
+      LIGHT: 'bg-red-500 text-red-100',
+      DARK: 'bg-red-900 text-red-100',
+      SUBDUED: 'bg-red-600/70 text-red-50',
+    },
+  },
+  PAST_DUE: {
+    BG: {
+      DEFAULT: 'bg-teal-500',
+      LIGHT: 'bg-teal-300',
+      DARK: 'bg-teal-700',
+      GRADIENT: 'from-teal-500 via-blue-600 to-teal-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-teal-500',
+      LIGHT: 'text-teal-300',
+      DARK: 'text-teal-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-teal-700 text-teal-100',
+      LIGHT: 'bg-teal-500 text-teal-100',
+      DARK: 'bg-teal-900 text-teal-100',
+      SUBDUED: 'bg-teal-600/70 text-teal-50',
+    },
+  },
+  UNPAID: {
+    BG: {
+      DEFAULT: 'bg-indigo-500',
+      LIGHT: 'bg-indigo-300',
+      DARK: 'bg-indigo-700',
+      GRADIENT: 'from-indigo-500 via-blue-600 to-indigo-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-indigo-500',
+      LIGHT: 'text-indigo-300',
+      DARK: 'text-indigo-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-indigo-700 text-indigo-100',
+      LIGHT: 'bg-indigo-500 text-indigo-100',
+      DARK: 'bg-indigo-900 text-indigo-100',
+      SUBDUED: 'bg-indigo-600/70 text-indigo-50',
+    },
+  },
+  DEFAULT: {
+    BG: {
+      DEFAULT: 'bg-slate-500',
+      LIGHT: 'bg-slate-300',
+      DARK: 'bg-slate-700',
+      GRADIENT: 'from-slate-500 via-sky-600 to-slate-700',
+    },
+    TEXT: {
+      DEFAULT: 'text-slate-500',
+      LIGHT: 'text-slate-300',
+      DARK: 'text-slate-700',
+    },
+    BLEND: {
+      DEFAULT: 'bg-slate-700 text-slate-100',
+      LIGHT: 'bg-slate-500 text-slate-100',
+      DARK: 'bg-slate-900 text-slate-100',
+      SUBDUED: 'bg-slate-600/70 text-slate-50',
+    },
+  },
+};
