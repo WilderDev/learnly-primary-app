@@ -7,10 +7,7 @@ import { ISimpleStudent } from '@/assets/typescript/user';
 import { Table } from '@/lib/components/ui/Table';
 import AssignmentsTableBody from '../(home)/(assignments-table)/AssignmentsTableBody';
 import AssignmentsTableHead from '../(home)/(assignments-table)/AssignmentsTableHead';
-import { revalidatePath } from 'next/cache';
 import MobileAssignmentsTable from '../(home)/(assignments-table)/MobileAssignmentsTable';
-import Modal from '@/lib/components/popouts/Modal';
-import AssignmentCreatorForm from '../lesson-plans/[id]/(assignments)/AssignmentCreatorForm';
 import AssignmentsAdd from './AssignmentsAdd';
 
 export default async function AssignmentsPage() {
@@ -21,7 +18,6 @@ export default async function AssignmentsPage() {
     completedAssignments,
     canceledAssignments,
   } = await getAssignmentsWithLessonDetails();
-
   const lessonPlansWithoutAssignments =
     await getUserLessonPlansWithoutAssignment();
 
@@ -58,11 +54,14 @@ export default async function AssignmentsPage() {
 
             {panel.assignments?.length > 0 ? (
               <>
+                {/* Default Table */}
                 <Table className="hidden 2xl:block">
                   <AssignmentsTableHead />
 
                   <AssignmentsTableBody assignments={panel.assignments} />
                 </Table>
+
+                {/* Mobile Table */}
                 <MobileAssignmentsTable assignments={panel.assignments} />
               </>
             ) : (
@@ -77,6 +76,8 @@ export default async function AssignmentsPage() {
       <DashSideCol>
         <DashPanel colNum={1}>
           <DashPanelHeader title="Awaiting Assignments" />
+
+          {/* Assignments Quick Add */}
           <AssignmentsAdd
             lessonPlansWithoutAssignments={lessonPlansWithoutAssignments}
           />

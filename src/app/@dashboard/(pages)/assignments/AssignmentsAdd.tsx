@@ -21,6 +21,7 @@ interface IProps {
 export default function AssignmentsAdd({
   lessonPlansWithoutAssignments,
 }: IProps) {
+  // * State
   const [selectedLessonPlan, setSelectedLessonPlan] =
     useState<LessonPlanWithoutAssignments | null>(null);
 
@@ -30,10 +31,12 @@ export default function AssignmentsAdd({
         <section className="flex flex-col gap-6">
           {lessonPlansWithoutAssignments.map((lessonPlan, i) => (
             <Card className="w-full flex items-center" key={i}>
+              {/* Lesson Plan Name */}
               <Card.Subtitle className="text-center text-md">
                 {lessonPlan.lesson_plan_name}
               </Card.Subtitle>
 
+              {/* Opens Creation Modal */}
               <Button
                 className="p-3 md:p-3 mt-2 "
                 size="sm"
@@ -50,6 +53,8 @@ export default function AssignmentsAdd({
           No Avaliable Lesson Plans
         </p>
       )}
+
+      {/* Assignments Creation Modal */}
       <Modal
         isVisible={!!selectedLessonPlan}
         close={() => setSelectedLessonPlan(null)}
@@ -58,10 +63,13 @@ export default function AssignmentsAdd({
       >
         {selectedLessonPlan && (
           <>
+            {/* Lesson Plan Name */}
             <Modal.Header
               className="text-center font-semibold text-base"
               title={selectedLessonPlan.lesson_plan_name + ' Assignment'}
             />
+
+            {/* Creator Form */}
             <Modal.Body>
               <AssignmentCreatorForm
                 setSelectedLessonPlan={setSelectedLessonPlan}
