@@ -27,3 +27,10 @@ export interface IAssignmentWithLessonPlan {
     students: ISimpleStudent[];
   };
 }
+
+export interface ILessonPlanWithoutAssignments {
+  user_lesson_plan_id: string;
+  lesson_plan_name: string;
+  lesson_plan_content: string;
+  lesson_plan_level_name: string;
+}

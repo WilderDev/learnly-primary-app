@@ -31,7 +31,10 @@ CREATE TABLE assignments (
 
     -- Timestamps
     created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
-    updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
+    updated_at timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
+
+    -- Constraints
+    CONSTRAINT assignments_creator_id_user_lesson_plan_id_unique UNIQUE (creator_id, user_lesson_plan_id)
 );
 
 -- * VIEWS

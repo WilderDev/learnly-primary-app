@@ -4,17 +4,22 @@ import AssignmentsTableBody from './(assignments-table)/AssignmentsTableBody';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import { ISimpleStudent } from '@/assets/typescript/user';
 import { IAssignmentWithLessonPlan } from '@/assets/typescript/assignment';
+import MobileAssignmentsTable from './(assignments-table)/MobileAssignmentsTable';
 
 // * Component
 export default async function AssignmentsTable() {
   const assignments = await getAssignmentsWithLessonDetails();
 
   return assignments?.length > 0 ? (
-    <Table>
-      <AssignmentsTableHead />
+    <>
+      {/* Under XL Screens render the Mobile Assignemts Table */}
+      <Table className="hidden 2xl:block">
+        <AssignmentsTableHead />
 
-      <AssignmentsTableBody assignments={assignments} />
-    </Table>
+        <AssignmentsTableBody assignments={assignments} />
+      </Table>
+      <MobileAssignmentsTable assignments={assignments} />
+    </>
   ) : (
     <p className="text-sm font-semibold text-slate-600 dark:text-navy-200">
       No assignments found
@@ -54,7 +59,7 @@ async function getAssignmentsWithLessonDetails() {
           avatarUrl: s.avatar_url!,
         })) as ISimpleStudent[],
       },
-    }),
+    })
   );
 
   return transformedData;

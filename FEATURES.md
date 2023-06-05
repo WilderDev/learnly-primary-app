@@ -54,9 +54,10 @@
 
 ## Marketing (Will)
 
-1. Teach people how to share their lessons on the facebook group to increase engagement
-2. Add a little logo / octopus and minor interaction things like tooltips that say 'rawr' or confetti or starts, etc.
-3. Do free consults for people after 3 months and help them use the app better and after ask for a testimonial. Repeat back what they said during the call and record.
-4. As a new homeschool parent, I want a clear guidance or course to teach me the basics
-5. As a parent, I want discounts and deals with special partners (Kiwi Crate, LoveEvery, etc.)
-6. Marketing Partners page where we show all the companies we are partnered with and the deals and put in footer
+1. Create Video showcasing Learnly (how to use it and the core features/benefits) -> Post in FB Group -> Add to Email #3 in FB List Email Sequence
+2. Teach people how to share their lessons on the facebook group to increase engagement
+3. Add a little logo / octopus and minor interaction things like tooltips that say 'rawr' or confetti or starts, etc.
+4. Do free consults for people after 3 months and help them use the app better and after ask for a testimonial. Repeat back what they said during the call and record.
+5. As a new homeschool parent, I want a clear guidance or course to teach me the basics
+6. As a parent, I want discounts and deals with special partners (Kiwi Crate, LoveEvery, etc.)
+7. Marketing Partners page where we show all the companies we are partnered with and the deals and put in footer

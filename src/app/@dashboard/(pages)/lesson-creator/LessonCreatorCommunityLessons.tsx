@@ -28,7 +28,9 @@ export default async function LessonCreatorCommunityLessons() {
             />
 
             {/* Title */}
-            <h3 className="font-semibold">{lesson.title}</h3>
+            <h3 className="text-sm xl:text-md  font-semibold">
+              {lesson.title}
+            </h3>
           </div>
 
           {/* Length in Min */}
