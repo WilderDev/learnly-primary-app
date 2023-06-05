@@ -40,6 +40,7 @@ export default async function ParentDashboardHomePage() {
             title="Assignments"
             ctaText="View All Assignments"
             ctaLink="/assignments"
+            hideCta={false}
             hasModal={true}
             modalSize="lg"
             modalContent={

@@ -23,6 +23,7 @@ import {
 import { createSelectOptions } from '@/lib/common/form.helpers';
 import LessonPlanSaveDetailsModalForm from '../LessonPlanSaveDetailsModal';
 import { usePrint } from '@/lib/hooks/usePrint';
+import { LessonPlanWithoutAssignments } from '../../../assignments/AssignmentsAdd';
 
 // * Props
 interface IProps {
@@ -35,6 +36,15 @@ interface IProps {
     lesson_plan_content: string;
     lesson_plan_level_name: string;
   }[];
+  selectedLessonPlan?: {
+    user_lesson_plan_id: string;
+    lesson_plan_name: string;
+    lesson_plan_content: string;
+    lesson_plan_level_name: string;
+  };
+  setSelectedLessonPlan?: (
+    lessonPlan: LessonPlanWithoutAssignments | null
+  ) => void;
 }
 
 // * Component
@@ -43,6 +53,8 @@ export default function AssignmentCreatorForm({
   lessonPlan,
   userLessonPlan,
   lessonPlans,
+  selectedLessonPlan,
+  setSelectedLessonPlan,
 }: IProps) {
   // * Hooks
   const { componentRef, handlePrint } = usePrint();
@@ -53,7 +65,7 @@ export default function AssignmentCreatorForm({
   const [saveDetailsModalOpen, setSaveModalOpen] = useState(false);
   const [assignmentContent, setAssignmentContent] = useState('');
   const [assignmentTitle, setAssignmentTitle] = useState(
-    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`,
+    `${lessonPlan ? lessonPlan.title + ' Assignment' : ''}`
   );
   const [numberOfQuestions, setNumberofQuestions] = useState(3);
   const [assignmentDueDate, setAssignmentDueDate] = useState<Date | null>(null);
@@ -64,9 +76,10 @@ export default function AssignmentCreatorForm({
 
   // * Handlers / Helpers
   // Get Lesson Plan
-  const getLP = lessonPlans?.find(
-    (lp) => lp.user_lesson_plan_id === userLessonOption,
-  );
+
+  const getLP = selectedLessonPlan
+    ? selectedLessonPlan
+    : lessonPlans?.find((lp) => lp.user_lesson_plan_id === userLessonOption);
 
   // Form Submit
   const handleAssignmentFormSubmit = async () => {
@@ -80,7 +93,8 @@ export default function AssignmentCreatorForm({
     const errors = [];
 
     if (!lessonPlan && !isModal) errors.push('Lesson Plan Required');
-    if (!userLessonOption && isModal) errors.push('Must Select A Lesson');
+    if (!userLessonOption && isModal && !selectedLessonPlan)
+      errors.push('Must Select A Lesson');
     if (!assignmentTitle && !isModal) errors.push('Assignment Title Required');
     if (!assignmentDueDate) errors.push('Assignment Due Date Required');
     if (!numberOfQuestions) errors.push('Amount Of Questions Required');
@@ -109,7 +123,7 @@ export default function AssignmentCreatorForm({
             color: '#f1f1f1',
             fontWeight: 'semibold',
           },
-        },
+        }
       );
       return setSaveModalOpen(true);
     }
@@ -154,11 +168,21 @@ export default function AssignmentCreatorForm({
         : assignmentTitle,
       content: assignmentContent,
       due_date: assignmentDueDate!,
-      user_lesson_plan_id: userLessonPlan?.id ?? userLessonOption,
+      user_lesson_plan_id: selectedLessonPlan
+        ? selectedLessonPlan.user_lesson_plan_id
+        : userLessonPlan?.id ?? userLessonOption,
     });
 
     if (ok) {
       // Display success toast
+
+      if (selectedLessonPlan && setSelectedLessonPlan) {
+        setSelectedLessonPlan(null);
+        setAssignmentContent('');
+        setUserLessonOption('');
+
+        setAssignmentActions(false);
+      }
       if (isModal) {
         setAssignmentContent('');
         setUserLessonOption('');
@@ -225,7 +249,7 @@ export default function AssignmentCreatorForm({
                   lessonPlans.map((lp) => ({
                     label: lp.lesson_plan_name,
                     value: lp.user_lesson_plan_id,
-                  })),
+                  }))
                 )}
                 value={userLessonOption}
                 setValue={
@@ -242,14 +266,22 @@ export default function AssignmentCreatorForm({
               </p>
             )
           ) : (
-            <Input
-              label="Title"
-              type="text"
-              value={assignmentTitle}
-              setValue={setAssignmentTitle as Dispatch<SetStateAction<string>>}
-              cols={4}
-              icon={BookmarkSquareIcon}
-            />
+            <>
+              {selectedLessonPlan ? (
+                <></>
+              ) : (
+                <Input
+                  label="Title"
+                  type="text"
+                  value={assignmentTitle}
+                  setValue={
+                    setAssignmentTitle as Dispatch<SetStateAction<string>>
+                  }
+                  cols={4}
+                  icon={BookmarkSquareIcon}
+                />
+              )}
+            </>
           )}
 
           {/* Number Of Questions */}

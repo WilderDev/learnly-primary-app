@@ -8,8 +8,13 @@ import { Table } from '@/lib/components/ui/Table';
 import AssignmentsTableBody from '../(home)/(assignments-table)/AssignmentsTableBody';
 import AssignmentsTableHead from '../(home)/(assignments-table)/AssignmentsTableHead';
 import { revalidatePath } from 'next/cache';
+import MobileAssignmentsTable from '../(home)/(assignments-table)/MobileAssignmentsTable';
+import Modal from '@/lib/components/popouts/Modal';
+import AssignmentCreatorForm from '../lesson-plans/[id]/(assignments)/AssignmentCreatorForm';
+import AssignmentsAdd from './AssignmentsAdd';
 
 export default async function AssignmentsPage() {
+  // Data
   const {
     upcomingAssignments,
     inProgessAssignments,
@@ -17,76 +22,64 @@ export default async function AssignmentsPage() {
     canceledAssignments,
   } = await getAssignmentsWithLessonDetails();
 
+  const lessonPlansWithoutAssignments =
+    await getUserLessonPlansWithoutAssignment();
+
+  // Assignment Panels
+  const assignemtPanels = [
+    {
+      title: 'Upcoming Assignments',
+      assignments: upcomingAssignments,
+      text: 'No Upcoming Assignments',
+    },
+    {
+      title: 'In Progress Assignments',
+      assignments: inProgessAssignments,
+      text: 'No Assignments In Progress',
+    },
+    {
+      title: 'Completed Assignments',
+      assignments: completedAssignments,
+      text: 'No Completed Assignments',
+    },
+    {
+      title: 'Canceled Assignments',
+      assignments: canceledAssignments,
+      text: 'No Canceled Assignments',
+    },
+  ];
+
   return (
     <>
       <DashMainCol>
-        <DashPanel colNum={1}>
-          <DashPanelHeader title="Upcoming Assignments" />
-          {upcomingAssignments?.length > 0 ? (
-            <Table>
-              <AssignmentsTableHead />
+        {assignemtPanels.map((panel, i) => (
+          <DashPanel colNum={1} key={i}>
+            <DashPanelHeader title={panel.title} />
 
-              <AssignmentsTableBody assignments={upcomingAssignments} />
-            </Table>
-          ) : (
-            <p className="text-sm font-semibold text-slate-600 dark:text-navy-200">
-              No Upcoming Assignments
-            </p>
-          )}
-        </DashPanel>
+            {panel.assignments?.length > 0 ? (
+              <>
+                <Table className="hidden 2xl:block">
+                  <AssignmentsTableHead />
 
-        <DashPanel colNum={1}>
-          <DashPanelHeader title="In Progress Assignments" />
-          {inProgessAssignments?.length > 0 ? (
-            <Table>
-              <AssignmentsTableHead />
-
-              <AssignmentsTableBody assignments={inProgessAssignments} />
-            </Table>
-          ) : (
-            <p className="text-sm font-semibold text-slate-600 dark:text-navy-200">
-              No Assignments In Progress
-            </p>
-          )}
-        </DashPanel>
-
-        <DashPanel colNum={1}>
-          <DashPanelHeader title="Completed Assignments" />
-          {completedAssignments?.length > 0 ? (
-            <Table>
-              <AssignmentsTableHead />
-
-              <AssignmentsTableBody assignments={completedAssignments} />
-            </Table>
-          ) : (
-            <p className="text-sm font-semibold text-slate-600 dark:text-navy-200">
-              No Completed Assignments
-            </p>
-          )}
-        </DashPanel>
-
-        <DashPanel colNum={1}>
-          <DashPanelHeader title="Canceled Assignments" />
-          {canceledAssignments?.length > 0 ? (
-            <Table>
-              <AssignmentsTableHead />
-
-              <AssignmentsTableBody assignments={canceledAssignments} />
-            </Table>
-          ) : (
-            <p className="text-sm font-semibold text-slate-600 dark:text-navy-200">
-              No Canceled Assignments
-            </p>
-          )}
-        </DashPanel>
-
-        {/* ... */}
+                  <AssignmentsTableBody assignments={panel.assignments} />
+                </Table>
+                <MobileAssignmentsTable assignments={panel.assignments} />
+              </>
+            ) : (
+              <p className="text-sm font-semibold text-slate-600 dark:text-navy-200">
+                {panel.text}
+              </p>
+            )}
+          </DashPanel>
+        ))}
       </DashMainCol>
 
       <DashSideCol>
         <DashPanel colNum={1}>
-          <DashPanelHeader title="TSK" />
-          {/* TSK */}
+          <DashPanelHeader title="Awaiting Assignments" />
+          <AssignmentsAdd
+            lessonPlansWithoutAssignments={lessonPlansWithoutAssignments}
+          />
         </DashPanel>
       </DashSideCol>
     </>
@@ -103,7 +96,8 @@ async function getAssignmentsWithLessonDetails() {
   const { data, error } = await supabase
     .from('assignments_with_details_view')
     .select('*')
-    .eq('teacher_id', session?.user.id);
+    .eq('teacher_id', session?.user.id)
+    .limit(20);
 
   if (error) {
     return {
@@ -114,6 +108,7 @@ async function getAssignmentsWithLessonDetails() {
     };
   }
 
+  // Transform Assignments
   const transformedData: IAssignmentWithLessonPlan[] = data.map(
     (assignment) => ({
       id: assignment.assignment_id!,
@@ -156,4 +151,22 @@ async function getAssignmentsWithLessonDetails() {
     completedAssignments,
     canceledAssignments,
   };
+}
+
+async function getUserLessonPlansWithoutAssignment() {
+  const supabase = supabaseServer();
+
+  const { data, error } = await supabase
+    .from('lesson_plans_without_assignments_view')
+    .select('*')
+    .limit(10);
+
+  if (error) return [];
+
+  return data as {
+    user_lesson_plan_id: string;
+    lesson_plan_name: string;
+    lesson_plan_content: string;
+    lesson_plan_level_name: string;
+  }[];
 }

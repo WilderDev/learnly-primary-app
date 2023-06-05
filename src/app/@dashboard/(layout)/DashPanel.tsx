@@ -30,7 +30,7 @@ export function DashPanel({
     <motion.article
       className={cn(
         'relative flex flex-col p-4 sm:px-5 rounded-md bg-white shadow-md dark:shadow-navy-700 dark:bg-navy-800 print:shadow-none',
-        className,
+        className
       )}
       initial={{ opacity: 0, y: 20 * colNum }}
       animate={{ opacity: 1, y: 0 }}
@@ -51,6 +51,7 @@ interface IDashPanelProps {
   title: string;
   ctaText?: string;
   ctaLink?: string;
+  hideCta?: boolean;
   hasModal?: boolean;
   modalSize?: TSize;
   modalContent?: React.ReactNode;
@@ -62,6 +63,7 @@ export function DashPanelHeader({
   title,
   ctaText,
   ctaLink,
+  hideCta = true,
   hasModal,
   modalSize,
   modalContent,
@@ -84,10 +86,22 @@ export function DashPanelHeader({
           {/* View All */}
           {ctaLink && (
             <Link
-              className="hidden border-b border-dotted border-current pb-0.5 text-sm font-medium text-navy-500 outline-none transition-colors duration-300 hocus:text-navy-500/70 dark:text-blue-500 dark:hocus:text-blue-500/70 xl:inline-block"
+              className={cn(
+                'border-b border-dotted border-current pb-0.5 text-sm font-medium text-navy-500 outline-none transition-colors duration-300 hocus:text-navy-500/70 dark:text-blue-500 dark:hocus:text-blue-500/70 xl:inline-block',
+                hideCta && 'hidden'
+              )}
               href={ctaLink}
             >
-              {ctaText}
+              {/* If hideCta is true, only render the ctaText.  */}
+              {hideCta ? (
+                <>{ctaText}</>
+              ) : (
+                <>
+                  {/* Otherwise, render the ctaText on md screens then render 'View All' on smaller screens */}
+                  <div className="hidden md:block">{ctaText}</div>
+                  <div className="md:hidden block">View All</div>
+                </>
+              )}
             </Link>
           )}
 

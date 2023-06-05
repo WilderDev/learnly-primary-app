@@ -62,7 +62,7 @@ export default function DatePicker({
           fills[fill],
           shadows[shadow],
           roundeds[rounded],
-          'pl-10',
+          'pl-10'
         )}
         placeholder="Choose date..."
         type="text"
@@ -70,6 +70,7 @@ export default function DatePicker({
         options={{
           ...options,
           closeOnSelect: true,
+          disableMobile: true,
         }}
       />
     </FormItem>

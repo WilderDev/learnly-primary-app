@@ -81,6 +81,24 @@ export const lessonStructureOptions: TLessonStructure[] = [
   'Other',
 ];
 
+// Formatted Lesson Structure For Select
+export const formattedLessonStructureOptions: {
+  label: string;
+  value: TLessonStructure;
+}[] = [
+  { label: 'Objective Introduction', value: 'Objective_Introduction' },
+  { label: 'Prior Knowledge Review', value: 'Prior_Knowledge_Review' },
+  { label: 'New Material Presentation', value: 'New_Material_Presentation' },
+  { label: 'Guided Practice', value: 'Guided_Practice' },
+  { label: 'Independent Practice', value: 'Independent_Practice' },
+  { label: 'Discussion or Debate', value: 'Discussion_or_Debate' },
+  { label: 'Student Presentations', value: 'Student_Presentations' },
+  { label: 'Assessment', value: 'Assessment' },
+  { label: 'Summary and Review', value: 'Summary_and_Review' },
+  { label: 'Homework Assignment', value: 'Homework_Assignment' },
+  { label: 'Other', value: 'Other' },
+];
+
 // * Component
 export default function AccountTeachingPreferencesForm() {
   // * Hooks / Context
@@ -100,7 +118,7 @@ export default function AccountTeachingPreferencesForm() {
           toast.error('Something went wrong');
         }
       },
-    },
+    }
   );
 
   // * State
@@ -169,7 +187,7 @@ export default function AccountTeachingPreferencesForm() {
       {/* Lesson Structure (Select) */}
       <Select
         label="Ideal Lesson Structure"
-        options={createSelectOptions(lessonStructureOptions)}
+        options={createSelectOptions(formattedLessonStructureOptions)}
         value={lessonStructure}
         setValue={setLessonStructure as Dispatch<SetStateAction<string>>}
         cols={4}
