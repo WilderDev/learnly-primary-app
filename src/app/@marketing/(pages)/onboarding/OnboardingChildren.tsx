@@ -1,3 +1,5 @@
+'use client';
+
 import OnboardingStepHeader from './OnboardingStepHeader';
 import Button from '@/lib/components/ui/Button';
 import { useState } from 'react';
