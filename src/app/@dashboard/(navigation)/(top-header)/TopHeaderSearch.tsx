@@ -2,8 +2,14 @@
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
+import { useCommandPalette } from './CommandPaletteCtx';
 
+// * Component
 export default function TopHeaderSearch() {
+  // * Hooks / Context
+  const { open, setOpen } = useCommandPalette();
+
+  // * Render
   return (
     <motion.div
       className="relative flex h-8"
@@ -17,6 +23,7 @@ export default function TopHeaderSearch() {
       <input
         className="peer h-full w-60 rounded-full bg-slate-100 px-4 pl-9 text-sm text-slate-800 outline-none ring-navy-500/50 transition-all duration-100 ease-out placeholder:text-slate-400 focus:w-80 focus:ring hocus:bg-slate-200 dark:bg-navy-900/90 dark:text-navy-100 dark:placeholder-navy-300 dark:ring-blue-500/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
         placeholder="Search for anything"
+        onFocus={() => setOpen(true)}
       />
 
       {/* Magnifying Glass */}

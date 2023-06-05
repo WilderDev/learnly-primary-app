@@ -8,6 +8,7 @@ import { DashPanel, DashPanelHeader } from '../(layout)/DashPanel';
 import LeftSidebarMobile from '../(navigation)/(left-sidebar)/(mobile)/LeftSidebarMobile';
 import DashChatBubble from '../(layout)/DashChatBubble';
 import dynamic from 'next/dynamic';
+import CommandPalette from '@/lib/components/ui/CommandPalette';
 
 const OnboardingTourContainer = dynamic(
   () => import('../(navigation)/(onboarding-tour)/OnboardingTourContainer'),
