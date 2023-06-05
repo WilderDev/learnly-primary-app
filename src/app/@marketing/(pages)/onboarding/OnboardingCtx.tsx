@@ -56,26 +56,29 @@ const OnboardingCtx = createContext<IOnboardingCtx>({
   loading: false,
 });
 
-// * Data
-const steps = [
-  {
-    step: 1,
-    name: 'Profile',
-    component: <OnboardingProfile />,
-  },
-  {
-    step: 2,
-    name: 'Preferences',
-    component: <OnboardingPreferences />,
-  },
-  {
-    step: 3,
-    name: 'Peeps',
-    component: <OnboardingChildren />,
-  },
-];
-
 export function OnboardingProvider({ children: c }: PropsWithChildren) {
+  // * Data
+  const steps = useMemo(
+    () => [
+      {
+        step: 1,
+        name: 'Profile',
+        component: <OnboardingProfile />,
+      },
+      {
+        step: 2,
+        name: 'Preferences',
+        component: <OnboardingPreferences />,
+      },
+      {
+        step: 3,
+        name: 'Peeps',
+        component: <OnboardingChildren />,
+      },
+    ],
+    [],
+  );
+
   // * State
   const [step, setStep] = useState(1);
   const [name, setName] = useState('');
@@ -126,7 +129,7 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
 
     setLoading(false);
     setStep((prev) => prev + 1);
-  }, [step, email, name, avatarUrl, children, createUserMutation]);
+  }, [step, steps, email, name, avatarUrl, children, createUserMutation]);
 
   // * Effects
 
@@ -149,6 +152,7 @@ export function OnboardingProvider({ children: c }: PropsWithChildren) {
     }),
     [
       step,
+      steps,
       name,
       email,
       avatarUrl,
