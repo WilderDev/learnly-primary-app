@@ -16,6 +16,7 @@ import { ISelectOption } from '@/assets/typescript/form';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import capitalize from '@/lib/common/capitalize';
+import snakeToSentenceCase from '@/lib/common/snakeToSentence';
 import {
   CheckCircleIcon,
   ChevronDownIcon,
@@ -125,7 +126,9 @@ export default function Select({
 
   // What to display when an item is selected. By default it is the value of the option
   const selectedOption = options.find((option) => option.value === value);
-  const displayText = displayLabel ? selectedOption?.label : value;
+  const displayText = displayLabel
+    ? selectedOption?.label
+    : snakeToSentenceCase(value!);
 
   // * Render
   return (

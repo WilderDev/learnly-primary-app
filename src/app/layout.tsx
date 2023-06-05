@@ -27,7 +27,10 @@ export default async function RootLayout({ dashboard, marketing }: IProps) {
 
   // * Render
   return (
-    <html lang="en" className={cn(inter.variable, baskervville.variable)}>
+    <html
+      lang="en"
+      className={cn(inter.variable, baskervville.variable, 'overflow-y-auto')}
+    >
       <body>
         <ThemeProvider>
           <AuthProvider session={session}>
