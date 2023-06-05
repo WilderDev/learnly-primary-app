@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { TEffect, TSize, TVariant } from '@/assets/typescript/ui';
 import cn from '@/lib/common/cn';
+import Tooltip from '../ui/Tooltip';
 
 interface IProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -14,6 +15,7 @@ interface IProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   rounded?: TSize | 'full';
   url?: string;
   bubbleColor?: string;
+  tooltip?: boolean;
   className?: string;
 }
 
@@ -27,6 +29,7 @@ export default function Avatar({
   rounded = 'full',
   url,
   bubbleColor,
+  tooltip = true,
   className,
 }: IProps) {
   // * Styles
@@ -102,7 +105,7 @@ export default function Avatar({
   return url ? (
     <Link
       className={cn(
-        'relative inline-flex shrink-0 rounded-full opacity-75 transition-all hocus:z-10 hocus:scale-110 hocus:opacity-100',
+        'group relative inline-flex shrink-0 rounded-full opacity-75 transition-all hocus:z-10 hocus:scale-110 hocus:opacity-100',
         sizes[size],
         roundeds[rounded],
         variants[variant],
@@ -112,12 +115,12 @@ export default function Avatar({
       )}
       href={url}
     >
-      {avatarImage}
+      {tooltip ? <Tooltip tip={alt}>{avatarImage}</Tooltip> : avatarImage}
     </Link>
   ) : (
     <div
       className={cn(
-        'relative inline-flex shrink-0 rounded-full',
+        'group relative inline-flex shrink-0 rounded-full',
         sizes[size],
         roundeds[rounded],
         shadows[shadow],
@@ -125,7 +128,7 @@ export default function Avatar({
         className,
       )}
     >
-      {avatarImage}
+      {tooltip ? <Tooltip tip={alt}>{avatarImage}</Tooltip> : avatarImage}
     </div>
   );
 }
