@@ -6,6 +6,7 @@ import { Bars3CenterLeftIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import Logo from '@/lib/components/brand/Logo';
 import LeftSidebarUserLinks from '../LeftSidebarUserLinks';
 import LeftSidebarMobileLinks from './LeftSidebarMobileLinks';
+import ThemeTogglerButton from '@/lib/theme/ThemeTogglerBtn';
 
 // * Component
 export default function LeftSidebarMobile() {
@@ -14,7 +15,7 @@ export default function LeftSidebarMobile() {
 
   // * Render
   return (
-    <nav className="sm:hidden bg-transparent w-full fixed h-12 top-0 left-0 z-40 print:hidden">
+    <nav className="sm:hidden bg-white dark:bg-navy-900 w-full fixed h-12 top-0 left-0 z-40 print:hidden">
       {/* Navbar */}
       <div className="flex items-center justify-between h-full px-4">
         {/* Hamburger Icon */}
@@ -77,8 +78,14 @@ export default function LeftSidebarMobile() {
                   />
 
                   {/* Bottom Links */}
-                  <div className="w-12">
+                  <div className="flex justify-between items-end">
+                    {/* User Links */}
                     <LeftSidebarUserLinks />
+
+                    {/* Theme Toggler */}
+                    <div className="self-end mb-5">
+                      <ThemeTogglerButton />
+                    </div>
                   </div>
                 </section>
               </motion.div>

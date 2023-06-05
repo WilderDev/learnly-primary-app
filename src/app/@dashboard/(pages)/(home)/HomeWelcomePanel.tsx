@@ -22,13 +22,13 @@ export default function HomeWelcomePanel() {
   // * Render
   return showing ? (
     <DashPanel
-      className="relative items-center bg-gradient-to-l from-emerald-400 via-teal-300 to-sky-500 p-5 sm:flex-row"
+      className="relative mt-4 sm:mt-0 items-center bg-gradient-to-l from-emerald-400 via-teal-300 to-sky-500 p-5 sm:flex-row"
       colNum={1}
     >
       {/* Image */}
       <div className="flex justify-center sm:order-last">
         <Image
-          className="-mt-12 h-24 w-auto sm:mt-0 sm:h-40"
+          className="-mt-12 h-20 w-auto sm:mt-0 sm:h-40"
           src={TeacherIllustration}
           alt="Teacher Illustration"
           priority
