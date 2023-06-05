@@ -37,6 +37,14 @@ export async function middleware(req: NextRequest) {
     return middlewareRedirect(req, '/');
   }
 
+  if (
+    process.env.NODE_ENV === 'production' &&
+    req.nextUrl.pathname.includes('/admin') &&
+    session?.user.id !== process.env.ADMIN_USER_ID
+  ) {
+    return middlewareRedirect(req, '/');
+  }
+
   return allowedAccess ? NextResponse.next() : middlewareRedirect(req, '/'); // Return Response or Redirect
 }
 
@@ -52,5 +60,6 @@ export const config = {
     // '/curriculum-roadmaps/:path/:path/:path/:path/:path/:path*',
     '/curriculum-roadmaps/user/:path*',
     '/onboarding',
+    '/admin/:path*',
   ],
 };

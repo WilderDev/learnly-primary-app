@@ -133,5 +133,3 @@ export default function AccountStudentsAddModal() {
     </Modal>
   );
 }
-
-// POST_MVP: give options to add more data on create if desired
