@@ -17,7 +17,12 @@ export default function PrintableMarkdownContainer({
   className,
 }: IProps) {
   return (
-    <div className={cn(className, 'print:py-3 print:px-6')}>
+    <div
+      className={cn(
+        className,
+        'print:py-3 print:px-6 print:bg-transparent print:text-dark'
+      )}
+    >
       {/* Markdown */}
       <ReactMarkdown components={lessonPlanComponents} linkTarget="_blank">
         {content}

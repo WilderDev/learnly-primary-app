@@ -9,23 +9,23 @@ import {
 import cn from '@/lib/common/cn';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import {
-  handlePrint,
-  handleShare,
-} from '@/app/@dashboard/(pages)/lesson-creator/helpers';
+import { handleShare } from '@/app/@dashboard/(pages)/lesson-creator/helpers';
 import CurriculumLessonSaveModal from './CurriculumLessonSaveModal';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Props
 export interface IProps {
   id: string;
   studentIds: string[];
   isScheduled: boolean;
+  handlePrint: () => void;
 }
 
 export default function CurriculumLessonActionItems({
   id,
   studentIds,
   isScheduled,
+  handlePrint,
 }: IProps) {
   // * Hooks
   const pathname = usePathname();
@@ -48,7 +48,7 @@ export default function CurriculumLessonActionItems({
           <ArrowDownOnSquareIcon
             className={cn(
               'h-6 w-6 text-green-900 transition-colors duration-300 group-hover:text-green-700 group-focus:text-green-700 dark:text-navy-200 dark:group-hover:text-emerald-300 dark:group-focus:text-emerald-300',
-              isScheduled && 'text-green-700 dark:text-green-400',
+              isScheduled && 'text-green-700 dark:text-green-400'
             )}
           />
 
