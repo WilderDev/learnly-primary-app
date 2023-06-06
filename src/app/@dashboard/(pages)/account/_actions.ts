@@ -145,8 +145,6 @@ async function addStudentAction(input: z.infer<typeof addStudentSchema>) {
       teacher_id: session?.user?.id!,
     });
 
-    // POST_MVP: Student Preferences
-
     if (error) return responseContract(error.message, false);
 
     revalidatePath('/account'); // ✅

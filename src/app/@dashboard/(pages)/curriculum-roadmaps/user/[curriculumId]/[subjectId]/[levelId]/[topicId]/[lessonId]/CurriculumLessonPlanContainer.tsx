@@ -1,9 +1,12 @@
+'use client';
+
 import LessonPlanCreatorInfo from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanCreatorInfo';
 import LessonPlanTags from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanTags';
 import { ICurriculumLessonPlan } from '@/assets/typescript/curriculum-roadmaps';
 import PrintableMarkdownContainer from '@/lib/components/markdown/PrintableMarkdownContainer';
 import CurriculumLessonActionItems from './CurriculumLessonActionItems';
 import LessonPlanMarkComplete from '@/app/@dashboard/(pages)/lesson-plans/[id]/LessonPlanMarkComplete';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Props
 interface IProps {
@@ -16,6 +19,9 @@ export default function CurriculumLessonPlanContainer({
   lessonPlan,
   studentIds,
 }: IProps) {
+  // * Hooks
+  const { componentRef, handlePrint } = usePrint();
+
   return (
     <>
       <main className="my-3 print:my-0">
@@ -35,6 +41,7 @@ export default function CurriculumLessonPlanContainer({
               id={lessonPlan?.id!}
               studentIds={studentIds}
               isScheduled={!!lessonPlan?.scheduled_date}
+              handlePrint={handlePrint}
             />
           </div>
 
@@ -43,10 +50,15 @@ export default function CurriculumLessonPlanContainer({
         </div>
 
         {/* Content */}
-        <PrintableMarkdownContainer content={lessonPlan?.content!} />
+        <div ref={componentRef}>
+          <PrintableMarkdownContainer content={lessonPlan?.content!} />
+        </div>
 
         {/* Mark Complete */}
-        <LessonPlanMarkComplete isComplete={!!lessonPlan?.completion_date} />
+        <LessonPlanMarkComplete
+          isComplete={!!lessonPlan?.completion_date}
+          lessonPlanIdProp={lessonPlan?.id}
+        />
       </main>
     </>
   );

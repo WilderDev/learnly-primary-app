@@ -32,3 +32,14 @@ export interface IFeature {
   >;
   image: StaticImageData;
 }
+
+export type TPosition =
+  | 'topCenter'
+  | 'topLeft'
+  | 'topRight'
+  | 'bottomCenter'
+  | 'bottomLeft'
+  | 'bottomRight'
+  | 'center'
+  | 'centerLeft'
+  | 'centerRight';

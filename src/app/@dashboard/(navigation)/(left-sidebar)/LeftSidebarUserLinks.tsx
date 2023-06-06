@@ -42,6 +42,7 @@ export default function LeftSidebarUserLinks() {
             bubbleColor={
               getUserStatusColor(user?.status! || 'ONLINE').BG.DEFAULT
             }
+            tooltip={false}
           />
         </Link>
       </li>

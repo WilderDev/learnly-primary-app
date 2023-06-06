@@ -1104,6 +1104,48 @@ export interface Database {
       }
     }
     Views: {
+      admin_current_users_view: {
+        Row: {
+          email: string | null
+          expiration_date: string | null
+          first_name: string | null
+          id: string | null
+          last_activity: string | null
+          last_name: string | null
+          role: Database["public"]["Enums"]["user_role"] | null
+          subscription_status:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null
+        }
+      }
+      admin_past_users_view: {
+        Row: {
+          email: string | null
+          expiration_date: string | null
+          first_name: string | null
+          id: string | null
+          last_activity: string | null
+          last_name: string | null
+          role: Database["public"]["Enums"]["user_role"] | null
+          subscription_status:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null
+        }
+      }
+      admin_trial_users_view: {
+        Row: {
+          email: string | null
+          expiration_date: string | null
+          first_name: string | null
+          id: string | null
+          last_activity: string | null
+          last_name: string | null
+          role: Database["public"]["Enums"]["user_role"] | null
+          subscription_status:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null
+        }
+      }
       all_events_view: {
         Row: {
           attendees: string[] | null

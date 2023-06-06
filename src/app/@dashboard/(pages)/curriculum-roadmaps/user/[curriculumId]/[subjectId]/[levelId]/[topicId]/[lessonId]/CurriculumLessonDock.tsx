@@ -17,7 +17,7 @@ interface IProps {
   shareUrl: string;
   lessonId: string;
   studentIds: string[];
-  print: () => void;
+  handlePrint: () => void;
 }
 
 // * Data
@@ -54,7 +54,7 @@ export default function CurriculumLessonDock({
   shareUrl,
   lessonId,
   studentIds,
-  print,
+  handlePrint,
 }: IProps) {
   // * State
   const [isSaveModalOpen, setSaveModalOpen] = useState(false);
@@ -66,7 +66,7 @@ export default function CurriculumLessonDock({
         setSaveModalOpen(true);
         break;
       case 'Print':
-        print();
+        handlePrint();
         break;
       case 'Share':
         handleShare(shareUrl);
