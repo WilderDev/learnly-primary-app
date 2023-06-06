@@ -20,7 +20,7 @@ export default function PrintableMarkdownContainer({
     <div
       className={cn(
         className,
-        'print:py-3 print:px-6 print:bg-transparent print:text-dark'
+        'print:py-3 print:px-6 print:bg-transparent print:text-slate-900'
       )}
     >
       {/* Markdown */}
