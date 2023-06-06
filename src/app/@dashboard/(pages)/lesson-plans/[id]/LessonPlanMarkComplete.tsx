@@ -8,9 +8,13 @@ import LessonPlanCompletionModal from './LessonPlanCompletionModal';
 // * Props
 interface IProps {
   isComplete: boolean;
+  lessonPlanIdProp?: string;
 }
 
-export default function LessonPlanMarkComplete({ isComplete }: IProps) {
+export default function LessonPlanMarkComplete({
+  isComplete,
+  lessonPlanIdProp,
+}: IProps) {
   // * State
   const [isCompletionModalOpen, setCompletionModalOpen] = useState(false);
 
@@ -34,6 +38,7 @@ export default function LessonPlanMarkComplete({ isComplete }: IProps) {
 
       {/* Completion Modal */}
       <LessonPlanCompletionModal
+        lessonPlanIdProp={lessonPlanIdProp}
         isOpen={isCompletionModalOpen}
         close={() => setCompletionModalOpen(false)}
       />

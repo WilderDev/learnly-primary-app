@@ -36,6 +36,7 @@ import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import cn from '@/lib/common/cn';
 import { getAgeFromBirthday } from '@/lib/common/date.helpers';
+import { usePrint } from '@/lib/hooks/usePrint';
 
 // * Props
 interface IProps {
@@ -51,6 +52,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
   const { user, students: userStudents } = useUser();
   const { supabase } = useAuth();
   const router = useRouter();
+  const { componentRef, handlePrint } = usePrint();
 
   // * State
   const [lessonOutput, setLessonOutput] = useState('');
@@ -60,7 +62,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
   const [additionalRequests, setAdditionalRequests] = useState('');
   const [loading, setLoading] = useState(false);
   const [lessonId, setLessonId] = useState('');
-  const [print, setPrint] = useState(false);
+  // const [print, setPrint] = useState(false);
 
   // * Handlers
   // Create Lesson Plan (Modal)
@@ -103,7 +105,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
           learningResources: student.learningResources,
           specialNeeds: student.specialNeeds,
         };
-      },
+      }
     );
 
     // 3. Send Request to API
@@ -165,7 +167,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
               p_id_column: 'id',
               p_id_value: lesson.lesson.id,
               p_item_value: data.id,
-            },
+            }
           );
         }
       });
@@ -257,7 +259,9 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
         noCloseOnOutsideClick={true}
         size="lg"
       >
-        <PrintableMarkdownContainer content={lessonOutput} />
+        <div ref={componentRef}>
+          <PrintableMarkdownContainer content={lessonOutput} />
+        </div>
       </Modal>
 
       {lessonId && (
@@ -265,7 +269,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
           lessonId={lessonId}
           studentIds={studentIds}
           shareUrl={`/lesson-plans/${lessonId}`}
-          print={() => setPrint(true)}
+          handlePrint={handlePrint}
         />
       )}
 
@@ -273,7 +277,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
       {lessonId && (
         <button
           className={cn(
-            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors',
+            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors'
           )}
           onClick={() => window.location.reload()}
         >

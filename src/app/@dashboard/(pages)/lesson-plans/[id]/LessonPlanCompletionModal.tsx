@@ -15,14 +15,19 @@ import { revalidatePath } from 'next/cache';
 // * Props
 interface IProps {
   isOpen: boolean;
+  lessonPlanIdProp?: string;
   close: () => void;
 }
 
 // * Component
-export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
+export default function LessonPlanCompletionModal({
+  isOpen,
+  lessonPlanIdProp,
+  close,
+}: IProps) {
   // * Hooks
   const params = useParams();
-  const lessonPlanId = params.id;
+  const lessonPlanId = lessonPlanIdProp ? lessonPlanIdProp : params.id;
 
   // * Requests / Mutations
   const { mutate, isLoading } = useRequest(markAsComplete, {
@@ -34,7 +39,7 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
         revalidatePath(`/lesson-plans/${lessonPlanId}`); // ✅
       } else {
         toast.error(
-          'Something went wrong... Try again or contact support if the problem persists.',
+          'Something went wrong... Try again or contact support if the problem persists.'
         );
       }
     },
@@ -53,7 +58,7 @@ export default function LessonPlanCompletionModal({ isOpen, close }: IProps) {
       size="sm"
       noCloseOnOutsideClick={true}
     >
-      <Modal.Header title="Save Lesson Plan" />
+      <Modal.Header title="Confirm Completion" />
 
       <Modal.Body className="relative">
         <Form
