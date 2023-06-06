@@ -7,14 +7,14 @@
 1. Input Their own topic for lesson creator | _EASY/MEDIUM_
 2. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
 3. Users can create their own lessons, topics, subjects, and curriculum and share them with others | _DIFFICULT_
-4. As a parent, I want to be able to track my children's progress, set goals, and identify areas of improvement (visual dashboards, performance reports, analytics, etc.) | _DIFFICULT_
-5. Learning Path Recommendation Algorithms | _VERY-DIFFICULT_
+4. As a parent, I want to be able to report activities I do with my children for activities that are not on the platform (e.g. going to the zoo, reading a book, etc.)... [This is pretty cool](https://subjectexplorer.o9p.net/?fbclid=IwAR0qCMevC6BLjOph9eGpMEAys4EV7kUGuhbEpZTjaw3BCr8tKSjMNwLAK-s&mibextid=Zxz2cZ) | _MODERATE_
+5. As a parent, I want to be able to track my children's progress, set goals, and identify areas of improvement (visual dashboards, performance reports, analytics, etc.) | _DIFFICULT_
+6. Learning Path Recommendation Algorithms | _VERY-DIFFICULT_
 
 #### Will
 
 1. [Marketing Emails](https://vscode.dev/github/WilderDev/learnly-primary-app/blob/staging/TODO.md#L15)
-2. Create an internal analytics dashboard to see all sign ups and their activity | _EASY/MEDIUM_
-3. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
+2. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
 
 ---
 

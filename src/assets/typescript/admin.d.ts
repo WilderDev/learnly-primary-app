@@ -11,12 +11,12 @@ export interface IAdminUser {
 }
 
 export interface IAdminStatistics {
-  totalUsers: number;
-  totalActiveUsers: number;
-  totalInactiveUsers: number;
-  totalMonthlySubscriptions: number;
-  totalYearlySubscriptions: number;
-  // TSK: Landing Page Visits, Trial Sign Ups, Trial Conversions, Monthly users, Annual Users, Total Revenue, etc.
+  totalTrialSignUps: number;
+  monthlyTrialSignUps: number;
+  totalTrialConversions: number;
+  monthlyTrialConversions: number;
+  activeMonthlyUsers: number;
+  activeYearlyUsers: number;
 }
 
 export interface IAdminWebhooks {
