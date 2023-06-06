@@ -21,13 +21,12 @@ export async function POST(request: Request) {
     baseUrl: 'https://api.sendgrid.com',
     url: '/v3/marketing/contacts',
     body: {
-      list_ids: [process.env.SENDGRID_APP_USERS_ID!],
+      list_ids: [process.env.SENDGRID_APP_TRIAL_USERS_ID!],
       contacts: [
         {
           email,
           first_name,
           last_name,
-          // custom_fields: { level: level },
         },
       ],
     },

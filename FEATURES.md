@@ -6,15 +6,13 @@
 
 1. Input Their own topic for lesson creator | _EASY/MEDIUM_
 2. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
-3. Users can create their own lessons, topics, subjects, and curriculum and share them with others | _DIFFICULT_
-4. As a parent, I want to be able to report activities I do with my children for activities that are not on the platform (e.g. going to the zoo, reading a book, etc.)... [This is pretty cool](https://subjectexplorer.o9p.net/?fbclid=IwAR0qCMevC6BLjOph9eGpMEAys4EV7kUGuhbEpZTjaw3BCr8tKSjMNwLAK-s&mibextid=Zxz2cZ) | _MODERATE_
-5. As a parent, I want to be able to track my children's progress, set goals, and identify areas of improvement (visual dashboards, performance reports, analytics, etc.) | _DIFFICULT_
-6. Learning Path Recommendation Algorithms | _VERY-DIFFICULT_
+3. As a parent, I want to be able to report activities I do with my children for activities that are not on the platform (e.g. going to the zoo, reading a book, etc.)... [This is pretty cool](https://subjectexplorer.o9p.net/?fbclid=IwAR0qCMevC6BLjOph9eGpMEAys4EV7kUGuhbEpZTjaw3BCr8tKSjMNwLAK-s&mibextid=Zxz2cZ) | _MODERATE_
+4. As a parent, I want to be able to track my children's progress, set goals, and identify areas of improvement (visual dashboards, performance reports, analytics, etc.) | _DIFFICULT_
+5. Learning Path Recommendation Algorithms | _VERY-DIFFICULT_
 
 #### Will
 
-1. [Marketing Emails](https://vscode.dev/github/WilderDev/learnly-primary-app/blob/staging/TODO.md#L15)
-2. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
+1. Users can create their own lessons, topics, subjects, and curriculum and share them with others | _DIFFICULT_
 
 ---
 
@@ -34,6 +32,7 @@
 13. User Profile Page (and view other profiles) | _MEDIUM_
 14. Lesson Plan Comments (Wait until we have a good amount of users) | _MEDIUM_
 15. POST\*MVP messages (use search in VSCode) | _EASY_
+16. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
 
 ---
 
@@ -54,10 +53,8 @@
 
 ## Marketing (Will)
 
-1. Create Video showcasing Learnly (how to use it and the core features/benefits) -> Post in FB Group -> Add to Email #3 in FB List Email Sequence
-2. Teach people how to share their lessons on the facebook group to increase engagement
-3. Add a little logo / octopus and minor interaction things like tooltips that say 'rawr' or confetti or starts, etc.
-4. Do free consults for people after 3 months and help them use the app better and after ask for a testimonial. Repeat back what they said during the call and record.
-5. As a new homeschool parent, I want a clear guidance or course to teach me the basics
-6. As a parent, I want discounts and deals with special partners (Kiwi Crate, LoveEvery, etc.)
-7. Marketing Partners page where we show all the companies we are partnered with and the deals and put in footer
+1. As a parent, I want discounts and deals with special partners (Kiwi Crate, LoveEvery, etc.)
+2. Create Video showcasing Learnly (how to use it and the core features/benefits) -> Post in FB Group -> Add to Email #3 in FB List Email Sequence
+3. Teach people how to share their lessons on the facebook group to increase engagement
+4. As a new homeschool parent, I want a clear guidance or course to teach me the basics
+5. Marketing Partners page where we show all the companies we are partnered with and the deals and put in footer
