@@ -185,3 +185,33 @@ export function get12HourTime(date: Date): string {
   // Return formatted time
   return `${hours}:${minutes} ${amOrPm}`;
 }
+
+// * Get relative time from timestamp
+export function getTimeAgo(timestamp: string) {
+  const date = new Date(timestamp); // Convert timestamp to date object
+  const now = new Date(); // Get current date
+  const secondsPast = (now.getTime() - date.getTime()) / 1000; // Calculate seconds past
+
+  // Return relative time
+  if (secondsPast < 60) {
+    return Math.floor(secondsPast) + ' seconds ago';
+  }
+  if (secondsPast < 3600) {
+    return Math.floor(secondsPast / 60) + ' minutes ago';
+  }
+  if (secondsPast <= 86400) {
+    return Math.floor(secondsPast / 3600) + ' hours ago';
+  }
+  // if (secondsPast > 86400) {
+  //   const day = date.getDate();
+  //   const month = date.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ", "");
+  //   const year = date.getFullYear() == now.getFullYear() ? "" :  " " + date.getFullYear();
+  //   return day + " " + month + year;
+  // }
+
+  const randomNumberBetween1And15 = Math.floor(
+    Math.random() * (15 - 1 + 1) + 1,
+  ); // Generate random number between 1 and 15
+
+  return randomNumberBetween1And15 + ' hours ago'; // Return random number of days ago
+}

@@ -22,13 +22,14 @@
 
 #### Will
 
+1. Implement your own Provely
 1. Create a user support button/form that askess their email address, browser, problem, and emotional state (excited, confused, worried, upset, panicked, angry) | _EASY_
-2. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
-3. User Profile Page (and view other profiles) | _MEDIUM_
-4. Lesson Plan Comments (Wait until we have a good amount of users) | _MEDIUM_
-5. POST\*MVP messages (use search in VSCode) | _EASY_
-6. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
-7. Users can create their own lessons, topics, subjects, and curriculum and share them with others | _DIFFICULT_
+1. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
+1. User Profile Page (and view other profiles) | _MEDIUM_
+1. Lesson Plan Comments (Wait until we have a good amount of users) | _MEDIUM_
+1. POST\*MVP messages (use search in VSCode) | _EASY_
+1. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
+1. Users can create their own lessons, topics, subjects, and curriculum and share them with others | _DIFFICULT_
 
 ---
 

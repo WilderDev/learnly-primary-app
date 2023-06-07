@@ -23,7 +23,7 @@ export default function LandingMarqueeTestimonials({ testimonials }: IProps) {
 
 function MarqueeTestimonialItems({ testimonials }: IProps) {
   return (
-    <ul className="flex-shrink-0 flex space-around min-w-full gap-4 motion-safe:animate-scroll space-x-16 sm:space-x-16 md:space-x-16">
+    <ul className="flex-shrink-0 flex space-around min-w-full gap-4 motion-safe:animate-scroll space-x-16 sm:space-x-16 md:space-x-16 transform-gpu">
       {testimonials.map((t) => (
         <MarqueeTestimonialItem testimonial={t} key={t.id} />
       ))}
