@@ -1,4 +1,3 @@
-import MarketingScripts from '@/lib/scripts/MarketingScripts';
 import { PropsWithChildren } from 'react';
 import MarketingNavigation from '../../(navigation)/MarketingNavigation';
 import MarketingFooter from '../../(navigation)/MarketingFooter';
@@ -18,9 +17,6 @@ export default function SharableLayout({ children }: PropsWithChildren) {
 
       {/* Marketing Theme Toggler */}
       <MarketingThemeToggler />
-
-      {/* Marketing Scripts */}
-      <MarketingScripts />
     </>
   );
 }

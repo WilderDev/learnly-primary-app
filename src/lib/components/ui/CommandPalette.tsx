@@ -1,10 +1,10 @@
 'use client';
 
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { FaceFrownIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline';
 import { Combobox, Dialog, Transition } from '@headlessui/react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import cn from '@/lib/common/cn';
 import capitalize from '@/lib/common/capitalize';
 

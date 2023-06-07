@@ -33,7 +33,6 @@ export default function AdminPage() {
         <DashPanel colNum={3}>
           <DashPanelHeader title="Past Users" />
 
-          {/* TSK */}
           {/* @ts-expect-error Server Component */}
           <AdminDashPastUsers />
         </DashPanel>
@@ -45,7 +44,6 @@ export default function AdminPage() {
         <DashPanel colNum={1}>
           <DashPanelHeader title="Statistics" />
 
-          {/* TSK: Landing Page Visits, Trial Sign Ups, Trial Conversions, Monthly users, Annual Users, Total Revenue */}
           {/* @ts-expect-error Server Component */}
           <AdminDashStatistics />
         </DashPanel>
@@ -54,7 +52,6 @@ export default function AdminPage() {
         <DashPanel colNum={2}>
           <DashPanelHeader title="Webhooks" />
 
-          {/* TSK: Stripe Webhook Events and Success/Failure */}
           {/* @ts-expect-error Server Component */}
           <AdminDashWebhooks />
         </DashPanel>

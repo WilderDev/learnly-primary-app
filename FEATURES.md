@@ -5,14 +5,9 @@
 #### Joe
 
 1. Input Their own topic for lesson creator | _EASY/MEDIUM_
-2. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
-3. As a parent, I want to be able to report activities I do with my children for activities that are not on the platform (e.g. going to the zoo, reading a book, etc.)... [This is pretty cool](https://subjectexplorer.o9p.net/?fbclid=IwAR0qCMevC6BLjOph9eGpMEAys4EV7kUGuhbEpZTjaw3BCr8tKSjMNwLAK-s&mibextid=Zxz2cZ) | _MODERATE_
-4. As a parent, I want to be able to track my children's progress, set goals, and identify areas of improvement (visual dashboards, performance reports, analytics, etc.) | _DIFFICULT_
-5. Learning Path Recommendation Algorithms | _VERY-DIFFICULT_
-
-#### Will
-
-1. Users can create their own lessons, topics, subjects, and curriculum and share them with others | _DIFFICULT_
+2. As a parent, I want to be able to report activities I do with my children for activities that are not on the platform (e.g. going to the zoo, reading a book, etc.)... [This is pretty cool](https://subjectexplorer.o9p.net/?fbclid=IwAR0qCMevC6BLjOph9eGpMEAys4EV7kUGuhbEpZTjaw3BCr8tKSjMNwLAK-s&mibextid=Zxz2cZ) | _MODERATE_
+3. As a parent, I want to be able to track my children's progress, set goals, and identify areas of improvement (visual dashboards, performance reports, analytics, etc.) | _DIFFICULT_
+4. Learning Path Recommendation Algorithms | _VERY-DIFFICULT_
 
 ---
 
@@ -20,19 +15,23 @@
 
 #### Joe
 
-11. Mobile Search Bar | _EASY_
-12. Happy birthday notifications and confetti for students | _EASY_
-13. Certificates of completion (curriclum) -> Tracking time spent on each lesson and topic... | _MEDIUM_
-14. Lesson Plan Ratings (Wait until we have a good amount of users) | _MEDIUM_
-15. Provely on home and try.learnly | _EASY_
+1. Mobile Search Bar | _EASY_
+2. Happy birthday notifications and confetti for students | _EASY_
+3. Certificates of completion (curriclum) -> Tracking time spent on each lesson and topic... | _MEDIUM_
+4. Lesson Plan Ratings (Wait until we have a good amount of users) | _MEDIUM_
+5. Provely on home and try.learnly | _EASY_
+
+https://searchcreatively.freshdesk.com/a/solutions/articles/3000114208
 
 #### Will
 
-12. Create a user support button/form that askess their email address, browser, problem, and emotional state (excited, confused, worried, upset, panicked, angry) | _EASY_
-13. User Profile Page (and view other profiles) | _MEDIUM_
-14. Lesson Plan Comments (Wait until we have a good amount of users) | _MEDIUM_
-15. POST\*MVP messages (use search in VSCode) | _EASY_
-16. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
+1. Create a user support button/form that askess their email address, browser, problem, and emotional state (excited, confused, worried, upset, panicked, angry) | _EASY_
+2. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
+3. User Profile Page (and view other profiles) | _MEDIUM_
+4. Lesson Plan Comments (Wait until we have a good amount of users) | _MEDIUM_
+5. POST\*MVP messages (use search in VSCode) | _EASY_
+6. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
+7. Users can create their own lessons, topics, subjects, and curriculum and share them with others | _DIFFICULT_
 
 ---
 

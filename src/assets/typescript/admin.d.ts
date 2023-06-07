@@ -21,5 +21,4 @@ export interface IAdminStatistics {
 
 export interface IAdminWebhooks {
   totalWebhooks: number;
-  // TSK
 }
