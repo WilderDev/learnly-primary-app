@@ -1,13 +1,11 @@
 'use server';
 
 import { createRequest } from '@/lib/api/createRequest';
-import { redis } from '@/lib/api/redis';
 import responseContract from '@/lib/api/responseContract';
 import { supabaseAdmin } from '@/lib/auth/supabaseAdmin';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import baseUrl from '@/lib/common/baseUrl';
 import { handleCreateOrRetrieveCustomer } from '@/lib/stripe/stripeWebhookHandlers';
-import { headers } from 'next/headers';
 import { z } from 'zod';
 
 const createUserSchema = z.object({
