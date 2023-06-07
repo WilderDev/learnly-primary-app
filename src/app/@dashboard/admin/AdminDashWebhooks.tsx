@@ -1,28 +1,39 @@
-import { IAdminWebhooks } from '@/assets/typescript/admin';
-import { supabaseServer } from '@/lib/auth/supabaseServer';
+import { stripe } from '@/lib/stripe/stripe';
 
 export default async function AdminDashWebhooks() {
   // * Data
   const webhooks = await getAdminWebhooks();
 
   // * Render
-  return <></>;
+  return (
+    <ul className="flex flex-col gap-y-2">
+      {webhooks?.map((wh) => (
+        <li className="flex justify-between px-2 " key={wh.id}>
+          <span>{wh.type}</span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 // * Fetcher
 // Gets the webhooks from the database / Stripe
 async function getAdminWebhooks() {
-  const supabase = supabaseServer();
+  const res = await stripe.events.list({
+    limit: 25,
+    delivery_success: true,
+  });
 
-  const { data, error } = await supabase
-    .from('admin_webhooks_view')
-    .select('*');
+  const webhooks = res.data;
 
-  if (error) return [];
+  if (!webhooks) return null;
 
-  const transformedData: IAdminWebhooks = {
-    totalWebhooks: 0,
-  };
+  const transformedData = webhooks.map((wh) => ({
+    id: wh.id,
+    type: wh.type,
+    created: wh.created,
+    data: wh.data,
+  }));
 
   return transformedData;
 }

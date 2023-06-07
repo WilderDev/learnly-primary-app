@@ -6,7 +6,7 @@ import { supabaseAdmin } from '@/lib/auth/supabaseAdmin';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import baseUrl from '@/lib/common/baseUrl';
 import { handleCreateOrRetrieveCustomer } from '@/lib/stripe/stripeWebhookHandlers';
-import { revalidatePath } from 'next/cache';
+import { headers } from 'next/headers';
 import { z } from 'zod';
 
 const createUserSchema = z.object({
@@ -80,7 +80,7 @@ const createUserAction = async (input: z.infer<typeof createUserSchema>) => {
 
     // 5. Add Contact to SendGrid (Production Only)
     if (process.env.NODE_ENV === 'production') {
-      await fetch(baseUrl + '/api/email/app-list', {
+      await fetch(baseUrl + '/api/email/trial-welcome-list', {
         method: 'POST',
         body: JSON.stringify({
           email,
@@ -90,7 +90,33 @@ const createUserAction = async (input: z.infer<typeof createUserSchema>) => {
       });
     }
 
-    // 6. Send Sign In Email
+    // 6. Provely Social Proof (Production Only)
+    if (process.env.NODE_ENV === 'production') {
+      // 6a. Get the users IP address
+      const headersList = headers();
+      const ip =
+        headersList.get('x-real-ip') || headersList.get('x-forwarded-for');
+      // const ip = await fetch('https://api.ipify.org?format=json')
+
+      // 6b. Send the user to Provely
+      await fetch(
+        'https://app.provely.io/api/webhooks/3b0bfdf8-1acd-4a02-a54d-02f2536871d4/custom',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            first_name: firstName,
+            last_name: lastName,
+            ip,
+          }),
+        },
+      );
+    }
+
+    // 7. Send Sign In Email
     await sb.auth.signInWithOtp({
       email,
       options: {

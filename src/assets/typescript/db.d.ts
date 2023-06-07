@@ -1132,6 +1132,16 @@ export interface Database {
             | null
         }
       }
+      admin_statistics_view: {
+        Row: {
+          annual_active_users: number | null
+          monthly_active_users: number | null
+          monthly_trial_conversions: number | null
+          monthly_trial_sign_ups: number | null
+          total_trial_conversions: number | null
+          total_trial_sign_ups: number | null
+        }
+      }
       admin_trial_users_view: {
         Row: {
           email: string | null
@@ -1517,53 +1527,6 @@ export interface Database {
           user_curriculum_id: string | null
         }
       }
-      recent_unsaved_lessons_view: {
-        Row: {
-          content: string | null
-          created_at: string | null
-          creator_id: string | null
-          id: string | null
-          image_path: string | null
-          is_public: boolean | null
-          length_in_min: number | null
-          level: string | null
-          subject: string | null
-          tags: string[] | null
-          title: string | null
-          topic: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          content?: string | null
-          created_at?: string | null
-          creator_id?: string | null
-          id?: string | null
-          image_path?: string | null
-          is_public?: boolean | null
-          length_in_min?: number | null
-          level?: string | null
-          subject?: string | null
-          tags?: string[] | null
-          title?: string | null
-          topic?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          content?: string | null
-          created_at?: string | null
-          creator_id?: string | null
-          id?: string | null
-          image_path?: string | null
-          is_public?: boolean | null
-          length_in_min?: number | null
-          level?: string | null
-          subject?: string | null
-          tags?: string[] | null
-          title?: string | null
-          topic?: string | null
-          updated_at?: string | null
-        }
-      }
       recently_completed_lesson_plans_view: {
         Row: {
           completion_date: string | null
@@ -1640,26 +1603,6 @@ export interface Database {
           topic_image_path: string | null
           topic_name: string | null
           topic_type: Database["public"]["Enums"]["module_type"] | null
-        }
-      }
-      similar_lessons_view: {
-        Row: {
-          avatar_url: string | null
-          content: string | null
-          created_at: string | null
-          creator_id: string | null
-          first_name: string | null
-          id: string | null
-          image_path: string | null
-          is_public: boolean | null
-          last_name: string | null
-          length_in_min: number | null
-          level: string | null
-          subject: string | null
-          tags: string[] | null
-          title: string | null
-          topic: string | null
-          updated_at: string | null
         }
       }
       teacher_me_view: {

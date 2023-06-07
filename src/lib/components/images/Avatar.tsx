@@ -105,7 +105,7 @@ export default function Avatar({
   return url ? (
     <Link
       className={cn(
-        'group relative inline-flex shrink-0 rounded-full opacity-75 transition-all hocus:z-10 hocus:scale-110 hocus:opacity-100',
+        'relative inline-flex shrink-0 rounded-full opacity-75 transition-all hocus:z-10 hocus:scale-110 hocus:opacity-100',
         sizes[size],
         roundeds[rounded],
         variants[variant],
@@ -120,7 +120,7 @@ export default function Avatar({
   ) : (
     <div
       className={cn(
-        'group relative inline-flex shrink-0 rounded-full',
+        'relative inline-flex shrink-0 rounded-full',
         sizes[size],
         roundeds[rounded],
         shadows[shadow],
