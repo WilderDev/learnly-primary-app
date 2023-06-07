@@ -19,9 +19,6 @@
 2. Happy birthday notifications and confetti for students | _EASY_
 3. Certificates of completion (curriclum) -> Tracking time spent on each lesson and topic... | _MEDIUM_
 4. Lesson Plan Ratings (Wait until we have a good amount of users) | _MEDIUM_
-5. Provely on home and try.learnly | _EASY_
-
-https://searchcreatively.freshdesk.com/a/solutions/articles/3000114208
 
 #### Will
 
