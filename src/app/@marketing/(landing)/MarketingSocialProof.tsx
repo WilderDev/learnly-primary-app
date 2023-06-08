@@ -20,7 +20,10 @@ export default function MarketingSocialProof() {
   // Fetch social proofs
   useEffect(() => {
     async function getSocialProofs() {
-      const res = await fetch(baseUrl + '/api/social-proof');
+      const res = await fetch(baseUrl + '/api/social-proof', {
+        cache: 'no-store',
+        next: { revalidate: 1800 },
+      });
 
       if (res.status === 200) {
         const data = (await res.json()) as ISocialProof[];
