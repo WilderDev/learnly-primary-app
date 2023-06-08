@@ -72,7 +72,7 @@ async function getTeacherProfile(id: string) {
     .eq('id', id)
     .single();
 
-  if (error || !data) return redirect('/profile');
+  if (error || !data) return redirect('/account');
 
   const transformedCurriculums =
     (

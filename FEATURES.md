@@ -11,7 +11,6 @@
 
 #### Will
 
-1. User Profile Page (and view other profiles) | _MEDIUM_
 2. Create a user support button/form that asks for their email address, browser, problem, and emotional state (excited, confused, worried, upset, panicked, angry) | _EASY_
 3. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
 
