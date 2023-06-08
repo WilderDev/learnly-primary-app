@@ -31,7 +31,7 @@ CREATE TABLE curriculums (
   image_path text NOT NULL,
 
   -- Status
-  status curriculum_status NOT NULL DEFAULT 'DRAFT',
+  status curriculum_status NOT NULL DEFAULT 'PUBLISHED',
 
   -- Type
   type curriculum_type NOT NULL DEFAULT 'RECOMMENDED',
