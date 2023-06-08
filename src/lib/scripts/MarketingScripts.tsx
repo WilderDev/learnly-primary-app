@@ -22,16 +22,6 @@ export default function MarketingScripts() {
           `,
         }}
       />
-
-      {/* Provely */}
-      <Script
-        id="provely-container"
-        dangerouslySetInnerHTML={{
-          __html: `
-          (function(w,n){if(typeof(w[n])=='undefined'){w[n]=[];w.provelySet=function(){w[n].push(arguments);};d=document.createElement('script');d.type='text/javascript';d.async=1;d.charset="UTF-8";d.src='https://provely-public.s3.amazonaws.com/scripts/provely-widget.js?version=1.0';x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(d,x);}})(window, 'provelyObj');provelySet('config', 'uuid', '3b0bfdf8-1acd-4a02-a54d-02f2536871d4');provelySet('config', 'type', 'notification');
-          `,
-        }}
-      />
     </>
   );
 }

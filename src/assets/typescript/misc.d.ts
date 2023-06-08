@@ -43,3 +43,10 @@ export type TPosition =
   | 'center'
   | 'centerLeft'
   | 'centerRight';
+
+export interface ISocialProof {
+  first_name: string;
+  last_name: string;
+  avatar_url: string;
+  created_at: string;
+}

@@ -58,6 +58,7 @@ export default function AddOrEditChildForm({
         options={{
           dateFormat: 'M d, Y',
           position: 'above right',
+          maxDate: new Date(),
         }}
         cols={2}
       />

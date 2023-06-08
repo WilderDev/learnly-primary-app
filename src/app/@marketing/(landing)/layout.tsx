@@ -3,6 +3,7 @@ import { PropsWithChildren } from 'react';
 import MarketingNavigation from '../(navigation)/MarketingNavigation';
 import MarketingFooter from '../(navigation)/MarketingFooter';
 import MarketingThemeToggler from '../(navigation)/MarketingThemeToggler';
+import MarketingSocialProof from './MarketingSocialProof';
 
 export default function LandingLayout({ children }: PropsWithChildren) {
   return (
@@ -18,6 +19,9 @@ export default function LandingLayout({ children }: PropsWithChildren) {
 
       {/* Marketing Theme Toggler */}
       <MarketingThemeToggler />
+
+      {/* Social Proof Subscription */}
+      <MarketingSocialProof />
 
       {/* Marketing Scripts */}
       <MarketingScripts />

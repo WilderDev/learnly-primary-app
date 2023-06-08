@@ -18,7 +18,7 @@ interface IProps {
 
 export default function VerticleMarqueeGrid({
   items,
-  speed = 10,
+  speed = 5,
   className,
   overlayColors,
 }: IProps) {

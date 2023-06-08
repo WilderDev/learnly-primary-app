@@ -44,7 +44,7 @@ export default function VerticleMarqueeColumn({
   // * Render
   return (
     <div
-      className={cn('animate-marquee space-y-8 py-4', className)}
+      className={cn('animate-marquee space-y-8 py-4 transform-gpu', className)}
       ref={columnRef}
       // @ts-ignore
       style={{ '--marquee-duration': duration }} // Set the duration of the marquee animation... For some reason, TypeScript doesn't like this
