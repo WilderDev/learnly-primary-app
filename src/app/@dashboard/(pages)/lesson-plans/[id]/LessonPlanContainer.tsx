@@ -35,6 +35,7 @@ export default function LessonPlanContainer({
           <div className="flex items-center justify-between">
             {/* Creator */}
             <LessonPlanCreatorInfo
+              id={lessonPlan.creator.id}
               name={`${lessonPlan.creator.firstName} ${lessonPlan.creator.lastName}`}
               avatar_url={lessonPlan.creator.avatarUrl}
               // role={lessonPlan.creator.}

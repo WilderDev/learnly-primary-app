@@ -105,7 +105,7 @@ async function getCurriculumRoadmaps() {
       subtitle: 'Learnly Favorites',
       creator: {
         name: `${data[0].creator_first_name} ${data[0].creator_last_name}`,
-        url: `/profiles/${data[0].creator_id}`,
+        url: `/profile/${data[0].creator_id}`,
         avatarUrl: data[0].creator_avatar_url,
       },
     },

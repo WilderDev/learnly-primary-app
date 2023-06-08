@@ -66,6 +66,7 @@ export interface ICurriculumFormData {
 export interface ICurriculumLessonPlan {
   lesson_plan: {
     id: string;
+    creator_id: string;
     title: string;
     content: string;
     tags: string[];
