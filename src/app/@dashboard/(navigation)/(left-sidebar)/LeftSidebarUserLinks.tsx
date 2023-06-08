@@ -30,8 +30,7 @@ export default function LeftSidebarUserLinks() {
       <li>
         <Link
           className="group relative rounded-full focus:outline-green-500"
-          //   href="/profile"
-          href="/account"
+          href="/profile"
         >
           {/* Profile Image */}
           <Avatar

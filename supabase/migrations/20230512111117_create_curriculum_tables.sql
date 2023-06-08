@@ -509,6 +509,7 @@ SELECT
         'tags', lesson_plans.tags,
         'image_path', lesson_plans.image_path,
         'length_in_min', lesson_plans.length_in_min,
+        'creator_id', teacher_profiles.id, -- included creator_id
         'creator_name', teacher_profiles.first_name || ' ' || teacher_profiles.last_name, -- included creator_name
         'creator_avatar_url', teacher_profiles.avatar_url, -- included creator_avatar_url
         'scheduled_date', ulp.scheduled_date, -- included scheduled_date
