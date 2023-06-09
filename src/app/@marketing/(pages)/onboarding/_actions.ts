@@ -6,6 +6,7 @@ import { supabaseAdmin } from '@/lib/auth/supabaseAdmin';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import baseUrl from '@/lib/common/baseUrl';
 import { handleCreateOrRetrieveCustomer } from '@/lib/stripe/stripeWebhookHandlers';
+import { cookies } from 'next/headers';
 import { z } from 'zod';
 
 const createUserSchema = z.object({
@@ -87,6 +88,41 @@ const createUserAction = async (input: z.infer<typeof createUserSchema>) => {
           last_name: lastName,
         }),
       });
+    }
+
+    console.log('newCustomer:', newCustomer);
+
+    // 6. Save Referral Code to DB if exists
+    const cookiesList = cookies();
+    const hasCookie = cookiesList.has('referralCode');
+
+    if (hasCookie) {
+      const referralCode = cookiesList.get('referralCode') as unknown as string;
+      console.log('typeof referralCode:', typeof referralCode);
+      console.log('referralCode:', referralCode);
+
+      const { data: referralTable, error: referralTableError } = await sbAdmin
+        .from('referrals')
+        .select('id')
+        .eq('referral_code', referralCode)
+        .single();
+
+      console.log('referralTable:', referralTable);
+
+      if (!referralTableError && referralTable.id) {
+        const { error: referralError } = await sbAdmin.rpc(
+          'add_item_to_array',
+          {
+            p_table_name: 'referrals',
+            p_column_name: 'referred_ids',
+            p_id_column: 'id',
+            p_id_value: referralTable.id,
+            p_item_value: referralCode,
+          },
+        );
+
+        console.log('referralError:', referralError);
+      }
     }
 
     // 7. Send Sign In Email

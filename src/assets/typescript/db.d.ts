@@ -690,35 +690,12 @@ export interface Database {
           url?: string
         }
       }
-      referral_codes: {
-        Row: {
-          code: string
-          created_at: string
-          id: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          code: string
-          created_at?: string
-          id?: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          code?: string
-          created_at?: string
-          id?: string
-          updated_at?: string
-          user_id?: string
-        }
-      }
       referrals: {
         Row: {
           code: string
           created_at: string
           id: string
-          referred_id: string | null
+          referred_ids: string[]
           referrer_id: string
           updated_at: string
         }
@@ -726,7 +703,7 @@ export interface Database {
           code: string
           created_at?: string
           id?: string
-          referred_id?: string | null
+          referred_ids?: string[]
           referrer_id: string
           updated_at?: string
         }
@@ -734,7 +711,7 @@ export interface Database {
           code?: string
           created_at?: string
           id?: string
-          referred_id?: string | null
+          referred_ids?: string[]
           referrer_id?: string
           updated_at?: string
         }
