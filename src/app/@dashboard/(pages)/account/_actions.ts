@@ -263,3 +263,40 @@ export const savePaymentDetails = createRequest(
   savePaymentDetailsAction,
   savePaymentDetailsSchema,
 );
+
+// * Create Referral Code
+async function createReferralCodeAction() {
+  let referralCode = ''; // Store the generated referral Code
+
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'; // Characters to use in the referral Code
+
+  // Generate a random string of 10 characters
+  for (let i = 0; i < 7; i++) {
+    referralCode += characters.charAt(
+      Math.floor(Math.random() * characters.length),
+    );
+  }
+
+  try {
+    const supabase = supabaseServer();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    const { error } = await supabase.from('referrals').insert({
+      code: referralCode,
+      referrer_id: session?.user.id!,
+    });
+
+    if (error) return responseContract(error.message, false);
+
+    revalidatePath('/account'); // ✅
+
+    return responseContract({ referralCode }, true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
+}
+
+export const createReferralCode = createRequest(createReferralCodeAction);

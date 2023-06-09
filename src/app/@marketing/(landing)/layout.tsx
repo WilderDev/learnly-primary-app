@@ -4,6 +4,7 @@ import MarketingNavigation from '../(navigation)/MarketingNavigation';
 import MarketingFooter from '../(navigation)/MarketingFooter';
 import MarketingThemeToggler from '../(navigation)/MarketingThemeToggler';
 import MarketingSocialProof from './MarketingSocialProof';
+import LandingLocalStorageReferrals from './LandingLocalStorageReferrals';
 
 export default function LandingLayout({ children }: PropsWithChildren) {
   return (
@@ -25,6 +26,9 @@ export default function LandingLayout({ children }: PropsWithChildren) {
 
       {/* Marketing Scripts */}
       <MarketingScripts />
+
+      {/* Landing Local Storage Referrals */}
+      <LandingLocalStorageReferrals />
     </>
   );
 }

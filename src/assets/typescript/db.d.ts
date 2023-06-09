@@ -690,6 +690,55 @@ export interface Database {
           url?: string
         }
       }
+      referral_codes: {
+        Row: {
+          code: string
+          created_at: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+      }
+      referrals: {
+        Row: {
+          code: string
+          created_at: string
+          id: string
+          referred_id: string | null
+          referrer_id: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          id?: string
+          referred_id?: string | null
+          referrer_id: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          id?: string
+          referred_id?: string | null
+          referrer_id?: string
+          updated_at?: string
+        }
+      }
       student_preferences: {
         Row: {
           accomplishments: Json
@@ -1630,6 +1679,7 @@ export interface Database {
           lesson_structure:
             | Database["public"]["Enums"]["lesson_structure"]
             | null
+          referral_code: string | null
           role: Database["public"]["Enums"]["user_role"] | null
           status: Database["public"]["Enums"]["profile_status"] | null
           stripe_customer_id: string | null

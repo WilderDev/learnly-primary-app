@@ -82,3 +82,4 @@ SELECT
     (SELECT COUNT(DISTINCT user_id) FROM subscriptions
         WHERE status = 'active' AND EXTRACT(YEAR FROM updated_at) = EXTRACT(YEAR FROM CURRENT_DATE)
     ) AS annual_active_users;
+

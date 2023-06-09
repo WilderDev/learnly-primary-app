@@ -167,6 +167,7 @@ SELECT
   teacher_profiles.status AS status,
   teacher_profiles.type AS type,
   teacher_profiles.role AS role,
+  referrals.code AS referral_code,
   teaching_preferences.preferred_teaching_strategies AS teaching_strategies,
   teaching_preferences.preferred_lesson_detail_level AS lesson_detail_level,
   teaching_preferences.preferred_teaching_tools AS teaching_tools,
@@ -182,6 +183,7 @@ FROM teacher_profiles
 JOIN teaching_preferences ON teacher_profiles.id = teaching_preferences.id
 JOIN subscriptions ON teacher_profiles.id = subscriptions.user_id
 JOIN customers ON teacher_profiles.id = customers.id
+LEFT JOIN referrals ON teacher_profiles.id = referrals.referrer_id
 WHERE teacher_profiles.id = auth.uid();
 
 
