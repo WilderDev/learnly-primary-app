@@ -2,10 +2,9 @@
 
 ## Top Priority
 
-1. Create a user support button/form that asks for their email address, browser, problem, and emotional state (excited, confused, worried, upset, panicked, angry) | _EASY_
-2. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
-3. Create Video showcasing Learnly (how to use it and the core features/benefits) -> Post in FB Group -> Add to Email #3 in FB List Email Sequence
-4. As a parent, I want discounts and deals with special partners (Kiwi Crate, LoveEvery, etc.)
+1. [Refer a Friend](<src/app/@dashboard/(pages)/account/AccountSubscriptionTab.tsx>) | _EASY_
+2. Create Video showcasing Learnly (how to use it and the core features/benefits) -> Post in FB Group -> Add to Email #3 in FB List Email Sequence
+3. As a parent, I want discounts and deals with special partners (Kiwi Crate, LoveEvery, etc.)
 
 ## Medium Prority
 
