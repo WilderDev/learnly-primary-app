@@ -3538,6 +3538,18 @@ export interface Database {
           }
         ]
       }
+      public_teacher_profile_view: {
+        Row: {
+          avatar_url: string | null
+          curriculums: Json | null
+          first_name: string | null
+          id: string | null
+          last_name: string | null
+          lessons: Json | null
+          status: Database["public"]["Enums"]["profile_status"] | null
+          type: Database["public"]["Enums"]["profile_type"] | null
+        }
+      }
       recently_completed_lesson_plans_view: {
         Row: {
           completion_date: string | null

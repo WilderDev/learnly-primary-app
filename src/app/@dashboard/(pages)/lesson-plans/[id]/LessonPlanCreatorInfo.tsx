@@ -2,14 +2,17 @@ import Image from 'next/image';
 
 import { Database } from '@/assets/typescript/db';
 import capitalize from '@/lib/common/capitalize';
+import Link from 'next/link';
 
 interface IProps {
+  id: string;
   avatar_url: string;
   name: string;
   role?: Database['public']['Enums']['profile_type'];
 }
 
 export default function LessonPlanCreatorInfo({
+  id,
   avatar_url,
   name,
   role,
@@ -27,15 +30,14 @@ export default function LessonPlanCreatorInfo({
       />
 
       {/* Creator */}
-      <div className="ml-4">
-        {/* POST_MVP: <Link href={`/profiles/${id}`}> */}
+      <Link className="ml-4" href={`/profile/${id}`}>
         <h3 className="text-lg font-medium text-slate-900 dark:text-navy-50">
           {name}
         </h3>
         <p className="text-sm text-slate-500 dark:text-navy-300">
           Learnly {role ? capitalize(role) : 'Educator'}
         </p>
-      </div>
+      </Link>
     </div>
   );
 }

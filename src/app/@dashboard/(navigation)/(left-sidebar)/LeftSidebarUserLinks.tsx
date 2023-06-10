@@ -4,7 +4,6 @@ import { useUser } from '@/lib/components/providers/UserProvider';
 import IconLink from '../IconLink';
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import Avatar from '@/lib/components/images/Avatar';
 import { getUserStatusColor } from '@/lib/theme/enumColors';
@@ -30,8 +29,7 @@ export default function LeftSidebarUserLinks() {
       <li>
         <Link
           className="group relative rounded-full focus:outline-green-500"
-          //   href="/profile"
-          href="/account"
+          href={`/profile/${user?.id}`}
         >
           {/* Profile Image */}
           <Avatar
