@@ -90,38 +90,31 @@ const createUserAction = async (input: z.infer<typeof createUserSchema>) => {
       });
     }
 
-    console.log('newCustomer:', newCustomer);
-
     // 6. Save Referral Code to DB if exists
     const cookiesList = cookies();
-    const hasCookie = cookiesList.has('referralCode');
+    const referralCode = cookiesList.get('referralCode') as
+      | {
+          name: string;
+          value: string;
+          path: string;
+        }
+      | undefined;
 
-    if (hasCookie) {
-      const referralCode = cookiesList.get('referralCode') as unknown as string;
-      console.log('typeof referralCode:', typeof referralCode);
-      console.log('referralCode:', referralCode);
-
+    if (referralCode) {
       const { data: referralTable, error: referralTableError } = await sbAdmin
         .from('referrals')
         .select('id')
-        .eq('referral_code', referralCode)
+        .eq('code', referralCode.value)
         .single();
 
-      console.log('referralTable:', referralTable);
-
       if (!referralTableError && referralTable.id) {
-        const { error: referralError } = await sbAdmin.rpc(
-          'add_item_to_array',
-          {
-            p_table_name: 'referrals',
-            p_column_name: 'referred_ids',
-            p_id_column: 'id',
-            p_id_value: referralTable.id,
-            p_item_value: referralCode,
-          },
-        );
-
-        console.log('referralError:', referralError);
+        await sbAdmin.rpc('add_item_to_array', {
+          p_table_name: 'referrals',
+          p_column_name: 'referred_ids',
+          p_id_column: 'id',
+          p_id_value: referralTable.id,
+          p_item_value: data?.user?.id!,
+        });
       }
     }
 

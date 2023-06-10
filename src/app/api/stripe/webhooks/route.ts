@@ -14,6 +14,7 @@ import {
   handleDeleteCustomer,
   handleTrialWillEnd,
   handleUpdateSubscription,
+  handleInvoicePaymentSucceeded,
 } from '@/lib/stripe/stripeWebhookHandlers';
 
 // * CONSTANTS
@@ -36,6 +37,7 @@ const relevantEvents: Stripe.Event['type'][] = [
   'price.deleted', // => Delete Price Record ✅
   'customer.subscription.updated', // => Updated Subscription Record (Subscription Renewed/Changed Plan/Changed from Trial to Active) ✅
   'customer.subscription.deleted', // => Delete Subscription Record (Subscription Ends) ✅
+  'invoice.paid', // => Send Invoice Paid Email ✅
 ];
 
 // * API ROUTE
@@ -124,6 +126,11 @@ export async function POST(request: Request) {
       //   }); // Run the handler function
 
       //   break; // Exit switch statement
+      // *** Handle invoice.paid event *** \\
+      case 'invoice.paid':
+        await handleInvoicePaymentSucceeded({ invoice: evt as Stripe.Invoice }); // Run the handler function
+
+        break; // Exit switch statement
       // *** Handle default case *** \\
       default:
         return new Response('Unhandled relevant event', { status: 400 }); // Return a response with error message

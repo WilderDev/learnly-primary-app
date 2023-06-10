@@ -73,6 +73,13 @@ export default function ReferAFriend() {
 
           {/* Share Button */}
           {/* TSK */}
+
+          {/* Message about connecting a bank account */}
+          <p className="text-slate-700 dark:text-navy-100">
+            You will receive $50 cash for every referral that signs up for the
+            annual plan. Please connect your bank account to Stripe to receive
+            the cash.
+          </p>
         </div>
       ) : (
         <Button
@@ -89,3 +96,6 @@ export default function ReferAFriend() {
     </>
   );
 }
+
+// TSK: Referrals Dashboard
+// You will receive the cash after the 30 day refund period has passed.

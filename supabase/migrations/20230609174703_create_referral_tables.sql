@@ -10,32 +10,63 @@ CREATE TABLE referrals (
   -- Referrer ID
   referrer_id uuid NOT NULL REFERENCES teacher_profiles(id) ON DELETE CASCADE,
 
-  -- Referred ID
+  -- Referred IDs
   referred_ids uuid[] NOT NULL DEFAULT '{}'::uuid[],
+
+  -- Payout IDs
+  payout_ids uuid[] NOT NULL DEFAULT '{}'::uuid[],
 
   -- Timestamps
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   updated_at timestamp with time zone NOT NULL DEFAULT now()
 );
 
--- TSK: Put in Prod DB
--- CREATE TABLE referrals (
---   -- Primary key
---   id uuid PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+-- Referral Payouts
+CREATE TABLE referral_payouts (
+  -- Primary key
+  id uuid PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
 
---   -- Referral code
---   code text NOT NULL UNIQUE,
+  -- Referral ID
+  referral_id uuid NOT NULL REFERENCES referrals(id) ON DELETE CASCADE,
 
---   -- Referrer ID
---   referrer_id uuid NOT NULL REFERENCES teacher_profiles(id),
+  -- User ID
+  user_id uuid NOT NULL REFERENCES teacher_profiles(id) ON DELETE CASCADE,
 
---   -- Referred ID
---   referred_ids uuid[] NOT NULL DEFAULT '{}'::uuid[],
+  -- Payout ID
+  payout_id text NOT NULL,
 
---   -- Timestamps
---   created_at timestamp with time zone NOT NULL DEFAULT now(),
---   updated_at timestamp with time zone NOT NULL DEFAULT now()
--- );
+  -- Amount
+  amount integer NOT NULL,
+
+  -- Currency
+  currency text NOT NULL,
+
+  -- Method
+  method text NOT NULL,
+
+  -- Destination
+  destination text NOT NULL,
+
+  -- Description
+  description text NOT NULL,
+
+  -- Statement Descriptor
+  statement_descriptor text NOT NULL,
+
+  -- Status
+  status text NOT NULL,
+
+  -- Metadata
+  metadata jsonb NOT NULL DEFAULT '{}'::jsonb,
+
+  -- Timestamps
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  updated_at timestamp with time zone NOT NULL DEFAULT now()
+);
+
+
+
+-- TSK: Put in Prod DB (db:push && ...)
 
 -- DROP VIEW teacher_me_view;
 -- CREATE VIEW teacher_me_view AS
@@ -67,56 +98,7 @@ CREATE TABLE referrals (
 -- WHERE teacher_profiles.id = auth.uid();
 
 -- TSK: I will need to comment these out before pushing to prod... because they already exist in prod in a different migration
-
 -- * Views
--- Public Profile View
-CREATE VIEW public_teacher_profile_view AS (
-  SELECT
-    p.id,
-    p.first_name,
-    p.last_name,
-    p.avatar_url,
-    p.status,
-    p.type,
-    json_agg(DISTINCT jsonb_build_object(
-      'id', l.id,
-      'title', l.title,
-      'image_path', l.image_path,
-      'tags', l.tags,
-      'length_in_min', l.length_in_min,
-      'subject', jsonb_build_object(
-        'id', s.id,
-        'name', s.name
-      ),
-      'level', jsonb_build_object(
-        'id', lv.id,
-        'name', lv.name
-      ),
-      'topic', jsonb_build_object(
-        'id', t.id,
-        'name', t.name
-      ),
-      'created_at', l.created_at
-    )) FILTER (WHERE l.is_public = TRUE) AS lessons,
-    json_agg(DISTINCT jsonb_build_object(
-      'id', c.id,
-      'name', c.name,
-      'description', c.description,
-      'image_path', c.image_path,
-      'status', c.status
-    )) FILTER (WHERE uc.user_id = p.id AND c.is_public = TRUE AND c.status = 'PUBLISHED') AS curriculums
-  FROM
-    teacher_profiles p
-    LEFT JOIN lesson_plans l ON p.id = l.creator_id
-    LEFT JOIN subjects s ON l.subject = s.id
-    LEFT JOIN levels lv ON l.level = lv.id
-    LEFT JOIN topics t ON l.topic = t.id
-    LEFT JOIN user_curriculums uc ON p.id = uc.user_id
-    LEFT JOIN curriculums c ON uc.curriculum_id = c.id
-  GROUP BY
-    p.id
-);
-
 -- Teacher's Me View (for a given teacher)
 CREATE VIEW teacher_me_view AS
 SELECT

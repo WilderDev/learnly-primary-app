@@ -14,7 +14,9 @@
 
 ## Coding (Waiting On More Users)
 
+1. Fix when you subscribe no message shows and you still see that screen... refresh the page like in curriculum-roadmaps route
+1. Separate Stripe Webhooks on Dev vs. Prod
 1. Users can create their own lessons, topics, subjects, and curriculum and share them with others | _DIFFICULT_
-2. Lesson Plan Comments (Wait until we have a good amount of users) | _MEDIUM_
-3. POST\*MVP messages (use search in VSCode) | _EASY_
-4. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
+1. Lesson Plan Comments (Wait until we have a good amount of users) | _MEDIUM_
+1. POST\*MVP messages (use search in VSCode) | _EASY_
+1. **Collaborative lessons and forum (multiple students) / Zoom integration (group projects, [discussions](https://cruip.com/demos/community/), virtual study groups, mom groups, virtual pen pals, etc.)** | _DIFFICULT_
