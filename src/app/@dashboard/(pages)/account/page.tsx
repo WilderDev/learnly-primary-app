@@ -16,10 +16,10 @@ export default function AccountPage() {
         </DashPanel>
 
         {/* Refer a Friend */}
-        <DashPanel colNum={2}>
+        {/* <DashPanel colNum={2}>
           <DashPanelHeader title="Refer a Friend" />
           <ReferAFriend />
-        </DashPanel>
+        </DashPanel> */}
       </DashSideCol>
     </AccountProvider>
   );

@@ -6,7 +6,6 @@ import { supabaseAdmin } from '@/lib/auth/supabaseAdmin';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
 import baseUrl from '@/lib/common/baseUrl';
 import { handleCreateOrRetrieveCustomer } from '@/lib/stripe/stripeWebhookHandlers';
-import { cookies } from 'next/headers';
 import { z } from 'zod';
 
 const createUserSchema = z.object({
@@ -90,33 +89,8 @@ const createUserAction = async (input: z.infer<typeof createUserSchema>) => {
       });
     }
 
-    // 6. Save Referral Code to DB if exists
-    const cookiesList = cookies();
-    const referralCode = cookiesList.get('referralCode') as
-      | {
-          name: string;
-          value: string;
-          path: string;
-        }
-      | undefined;
-
-    if (referralCode) {
-      const { data: referralTable, error: referralTableError } = await sbAdmin
-        .from('referrals')
-        .select('id')
-        .eq('code', referralCode.value)
-        .single();
-
-      if (!referralTableError && referralTable.id) {
-        await sbAdmin.rpc('add_item_to_array', {
-          p_table_name: 'referrals',
-          p_column_name: 'referred_ids',
-          p_id_column: 'id',
-          p_id_value: referralTable.id,
-          p_item_value: data?.user?.id!,
-        });
-      }
-    }
+    // 6. REFERRALS
+    // POST_MVP: Add referral logic here
 
     // 7. Send Sign In Email
     await sb.auth.signInWithOtp({

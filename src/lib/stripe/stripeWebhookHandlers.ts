@@ -492,9 +492,6 @@ interface IInvoicePaymentSucceeded {
 export async function handleInvoicePaymentSucceeded({
   invoice,
 }: IInvoicePaymentSucceeded) {
-  console.log('invoice:', invoice);
-  console.log('invoice.subscription:', invoice.subscription);
-
   // 1. Get the subscription from Stripe
   const { customer } = (await stripe.subscriptions.retrieve(
     invoice.subscription as string,
@@ -509,164 +506,57 @@ export async function handleInvoicePaymentSucceeded({
     .eq('stripe_customer_id', customer)
     .single();
 
+  // If customer exists and we are in production
   if (customerData?.id && process.env.NODE_ENV === 'production') {
-    // 2. Get the user's email
-    const { data: user } = await supabaseAdmin()
-      .from('public.users')
-      .select('email')
-      .eq('id', customerData?.id)
-      .single();
-    const { data: userProfile } = await supabaseAdmin()
-      .from('teacher_profiles')
-      .select('first_name, last_name')
-      .eq('id', customerData?.id)
-      .single();
+    if (invoice.total === 0) {
+      // 2. Get the user's email
+      const { data: user } = await supabaseAdmin()
+        .from('public.users')
+        .select('email')
+        .eq('id', customerData?.id)
+        .single();
+      const { data: userProfile } = await supabaseAdmin()
+        .from('teacher_profiles')
+        .select('first_name, last_name')
+        .eq('id', customerData?.id)
+        .single();
 
-    // 3a. Get the user's SendGrid Contact Id
-    const sgRes = await sgClient.request({
-      method: 'POST',
-      baseUrl: 'https://api.sendgrid.com',
-      url: '/v3/marketing/contacts/search/emails',
-      body: {
-        emails: [user?.email!],
-      },
-    });
-
-    // 3b. Remove them from SendGrid App Welcome List
-    await sgClient.request({
-      method: 'DELETE',
-      baseUrl: 'https://api.sendgrid.com',
-      url: `/v3/marketing/lists/${process.env.SENDGRID_APP_TRIAL_USERS_ID}/contacts`,
-      qs: {
-        contact_ids: (sgRes[0].body as any).result[user?.email!].contact.id,
-      },
-    });
-
-    // 3c. Add them to SendGrid App Users List
-    await sgClient.request({
-      method: 'PUT',
-      baseUrl: 'https://api.sendgrid.com',
-      url: '/v3/marketing/contacts',
-      body: {
-        list_ids: [process.env.SENDGRID_APP_USERS_ID!],
-        contacts: [
-          {
-            email: user?.email!,
-            first_name: userProfile?.first_name!,
-            last_name: userProfile?.last_name!,
-          },
-        ],
-      },
-    });
-  }
-
-  // TSK: This should not run for the initial invoice of a new subscription $0 but the sendgrid should
-  console.log('invoice.total:', invoice.total);
-  const isFirstInvoice = invoice.total === 0;
-
-  // 4a. Check if they were referred by anyone
-  const { data: referral, error: referralError } = await supabaseAdmin()
-    .from('referrals')
-    .select('*')
-    .contains('referred_ids', [customerData?.id!])
-    .single();
-
-  console.log('referralError:', referralError);
-
-  // 4b. If they were referred and their referrer hasen't been paid yet for this person, pay them
-  if (!!referral && !referral.payout_ids.includes(customerData?.id!)) {
-    // 4c. Get the referrer's stripe_customer_id
-    const { data: referrer } = await supabaseAdmin()
-      .from('customers')
-      .select('stripe_customer_id')
-      .eq('id', referral.referrer_id)
-      .single();
-
-    console.log('referrer:', referrer);
-
-    // 4d. Create a Stripe Transfer
-    if (referrer) {
-      const subscriptionCycle =
-        invoice?.lines?.data[0]?.plan?.interval === 'year'
-          ? 'annual'
-          : 'monthly';
-
-      let customerPayoutId: string;
-
-      // 4e. Get the referrer's bank account ID or card ID
-      const { data: bankAccount } = await stripe.customers.listSources(
-        referrer.stripe_customer_id,
-        { object: 'bank_account' },
-      );
-
-      console.log('bankAccount:', bankAccount);
-
-      if (bankAccount?.length < 1) {
-        // 4e1. Create a bank account
-        const { id } = await stripe.customers.createSource(
-          referrer.stripe_customer_id,
-          {
-            source: 'tok_visa',
-          },
-        );
-
-        customerPayoutId = id;
-      } else {
-        customerPayoutId = bankAccount[0].id;
-      }
-
-      // TSK
-      const payout = await stripe.payouts.create({
-        amount: 1000,
-        currency: 'usd',
-        method: 'standard',
-        destination: customerPayoutId, // The ID of a bank account or a card to send the payout to. If no destination is supplied, the default external account for the specified currency will be used.
-        description: 'test', // TSK
-        // description: `Referral payout for ${userProfile.first_name} ${userProfile.last_name} on ${subscriptionCycle} plan`,
-        statement_descriptor: 'Referral payout',
+      // 3a. Get the user's SendGrid Contact Id
+      const sgRes = await sgClient.request({
+        method: 'POST',
+        baseUrl: 'https://api.sendgrid.com',
+        url: '/v3/marketing/contacts/search/emails',
+        body: {
+          emails: [user?.email!],
+        },
       });
 
-      console.log('payout:', payout);
+      // 3b. Remove them from SendGrid App Welcome List
+      await sgClient.request({
+        method: 'DELETE',
+        baseUrl: 'https://api.sendgrid.com',
+        url: `/v3/marketing/lists/${process.env.SENDGRID_APP_TRIAL_USERS_ID}/contacts`,
+        qs: {
+          contact_ids: (sgRes[0].body as any).result[user?.email!].contact.id,
+        },
+      });
 
-      // 4e. Insert the payout into the database
-      const { error: payoutError } = await supabaseAdmin()
-        .from('referral_payouts')
-        .insert({
-          payout_id: payout.id,
-          referral_id: referral.id,
-          user_id: referral.referrer_id,
-          amount: 1000,
-          currency: 'usd',
-          method: 'standard',
-          destination: customerPayoutId,
-          description: 'test', // TSK
-          // description: `Referral payout for ${userProfile.first_name} ${userProfile.last_name} on ${subscriptionCycle} plan`,
-          statement_descriptor: 'Referral payout',
-          status: 'pending',
-          metadata: {
-            subscription_id: invoice.subscription as string,
-            subscription_cycle: subscriptionCycle,
-            referral_id: referral.id,
-            referral_referrer_id: referral.referrer_id,
-            referral_referred_ids: referral.referred_ids,
-          },
-        });
-
-      console.log('payoutError:', payoutError);
-
-      // 4f. Update the payout_ids array on the referral
-      if (!payoutError) {
-        const { error: referralError } = await supabaseAdmin()
-          .from('referrals')
-          .update({
-            payout_ids: [...referral.payout_ids, customerData?.id!],
-          })
-          .eq('id', referral.id);
-
-        console.log('referralError:', referralError);
-      }
+      // 3c. Add them to SendGrid App Users List
+      await sgClient.request({
+        method: 'PUT',
+        baseUrl: 'https://api.sendgrid.com',
+        url: '/v3/marketing/contacts',
+        body: {
+          list_ids: [process.env.SENDGRID_APP_USERS_ID!],
+          contacts: [
+            {
+              email: user?.email!,
+              first_name: userProfile?.first_name!,
+              last_name: userProfile?.last_name!,
+            },
+          ],
+        },
+      });
     }
   }
 }
-
-// TSK: Notifications to users for referral payouts

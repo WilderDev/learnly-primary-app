@@ -251,8 +251,6 @@ async function savePaymentDetailsAction(
     if (res.status !== 200)
       return responseContract('Woops! Something went wrong!', false);
 
-    revalidatePath('/account'); // ✅
-
     return responseContract('Success!', true);
   } catch (error) {
     return responseContract((error as Error).message, false);
