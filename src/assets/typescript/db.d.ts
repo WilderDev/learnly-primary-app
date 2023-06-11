@@ -690,6 +690,82 @@ export interface Database {
           url?: string
         }
       }
+      referral_payouts: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string
+          description: string
+          destination: string
+          id: string
+          metadata: Json
+          method: string
+          referral_id: string
+          statement_descriptor: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          currency: string
+          description: string
+          destination: string
+          id?: string
+          metadata?: Json
+          method: string
+          referral_id: string
+          statement_descriptor: string
+          status: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          currency?: string
+          description?: string
+          destination?: string
+          id?: string
+          metadata?: Json
+          method?: string
+          referral_id?: string
+          statement_descriptor?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+      }
+      referrals: {
+        Row: {
+          code: string
+          created_at: string
+          id: string
+          payout_ids: string[]
+          referred_ids: string[]
+          referrer_id: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          id?: string
+          payout_ids?: string[]
+          referred_ids?: string[]
+          referrer_id: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          id?: string
+          payout_ids?: string[]
+          referred_ids?: string[]
+          referrer_id?: string
+          updated_at?: string
+        }
+      }
       student_preferences: {
         Row: {
           accomplishments: Json
@@ -1630,6 +1706,7 @@ export interface Database {
           lesson_structure:
             | Database["public"]["Enums"]["lesson_structure"]
             | null
+          referral_code: string | null
           role: Database["public"]["Enums"]["user_role"] | null
           status: Database["public"]["Enums"]["profile_status"] | null
           stripe_customer_id: string | null

@@ -142,7 +142,7 @@ export default function AccountTeachingPreferencesForm() {
         options={createSelectOptions(teachingStrategyOptions)}
         values={teachingStrategies}
         setValues={setTeachingStrategies as Dispatch<SetStateAction<string[]>>}
-        cols={4}
+        cols={2}
         icon={AcademicCapIcon}
       />
 
@@ -152,7 +152,7 @@ export default function AccountTeachingPreferencesForm() {
         options={createSelectOptions(teachingToolOptions)}
         values={teachingTools}
         setValues={setTeachingTools as Dispatch<SetStateAction<string[]>>}
-        cols={4}
+        cols={2}
         icon={WrenchScrewdriverIcon}
       />
 
@@ -162,7 +162,7 @@ export default function AccountTeachingPreferencesForm() {
         options={createSelectOptions(lessonDetailLevelOptions)}
         value={lessonDetailLevel}
         setValue={setLessonDetailLevel as Dispatch<SetStateAction<string>>}
-        cols={4}
+        cols={2}
         icon={Square2StackIcon}
       />
 
@@ -172,13 +172,13 @@ export default function AccountTeachingPreferencesForm() {
         options={createSelectOptions(lessonStructureOptions)}
         value={lessonStructure}
         setValue={setLessonStructure as Dispatch<SetStateAction<string>>}
-        cols={4}
+        cols={2}
         icon={Square3Stack3DIcon}
       />
 
       {/* Submit */}
       <Button
-        className="col-span-4 mt-2.5"
+        className="col-span-1 col-start-4 mt-2.5"
         type="submit"
         loading={isLoading}
         disabled={isLoading || !lessonDetailLevel}

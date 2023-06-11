@@ -89,6 +89,9 @@ const createUserAction = async (input: z.infer<typeof createUserSchema>) => {
       });
     }
 
+    // 6. REFERRALS
+    // POST_MVP: Add referral logic here
+
     // 7. Send Sign In Email
     await sb.auth.signInWithOtp({
       email,

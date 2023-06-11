@@ -256,55 +256,6 @@ FROM student_profiles
 JOIN student_preferences ON student_profiles.id = student_preferences.id
 WHERE student_profiles.teacher_id = auth.uid();
 
-
--- Public Profile View
-CREATE VIEW public_teacher_profile_view AS (
-  SELECT
-    p.id,
-    p.first_name,
-    p.last_name,
-    p.avatar_url,
-    p.status,
-    p.type,
-    json_agg(DISTINCT jsonb_build_object(
-      'id', l.id,
-      'title', l.title,
-      'image_path', l.image_path,
-      'tags', l.tags,
-      'length_in_min', l.length_in_min,
-      'subject', jsonb_build_object(
-        'id', s.id,
-        'name', s.name
-      ),
-      'level', jsonb_build_object(
-        'id', lv.id,
-        'name', lv.name
-      ),
-      'topic', jsonb_build_object(
-        'id', t.id,
-        'name', t.name
-      ),
-      'created_at', l.created_at
-    )) FILTER (WHERE l.is_public = TRUE) AS lessons,
-    json_agg(DISTINCT jsonb_build_object(
-      'id', c.id,
-      'name', c.name,
-      'description', c.description,
-      'image_path', c.image_path,
-      'status', c.status
-    )) FILTER (WHERE uc.user_id = p.id AND c.is_public = TRUE AND c.status = 'PUBLISHED') AS curriculums
-  FROM
-    teacher_profiles p
-    LEFT JOIN lesson_plans l ON p.id = l.creator_id
-    LEFT JOIN subjects s ON l.subject = s.id
-    LEFT JOIN levels lv ON l.level = lv.id
-    LEFT JOIN topics t ON l.topic = t.id
-    LEFT JOIN user_curriculums uc ON p.id = uc.user_id
-    LEFT JOIN curriculums c ON uc.curriculum_id = c.id
-  GROUP BY
-    p.id
-);
-
 -- * FUNCTIONS
 -- Function to check user's role
 CREATE FUNCTION is_role(role user_role) RETURNS "bool"
@@ -382,7 +333,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Function to add an item to an array
-CREATE OR REPLACE FUNCTION add_item_to_array(p_table_name TEXT, p_column_name TEXT, p_id_column TEXT, p_id_value UUID, p_item_value UUID)
+CREATE FUNCTION add_item_to_array(p_table_name TEXT, p_column_name TEXT, p_id_column TEXT, p_id_value UUID, p_item_value UUID)
 RETURNS VOID AS $$
 BEGIN
   EXECUTE format('UPDATE %I SET %I = array_append(%I, %L) WHERE %I = %L', p_table_name, p_column_name, p_column_name, p_item_value, p_id_column, p_id_value);

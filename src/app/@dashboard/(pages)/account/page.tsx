@@ -2,6 +2,7 @@ import { DashPanel, DashPanelHeader } from '../../(layout)/DashPanel';
 import DashSideCol from '../../(layout)/DashSideCol';
 import { AccountProvider } from './AccountCtx';
 import AccountNav from './AccountNav';
+import ReferAFriend from './ReferAFriend';
 
 export default function AccountPage() {
   return (
@@ -13,6 +14,12 @@ export default function AccountPage() {
           <DashPanelHeader title="Account" />
           <AccountNav />
         </DashPanel>
+
+        {/* Refer a Friend */}
+        {/* <DashPanel colNum={2}>
+          <DashPanelHeader title="Refer a Friend" />
+          <ReferAFriend />
+        </DashPanel> */}
       </DashSideCol>
     </AccountProvider>
   );

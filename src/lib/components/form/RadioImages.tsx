@@ -12,6 +12,7 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   labelHidden?: boolean;
   cols?: number;
+  smImages?: boolean;
   className?: string;
 }
 
@@ -22,6 +23,7 @@ export default function RadioImages({
   label,
   labelHidden = false,
   cols = 1,
+  smImages = false,
   className,
   ...props
 }: IProps) {
@@ -33,7 +35,13 @@ export default function RadioImages({
       labelHidden={labelHidden}
       className={className}
     >
-      <div className="flex items-center gap-4 flex-wrap" {...props}>
+      <div
+        className={cn(
+          'flex items-center gap-4 flex-wrap',
+          smImages && 'gap-2 2xl:gap-3',
+        )}
+        {...props}
+      >
         {options.map((option) => (
           <button
             type="button"
@@ -43,6 +51,7 @@ export default function RadioImages({
               'relative w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 p-1.5 rounded-lg border-2 border-transparent focus:outline-none ring-2 ring-transparent focus:ring-offset-2 focus:ring-green-500',
               value === option &&
                 'border-green-500 bg-green-50 dark:bg-green-900',
+              smImages && 'md:w-10 md:h-10 p-1',
             )}
             aria-label={`Select ${option}`}
           >
