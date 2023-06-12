@@ -2,6 +2,9 @@ import { Database } from './db';
 import { IStudentPromptReq, TDifficulty, TPhilosophy } from './lesson-plan';
 import { TLearningStyle } from './user';
 
+export type TCurriculumStatus =
+  Database['public']['Enums']['curriculum_status'];
+
 export interface ICurriculumListItem {
   id: string;
   name: string;

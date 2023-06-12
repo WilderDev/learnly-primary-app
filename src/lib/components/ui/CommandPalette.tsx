@@ -1,37 +1,34 @@
 'use client';
 
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { FaceFrownIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline';
 import { Combobox, Dialog, Transition } from '@headlessui/react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import cn from '@/lib/common/cn';
 import capitalize from '@/lib/common/capitalize';
 import { useCommandPalette } from '@/app/@dashboard/(navigation)/(top-header)/CommandPaletteCtx';
 import LoadingShapes from '../loading/LoadingShapes';
 import { getStatusColor } from '@/lib/theme/enumColors';
-import { IAssignment } from '@/assets/typescript/assignment';
 import Avatar from '../images/Avatar';
 import OverlappingImages from '../images/OverlappingImages';
-
-export interface IItem {
-  id: string;
-  name: string;
-  category: string;
-  url: string;
-  record: IAssignment | any;
-}
+import {
+  ISearchItem,
+  TSearchAssignmentRecord,
+  TSearchCurriculumRecord,
+  TSearchLessonPlanRecord,
+} from '@/assets/typescript/search';
+import Image from 'next/image';
 
 // * Props
 interface IProps {
-  items: IItem[];
+  items: ISearchItem[];
 }
 
 // * Component
 export default function CommandPalette({ items }: IProps) {
   // * Hooks
   const router = useRouter();
-  const searchParams = useSearchParams()!;
 
   // * State
   const { open, setOpen, query, setQuery, isLoading } = useCommandPalette();
@@ -49,9 +46,9 @@ export default function CommandPalette({ items }: IProps) {
   const groups = filteredItems.reduce(
     (
       groups: {
-        [key: string]: IItem[];
+        [key: string]: ISearchItem[];
       },
-      item: IItem,
+      item: ISearchItem,
     ) => {
       return {
         ...groups,
@@ -103,7 +100,7 @@ export default function CommandPalette({ items }: IProps) {
           >
             <Dialog.Panel className="mx-auto max-w-xl w-full transform overflow-hidden rounded-xl bg-white dark:bg-slate-700 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all ">
               <Combobox
-                onChange={(item: IItem) => {
+                onChange={(item: ISearchItem) => {
                   router.push(item.url);
                   setOpen(false);
                 }}
@@ -169,25 +166,46 @@ export default function CommandPalette({ items }: IProps) {
                                       <span
                                         className={cn(
                                           'h-4 w-4 rounded-full px-1 border border-gray-300',
-                                          getStatusColor(item.record.status).bg,
+                                          getStatusColor(
+                                            (
+                                              item.record as TSearchAssignmentRecord
+                                            ).status,
+                                          ).bg,
                                         )}
                                       />
                                     )}
+
                                     {/* Lesson Plan Avatars */}
                                     {category === 'lesson_plans' && (
                                       <OverlappingImages className="items-center justify-center">
-                                        {item.record.students_with_details?.map(
-                                          (s: any, idx: any) => (
-                                            <Avatar
-                                              src={s.avatar_url}
-                                              alt={s.first_name}
-                                              url="/account?view=students"
-                                              key={idx}
-                                            />
-                                          ),
-                                        )}
+                                        {(
+                                          item.record as TSearchLessonPlanRecord
+                                        ).students?.map((s: any, idx: any) => (
+                                          <Avatar
+                                            src={s.avatar_url}
+                                            alt={s.first_name}
+                                            url="/account?view=students"
+                                            key={idx}
+                                          />
+                                        ))}
                                       </OverlappingImages>
                                     )}
+
+                                    {/* Curriculum Image */}
+                                    {category === 'curriculum' && (
+                                      <Image
+                                        src={
+                                          (
+                                            item.record as TSearchCurriculumRecord
+                                          ).image_url
+                                        }
+                                        alt={item.name}
+                                        width={32}
+                                        height={32}
+                                        className="rounded-full w-8 h-8"
+                                      />
+                                    )}
+
                                     {item.name}
                                   </div>
                                 </Combobox.Option>
@@ -210,8 +228,8 @@ export default function CommandPalette({ items }: IProps) {
                             No results found
                           </p>
                           <p className="mt-2 text-slate-500 dark:text-slate-100">
-                            We couldn’t find anything with that term. Please try
-                            again.
+                            We couldn&apos;t find anything with that term.
+                            Please try again.
                           </p>
                         </div>
                       )}

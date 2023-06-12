@@ -1,8 +1,9 @@
 'use client';
 
+import { ISearchItem } from '@/assets/typescript/search';
 import { supabaseClient } from '@/lib/auth/supabaseClient';
 import { useUser } from '@/lib/components/providers/UserProvider';
-import CommandPalette, { IItem } from '@/lib/components/ui/CommandPalette';
+import CommandPalette from '@/lib/components/ui/CommandPalette';
 import {
   PropsWithChildren,
   createContext,
@@ -16,7 +17,7 @@ import { toast } from 'sonner';
 // * Initialization
 // Props
 interface ICommandPaletteCtxProps {
-  items: IItem[];
+  items: ISearchItem[];
   open: boolean;
   setOpen: (open: boolean) => void;
   query: string;
@@ -41,7 +42,7 @@ const CommandPaletteCtx = createContext(initialState); // Create Context Object
 export function CommandPaletteProvider({ children }: PropsWithChildren) {
   // * State
   const [open, setOpen] = useState(false);
-  const [items, setItems] = useState<IItem[]>([]);
+  const [items, setItems] = useState<ISearchItem[]>([]);
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -52,105 +53,30 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
   const { user } = useUser();
 
   // * Effects
+  // Fetch items from server
   useEffect(() => {
-    // Fetch Data
     const fetchItems = async () => {
-      // Set Loading State to true
       setIsLoading(true);
 
-      // TSK Currently only fetching if the query is one letter will change to more complex optimization
-      if (query != '' && query.length < 2) {
-        // Get any title of an assignment "like" the current query
-        const { data: assignments, error: assignmentsError } = await supabase
-          .from('assignments')
-          .select('id, title,status,  user_lesson_plans(lesson_plan_id)')
-          .ilike('title', `%${query}%`)
-          .eq('creator_id', user?.id);
+      const { data, error } = await supabase.rpc('search_resources', {
+        query,
+        user_id: user?.id!,
+      });
 
-        //  Display Error Message
-        if (assignmentsError) toast.error('There was an error searching');
+      if (error) toast.error('There was an error searching');
 
-        // Map the assignments data to the desired Item structure
-        const mappedAssignments =
-          assignments?.map((assignment) => {
-            let lesson_plan_id;
-            if (Array.isArray(assignment.user_lesson_plans)) {
-              lesson_plan_id = assignment.user_lesson_plans[0]?.lesson_plan_id;
-            } else if (assignment.user_lesson_plans) {
-              lesson_plan_id = assignment.user_lesson_plans.lesson_plan_id;
-            }
-            return {
-              id: assignment.id,
-              name: assignment.title,
-              category: 'assignments',
-              url: `/lesson-plans/${lesson_plan_id}`,
-              record: assignment,
-            };
-          }) || [];
-
-        // Get any title of a Lesson Plan "like" the current query
-        const { data: lessonPlans, error: lessonPlansError } = await supabase
-          .from('lesson_plans_with_creator_and_students_view')
-          .select('*')
-          .ilike('title', `%${query}%`)
-          .eq('creator_id', user?.id);
-
-        //  Display Error Message
-        if (lessonPlansError) toast.error('There was an error searching');
-
-        // Map the lesson plan data to the desired Item structure
-        const mappedLessonPlans =
-          lessonPlans?.map((lessonPlan) => ({
-            id: lessonPlan.id as string,
-            name: lessonPlan.title as string,
-            category: 'lesson_plans',
-            url: `/lesson-plans/${lessonPlan.id}`,
-            record: lessonPlan,
-          })) || [];
-
-        // Get any name of a curriculum "like" the current query
-        const { data: curriculumRoadmapsData, error: curriculumRoadmapsError } =
-          await supabase
-            .from('user_curriculum_details_view')
-            .select('user_curriculum_id, curriculum_name')
-            .eq('user_id', user?.id)
-            .ilike('curriculum_name', `%${query}%`);
-
-        // Display Error Message
-        if (curriculumRoadmapsError)
-          toast.error('There was an error searching');
-
-        // Map the curriculum data to the desired Item structure
-        const mappedCurriculumRoadmaps =
-          curriculumRoadmapsData?.map((roadmap) => ({
-            id: roadmap.user_curriculum_id as string,
-            name: roadmap.curriculum_name as string,
-            category: 'curriculum',
-            url: `/curriculum-roadmaps/user/${roadmap.user_curriculum_id}`,
-            record: roadmap,
-          })) || [];
-
-        // Combine data
-        const combinedData: IItem[] = [
-          ...mappedAssignments,
-          ...mappedLessonPlans,
-          ...mappedCurriculumRoadmaps,
-        ];
-
-        // Set loading state to false
-        setIsLoading(false);
-
-        // Set the current items list to the result of the combined queries
-        setItems(combinedData);
-      }
-
-      // Set loading state to false
       setIsLoading(false);
+      setItems((data as ISearchItem[]) || []);
     };
 
-    // Execute fetching function
-    fetchItems();
-  }, [query]);
+    query?.length > 0 && fetchItems();
+
+    return () => {
+      setItems([]);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, user?.id]);
 
   const value: ICommandPaletteCtxProps = useMemo(
     () => ({

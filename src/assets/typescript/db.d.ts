@@ -46,74 +46,6 @@ export interface Database {
           updated_at?: string
           user_lesson_plan_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "assignments_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "assignments_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "assignments_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "assignments_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "assignments_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "assignments_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "assignments_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "assignments_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "assignments_user_lesson_plan_id_fkey"
-            columns: ["user_lesson_plan_id"]
-            referencedRelation: "user_lesson_plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "assignments_user_lesson_plan_id_fkey"
-            columns: ["user_lesson_plan_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["user_lesson_plan_id"]
-          },
-          {
-            foreignKeyName: "assignments_user_lesson_plan_id_fkey"
-            columns: ["user_lesson_plan_id"]
-            referencedRelation: "lesson_plans_without_assignments_view"
-            referencedColumns: ["user_lesson_plan_id"]
-          }
-        ]
       }
       comment_reactions: {
         Row: {
@@ -140,20 +72,6 @@ export interface Database {
           reactor_id?: string
           updated_at?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "comment_reactions_comment_id_fkey"
-            columns: ["comment_id"]
-            referencedRelation: "comments"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "comment_reactions_reaction_id_fkey"
-            columns: ["reaction_id"]
-            referencedRelation: "reactions"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       comments: {
         Row: {
@@ -189,62 +107,6 @@ export interface Database {
           parent_comment_id?: string | null
           updated_at?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "comments_author_id_fkey"
-            columns: ["author_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "comments_author_id_fkey"
-            columns: ["author_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "comments_author_id_fkey"
-            columns: ["author_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "comments_author_id_fkey"
-            columns: ["author_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "comments_author_id_fkey"
-            columns: ["author_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "comments_author_id_fkey"
-            columns: ["author_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "comments_author_id_fkey"
-            columns: ["author_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "comments_author_id_fkey"
-            columns: ["author_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "comments_parent_comment_id_fkey"
-            columns: ["parent_comment_id"]
-            referencedRelation: "comments"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       curriculum_lessons: {
         Row: {
@@ -283,38 +145,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["module_type"]
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "curriculum_lessons_curriculum_topic_id_fkey"
-            columns: ["curriculum_topic_id"]
-            referencedRelation: "curriculum_topics"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_lessons_curriculum_topic_id_fkey"
-            columns: ["curriculum_topic_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_topic_id"]
-          },
-          {
-            foreignKeyName: "curriculum_lessons_curriculum_topic_id_fkey"
-            columns: ["curriculum_topic_id"]
-            referencedRelation: "curriculum_topics_with_progress_view"
-            referencedColumns: ["curriculum_topic_id"]
-          },
-          {
-            foreignKeyName: "curriculum_lessons_curriculum_topic_id_fkey"
-            columns: ["curriculum_topic_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["topic_id"]
-          },
-          {
-            foreignKeyName: "curriculum_lessons_curriculum_topic_id_fkey"
-            columns: ["curriculum_topic_id"]
-            referencedRelation: "shareable_curriculum_topics_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       curriculum_levels: {
         Row: {
@@ -341,80 +171,6 @@ export interface Database {
           level_number?: number
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "curriculum_subjects"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "curriculum_levels_with_progress_view"
-            referencedColumns: ["curriculum_subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "curriculum_subjects_with_progress_view"
-            referencedColumns: ["curriculum_subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "curriculum_topics_with_progress_view"
-            referencedColumns: ["curriculum_subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "shareable_curriculum_levels_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "shareable_curriculum_subjects_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_curriculum_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "shareable_curriculum_topics_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_level_id_fkey"
-            columns: ["level_id"]
-            referencedRelation: "levels"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_level_id_fkey"
-            columns: ["level_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_level_id_fkey"
-            columns: ["level_id"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["level_id"]
-          }
-        ]
       }
       curriculum_prerequisites: {
         Row: {
@@ -438,68 +194,6 @@ export interface Database {
           lesson_prerequisite_id?: string
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "curriculum_lessons"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "next_lesson_per_subject_per_curriculum_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_prerequisite_id_fkey"
-            columns: ["lesson_prerequisite_id"]
-            referencedRelation: "curriculum_lessons"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_prerequisite_id_fkey"
-            columns: ["lesson_prerequisite_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_prerequisite_id_fkey"
-            columns: ["lesson_prerequisite_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_prerequisite_id_fkey"
-            columns: ["lesson_prerequisite_id"]
-            referencedRelation: "next_lesson_per_subject_per_curriculum_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "curriculum_prerequisites_lesson_prerequisite_id_fkey"
-            columns: ["lesson_prerequisite_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       curriculum_subjects: {
         Row: {
@@ -526,92 +220,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["module_type"]
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculums"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_levels_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_subjects_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_topics_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_levels_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_subjects_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_topics_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "user_curriculum_details_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_subject_id_fkey"
-            columns: ["subject_id"]
-            referencedRelation: "subjects"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_subject_id_fkey"
-            columns: ["subject_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_subject_id_fkey"
-            columns: ["subject_id"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["subject_id"]
-          }
-        ]
       }
       curriculum_topics: {
         Row: {
@@ -641,68 +249,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["module_type"]
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "curriculum_topics_curriculum_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "curriculum_levels"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_curriculum_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_level_id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_curriculum_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "curriculum_levels_with_progress_view"
-            referencedColumns: ["curriculum_level_id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_curriculum_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "curriculum_topics_with_progress_view"
-            referencedColumns: ["curriculum_level_id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_curriculum_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_curriculum_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "shareable_curriculum_levels_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_curriculum_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "shareable_curriculum_topics_view"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_topic_id_fkey"
-            columns: ["topic_id"]
-            referencedRelation: "topics"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_topic_id_fkey"
-            columns: ["topic_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["topic_id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_topic_id_fkey"
-            columns: ["topic_id"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["topic_id"]
-          }
-        ]
       }
       curriculums: {
         Row: {
@@ -744,56 +290,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["curriculum_type"]
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "curriculums_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculums_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculums_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculums_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculums_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "curriculums_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "curriculums_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "curriculums_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       customers: {
         Row: {
@@ -817,20 +313,6 @@ export interface Database {
           stripe_customer_id?: string
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "customers_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "customers_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       events: {
         Row: {
@@ -881,56 +363,6 @@ export interface Database {
           updated_at?: string
           url?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       lesson_plan_templates: {
         Row: {
@@ -1020,110 +452,6 @@ export interface Database {
           topic?: string | null
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "lesson_plan_templates_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_level_fkey"
-            columns: ["level"]
-            referencedRelation: "levels"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_level_fkey"
-            columns: ["level"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_level_fkey"
-            columns: ["level"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "subjects"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "topics"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["topic_id"]
-          },
-          {
-            foreignKeyName: "lesson_plan_templates_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["topic_id"]
-          }
-        ]
       }
       lesson_plans: {
         Row: {
@@ -1171,110 +499,6 @@ export interface Database {
           topic?: string
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "lesson_plans_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_creator_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_level_fkey"
-            columns: ["level"]
-            referencedRelation: "levels"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_level_fkey"
-            columns: ["level"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_level_fkey"
-            columns: ["level"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "subjects"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "topics"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["topic_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["topic_id"]
-          }
-        ]
       }
       levels: {
         Row: {
@@ -1304,7 +528,6 @@ export interface Database {
           name?: Database["public"]["Enums"]["level"]
           updated_at?: string
         }
-        Relationships: []
       }
       notifications: {
         Row: {
@@ -1361,68 +584,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["notification_type"]
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "assignments_with_details_view"
-            referencedColumns: ["lesson_plan_id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "recently_completed_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "upcoming_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_recipient_id_fkey"
-            columns: ["recipient_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_recipient_id_fkey"
-            columns: ["recipient_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_sender_id_fkey"
-            columns: ["sender_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_sender_id_fkey"
-            columns: ["sender_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       prices: {
         Row: {
@@ -1467,7 +628,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["pricing_type"]
           updated_at?: string
         }
-        Relationships: []
       }
       products: {
         Row: {
@@ -1500,7 +660,6 @@ export interface Database {
           name?: string
           updated_at?: string
         }
-        Relationships: []
       }
       reactions: {
         Row: {
@@ -1529,83 +688,6 @@ export interface Database {
           type?: string
           updated_at?: string | null
           url?: string
-        }
-        Relationships: []
-      }
-      referral_payouts: {
-        Row: {
-          amount: number
-          created_at: string
-          currency: string
-          description: string
-          destination: string
-          id: string
-          metadata: Json
-          method: string
-          referral_id: string
-          statement_descriptor: string
-          status: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          amount: number
-          created_at?: string
-          currency: string
-          description: string
-          destination: string
-          id?: string
-          metadata?: Json
-          method: string
-          referral_id: string
-          statement_descriptor: string
-          status: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          amount?: number
-          created_at?: string
-          currency?: string
-          description?: string
-          destination?: string
-          id?: string
-          metadata?: Json
-          method?: string
-          referral_id?: string
-          statement_descriptor?: string
-          status?: string
-          updated_at?: string
-          user_id?: string
-        }
-      }
-      referrals: {
-        Row: {
-          code: string
-          created_at: string
-          id: string
-          payout_ids: string[]
-          referred_ids: string[]
-          referrer_id: string
-          updated_at: string
-        }
-        Insert: {
-          code: string
-          created_at?: string
-          id?: string
-          payout_ids?: string[]
-          referred_ids?: string[]
-          referrer_id: string
-          updated_at?: string
-        }
-        Update: {
-          code?: string
-          created_at?: string
-          id?: string
-          payout_ids?: string[]
-          referred_ids?: string[]
-          referrer_id?: string
-          updated_at?: string
         }
       }
       student_preferences: {
@@ -1660,20 +742,6 @@ export interface Database {
           updated_at?: string
           weaknesses?: string[]
         }
-        Relationships: [
-          {
-            foreignKeyName: "student_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "student_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "student_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "teacher_students_profiles_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       student_profiles: {
         Row: {
@@ -1706,56 +774,6 @@ export interface Database {
           teacher_id?: string
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "student_profiles_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "student_profiles_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "student_profiles_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "student_profiles_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "student_profiles_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "student_profiles_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "student_profiles_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "student_profiles_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       subjects: {
         Row: {
@@ -1785,7 +803,6 @@ export interface Database {
           name?: string
           updated_at?: string
         }
-        Relationships: []
       }
       subscriptions: {
         Row: {
@@ -1854,20 +871,6 @@ export interface Database {
           updated_at?: string
           user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "subscriptions_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "subscriptions_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       teacher_profiles: {
         Row: {
@@ -1909,20 +912,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["profile_type"]
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       teaching_preferences: {
         Row: {
@@ -1958,56 +947,6 @@ export interface Database {
           preferred_teaching_tools?: Database["public"]["Enums"]["teaching_tool"][]
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "teaching_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teaching_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teaching_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teaching_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teaching_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "teaching_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "teaching_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "teaching_preferences_id_fkey"
-            columns: ["id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       topics: {
         Row: {
@@ -2043,44 +982,6 @@ export interface Database {
           topic_number?: number
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "topics_level_id_fkey"
-            columns: ["level_id"]
-            referencedRelation: "levels"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "topics_level_id_fkey"
-            columns: ["level_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "topics_level_id_fkey"
-            columns: ["level_id"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "topics_subject_id_fkey"
-            columns: ["subject_id"]
-            referencedRelation: "subjects"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "topics_subject_id_fkey"
-            columns: ["subject_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "topics_subject_id_fkey"
-            columns: ["subject_id"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["subject_id"]
-          }
-        ]
       }
       user_curriculum_progress: {
         Row: {
@@ -2113,134 +1014,6 @@ export interface Database {
           user_curriculum_id?: string
           user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_curriculum_progress_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "curriculum_lessons"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "next_lesson_per_subject_per_curriculum_view"
-            referencedColumns: ["curriculum_lesson_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_lesson_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_curriculum_id_fkey"
-            columns: ["user_curriculum_id"]
-            referencedRelation: "user_curriculums"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_curriculum_id_fkey"
-            columns: ["user_curriculum_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["user_curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_curriculum_id_fkey"
-            columns: ["user_curriculum_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["user_curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_curriculum_id_fkey"
-            columns: ["user_curriculum_id"]
-            referencedRelation: "curriculum_levels_with_progress_view"
-            referencedColumns: ["user_curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_curriculum_id_fkey"
-            columns: ["user_curriculum_id"]
-            referencedRelation: "curriculum_subjects_with_progress_view"
-            referencedColumns: ["user_curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_curriculum_id_fkey"
-            columns: ["user_curriculum_id"]
-            referencedRelation: "curriculum_topics_with_progress_view"
-            referencedColumns: ["user_curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_curriculum_id_fkey"
-            columns: ["user_curriculum_id"]
-            referencedRelation: "next_lesson_per_subject_per_curriculum_view"
-            referencedColumns: ["user_curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_curriculum_id_fkey"
-            columns: ["user_curriculum_id"]
-            referencedRelation: "user_curriculum_details_view"
-            referencedColumns: ["user_curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculum_progress_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       user_curriculums: {
         Row: {
@@ -2267,122 +1040,6 @@ export interface Database {
           updated_at?: string
           user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculums"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_levels_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_subjects_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_topics_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_levels_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_subjects_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_topics_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "user_curriculum_details_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       user_lesson_plan_templates: {
         Row: {
@@ -2409,62 +1066,6 @@ export interface Database {
           teacher_id?: string
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_lesson_plan_templates_lesson_plan_template_id_fkey"
-            columns: ["lesson_plan_template_id"]
-            referencedRelation: "lesson_plan_templates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plan_templates_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plan_templates_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plan_templates_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plan_templates_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plan_templates_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plan_templates_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plan_templates_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plan_templates_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       user_lesson_plans: {
         Row: {
@@ -2500,92 +1101,6 @@ export interface Database {
           teacher_id?: string
           updated_at?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "assignments_with_details_view"
-            referencedColumns: ["lesson_plan_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "recently_completed_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "upcoming_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
     }
     Views: {
@@ -2602,20 +1117,6 @@ export interface Database {
             | Database["public"]["Enums"]["subscription_status"]
             | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       admin_past_users_view: {
         Row: {
@@ -2630,20 +1131,6 @@ export interface Database {
             | Database["public"]["Enums"]["subscription_status"]
             | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       admin_statistics_view: {
         Row: {
@@ -2654,7 +1141,6 @@ export interface Database {
           total_trial_conversions: number | null
           total_trial_sign_ups: number | null
         }
-        Relationships: []
       }
       admin_trial_users_view: {
         Row: {
@@ -2669,20 +1155,6 @@ export interface Database {
             | Database["public"]["Enums"]["subscription_status"]
             | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       all_events_view: {
         Row: {
@@ -2727,56 +1199,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["event"] | null
           url?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       assignments_with_details_view: {
         Row: {
@@ -2794,56 +1216,6 @@ export interface Database {
           students: Json | null
           teacher_id: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       attending_events_view: {
         Row: {
@@ -2888,56 +1260,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["event"] | null
           url?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       curriculum_lesson_with_user_lesson_view: {
         Row: {
@@ -2956,7 +1278,6 @@ export interface Database {
           topic_name: string | null
           user_curriculum_id: string | null
         }
-        Relationships: []
       }
       curriculum_lessons_with_progress_view: {
         Row: {
@@ -2981,7 +1302,6 @@ export interface Database {
           total_lessons: number | null
           user_curriculum_id: string | null
         }
-        Relationships: []
       }
       curriculum_levels_with_progress_view: {
         Row: {
@@ -3001,7 +1321,6 @@ export interface Database {
           total_lessons: number | null
           user_curriculum_id: string | null
         }
-        Relationships: []
       }
       curriculum_subjects_with_progress_view: {
         Row: {
@@ -3019,7 +1338,6 @@ export interface Database {
           total_lessons: number | null
           user_curriculum_id: string | null
         }
-        Relationships: []
       }
       curriculum_topics_with_progress_view: {
         Row: {
@@ -3041,7 +1359,6 @@ export interface Database {
           total_lessons: number | null
           user_curriculum_id: string | null
         }
-        Relationships: []
       }
       curriculum_with_progress_view: {
         Row: {
@@ -3060,20 +1377,6 @@ export interface Database {
           total_lessons: number | null
           user_curriculum_id: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       hosted_events_view: {
         Row: {
@@ -3118,56 +1421,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["event"] | null
           url?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "events_host_id_fkey"
-            columns: ["host_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       lesson_plan_templates_with_students_view: {
         Row: {
@@ -3192,7 +1445,6 @@ export interface Database {
           title: string | null
           topic: Json | null
         }
-        Relationships: []
       }
       lesson_plan_with_creator_view: {
         Row: {
@@ -3209,20 +1461,6 @@ export interface Database {
           title: string | null
           topic_name: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       lesson_plans_with_creator_and_students_view: {
         Row: {
@@ -3250,74 +1488,6 @@ export interface Database {
           topic_name: string | null
           user_lesson_plan_id: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "lesson_plans_level_fkey"
-            columns: ["level"]
-            referencedRelation: "levels"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_level_fkey"
-            columns: ["level"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_level_fkey"
-            columns: ["level"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "subjects"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_subject_fkey"
-            columns: ["subject"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "topics"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["topic_id"]
-          },
-          {
-            foreignKeyName: "lesson_plans_topic_fkey"
-            columns: ["topic"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["topic_id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["creator_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       lesson_plans_without_assignments_view: {
         Row: {
@@ -3326,7 +1496,6 @@ export interface Database {
           lesson_plan_name: string | null
           user_lesson_plan_id: string | null
         }
-        Relationships: []
       }
       lesson_timeline_view: {
         Row: {
@@ -3337,92 +1506,6 @@ export interface Database {
           students: Json[] | null
           teacher_id: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "lesson_plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "assignments_with_details_view"
-            referencedColumns: ["lesson_plan_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "recently_completed_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_lesson_plan_id_fkey"
-            columns: ["lesson_id"]
-            referencedRelation: "upcoming_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_lesson_plans_teacher_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       next_lesson_per_subject_per_curriculum_view: {
         Row: {
@@ -3443,176 +1526,6 @@ export interface Database {
           topic_name: string | null
           user_curriculum_id: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "curriculum_levels_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "levels"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "curriculum_levels_level_id_fkey"
-            columns: ["curriculum_level_id"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["level_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "subjects"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_subjects_subject_id_fkey"
-            columns: ["curriculum_subject_id"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["subject_id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_topic_id_fkey"
-            columns: ["curriculum_topic_id"]
-            referencedRelation: "topics"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_topic_id_fkey"
-            columns: ["curriculum_topic_id"]
-            referencedRelation: "curriculum_lesson_with_user_lesson_view"
-            referencedColumns: ["topic_id"]
-          },
-          {
-            foreignKeyName: "curriculum_topics_topic_id_fkey"
-            columns: ["curriculum_topic_id"]
-            referencedRelation: "subjects_levels_topics"
-            referencedColumns: ["topic_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculums"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_lessons_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_levels_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_subjects_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_topics_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_lessons_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_levels_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_subjects_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "shareable_curriculum_topics_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_curriculum_id_fkey"
-            columns: ["curriculum_id"]
-            referencedRelation: "user_curriculum_details_view"
-            referencedColumns: ["curriculum_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["teacher_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       public_teacher_profile_view: {
         Row: {
@@ -3637,7 +1550,6 @@ export interface Database {
           title: string | null
           topic: string | null
         }
-        Relationships: []
       }
       shareable_curriculum_lessons_view: {
         Row: {
@@ -3660,7 +1572,6 @@ export interface Database {
           topic_image_path: string | null
           topic_name: string | null
         }
-        Relationships: []
       }
       shareable_curriculum_levels_view: {
         Row: {
@@ -3675,7 +1586,6 @@ export interface Database {
           subject_image_path: string | null
           subject_name: string | null
         }
-        Relationships: []
       }
       shareable_curriculum_subjects_view: {
         Row: {
@@ -3689,7 +1599,6 @@ export interface Database {
           subject_name: string | null
           type: Database["public"]["Enums"]["module_type"] | null
         }
-        Relationships: []
       }
       shareable_curriculum_topics_view: {
         Row: {
@@ -3707,18 +1616,6 @@ export interface Database {
           topic_name: string | null
           topic_type: Database["public"]["Enums"]["module_type"] | null
         }
-        Relationships: []
-      }
-      subjects_levels_topics: {
-        Row: {
-          level_id: string | null
-          level_name: Database["public"]["Enums"]["level"] | null
-          subject_id: string | null
-          subject_name: string | null
-          topic_id: string | null
-          topic_name: string | null
-        }
-        Relationships: []
       }
       teacher_me_view: {
         Row: {
@@ -3733,7 +1630,6 @@ export interface Database {
           lesson_structure:
             | Database["public"]["Enums"]["lesson_structure"]
             | null
-          referral_code: string | null
           role: Database["public"]["Enums"]["user_role"] | null
           status: Database["public"]["Enums"]["profile_status"] | null
           stripe_customer_id: string | null
@@ -3750,20 +1646,6 @@ export interface Database {
           teaching_tools: Database["public"]["Enums"]["teaching_tool"][] | null
           type: Database["public"]["Enums"]["profile_type"] | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "teacher_profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       teacher_students_profiles_view: {
         Row: {
@@ -3793,13 +1675,11 @@ export interface Database {
           subject_preferences: string[] | null
           weaknesses: string[] | null
         }
-        Relationships: []
       }
       unread_notifications_count_view: {
         Row: {
           unread_notifications_count: number | null
         }
-        Relationships: []
       }
       unread_notifications_view: {
         Row: {
@@ -3844,68 +1724,6 @@ export interface Database {
           title?: string | null
           type?: Database["public"]["Enums"]["notification_type"] | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "assignments_with_details_view"
-            referencedColumns: ["lesson_plan_id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "recently_completed_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "upcoming_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_recipient_id_fkey"
-            columns: ["recipient_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_recipient_id_fkey"
-            columns: ["recipient_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_sender_id_fkey"
-            columns: ["sender_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_sender_id_fkey"
-            columns: ["sender_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       upcoming_lesson_plans_view: {
         Row: {
@@ -3920,7 +1738,6 @@ export interface Database {
           title: string | null
           topic: string | null
         }
-        Relationships: []
       }
       user_curriculum_details_view: {
         Row: {
@@ -3931,56 +1748,6 @@ export interface Database {
           user_curriculum_id: string | null
           user_id: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "teacher_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_current_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_past_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "admin_trial_users_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "curriculum_with_progress_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["creator_id"]
-          },
-          {
-            foreignKeyName: "user_curriculums_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "teacher_me_view"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       user_notifications_view: {
         Row: {
@@ -4002,68 +1769,6 @@ export interface Database {
           title: string | null
           type: Database["public"]["Enums"]["notification_type"] | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "assignments_with_details_view"
-            referencedColumns: ["lesson_plan_id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plan_with_creator_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "lesson_plans_with_creator_and_students_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "recently_completed_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_lesson_plan_id_fkey"
-            columns: ["lesson_plan_id"]
-            referencedRelation: "upcoming_lesson_plans_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_recipient_id_fkey"
-            columns: ["recipient_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_recipient_id_fkey"
-            columns: ["recipient_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_sender_id_fkey"
-            columns: ["sender_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_sender_id_fkey"
-            columns: ["sender_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       user_subscriptions_view: {
         Row: {
@@ -4071,20 +1776,6 @@ export interface Database {
           subscription_id: string | null
           user_id: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "customers_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "customers_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       users: {
         Row: {
@@ -4099,7 +1790,6 @@ export interface Database {
           email?: string | null
           id?: string | null
         }
-        Relationships: []
       }
     }
     Functions: {
@@ -4281,6 +1971,19 @@ export interface Database {
           is_public: boolean
           created_at: string
           updated_at: string
+        }[]
+      }
+      search_resources: {
+        Args: {
+          query: string
+          user_id: string
+        }
+        Returns: {
+          id: string
+          name: string
+          category: string
+          url: string
+          record: Json
         }[]
       }
       similar_lessons: {
@@ -4565,10 +2268,7 @@ export interface Database {
     Tables: {
       buckets: {
         Row: {
-          allowed_mime_types: string[] | null
-          avif_autodetection: boolean | null
           created_at: string | null
-          file_size_limit: number | null
           id: string
           name: string
           owner: string | null
@@ -4576,10 +2276,7 @@ export interface Database {
           updated_at: string | null
         }
         Insert: {
-          allowed_mime_types?: string[] | null
-          avif_autodetection?: boolean | null
           created_at?: string | null
-          file_size_limit?: number | null
           id: string
           name: string
           owner?: string | null
@@ -4587,30 +2284,13 @@ export interface Database {
           updated_at?: string | null
         }
         Update: {
-          allowed_mime_types?: string[] | null
-          avif_autodetection?: boolean | null
           created_at?: string | null
-          file_size_limit?: number | null
           id?: string
           name?: string
           owner?: string | null
           public?: boolean | null
           updated_at?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "buckets_owner_fkey"
-            columns: ["owner"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "buckets_owner_fkey"
-            columns: ["owner"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
       migrations: {
         Row: {
@@ -4631,7 +2311,6 @@ export interface Database {
           id?: number
           name?: string
         }
-        Relationships: []
       }
       objects: {
         Row: {
@@ -4644,7 +2323,6 @@ export interface Database {
           owner: string | null
           path_tokens: string[] | null
           updated_at: string | null
-          version: string | null
         }
         Insert: {
           bucket_id?: string | null
@@ -4656,7 +2334,6 @@ export interface Database {
           owner?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
-          version?: string | null
         }
         Update: {
           bucket_id?: string | null
@@ -4668,43 +2345,13 @@ export interface Database {
           owner?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
-          version?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "objects_bucketId_fkey"
-            columns: ["bucket_id"]
-            referencedRelation: "buckets"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "objects_owner_fkey"
-            columns: ["owner"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "objects_owner_fkey"
-            columns: ["owner"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
       }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      can_insert_object: {
-        Args: {
-          bucketid: string
-          name: string
-          owner: string
-          metadata: Json
-        }
-        Returns: undefined
-      }
       extension: {
         Args: {
           name: string
@@ -4721,7 +2368,7 @@ export interface Database {
         Args: {
           name: string
         }
-        Returns: unknown
+        Returns: string[]
       }
       get_size_by_bucket: {
         Args: Record<PropertyKey, never>
