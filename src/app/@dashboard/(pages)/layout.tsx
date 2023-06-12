@@ -30,7 +30,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
       <TopHeader />
 
       {/* Mobile Search Bar */}
-      {/* POST_MVP */}
+      {/* <TopHeaderMobile /> */}
 
       {/* Right Sidebar */}
       <RightSidebar>

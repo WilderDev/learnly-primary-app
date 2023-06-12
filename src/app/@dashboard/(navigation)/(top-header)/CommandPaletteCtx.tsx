@@ -63,7 +63,7 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
         // Get any title of an assignment "like" the current query
         const { data: assignments, error: assignmentsError } = await supabase
           .from('assignments')
-          .select('id, title, user_lesson_plans(lesson_plan_id)')
+          .select('id, title,status,  user_lesson_plans(lesson_plan_id)')
           .ilike('title', `%${query}%`)
           .eq('creator_id', user?.id);
 
@@ -84,13 +84,14 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
               name: assignment.title,
               category: 'assignments',
               url: `/lesson-plans/${lesson_plan_id}`,
+              record: assignment,
             };
           }) || [];
 
         // Get any title of a Lesson Plan "like" the current query
         const { data: lessonPlans, error: lessonPlansError } = await supabase
-          .from('lesson_plans')
-          .select('id, title')
+          .from('lesson_plans_with_creator_and_students_view')
+          .select('*')
           .ilike('title', `%${query}%`)
           .eq('creator_id', user?.id);
 
@@ -100,10 +101,11 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
         // Map the lesson plan data to the desired Item structure
         const mappedLessonPlans =
           lessonPlans?.map((lessonPlan) => ({
-            id: lessonPlan.id,
-            name: lessonPlan.title,
+            id: lessonPlan.id as string,
+            name: lessonPlan.title as string,
             category: 'lesson_plans',
             url: `/lesson-plans/${lessonPlan.id}`,
+            record: lessonPlan,
           })) || [];
 
         // Get any name of a curriculum "like" the current query
@@ -125,6 +127,7 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
             name: roadmap.curriculum_name as string,
             category: 'curriculum',
             url: `/curriculum-roadmaps/user/${roadmap.user_curriculum_id}`,
+            record: roadmap,
           })) || [];
 
         // Combine data

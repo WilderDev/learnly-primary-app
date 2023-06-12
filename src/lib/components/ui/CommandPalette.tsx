@@ -9,12 +9,17 @@ import cn from '@/lib/common/cn';
 import capitalize from '@/lib/common/capitalize';
 import { useCommandPalette } from '@/app/@dashboard/(navigation)/(top-header)/CommandPaletteCtx';
 import LoadingShapes from '../loading/LoadingShapes';
+import { getStatusColor } from '@/lib/theme/enumColors';
+import { IAssignment } from '@/assets/typescript/assignment';
+import Avatar from '../images/Avatar';
+import OverlappingImages from '../images/OverlappingImages';
 
 export interface IItem {
   id: string;
   name: string;
   category: string;
   url: string;
+  record: IAssignment | any;
 }
 
 // * Props
@@ -29,8 +34,6 @@ export default function CommandPalette({ items }: IProps) {
   const searchParams = useSearchParams()!;
 
   // * State
-  // const [query, setQuery] = useState('');
-  // const [open, setOpen] = useState(true);
   const { open, setOpen, query, setQuery, isLoading } = useCommandPalette();
 
   // * Helpers
@@ -63,7 +66,10 @@ export default function CommandPalette({ items }: IProps) {
     <Transition.Root
       show={open}
       as={Fragment}
-      afterLeave={() => setQuery('')}
+      afterLeave={() => {
+        setQuery('');
+        setOpen(false);
+      }}
       appear
     >
       <Dialog
@@ -71,7 +77,6 @@ export default function CommandPalette({ items }: IProps) {
         className="relative z-10"
         onClose={() => {
           setOpen(false);
-          console.log(open); // add this line
         }}
       >
         <Transition.Child
@@ -86,7 +91,7 @@ export default function CommandPalette({ items }: IProps) {
           <div className="fixed inset-0 bg-slate-500 bg-opacity-25 transition-opacity dark:bg-slate-700 dark:bg-opacity-25" />
         </Transition.Child>
 
-        <div className="fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20">
+        <div className="fixed inset-0 z-10 overflow-y-auto p-4 flex items-center justify-center sm:p-6 md:p-20 md:flex-none md:items-start md:justify-start">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -96,10 +101,11 @@ export default function CommandPalette({ items }: IProps) {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="mx-auto max-w-xl transform overflow-hidden rounded-xl bg-white dark:bg-slate-700 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
+            <Dialog.Panel className="mx-auto max-w-xl w-full transform overflow-hidden rounded-xl bg-white dark:bg-slate-700 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all ">
               <Combobox
                 onChange={(item: IItem) => {
                   router.push(item.url);
+                  setOpen(false);
                 }}
               >
                 <div className="relative">
@@ -157,7 +163,33 @@ export default function CommandPalette({ items }: IProps) {
                                     )
                                   }
                                 >
-                                  {item.name}
+                                  <div className="flex gap-4 items-center">
+                                    {/* Assignments Status */}
+                                    {category === 'assignments' && (
+                                      <span
+                                        className={cn(
+                                          'h-4 w-4 rounded-full px-1 border border-gray-300',
+                                          getStatusColor(item.record.status).bg,
+                                        )}
+                                      />
+                                    )}
+                                    {/* Lesson Plan Avatars */}
+                                    {category === 'lesson_plans' && (
+                                      <OverlappingImages className="items-center justify-center">
+                                        {item.record.students_with_details?.map(
+                                          (s: any, idx: any) => (
+                                            <Avatar
+                                              src={s.avatar_url}
+                                              alt={s.first_name}
+                                              url="/account?view=students"
+                                              key={idx}
+                                            />
+                                          ),
+                                        )}
+                                      </OverlappingImages>
+                                    )}
+                                    {item.name}
+                                  </div>
                                 </Combobox.Option>
                               ))}
                             </ul>
@@ -193,8 +225,3 @@ export default function CommandPalette({ items }: IProps) {
     </Transition.Root>
   );
 }
-
-// TSK: Dark Mode
-// TSK: Open and Close
-// TSK: Open when they click in the search bar
-// TSK: Create query to get all the search items
