@@ -24,18 +24,18 @@ export default function LessonCreatorTopicSelect() {
 
       for (let item of data) {
         // Check if subject is already in the map
-        if (!subjectMap[item.subject_id]) {
+        if (!subjectMap[item.subject_id!]) {
           // If not, add a new subject to the result array and the map
           const newSubject = {
-            id: item.subject_id,
-            name: item.subject_name,
+            id: item.subject_id!,
+            name: item.subject_name!,
             children: [],
           };
           transformedData.push(newSubject);
-          subjectMap[item.subject_id] = newSubject;
+          subjectMap[item.subject_id!] = newSubject;
         }
 
-        const subject = subjectMap[item.subject_id];
+        const subject = subjectMap[item.subject_id!];
 
         // Check if level is already in the subject's children
         let level = subject.children?.find(
@@ -45,7 +45,7 @@ export default function LessonCreatorTopicSelect() {
         if (!level) {
           // If not, add a new level to the subject's children
           level = {
-            id: item.level_id,
+            id: item.level_id as string,
             name: `Level: ${item.level_name}`,
             children: [],
           };
@@ -55,8 +55,8 @@ export default function LessonCreatorTopicSelect() {
 
         // Finally, add the topic to the level's children
         const topic = {
-          id: item.topic_id,
-          name: item.topic_name,
+          id: item.topic_id!,
+          name: item.topic_name!,
         };
 
         level.children?.push(topic);

@@ -7,6 +7,7 @@ import Logo from '@/lib/components/brand/Logo';
 import LeftSidebarUserLinks from '../LeftSidebarUserLinks';
 import LeftSidebarMobileLinks from './LeftSidebarMobileLinks';
 import ThemeTogglerButton from '@/lib/theme/ThemeTogglerBtn';
+import TopHeaderSearch from '../../(top-header)/TopHeaderSearch';
 
 // * Component
 export default function LeftSidebarMobile() {
@@ -17,7 +18,7 @@ export default function LeftSidebarMobile() {
   return (
     <nav className="sm:hidden bg-white dark:bg-navy-900 w-full fixed h-12 top-0 left-0 z-40 print:hidden">
       {/* Navbar */}
-      <div className="flex items-center justify-between h-full px-4">
+      <div className="flex items-center h-full px-4">
         {/* Hamburger Icon */}
         <button
           className="pr-2 rounded-md text-navy-500 hocus:text-navy-600 dark:text-navy-200 dark:hocus:text-navy-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-navy-500"
@@ -30,6 +31,7 @@ export default function LeftSidebarMobile() {
 
         {/* Icons */}
         {/* <TopHeaderItems /> */}
+        <TopHeaderSearch />
       </div>
 
       {/* Hamburger side menu */}

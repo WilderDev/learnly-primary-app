@@ -745,6 +745,19 @@ FROM
 WHERE
   sub.rn = 1;
 
+-- User Curriculum With Curriculum Name View
+CREATE VIEW user_curriculum_details_view AS
+SELECT
+    user_curriculums.id AS user_curriculum_id,
+    user_curriculums.user_id,
+    curriculums.id AS curriculum_id,
+    curriculums.name AS curriculum_name,
+    user_curriculums.created_at,
+    user_curriculums.updated_at
+FROM
+    user_curriculums
+JOIN
+    curriculums ON user_curriculums.curriculum_id = curriculums.id;
 
 -- * FUNCTIONS
 -- Create curriculum_subject from curriculum_name, subject_id, and type

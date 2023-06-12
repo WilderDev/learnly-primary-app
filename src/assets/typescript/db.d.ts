@@ -690,82 +690,6 @@ export interface Database {
           url?: string
         }
       }
-      referral_payouts: {
-        Row: {
-          amount: number
-          created_at: string
-          currency: string
-          description: string
-          destination: string
-          id: string
-          metadata: Json
-          method: string
-          referral_id: string
-          statement_descriptor: string
-          status: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          amount: number
-          created_at?: string
-          currency: string
-          description: string
-          destination: string
-          id?: string
-          metadata?: Json
-          method: string
-          referral_id: string
-          statement_descriptor: string
-          status: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          amount?: number
-          created_at?: string
-          currency?: string
-          description?: string
-          destination?: string
-          id?: string
-          metadata?: Json
-          method?: string
-          referral_id?: string
-          statement_descriptor?: string
-          status?: string
-          updated_at?: string
-          user_id?: string
-        }
-      }
-      referrals: {
-        Row: {
-          code: string
-          created_at: string
-          id: string
-          payout_ids: string[]
-          referred_ids: string[]
-          referrer_id: string
-          updated_at: string
-        }
-        Insert: {
-          code: string
-          created_at?: string
-          id?: string
-          payout_ids?: string[]
-          referred_ids?: string[]
-          referrer_id: string
-          updated_at?: string
-        }
-        Update: {
-          code?: string
-          created_at?: string
-          id?: string
-          payout_ids?: string[]
-          referred_ids?: string[]
-          referrer_id?: string
-          updated_at?: string
-        }
-      }
       student_preferences: {
         Row: {
           accomplishments: Json
@@ -1706,7 +1630,6 @@ export interface Database {
           lesson_structure:
             | Database["public"]["Enums"]["lesson_structure"]
             | null
-          referral_code: string | null
           role: Database["public"]["Enums"]["user_role"] | null
           status: Database["public"]["Enums"]["profile_status"] | null
           stripe_customer_id: string | null
@@ -1814,6 +1737,16 @@ export interface Database {
           tags: string[] | null
           title: string | null
           topic: string | null
+        }
+      }
+      user_curriculum_details_view: {
+        Row: {
+          created_at: string | null
+          curriculum_id: string | null
+          curriculum_name: string | null
+          updated_at: string | null
+          user_curriculum_id: string | null
+          user_id: string | null
         }
       }
       user_notifications_view: {
@@ -2038,6 +1971,19 @@ export interface Database {
           is_public: boolean
           created_at: string
           updated_at: string
+        }[]
+      }
+      search_resources: {
+        Args: {
+          query: string
+          user_id: string
+        }
+        Returns: {
+          id: string
+          name: string
+          category: string
+          url: string
+          record: Json
         }[]
       }
       similar_lessons: {
