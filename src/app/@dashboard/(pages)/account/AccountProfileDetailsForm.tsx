@@ -12,7 +12,7 @@ import {
   UserIcon,
   EnvelopeIcon,
   IdentificationIcon,
-  PhoneIcon,
+  // PhoneIcon,
 } from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
 import { updateProfile } from './_actions';
@@ -35,7 +35,7 @@ export default function AccountProfileDetailsForm() {
             'Profile Updated Successfully! Email or phone Updated? Check your inbox for a verification email. You will need to sign out and sign back in to continue.',
           );
           revalidatePath('/account'); // ✅
-          setPhone(data.payload);
+          // setPhone(data.payload);
         } else {
           toast.error('Something went wrong');
         }
@@ -47,7 +47,7 @@ export default function AccountProfileDetailsForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  // const [phone, setPhone] = useState('');
   const [avatar, setAvatar] = useState('');
 
   // * Effects
@@ -57,7 +57,7 @@ export default function AccountProfileDetailsForm() {
       setFirstName(user.firstName);
       setLastName(user.lastName);
       setEmail(session?.user.email ?? '');
-      setPhone(session?.user.phone ?? '');
+      // setPhone(session?.user.phone ?? '');
       setAvatar(user.avatarUrl);
     }
   }, [user, session]);
@@ -70,7 +70,7 @@ export default function AccountProfileDetailsForm() {
           firstName,
           lastName,
           email,
-          phone,
+          // phone,
           avatar,
         })
       }
@@ -81,7 +81,7 @@ export default function AccountProfileDetailsForm() {
         value={firstName}
         setValue={setFirstName}
         required={true}
-        cols={2}
+        cols={1}
         icon={UserIcon}
       />
 
@@ -91,7 +91,7 @@ export default function AccountProfileDetailsForm() {
         value={lastName}
         setValue={setLastName}
         required={true}
-        cols={2}
+        cols={1}
         icon={IdentificationIcon}
       />
 
@@ -106,27 +106,28 @@ export default function AccountProfileDetailsForm() {
       />
 
       {/* Phone */}
-      <Input
+      {/* <Input
         label="Phone"
         value={phone}
         setValue={setPhone}
         type="tel"
-        cols={2}
+        cols={1}
         icon={PhoneIcon}
-      />
+      /> */}
 
       {/* Avatar */}
       <RadioImages
-        cols={4}
+        cols={3}
         label="Avatar"
         value={avatar}
         setValue={setAvatar}
         options={avatarImages}
+        smImages={true}
       />
 
       {/* Submit */}
       <Button
-        className="col-span-4"
+        className="col-span-1 col-start-4 self-end"
         type="submit"
         loading={isLoading}
         disabled={!firstName || !lastName || !email || !avatar || isLoading}

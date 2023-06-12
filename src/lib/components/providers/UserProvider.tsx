@@ -61,6 +61,7 @@ export function UserProvider({ children }: PropsWithChildren) {
       status: data.status!,
       type: data.type!,
       role: data.role!,
+      referralCode: data.referral_code || null,
       teachingPreferences: {
         teachingStrategies: data.teaching_strategies!,
         lessonDetailLevel: data.lesson_detail_level!,

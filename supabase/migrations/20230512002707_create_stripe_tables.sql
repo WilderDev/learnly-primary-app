@@ -157,7 +157,7 @@ FROM customers c
 JOIN subscriptions s ON c.id = s.user_id
 JOIN products p ON s.stripe_product_id = p.id;
 
--- Teacher's Me View (for a given teacher)
+-- Teacher Profile View
 CREATE VIEW teacher_me_view AS
 SELECT
   teacher_profiles.id AS id,
@@ -183,7 +183,6 @@ JOIN teaching_preferences ON teacher_profiles.id = teaching_preferences.id
 JOIN subscriptions ON teacher_profiles.id = subscriptions.user_id
 JOIN customers ON teacher_profiles.id = customers.id
 WHERE teacher_profiles.id = auth.uid();
-
 
 -- * FUNCTIONS
 -- N/A

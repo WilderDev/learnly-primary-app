@@ -18,12 +18,6 @@ export default function AccountSubscriptionTab() {
       <DashPanel className="w-full 2xl:w-7/12" colNum={1}>
         <AccountSubscriptionManagement />
       </DashPanel>
-
-      {/* Refer a Friend */}
-      {/* <DashPanel className="w-full 2xl:w-5/12" colNum={2}>
-        <DashPanelHeader title="Refer a Friend" />
-        <p>Coming soon...</p>
-      </DashPanel> */}
     </section>
   ) : (
     <DashPanel className="w-full 2xl:w-9/12" colNum={1}>

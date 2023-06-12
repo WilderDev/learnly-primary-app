@@ -55,7 +55,7 @@ export default function Button({
   // Button Variant Styles
   const variants: { [key in TVariant]: string } = {
     primary: 'text-white',
-    secondary: 'text-blue-700',
+    secondary: 'text-blue-50',
     light: 'text-slate-700 dark:text-navy-700',
     dark: 'text-slate-100 dark:text-navy-100',
   };
