@@ -33,7 +33,6 @@ export interface Me {
   status: Database['public']['Enums']['profile_status'];
   type: Database['public']['Enums']['profile_type'];
   role: Database['public']['Enums']['user_role'];
-  referralCode: string | null;
   teachingPreferences: {
     teachingStrategies: TTeachingStrategy[];
     lessonDetailLevel: TLessonDetailLevel;

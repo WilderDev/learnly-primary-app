@@ -44,48 +44,48 @@ export default function ReferAFriend() {
       </p>
 
       {/* Generate Referral Link / Copy Referral Link */}
-      {user?.referralCode || referralCode ? (
-        <div className="space-y-2 border-t pt-4 border-slate-200 dark:border-navy-500">
-          {/* Text */}
-          <p className="text-slate-700 dark:text-navy-100">
-            Your referral link is:{' '}
-          </p>
+      {/* {user?.referralCode || referralCode ? ( */}
+      <div className="space-y-2 border-t pt-4 border-slate-200 dark:border-navy-500">
+        {/* Text */}
+        <p className="text-slate-700 dark:text-navy-100">
+          Your referral link is:{' '}
+        </p>
 
-          {/* Copyable Link */}
-          <div
-            className="text-green-700 block font-medium dark:text-green-100"
-            ref={copyRef}
-          >
-            {baseUrl + '?ref=' + user?.referralCode ?? referralCode}
-          </div>
-
-          {/* Copy Button */}
-          <Button
-            className="border border-green-500"
-            type="button"
-            size="xs"
-            fill={copied ? 'solid' : 'outline'}
-            shadow="sm"
-            onClick={onCopy}
-          >
-            {copied ? 'Copied!' : 'Copy'}
-          </Button>
-
-          {/* Share Button */}
-          {/* TSK */}
-        </div>
-      ) : (
-        <Button
-          type="button"
-          size="sm"
-          variant="secondary"
-          onClick={() => startTransition(() => createReferralCodeMutation({}))}
-          loading={isPending || isLoading}
-          disabled={isPending || isLoading || !!referralCode}
+        {/* Copyable Link */}
+        <div
+          className="text-green-700 block font-medium dark:text-green-100"
+          ref={copyRef}
         >
-          Generate Referral Link
+          {/* {baseUrl + '?ref=' + user?.referralCode ?? referralCode} */}
+        </div>
+
+        {/* Copy Button */}
+        <Button
+          className="border border-green-500"
+          type="button"
+          size="xs"
+          fill={copied ? 'solid' : 'outline'}
+          shadow="sm"
+          onClick={onCopy}
+        >
+          {copied ? 'Copied!' : 'Copy'}
         </Button>
-      )}
+
+        {/* Share Button */}
+        {/* TSK */}
+      </div>
+      {/* ) : ( */}
+      <Button
+        type="button"
+        size="sm"
+        variant="secondary"
+        onClick={() => startTransition(() => createReferralCodeMutation({}))}
+        loading={isPending || isLoading}
+        disabled={isPending || isLoading || !!referralCode}
+      >
+        Generate Referral Link
+      </Button>
+      {/* )} */}
     </>
   );
 }
