@@ -32,7 +32,7 @@ export default function LessonPlanContainer({
         {/* Info */}
         <div className="mb-6 flex flex-col print:hidden print:invisible print:mb-0">
           {/* Top */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-between">
             {/* Creator */}
             <LessonPlanCreatorInfo
               id={lessonPlan.creator.id}
@@ -42,11 +42,14 @@ export default function LessonPlanContainer({
             />
 
             {/* Actions */}
-            <LessonPlanActionIcons
-              id={lessonPlan.id}
-              hasScheduledDate={!!userLessonPlan?.scheduledDate}
-              handlePrint={handlePrint}
-            />
+            <div className="mt-4 sm:mt-0">
+              <LessonPlanActionIcons
+                lessonPlan={lessonPlan}
+                id={lessonPlan.id}
+                hasScheduledDate={!!userLessonPlan?.scheduledDate}
+                handlePrint={handlePrint}
+              />
+            </div>
           </div>
 
           {/* Tags */}

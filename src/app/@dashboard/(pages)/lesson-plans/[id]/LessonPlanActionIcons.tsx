@@ -2,6 +2,7 @@
 
 import {
   ArrowDownOnSquareIcon,
+  PencilSquareIcon,
   PrinterIcon,
   ShareIcon,
 } from '@heroicons/react/24/outline';
@@ -11,16 +12,21 @@ import { usePathname } from 'next/navigation';
 import { handleShare } from '../../lesson-creator/helpers';
 import { useState } from 'react';
 import LessonPlanSaveDetailsModalForm from './LessonPlanSaveDetailsModal';
+import Modal from '@/lib/components/popouts/Modal';
+import LessonPlanEditModal from './LessonPlanEditModal';
+import { ILessonPlanWithCreator } from '@/assets/typescript/lesson-plan';
 
 // * Props
 export interface IProps {
   id: string;
+  lessonPlan: ILessonPlanWithCreator;
   hasScheduledDate: boolean;
   handlePrint: () => void;
 }
 
 export default function LessonPlanActionIcons({
   id,
+  lessonPlan,
   hasScheduledDate,
   handlePrint,
 }: IProps) {
@@ -29,6 +35,7 @@ export default function LessonPlanActionIcons({
 
   // * State
   const [isSaveModalOpen, setSaveModalOpen] = useState(false);
+  const [editModal, setEditModal] = useState(false);
 
   // * Render
   return (
@@ -79,6 +86,19 @@ export default function LessonPlanActionIcons({
             Share
           </span>
         </button>
+
+        {/* Edit Button */}
+        <button
+          className="group flex h-12 flex-col items-center"
+          type="button"
+          onClick={() => setEditModal(true)}
+        >
+          <PencilSquareIcon className="h-6 w-6 text-green-900 transition-colors duration-300 group-hover:text-green-700 group-focus:text-green-700 dark:text-navy-200 dark:group-hover:text-emerald-300 dark:group-focus:text-emerald-300" />
+
+          <span className="mt-auto self-end text-xs text-slate-600 group-hover:text-slate-700 group-focus:text-slate-700 dark:text-navy-200 dark:group-hover:text-navy-100 dark:group-focus:text-navy-100">
+            Edit
+          </span>
+        </button>
       </div>
 
       {/* Save Modal */}
@@ -87,6 +107,13 @@ export default function LessonPlanActionIcons({
         defaultStudentIds={[]}
         isVisible={isSaveModalOpen}
         close={() => setSaveModalOpen(false)}
+      />
+
+      {/* Edit Modal */}
+      <LessonPlanEditModal
+        close={() => setEditModal(false)}
+        isVisible={editModal}
+        lessonPlan={lessonPlan}
       />
     </>
   );

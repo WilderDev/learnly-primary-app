@@ -67,7 +67,7 @@ export default function AssignmentsTableBody({ assignments }: IProps) {
             </Table.Cell>
 
             {/* Title */}
-            <Table.Cell className="font-medium text-sm">
+            <Table.Cell className="font-medium text-sm w-full">
               {assignment.title}
             </Table.Cell>
 

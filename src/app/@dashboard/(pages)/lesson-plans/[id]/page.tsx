@@ -62,7 +62,7 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
       <DashSideCol className="2xl:col-span-4">
         {/* Lesson Plan Assessments */}
         <DashPanel colNum={1}>
-          <DashPanelHeader title="Assignment" />
+          {/* <DashPanelHeader title="Assignment" /> */}
           {/* Assessment */}
           <Assignment
             assignmentContent={assignment?.content}

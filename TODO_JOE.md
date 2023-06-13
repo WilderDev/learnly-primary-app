@@ -12,7 +12,8 @@
 
 ## Medium Prority
 
-1. Mobile Search Bar | _EASY_
+<!-- 1. Mobile Search Bar | _EASY_ -->
+
 2. Happy birthday notifications and confetti for students | _EASY_
 3. Certificates of completion (curriclum) -> Tracking time spent on each lesson and topic... | _MEDIUM_
 4. Lesson Plan Ratings (Wait until we have a good amount of users) | _MEDIUM_
