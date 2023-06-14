@@ -46,6 +46,8 @@ interface IProps {
 
 // * Data
 
+const philosophyInfoBubbleText: string = `A "Philosophy" refers to the overarching approach or methodology a parent/educator utilizes to guide their instruction. This can dictate the style of lessons, types of activities, and overall educational goals. It's like a lens through which the homeschooling journey is viewed, often aligning with a family's values or a child's learning style.`;
+
 // * Component
 export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
   // * Hooks / Context
@@ -105,7 +107,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
           learningResources: student.learningResources,
           specialNeeds: student.specialNeeds,
         };
-      }
+      },
     );
 
     // 3. Send Request to API
@@ -167,7 +169,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
               p_id_column: 'id',
               p_id_value: lesson.lesson.id,
               p_item_value: data.id,
-            }
+            },
           );
         }
       });
@@ -194,6 +196,9 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
         >
           {/* Philosophy (Select) */}
           <Select
+            infoBubble={true}
+            infoBubbleUrl={'https://www.learnly.ai/articles'}
+            infoBubbleText={philosophyInfoBubbleText}
             label="Philosophy"
             options={createSelectOptions(philosophyOptions)}
             value={philosophy}
@@ -277,7 +282,7 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
       {lessonId && (
         <button
           className={cn(
-            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors'
+            'fixed print:hidden top-4 left-4 p-1 z-[1001] rounded-full group hocus:bg-slate-700 dark:hocus:bg-navy-800 transition-colors',
           )}
           onClick={() => window.location.reload()}
         >

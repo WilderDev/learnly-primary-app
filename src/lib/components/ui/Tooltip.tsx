@@ -8,6 +8,8 @@ interface IProps {
   position?: TPosition;
   showOnHover?: boolean;
   className?: string;
+  tipUrlText?: string;
+  tipUrl?: string;
 }
 
 // * Component
@@ -17,10 +19,12 @@ export default function Tooltip({
   position = 'topCenter',
   showOnHover = true,
   className,
+  tipUrlText,
+  tipUrl,
 }: IProps) {
   // * Styles
   const defaultStyles =
-    'absolute z-10 bg-white text-slate-900 dark:bg-navy-900 dark:bg-navy-50 text-xs rounded py-1 px-2 whitespace-nowrap shadow-md hocus:shadow-lg border-0.5 border-slate-100 dark:border-navy-700';
+    'absolute flex flex-col z-10 bg-white text-slate-900 dark:bg-navy-900 dark:bg-navy-50 text-xs rounded py-1 px-2 whitespace-nowrap shadow-md hocus:shadow-lg border-0.5 border-slate-100 dark:border-navy-700';
   const hoverStyles =
     showOnHover &&
     'group-hover:opacity-100 group-focus:opacity-100 hocus:opacity-100 opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none';
@@ -55,6 +59,14 @@ export default function Tooltip({
         )}
       >
         {tip}
+        {/* {tipUrl && (
+          <a
+            href={tipUrl}
+            className="px-4 py-2 mx-auto rounded-xl shadow-md bg-slate-50"
+          >
+            {tipUrlText}
+          </a>
+        )} */}
       </span>
     </div>
   );

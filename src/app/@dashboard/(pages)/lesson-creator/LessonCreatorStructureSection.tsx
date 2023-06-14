@@ -31,6 +31,9 @@ export const philosophyOptions: TPhilosophy[] = [
   'Charlotte Mason',
   'Other',
 ];
+
+const philosophyInfoBubbleText: string = `A "Philosophy" refers to the overarching approach or methodology a parent/educator utilizes to guide their instruction. This can dictate the style of lessons, types of activities, and overall educational goals. It's like a lens through which the homeschooling journey is viewed, often aligning with a family's values or a child's learning style.`;
+
 // Teaching Strategy
 const teachingStrategyOptions: TTeachingStrategy[] = [
   'Direct Instruction',
@@ -45,6 +48,9 @@ const teachingStrategyOptions: TTeachingStrategy[] = [
   'Socratic Learning',
   'Other',
 ];
+
+const teachingStrategyInfoBubbleText: string = `Teaching strategies in homeschooling represent various instructional methods that guide how parents or educators present information and how students engage with that information. They range from highly structured approaches to more flexible and student-led strategies, each fostering unique learning experiences and outcomes.`;
+
 // Pace
 export const paceOptions: TPace[] = ['SLOW', 'MEDIUM', 'FAST'];
 // Format
@@ -79,6 +85,9 @@ export default function LessonCreatorStructureSection() {
     >
       {/* Philosophy (Select) */}
       <Select
+        infoBubble={true}
+        infoBubbleUrl={'https://www.learnly.ai/articles'}
+        infoBubbleText={philosophyInfoBubbleText}
         label="Philosophy"
         options={createSelectOptions(philosophyOptions)}
         value={philosophy}
@@ -89,6 +98,9 @@ export default function LessonCreatorStructureSection() {
 
       {/* Teaching Strategy (Select) */}
       <Select
+        infoBubble={true}
+        infoBubbleUrl={'https://www.learnly.ai/articles'}
+        infoBubbleText={teachingStrategyInfoBubbleText}
         label="Teaching Strategy"
         options={createSelectOptions(teachingStrategyOptions)}
         value={teachingStrategy}

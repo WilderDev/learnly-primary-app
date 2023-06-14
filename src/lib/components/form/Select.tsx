@@ -39,6 +39,9 @@ interface IProps {
   rounded?: TSize | 'full';
   className?: string;
   displayLabel?: boolean;
+  infoBubble?: boolean;
+  infoBubbleUrl?: string;
+  infoBubbleText?: string;
 }
 
 // * Component
@@ -57,6 +60,9 @@ export default function Select({
   rounded = 'md',
   className,
   displayLabel = false,
+  infoBubble,
+  infoBubbleUrl,
+  infoBubbleText,
 }: IProps) {
   // * Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -138,6 +144,9 @@ export default function Select({
       icon={icon}
       labelHidden={labelHidden}
       className={className}
+      infoBubble={infoBubble}
+      infoBubbleUrl={infoBubbleUrl}
+      infoBubbleText={infoBubbleText}
     >
       <div
         className={cn(
