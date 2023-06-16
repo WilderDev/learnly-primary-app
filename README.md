@@ -25,7 +25,12 @@ Personalized, Easy, & Flexible Homeschool... Loved by Thousands 🤗
 
 ## Screenshots
 
-![Learnly](https://github.com/WilderDev/learnly-primary-app/assets/76077183/1604981a-e4f5-4e08-a075-874350f307cd)
+![Learnly Home](https://app.learnly.ai/static/images/screenshots/dashboard.png)
+![Learnly Lesson Creator](/src/assets/screenshots/learnly-lesson-creator.png)
+![Learnly Chat](/src/assets/screenshots/learnly-chat.png)
+![Learnly Curriculums](/src/assets/screenshots/learnly-curriculum.png)
+![Learnly Lesson Modal](/src/assets/screenshots/learnly-lesson-modal.png)
+![Learnly Schedule](/src/assets/screenshots/learnly-schedule.png)
 
 
 ## Authors
