@@ -1,7 +1,7 @@
 # Learnly
 
-[App](https://app.learnly.ai/)
-[Blog](https://www.learnly.ai/)
+[App](https://app.learnly.ai/) |
+[Blog](https://www.learnly.ai/) |
 [MVP](https://try.learnly.ai)
 
 Personalized, Easy, & Flexible Homeschool... Loved by Thousands 🤗
