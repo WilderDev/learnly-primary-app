@@ -53,7 +53,6 @@ export async function POST(request: Request) {
     // Construct the event from the raw body and signature
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
   } catch (err) {
-    console.log('err:', err);
     return new Response('Webhook Error: ' + err, { status: 400 }); // Return a response with error message
   }
 

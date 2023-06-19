@@ -30,6 +30,7 @@ export default async function ParentDashboardHomePage() {
             ctaLink="/lesson-plans"
             modalSize="lg"
           />
+          {/* @ts-ignore */}
           <UpcomingLessonsCards />
         </DashPanel>
 
@@ -49,6 +50,7 @@ export default async function ParentDashboardHomePage() {
             }
             noCloseOnOutsideClick={true}
           />
+          {/* @ts-ignore */}
           <AssignmentsTable />
         </DashPanel>
       </DashMainCol>
@@ -58,6 +60,7 @@ export default async function ParentDashboardHomePage() {
         {/* Home Completed Lessons */}
         <DashPanel colNum={1}>
           <DashPanelHeader title="Recently Completed" />
+          {/* @ts-ignore */}
           <RecentlyCompletedLessonsAccordions />
         </DashPanel>
 

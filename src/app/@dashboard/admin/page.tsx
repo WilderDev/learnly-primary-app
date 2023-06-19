@@ -17,6 +17,7 @@ export default function AdminPage() {
         <DashPanel colNum={1}>
           <DashPanelHeader title="Current Users" />
 
+          {/* @ts-ignore */}
           <AdminDashCurrentUsers />
         </DashPanel>
 
@@ -24,6 +25,7 @@ export default function AdminPage() {
         <DashPanel colNum={2}>
           <DashPanelHeader title="Prospects / Trial Users" />
 
+          {/* @ts-ignore */}
           <AdminDashTrialUsers />
         </DashPanel>
 
@@ -31,6 +33,7 @@ export default function AdminPage() {
         <DashPanel colNum={3}>
           <DashPanelHeader title="Past Users" />
 
+          {/* @ts-ignore */}
           <AdminDashPastUsers />
         </DashPanel>
       </DashMainCol>
@@ -41,6 +44,7 @@ export default function AdminPage() {
         <DashPanel colNum={1}>
           <DashPanelHeader title="Statistics" />
 
+          {/* @ts-ignore */}
           <AdminDashStatistics />
         </DashPanel>
 
@@ -48,6 +52,7 @@ export default function AdminPage() {
         <DashPanel colNum={2}>
           <DashPanelHeader title="Webhooks" />
 
+          {/* @ts-ignore */}
           <AdminDashWebhooks />
         </DashPanel>
       </DashSideCol>

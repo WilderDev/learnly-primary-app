@@ -15,6 +15,7 @@ export default function TopHeader() {
         <TopHeaderSearch />
 
         {/* Header Items */}
+        {/* @ts-ignore */}
         <TopHeaderItems />
       </Container>
     </nav>
