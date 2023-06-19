@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import DatePicker from '@/lib/components/form/DatePicker';
 import Form from '@/lib/components/form/Form';
