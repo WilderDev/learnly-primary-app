@@ -123,8 +123,6 @@ BEGIN
 END; $$
 LANGUAGE plpgsql;
 
-DROP FUNCTION search_resources;
-
 
 -- * TRIGGERS
 -- N/A

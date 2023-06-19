@@ -23,7 +23,6 @@ export default function LessonCreatorPage() {
           <DashPanelHeader title="Lesson Plan Templates" />
 
           {/* Templates */}
-          {/* @ts-expect-error Server Component */}
           <LessonCreatorTemplates />
         </DashPanel>
       </DashMainCol>
@@ -35,7 +34,6 @@ export default function LessonCreatorPage() {
           <DashPanelHeader title="Community Lessons" />
 
           {/* List */}
-          {/* @ts-expect-error Server Component */}
           <LessonCreatorCommunityLessons />
         </DashPanel>
       </DashSideCol>

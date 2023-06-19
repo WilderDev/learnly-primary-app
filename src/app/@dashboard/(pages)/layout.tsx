@@ -48,7 +48,6 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
       <DashChatBubble />
 
       {/* Onboarding Tour */}
-      {/* @ts-ignore */}
       <OnboardingTourContainer />
     </DashProviders>
   );
