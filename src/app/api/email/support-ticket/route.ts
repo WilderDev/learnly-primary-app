@@ -43,8 +43,6 @@ export async function POST(request: Request) {
 
     const emailRes = await sgMail.send(msg);
 
-    console.log('emailRes:', emailRes);
-
     // Check if email is already subscribed
     if (emailRes[0].statusCode !== 202) {
       return new Response(JSON.stringify({ error: 'Failed to send email' }), {

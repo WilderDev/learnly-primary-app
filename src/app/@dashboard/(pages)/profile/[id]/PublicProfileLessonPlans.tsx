@@ -59,7 +59,7 @@ export default function PublicProfileLessonPlans({ lessons }: IProps) {
 
             {/* Tags */}
             <Card.Tags className="mt-0 flex-nowrap gap-y-0">
-              {l.tags?.slice(0, 3).map((tag, idx) => (
+              {l.tags?.slice(0, 2).map((tag, idx) => (
                 <Card.Tag
                   content={tag}
                   colors={getIndexColors(idx).BLEND.SUBDUED}

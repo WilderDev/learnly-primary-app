@@ -15,7 +15,7 @@ export default function TopHeader() {
         <TopHeaderSearch />
 
         {/* Header Items */}
-        {/* @ts-expect-error Server Component */}
+        {/* @ts-ignore */}
         <TopHeaderItems />
       </Container>
     </nav>

@@ -83,10 +83,14 @@ export default async function LessonTimeline() {
 // * Fetcher
 async function getTimeline() {
   const supabase = supabaseServer(); // Create supabase instance for server-side
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
   const { data, error } = await supabase
     .from('lesson_timeline_view')
-    .select(`*`);
+    .select(`*`)
+    .eq('teacher_id', session?.user.id);
 
   if (error || !data) return [];
 

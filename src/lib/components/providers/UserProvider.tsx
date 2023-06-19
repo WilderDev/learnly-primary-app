@@ -143,8 +143,6 @@ export function UserProvider({ children }: PropsWithChildren) {
 
     // Set Subscription
     setSubscription(res?.subscription || null);
-
-    // @ts-ignore
   }, [fetchUser]);
 
   // Revalidate Students
@@ -154,8 +152,6 @@ export function UserProvider({ children }: PropsWithChildren) {
 
     // Set Students
     setStudents(studentsData || []);
-
-    // @ts-ignore
   }, [fetchStudents]);
 
   // * Effects

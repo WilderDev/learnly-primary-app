@@ -42,7 +42,7 @@ export default async function CurriculumRoadmapsPage() {
         {user_roadmaps.length > 0 && (
           <DashPanel colNum={2}>
             <DashPanelHeader title="Next Lessons" />
-            {/* @ts-expect-error Server Component */}
+            {/* @ts-ignore */}
             <CurriculumRoadmapNextLessons />
           </DashPanel>
         )}
