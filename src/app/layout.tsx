@@ -1,5 +1,6 @@
 // * Imports
 import '@/assets/styles/globals.css';
+import 'flatpickr/dist/themes/dark.css';
 import cn from '@/lib/common/cn';
 import defaultMetadata from '@/lib/meta/defaultMetadata';
 import { baskervville, inter } from '@/lib/theme/fonts';
