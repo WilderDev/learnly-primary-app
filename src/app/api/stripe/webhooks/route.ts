@@ -22,6 +22,13 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!; // Retrieve the endpo
 
 // * HELPERS
 export const runtime = 'nodejs'; // Set the runtime to Edge
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '1mb', // adjust size limit as needed
+    },
+  },
+};
 
 // * EVENTS
 // Webhook Events to listen for: https://stripe.com/docs/api/events/types
@@ -44,6 +51,7 @@ const relevantEvents: Stripe.Event['type'][] = [
 // Stripe Webhook POST Route
 export async function POST(request: Request) {
   const body = await request.text(); // Retrieve the request's body
+  // request.headers.get('content-type'); // Retrieve the request's content type
   const sig = headers().get('stripe-signature')!; // Retrieve the signature from the request header
   let event: Stripe.Event; // Declare the event variable
 
@@ -52,6 +60,7 @@ export async function POST(request: Request) {
     // Construct the event from the raw body and signature
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
   } catch (err) {
+    console.log('err:', err);
     return new Response('Webhook Error: ' + err, { status: 400 }); // Return a response with error message
   }
 

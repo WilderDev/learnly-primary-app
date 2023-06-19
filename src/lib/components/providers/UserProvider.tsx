@@ -69,6 +69,8 @@ export function UserProvider({ children }: PropsWithChildren) {
       },
     };
 
+    console.log('transformedUser:', transformedUser);
+
     const subStatus = data?.subscription_status!;
     const isAuthorized = subStatus === 'active' || subStatus === 'trialing';
 
