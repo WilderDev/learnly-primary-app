@@ -5,6 +5,7 @@ import ChatContainer from './ChatContainer';
 import { HelpCenterProvider } from './HelpCenterCtx';
 import HelpCenterFAQ from './HelpCenterFAQ';
 import HelpCenterPrompts from './HelpCenterPrompts';
+import HelpCenterSupportTicket from './HelpCenterSupportTicket';
 
 export default function HelpCenterPage() {
   return (
@@ -32,6 +33,12 @@ export default function HelpCenterPage() {
         <DashPanel colNum={1}>
           <DashPanelHeader title="Help Center FAQ" />
           <HelpCenterFAQ />
+        </DashPanel>
+
+        {/* Help Center Support Ticket */}
+        <DashPanel colNum={2}>
+          <DashPanelHeader title="Create Support Ticket" />
+          <HelpCenterSupportTicket />
         </DashPanel>
       </DashSideCol>
     </>

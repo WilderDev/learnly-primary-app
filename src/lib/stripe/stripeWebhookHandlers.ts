@@ -1,5 +1,3 @@
-// * Handle Create Customer ✅
-
 import Stripe from 'stripe';
 import { supabaseAdmin } from '../auth/supabaseAdmin';
 import { stripe } from './stripe';
@@ -9,7 +7,6 @@ import { redirect } from 'next/navigation';
 import * as sgClient from '@sendgrid/client';
 
 // * Handle Create or Retrieve Customer Event ✅
-// Interface
 // Interface
 interface ICreateOrRetrieveCustomer {
   supabaseId: string;
@@ -454,58 +451,6 @@ export async function handleUpdateSubscription({
 
     redirect(url);
   }
-
-  // 6. Check if the subscription is active
-  if (status === 'active' && process.env.NODE_ENV === 'production') {
-    // 6a. Get the user's email
-    const { data: user } = await supabaseAdmin()
-      .from('public.users')
-      .select('email')
-      .eq('id', metadata.supabaseId)
-      .single();
-    const { data: userProfile } = await supabaseAdmin()
-      .from('teacher_profiles')
-      .select('first_name, last_name')
-      .eq('id', metadata.supabaseId)
-      .single();
-
-    // 6b. Get the user's SendGrid Contact Id
-    const sgRes = await sgClient.request({
-      method: 'POST',
-      baseUrl: 'https://api.sendgrid.com',
-      url: '/v3/marketing/contacts/search/emails',
-      body: {
-        emails: [user?.email!],
-      },
-    });
-
-    // 6c. Remove them from SendGrid App Welcome List
-    await sgClient.request({
-      method: 'DELETE',
-      baseUrl: 'https://api.sendgrid.com',
-      url: `/v3/marketing/lists/${process.env.SENDGRID_APP_TRIAL_USERS_ID}/contacts`,
-      qs: {
-        contact_ids: (sgRes[0].body as any).result[user?.email!].contact.id,
-      },
-    });
-
-    // 6b. Add them to SendGrid App Users List
-    await sgClient.request({
-      method: 'PUT',
-      baseUrl: 'https://api.sendgrid.com',
-      url: '/v3/marketing/contacts',
-      body: {
-        list_ids: [process.env.SENDGRID_APP_USERS_ID!],
-        contacts: [
-          {
-            email: user?.email!,
-            first_name: userProfile?.first_name!,
-            last_name: userProfile?.last_name!,
-          },
-        ],
-      },
-    });
-  }
 }
 
 // * Handle Subscription Deleted Event ✅
@@ -535,4 +480,83 @@ export async function handleDeleteSubscription({
 
   // 2. Check if there was an error updating the subscription
   if (subscriptionError) throw new Error(subscriptionError.message);
+}
+
+// * Handle Invoice Payment Succeeded Event ✅
+// Interface
+interface IInvoicePaymentSucceeded {
+  invoice: Stripe.Invoice;
+}
+
+// Handler
+export async function handleInvoicePaymentSucceeded({
+  invoice,
+}: IInvoicePaymentSucceeded) {
+  // 1. Get the subscription from Stripe
+  const { customer } = (await stripe.subscriptions.retrieve(
+    invoice.subscription as string,
+  )) as {
+    customer: string;
+  } & Stripe.Subscription;
+
+  // 2. Get the customer supabaseId
+  const { data: customerData } = await supabaseAdmin()
+    .from('customers')
+    .select('id')
+    .eq('stripe_customer_id', customer)
+    .single();
+
+  // If customer exists and we are in production
+  if (customerData?.id && process.env.NODE_ENV === 'production') {
+    if (invoice.total === 0) {
+      // 2. Get the user's email
+      const { data: user } = await supabaseAdmin()
+        .from('public.users')
+        .select('email')
+        .eq('id', customerData?.id)
+        .single();
+      const { data: userProfile } = await supabaseAdmin()
+        .from('teacher_profiles')
+        .select('first_name, last_name')
+        .eq('id', customerData?.id)
+        .single();
+
+      // 3a. Get the user's SendGrid Contact Id
+      const sgRes = await sgClient.request({
+        method: 'POST',
+        baseUrl: 'https://api.sendgrid.com',
+        url: '/v3/marketing/contacts/search/emails',
+        body: {
+          emails: [user?.email!],
+        },
+      });
+
+      // 3b. Remove them from SendGrid App Welcome List
+      await sgClient.request({
+        method: 'DELETE',
+        baseUrl: 'https://api.sendgrid.com',
+        url: `/v3/marketing/lists/${process.env.SENDGRID_APP_TRIAL_USERS_ID}/contacts`,
+        qs: {
+          contact_ids: (sgRes[0].body as any).result[user?.email!].contact.id,
+        },
+      });
+
+      // 3c. Add them to SendGrid App Users List
+      await sgClient.request({
+        method: 'PUT',
+        baseUrl: 'https://api.sendgrid.com',
+        url: '/v3/marketing/contacts',
+        body: {
+          list_ids: [process.env.SENDGRID_APP_USERS_ID!],
+          contacts: [
+            {
+              email: user?.email!,
+              first_name: userProfile?.first_name!,
+              last_name: userProfile?.last_name!,
+            },
+          ],
+        },
+      });
+    }
+  }
 }

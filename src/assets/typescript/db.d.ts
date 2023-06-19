@@ -1739,6 +1739,16 @@ export interface Database {
           topic: string | null
         }
       }
+      user_curriculum_details_view: {
+        Row: {
+          created_at: string | null
+          curriculum_id: string | null
+          curriculum_name: string | null
+          updated_at: string | null
+          user_curriculum_id: string | null
+          user_id: string | null
+        }
+      }
       user_notifications_view: {
         Row: {
           action_text: string | null
@@ -1961,6 +1971,19 @@ export interface Database {
           is_public: boolean
           created_at: string
           updated_at: string
+        }[]
+      }
+      search_resources: {
+        Args: {
+          query: string
+          user_id: string
+        }
+        Returns: {
+          id: string
+          name: string
+          category: string
+          url: string
+          record: Json
         }[]
       }
       similar_lessons: {

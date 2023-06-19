@@ -1,20 +1,28 @@
 'use client';
 
-import CommandPalette, { IItem } from '@/lib/components/ui/CommandPalette';
+import { ISearchItem } from '@/assets/typescript/search';
+import { supabaseClient } from '@/lib/auth/supabaseClient';
+import { useUser } from '@/lib/components/providers/UserProvider';
+import CommandPalette from '@/lib/components/ui/CommandPalette';
 import {
   PropsWithChildren,
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
+import { toast } from 'sonner';
 
 // * Initialization
 // Props
 interface ICommandPaletteCtxProps {
-  items: IItem[];
+  items: ISearchItem[];
   open: boolean;
   setOpen: (open: boolean) => void;
+  query: string;
+  setQuery: (query: string) => void;
+  isLoading: boolean;
 } // Create an interface for the context props
 
 // Initial State
@@ -22,6 +30,9 @@ const initialState: ICommandPaletteCtxProps = {
   items: [],
   open: false,
   setOpen: () => {},
+  query: '',
+  setQuery: () => {},
+  isLoading: false,
 }; // Create a context object with default value
 
 // Context
@@ -29,54 +40,59 @@ const CommandPaletteCtx = createContext(initialState); // Create Context Object
 
 // * Provider
 export function CommandPaletteProvider({ children }: PropsWithChildren) {
-  // * Context / Hooks
-
   // * State
-  const [open, setOpen] = useState(false); // Create state for the open state of the Command Palette
-  const [items, setItems] = useState<IItem[]>([]); // Create state for the items in the Command Palette
+  const [open, setOpen] = useState(false);
+  const [items, setItems] = useState<ISearchItem[]>([]);
+  const [query, setQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  // * Handlers
-  // Get Command Palette Items
-  //   TSK
+  // Supabase Client
+  const supabase = supabaseClient();
+
+  // Current User
+  const { user } = useUser();
 
   // * Effects
-  // Fetch Data
-  //   TSK
+  // Fetch items from server
+  useEffect(() => {
+    const fetchItems = async () => {
+      setIsLoading(true);
 
-  // * Value
+      const { data, error } = await supabase.rpc('search_resources', {
+        query,
+        user_id: user?.id!,
+      });
+
+      if (error) toast.error('There was an error searching');
+
+      setIsLoading(false);
+      setItems((data as ISearchItem[]) || []);
+    };
+
+    query?.length === 1 && fetchItems();
+
+    return () => {
+      setItems([]);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, user?.id]);
+
   const value: ICommandPaletteCtxProps = useMemo(
     () => ({
       items,
       open,
       setOpen,
+      query,
+      setQuery,
+      isLoading,
     }),
-    [items, open, setOpen],
-  ); // Create memoized value object
+    [items, open, setOpen, query, setQuery, isLoading],
+  );
 
-  // * Render
   return (
     <CommandPaletteCtx.Provider value={value}>
-      {/* Command Palette */}
-      {open && (
-        <CommandPalette
-          items={[
-            {
-              id: 'bdec4032-c48c-453c-aca4-f947290ca098',
-              name: 'Art in History (Pre-K Creative Arts)',
-              category: 'lesson_plan',
-              url: '/lesson-creator',
-            },
-            {
-              id: '7dcd3676-2f10-4de8-8d62-37d984452495',
-              name: 'Mathematics for Computers (Grade 1 Math)',
-              category: 'lesson_plan',
-              url: '/schedule-builder',
-            },
-          ]}
-        />
-      )}
-
-      {/* Children */}
+      {open && <CommandPalette items={items} />}
       {children}
     </CommandPaletteCtx.Provider>
   );
