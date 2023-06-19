@@ -561,4 +561,6 @@ export async function handleInvoicePaymentSucceeded({
       });
     }
   }
+
+  return true;
 }
