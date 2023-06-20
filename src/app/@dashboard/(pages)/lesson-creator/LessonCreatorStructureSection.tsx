@@ -85,8 +85,9 @@ export default function LessonCreatorStructureSection() {
     >
       {/* Philosophy (Select) */}
       <Select
-        infoBubble={true}
-        infoBubbleUrl={'https://www.learnly.ai/articles'}
+        infoBubbleUrl={
+          'https://www.learnly.ai/articles/homeschool/homeschool-philosophies-unlock-the-truth'
+        }
         infoBubbleText={philosophyInfoBubbleText}
         label="Philosophy"
         options={createSelectOptions(philosophyOptions)}
@@ -98,8 +99,9 @@ export default function LessonCreatorStructureSection() {
 
       {/* Teaching Strategy (Select) */}
       <Select
-        infoBubble={true}
-        infoBubbleUrl={'https://www.learnly.ai/articles'}
+        infoBubbleUrl={
+          'https://www.learnly.ai/articles/homeschool/homeschooling-teaching-strategies-for-success'
+        }
         infoBubbleText={teachingStrategyInfoBubbleText}
         label="Teaching Strategy"
         options={createSelectOptions(teachingStrategyOptions)}

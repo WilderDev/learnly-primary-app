@@ -5,11 +5,12 @@ import cn from '@/lib/common/cn';
 import Input from '@/lib/components/form/Input';
 import Avatar from '@/lib/components/images/Avatar';
 import Modal from '@/lib/components/popouts/Modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from '@/lib/components/ui/Button';
 import { PhotoIcon } from '@heroicons/react/24/outline';
 import { supabaseClient } from '@/lib/auth/supabaseClient';
+import { revalidatePath } from 'next/cache';
 
 interface IProps {
   isVisible: boolean;
@@ -22,80 +23,95 @@ export default function LessonPlanEditModal({
   lessonPlan,
   close,
 }: IProps) {
-  // * State
-  const [title, setTitle] = useState(lessonPlan.title); // Lesson Title
-  const [imagePath, setImagePath] = useState(lessonPlan.image_path); // Image Path
-
+  // State
+  const [title, setTitle] = useState(lessonPlan.title);
+  const [imagePath, setImagePath] = useState(lessonPlan.image_path);
   const [file, setFile] = useState<File | null>(null);
-
   const [previewUrl, setPreviewUrl] = useState('');
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0] || null;
-    setFile(selectedFile);
+  // Supabase
+  const supabase = supabaseClient();
 
-    // If a file was selected, create a URL for it
-    if (selectedFile) {
-      const url = URL.createObjectURL(selectedFile);
+  // Effects
+  useEffect(() => {
+    if (file) {
+      const url = URL.createObjectURL(file);
       setPreviewUrl(url);
     } else {
       setPreviewUrl('');
     }
+  }, [file]);
+
+  // File change handler
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0] || null;
+    setFile(selectedFile);
   };
 
-  const handleSubmit = async () => {
-    const supabase = supabaseClient();
-    let newImagePath = imagePath;
-    if (file) {
-      const filePath = `lessons/${lessonPlan.id}/${file.name}`;
-
-      const { data: fileList, error: listError } = await supabase.storage
-        .from('avatars')
-        .list(`lessons/${lessonPlan.id}`);
-
-      if (listError) {
-        console.error('Error listing files:', listError);
-        return;
-      }
-
-      for (const file of fileList) {
-        const fullFilePath = `lessons/${lessonPlan.id}/${file.name}`;
-        console.log(fullFilePath);
-        const { error: deleteError } = await supabase.storage
-          .from('avatars')
-          .remove([fullFilePath]);
-
-        if (deleteError) {
-          console.error(`Error deleting file ${fullFilePath}:`, deleteError);
-          return;
-        }
-      }
-
-      const { error } = await supabase.storage
-        .from('avatars')
-        .upload(filePath, file);
-
-      if (error) {
-        console.error('Error uploading image:', error);
-        return;
-      }
-
-      const { data } = await supabase.storage
-        .from('avatars')
-        .getPublicUrl(filePath);
-
-      if (!data?.publicUrl) {
-        console.error('Error getting image URL:');
-        return;
-      }
-
-      newImagePath = data.publicUrl;
+  // File deletion handler
+  const deleteOldFiles = async () => {
+    if (!file) {
+      console.error('No file selected.');
+      return;
     }
 
-    // Update lesson plan in the database (including title and possibly image path)
+    const { data: fileList, error: listError } = await supabase.storage
+      .from('avatars')
+      .list(`lessons/${lessonPlan.id}`);
+
+    if (listError) {
+      console.error('Error listing files:', listError);
+      return;
+    }
+
+    const filesToDelete = fileList.map(
+      (file) => `lessons/${lessonPlan.id}/${file.name}`,
+    );
+
+    const { error: deleteError } = await supabase.storage
+      .from('avatars')
+      .remove(filesToDelete);
+
+    if (deleteError) {
+      console.error(`Error deleting files:`, deleteError);
+      return;
+    }
+  };
+
+  // Upload Hanlder
+  const handleFileUpload = async () => {
+    if (!file) {
+      console.error('No file selected.');
+      return;
+    }
+
+    const filePath = `lessons/${lessonPlan.id}/${file.name}`;
+    const { error: uploadError } = await supabase.storage
+      .from('avatars')
+      .upload(filePath, file);
+
+    if (uploadError) {
+      console.error('Error uploading image:', uploadError);
+      return;
+    }
+
+    const { data } = await supabase.storage
+      .from('avatars')
+      .getPublicUrl(filePath);
+
+    if (!data?.publicUrl) {
+      console.error('Error getting image URL:');
+      return;
+    }
+
+    return data.publicUrl;
+  };
+
+  // Updating Handler
+  const handleLessonPlanUpdate = async (newImagePath: string) => {
     const { error: updateError } = await supabase
       .from('lesson_plans')
-      .update({ image_path: newImagePath, title: title }) // use newImagePath instead of imagePath
+      .update({ image_path: newImagePath, title: title })
       .eq('id', lessonPlan.id);
 
     if (updateError) {
@@ -103,11 +119,27 @@ export default function LessonPlanEditModal({
       return;
     }
 
-    setImagePath(newImagePath); // Update imagePath state only after the update to the database is successful
-
+    setImagePath(newImagePath);
     setFile(null);
     setPreviewUrl('');
-    close(); // Close the modal after saving changes
+    close();
+  };
+
+  // Submit Handle
+  const handleSubmit = async () => {
+    let newImagePath = imagePath;
+    if (file) {
+      await deleteOldFiles();
+      const uploadResult = await handleFileUpload();
+      if (uploadResult) {
+        newImagePath = uploadResult;
+      } else {
+        console.error('Error uploading file.');
+        return;
+      }
+    }
+
+    await handleLessonPlanUpdate(newImagePath);
   };
 
   return (

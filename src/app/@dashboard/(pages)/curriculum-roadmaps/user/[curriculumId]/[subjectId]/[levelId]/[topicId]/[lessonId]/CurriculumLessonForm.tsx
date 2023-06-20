@@ -196,8 +196,9 @@ export default function CurriculumLessonForm({ lesson, studentIds }: IProps) {
         >
           {/* Philosophy (Select) */}
           <Select
-            infoBubble={true}
-            infoBubbleUrl={'https://www.learnly.ai/articles'}
+            infoBubbleUrl={
+              'https://www.learnly.ai/articles/homeschool/homeschool-philosophies-unlock-the-truth'
+            }
             infoBubbleText={philosophyInfoBubbleText}
             label="Philosophy"
             options={createSelectOptions(philosophyOptions)}

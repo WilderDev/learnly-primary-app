@@ -33,7 +33,7 @@ const objectiveOptions: TObjective[] = [
   'Synthesis',
 ];
 
-const objectiveInfoBubbleText: string = `Objectives in homeschooling refer to the specific learning goals and outcomes intended for each educational activity or lesson. These may include understanding and recalling information (knowledge), applying knowledge to new situations (application), interpreting information (comprehension), breaking down complex information (analysis), combining elements to form a new whole (synthesis), and assessing the value or effectiveness of information or methods (evaluation).`;
+const objectiveInfoBubbleText: string = `Objectives in homeschooling refer to the specific learning goals and outcomes intended for each educational activity or lesson. These may include understanding and recalling information (knowledge), applying knowledge to new situations (application)...`;
 
 // Difficulties
 export const difficultyOptions: TDifficulty[] = [
@@ -118,8 +118,9 @@ export default function LessonCreatorGoalsSection() {
 
           {/* Objectives (Multi-Select) */}
           <MultiSelect
-            infoBubble={true}
-            infoBubbleUrl={'https://www.learnly.ai/articles'}
+            infoBubbleUrl={
+              'https://www.learnly.ai/articles/homeschool/homeschooling-objectives-for-successful-lesson-plans'
+            }
             infoBubbleText={objectiveInfoBubbleText}
             label="Objectives"
             options={createSelectOptions(objectiveOptions)}

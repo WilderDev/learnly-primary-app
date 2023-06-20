@@ -71,8 +71,9 @@ export default function LessonCreatorContextSection() {
         <>
           {/* Learning Styles (Multi-Select) */}
           <MultiSelect
-            infoBubble={true}
-            infoBubbleUrl={'https://www.learnly.ai/articles'}
+            infoBubbleUrl={
+              'https://www.learnly.ai/articles/homeschool/homeschooling-learning-styles-are-the-key'
+            }
             infoBubbleText={learningStylesInfoBubbleText}
             label="Learning Styles"
             options={createSelectOptions(learningStyleOptions)}

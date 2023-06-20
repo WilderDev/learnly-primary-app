@@ -8,8 +8,6 @@ interface IProps {
   position?: TPosition;
   showOnHover?: boolean;
   className?: string;
-  tipUrlText?: string;
-  tipUrl?: string;
 }
 
 // * Component
@@ -19,8 +17,6 @@ export default function Tooltip({
   position = 'topCenter',
   showOnHover = true,
   className,
-  tipUrlText,
-  tipUrl,
 }: IProps) {
   // * Styles
   const defaultStyles =
@@ -59,14 +55,6 @@ export default function Tooltip({
         )}
       >
         {tip}
-        {/* {tipUrl && (
-          <a
-            href={tipUrl}
-            className="px-4 py-2 mx-auto rounded-xl shadow-md bg-slate-50"
-          >
-            {tipUrlText}
-          </a>
-        )} */}
       </span>
     </div>
   );

@@ -89,3 +89,23 @@ export const markAsComplete = createRequest(
   markAsCompleteAction,
   markAsCompleteSchema,
 );
+
+// TSK TSK TSK
+const editLessonPlanSchema = z.object({
+  lesson_plan_id: z.string().uuid(),
+  title: z.string().optional(),
+  image: z.any(),
+});
+
+async function editLessonPlanAction(
+  input: z.infer<typeof editLessonPlanSchema>,
+) {
+  const { lesson_plan_id, title, image } = input;
+
+  const supabase = supabaseServer();
+}
+
+export const editLessonPlan = createRequest(
+  editLessonPlanAction,
+  editLessonPlanSchema,
+);

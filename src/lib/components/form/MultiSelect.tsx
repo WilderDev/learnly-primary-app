@@ -37,7 +37,6 @@ interface IProps {
   shadow?: TSize;
   rounded?: TSize | 'full';
   className?: string;
-  infoBubble?: boolean;
   infoBubbleUrl?: string;
   infoBubbleText?: string;
 }
@@ -57,7 +56,6 @@ export default function MultiSelect({
   shadow = 'xs',
   rounded = 'md',
   className,
-  infoBubble,
   infoBubbleUrl,
   infoBubbleText,
 }: IProps) {
@@ -135,7 +133,6 @@ export default function MultiSelect({
   // * Render
   return (
     <FormItem
-      infoBubble={infoBubble}
       infoBubbleUrl={infoBubbleUrl}
       infoBubbleText={infoBubbleText}
       label={label}
