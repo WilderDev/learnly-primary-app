@@ -235,7 +235,7 @@ CREATE VIEW public_teacher_profile_view AS (
         'name', t.name
       ),
       'created_at', l.created_at
-    )) FILTER (WHERE l.is_public = TRUE) AS lessons,
+    )) FILTER (WHERE l.is_public = TRUE AND l.creator_id = p.id) AS lessons,
     json_agg(DISTINCT jsonb_build_object(
       'id', c.id,
       'name', c.name,

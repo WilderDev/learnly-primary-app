@@ -451,6 +451,8 @@ export async function handleUpdateSubscription({
 
     redirect(url);
   }
+
+  return true;
 }
 
 // * Handle Subscription Deleted Event ✅
@@ -559,4 +561,6 @@ export async function handleInvoicePaymentSucceeded({
       });
     }
   }
+
+  return true;
 }

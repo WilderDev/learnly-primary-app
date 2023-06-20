@@ -44,7 +44,8 @@ const relevantEvents: Stripe.Event['type'][] = [
 // Stripe Webhook POST Route
 export async function POST(request: Request) {
   const body = await request.text(); // Retrieve the request's body
-  const sig = headers().get('stripe-signature')!; // Retrieve the signature from the request header
+  // request.headers.get('content-type'); // Retrieve the request's content type
+  const sig = headers().get('Stripe-Signature')!; // Retrieve the signature from the request header
   let event: Stripe.Event; // Declare the event variable
 
   // Verify the request against the endpoint secret

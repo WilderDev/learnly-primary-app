@@ -53,7 +53,8 @@ export default async function LessonPlanPage({ params: { id } }: IParams) {
         {/* Lesson Plan Similar Lessons */}
         <DashPanel colNum={2} className="print:hidden">
           <DashPanelHeader title="Similar Lessons" />
-          {/* @ts-expect-error Server Component */}
+
+          {/* @ts-ignore */}
           <LessonPlanSimilarLessons lessonId={id} />
         </DashPanel>
       </DashMainCol>

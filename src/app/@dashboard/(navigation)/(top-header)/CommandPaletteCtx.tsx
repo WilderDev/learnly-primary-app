@@ -69,7 +69,7 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
       setItems((data as ISearchItem[]) || []);
     };
 
-    query?.length > 0 && fetchItems();
+    query?.length === 1 && fetchItems();
 
     return () => {
       setItems([]);

@@ -22,14 +22,16 @@ export default function ScheduleBuilderPage() {
         {/* Timeline */}
         <DashPanel colNum={1}>
           <DashPanelHeader title="Timeline" />
-          {/* @ts-expect-error Server Component */}
+
+          {/* @ts-ignore */}
           <LessonTimeline />
         </DashPanel>
 
         {/* Unscheduled Lessons */}
         <DashPanel colNum={2}>
           <DashPanelHeader title="Unscheduled Lessons" />
-          {/* @ts-expect-error Server Component */}
+
+          {/* @ts-ignore */}
           <UnassignedLessonsPanel />
         </DashPanel>
       </DashSideCol>
