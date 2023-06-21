@@ -25,12 +25,12 @@ export default function FilterModal({
         {/* Header */}
         <div className="px-4 py-5 sm:px-6">
           {/* Title */}
-          <h3 className="text-base font-semibold leading-6 text-slate-900 sm:text-xl">
+          <h3 className="text-base font-semibold leading-6 text-slate-900 sm:text-xl text-center">
             Filter Settings
           </h3>
 
           {/* Description */}
-          <p className="mt-1 max-w-2xl text-sm text-slate-500">
+          <p className="mt-1 max-w-2xl text-sm text-slate-500 text-center">
             Apply filters to search for avaliabe lessons in levels
           </p>
         </div>
@@ -38,7 +38,7 @@ export default function FilterModal({
         {/* Body */}
         <div className="border-t border-slate-200 px-4 py-5 sm:px-6 flex flex-wrap justify-around">
           {/* Content */}
-          <dt className="text-base font-medium text-slate-500 my-4 w-full">
+          <dt className="text-base font-medium text-slate-500 mb-4 w-full text-center">
             Levels
           </dt>
           {filterOptions.map((option) => (
@@ -54,19 +54,18 @@ export default function FilterModal({
                     : 'bg-white border-gray-300',
                 )}
               >
-                <AnimatePresence mode="wait">
-                  {selectedFilters[option] && (
-                    <motion.div
-                      key="checked"
-                      className="absolute"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                    >
-                      <CheckIcon className="h-5 w-5 text-white m-auto" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {selectedFilters[option] && (
+                  <motion.div
+                    key="checked"
+                    className="absolute"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                  >
+                    <CheckIcon className="h-5 w-5 text-white m-auto" />
+                  </motion.div>
+                )}
+
                 <input
                   type="checkbox"
                   className="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
@@ -74,7 +73,9 @@ export default function FilterModal({
                   onChange={() => handleFilterChange(option)}
                 />
               </div>
-              <span className={`text-gray-700`}>{option}</span>
+              <span className="text-gray-700 font-semibold leading-5">
+                {option}
+              </span>
             </label>
           ))}
         </div>

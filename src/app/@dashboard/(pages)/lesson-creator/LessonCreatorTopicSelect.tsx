@@ -242,10 +242,10 @@ export default function LessonCreatorTopicSelect() {
 
       for (let subject of transformedData) {
         for (let level of subject.children!) {
-          level.children!.push({
-            id: Math.random().toString(),
-            name: 'Other',
-          });
+          // level.children!.push({
+          //   id: Math.random().toString(),
+          //   name: 'Other',
+          // });
         }
       }
 

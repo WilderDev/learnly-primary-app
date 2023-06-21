@@ -1,9 +1,7 @@
 'use client';
 
 import { ILessonPlanWithCreator } from '@/assets/typescript/lesson-plan';
-import cn from '@/lib/common/cn';
 import Input from '@/lib/components/form/Input';
-import Avatar from '@/lib/components/images/Avatar';
 import Modal from '@/lib/components/popouts/Modal';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -11,6 +9,8 @@ import Button from '@/lib/components/ui/Button';
 import { PhotoIcon } from '@heroicons/react/24/outline';
 import { supabaseClient } from '@/lib/auth/supabaseClient';
 import { revalidatePath } from 'next/cache';
+import { deleteOldImages, editLessonPlan } from './_actions';
+import { toast } from 'sonner';
 
 interface IProps {
   isVisible: boolean;
@@ -26,11 +26,11 @@ export default function LessonPlanEditModal({
   // State
   const [title, setTitle] = useState(lessonPlan.title);
   const [imagePath, setImagePath] = useState(lessonPlan.image_path);
-  const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Supabase
-  const supabase = supabaseClient();
+  // File State
+  const [file, setFile] = useState<File | null>(null);
 
   // Effects
   useEffect(() => {
@@ -48,100 +48,103 @@ export default function LessonPlanEditModal({
     setFile(selectedFile);
   };
 
-  // File deletion handler
-  const deleteOldFiles = async () => {
-    if (!file) {
-      console.error('No file selected.');
-      return;
+  // Submit Handle
+  const handleSubmit = async () => {
+    if (!title) return toast.error('Title Is Required');
+
+    // Set Loading State
+    setIsLoading(true);
+
+    // Set New Pulic URL
+    let publicUrl = null;
+
+    // Check for file change
+    if (file) {
+      // Supabase Client
+      const supabase = supabaseClient();
+
+      // Execute Delete Old Images Action
+      const { ok } = await deleteOldImages({ lesson_plan_id: lessonPlan.id });
+
+      if (!ok) {
+        toast.error('Failed To Update Profile');
+        setIsLoading(false);
+        return;
+      }
+
+      // Create a new file path for the bucket
+      const filePath = `lessons/${lessonPlan.id}/${file.name}`;
+      const { error: uploadError } = await supabase.storage
+        .from('avatars')
+        .upload(filePath, file);
+      if (uploadError) {
+        toast.error('Failed To Update Profile');
+        setIsLoading(false);
+        return;
+      }
+
+      // Fetch the new public URL
+      const { data } = supabase.storage.from('avatars').getPublicUrl(filePath);
+      if (!data) {
+        toast.error('Failed To Update Profile');
+        setIsLoading(false);
+        return;
+      }
+
+      // Set new public URL
+      publicUrl = data.publicUrl;
     }
 
-    const { data: fileList, error: listError } = await supabase.storage
-      .from('avatars')
-      .list(`lessons/${lessonPlan.id}`);
+    // If there was a new image
+    if (publicUrl) {
+      // Execute Edit Lesson Plan action
+      const { ok: updateLessonPlanSuccess } = await editLessonPlan({
+        image_url: publicUrl,
+        lesson_plan_id: lessonPlan.id,
+        title: title,
+      });
 
-    if (listError) {
-      console.error('Error listing files:', listError);
-      return;
+      if (!updateLessonPlanSuccess) {
+        toast.error('Failed To Update Profile');
+        setIsLoading(false);
+        return;
+      }
+
+      success(publicUrl);
+    } else {
+      const { ok: updateLessonPlanSuccess } = await editLessonPlan({
+        lesson_plan_id: lessonPlan.id,
+        title: title,
+      });
+
+      if (!updateLessonPlanSuccess) {
+        toast.error('Failed To Update Profile');
+        setIsLoading(false);
+        return;
+      }
+
+      success();
     }
+    // Set Loading State
+    setIsLoading(false);
 
-    const filesToDelete = fileList.map(
-      (file) => `lessons/${lessonPlan.id}/${file.name}`,
-    );
-
-    const { error: deleteError } = await supabase.storage
-      .from('avatars')
-      .remove(filesToDelete);
-
-    if (deleteError) {
-      console.error(`Error deleting files:`, deleteError);
-      return;
-    }
+    // TSK This Throws an error
+    try {
+      revalidatePath(`/lesson-plans/${lessonPlan.id}`);
+      revalidatePath('/');
+    } catch {}
   };
 
-  // Upload Hanlder
-  const handleFileUpload = async () => {
-    if (!file) {
-      console.error('No file selected.');
-      return;
-    }
-
-    const filePath = `lessons/${lessonPlan.id}/${file.name}`;
-    const { error: uploadError } = await supabase.storage
-      .from('avatars')
-      .upload(filePath, file);
-
-    if (uploadError) {
-      console.error('Error uploading image:', uploadError);
-      return;
-    }
-
-    const { data } = await supabase.storage
-      .from('avatars')
-      .getPublicUrl(filePath);
-
-    if (!data?.publicUrl) {
-      console.error('Error getting image URL:');
-      return;
-    }
-
-    return data.publicUrl;
-  };
-
-  // Updating Handler
-  const handleLessonPlanUpdate = async (newImagePath: string) => {
-    const { error: updateError } = await supabase
-      .from('lesson_plans')
-      .update({ image_path: newImagePath, title: title })
-      .eq('id', lessonPlan.id);
-
-    if (updateError) {
-      console.error('Error updating lesson plan:', updateError);
-      return;
-    }
-
-    setImagePath(newImagePath);
+  // Helper Functions
+  const success = (publicUrl?: string) => {
+    if (publicUrl) setImagePath(publicUrl);
     setFile(null);
     setPreviewUrl('');
     close();
+    toast.success('Lesson Plan Updated!');
   };
 
-  // Submit Handle
-  const handleSubmit = async () => {
-    let newImagePath = imagePath;
-    if (file) {
-      await deleteOldFiles();
-      const uploadResult = await handleFileUpload();
-      if (uploadResult) {
-        newImagePath = uploadResult;
-      } else {
-        console.error('Error uploading file.');
-        return;
-      }
-    }
-
-    await handleLessonPlanUpdate(newImagePath);
-  };
-
+  // Render
   return (
     <Modal
       closeBtn={true}
@@ -167,6 +170,7 @@ export default function LessonPlanEditModal({
               />
             </div>
 
+            {/* Mask Input */}
             <label htmlFor="imageInput">
               <div className="absolute inset-0 flex items-center justify-center z-50 opacity-0 hover:opacity-100 bg-black bg-opacity-50 text-white rounded-full cursor-pointer transition-opacity duration-200 ease-in-out">
                 Edit
@@ -177,6 +181,7 @@ export default function LessonPlanEditModal({
               <PhotoIcon className="h-6 w-6 text-white" />
             </div>
 
+            {/* Hidden File Input */}
             <input
               type="file"
               id="imageInput"
@@ -197,7 +202,11 @@ export default function LessonPlanEditModal({
           />
         </h3>
       </section>
-      <Button onClick={handleSubmit} className="w-full mt-1">
+      <Button
+        loading={isLoading}
+        onClick={handleSubmit}
+        className="w-full mt-1"
+      >
         Save
       </Button>
     </Modal>

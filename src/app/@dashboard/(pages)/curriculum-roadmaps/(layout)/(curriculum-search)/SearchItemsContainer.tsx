@@ -111,7 +111,7 @@ export default function SearchItemsContainer({
                         <Combobox.Option
                           key={nanoid()}
                           value={item}
-                          className="cursor-pointer select-none px-4 py-2 hover:bg-green-600 hover:text-white hover:dark:bg-slate-600 flex items-center gap-6"
+                          className="cursor-pointer select-none px-4 py-2 hover:bg-green-600 font-semibold leading-5 hover:text-white hover:dark:bg-slate-600 flex items-center gap-6"
                         >
                           {/* Lesson Name */}
                           {item.name}

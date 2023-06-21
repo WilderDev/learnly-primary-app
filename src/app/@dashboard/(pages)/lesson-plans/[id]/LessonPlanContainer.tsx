@@ -34,12 +34,11 @@ export default function LessonPlanContainer({
           {/* Top */}
           <div className="flex flex-col sm:flex-row items-center justify-between">
             {/* Creator */}
-            <LessonPlanCreatorInfo
-              id={lessonPlan.creator.id}
-              name={`${lessonPlan.creator.firstName} ${lessonPlan.creator.lastName}`}
-              avatar_url={lessonPlan.creator.avatarUrl}
-              // role={lessonPlan.creator.}
-            />
+
+            {/* Title */}
+            <h2 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white md:text-center">
+              {lessonPlan.title}
+            </h2>
 
             {/* Actions */}
             <div className="mt-4 sm:mt-0">
@@ -50,6 +49,16 @@ export default function LessonPlanContainer({
                 handlePrint={handlePrint}
               />
             </div>
+          </div>
+
+          {/* Creator Info */}
+          <div className="flex justify-center md:justify-start">
+            <LessonPlanCreatorInfo
+              id={lessonPlan.creator.id}
+              name={`${lessonPlan.creator.firstName} ${lessonPlan.creator.lastName}`}
+              avatar_url={lessonPlan.creator.avatarUrl}
+              // role={lessonPlan.creator.}
+            />
           </div>
 
           {/* Tags */}

@@ -112,8 +112,8 @@ export default function CurriculumRoadmapBreadcrumbsSearch({
         page,
       );
 
-      // If there are more than 100 allow pagination
-      if ((newItems as Item[])?.length < 100) {
+      // If there are more than 30 allow pagination
+      if ((newItems as Item[])?.length < 30) {
         setHasMoreItems(false);
       }
 
@@ -141,8 +141,8 @@ export default function CurriculumRoadmapBreadcrumbsSearch({
         page,
       );
 
-      // If there are more than 100 allow pagination
-      if ((newItems as Item[])?.length < 100) {
+      // If there are more than 30 allow pagination
+      if ((newItems as Item[])?.length < 30) {
         setHasMoreItems(false);
       }
 

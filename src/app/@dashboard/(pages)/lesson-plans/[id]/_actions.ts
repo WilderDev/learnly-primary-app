@@ -90,22 +90,81 @@ export const markAsComplete = createRequest(
   markAsCompleteSchema,
 );
 
-// TSK TSK TSK
 const editLessonPlanSchema = z.object({
   lesson_plan_id: z.string().uuid(),
   title: z.string().optional(),
-  image: z.any(),
+  image_url: z.string().optional(),
 });
 
 async function editLessonPlanAction(
   input: z.infer<typeof editLessonPlanSchema>,
 ) {
-  const { lesson_plan_id, title, image } = input;
+  const { lesson_plan_id, title, image_url } = input;
 
-  const supabase = supabaseServer();
+  try {
+    const supabase = supabaseServer();
+
+    const { error } = await supabase
+      .from('lesson_plans')
+      .update({ image_path: image_url, title: title })
+      .eq('id', lesson_plan_id);
+
+    if (error) return responseContract(error.message, false);
+
+    revalidatePath(`/lesson-plans/${lesson_plan_id}`);
+    revalidatePath('/');
+
+    return responseContract('Success!', true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
 }
 
 export const editLessonPlan = createRequest(
   editLessonPlanAction,
   editLessonPlanSchema,
+);
+
+const deleteOldImagesSchema = z.object({
+  lesson_plan_id: z.string().uuid(),
+});
+
+async function deleteOldImagesAction(
+  input: z.infer<typeof deleteOldImagesSchema>,
+) {
+  const { lesson_plan_id } = input;
+
+  try {
+    const supabase = supabaseServer();
+
+    const { data: dataList, error: dataListError } = await supabase.storage
+      .from('avatars')
+      .list(`lessons/${lesson_plan_id}`);
+
+    if (dataListError) return responseContract(dataListError.message, false);
+
+    const filesToDelete = dataList.map(
+      (file) => `lessons/${lesson_plan_id}/${file.name}`,
+    );
+
+    if (filesToDelete.length > 0) {
+      const { error: deleteError } = await supabase.storage
+        .from('avatars')
+        .remove(filesToDelete);
+
+      if (deleteError) return responseContract(deleteError.message, false);
+    }
+
+    revalidatePath(`/lesson-plans/${lesson_plan_id}`);
+    revalidatePath('/');
+
+    return responseContract('Success!', true);
+  } catch (error) {
+    return responseContract((error as Error).message, false);
+  }
+}
+
+export const deleteOldImages = createRequest(
+  deleteOldImagesAction,
+  deleteOldImagesSchema,
 );

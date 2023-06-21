@@ -126,6 +126,6 @@ RETURN QUERY
     ORDER BY
         lp.priority ASC,
         cl.name ASC
-    LIMIT 100 OFFSET offset_param;
+    LIMIT 30 OFFSET offset_param;
 END;
 $$;

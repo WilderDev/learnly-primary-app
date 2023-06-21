@@ -14,7 +14,7 @@ export default async function RecentlyCompletedLessonsAccordions() {
   // * Render
   const hasCompletedLessons = recentlyCompletedLessons?.length > 0;
   return hasCompletedLessons ? (
-    <CardContainer className="md:grid-cols-1 xl:grid-cols-1">
+    <CardContainer className="md:grid-cols-1 xl:grid-cols-1 2xl:grid-cols-1">
       {recentlyCompletedLessons
         .slice(0, 3)
         .map(
