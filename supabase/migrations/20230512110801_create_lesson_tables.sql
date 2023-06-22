@@ -745,6 +745,7 @@ ALTER TABLE user_lesson_plan_templates ENABLE ROW LEVEL SECURITY;
 
 --- Policies
 ---- Lesson Plans
+CREATE POLICY "Avatar is deletable by anyone" ON storage.objects FOR DELETE TO public USING (bucket_id = 'avatars');
 CREATE POLICY "Lesson Plans are viewable by everyone if public" ON lesson_plans FOR SELECT USING (is_public);
 CREATE POLICY "Lesson Plans are creatable by anyone" ON lesson_plans FOR INSERT WITH CHECK (true);
 CREATE POLICY "Lesson Plans are editable by the creator or admin" ON lesson_plans FOR UPDATE USING (auth.uid() = creator_id OR is_role('ADMIN')) WITH CHECK (auth.uid() = creator_id OR is_role('ADMIN'));

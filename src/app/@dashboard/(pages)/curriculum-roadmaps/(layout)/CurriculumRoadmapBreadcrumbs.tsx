@@ -4,6 +4,7 @@ import cn from '@/lib/common/cn';
 import { HomeIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import CurriculumRoadmapBreadcrumbsSearch from './(curriculum-search)/CurriculumRoadmapBreadcrumbsSearch';
 
 export interface IBreadcrumb {
   label: string;
@@ -17,6 +18,7 @@ export default function CurriculumRoadmapBreadcrumbs() {
   const params = useParams(); // Get params from router
 
   // * Helpers
+
   // Generate levels based on params
   const generateLevels = () => {
     const levels: IBreadcrumb[] = []; // Init levels
@@ -59,10 +61,12 @@ export default function CurriculumRoadmapBreadcrumbs() {
 
     return levels; // Return levels
   };
-
   // * Render
   return (
-    <nav className="flex" aria-label="Breadcrumb">
+    <nav
+      className="flex justify-between items-center flex-col xl:flex-row gap-4"
+      aria-label="Breadcrumb"
+    >
       <ol
         role="list"
         className="flex space-x-4 rounded-md bg-white px-6 shadow dark:bg-navy-800"
@@ -116,6 +120,7 @@ export default function CurriculumRoadmapBreadcrumbs() {
           </li>
         ))}
       </ol>
+      <CurriculumRoadmapBreadcrumbsSearch curriculumId={params.curriculumId} />
     </nav>
   );
 }

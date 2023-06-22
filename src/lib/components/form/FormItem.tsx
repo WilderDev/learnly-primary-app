@@ -1,5 +1,8 @@
 import { TIcon } from '@/assets/typescript/ui';
 import cn from '@/lib/common/cn';
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
+import Tooltip from '../ui/Tooltip';
+import ContentTooltip from '../ui/ContentTooltip';
 
 // * Props
 interface IProps {
@@ -9,6 +12,8 @@ interface IProps {
   cols?: number;
   icon?: TIcon;
   className?: string;
+  infoBubbleUrl?: string;
+  infoBubbleText?: string;
 }
 
 export default function FormItem({
@@ -18,6 +23,8 @@ export default function FormItem({
   cols,
   icon: Icon,
   className,
+  infoBubbleUrl,
+  infoBubbleText,
 }: IProps) {
   return (
     <label
@@ -35,9 +42,16 @@ export default function FormItem({
       <span
         className={cn(
           labelHidden ? 'sr-only' : 'pl-1 text-slate-600 dark:text-navy-200',
+          'flex items-center',
         )}
       >
         {label}
+        {infoBubbleText && (
+          <ContentTooltip
+            infoBubbleText={infoBubbleText}
+            infoBubbleUrl={infoBubbleUrl}
+          />
+        )}
       </span>
 
       <div className="relative mt-1 flex items-center">

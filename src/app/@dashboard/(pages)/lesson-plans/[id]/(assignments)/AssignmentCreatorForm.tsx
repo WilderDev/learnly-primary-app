@@ -24,6 +24,7 @@ import { createSelectOptions } from '@/lib/common/form.helpers';
 import LessonPlanSaveDetailsModalForm from '../LessonPlanSaveDetailsModal';
 import { usePrint } from '@/lib/hooks/usePrint';
 import { ILessonPlanWithoutAssignments } from '@/assets/typescript/assignment';
+import { PrinterIcon } from '@heroicons/react/24/outline';
 
 // * Props
 interface IProps {
@@ -202,42 +203,63 @@ export default function AssignmentCreatorForm({
   return (
     <>
       {assignmentContent ? (
-        <div className="flex flex-col gap-6">
-          <div ref={componentRef}>
-            <PrintableMarkdownContainer content={assignmentContent} />
+        <>
+          <div className="flex items-center justify-between sm:flex-row pt-1">
+            <h2 className="text-sm font-medium tracking-wide text-slate-700 dark:text-navy-100 lg:text-base xl:text-lg">
+              Assignment
+            </h2>
+            {/* Print Button */}
+            {printOptions && (
+              <button
+                className="group flex h-12 flex-col items-center"
+                type="button"
+                onClick={handlePrint}
+              >
+                <PrinterIcon className="h-6 w-6 text-green-900 transition-colors duration-300 group-hover:text-green-700 group-focus:text-green-700 dark:text-navy-200 dark:group-hover:text-emerald-300 dark:group-focus:text-emerald-300" />
+
+                <span className="mt-auto self-end text-xs text-slate-600 group-hover:text-slate-700 group-focus:text-slate-700 dark:text-navy-200 dark:group-hover:text-navy-100 dark:group-focus:text-navy-100">
+                  Print
+                </span>
+              </button>
+            )}
           </div>
-
-          {assignmentActions && (
-            <div className="flex items-center gap-x-6">
-              <Button
-                className="w-1/3"
-                shadow="sm"
-                variant="light"
-                fill="outline"
-                onClick={() => {
-                  setAdditionalCommentsModal(true);
-                }}
-              >
-                <span>Regenerate</span>
-              </Button>
-
-              <Button
-                shadow="lg"
-                className="w-full flex-grow"
-                onClick={handleSaveAssignment}
-              >
-                Save
-              </Button>
+          <div className="flex flex-col gap-6">
+            <div ref={componentRef}>
+              <PrintableMarkdownContainer content={assignmentContent} />
             </div>
-          )}
 
-          {/* Print Button */}
-          {printOptions && (
+            {assignmentActions && (
+              <div className="flex items-center gap-x-6">
+                <Button
+                  className="w-1/3"
+                  shadow="sm"
+                  variant="light"
+                  fill="outline"
+                  onClick={() => {
+                    setAdditionalCommentsModal(true);
+                  }}
+                >
+                  <span>Regenerate</span>
+                </Button>
+
+                <Button
+                  shadow="lg"
+                  className="w-full flex-grow"
+                  onClick={handleSaveAssignment}
+                >
+                  Save
+                </Button>
+              </div>
+            )}
+
+            {/* Print Button */}
+            {/* {printOptions && (
             <Button className="mt-6" onClick={handlePrint}>
               Print
             </Button>
-          )}
-        </div>
+          )} */}
+          </div>
+        </>
       ) : (
         <Form className="w-full" onSubmit={handleAssignmentFormSubmit}>
           {isModal && lessonPlans ? (

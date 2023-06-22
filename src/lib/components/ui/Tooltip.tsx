@@ -20,7 +20,7 @@ export default function Tooltip({
 }: IProps) {
   // * Styles
   const defaultStyles =
-    'absolute z-10 bg-white text-slate-900 dark:bg-navy-900 dark:bg-navy-50 text-xs rounded py-1 px-2 whitespace-nowrap shadow-md hocus:shadow-lg border-0.5 border-slate-100 dark:border-navy-700';
+    'absolute flex flex-col z-10 bg-white text-slate-900 dark:bg-navy-900 dark:bg-navy-50 text-xs rounded py-1 px-2 whitespace-nowrap shadow-md hocus:shadow-lg border-0.5 border-slate-100 dark:border-navy-700';
   const hoverStyles =
     showOnHover &&
     'group-hover:opacity-100 group-focus:opacity-100 hocus:opacity-100 opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none';
