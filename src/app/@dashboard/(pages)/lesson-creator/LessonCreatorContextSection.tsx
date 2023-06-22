@@ -32,6 +32,8 @@ const learningStyleOptions: TLearningStyle[] = [
   'Social',
 ];
 
+const learningStylesInfoBubbleText: string = `Learning styles in homeschooling describe the various ways in which students most effectively receive and process information. These can include visual, auditory, or kinesthetic methods, among others. Understanding a student's preferred learning style can help tailor homeschooling strategies to promote optimal engagement and comprehension.`;
+
 export default function LessonCreatorContextSection() {
   // * Hooks / Context
   const {
@@ -69,6 +71,10 @@ export default function LessonCreatorContextSection() {
         <>
           {/* Learning Styles (Multi-Select) */}
           <MultiSelect
+            infoBubbleUrl={
+              'https://www.learnly.ai/articles/homeschool/homeschooling-learning-styles-are-the-key'
+            }
+            infoBubbleText={learningStylesInfoBubbleText}
             label="Learning Styles"
             options={createSelectOptions(learningStyleOptions)}
             values={learningStyles}

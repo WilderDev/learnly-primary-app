@@ -70,3 +70,62 @@ UNION ALL
     WHERE
         c.name ILIKE '%' || query || '%' AND u.user_id = search_resources.user_id;
 END; $$;
+
+-- Search Curriculum Lessons
+CREATE FUNCTION search_curriculum_lessons(
+    query_param TEXT,
+    grade_param TEXT[],
+    user_curriculum_id UUID,
+    offset_param INT DEFAULT 0
+)
+RETURNS TABLE(
+    id uuid,
+    name text,
+    curriculum_name text,
+    level_name text,
+    level_image_path text,
+    description text,
+    image_path text,
+    url text
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+RETURN QUERY
+    WITH levels_with_priority AS (
+        SELECT unnest(grade_param) AS level, generate_series(1,array_length(grade_param,1)) AS priority
+    )
+    SELECT
+        cl.id AS id,
+        cl.name AS name,
+        cur.name AS curriculum_name,
+        l.name::text AS level_name,
+        l.image_path AS level_image_path,
+        cl.description AS description,
+        cl.image_path AS image_path,
+        CONCAT('/curriculum-roadmaps/user/', uc.id,'/',cs.subject_id, '/', l.id, '/', ct.id, '/', cl.id) AS url
+    FROM
+        curriculum_lessons cl
+    INNER JOIN
+        curriculum_topics ct ON cl.curriculum_topic_id = ct.id
+    INNER JOIN
+        curriculum_levels clevel ON ct.curriculum_level_id = clevel.id
+    INNER JOIN
+        levels l ON l.id = clevel.level_id
+    INNER JOIN
+        curriculum_subjects cs ON clevel.curriculum_subject_id = cs.id
+    INNER JOIN
+        curriculums cur ON cs.curriculum_id = cur.id
+    INNER JOIN
+        user_curriculums uc ON uc.curriculum_id = cur.id
+    INNER JOIN
+        levels_with_priority lp ON lp.level = l.name::text
+    WHERE
+        cl.name ILIKE '%' || query_param || '%'
+        AND (grade_param IS NULL OR l.name::text = ANY(grade_param))
+    ORDER BY
+        lp.priority ASC,
+        cl.name ASC
+    LIMIT 30 OFFSET offset_param;
+END;
+$$;

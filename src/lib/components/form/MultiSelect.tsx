@@ -37,6 +37,8 @@ interface IProps {
   shadow?: TSize;
   rounded?: TSize | 'full';
   className?: string;
+  infoBubbleUrl?: string;
+  infoBubbleText?: string;
 }
 
 // * Component
@@ -54,6 +56,8 @@ export default function MultiSelect({
   shadow = 'xs',
   rounded = 'md',
   className,
+  infoBubbleUrl,
+  infoBubbleText,
 }: IProps) {
   // * Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -129,6 +133,8 @@ export default function MultiSelect({
   // * Render
   return (
     <FormItem
+      infoBubbleUrl={infoBubbleUrl}
+      infoBubbleText={infoBubbleText}
       label={label}
       cols={cols}
       icon={icon}
