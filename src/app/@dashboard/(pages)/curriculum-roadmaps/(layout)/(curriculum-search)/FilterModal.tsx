@@ -20,7 +20,7 @@ export default function FilterModal({
   handleFilterChange,
 }: IProps) {
   return (
-    <Modal isVisible={isVisible} close={close} closeBtn={true}>
+    <Modal isVisible={isVisible} close={close} closeBtn={true} size="sm">
       <section className="relative">
         {/* Header */}
         <div className="px-4 py-5 sm:px-6">
