@@ -156,7 +156,7 @@ export default function LessonPlanEditModal({
       className="overflow-y-visible"
     >
       <Modal.Header title="Edit Lesson" />
-      <section className="flex items-center gap-2 xl:flex-row flex-col">
+      <section className="flex items-center gap-2 flex-col">
         {/* Image */}
         {lessonPlan && (
           <div className="relative inline-block">

@@ -36,9 +36,9 @@ export default function LessonPlanContainer({
             {/* Creator */}
 
             {/* Title */}
-            <h2 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white md:text-center">
+            <h1 className="mb-6 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white md:text-center">
               {lessonPlan.title}
-            </h2>
+            </h1>
 
             {/* Actions */}
             <div className="mt-4 sm:mt-0">
