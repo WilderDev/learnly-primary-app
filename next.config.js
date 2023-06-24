@@ -7,7 +7,11 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ['source.unsplash.com', 'www.learnly.ai'],
+    domains: [
+      'source.unsplash.com',
+      'www.learnly.ai',
+      process.env.NODE_ENV === 'development' ? 'localhost' : 'app.learnly.ai',
+    ],
   },
   async headers() {
     return [
