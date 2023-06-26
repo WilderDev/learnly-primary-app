@@ -37,7 +37,7 @@ export default function Logo({
           size === 'md' && 'h-10 w-10',
           size === 'lg' && 'h-14 w-14',
         )}
-        src={logo}
+        src={logo || '/static/icons/brand/favicon_512x512.png'}
         alt="logo"
         width={44}
         height={44}

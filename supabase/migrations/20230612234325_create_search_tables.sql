@@ -69,7 +69,8 @@ UNION ALL
         curriculums c ON u.curriculum_id = c.id
     WHERE
         c.name ILIKE '%' || query || '%' AND u.user_id = search_resources.user_id;
-END; $$;
+END;
+$$;
 
 -- Search Curriculum Lessons
 CREATE FUNCTION search_curriculum_lessons(

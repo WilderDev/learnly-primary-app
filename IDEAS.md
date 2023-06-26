@@ -1,5 +1,6 @@
 # Future Feature Ideas
 
+1. Printable Generator (Like Marnie in FB DMs)
 1. More Sharing Options (Twitter, Email, etc.) | _EASY_
 2. Example schedules with deadlines on what they should be learning to complete curriculum by certain date | _MEDIUM/HARD_
 3. Co-op / Community Finder (Find other homeschoolers in your area) | _MEDIUM_

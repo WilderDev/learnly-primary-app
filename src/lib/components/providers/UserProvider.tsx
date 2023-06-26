@@ -49,7 +49,10 @@ export function UserProvider({ children }: PropsWithChildren) {
     const { data, error } = await supabase
       .from('teacher_me_view')
       .select('*')
+      .eq('id', session.user.id)
       .single();
+
+    console.log('error:', error);
 
     if (error || !data) return null;
 

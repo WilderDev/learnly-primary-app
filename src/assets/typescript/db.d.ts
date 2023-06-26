@@ -364,32 +364,6 @@ export interface Database {
           url?: string | null
         }
       }
-      extensions: {
-        Row: {
-          id: string
-          inserted_at: string
-          settings: Json | null
-          tenant_external_id: string | null
-          type: string | null
-          updated_at: string
-        }
-        Insert: {
-          id: string
-          inserted_at: string
-          settings?: Json | null
-          tenant_external_id?: string | null
-          type?: string | null
-          updated_at: string
-        }
-        Update: {
-          id?: string
-          inserted_at?: string
-          settings?: Json | null
-          tenant_external_id?: string | null
-          type?: string | null
-          updated_at?: string
-        }
-      }
       lesson_plan_templates: {
         Row: {
           assessments: Json[] | null
@@ -716,20 +690,6 @@ export interface Database {
           url?: string
         }
       }
-      schema_migrations: {
-        Row: {
-          inserted_at: string | null
-          version: number
-        }
-        Insert: {
-          inserted_at?: string | null
-          version: number
-        }
-        Update: {
-          inserted_at?: string | null
-          version?: number
-        }
-      }
       student_preferences: {
         Row: {
           accomplishments: Json
@@ -985,50 +945,6 @@ export interface Database {
             | null
           preferred_teaching_strategies?: Database["public"]["Enums"]["teaching_strategy"][]
           preferred_teaching_tools?: Database["public"]["Enums"]["teaching_tool"][]
-          updated_at?: string
-        }
-      }
-      tenants: {
-        Row: {
-          external_id: string | null
-          id: string
-          inserted_at: string
-          jwt_secret: string | null
-          max_bytes_per_second: number
-          max_channels_per_client: number
-          max_concurrent_users: number
-          max_events_per_second: number
-          max_joins_per_second: number
-          name: string | null
-          postgres_cdc_default: string | null
-          updated_at: string
-        }
-        Insert: {
-          external_id?: string | null
-          id: string
-          inserted_at: string
-          jwt_secret?: string | null
-          max_bytes_per_second?: number
-          max_channels_per_client?: number
-          max_concurrent_users?: number
-          max_events_per_second?: number
-          max_joins_per_second?: number
-          name?: string | null
-          postgres_cdc_default?: string | null
-          updated_at: string
-        }
-        Update: {
-          external_id?: string | null
-          id?: string
-          inserted_at?: string
-          jwt_secret?: string | null
-          max_bytes_per_second?: number
-          max_channels_per_client?: number
-          max_concurrent_users?: number
-          max_events_per_second?: number
-          max_joins_per_second?: number
-          name?: string | null
-          postgres_cdc_default?: string | null
           updated_at?: string
         }
       }
@@ -2370,10 +2286,7 @@ export interface Database {
     Tables: {
       buckets: {
         Row: {
-          allowed_mime_types: string[] | null
-          avif_autodetection: boolean | null
           created_at: string | null
-          file_size_limit: number | null
           id: string
           name: string
           owner: string | null
@@ -2381,10 +2294,7 @@ export interface Database {
           updated_at: string | null
         }
         Insert: {
-          allowed_mime_types?: string[] | null
-          avif_autodetection?: boolean | null
           created_at?: string | null
-          file_size_limit?: number | null
           id: string
           name: string
           owner?: string | null
@@ -2392,10 +2302,7 @@ export interface Database {
           updated_at?: string | null
         }
         Update: {
-          allowed_mime_types?: string[] | null
-          avif_autodetection?: boolean | null
           created_at?: string | null
-          file_size_limit?: number | null
           id?: string
           name?: string
           owner?: string | null
@@ -2434,7 +2341,6 @@ export interface Database {
           owner: string | null
           path_tokens: string[] | null
           updated_at: string | null
-          version: string | null
         }
         Insert: {
           bucket_id?: string | null
@@ -2446,7 +2352,6 @@ export interface Database {
           owner?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
-          version?: string | null
         }
         Update: {
           bucket_id?: string | null
@@ -2458,7 +2363,6 @@ export interface Database {
           owner?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
-          version?: string | null
         }
       }
     }
@@ -2466,15 +2370,6 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      can_insert_object: {
-        Args: {
-          bucketid: string
-          name: string
-          owner: string
-          metadata: Json
-        }
-        Returns: undefined
-      }
       extension: {
         Args: {
           name: string

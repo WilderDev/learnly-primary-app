@@ -46,9 +46,6 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Supabase Client
-  const supabase = supabaseClient();
-
   // Current User
   const { user } = useUser();
 
@@ -58,10 +55,18 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
     const fetchItems = async () => {
       setIsLoading(true);
 
+      // Supabase Client
+      const supabase = supabaseClient();
+
+      console.log('query:', query);
+      console.log('user?.id:', user?.id);
+
       const { data, error } = await supabase.rpc('search_resources', {
         query,
         user_id: user?.id!,
       });
+
+      if (error) console.error(error);
 
       if (error) toast.error('There was an error searching');
 

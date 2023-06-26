@@ -13,7 +13,6 @@ import SearchItemsContainer from './SearchItemsContainer';
 import { supabaseClient } from '@/lib/auth/supabaseClient';
 import FilterModal from './FilterModal';
 import { toast } from 'sonner';
-import Button from '@/lib/components/ui/Button';
 
 interface IProps {
   curriculumId: string;
