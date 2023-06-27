@@ -15,6 +15,7 @@ import LessonPlanSaveDetailsModalForm from './LessonPlanSaveDetailsModal';
 import Modal from '@/lib/components/popouts/Modal';
 import LessonPlanEditModal from './LessonPlanEditModal';
 import { ILessonPlanWithCreator } from '@/assets/typescript/lesson-plan';
+import { useUser } from '@/lib/components/providers/UserProvider';
 
 // * Props
 export interface IProps {
@@ -32,6 +33,7 @@ export default function LessonPlanActionIcons({
 }: IProps) {
   // * Hooks
   const pathname = usePathname();
+  const { user } = useUser();
 
   // * State
   const [isSaveModalOpen, setSaveModalOpen] = useState(false);
@@ -88,17 +90,19 @@ export default function LessonPlanActionIcons({
         </button>
 
         {/* Edit Button */}
-        <button
-          className="group flex h-12 flex-col items-center"
-          type="button"
-          onClick={() => setEditModal(true)}
-        >
-          <PencilSquareIcon className="h-6 w-6 text-green-900 transition-colors duration-300 group-hover:text-green-700 group-focus:text-green-700 dark:text-navy-200 dark:group-hover:text-emerald-300 dark:group-focus:text-emerald-300" />
+        {user?.id === lessonPlan.creator.id && (
+          <button
+            className="group flex h-12 flex-col items-center"
+            type="button"
+            onClick={() => setEditModal(true)}
+          >
+            <PencilSquareIcon className="h-6 w-6 text-green-900 transition-colors duration-300 group-hover:text-green-700 group-focus:text-green-700 dark:text-navy-200 dark:group-hover:text-emerald-300 dark:group-focus:text-emerald-300" />
 
-          <span className="mt-auto self-end text-xs text-slate-600 group-hover:text-slate-700 group-focus:text-slate-700 dark:text-navy-200 dark:group-hover:text-navy-100 dark:group-focus:text-navy-100">
-            Edit
-          </span>
-        </button>
+            <span className="mt-auto self-end text-xs text-slate-600 group-hover:text-slate-700 group-focus:text-slate-700 dark:text-navy-200 dark:group-hover:text-navy-100 dark:group-focus:text-navy-100">
+              Edit
+            </span>
+          </button>
+        )}
       </div>
 
       {/* Save Modal */}

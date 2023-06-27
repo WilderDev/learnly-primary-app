@@ -10,6 +10,7 @@ const nextConfig = {
     domains: [
       'source.unsplash.com',
       'www.learnly.ai',
+      'cehhxzhmvkyveetckkln.supabase.co',
       process.env.NODE_ENV === 'development' ? 'localhost' : 'app.learnly.ai',
     ],
   },

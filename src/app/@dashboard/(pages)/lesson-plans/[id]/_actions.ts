@@ -103,11 +103,15 @@ async function editLessonPlanAction(
 
   try {
     const supabase = supabaseServer();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
 
     const { error } = await supabase
       .from('lesson_plans')
       .update({ image_path: image_url, title: title })
-      .eq('id', lesson_plan_id);
+      .eq('id', lesson_plan_id)
+      .eq('creator_id', session?.user.id);
 
     if (error) return responseContract(error.message, false);
 
@@ -136,6 +140,23 @@ async function deleteOldImagesAction(
 
   try {
     const supabase = supabaseServer();
+
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    const { data: lesson_plan_creator_id, error: lessonPlanError } =
+      await supabase
+        .from('lesson_plans')
+        .select('creator_id')
+        .eq('id', lesson_plan_id)
+        .single();
+
+    if (
+      !lesson_plan_creator_id ||
+      lesson_plan_creator_id.creator_id !== session?.user.id
+    )
+      return responseContract('Operation Not Allowed', false);
 
     const { data: dataList, error: dataListError } = await supabase.storage
       .from('avatars')
