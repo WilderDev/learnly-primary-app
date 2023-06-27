@@ -52,7 +52,7 @@ export function UserProvider({ children }: PropsWithChildren) {
       .eq('id', session.user.id)
       .single();
 
-    console.log('error:', error);
+    // console.log('error:', error);
 
     if (error || !data) return null;
 
