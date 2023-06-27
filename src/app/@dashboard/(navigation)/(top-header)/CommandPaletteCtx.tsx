@@ -58,8 +58,8 @@ export function CommandPaletteProvider({ children }: PropsWithChildren) {
       // Supabase Client
       const supabase = supabaseClient();
 
-      console.log('query:', query);
-      console.log('user?.id:', user?.id);
+      // console.log('query:', query);
+      // console.log('user?.id:', user?.id);
 
       const { data, error } = await supabase.rpc('search_resources', {
         query,

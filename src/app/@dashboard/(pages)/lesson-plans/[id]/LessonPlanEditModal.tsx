@@ -11,6 +11,7 @@ import { supabaseClient } from '@/lib/auth/supabaseClient';
 import { revalidatePath } from 'next/cache';
 import { deleteOldImages, editLessonPlan } from './_actions';
 import { toast } from 'sonner';
+import { useUser } from '@/lib/components/providers/UserProvider';
 
 interface IProps {
   isVisible: boolean;
@@ -28,6 +29,9 @@ export default function LessonPlanEditModal({
   const [imagePath, setImagePath] = useState(lessonPlan.image_path);
   const [previewUrl, setPreviewUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  // Hooks
+  const { user } = useUser();
 
   // File State
   const [file, setFile] = useState<File | null>(null);
@@ -51,6 +55,8 @@ export default function LessonPlanEditModal({
   // Submit Handle
   const handleSubmit = async () => {
     if (!title) return toast.error('Title Is Required');
+    if (user?.id !== lessonPlan.creator.id)
+      return toast.error('Operation Not Allowed');
 
     // Set Loading State
     setIsLoading(true);
