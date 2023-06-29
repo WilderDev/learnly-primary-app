@@ -62,10 +62,9 @@ export default function AccountSubscriptionStripeForm() {
         </h2>
 
         <p className="mt-3 text-base text-center text-slate-600 dark:text-navy-200">
-          You will be charged{' '}
-          <span className="text-slate-500 dark:text-navy-200/90">$297 USD</span>
-          , for a whole year of Learnly (ALL ACCESS), and your subscription will
-          begin immediately.{' '}
+          A WHOLE YEAR of Learnly (*All Access*) will be only one payment of{' '}
+          <span className="text-slate-500 dark:text-navy-200/90">$197 USD</span>
+          , and your subscription will begin immediately.{' '}
           <span className="text-slate-700 dark:text-navy-200/70">
             This is a one-time offer and will not be available after your trial
             ends.
@@ -91,7 +90,7 @@ export default function AccountSubscriptionStripeForm() {
             paymentMethodId: paymentMethod?.id!,
             customerId: subscription?.stripeCustomerId!,
             subscriptionId: subscription?.stripeSubscriptionId!,
-            isEarlyPurchase: true,
+            isEarlyPurchase: false, // Used to be true but we changed pricing
           });
         }}
       >
