@@ -58,7 +58,7 @@ function MarqueeTestimonialItem({
       </blockquote>
 
       {/* Info */}
-      <figcaption className="mt-10 flex items-center gap-x-6">
+      {/* <figcaption className="mt-10 flex items-center gap-x-6">
         <Image
           className="h-12 w-12 rounded-full bg-slate-50 dark:bg-navy-800"
           src={image}
@@ -72,7 +72,7 @@ function MarqueeTestimonialItem({
           </div>
           <div className="mt-0.5 text-slate-600 dark:text-navy-200">{role}</div>
         </div>
-      </figcaption>
+      </figcaption> */}
     </figure>
   );
 }
