@@ -77,14 +77,14 @@ export default function LandingHero() {
                   <span className="text-3xl sm:text-5xl">,</span> & Flexible
                   Homeschool...{' '}
                   <span className="text-green-800 dark:text-green-600">
-                    Loved by Thousands
+                    Loved by Families
                   </span>{' '}
                   🤗
                 </h1>
 
                 {/* Description */}
                 <p className="relative mt-6 text-lg leading-8 text-slate-600 dark:text-navy-200 sm:max-w-md lg:max-w-none">
-                  Join 1,000s of Pre-K through 5 Families Providing
+                  Join our growing number of Pre-K through 5 Families Providing
                   High-Quality, Flexible Education Using The #1 Personalized
                   Lesson & Curriculum Software!{' '}
                   <span className="hidden sm:block mt-1 text-slate-500 dark:text-navy-300">

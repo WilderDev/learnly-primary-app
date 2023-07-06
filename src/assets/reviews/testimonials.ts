@@ -17,14 +17,6 @@ export const testimonials: ITestimonial[] = [
     image: 'http://source.unsplash.com/200x200/?profile,happy,female,family',
   },
   {
-    id: 3,
-    name: "Wendy O'Neil",
-    role: 'Homeschool Mom',
-    quote:
-      'Learnly has been a lifesaver for our family. I love that I can set up my kids’ lessons for the week and then let them work independently. It’s so easy to use!',
-    image: 'http://source.unsplash.com/200x200/?profile,happy,female,outdoors',
-  },
-  {
     id: 4,
     name: 'John Smith',
     role: 'Proud Homeschool Dad',
@@ -39,14 +31,6 @@ export const testimonials: ITestimonial[] = [
     quote:
       "I CAN'T BELIEVE I'VE FOUND THIS! I've been looking for something like this for years. I'm so excited to see where we go!",
     image: 'http://source.unsplash.com/200x200/?profile,happy,female,smile',
-  },
-  {
-    id: 6,
-    name: 'Bobby Augustina',
-    role: 'Charlotte Mason Mom',
-    quote:
-      'I love that I can set up my kids’ lessons for the week and then let them work independently. It’s so easy to use! 🙏',
-    image: 'http://source.unsplash.com/200x200/?profile,female,teacher',
   },
   {
     id: 7,
