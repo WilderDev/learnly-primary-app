@@ -8,7 +8,7 @@ import { DashPanel, DashPanelHeader } from '../(layout)/DashPanel';
 import LeftSidebarMobile from '../(navigation)/(left-sidebar)/(mobile)/LeftSidebarMobile';
 import DashChatBubble from '../(layout)/DashChatBubble';
 import dynamic from 'next/dynamic';
-import CommandPalette from '@/lib/components/ui/CommandPalette';
+import RightSidebarQuickReport from '../(navigation)/(right-sidebar)/RightSidebarQuickReport';
 
 const OnboardingTourContainer = dynamic(
   () => import('../(navigation)/(onboarding-tour)/OnboardingTourContainer'),
@@ -17,7 +17,7 @@ const OnboardingTourContainer = dynamic(
   },
 );
 
-export default function DashboardLayout({ children }: PropsWithChildren) {
+export default async function DashboardLayout({ children }: PropsWithChildren) {
   return (
     <DashProviders>
       {/* Left Sidebar */}
@@ -37,7 +37,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
         <DashPanel>
           <DashPanelHeader title="Quick Report" />
           {/* Quick Report */}
-          Under Construction
+          <RightSidebarQuickReport />
         </DashPanel>
       </RightSidebar>
 

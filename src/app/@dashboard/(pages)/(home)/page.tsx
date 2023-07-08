@@ -8,11 +8,16 @@ import MiniCalendar from '../schedule-builder/MiniCalendar';
 import AssignmentsTable from './AssignmentsTable';
 import AssignmentCreatorModal from './(assignments-table)/AssignmentCreatorModal';
 import { supabaseServer } from '@/lib/auth/supabaseServer';
+import BirthdayModal from './BirthdayModal';
+import Activities from './Activities';
+import ActivitiesCreateModal from './(activites)/ActivitiesCreateModal';
 
 export default async function ParentDashboardHomePage() {
   // * Data
   const lessonPlansWithoutAssignment =
     await getUserLessonPlansWithoutAssignment();
+
+  const activities = await getActivities();
 
   // * Render
   return (
@@ -73,7 +78,21 @@ export default async function ParentDashboardHomePage() {
           />
           <MiniCalendar />
         </DashPanel>
+
+        {/* Activities */}
+        <DashPanel colNum={1}>
+          <DashPanelHeader
+            title="Activities"
+            hasModal={true}
+            modalSize="sm"
+            modalContent={<ActivitiesCreateModal />}
+          />
+          <Activities activities={activities} />
+        </DashPanel>
       </DashSideCol>
+
+      {/* Birthday Modal */}
+      <BirthdayModal />
     </>
   );
 }
@@ -99,5 +118,33 @@ async function getUserLessonPlansWithoutAssignment() {
     lesson_plan_name: string;
     lesson_plan_content: string;
     lesson_plan_level_name: string;
+  }[];
+}
+
+async function getActivities() {
+  const supabase = supabaseServer();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const { data, error } = await supabase
+    .from('activities')
+    .select('*, subjects(name), levels(name)')
+    .eq('creator_id', session?.user.id);
+
+  if (error) return [];
+
+  console.log(data);
+
+  return data as {
+    activity_timestamp: string;
+    created_at: string;
+    creator_id: string;
+    id: string;
+    level_id: string;
+    subject_id: string;
+    updated_at: string;
+    subjects: { name: string }[];
+    levels: { name: string }[];
   }[];
 }

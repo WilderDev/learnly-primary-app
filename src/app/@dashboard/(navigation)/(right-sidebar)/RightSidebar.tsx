@@ -67,7 +67,7 @@ export default function RightSidebar({ children }: PropsWithChildren) {
               </div>
 
               {/* Sidebar Content */}
-              <section className="mt-4 flex flex-1 flex-col space-y-6 px-4">
+              <section className="mt-4 flex flex-1 flex-col space-y-6 px-4 overyflow-y-scroll custom-scrollbar">
                 {children}
               </section>
             </motion.div>
