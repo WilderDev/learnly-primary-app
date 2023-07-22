@@ -20,10 +20,9 @@ export default function AccountSubscriptionStripeForm() {
   const { subscription } = useUser();
   const stripeClient = useStripe();
   const elements = useElements();
-  // const router = useRouter();
 
   // * State
-  const [isEarlyPurchase, setIsEarlyPurchase] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   // * Requests / Mutations
   const { mutate: savePaymentDetailsMutation, isLoading } = useRequest(
@@ -31,7 +30,7 @@ export default function AccountSubscriptionStripeForm() {
     {
       onSuccess: (data) => {
         if (data.ok) {
-          setIsEarlyPurchase(true);
+          setSuccess(true);
           toast.success('Your payment was successful!');
           revalidatePath('/account');
           // router.reload();
@@ -41,7 +40,7 @@ export default function AccountSubscriptionStripeForm() {
   );
 
   // * Render
-  return isEarlyPurchase ? (
+  return success ? (
     <div className="flex flex-col items-center justify-center">
       <h2 className="font-bold text-2xl md:text-3xl text-center text-slate-900 dark:text-navy-50">
         Thank you 🤗 We look forward to helping your family thrive :) You got
@@ -53,15 +52,10 @@ export default function AccountSubscriptionStripeForm() {
       {/* Header */}
       <header className="mb-6 border-b pb-4 border-slate-300 dark:border-navy-500">
         <h2 className="font-bold text-center text-2xl md:text-3xl text-slate-900 dark:text-navy-50">
-          Get 3 Months Free{' '}
-          <span className="text-green-600 leading-9 dark:text-green-500 italics">
-            (And Save Over $300+)
-          </span>{' '}
-          When You Pay Before{' '}
-          {getDatestringFromTimestamp(subscription?.trialEnd!)}!
+          $5/month Forever. No Contracts. Cancel Anytime.
         </h2>
 
-        <p className="mt-3 text-base text-center text-slate-600 dark:text-navy-200">
+        {/* <p className="mt-3 text-base text-center text-slate-600 dark:text-navy-200">
           A WHOLE YEAR of Learnly (*All Access*) will be only one payment of{' '}
           <span className="text-slate-500 dark:text-navy-200/90">$197 USD</span>
           , and your subscription will begin immediately.{' '}
@@ -69,7 +63,7 @@ export default function AccountSubscriptionStripeForm() {
             This is a one-time offer and will not be available after your trial
             ends.
           </span>
-        </p>
+        </p> */}
       </header>
 
       {/* Form */}
@@ -83,14 +77,12 @@ export default function AccountSubscriptionStripeForm() {
             await stripeClient!.createPaymentMethod({
               elements: elements!,
             });
-
           if (error) return toast.error(error.message);
 
           savePaymentDetailsMutation({
             paymentMethodId: paymentMethod?.id!,
             customerId: subscription?.stripeCustomerId!,
             subscriptionId: subscription?.stripeSubscriptionId!,
-            isEarlyPurchase: false, // Used to be true but we changed pricing
           });
         }}
       >
@@ -105,7 +97,7 @@ export default function AccountSubscriptionStripeForm() {
 
         {/* Submit */}
         <Button
-          className="col-span-4 uppercase"
+          className="col-span-4"
           id="submit"
           type="submit"
           shadow="lg"
@@ -113,20 +105,13 @@ export default function AccountSubscriptionStripeForm() {
           disabled={isLoading}
           loading={isLoading}
         >
-          Claim my 3 Free Months! 🎉
+          Claim my Special Offer!
         </Button>
 
         <span className="block text-center col-span-4 text-xs text-slate-600 -mt-3">
           *
           <span className="font-medium text-slate-700">Limited Time Offer</span>
-          : We can&apos;t promise this deal will be around forever.{' '}
-          <a
-            className="font-light hocus:text-slate-800 transition-colors duration-200"
-            href={process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PLAN_URL}
-            target="_blank"
-          >
-            See Monthly →
-          </a>
+          : We can&apos;t promise this deal will be around forever.
         </span>
       </Form>
     </>

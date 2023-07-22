@@ -224,18 +224,12 @@ const savePaymentDetailsSchema = z.object({
   paymentMethodId: z.string(),
   customerId: z.string(),
   subscriptionId: z.string(),
-  isEarlyPurchase: z.boolean().optional(),
 });
 
 async function savePaymentDetailsAction(
   input: z.infer<typeof savePaymentDetailsSchema>,
 ) {
-  const {
-    paymentMethodId,
-    customerId,
-    subscriptionId,
-    isEarlyPurchase = false,
-  } = input;
+  const { paymentMethodId, customerId, subscriptionId } = input;
 
   try {
     const res = await fetch(baseUrl + '/api/stripe/save-payment-details', {
@@ -244,7 +238,6 @@ async function savePaymentDetailsAction(
         paymentMethodId,
         customerId,
         subscriptionId,
-        isEarlyPurchase,
       }),
     });
 

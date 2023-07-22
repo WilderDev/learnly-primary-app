@@ -9,6 +9,7 @@ import LandingVerticleTestimonialGrid from './LandingVerticleTestimonialGrid';
 import LandingCTAImages from './LandingCTAImages';
 import LandingFAQ from './LandingFAQ';
 import LandingCTACircle from './LandingCTACircle';
+import LandingPricing from './LandingPricing';
 
 export default function MarketingLandingPage() {
   return (
@@ -24,6 +25,8 @@ export default function MarketingLandingPage() {
       <LandingFeatures />
 
       <LandingVerticleTestimonialGrid />
+
+      <LandingPricing />
 
       <LandingCTAImages />
 
