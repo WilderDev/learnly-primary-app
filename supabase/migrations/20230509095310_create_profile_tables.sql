@@ -218,8 +218,8 @@ CREATE TABLE student_preferences (
 );
 
 -- Avatar Storage Bucket
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('avatars', 'avatars', true);
+-- INSERT INTO storage.buckets (id, name, public)
+-- VALUES ('avatars', 'avatars', true);
 
 
 -- * VIEWS
